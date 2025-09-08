@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roster 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://cocodata.org ../../../../schemas/v2.0/Roster.xsd">
+    <schema_version>2</schema_version>
+    <sender_id>6a356409cb574bb48609635f6966d475</sender_id>
+    <date_time_reported>2025-06-19T22:00:24.627-04:00</date_time_reported>
+    <member>
+        <is_subscriber>true</is_subscriber>
+        <relationship>self</relationship>
+        <birth_date>1950-06-02</birth_date>
+        <gender>male</gender>
+        <unique_person_ids>
+            <unique_person_id>123456789</unique_person_id>
+            <unique_person_id_assigner>ACMECO</unique_person_id_assigner>
+            <unique_person_id_assigner_type>HS Identifier</unique_person_id_assigner_type>
+        </unique_person_ids>
+        <member_identity>
+            <secret_display_name>Please enter your member number.</secret_display_name>
+            <secret_value>123456789</secret_value>
+            <secret_length>9</secret_length>
+        </member_identity>
+        <member_id>123456789</member_id>
+        <member_id_system>SourceSystem</member_id_system>
+        <subscriber_id>123456789</subscriber_id>
+        <names>
+            <name>
+                <use>official</use>
+                <text>TONY T TIGER</text>
+                <family>TIGER</family>
+                <given>TONY T</given>
+            </name>
+            <name>
+                <use>old</use>
+                <text>TONY T TIGER</text>
+                <family>TIGER</family>
+                <given>TONE T</given>
+            </name>
+        </names>
+        <telecoms>
+            <telecom>
+                <system>phone</system>
+                <value>5559991212</value>
+                <use>home</use>
+                <period>
+                    <start>2025-01-28</start>
+                </period>
+            </telecom>
+            <telecom>
+                <system>phone</system>
+                <value>5559991212</value>
+                <use>home</use>
+                <period>
+                    <start>2025-01-28</start>
+                </period>
+            </telecom>
+        </telecoms>
+        <addresses>
+            <address>
+                <use>home</use>
+                <type>both</type>
+                <text>999 EAST JUNGLE AVENUE, MACON, BIBB, GA 31204, UNITED STATES</text>
+                <line>999 EAST JUNGLE AVENUE</line>
+                <city>MACON</city>
+                <district>BIBB</district>
+                <state>GA</state>
+                <postal_code>31204</postal_code>
+                <country>USA</country>
+                <period>
+                    <start>2025-01-28</start>
+                </period>
+            </address>
+            <address>
+                <use>billing</use>
+                <type>postal</type>
+                <text>P.O. BOX 123, MACON, GA 31204, UNITED STATES</text>
+                <line>P.O. BOX 123</line>
+                <city>MACON</city>
+                <state>GA</state>
+                <postal_code>31204</postal_code>
+                <country>USA</country>
+                <period>
+                    <start>2025-01-28</start>
+                </period>
+            </address>
+        </addresses>
+        <health_coverage>
+            <group_number>DEFGRPNO</group_number>
+            <policy_number>123456789</policy_number>
+            <plan_id>001</plan_id>
+            <plan_name>H41234-123 PPO ISNP</plan_name>
+            <coverage_status>good</coverage_status>
+            <coverage_period>
+                <start>2025-02-01T12:00:00Z</start>
+                <end>2025-06-30T12:00:00Z</end>
+            </coverage_period>
+        </health_coverage>
+        <smoking_status>266927001</smoking_status>
+        <record_type>A</record_type>
+        <unique_record_identifier>123456789012</unique_record_identifier>
+        <delegates>
+            <delegate>
+                <family>PINK</family>
+                <given>PANTHER</given>
+                <telecoms>
+                    <telecom>
+                        <system>phone</system>
+                        <value>6669991212</value>
+                    </telecom>
+                </telecoms>
+                <email_address>default@company.com</email_address>
+                <start>2025-01-28</start>
+                <is_member>false</is_member>
+            </delegate>
+        </delegates>
+    </member>  
+</roster>

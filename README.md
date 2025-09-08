@@ -83,6 +83,8 @@ Documentation is automatically generated using python, with the output published
 
 Sample files are generated from the canonical schema files provided. The sample file generator uses the faker library in python. Sample files can be used to create realistic data for testing purposes in systems, or for use in collaboration with industry partners on what instances of these canonical files should look like.
 
+While the canonical schema files are used to generate the sample files, this does not automatically mean that they are correct. Unit tests will be added that will generate the files and then validate against the schema files to ensure valid XML is being generated against the canonical schema. This ensures the generators do not start creating invalid data.
+
 #### How to setup and run sample file generator
 | **Step**     | **Command**                  |
 |--------------|------------------------------|
@@ -97,11 +99,9 @@ Testing is organized into unit tests and integration tests. Unit tests are inclu
 
 ##### Overview
 
-It is important to note that when executing the unit tests using the sample files being generated, the test is not validating whether or not the sample files are valid, because we know they already are. Validating a file against a schema from which is was created effectively proves nothing. However, we can validate other aspects using this approach
-
-Unit tests validate at the individual canonical file level to:
-- verify all changes made to canonical XDS files are valid XSD 1.0
-- verify sample file generator is working properly
+Currently there are two primary types of unit tests:
+1. Validation of generated files against their schema files to ensure the generators continue creating valid XML to the schema each one uses.
+2. Validation of canonical schema files to ensure valid XML Schema 1.0
 
 ##### Execution
 
