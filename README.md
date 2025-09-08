@@ -110,7 +110,7 @@ Unit tests use the pytest library. and are setup to run on commit of any code to
 To run unit tests locally:
 - First, ensure your environment for python is setup and running.
 - Then, run all the test scripts in the tests folder using this script:
-  - `pytest validation/tests`
+  - `pytest tests/unit`
 
 #### Integration Tests
 
