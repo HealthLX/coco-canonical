@@ -133,8 +133,8 @@ While not required, using a python virtual environment will help to keep things 
 |------------------------------------------|-----------------------------------------------|
 | Create Python virtual environment        | `python3 -m venv venv`                        |
 | Activate virtual environment             | `source venv/bin/activate`                    |
-| Install dependencies from requirements   | `pip install -r validation/requirements.txt`  |
-| Update the requirements.txt file         | `pip freeze > validation/requirements.txt`    |
+| Install dependencies from requirements   | `pip install -r requirements.txt`  |
+| Update the requirements.txt file         | `pip freeze > requirements.txt`    |
 
 ### Refresh python virtual environment
 
