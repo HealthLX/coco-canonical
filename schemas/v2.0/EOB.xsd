@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+<xs:schema 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1" version="2.0">
+	version="2.0">
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string-->
 	<xs:simpleType name="string">
@@ -4752,6 +4754,7 @@
 
 		</xs:sequence>
 	</xs:group>
+
 	<xs:element name="eob_list">
 		<xs:complexType>
 			<xs:sequence>

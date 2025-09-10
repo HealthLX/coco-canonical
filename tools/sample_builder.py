@@ -1,18 +1,34 @@
 import xmlschema
 import random
-import rstr
 from faker import Faker
 from lxml import etree
 from pathlib import Path
 import re
 from datetime import datetime, timedelta
+from lxml import etree
+import xmlschema
+from xmlschema.validators import XsdElement
+from pathlib import Path
 
-base_dir = Path(__file__).resolve().parent.parent  # adjust as needed
-schema_path = base_dir / "schemas/v2.0/ProviderDirectory.xsd"
-schema = xmlschema.XMLSchema(str(schema_path))
+# base_dir = Path(__file__).resolve().parent.parent
+# schema_path = base_dir / "schemas/v2.0/roster.xsd"
+# schema = xmlschema.XMLSchema(str(schema_path))
 
-fake = Faker()
-XSD_NAMESPACE = "http://www.w3.org/2001/XMLSchema"
+# fake = Faker()
+# XSD_NAMESPACE = "http://www.w3.org/2001/XMLSchema"
+
+# adding this as the main wrapper function. I think i can make the other private (with prefix _)
+# def build(*, schema: xmlschema.XMLSchema, root: XsdElement, debug: bool = False,
+#           variant: Optional[str] = None) -> etree._Element:
+#     """
+#     Entry point the driver will call. Return an lxml Element that you built
+#     using your existing recursion.
+#     """
+#     opts = {"debug": debug, "variant": variant}
+#     elem = build_element(schema, root, opts)       # <-- your current recursion
+#     # (optional) any final tweaks:
+#     # elem = postprocess(elem, opts)
+#     return elem
 
 def get_pattern_from_type(xsd_type):
     for facet_name, facet in xsd_type.facets.items():
@@ -28,7 +44,7 @@ def random_datetime():
     return (start + timedelta(seconds=random_seconds)).isoformat()
 
 def generate_fake_value(tag_name, xsd_element=None):
-      
+    fake = Faker()
     # 1.Handle enum values
     if xsd_element.type.is_simple(): # can i remove this check?
         enum_values = getattr(xsd_element.type, "enumeration", None)
@@ -111,42 +127,42 @@ def generate_fake_value(tag_name, xsd_element=None):
         return fake.state_abbr()
     else:
         return fake.word()
+    
 
-def build_element(name, xsd_element=None):
+def build_element(name, schema, xsd_element=None):
+    """
+    recursively builds xml elements and returns as an xml document
+
+    Args:
+        name (str): name of the element to build - used recursively so could be root or nested element name
+        schema (XmlSchema): schema object to use
+        xsd_element (XsdElement): element object - used recursively to drill down into all schema elements
+
+    Returns:
+        XmlElement: containing the full XML document to be serialized and written to file system
+    """
+
+    print(f"build_element called with name='{name}', xsd_element={'None' if xsd_element is None else 'provided'}")    
     if xsd_element is None:
-        xsd_element = schema.elements[name]
-
+            if name not in schema.elements:
+                print(f"ERROR: '{name}' not found in global elements")
+                print(f"Available global elements: {list(schema.elements.keys())}")
+                raise KeyError(f"Global element '{name}' not found")
+            xsd_element = schema.elements[name]
     xml_elem = etree.Element(name)
-
     if xsd_element.type.is_complex():
-        if hasattr(xsd_element.type, 'content') and xsd_element.type.content:
+        if hasattr(xsd_element.type, 'content') and xsd_element.type.content: 
             for child in xsd_element.type.content.iter_elements():
+                # Skip xs:any elements or elements without proper names
+                if not hasattr(child, 'name') or child.name is None:
+                    continue
                 max_count = child.max_occurs if child.max_occurs else 1
                 # Always generate at least one, even if minOccurs=0
                 count = max(1, child.min_occurs or 1)
                 for _ in range(min(count, max_count)):
-                    child_elem = build_element(child.name, child)
+                    child_elem = build_element(child.name, schema, child)
                     xml_elem.append(child_elem)
     else:
         xml_elem.text = generate_fake_value(name, xsd_element)
         # xml_elem.text = generate_fake_value(name)
-
     return xml_elem
-
-# TODO: change this to be canonical-agnostic - root name needs to change, file created needs to change
-# Generate from root
-root_name = "providers" #schema.root_element.name
-root_xml = build_element(root_name)
-
-# Write to file - changing this impacts where the script is run from CLI
-
-pdname = "provider-directory-sample.xml"
-rname = "roster-sample.xml"
-
-with open("samples/v2.0/" + pdname, "wb") as f:
-    f.write(etree.tostring(root_xml, pretty_print=True, xml_declaration=True, encoding='UTF-8'))
-print("Sample XML generated as ../samples/v2.0/" + pdname)
-
-# with open("validation/samples/" + rname, "wb") as f:
-#     f.write(etree.tostring(root_xml, pretty_print=True, xml_declaration=True, encoding='UTF-8'))
-# print("Sample XML generated as ../samples/" + rname)
