@@ -88,7 +88,7 @@ While the canonical schema files are used to generate the sample files, this doe
 #### How to setup and run sample file generator
 | **Step**     | **Command**                  |
 |--------------|------------------------------|
-| Run the create script  | `python validation/scripts/generate_sample_xml.py`|
+| Run the create script  | `python -m .tools.build_all_sample_files`|
 * This must be run from the root directory
 
 ### Testing

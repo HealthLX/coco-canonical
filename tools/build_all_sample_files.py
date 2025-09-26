@@ -2,9 +2,9 @@
 import xmlschema
 from pathlib import Path
 from lxml import etree
-from tools.roster import build_element
+from tools.build_sample_file import build_element
 
-def BuildSampleFile(root_name, schema_file_name, output_file_name):
+def build_sample_file(root_name, schema_file_name, output_file_name):
     #Get path and load schema
     base_dir = Path(__file__).resolve().parent.parent
     schema_path = base_dir / "schemas" / "v2.0" / f"{schema_file_name}"
@@ -19,11 +19,10 @@ def BuildSampleFile(root_name, schema_file_name, output_file_name):
 
 def main():
 
-   BuildSampleFile("providers", "provider-directory.xsd", "provider-directory-sample.xml")
-   BuildSampleFile("roster", "roster.xsd", "roster-sample.xml")
-   BuildSampleFile("eob_list", "eob.xsd", "eob-sample.xml")
-   BuildSampleFile("clinicals", "clinical.xsd", "clinical-sample.xml")
- 
+#    build_sample_file("providers", "provider-directory.xsd", "provider-directory-sample.xml")
+   build_sample_file("roster", "roster.xsd", "roster-sample.xml")
+#    build_sample_file("eob_list", "eob.xsd", "eob-sample.xml")
+#    build_sample_file("clinicals", "clinical.xsd", "clinical-sample.xml")
 
 if __name__ == "__main__":
     main()
