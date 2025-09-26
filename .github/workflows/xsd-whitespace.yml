@@ -1,0 +1,15 @@
+name: EditorConfig Check
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  ec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: editorconfig-checker/action-editorconfig-checker@v3
+        with:
+          # Limit to .xsd files
+          pattern: "**/*.xsd"
