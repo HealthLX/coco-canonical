@@ -656,10 +656,8 @@
 						<xs:element name="geo_location" minOccurs="0" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="latitude" type="decimal" minOccurs="1"
-										maxOccurs="1"/>
-									<xs:element name="longitude" type="decimal" minOccurs="1"
-										maxOccurs="1"/>
+									<xs:element name="latitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="longitude" type="decimal" minOccurs="1" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -1020,32 +1018,27 @@
 						<xs:element name="hours_of_operations" minOccurs="0" maxOccurs="1">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="hours_of_operation" minOccurs="0"
-										maxOccurs="unbounded">
+									<xs:element name="hours_of_operation" minOccurs="0" maxOccurs="unbounded">
 										<xs:complexType>
 											<xs:sequence>
 												<!--The Location is open all day-->
-												<xs:element name="all_day" type="boolean"
-												minOccurs="0" maxOccurs="1"/>
+												<xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
 												<!--mon | tue | wed | thu | fri | sat | sun-->
-												<xs:element name="days_of_week" minOccurs="0"
-												maxOccurs="unbounded">
-												<xs:simpleType>
-												<xs:restriction base="string">
-												<xs:enumeration value="mon"/>
-												<xs:enumeration value="tue"/>
-												<xs:enumeration value="wed"/>
-												<xs:enumeration value="thu"/>
-												<xs:enumeration value="fri"/>
-												<xs:enumeration value="sat"/>
-												<xs:enumeration value="sun"/>
-												</xs:restriction>
-												</xs:simpleType>
+												<xs:element name="days_of_week" minOccurs="0" maxOccurs="unbounded">
+													<xs:simpleType>
+														<xs:restriction base="string">
+															<xs:enumeration value="mon"/>
+															<xs:enumeration value="tue"/>
+															<xs:enumeration value="wed"/>
+															<xs:enumeration value="thu"/>
+															<xs:enumeration value="fri"/>
+															<xs:enumeration value="sat"/>
+															<xs:enumeration value="sun"/>
+														</xs:restriction>
+													</xs:simpleType>
 												</xs:element>
-												<xs:element name="opening_time" type="time"
-												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="closing_time" type="time"
-												minOccurs="0" maxOccurs="1"/>
+												<xs:element name="opening_time" type="time" minOccurs="0" maxOccurs="1"/>
+												<xs:element name="closing_time" type="time" minOccurs="0" maxOccurs="1"/>
 											</xs:sequence>
 										</xs:complexType>
 									</xs:element>
@@ -1343,8 +1336,7 @@
 							<xs:complexType>
 								<xs:sequence>
 									<!--The Location is open all day-->
-									<xs:element name="all_day" type="boolean" minOccurs="0"
-										maxOccurs="1"/>
+									<xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
 									<!--mon | tue | wed | thu | fri | sat | sun-->
 									<xs:element name="days_of_week" minOccurs="0"
 										maxOccurs="unbounded">

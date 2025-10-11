@@ -75,7 +75,7 @@ def generate_value(tag_name, xsd_element=None):
         #     return "sample"
         
     # 3. Handle decimals (e.g., latitude/longitude)
-    if xsd_element.type.name and f"{XML_NS}decimal" in str(xsd_element.type.name).lower():
+    if xsd_element.type.name and f"{COCO_NS}decimal" in str(xsd_element.type.name).lower():
         if "latitude" in tag_name.lower():
             return str(round(random.uniform(-90, 90), 6))
         elif "longitude" in tag_name.lower():
@@ -83,9 +83,8 @@ def generate_value(tag_name, xsd_element=None):
         else:
             return str(round(random.uniform(0, 1000), 2))
 
-    # TODO: determine how to handle fake data for different schemas, vs keeping all lumped together here.
-
-
+    # TODO: consider how to organize data being set for different schemas vs lumped together here.
+    
     # 4. Semantic defaults based on tag name
     if f"{COCO_NS}email" in tag_name.lower():
         return fake.email()
@@ -151,6 +150,19 @@ def generate_value(tag_name, xsd_element=None):
         return str(fake.random_number(digits=6, fix_len=True))
     elif f"{COCO_NS}is_preferred" in tag_name.lower():
         return str(fake.boolean()).lower()
+    # all items below added for provider-directory
+    elif f"{COCO_NS}all_day" in tag_name.lower():
+        return str(fake.boolean()).lower()
+    elif f"{COCO_NS}available_start_time" in tag_name.lower():
+        return str(fake.time())
+    elif f"{COCO_NS}available_end_time" in tag_name.lower():
+        return str(fake.time())
+    elif f"{COCO_NS}opening_time" in tag_name.lower(): 
+        return str(fake.time())
+    elif f"{COCO_NS}closing_time" in tag_name.lower(): 
+        return str(fake.time())
+    elif f"{COCO_NS}appointment_required" in tag_name.lower():
+        return str(fake.boolean()).lower()
     else:
         return fake.word()
 
@@ -158,7 +170,7 @@ def iso_datetime_z():
     fake = Faker()
     return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None"):
+def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None"):
     """
     recursively builds xml elements and returns as an xml document
 
@@ -180,28 +192,22 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
             xsd_element = schema.elements[root_element_name]
     xml_elem = etree.Element(root_element_name)
 
-    # TODO: pass in schema value to make this work for all canonicals
     # Add schema reference - but only set at root
     if depth == 0:
-        # Make roster *in* the cocodata namespace and declare xsi prefix
- 
-        # if roster then
- 
+        # Make canonical *in* the cocodata namespace and declare xsi prefix 
         xml_elem = etree.Element(
-            # f"{COCO_NS}{canonical_name}",
             f"{COCO_NS}{root_element_name}",
             nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE},  # default ns + xsi prefix
         )
         # Set xsi:schemaLocation using Clark notation
-        pp = schema.name
         xml_elem.set(
             f"{XSI_NS}schemaLocation",
-            # f"{COCO_NS} ../../schemas/v2.0/roster.xsd"
             f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}"
-            # f"{COCO_NS}"
         ) 
-        
     
+    # TODO: Provider Directory can only include a practitioner OR a providingOrganization. 
+    # This needs to be handled, and controlled from the input method.
+
     if xsd_element.type.is_complex():
         if hasattr(xsd_element.type, 'content') and xsd_element.type.content: 
             for child in xsd_element.type.content.iter_elements():

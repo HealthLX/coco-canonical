@@ -4,7 +4,7 @@ from pathlib import Path
 from lxml import etree
 from tools.build_sample_file import build_element
 
-def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name):
+def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child="None"):
     #Get path and load schema
     base_dir = Path(__file__).resolve().parent.parent
     schema_path = base_dir / "schemas" / "v2.0" / f"{schema_file_name}"
@@ -13,7 +13,11 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     # call builder function and pass in schema, along with root name to get the process started (recursion takes over once in function)
     # built_xml = build_element(canonical_name, root_element_name, schema)
 
-    built_xml = build_element(root_element_name, schema, canonical_name=canonical_name)
+    if provider_directory_child is not "None":
+        built_xml = build_element(root_element_name, schema, canonical_name=canonical_name, child_choice=provider_directory_child)
+    else:
+        built_xml = build_element(root_element_name, schema, canonical_name=canonical_name)
+
     # Write to file - changing this impacts where the script is run from CLI
     name = output_file_name
     with open("samples/v2.0/" + name, "wb") as f:
@@ -21,8 +25,10 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     print("Sample XML generated as ../samples/v2.0/" + name)
 
 def main():
-   build_sample_file("providerdirectory", "providers", "provider-directory.xsd", "provider-directory-sample.xml")
-   build_sample_file("roster", "roster", "roster.xsd", "roster-sample.xml")
+   build_sample_file("providerdirectory", "providers", "provider-directory.xsd", "provider-directory-sample.xml", "provider")
+   build_sample_file("providerdirectory", "providers", "provider-directory.xsd", "provider-directory-sample.xml", "practitioner")
+
+   #build_sample_file("roster", "roster", "roster.xsd", "roster-sample.xml")
 #    build_sample_file("eob_list", "eob.xsd", "eob-sample.xml")
 #    build_sample_file("clinicals", "clinical.xsd", "clinical-sample.xml")
 

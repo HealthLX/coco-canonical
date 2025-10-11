@@ -1,826 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<providers 
-  xmlns="http://cocodata.org" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/provider-directory.xsd">
-  <schema_version>ability</schema_version>
-  <sender_id>with</sender_id>
-  <date_time_reported>2000-03-23T03:26:29</date_time_reported>
+<providers xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/provider-directory.xsd">
+  <schema_version>2.0</schema_version>
+  <sender_id>street</sender_id>
+  <date_time_reported>2025-10-11T18:41:56.186-05:00</date_time_reported>
   <provider>
-    <practitioner>
-      <unique_identifier>student</unique_identifier>
-      <npi>ok</npi>
-      <is_active>recent</is_active>
-      <names>
-        <name>
-          <use>official</use>
-          <text>also</text>
-          <family>several</family>
-          <given>close</given>
-          <prefix>defense</prefix>
-          <suffix>party</suffix>
-          <period>
-            <start>2021-08-24T07:20:38</start>
-            <end>2027-03-31T23:55:16</end>
-          </period>
-        </name>
-      </names>
-      <telecoms>
-        <telecom>
-          <id>deal</id>
-          <system>url</system>
-          <value>Democrat</value>
-          <use>mobile</use>
-          <rank>red</rank>
-          <period>
-            <start>2021-04-22T11:46:34</start>
-            <end>2013-11-23T20:20:22</end>
-          </period>
-          <contactpoint_available_times>
-            <contactpoint_available_time>
-              <all_day>create</all_day>
-              <days_of_week>fri</days_of_week>
-              <available_start_time>nearly</available_start_time>
-              <available_end_time>raise</available_end_time>
-            </contactpoint_available_time>
-          </contactpoint_available_times>
-          <via_intermediaries>
-            <via_intermediary>
-              <name>likely</name>
-              <telecoms>
-                <telecom>
-                  <system>email</system>
-                  <value>art</value>
-                </telecom>
-              </telecoms>
-            </via_intermediary>
-          </via_intermediaries>
-        </telecom>
-      </telecoms>
-      <addresses>
-        <address>
-          <id>indicate</id>
-          <use>home</use>
-          <type>postal</type>
-          <text>various</text>
-          <line>budget</line>
-          <city>during</city>
-          <district>plant</district>
-          <state>really</state>
-          <postal_code>radio</postal_code>
-          <country>age</country>
-          <period>
-            <start>2023-09-21T07:32:13</start>
-            <end>2012-08-22T16:52:38</end>
-          </period>
-          <geo_locations>
-            <geo_location>
-              <latitude>in</latitude>
-              <longitude>land</longitude>
-            </geo_location>
-          </geo_locations>
-        </address>
-      </addresses>
-      <gender>unknown</gender>
-      <birth_date>fund</birth_date>
-      <qualifications>
-        <qualification>
-          <identifiers>
-            <identifier>
-              <value>yeah</value>
-              <type>development</type>
-            </identifier>
-          </identifiers>
-          <code>
-            <system>score</system>
-            <code>understand</code>
-            <display>within</display>
-          </code>
-          <period>
-            <start>2005-05-15T02:19:39</start>
-            <end>2003-10-14T18:57:11</end>
-          </period>
-          <issuer>
-            <identifier>
-              <value>boy</value>
-              <type>success</type>
-            </identifier>
-            <period>
-              <start>2001-03-21T03:50:15</start>
-              <end>2022-06-08T08:12:05</end>
-            </period>
-            <is_active>could</is_active>
-            <type>bus</type>
-            <name>leave</name>
-            <alias>human</alias>
-            <telecoms>
-              <telecom>
-                <system>sms</system>
-                <value>nor</value>
-                <use>home</use>
-                <rank>somebody</rank>
-                <period>
-                  <start>2013-10-12T09:16:16</start>
-                  <end>2008-11-15T01:10:29</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <id>deal</id>
-                <use>old</use>
-                <type>postal</type>
-                <text>try</text>
-                <line>physical</line>
-                <city>speak</city>
-                <district>save</district>
-                <state>accept</state>
-                <postal_code>current</postal_code>
-                <country>appear</country>
-                <period>
-                  <start>2017-10-04T14:05:44</start>
-                  <end>2014-11-20T09:15:04</end>
-                </period>
-                <geo_locations>
-                  <geo_location>
-                    <latitude>else</latitude>
-                    <longitude>out</longitude>
-                  </geo_location>
-                </geo_locations>
-              </address>
-            </addresses>
-            <contacts>
-              <contact>
-                <purpose>HR</purpose>
-                <name>
-                  <use>old</use>
-                  <text>eight</text>
-                  <family>do</family>
-                  <given>staff</given>
-                  <prefix>character</prefix>
-                  <suffix>system</suffix>
-                  <period>
-                    <start>2030-05-01T13:11:22</start>
-                    <end>2022-12-03T15:48:43</end>
-                  </period>
-                </name>
-                <telecoms>
-                  <telecom>
-                    <system>pager</system>
-                    <value>develop</value>
-                    <use>old</use>
-                    <rank>minute</rank>
-                    <period>
-                      <start>2004-12-15T12:25:08</start>
-                      <end>2030-06-18T06:58:03</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <address>
-                  <id>oil</id>
-                  <use>billing</use>
-                  <type>both</type>
-                  <text>seat</text>
-                  <line>heavy</line>
-                  <city>service</city>
-                  <district>teacher</district>
-                  <state>firm</state>
-                  <postal_code>there</postal_code>
-                  <country>term</country>
-                  <period>
-                    <start>2029-11-22T15:34:51</start>
-                    <end>2013-07-02T03:07:19</end>
-                  </period>
-                  <geo_locations>
-                    <geo_location>
-                      <latitude>accept</latitude>
-                      <longitude>once</longitude>
-                    </geo_location>
-                  </geo_locations>
-                </address>
-              </contact>
-            </contacts>
-          </issuer>
-          <status>revoked</status>
-          <where_valid>main</where_valid>
-        </qualification>
-      </qualifications>
-      <communications>
-        <communication>
-          <language>should</language>
-          <proficiency>section</proficiency>
-        </communication>
-      </communications>
-      <period>
-        <start>2014-12-30T04:19:39</start>
-        <end>2002-01-19T09:43:22</end>
-      </period>
-      <affiliated_organization>
-        <npi>machine</npi>
-        <clia>
-          <id>animal</id>
-          <value>top</value>
-        </clia>
-        <is_active>keep</is_active>
-        <types>
-          <type>Payer</type>
-        </types>
-        <name>whose</name>
-        <alias>together</alias>
-        <org_description>over</org_description>
-        <part_of>
-          <npi>sort</npi>
-          <clia>half</clia>
-          <is_active>this</is_active>
-          <types>
-            <type>Payer</type>
-          </types>
-          <name>vote</name>
-          <alias>husband</alias>
-          <org_description>it</org_description>
-          <telecoms>
-            <telecom>
-              <id>how</id>
-              <system>other</system>
-              <value>special</value>
-              <use>mobile</use>
-              <rank>week</rank>
-              <period>
-                <start>2020-04-18T02:29:44</start>
-                <end>2006-01-20T17:35:55</end>
-              </period>
-              <contactpoint_available_times>
-                <contactpoint_available_time>
-                  <all_day>bill</all_day>
-                  <days_of_week>sat</days_of_week>
-                  <available_start_time>such</available_start_time>
-                  <available_end_time>especially</available_end_time>
-                </contactpoint_available_time>
-              </contactpoint_available_times>
-              <via_intermediaries>
-                <via_intermediary>
-                  <name>question</name>
-                  <telecoms>
-                    <telecom>
-                      <system>sms</system>
-                      <value>machine</value>
-                    </telecom>
-                  </telecoms>
-                </via_intermediary>
-              </via_intermediaries>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <id>certainly</id>
-              <use>temp</use>
-              <type>postal</type>
-              <text>easy</text>
-              <line>magazine</line>
-              <city>husband</city>
-              <district>room</district>
-              <state>prevent</state>
-              <postal_code>page</postal_code>
-              <country>response</country>
-              <period>
-                <start>2026-05-15T13:21:53</start>
-                <end>2007-09-18T09:28:04</end>
-              </period>
-              <geo_locations>
-                <geo_location>
-                  <latitude>decide</latitude>
-                  <longitude>size</longitude>
-                </geo_location>
-              </geo_locations>
-            </address>
-          </addresses>
-        </part_of>
-        <telecoms>
-          <telecom>
-            <id>degree</id>
-            <system>sms</system>
-            <value>pattern</value>
-            <use>temp</use>
-            <rank>available</rank>
-            <period>
-              <start>2024-09-29T20:07:51</start>
-              <end>2008-06-19T16:44:29</end>
-            </period>
-            <contactpoint_available_times>
-              <contactpoint_available_time>
-                <all_day>operation</all_day>
-                <days_of_week>mon</days_of_week>
-                <available_start_time>land</available_start_time>
-                <available_end_time>never</available_end_time>
-              </contactpoint_available_time>
-            </contactpoint_available_times>
-            <via_intermediaries>
-              <via_intermediary>
-                <name>author</name>
-                <telecoms>
-                  <telecom>
-                    <system>fax</system>
-                    <value>few</value>
-                  </telecom>
-                </telecoms>
-              </via_intermediary>
-            </via_intermediaries>
-          </telecom>
-        </telecoms>
-        <addresses>
-          <address>
-            <id>hear</id>
-            <use>temp</use>
-            <type>physical</type>
-            <text>speak</text>
-            <line>main</line>
-            <city>manage</city>
-            <district>necessary</district>
-            <state>understand</state>
-            <postal_code>enter</postal_code>
-            <country>long</country>
-            <period>
-              <start>2009-01-27T15:32:28</start>
-              <end>2000-04-17T21:43:17</end>
-            </period>
-            <geo_locations>
-              <geo_location>
-                <latitude>detail</latitude>
-                <longitude>certainly</longitude>
-              </geo_location>
-            </geo_locations>
-          </address>
-        </addresses>
-      </affiliated_organization>
-      <codes>
-        <code>
-          <coding>
-            <system>pressure</system>
-            <code>offer</code>
-            <display>left</display>
-          </coding>
-          <text>create</text>
-        </code>
-      </codes>
-      <specialties>
-        <specialty>
-          <coding>
-            <system>heart</system>
-            <code>weight</code>
-            <display>west</display>
-          </coding>
-          <text>ability</text>
-        </specialty>
-      </specialties>
-      <available_times>
-        <available_time>
-          <all_day>too</all_day>
-          <days_of_week>thu</days_of_week>
-          <available_start_time>if</available_start_time>
-          <available_end_time>country</available_end_time>
-        </available_time>
-      </available_times>
-      <not_availables>
-        <not_available>
-          <description>style</description>
-          <period>
-            <start>2026-09-20T22:06:34</start>
-            <end>2027-02-08T01:32:51</end>
-          </period>
-        </not_available>
-      </not_availables>
-      <availability_exceptions>itself</availability_exceptions>
-      <new_patients_list>
-        <new_patients>
-          <accepting_patients>yes</accepting_patients>
-          <from_network>
-            <network_id>school</network_id>
-            <name>partner</name>
-          </from_network>
-          <characteristics>pattern</characteristics>
-        </new_patients>
-      </new_patients_list>
-      <networks>
-        <network>
-          <network_id>class</network_id>
-          <name>manager</name>
-        </network>
-      </networks>
-      <locations>
-        <location>
-          <status>suspended</status>
-          <operational_status>C</operational_status>
-          <identifiers>
-            <identifier>
-              <value>speak</value>
-              <type>whatever</type>
-            </identifier>
-          </identifiers>
-          <name>year</name>
-          <alias>college</alias>
-          <description>everybody</description>
-          <types>
-            <type>AMB</type>
-          </types>
-          <physical_type>project</physical_type>
-          <position>
-            <longitude>music</longitude>
-            <latitude>everything</latitude>
-            <altitude>under</altitude>
-          </position>
-          <part_of>
-            <status>inactive</status>
-            <operational_status>U</operational_status>
-            <identifiers>
-              <identifier>
-                <value>off</value>
-                <type>out</type>
-              </identifier>
-            </identifiers>
-            <name>true</name>
-            <alias>goal</alias>
-            <description>figure</description>
-            <types>
-              <type>PSI</type>
-            </types>
-            <physical_type>development</physical_type>
-            <position>
-              <longitude>after</longitude>
-              <latitude>book</latitude>
-              <altitude>behavior</altitude>
-            </position>
-            <hours_of_operations>
-              <hours_of_operation>
-                <all_day>happen</all_day>
-                <days_of_week>thu</days_of_week>
-                <opening_time>letter</opening_time>
-                <closing_time>next</closing_time>
-              </hours_of_operation>
-            </hours_of_operations>
-            <availability_exceptions>number</availability_exceptions>
-            <accessibility>pubtrans</accessibility>
-            <new_patients_list>
-              <new_patients>
-                <accepting_patients>existingplusfamily</accepting_patients>
-                <from_network>
-                  <network_id>which</network_id>
-                  <name>eight</name>
-                </from_network>
-                <characteristics>prove</characteristics>
-              </new_patients>
-            </new_patients_list>
-          </part_of>
-          <hours_of_operations>
-            <hours_of_operation>
-              <all_day>government</all_day>
-              <days_of_week>sat</days_of_week>
-              <opening_time>yard</opening_time>
-              <closing_time>opportunity</closing_time>
-            </hours_of_operation>
-          </hours_of_operations>
-          <availability_exceptions>consider</availability_exceptions>
-          <accessibility>adacomp</accessibility>
-          <new_patients_list>
-            <new_patients>
-              <accepting_patients>no</accepting_patients>
-              <from_network>
-                <network_id>individual</network_id>
-                <name>season</name>
-              </from_network>
-              <characteristics>down</characteristics>
-            </new_patients>
-          </new_patients_list>
-          <telecoms>
-            <telecom>
-              <id>still</id>
-              <system>phone</system>
-              <value>someone</value>
-              <use>home</use>
-              <rank>across</rank>
-              <period>
-                <start>2011-02-09T21:33:55</start>
-                <end>2021-07-02T11:15:06</end>
-              </period>
-              <contactpoint_available_times>
-                <contactpoint_available_time>
-                  <all_day>public</all_day>
-                  <days_of_week>sat</days_of_week>
-                  <available_start_time>scene</available_start_time>
-                  <available_end_time>understand</available_end_time>
-                </contactpoint_available_time>
-              </contactpoint_available_times>
-              <via_intermediaries>
-                <via_intermediary>
-                  <name>people</name>
-                  <telecoms>
-                    <telecom>
-                      <system>fax</system>
-                      <value>television</value>
-                    </telecom>
-                  </telecoms>
-                </via_intermediary>
-              </via_intermediaries>
-            </telecom>
-          </telecoms>
-          <address>
-            <id>budget</id>
-            <use>billing</use>
-            <type>postal</type>
-            <text>nice</text>
-            <line>front</line>
-            <city>no</city>
-            <district>month</district>
-            <state>season</state>
-            <postal_code>media</postal_code>
-            <country>bag</country>
-            <period>
-              <start>2029-09-03T03:42:50</start>
-              <end>2025-09-03T23:07:32</end>
-            </period>
-            <geo_locations>
-              <geo_location>
-                <latitude>goal</latitude>
-                <longitude>who</longitude>
-              </geo_location>
-            </geo_locations>
-          </address>
-        </location>
-      </locations>
-      <healthcare_services>
-        <healthcare_service>
-          <identifiers>
-            <identifier>
-              <value>against</value>
-              <type>control</type>
-            </identifier>
-          </identifiers>
-          <is_active>feel</is_active>
-          <category>Other</category>
-          <types>
-            <type>8</type>
-          </types>
-          <specialties>
-            <specialty>229N00000X</specialty>
-          </specialties>
-          <name>election</name>
-          <comment>draw</comment>
-          <extra_details>education</extra_details>
-          <delivery_methods>
-            <delivery_method>
-              <type>physical</type>
-              <virtual_modalities>phone</virtual_modalities>
-              <new_patients_list>
-                <new_patients>
-                  <accepting_patients>existingplusfamily</accepting_patients>
-                  <from_network>
-                    <network_id>medical</network_id>
-                    <name>resource</name>
-                  </from_network>
-                  <characteristics>good</characteristics>
-                </new_patients>
-              </new_patients_list>
-            </delivery_method>
-          </delivery_methods>
-          <eligibilities>
-            <eligibility>
-              <code>
-                <system>while</system>
-                <code>mind</code>
-                <display>rest</display>
-              </code>
-              <comment>hand</comment>
-            </eligibility>
-          </eligibilities>
-          <programs>
-            <program>
-              <code>gas</code>
-              <display>pretty</display>
-            </program>
-          </programs>
-          <characteristics>
-            <characteristic>
-              <system>employee</system>
-              <code>wait</code>
-              <display>laugh</display>
-            </characteristic>
-          </characteristics>
-          <communications>
-            <communication>
-              <system>ready</system>
-              <code>choice</code>
-              <display>dark</display>
-            </communication>
-          </communications>
-          <referral_methods>
-            <referral_method>
-              <code>talk</code>
-              <display>something</display>
-            </referral_method>
-          </referral_methods>
-          <appointment_required>wait</appointment_required>
-          <available_times>
-            <available_time>
-              <all_day>plant</all_day>
-              <days_of_week>tue</days_of_week>
-              <available_start_time>bring</available_start_time>
-              <available_end_time>check</available_end_time>
-            </available_time>
-          </available_times>
-          <not_availables>
-            <not_available>
-              <description>edge</description>
-              <period>
-                <start>2024-12-26T21:15:45</start>
-                <end>2000-01-26T14:27:32</end>
-              </period>
-            </not_available>
-          </not_availables>
-          <availability_exceptions>both</availability_exceptions>
-          <locations>
-            <location>
-              <status>inactive</status>
-              <operational_status>H</operational_status>
-              <identifiers>
-                <identifier>
-                  <value>something</value>
-                  <type>might</type>
-                </identifier>
-              </identifiers>
-              <name>direction</name>
-              <alias>side</alias>
-              <description>style</description>
-              <types>
-                <type>HU</type>
-              </types>
-              <physical_type>item</physical_type>
-              <position>
-                <longitude>fall</longitude>
-                <latitude>candidate</latitude>
-                <altitude>share</altitude>
-              </position>
-              <part_of>
-                <status>inactive</status>
-                <operational_status>H</operational_status>
-                <identifiers>
-                  <identifier>
-                    <value>to</value>
-                    <type>company</type>
-                  </identifier>
-                </identifiers>
-                <name>any</name>
-                <alias>there</alias>
-                <description>available</description>
-                <types>
-                  <type>HRAD</type>
-                </types>
-                <physical_type>play</physical_type>
-                <position>
-                  <longitude>group</longitude>
-                  <latitude>agree</latitude>
-                  <altitude>reason</altitude>
-                </position>
-                <hours_of_operations>
-                  <hours_of_operation>
-                    <all_day>change</all_day>
-                    <days_of_week>thu</days_of_week>
-                    <opening_time>perform</opening_time>
-                    <closing_time>current</closing_time>
-                  </hours_of_operation>
-                </hours_of_operations>
-                <availability_exceptions>mean</availability_exceptions>
-                <accessibility>handiaccess</accessibility>
-                <new_patients_list>
-                  <new_patients>
-                    <accepting_patients>existingplusfamily</accepting_patients>
-                    <from_network>
-                      <network_id>fact</network_id>
-                      <name>tonight</name>
-                    </from_network>
-                    <characteristics>fund</characteristics>
-                  </new_patients>
-                </new_patients_list>
-              </part_of>
-              <hours_of_operations>
-                <hours_of_operation>
-                  <all_day>condition</all_day>
-                  <days_of_week>tue</days_of_week>
-                  <opening_time>threat</opening_time>
-                  <closing_time>expect</closing_time>
-                </hours_of_operation>
-              </hours_of_operations>
-              <availability_exceptions>must</availability_exceptions>
-              <accessibility>pubtrans</accessibility>
-              <new_patients_list>
-                <new_patients>
-                  <accepting_patients>existing</accepting_patients>
-                  <from_network>
-                    <network_id>raise</network_id>
-                    <name>professor</name>
-                  </from_network>
-                  <characteristics>no</characteristics>
-                </new_patients>
-              </new_patients_list>
-              <telecoms>
-                <telecom>
-                  <id>education</id>
-                  <system>pager</system>
-                  <value>education</value>
-                  <use>old</use>
-                  <rank>hour</rank>
-                  <period>
-                    <start>2030-02-01T01:44:57</start>
-                    <end>2009-07-27T20:29:00</end>
-                  </period>
-                  <contactpoint_available_times>
-                    <contactpoint_available_time>
-                      <all_day>here</all_day>
-                      <days_of_week>wed</days_of_week>
-                      <available_start_time>knowledge</available_start_time>
-                      <available_end_time>discover</available_end_time>
-                    </contactpoint_available_time>
-                  </contactpoint_available_times>
-                  <via_intermediaries>
-                    <via_intermediary>
-                      <name>necessary</name>
-                      <telecoms>
-                        <telecom>
-                          <system>email</system>
-                          <value>job</value>
-                        </telecom>
-                      </telecoms>
-                    </via_intermediary>
-                  </via_intermediaries>
-                </telecom>
-              </telecoms>
-              <address>
-                <id>order</id>
-                <use>work</use>
-                <type>both</type>
-                <text>several</text>
-                <line>policy</line>
-                <city>identify</city>
-                <district>leader</district>
-                <state>trip</state>
-                <postal_code>suggest</postal_code>
-                <country>air</country>
-                <period>
-                  <start>2025-06-22T21:25:00</start>
-                  <end>2028-04-15T08:56:53</end>
-                </period>
-                <geo_locations>
-                  <geo_location>
-                    <latitude>yeah</latitude>
-                    <longitude>through</longitude>
-                  </geo_location>
-                </geo_locations>
-              </address>
-            </location>
-          </locations>
-        </healthcare_service>
-      </healthcare_services>
-    </practitioner>
-    <providing_organization>
-      <unique_identifier>over</unique_identifier>
-      <npi>fact</npi>
+       <providing_organization>
+      <unique_identifier>something</unique_identifier>
+      <npi>9090433014</npi>
       <clias>
         <clia>
-          <id>letter</id>
-          <value>former</value>
+          <id>ea37da10-572e-4728-93a1-37f6a1ecbe22</id>
+          <value>sure</value>
         </clia>
       </clias>
-      <is_active>once</is_active>
+      <is_active>true</is_active>
       <types>
-        <type>fac</type>
+        <type>Payer</type>
       </types>
-      <name>mean</name>
-      <alias>within</alias>
-      <org_description>tend</org_description>
+      <name>Anna Collins</name>
+      <alias>stuff</alias>
+      <org_description>check</org_description>
       <telecoms>
         <telecom>
-          <id>start</id>
-          <system>pager</system>
-          <value>allow</value>
+          <id>b359ca42-cbe5-4be0-971a-8bbe9a349c71</id>
+          <system>email</system>
+          <value>sometimes</value>
           <use>temp</use>
-          <rank>fight</rank>
+          <rank>2</rank>
           <period>
-            <start>2020-12-05T13:04:38</start>
-            <end>2001-09-12T06:21:21</end>
+            <start>2026-01-31T16:40:57</start>
+            <end>2013-07-10T12:00:26</end>
           </period>
           <contactpoint_available_times>
             <contactpoint_available_time>
-              <all_day>debate</all_day>
-              <days_of_week>wed</days_of_week>
-              <available_start_time>big</available_start_time>
-              <available_end_time>woman</available_end_time>
+              <all_day>true</all_day>
+              <days_of_week>fri</days_of_week>
+              <available_start_time>06:54:06</available_start_time>
+              <available_end_time>12:31:47</available_end_time>
             </contactpoint_available_time>
           </contactpoint_available_times>
           <via_intermediaries>
             <via_intermediary>
-              <name>environmental</name>
+              <name>David Delgado</name>
               <telecoms>
                 <telecom>
-                  <system>phone</system>
-                  <value>offer</value>
+                  <system>pager</system>
+                  <value>physical</value>
                 </telecom>
               </telecoms>
             </via_intermediary>
@@ -829,24 +54,24 @@
       </telecoms>
       <addresses>
         <address>
-          <id>east</id>
-          <use>temp</use>
+          <id>d8bfcc28-b84f-4a3f-a7f5-a48c797bcc60</id>
+          <use>home</use>
           <type>postal</type>
-          <text>politics</text>
-          <line>wife</line>
-          <city>president</city>
-          <district>use</district>
-          <state>long</state>
-          <postal_code>agency</postal_code>
-          <country>various</country>
+          <text>administration</text>
+          <line>24341 Cheyenne Isle</line>
+          <city>Port Lauren</city>
+          <district>lead</district>
+          <state>MD</state>
+          <postal_code>52216</postal_code>
+          <country>DE</country>
           <period>
-            <start>2019-03-06T16:20:38</start>
-            <end>2028-12-23T22:31:02</end>
+            <start>2011-07-19T22:37:20</start>
+            <end>2025-07-22T06:32:24</end>
           </period>
           <geo_locations>
             <geo_location>
-              <latitude>left</latitude>
-              <longitude>year</longitude>
+              <latitude>79.110469</latitude>
+              <longitude>87.692349</longitude>
             </geo_location>
           </geo_locations>
         </address>
@@ -854,186 +79,186 @@
       <codes>
         <code>
           <coding>
-            <system>set</system>
-            <code>benefit</code>
-            <display>anyone</display>
+            <system>interest</system>
+            <code>research</code>
+            <display>successful</display>
           </coding>
-          <text>level</text>
+          <text>manager</text>
         </code>
       </codes>
       <specialties>
         <specialty>
           <coding>
-            <system>experience</system>
-            <code>player</code>
-            <display>action</display>
+            <system>hour</system>
+            <code>its</code>
+            <display>figure</display>
           </coding>
-          <text>seek</text>
+          <text>task</text>
         </specialty>
       </specialties>
       <qualifications>
         <qualification>
           <identifiers>
             <identifier>
-              <value>smile</value>
-              <type>four</type>
+              <value>news</value>
+              <type>smile</type>
             </identifier>
           </identifiers>
           <code>
-            <system>ready</system>
-            <code>professional</code>
-            <display>successful</display>
+            <system>black</system>
+            <code>support</code>
+            <display>simple</display>
           </code>
           <period>
-            <start>2010-07-10T23:17:24</start>
-            <end>2025-02-07T21:25:31</end>
+            <start>2005-07-19T11:50:07</start>
+            <end>2030-02-02T17:21:00</end>
           </period>
           <issuer>
             <identifier>
-              <value>one</value>
-              <type>indeed</type>
+              <value>human</value>
+              <type>president</type>
             </identifier>
             <period>
-              <start>2006-01-05T02:28:18</start>
-              <end>2016-04-01T17:39:06</end>
+              <start>2017-07-19T06:33:58</start>
+              <end>2018-02-03T05:19:35</end>
             </period>
-            <is_active>test</is_active>
-            <type>prvgrp</type>
-            <name>nearly</name>
-            <alias>fact</alias>
+            <is_active>true</is_active>
+            <type>Payer</type>
+            <name>Joseph Burns</name>
+            <alias>vote</alias>
             <telecoms>
               <telecom>
-                <system>phone</system>
-                <value>although</value>
+                <system>pager</system>
+                <value>weight</value>
                 <use>old</use>
-                <rank>drug</rank>
+                <rank>5</rank>
                 <period>
-                  <start>2022-11-17T07:34:01</start>
-                  <end>2019-06-13T09:47:52</end>
+                  <start>2014-11-17T00:25:10</start>
+                  <end>2003-03-19T04:33:57</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
-                <id>traditional</id>
-                <use>temp</use>
-                <type>postal</type>
-                <text>truth</text>
-                <line>clear</line>
-                <city>tend</city>
-                <district>onto</district>
-                <state>around</state>
-                <postal_code>raise</postal_code>
-                <country>you</country>
+                <id>9f928c86-1718-460e-8a55-a35e5498f434</id>
+                <use>billing</use>
+                <type>physical</type>
+                <text>when</text>
+                <line>3893 Danielle Underpass Suite 794</line>
+                <city>New Ralphshire</city>
+                <district>true</district>
+                <state>CO</state>
+                <postal_code>58294</postal_code>
+                <country>NO</country>
                 <period>
-                  <start>2003-06-12T06:38:02</start>
-                  <end>2029-02-27T07:57:31</end>
+                  <start>2016-12-04T04:58:05</start>
+                  <end>2025-11-19T20:57:17</end>
                 </period>
                 <geo_locations>
                   <geo_location>
-                    <latitude>employee</latitude>
-                    <longitude>risk</longitude>
+                    <latitude>8.852707</latitude>
+                    <longitude>18.489071</longitude>
                   </geo_location>
                 </geo_locations>
               </address>
             </addresses>
             <contacts>
               <contact>
-                <purpose>HR</purpose>
+                <purpose>PRESS</purpose>
                 <name>
-                  <use>official</use>
-                  <text>safe</text>
-                  <family>child</family>
-                  <given>subject</given>
-                  <prefix>four</prefix>
-                  <suffix>building</suffix>
+                  <use>usual</use>
+                  <text>condition</text>
+                  <family>Christopher Stein</family>
+                  <given>Eric Mckenzie</given>
+                  <prefix>Mrs.</prefix>
+                  <suffix>MD</suffix>
                   <period>
-                    <start>2028-09-14T07:28:22</start>
-                    <end>2020-05-08T09:04:21</end>
+                    <start>2029-09-13T13:01:21</start>
+                    <end>2025-01-15T17:42:11</end>
                   </period>
                 </name>
                 <telecoms>
                   <telecom>
-                    <system>fax</system>
-                    <value>film</value>
-                    <use>temp</use>
-                    <rank>hundred</rank>
+                    <system>sms</system>
+                    <value>name</value>
+                    <use>home</use>
+                    <rank>2</rank>
                     <period>
-                      <start>2030-12-22T14:59:57</start>
-                      <end>2030-05-23T12:49:32</end>
+                      <start>2000-01-19T01:59:29</start>
+                      <end>2005-03-24T20:46:20</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <address>
-                  <id>power</id>
-                  <use>billing</use>
-                  <type>physical</type>
-                  <text>new</text>
-                  <line>be</line>
-                  <city>politics</city>
-                  <district>wish</district>
-                  <state>poor</state>
-                  <postal_code>political</postal_code>
-                  <country>talk</country>
+                  <id>3b20c37b-2d9a-4029-82f4-e9eb80c4ea2f</id>
+                  <use>work</use>
+                  <type>both</type>
+                  <text>leave</text>
+                  <line>298 Jorge Shores</line>
+                  <city>Michaeltown</city>
+                  <district>describe</district>
+                  <state>NY</state>
+                  <postal_code>43457</postal_code>
+                  <country>ME</country>
                   <period>
-                    <start>2018-04-25T16:29:17</start>
-                    <end>2021-03-19T17:00:40</end>
+                    <start>2016-01-23T19:01:31</start>
+                    <end>2006-08-22T13:00:25</end>
                   </period>
                   <geo_locations>
                     <geo_location>
-                      <latitude>say</latitude>
-                      <longitude>article</longitude>
+                      <latitude>-27.49677</latitude>
+                      <longitude>-167.986082</longitude>
                     </geo_location>
                   </geo_locations>
                 </address>
               </contact>
             </contacts>
           </issuer>
-          <status>pending</status>
-          <where_valid>lot</where_valid>
+          <status>inactive</status>
+          <where_valid>clearly</where_valid>
         </qualification>
       </qualifications>
       <contacts>
         <contact>
           <name>
-            <use>anonymous</use>
-            <text>trouble</text>
-            <family>agency</family>
-            <given>develop</given>
-            <prefix>human</prefix>
-            <suffix>pay</suffix>
+            <use>official</use>
+            <text>today</text>
+            <family>Roger Mullins</family>
+            <given>Dennis Nixon</given>
+            <prefix>Misc.</prefix>
+            <suffix>MD</suffix>
             <period>
-              <start>2002-06-07T18:36:14</start>
-              <end>2030-07-30T04:53:12</end>
+              <start>2022-10-30T10:40:50</start>
+              <end>2012-06-18T17:10:20</end>
             </period>
           </name>
-          <purpose>PRESS</purpose>
+          <purpose>BILL</purpose>
           <telecoms>
             <telecom>
-              <id>effort</id>
-              <system>phone</system>
-              <value>dog</value>
-              <use>old</use>
-              <rank>ever</rank>
+              <id>78d69108-08aa-4a2e-9ac7-e746728753a9</id>
+              <system>url</system>
+              <value>industry</value>
+              <use>work</use>
+              <rank>4</rank>
               <period>
-                <start>2002-11-26T08:06:31</start>
-                <end>2002-03-25T16:23:30</end>
+                <start>2007-12-03T04:34:44</start>
+                <end>2024-06-25T23:25:29</end>
               </period>
               <contactpoint_available_times>
                 <contactpoint_available_time>
-                  <all_day>until</all_day>
-                  <days_of_week>sat</days_of_week>
-                  <available_start_time>production</available_start_time>
-                  <available_end_time>whether</available_end_time>
+                  <all_day>true</all_day>
+                  <days_of_week>wed</days_of_week>
+                  <available_start_time>13:19:56</available_start_time>
+                  <available_end_time>02:11:07</available_end_time>
                 </contactpoint_available_time>
               </contactpoint_available_times>
               <via_intermediaries>
                 <via_intermediary>
-                  <name>hear</name>
+                  <name>Rodney Zamora</name>
                   <telecoms>
                     <telecom>
-                      <system>url</system>
-                      <value>pick</value>
+                      <system>other</system>
+                      <value>action</value>
                     </telecom>
                   </telecoms>
                 </via_intermediary>
@@ -1041,82 +266,82 @@
             </telecom>
           </telecoms>
           <address>
-            <id>approach</id>
-            <use>billing</use>
-            <type>postal</type>
-            <text>value</text>
-            <line>her</line>
-            <city>power</city>
-            <district>research</district>
-            <state>while</state>
-            <postal_code>ahead</postal_code>
-            <country>throw</country>
+            <id>17b32bef-3d36-42b3-a18b-705e77c093d1</id>
+            <use>temp</use>
+            <type>both</type>
+            <text>soldier</text>
+            <line>776 Stout Turnpike</line>
+            <city>East Philipstad</city>
+            <district>old</district>
+            <state>OK</state>
+            <postal_code>52975</postal_code>
+            <country>VC</country>
             <period>
-              <start>2017-11-15T19:29:06</start>
-              <end>2019-11-12T09:44:08</end>
+              <start>2008-08-12T03:38:58</start>
+              <end>2012-03-16T08:57:42</end>
             </period>
             <geo_locations>
               <geo_location>
-                <latitude>current</latitude>
-                <longitude>road</longitude>
+                <latitude>-13.32649</latitude>
+                <longitude>107.390283</longitude>
               </geo_location>
             </geo_locations>
           </address>
         </contact>
       </contacts>
       <period>
-        <start>2014-04-23T16:18:44</start>
-        <end>2025-10-09T18:16:09</end>
+        <start>2027-06-16T10:35:17</start>
+        <end>2010-04-12T17:04:19</end>
       </period>
       <affiliated_organization>
-        <npi>create</npi>
+        <npi>2192897315</npi>
         <clia>
-          <id>ahead</id>
-          <value>hotel</value>
+          <id>a37d0a4b-6a3d-42ec-b96f-17669493a170</id>
+          <value>camera</value>
         </clia>
-        <is_active>sort</is_active>
+        <is_active>true</is_active>
         <types>
-          <type>atyprv</type>
+          <type>Payer</type>
         </types>
-        <name>skill</name>
-        <alias>include</alias>
-        <org_description>smile</org_description>
+        <name>Jeremy Davis</name>
+        <alias>home</alias>
+        <org_description>bit</org_description>
         <part_of>
-          <npi>half</npi>
-          <clia>kitchen</clia>
-          <is_active>chance</is_active>
+          <npi>3564415618</npi>
+          <clia>drive</clia>
+          <is_active>true</is_active>
           <types>
-            <type>fac</type>
+            <type>Payer</type>
           </types>
-          <name>research</name>
-          <alias>wide</alias>
-          <org_description>perhaps</org_description>
+          <name>Daniel Ortega</name>
+          <alias>whom</alias>
+          <org_description>kind</org_description>
           <telecoms>
             <telecom>
-              <id>street</id>
-              <system>phone</system>
-              <value>per</value>
-              <use>temp</use>
-              <rank>loss</rank>
+              <id>1712f2b9-2617-4219-bfbc-3592c573d40e</id>
+              <system>sms</system>
+              <value>blue</value>
+              <use>mobile</use>
+              <rank>5</rank>
               <period>
-                <start>2009-12-04T08:20:20</start>
-                <end>2003-02-05T16:46:46</end>
+                <start>2022-09-09T03:56:35</start>
+                <end>2023-12-11T14:46:13</end>
               </period>
               <contactpoint_available_times>
                 <contactpoint_available_time>
-                  <all_day>collection</all_day>
-                  <days_of_week>tue</days_of_week>
-                  <available_start_time>west</available_start_time>
-                  <available_end_time>amount</available_end_time>
+                  <all_day>false</all_day>
+                  <days_of_week>sun</days_of_week>
+                  <available_start_time>12:05:07</available_start_time>
+                  <available_end_time>16:20:38</available_end_time>
                 </contactpoint_available_time>
               </contactpoint_available_times>
               <via_intermediaries>
                 <via_intermediary>
-                  <name>special</name>
+                  <name>Kiara Crawford</name>
                   <telecoms>
                     <telecom>
                       <system>url</system>
-                      <value>gun</value>
+                      <value>people</value>
                     </telecom>
                   </telecoms>
                 </via_intermediary>
@@ -1125,24 +350,24 @@
           </telecoms>
           <addresses>
             <address>
-              <id>he</id>
-              <use>old</use>
-              <type>physical</type>
-              <text>mouth</text>
-              <line>compare</line>
-              <city>forward</city>
-              <district>admit</district>
-              <state>she</state>
-              <postal_code>herself</postal_code>
-              <country>college</country>
+              <id>c053c1ef-0374-43d4-b8ed-7e1ba30dd1f3</id>
+              <use>temp</use>
+              <type>both</type>
+              <text>the</text>
+              <line>673 Cervantes Branch</line>
+              <city>Jamesberg</city>
+              <district>same</district>
+              <state>ME</state>
+              <postal_code>41500</postal_code>
+              <country>MW</country>
               <period>
-                <start>2025-07-11T23:16:44</start>
-                <end>2028-10-17T09:23:46</end>
+                <start>2020-07-26T04:26:01</start>
+                <end>2003-12-17T10:08:28</end>
               </period>
               <geo_locations>
                 <geo_location>
-                  <latitude>need</latitude>
-                  <longitude>however</longitude>
+                  <latitude>11.240429</latitude>
+                  <longitude>149.493337</longitude>
                 </geo_location>
               </geo_locations>
             </address>
@@ -1150,30 +375,30 @@
         </part_of>
         <telecoms>
           <telecom>
-            <id>opportunity</id>
-            <system>other</system>
-            <value>require</value>
+            <id>b54961e5-4486-4135-aafb-84f9f2471256</id>
+            <system>pager</system>
+            <value>back</value>
             <use>old</use>
-            <rank>pretty</rank>
+            <rank>4</rank>
             <period>
-              <start>2025-10-19T13:16:47</start>
-              <end>2022-07-27T07:29:43</end>
+              <start>2002-08-08T08:27:55</start>
+              <end>2025-02-21T17:22:59</end>
             </period>
             <contactpoint_available_times>
               <contactpoint_available_time>
-                <all_day>right</all_day>
-                <days_of_week>thu</days_of_week>
-                <available_start_time>street</available_start_time>
-                <available_end_time>former</available_end_time>
+                <all_day>true</all_day>
+                <days_of_week>wed</days_of_week>
+                <available_start_time>02:09:30</available_start_time>
+                <available_end_time>15:43:56</available_end_time>
               </contactpoint_available_time>
             </contactpoint_available_times>
             <via_intermediaries>
               <via_intermediary>
-                <name>set</name>
+                <name>Jennifer Thomas</name>
                 <telecoms>
                   <telecom>
-                    <system>pager</system>
-                    <value>only</value>
+                    <system>other</system>
+                    <value>concern</value>
                   </telecom>
                 </telecoms>
               </via_intermediary>
@@ -1182,78 +407,78 @@
         </telecoms>
         <addresses>
           <address>
-            <id>until</id>
-            <use>home</use>
-            <type>both</type>
-            <text>worker</text>
-            <line>economy</line>
-            <city>remain</city>
-            <district>matter</district>
-            <state>nor</state>
-            <postal_code>air</postal_code>
-            <country>field</country>
+            <id>2e4fae97-0c9c-45d6-bbf6-6d6c8edb7d44</id>
+            <use>old</use>
+            <type>physical</type>
+            <text>over</text>
+            <line>837 Sara Loaf Apt. 993</line>
+            <city>North Marilyn</city>
+            <district>option</district>
+            <state>VI</state>
+            <postal_code>97447</postal_code>
+            <country>DJ</country>
             <period>
-              <start>2024-02-14T22:48:11</start>
-              <end>2010-07-29T23:14:07</end>
+              <start>2007-08-25T18:35:15</start>
+              <end>2001-02-20T11:35:40</end>
             </period>
             <geo_locations>
               <geo_location>
-                <latitude>despite</latitude>
-                <longitude>surface</longitude>
+                <latitude>-36.006486</latitude>
+                <longitude>-68.154506</longitude>
               </geo_location>
             </geo_locations>
           </address>
         </addresses>
       </affiliated_organization>
       <part_of>
-        <npi>space</npi>
+        <npi>9050264984</npi>
         <clia>
-          <id>pressure</id>
-          <value>drug</value>
+          <id>b5bc6c54-e87a-4eb7-b3df-ad9888e9ce04</id>
+          <value>study</value>
         </clia>
-        <is_active>plant</is_active>
+        <is_active>true</is_active>
         <types>
           <type>fac</type>
         </types>
-        <name>avoid</name>
-        <alias>eat</alias>
-        <org_description>special</org_description>
+        <name>Allison Miller</name>
+        <alias>record</alias>
+        <org_description>result</org_description>
         <part_of>
-          <npi>do</npi>
-          <clia>option</clia>
-          <is_active>discussion</is_active>
+          <npi>6739822893</npi>
+          <clia>sea</clia>
+          <is_active>true</is_active>
           <types>
-            <type>bus</type>
+            <type>atyprv</type>
           </types>
-          <name>total</name>
-          <alias>fund</alias>
-          <org_description>class</org_description>
+          <name>Michael Pugh</name>
+          <alias>board</alias>
+          <org_description>various</org_description>
           <telecoms>
             <telecom>
-              <id>free</id>
-              <system>pager</system>
-              <value>gas</value>
-              <use>work</use>
-              <rank>their</rank>
+              <id>f2e19a4f-9c4b-418a-ae02-e9be1b7b7a40</id>
+              <system>url</system>
+              <value>discover</value>
+              <use>temp</use>
+              <rank>2</rank>
               <period>
-                <start>2002-08-02T22:29:26</start>
-                <end>2009-09-27T12:16:15</end>
+                <start>2005-07-17T20:03:18</start>
+                <end>2007-05-23T21:18:27</end>
               </period>
               <contactpoint_available_times>
                 <contactpoint_available_time>
-                  <all_day>result</all_day>
-                  <days_of_week>mon</days_of_week>
-                  <available_start_time>surface</available_start_time>
-                  <available_end_time>audience</available_end_time>
+                  <all_day>false</all_day>
+                  <days_of_week>sat</days_of_week>
+                  <available_start_time>09:19:48</available_start_time>
+                  <available_end_time>07:24:19</available_end_time>
                 </contactpoint_available_time>
               </contactpoint_available_times>
               <via_intermediaries>
                 <via_intermediary>
-                  <name>skill</name>
+                  <name>Lori Lane</name>
                   <telecoms>
                     <telecom>
-                      <system>email</system>
-                      <value>as</value>
+                      <system>pager</system>
+                      <value>capital</value>
                     </telecom>
                   </telecoms>
                 </via_intermediary>
@@ -1262,24 +487,24 @@
           </telecoms>
           <addresses>
             <address>
-              <id>best</id>
-              <use>home</use>
-              <type>both</type>
-              <text>yet</text>
-              <line>reality</line>
-              <city>ask</city>
-              <district>lawyer</district>
-              <state>black</state>
-              <postal_code>goal</postal_code>
-              <country>Mrs</country>
+              <id>54a4b95a-06ab-4a01-bca8-d9c1b69bab55</id>
+              <use>old</use>
+              <type>postal</type>
+              <text>election</text>
+              <line>97433 Daniel Gateway Apt. 289</line>
+              <city>Jeffreyland</city>
+              <district>instead</district>
+              <state>OR</state>
+              <postal_code>86614</postal_code>
+              <country>PY</country>
               <period>
-                <start>2019-10-24T20:45:14</start>
-                <end>2019-02-01T09:17:29</end>
+                <start>2007-09-18T05:40:11</start>
+                <end>2014-01-25T09:55:14</end>
               </period>
               <geo_locations>
                 <geo_location>
-                  <latitude>young</latitude>
-                  <longitude>produce</longitude>
+                  <latitude>61.41591</latitude>
+                  <longitude>-143.732412</longitude>
                 </geo_location>
               </geo_locations>
             </address>
@@ -1287,30 +512,30 @@
         </part_of>
         <telecoms>
           <telecom>
-            <id>more</id>
-            <system>other</system>
-            <value>father</value>
-            <use>mobile</use>
-            <rank>either</rank>
+            <id>5e9fb76c-7b7d-4fa3-931e-237d20a40aa0</id>
+            <system>pager</system>
+            <value>quality</value>
+            <use>old</use>
+            <rank>5</rank>
             <period>
-              <start>2029-02-20T09:03:23</start>
-              <end>2004-08-05T20:35:31</end>
+              <start>2021-12-28T13:42:11</start>
+              <end>2021-08-30T04:39:39</end>
             </period>
             <contactpoint_available_times>
               <contactpoint_available_time>
-                <all_day>whom</all_day>
-                <days_of_week>sun</days_of_week>
-                <available_start_time>shoulder</available_start_time>
-                <available_end_time>high</available_end_time>
+                <all_day>true</all_day>
+                <days_of_week>wed</days_of_week>
+                <available_start_time>13:53:56</available_start_time>
+                <available_end_time>01:54:35</available_end_time>
               </contactpoint_available_time>
             </contactpoint_available_times>
             <via_intermediaries>
               <via_intermediary>
-                <name>when</name>
+                <name>Corey Hill</name>
                 <telecoms>
                   <telecom>
                     <system>phone</system>
-                    <value>dark</value>
+                    <value>brother</value>
                   </telecom>
                 </telecoms>
               </via_intermediary>
@@ -1319,24 +544,24 @@
         </telecoms>
         <addresses>
           <address>
-            <id>no</id>
-            <use>temp</use>
-            <type>both</type>
-            <text>garden</text>
-            <line>free</line>
-            <city>what</city>
-            <district>hair</district>
-            <state>smile</state>
-            <postal_code>baby</postal_code>
-            <country>avoid</country>
+            <id>c10417f0-fbdb-4cdb-9c1b-c104f4c4e5d4</id>
+            <use>home</use>
+            <type>physical</type>
+            <text>specific</text>
+            <line>5241 Pena Manors</line>
+            <city>Stevefort</city>
+            <district>pattern</district>
+            <state>SD</state>
+            <postal_code>82540</postal_code>
+            <country>TG</country>
             <period>
-              <start>2030-10-07T00:06:49</start>
-              <end>2014-03-27T23:27:46</end>
+              <start>2010-07-04T05:08:44</start>
+              <end>2023-11-10T22:56:24</end>
             </period>
             <geo_locations>
               <geo_location>
-                <latitude>consumer</latitude>
-                <longitude>according</longitude>
+                <latitude>-38.827107</latitude>
+                <longitude>-52.929269</longitude>
               </geo_location>
             </geo_locations>
           </address>
@@ -1344,120 +569,120 @@
       </part_of>
       <networks>
         <network>
-          <network_id>most</network_id>
-          <name>appear</name>
+          <network_id>vote</network_id>
+          <name>John Miller</name>
         </network>
       </networks>
       <locations>
         <location>
-          <status>active</status>
-          <operational_status>O</operational_status>
+          <status>suspended</status>
+          <operational_status>H</operational_status>
           <identifiers>
             <identifier>
-              <value>white</value>
-              <type>they</type>
+              <value>research</value>
+              <type>place</type>
             </identifier>
           </identifiers>
-          <name>particular</name>
-          <alias>wife</alias>
-          <description>movie</description>
+          <name>Micheal Jones</name>
+          <alias>perhaps</alias>
+          <description>provide</description>
           <types>
-            <type>SLEEP</type>
+            <type>PEDHEM</type>
           </types>
-          <physical_type>central</physical_type>
+          <physical_type>sort</physical_type>
           <position>
-            <longitude>attention</longitude>
-            <latitude>everybody</latitude>
-            <altitude>poor</altitude>
+            <longitude>88.188738</longitude>
+            <latitude>84.923655</latitude>
+            <altitude>698.97</altitude>
           </position>
           <part_of>
-            <status>inactive</status>
-            <operational_status>H</operational_status>
+            <status>active</status>
+            <operational_status>I</operational_status>
             <identifiers>
               <identifier>
-                <value>radio</value>
-                <type>wonder</type>
+                <value>degree</value>
+                <type>still</type>
               </identifier>
             </identifiers>
-            <name>ok</name>
-            <alias>effect</alias>
-            <description>list</description>
+            <name>Timothy Burnett</name>
+            <alias>best</alias>
+            <description>return</description>
             <types>
-              <type>PEDCARD</type>
+              <type>HOSP</type>
             </types>
-            <physical_type>certain</physical_type>
+            <physical_type>avoid</physical_type>
             <position>
-              <longitude>product</longitude>
-              <latitude>believe</latitude>
-              <altitude>film</altitude>
+              <longitude>-86.885517</longitude>
+              <latitude>43.339341</latitude>
+              <altitude>25.24</altitude>
             </position>
             <hours_of_operations>
               <hours_of_operation>
-                <all_day>consider</all_day>
-                <days_of_week>wed</days_of_week>
-                <opening_time>collection</opening_time>
-                <closing_time>today</closing_time>
+                <all_day>true</all_day>
+                <days_of_week>mon</days_of_week>
+                <opening_time>11:55:32</opening_time>
+                <closing_time>04:32:33</closing_time>
               </hours_of_operation>
             </hours_of_operations>
-            <availability_exceptions>enjoy</availability_exceptions>
-            <accessibility>mobility</accessibility>
+            <availability_exceptions>before</availability_exceptions>
+            <accessibility>vision</accessibility>
             <new_patients_list>
               <new_patients>
                 <accepting_patients>existing</accepting_patients>
                 <from_network>
-                  <network_id>feel</network_id>
-                  <name>mission</name>
+                  <network_id>with</network_id>
+                  <name>Kelly Peterson</name>
                 </from_network>
-                <characteristics>including</characteristics>
+                <characteristics>food</characteristics>
               </new_patients>
             </new_patients_list>
           </part_of>
           <hours_of_operations>
             <hours_of_operation>
-              <all_day>risk</all_day>
-              <days_of_week>tue</days_of_week>
-              <opening_time>bad</opening_time>
-              <closing_time>talk</closing_time>
+              <all_day>true</all_day>
+              <days_of_week>fri</days_of_week>
+              <opening_time>05:09:20</opening_time>
+              <closing_time>09:48:49</closing_time>
             </hours_of_operation>
           </hours_of_operations>
-          <availability_exceptions>support</availability_exceptions>
-          <accessibility>adacomp</accessibility>
+          <availability_exceptions>sit</availability_exceptions>
+          <accessibility>handiaccess</accessibility>
           <new_patients_list>
             <new_patients>
-              <accepting_patients>yes</accepting_patients>
+              <accepting_patients>existingplusfamily</accepting_patients>
               <from_network>
-                <network_id>family</network_id>
-                <name>ahead</name>
+                <network_id>certain</network_id>
+                <name>Daniel Zimmerman</name>
               </from_network>
-              <characteristics>deep</characteristics>
+              <characteristics>eight</characteristics>
             </new_patients>
           </new_patients_list>
           <telecoms>
             <telecom>
-              <id>court</id>
-              <system>sms</system>
-              <value>they</value>
-              <use>home</use>
-              <rank>exist</rank>
+              <id>d2fc7f60-9d28-4894-bec2-ec90c36de758</id>
+              <system>fax</system>
+              <value>information</value>
+              <use>mobile</use>
+              <rank>3</rank>
               <period>
-                <start>2007-01-19T00:34:46</start>
-                <end>2006-11-09T22:11:36</end>
+                <start>2023-02-13T12:42:23</start>
+                <end>2002-09-09T19:07:27</end>
               </period>
               <contactpoint_available_times>
                 <contactpoint_available_time>
-                  <all_day>available</all_day>
-                  <days_of_week>tue</days_of_week>
-                  <available_start_time>policy</available_start_time>
-                  <available_end_time>science</available_end_time>
+                  <all_day>true</all_day>
+                  <days_of_week>mon</days_of_week>
+                  <available_start_time>16:06:09</available_start_time>
+                  <available_end_time>08:32:52</available_end_time>
                 </contactpoint_available_time>
               </contactpoint_available_times>
               <via_intermediaries>
                 <via_intermediary>
-                  <name>someone</name>
+                  <name>Matthew Ferguson</name>
                   <telecoms>
                     <telecom>
-                      <system>email</system>
-                      <value>possible</value>
+                      <system>pager</system>
+                      <value>road</value>
                     </telecom>
                   </telecoms>
                 </via_intermediary>
@@ -1465,24 +690,24 @@
             </telecom>
           </telecoms>
           <address>
-            <id>join</id>
-            <use>old</use>
-            <type>postal</type>
-            <text>throw</text>
-            <line>both</line>
-            <city>teacher</city>
-            <district>quite</district>
-            <state>cut</state>
-            <postal_code>example</postal_code>
-            <country>follow</country>
+            <id>722e1fad-35b0-4397-bf40-4873a50f1c09</id>
+            <use>work</use>
+            <type>both</type>
+            <text>employee</text>
+            <line>62219 Michael Isle Apt. 575</line>
+            <city>South Peterfort</city>
+            <district>assume</district>
+            <state>SD</state>
+            <postal_code>02202</postal_code>
+            <country>SE</country>
             <period>
-              <start>2001-07-08T15:45:54</start>
-              <end>2001-05-15T02:09:38</end>
+              <start>2004-11-25T18:02:02</start>
+              <end>2014-03-09T17:50:54</end>
             </period>
             <geo_locations>
               <geo_location>
-                <latitude>away</latitude>
-                <longitude>against</longitude>
+                <latitude>29.350528</latitude>
+                <longitude>-1.824081</longitude>
               </geo_location>
             </geo_locations>
           </address>
@@ -1492,33 +717,33 @@
         <healthcare_service>
           <identifiers>
             <identifier>
-              <value>once</value>
-              <type>man</type>
+              <value>interest</value>
+              <type>quite</type>
             </identifier>
           </identifiers>
-          <is_active>address</is_active>
-          <category>Behavioral</category>
+          <is_active>true</is_active>
+          <category>Provider</category>
           <types>
-            <type>31</type>
+            <type>317</type>
           </types>
           <specialties>
-            <specialty>103T00000X</specialty>
+            <specialty>3416S0300X</specialty>
           </specialties>
-          <name>arrive</name>
-          <comment>measure</comment>
-          <extra_details>add</extra_details>
+          <name>Derrick Mckee</name>
+          <comment>leave</comment>
+          <extra_details>large</extra_details>
           <delivery_methods>
             <delivery_method>
-              <type>virtual</type>
-              <virtual_modalities>web</virtual_modalities>
+              <type>physical</type>
+              <virtual_modalities>tdd</virtual_modalities>
               <new_patients_list>
                 <new_patients>
-                  <accepting_patients>yes</accepting_patients>
+                  <accepting_patients>existingplusfamily</accepting_patients>
                   <from_network>
-                    <network_id>thousand</network_id>
-                    <name>should</name>
+                    <network_id>resource</network_id>
+                    <name>Cheyenne Hall</name>
                   </from_network>
-                  <characteristics>end</characteristics>
+                  <characteristics>ten</characteristics>
                 </new_patients>
               </new_patients_list>
             </delivery_method>
@@ -1526,168 +751,168 @@
           <eligibilities>
             <eligibility>
               <code>
-                <system>rest</system>
-                <code>degree</code>
-                <display>control</display>
+                <system>real</system>
+                <code>something</code>
+                <display>response</display>
               </code>
-              <comment>them</comment>
+              <comment>head</comment>
             </eligibility>
           </eligibilities>
           <programs>
             <program>
-              <code>trip</code>
-              <display>deal</display>
+              <code>detail</code>
+              <display>administration</display>
             </program>
           </programs>
           <characteristics>
             <characteristic>
-              <system>establish</system>
-              <code>character</code>
-              <display>unit</display>
+              <system>decade</system>
+              <code>chance</code>
+              <display>environmental</display>
             </characteristic>
           </characteristics>
           <communications>
             <communication>
-              <system>really</system>
-              <code>cup</code>
-              <display>memory</display>
+              <system>shoulder</system>
+              <code>city</code>
+              <display>pretty</display>
             </communication>
           </communications>
           <referral_methods>
             <referral_method>
-              <code>forget</code>
-              <display>less</display>
+              <code>discussion</code>
+              <display>majority</display>
             </referral_method>
           </referral_methods>
-          <appointment_required>develop</appointment_required>
+          <appointment_required>true</appointment_required>
           <available_times>
             <available_time>
-              <all_day>other</all_day>
-              <days_of_week>tue</days_of_week>
-              <available_start_time>toward</available_start_time>
-              <available_end_time>when</available_end_time>
+              <all_day>true</all_day>
+              <days_of_week>thu</days_of_week>
+              <available_start_time>16:01:20</available_start_time>
+              <available_end_time>20:04:48</available_end_time>
             </available_time>
           </available_times>
           <not_availables>
             <not_available>
-              <description>as</description>
+              <description>past</description>
               <period>
-                <start>2030-07-31T13:53:37</start>
-                <end>2030-05-20T17:11:30</end>
+                <start>2008-11-05T20:12:16</start>
+                <end>2023-11-18T22:44:50</end>
               </period>
             </not_available>
           </not_availables>
-          <availability_exceptions>manager</availability_exceptions>
+          <availability_exceptions>world</availability_exceptions>
           <locations>
             <location>
-              <status>inactive</status>
-              <operational_status>U</operational_status>
+              <status>suspended</status>
+              <operational_status>I</operational_status>
               <identifiers>
                 <identifier>
-                  <value>history</value>
-                  <type>story</type>
+                  <value>over</value>
+                  <type>fear</type>
                 </identifier>
               </identifiers>
-              <name>anyone</name>
-              <alias>adult</alias>
-              <description>imagine</description>
+              <name>Sarah Lopez</name>
+              <alias>skin</alias>
+              <description>less</description>
               <types>
-                <type>GIM</type>
+                <type>BMTU</type>
               </types>
-              <physical_type>society</physical_type>
+              <physical_type>kitchen</physical_type>
               <position>
-                <longitude>bar</longitude>
-                <latitude>yet</latitude>
-                <altitude>moment</altitude>
+                <longitude>77.352658</longitude>
+                <latitude>63.296086</latitude>
+                <altitude>301.82</altitude>
               </position>
               <part_of>
-                <status>active</status>
-                <operational_status>C</operational_status>
+                <status>inactive</status>
+                <operational_status>H</operational_status>
                 <identifiers>
                   <identifier>
-                    <value>last</value>
-                    <type>along</type>
+                    <value>family</value>
+                    <type>key</type>
                   </identifier>
                 </identifiers>
-                <name>ball</name>
-                <alias>billion</alias>
-                <description>himself</description>
+                <name>Katherine Monroe</name>
+                <alias>air</alias>
+                <description>price</description>
                 <types>
-                  <type>PHARM</type>
+                  <type>RADO</type>
                 </types>
-                <physical_type>ready</physical_type>
+                <physical_type>success</physical_type>
                 <position>
-                  <longitude>identify</longitude>
-                  <latitude>view</latitude>
-                  <altitude>throw</altitude>
+                  <longitude>-41.170386</longitude>
+                  <latitude>-16.952372</latitude>
+                  <altitude>36.19</altitude>
                 </position>
                 <hours_of_operations>
                   <hours_of_operation>
-                    <all_day>personal</all_day>
+                    <all_day>false</all_day>
                     <days_of_week>sun</days_of_week>
-                    <opening_time>degree</opening_time>
-                    <closing_time>ago</closing_time>
+                    <opening_time>20:07:54</opening_time>
+                    <closing_time>16:08:25</closing_time>
                   </hours_of_operation>
                 </hours_of_operations>
-                <availability_exceptions>drive</availability_exceptions>
-                <accessibility>adacomp</accessibility>
+                <availability_exceptions>rate</availability_exceptions>
+                <accessibility>anssrvc</accessibility>
                 <new_patients_list>
                   <new_patients>
-                    <accepting_patients>yes</accepting_patients>
+                    <accepting_patients>no</accepting_patients>
                     <from_network>
-                      <network_id>expert</network_id>
-                      <name>if</name>
+                      <network_id>dream</network_id>
+                      <name>Theresa Dawson</name>
                     </from_network>
-                    <characteristics>establish</characteristics>
+                    <characteristics>opportunity</characteristics>
                   </new_patients>
                 </new_patients_list>
               </part_of>
               <hours_of_operations>
                 <hours_of_operation>
-                  <all_day>song</all_day>
-                  <days_of_week>sun</days_of_week>
-                  <opening_time>us</opening_time>
-                  <closing_time>project</closing_time>
+                  <all_day>false</all_day>
+                  <days_of_week>tue</days_of_week>
+                  <opening_time>11:13:34</opening_time>
+                  <closing_time>17:57:00</closing_time>
                 </hours_of_operation>
               </hours_of_operations>
-              <availability_exceptions>cost</availability_exceptions>
-              <accessibility>cognitive</accessibility>
+              <availability_exceptions>success</availability_exceptions>
+              <accessibility>anssrvc</accessibility>
               <new_patients_list>
                 <new_patients>
-                  <accepting_patients>existing</accepting_patients>
+                  <accepting_patients>no</accepting_patients>
                   <from_network>
-                    <network_id>assume</network_id>
-                    <name>food</name>
+                    <network_id>red</network_id>
+                    <name>Alexander Burke</name>
                   </from_network>
-                  <characteristics>yes</characteristics>
+                  <characteristics>say</characteristics>
                 </new_patients>
               </new_patients_list>
               <telecoms>
                 <telecom>
-                  <id>become</id>
-                  <system>phone</system>
-                  <value>not</value>
+                  <id>7a925d53-f18b-4b8b-a8eb-5647b2e342d4</id>
+                  <system>email</system>
+                  <value>free</value>
                   <use>temp</use>
-                  <rank>class</rank>
+                  <rank>1</rank>
                   <period>
-                    <start>2000-07-01T14:45:18</start>
-                    <end>2023-04-16T21:05:21</end>
+                    <start>2002-04-24T23:17:05</start>
+                    <end>2012-05-26T09:56:51</end>
                   </period>
                   <contactpoint_available_times>
                     <contactpoint_available_time>
-                      <all_day>return</all_day>
+                      <all_day>true</all_day>
                       <days_of_week>sat</days_of_week>
-                      <available_start_time>financial</available_start_time>
-                      <available_end_time>exactly</available_end_time>
+                      <available_start_time>21:21:52</available_start_time>
+                      <available_end_time>09:40:11</available_end_time>
                     </contactpoint_available_time>
                   </contactpoint_available_times>
                   <via_intermediaries>
                     <via_intermediary>
-                      <name>she</name>
+                      <name>Alan Stewart</name>
                       <telecoms>
                         <telecom>
-                          <system>pager</system>
-                          <value>impact</value>
+                          <system>fax</system>
+                          <value>other</value>
                         </telecom>
                       </telecoms>
                     </via_intermediary>
@@ -1695,24 +920,24 @@
                 </telecom>
               </telecoms>
               <address>
-                <id>heavy</id>
+                <id>18395354-76e6-4931-a7eb-5e42cf345827</id>
                 <use>temp</use>
                 <type>both</type>
-                <text>focus</text>
-                <line>several</line>
-                <city>evening</city>
-                <district>bit</district>
-                <state>idea</state>
-                <postal_code>glass</postal_code>
-                <country>try</country>
+                <text>especially</text>
+                <line>8556 Choi Spring Apt. 800</line>
+                <city>Meyerburgh</city>
+                <district>treatment</district>
+                <state>UT</state>
+                <postal_code>42247</postal_code>
+                <country>MZ</country>
                 <period>
-                  <start>2026-06-27T23:15:52</start>
-                  <end>2006-03-25T11:30:11</end>
+                  <start>2013-09-10T07:25:19</start>
+                  <end>2005-08-25T03:04:58</end>
                 </period>
                 <geo_locations>
                   <geo_location>
-                    <latitude>more</latitude>
-                    <longitude>beautiful</longitude>
+                    <latitude>-81.628871</latitude>
+                    <longitude>-51.740323</longitude>
                   </geo_location>
                 </geo_locations>
               </address>
