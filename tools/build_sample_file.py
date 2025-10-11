@@ -25,8 +25,8 @@ def random_datetime():
     return (start + timedelta(seconds=random_seconds)).isoformat()
 
 def generate_value(tag_name, xsd_element=None):
-    NS = "{http://cocodata.org}"
-    
+    COCO_NS = "{http://cocodata.org}"
+    XML_NS = "{http://www.w3.org/2001/XMLSchema}"
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
     if tag_name == "{http://cocodata.org}schema_version":
         return str("2.0")
@@ -63,7 +63,7 @@ def generate_value(tag_name, xsd_element=None):
         #     return "sample"
         
     # 3. Handle decimals (e.g., latitude/longitude)
-    if xsd_element.type.name and "decimal" in str(xsd_element.type.name).lower():
+    if xsd_element.type.name and f"{XML_NS}decimal" in str(xsd_element.type.name).lower():
         if "latitude" in tag_name.lower():
             return str(round(random.uniform(-90, 90), 6))
         elif "longitude" in tag_name.lower():
@@ -75,67 +75,69 @@ def generate_value(tag_name, xsd_element=None):
 
 
     # 4. Semantic defaults based on tag name
-    if f"{NS}email" in tag_name.lower():
+    if f"{COCO_NS}email" in tag_name.lower():
         return fake.email()
-    elif f"{NS}date_time_reported" in tag_name.lower():
+    elif f"{COCO_NS}date_time_reported" in tag_name.lower():
         return fake.date_time().isoformat()    
-    elif f"{NS}phone" in tag_name.lower():
+    elif f"{COCO_NS}phone" in tag_name.lower():
         return fake.phone_number()
-    elif f"{NS}name" in tag_name.lower():
+    elif f"{COCO_NS}name" in tag_name.lower():
         return fake.name()
-    elif f"{NS}given" in tag_name.lower():
+    elif f"{COCO_NS}given" in tag_name.lower():
         return fake.name()
-    elif f"{NS}family" in tag_name.lower():
+    elif f"{COCO_NS}family" in tag_name.lower():
         return fake.name()
-    elif f"{NS}prefix" in tag_name.lower():
+    elif f"{COCO_NS}prefix" in tag_name.lower():
         return fake.prefix()
-    elif f"{NS}suffix" in tag_name.lower():
+    elif f"{COCO_NS}suffix" in tag_name.lower():
         return fake.suffix()
-    elif f"{NS}url" in tag_name.lower():
+    elif f"{COCO_NS}url" in tag_name.lower():
         return fake.url()
-    elif f"{NS}rank" in tag_name.lower():
+    elif f"{COCO_NS}rank" in tag_name.lower():
         return str(fake.random_int(min=1, max=5))
-    elif f"{NS}id" in tag_name.lower():
+    elif f"{COCO_NS}id" in tag_name.lower():
         return fake.uuid4()
-    elif f"{NS}date" in tag_name.lower():
+    elif f"{COCO_NS}date" in tag_name.lower():
         return fake.date()
-    elif f"{NS}birth_date" in tag_name.lower():
+    elif f"{COCO_NS}birth_date" in tag_name.lower():
         return fake.date()
-    elif f"{NS}period" in tag_name.lower():
+    elif f"{COCO_NS}period" in tag_name.lower():
         return fake.date()
-    elif f"{NS}start" in tag_name.lower():
-        # return str(fake.date_time())
-        # return datetime.now().astimezone().isoformat(timespec="milliseconds")
-        return iso_datetime_z()
-    elif f"{NS}end" in tag_name.lower():
-        # return str(fake.date_time())
-        # return datetime.now().astimezone().isoformat(timespec="milliseconds")
-        return iso_datetime_z()
-    elif f"{NS}npi" in tag_name.lower():
+    elif f"{COCO_NS}start" in tag_name.lower():
+        if xsd_element.type.name == f"{XML_NS}dateTime":
+            return iso_datetime_z()
+        elif f"{XML_NS}date":
+            return fake.date()
+    elif f"{COCO_NS}end" in tag_name.lower():
+        if xsd_element.type.name == f"{XML_NS}dateTime":
+            return iso_datetime_z()
+        elif f"{XML_NS}date":
+            return fake.date()
+    elif f"{COCO_NS}npi" in tag_name.lower():
         return str(fake.random_number(digits=10, fix_len=True)) # NPI numbers are always 10 digits
-    elif f"{NS}is_active" in tag_name.lower():
+    elif f"{COCO_NS}is_active" in tag_name.lower():
         return "true"
-    elif f"{NS}city" in tag_name.lower():
+    elif f"{COCO_NS}city" in tag_name.lower():
         return fake.city()
-    elif f"{NS}line" in tag_name.lower():
+    elif f"{COCO_NS}line" in tag_name.lower():
         return fake.street_address()
-    elif f"{NS}postal_code" in tag_name.lower():
+    elif f"{COCO_NS}postal_code" in tag_name.lower():
         return fake.zipcode()
-    elif f"{NS}country" in tag_name.lower():
+    elif f"{COCO_NS}country" in tag_name.lower():
         return fake.country_code()
-    elif f"{NS}state" in tag_name.lower():
+    elif f"{COCO_NS}state" in tag_name.lower():
         return fake.state_abbr()
-    elif f"{NS}is_subscriber" in tag_name.lower():
+    elif f"{COCO_NS}is_subscriber" in tag_name.lower():
         return str(fake.boolean()).lower()
-    elif f"{NS}is_enrolled" in tag_name.lower():
+    elif f"{COCO_NS}is_enrolled" in tag_name.lower():
         return str(fake.boolean()).lower()
-    elif f"{NS}active" in tag_name.lower():
+    elif f"{COCO_NS}active" in tag_name.lower():
         return str(fake.boolean()).lower()
-    elif f"{NS}member_last_4_ssn" in tag_name.lower():
+    elif f"{COCO_NS}member_last_4_ssn" in tag_name.lower():
         return str(fake.random_int(min=1000, max=9999))
-    elif f"{NS}secret_length" in tag_name.lower():
+    elif f"{COCO_NS}secret_length" in tag_name.lower():
         return str(fake.random_number(digits=6, fix_len=True))
-    elif f"{NS}is_preferred" in tag_name.lower():
+    elif f"{COCO_NS}is_preferred" in tag_name.lower():
         return str(fake.boolean()).lower()
     else:
         return fake.word()

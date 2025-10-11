@@ -48,8 +48,14 @@
 	</xs:simpleType>
 	<xs:complexType name="period">
 		<xs:sequence>
-			<xs:element maxOccurs="1" minOccurs="0" name="start" type="xs:dateTime"/>
-			<xs:element maxOccurs="1" minOccurs="0" name="end" type="xs:dateTime"/>
+			<xs:element name="start" type="xs:dateTime" maxOccurs="1" minOccurs="0" />
+			<xs:element name="end" type="xs:dateTime" maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="period_date">
+		<xs:sequence>
+			<xs:element name="start" type="xs:date" minOccurs="0"/>
+			<xs:element name="end" type="xs:date" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="identifier">
@@ -1478,13 +1484,7 @@
 																			<xs:element name="value" type="xs:string"/>
 																			<xs:element name="use" type="xs:string"/>
 																			<xs:element name="rank" type="xs:integer" minOccurs="0"/>
-																			<xs:element name="period" minOccurs="0">
-																				<xs:complexType>
-																					<xs:sequence>
-																						<xs:element name="start" type="xs:date" minOccurs="0"/>
-																					</xs:sequence>
-																				</xs:complexType>
-																			</xs:element>
+																			<xs:element name="period" type="period_date" minOccurs="0"/>
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
@@ -1508,13 +1508,7 @@
 																			<xs:element name="state" type="xs:string"/>
 																			<xs:element name="postal_code" type="xs:string"/>
 																			<xs:element name="country" type="xs:string"/>
-																			<xs:element name="period" minOccurs="0">
-																				<xs:complexType>
-																					<xs:sequence>
-																						<xs:element name="start" type="xs:date" minOccurs="0"/>
-																					</xs:sequence>
-																				</xs:complexType>
-																			</xs:element>
+																			<xs:element name="period" type="period_date" minOccurs="0"/>
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
@@ -1551,14 +1545,7 @@
 															</xs:restriction>
 														</xs:simpleType>
 													</xs:element>
-													<xs:element name="effectivePeriod">
-														<xs:complexType>
-															<xs:sequence>
-																<xs:element name="start" type="xs:date"/>
-																<xs:element name="end" type="xs:date"/>
-															</xs:sequence>
-														</xs:complexType>
-													</xs:element>
+													<xs:element name="effectivePeriod" type="period_date" minOccurs="0"/>
 													<xs:element name="codeable_concept" type="codeableConcept"/>
 													<xs:element name="industry">
 														<xs:complexType>

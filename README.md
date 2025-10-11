@@ -88,7 +88,7 @@ While the canonical schema files are used to generate the sample files, this doe
 #### How to setup and run sample file generator
 | **Step**     | **Command**                  |
 |--------------|------------------------------|
-| Run the create script  | `python -m .tools.build_all_sample_files`|
+| Run the create script  | `python -m tools.build_all_sample_files`|
 * This must be run from the root directory
 
 ### Testing
@@ -144,3 +144,19 @@ Sometimes the virtual environment will get into a bad state. Deactivating and re
 |------------------------------------------|----------------------------------------------|
 | deactivate current environment           | `deactivate`                                 |
 | follow the steps above                   | n/a                                          |  
+
+### Coding Conventions
+
+#### XML Schema files should follow these conventions:
+
+- name (most important - identifies what you're defining)
+- type (what it is)
+- minOccurs (cardinality constraints)
+- maxOccurs (cardinality constraints)
+- Other attributes (default, fixed, etc.)
+
+```
+<xs:complexType name="someName">
+  <xs:sequence name="someName" type="someType minOccurs="0" maxOccurs="1" otherAttr="someValue">
+</xs:complexType>
+```
