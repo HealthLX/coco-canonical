@@ -11,6 +11,20 @@ from xmlschema.validators import XsdElement
 from pathlib import Path
 from datetime import timezone
 
+COCO_NS_BARE = "http://cocodata.org"
+XSI_NS_BARE = "http://www.w3.org/2001/XMLSchema-instance"
+
+COCO_NS = "{http://cocodata.org}"
+XML_NS = "{http://www.w3.org/2001/XMLSchema}"
+XSI_NS = "{http://www.w3.org/2001/XMLSchema-instance}"
+
+ROSTER_SCHEMA = "roster.xsd"
+PROVIDERDIRECTORY_SCHEMA = "provider_directory.xsd"
+EOB_SCHEMA = "eob.xsd"
+FORMULARY_SCHEMA = "formulary.xsd"
+CLINICAL_SCHEMA = "clinical.xsd"
+
+
 def get_pattern_from_type(xsd_type):
     for facet_name, facet in xsd_type.facets.items():
         if 'pattern' in facet_name:
@@ -25,13 +39,11 @@ def random_datetime():
     return (start + timedelta(seconds=random_seconds)).isoformat()
 
 def generate_value(tag_name, xsd_element=None):
-    COCO_NS = "{http://cocodata.org}"
-    XML_NS = "{http://www.w3.org/2001/XMLSchema}"
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
-    if tag_name == "{http://cocodata.org}schema_version":
+    if tag_name == F"{COCO_NS}schema_version":
         return str("2.0")
 
-    if tag_name == "{http://cocodata.org}date_time_reported":
+    if tag_name == F"{COCO_NS}date_time_reported":
         return datetime.now().astimezone().isoformat(timespec="milliseconds")
 
     fake = Faker()
@@ -146,8 +158,7 @@ def iso_datetime_z():
     fake = Faker()
     return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-
-def build_element(name, schema, xsd_element=None, depth=0):
+def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None"):
     """
     recursively builds xml elements and returns as an xml document
 
@@ -160,30 +171,36 @@ def build_element(name, schema, xsd_element=None, depth=0):
         XmlElement: containing the full XML document to be serialized and written to file system
     """
 
-    print(f"build_element called with name='{name}', xsd_element={'None' if xsd_element is None else 'provided'}")    
+    print(f"build_element called with name='{root_element_name}', xsd_element={'None' if xsd_element is None else 'provided'}")    
     if xsd_element is None:
-            if name not in schema.elements:
-                print(f"ERROR: '{name}' not found in global elements")
+            if root_element_name not in schema.elements:
+                print(f"ERROR: '{root_element_name}' not found in global elements")
                 print(f"Available global elements: {list(schema.elements.keys())}")
-                raise KeyError(f"Global element '{name}' not found")
-            xsd_element = schema.elements[name]
-    xml_elem = etree.Element(name)
+                raise KeyError(f"Global element '{root_element_name}' not found")
+            xsd_element = schema.elements[root_element_name]
+    xml_elem = etree.Element(root_element_name)
 
     # TODO: pass in schema value to make this work for all canonicals
     # Add schema reference - but only set at root
     if depth == 0:
-        NS = "http://cocodata.org"
-        XSI = "http://www.w3.org/2001/XMLSchema-instance"
         # Make roster *in* the cocodata namespace and declare xsi prefix
+ 
+        # if roster then
+ 
         xml_elem = etree.Element(
-            f"{{{NS}}}roster",
-            nsmap={None: NS, "xsi": XSI},  # default ns + xsi prefix
+            # f"{COCO_NS}{canonical_name}",
+            f"{COCO_NS}{root_element_name}",
+            nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE},  # default ns + xsi prefix
         )
         # Set xsi:schemaLocation using Clark notation
+        pp = schema.name
         xml_elem.set(
-            f"{{{XSI}}}schemaLocation",
-            f"{NS} ../../schemas/v2.0/roster.xsd"
-        )
+            f"{XSI_NS}schemaLocation",
+            # f"{COCO_NS} ../../schemas/v2.0/roster.xsd"
+            f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}"
+            # f"{COCO_NS}"
+        ) 
+        
     
     if xsd_element.type.is_complex():
         if hasattr(xsd_element.type, 'content') and xsd_element.type.content: 
@@ -198,8 +215,8 @@ def build_element(name, schema, xsd_element=None, depth=0):
                     child_elem = build_element(child.name, schema, child, depth=depth+1)
                     xml_elem.append(child_elem)
     else:
-        xml_elem.text = generate_value(name, xsd_element)
-        if name == "{http://cocodata.org}names":
-            xml_elem.text = generate_value(name, xsd_element)
+        xml_elem.text = generate_value(root_element_name, xsd_element)
+        if root_element_name == f"{COCO_NS}names":
+            xml_elem.text = generate_value(root_element_name, xsd_element)
             
     return xml_elem

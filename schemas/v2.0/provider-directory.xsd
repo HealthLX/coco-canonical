@@ -1,8 +1,11 @@
 <xs:schema 
+	targetNamespace="http://cocodata.org" 
 	attributeFormDefault="unqualified" 
 	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://cocodata.org"
 	version="2.0">
+	
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string: Comment pattern if you want to allow empty strings-->
 	<xs:simpleType name="string">
@@ -332,7 +335,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-
 	<xs:complexType name="organization_branch">
 		<xs:sequence>
 			<xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="1"/>
@@ -3625,7 +3627,7 @@
 			<xs:sequence>
 				<xs:element maxOccurs="1" minOccurs="1" name="schema_version">
 					<xs:annotation>
-						<xs:documentation> This element defines what version of the roster schema
+						<xs:documentation> This element defines what version of the provider directory schema
 							you will be validating against (e.g. 1.0) </xs:documentation>
 					</xs:annotation>
 					<xs:simpleType>
