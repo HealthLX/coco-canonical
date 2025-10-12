@@ -55,6 +55,12 @@ def main():
         "roster.xsd", 
         "roster-sample.xml")
 
+    build_sample_file(
+        "forumarly", 
+        "coverage_plans", 
+        "formulary.xsd", 
+        "formulary-sample.xml")
+
     # TODO: figure out how to handle providing_organization and practitioner XOR for EOB
     # should be able to use same logic as for provider-directory... but not working as is 
     build_sample_file(
