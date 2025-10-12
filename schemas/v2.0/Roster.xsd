@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://cocodata.org" attributeFormDefault="unqualified"
-	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="http://cocodata.org" version="2.0">
+<xs:schema 
+	targetNamespace="http://cocodata.org" 
+	attributeFormDefault="unqualified"
+	elementFormDefault="qualified" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://cocodata.org" 
+	version="2.0">
 
 	<!--Regular Expression for string: Comment pattern if you want to allow empty strings-->
 	<xs:simpleType name="string">

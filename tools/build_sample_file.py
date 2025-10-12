@@ -172,57 +172,78 @@ def iso_datetime_z():
 
 def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None"):
     """
-    recursively builds xml elements and returns as an xml document
+    recursively builds xml elements and returns as an xml document; 
+    handles building for practitioner or providingOrganization for provider-directory
 
     Args:
-        name (str): name of the element to build - used recursively so could be root or nested element name
+        root_element_name (str): name of the element to build
         schema (XmlSchema): schema object to use
-        xsd_element (XsdElement): element object - used recursively to drill down into all schema elements
+        xsd_element (XsdElement): element object - used recursively
+        depth (int): recursion depth
+        canonical_name (str): name of canonical (e.g., 'roster', 'providers')
+        child_choice (str): for xs:choice elements, specify which child to build (e.g., 'practitioner')
 
     Returns:
-        XmlElement: containing the full XML document to be serialized and written to file system
+        XmlElement: containing the full XML document
     """
 
     print(f"build_element called with name='{root_element_name}', xsd_element={'None' if xsd_element is None else 'provided'}")    
+
     if xsd_element is None:
             if root_element_name not in schema.elements:
                 print(f"ERROR: '{root_element_name}' not found in global elements")
                 print(f"Available global elements: {list(schema.elements.keys())}")
                 raise KeyError(f"Global element '{root_element_name}' not found")
             xsd_element = schema.elements[root_element_name]
+
     xml_elem = etree.Element(root_element_name)
 
-    # Add schema reference - but only set at root
+    # Add schema reference - but only set at root level
     if depth == 0:
         # Make canonical *in* the cocodata namespace and declare xsi prefix 
         xml_elem = etree.Element(
             f"{COCO_NS}{root_element_name}",
-            nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE},  # default ns + xsi prefix
+            nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE},  # set default ns + xsi prefix
         )
         # Set xsi:schemaLocation using Clark notation
         xml_elem.set(
             f"{XSI_NS}schemaLocation",
-            f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}"
+            f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}" #TODO: handle version dynamically
         ) 
     
-    # TODO: Provider Directory can only include a practitioner OR a providingOrganization. 
-    # This needs to be handled, and controlled from the input method.
-
     if xsd_element.type.is_complex():
-        if hasattr(xsd_element.type, 'content') and xsd_element.type.content: 
+        if hasattr(xsd_element.type, 'content') and xsd_element.type.content:
+            # Special handling for provider element which contains xs:choice
+            is_provider_choice = root_element_name == f"{COCO_NS}provider" and child_choice is not None
+            
             for child in xsd_element.type.content.iter_elements():
-                # Skip xs:any elements or elements without proper names
                 if not hasattr(child, 'name') or child.name is None:
                     continue
+                
+                # If this is the provider element with a choice specified
+                if is_provider_choice:
+                    child_local_name = child.name.split('}')[-1] if '}' in child.name else child.name
+                    if child_local_name != child_choice:
+                        continue  # Skip this child
+                
                 max_count = child.max_occurs if child.max_occurs else 1
-                # Always generate at least one, even if minOccurs=0
                 count = max(1, child.min_occurs or 1)
+                
                 for _ in range(min(count, max_count)):
-                    child_elem = build_element(child.name, schema, child, depth=depth+1)
+                    child_elem = build_element(
+                        child.name, 
+                        schema, 
+                        child, 
+                        depth=depth+1,
+                        canonical_name=canonical_name,
+                        child_choice=child_choice
+                    )
                     xml_elem.append(child_elem)
     else:
         xml_elem.text = generate_value(root_element_name, xsd_element)
-        if root_element_name == f"{COCO_NS}names":
-            xml_elem.text = generate_value(root_element_name, xsd_element)
+        
+        # I dont think this check for "names" is needed...
+        # if root_element_name == f"{COCO_NS}names":
+        #     xml_elem.text = generate_value(root_element_name, xsd_element)
             
     return xml_elem
