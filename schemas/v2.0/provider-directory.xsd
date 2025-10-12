@@ -74,12 +74,6 @@
 			<xs:pattern value="-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Regular Expression for Boolean-->
-	<xs:simpleType name="boolean">
-		<xs:restriction base="xs:boolean">
-			<xs:pattern value="true|false"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<!--Data Types-->
 	<xs:simpleType name="organization_role">
 		<xs:restriction base="string">
@@ -258,7 +252,7 @@
 	</xs:complexType>
 	<xs:complexType name="available_time">
 		<xs:sequence>
-			<xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1">
+			<xs:element name="all_day" type="xs:boolean" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation> Available All Day </xs:documentation>
 				</xs:annotation>
@@ -343,7 +337,7 @@
 					<xs:documentation> Time period when id is/was valid for use </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="is_active" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="type" minOccurs="0" maxOccurs="1" type="type_of_organization">
 				<xs:annotation>
 					<xs:documentation> Select the type of orginzation this is. A full list can be
@@ -1022,7 +1016,7 @@
 										<xs:complexType>
 											<xs:sequence>
 												<!--The Location is open all day-->
-												<xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
+												<xs:element name="all_day" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 												<!--mon | tue | wed | thu | fri | sat | sun-->
 												<xs:element name="days_of_week" minOccurs="0" maxOccurs="unbounded">
 													<xs:simpleType>
@@ -1336,7 +1330,7 @@
 							<xs:complexType>
 								<xs:sequence>
 									<!--The Location is open all day-->
-									<xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
+									<xs:element name="all_day" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 									<!--mon | tue | wed | thu | fri | sat | sun-->
 									<xs:element name="days_of_week" minOccurs="0"
 										maxOccurs="unbounded">
@@ -2999,7 +2993,7 @@
 							</xs:complexType>
 						</xs:element>
 						<!--Whether this healthcare_service record is in active use-->
-						<xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_active" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<!--Broad category of service being performed or delivered-->
 						<xs:element name="category" minOccurs="1" maxOccurs="1">
 							<xs:annotation>
@@ -3387,7 +3381,7 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="appointment_required" type="boolean" minOccurs="0"
+						<xs:element name="appointment_required" type="xs:boolean" minOccurs="0"
 							maxOccurs="1"/>
 						<xs:element name="available_times" minOccurs="0" maxOccurs="1">
 							<xs:complexType>
@@ -3423,7 +3417,7 @@
 						laboratories </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1">
+			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation> Whether the organization's record is still in active use
 					</xs:documentation>
@@ -3477,7 +3471,7 @@
 						laboratories </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1">
+			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation> Whether the organization's record is still in active use
 					</xs:documentation>
@@ -3662,7 +3656,7 @@
 										<xs:sequence>
 											<xs:element name="unique_identifier" type="string" minOccurs="0" maxOccurs="1"/>
 											<xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1"/>
-											<xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1">
+											<xs:element name="is_active" type="xs:boolean" minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation> Whether this practitioner's record is in active use </xs:documentation>
 												</xs:annotation>
@@ -3812,7 +3806,7 @@
 												</xs:complexType>
 											</xs:element>
 											<!--Whether the organization's record is still in active use-->
-											<xs:element name="is_active" type="boolean"
+											<xs:element name="is_active" type="xs:boolean"
 												minOccurs="1" maxOccurs="1"/>
 											<!--Kind of organization- Choose from code valueSet-->
 											<xs:element name="types" minOccurs="0" maxOccurs="1">

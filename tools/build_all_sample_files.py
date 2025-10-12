@@ -36,27 +36,32 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     print("Sample XML generated as ../samples/v2.0/" + name)
 
 def main():
-   build_sample_file(
+    build_sample_file(
        "providerdirectory", 
        "providers", 
        "provider-directory.xsd", 
        "provider-directory-practitioner-sample.xml", 
        provider_directory_child="practitioner")
    
-   build_sample_file(
+    build_sample_file(
        "providerdirectory", 
        "providers", 
        "provider-directory.xsd", 
        "provider-directory-organization-sample.xml", 
        provider_directory_child="providing_organization")
 
-   build_sample_file(
+    build_sample_file(
         "roster", 
         "roster", 
         "roster.xsd", 
         "roster-sample.xml")
 
-#    build_sample_file("eob_list", "eob.xsd", "eob-sample.xml")
+    build_sample_file(
+       "eob",
+       "eob_list", 
+       "eob.xsd", 
+       "eob-sample.xml")
+
 #    build_sample_file("clinicals", "clinical.xsd", "clinical-sample.xml")
 
 if __name__ == "__main__":

@@ -74,7 +74,7 @@ def generate_value(tag_name, xsd_element=None):
         #     # Fallback
         #     return "sample"
         
-    # 3. Handle decimals (e.g., latitude/longitude)
+    # 3.1 Handle decimals (e.g., latitude/longitude)
     if xsd_element.type.name and f"{COCO_NS}decimal" in str(xsd_element.type.name).lower():
         if "latitude" in tag_name.lower():
             return str(round(random.uniform(-90, 90), 6))
@@ -82,6 +82,14 @@ def generate_value(tag_name, xsd_element=None):
             return str(round(random.uniform(-180, 180), 6))
         else:
             return str(round(random.uniform(0, 1000), 2))
+
+    # 3.2 Handle positiveInts
+    if xsd_element.type.name and f"{COCO_NS}positiveint" in str(xsd_element.type.name).lower():
+        return str(fake.random_int(min=1, max=5) )
+
+    # 3.2 Handle booleans
+    if xsd_element.type.name and f"{XML_NS}boolean".lower() in str(xsd_element.type.name).lower():
+        return str(fake.boolean()).lower()
 
     # TODO: consider how to organize data being set for different schemas vs lumped together here.
     
@@ -138,21 +146,21 @@ def generate_value(tag_name, xsd_element=None):
         return fake.country_code()
     elif f"{COCO_NS}state" in tag_name.lower():
         return fake.state_abbr()
-    elif f"{COCO_NS}is_subscriber" in tag_name.lower():
-        return str(fake.boolean()).lower()
-    elif f"{COCO_NS}is_enrolled" in tag_name.lower():
-        return str(fake.boolean()).lower()
-    elif f"{COCO_NS}active" in tag_name.lower():
-        return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}is_subscriber" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}is_enrolled" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}active" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
     elif f"{COCO_NS}member_last_4_ssn" in tag_name.lower():
         return str(fake.random_int(min=1000, max=9999))
     elif f"{COCO_NS}secret_length" in tag_name.lower():
         return str(fake.random_number(digits=6, fix_len=True))
-    elif f"{COCO_NS}is_preferred" in tag_name.lower():
-        return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}is_preferred" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
     # all items below added for provider-directory
-    elif f"{COCO_NS}all_day" in tag_name.lower():
-        return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}all_day" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
     elif f"{COCO_NS}available_start_time" in tag_name.lower():
         return str(fake.time())
     elif f"{COCO_NS}available_end_time" in tag_name.lower():
@@ -161,8 +169,14 @@ def generate_value(tag_name, xsd_element=None):
         return str(fake.time())
     elif f"{COCO_NS}closing_time" in tag_name.lower(): 
         return str(fake.time())
-    elif f"{COCO_NS}appointment_required" in tag_name.lower():
-        return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}appointment_required" in tag_name.lower():
+        # return str(fake.boolean()).lower()
+    # all items below added for eob
+    # elif f"{COCO_NS}is_deceased" in tag_name.lower():
+        # return str(fake.boolean()).lower()
+    # elif f"{COCO_NS}sequence" in tag_name.lower():
+    #     return str(fake.boolean()).lower()
+    
     else:
         return fake.word()
 

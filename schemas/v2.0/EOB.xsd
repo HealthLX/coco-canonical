@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema 
-	attributeFormDefault="unqualified" 
-	elementFormDefault="qualified"
+	targetNamespace="http://cocodata.org" 
+	attributeFormDefault="unqualified"
+	elementFormDefault="qualified" 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://cocodata.org" 
 	version="2.0">
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string-->
@@ -59,12 +61,6 @@
 	<xs:simpleType name="decimal">
 		<xs:restriction base="xs:decimal">
 			<xs:pattern value="-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!--Regular Expression for Boolean-->
-	<xs:simpleType name="boolean">
-		<xs:restriction base="xs:boolean">
-			<xs:pattern value="true|false"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="currency">
@@ -318,7 +314,7 @@
 	</xs:complexType>
 	<xs:complexType name="value">
 		<xs:choice>
-			<xs:element name="value_boolean" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value_boolean" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_string" type="string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_quantity" minOccurs="0" maxOccurs="1" type="quantity"/>
 			<xs:element name="value_reference" minOccurs="0" maxOccurs="1">
@@ -682,7 +678,7 @@
 			<xs:element name="naic_code" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
 			<!--Payer ID-->
 			<xs:element name="payer_id" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
-			<xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="name" minOccurs="1" maxOccurs="1" type="string"/>
 			<xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
@@ -809,7 +805,7 @@
 			<xs:element name="deceased" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="is_deceased" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_deceased" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="deceased_date_time" type="dateTime" minOccurs="0"
 							maxOccurs="1"/>
 					</xs:sequence>
@@ -866,7 +862,7 @@
 											</xs:sequence>
 										</xs:complexType>
 									</xs:element>
-									<xs:element name="is_preferred" type="boolean" minOccurs="0"
+									<xs:element name="is_preferred" type="xs:boolean" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -2057,7 +2053,7 @@
 			<xs:element name="deceased" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="is_deceased" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_deceased" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="deceased_date_time" type="dateTime" minOccurs="0"
 							maxOccurs="1"/>
 					</xs:sequence>
@@ -2093,7 +2089,7 @@
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="is_preferred" type="boolean" minOccurs="0"
+									<xs:element name="is_preferred" type="xs:boolean" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -3199,7 +3195,7 @@
 			<xs:element name="naic_code" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
 			<!--Payer ID-->
 			<xs:element name="payer_id" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
-			<xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="name" minOccurs="1" maxOccurs="1" type="string"/>
 			<xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
@@ -3585,7 +3581,7 @@
 			<xs:element name="deceased" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="is_deceased" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_deceased" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="deceased_date_time" type="dateTime" minOccurs="0"
 							maxOccurs="1"/>
 					</xs:sequence>
@@ -3642,7 +3638,7 @@
 											</xs:sequence>
 										</xs:complexType>
 									</xs:element>
-									<xs:element name="is_preferred" type="boolean" minOccurs="0"
+									<xs:element name="is_preferred" type="xs:boolean" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -5271,13 +5267,11 @@
 							<xs:element name="care_teams" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="care_team" minOccurs="0"
-											maxOccurs="unbounded">
+										<xs:element name="care_team" minOccurs="0" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
 												<!--Order of care team-->
-												<xs:element name="sequence" type="positiveInt"
-												minOccurs="0" maxOccurs="1">
+												<xs:element name="sequence" type="positiveInt" minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
 										Order of the care team
@@ -5285,7 +5279,7 @@
 												</xs:annotation>
 												</xs:element>
 												<!--Indicator of the lead practitioner-->
-												<xs:element name="is_responsible" type="boolean"
+													<xs:element name="is_responsible" type="xs:boolean"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5615,7 +5609,7 @@
 											maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="is_focal" type="boolean"
+													<xs:element name="is_focal" type="xs:boolean"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6942,7 +6936,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="is_excluded" type="boolean"
+													<xs:element name="is_excluded" type="xs:boolean"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
