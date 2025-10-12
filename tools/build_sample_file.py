@@ -75,7 +75,7 @@ def generate_value(tag_name, xsd_element=None):
         #     return "sample"
         
     # 3.1 Handle decimal (e.g., latitude/longitude)
-    if xsd_element.type.name and f"{COCO_NS}decimal" in str(xsd_element.type.name).lower():
+    if xsd_element.type.name and f"{COCO_NS}decimal".lower() in str(xsd_element.type.name).lower():
         if "latitude" in tag_name.lower():
             return str(round(random.uniform(-90, 90), 6))
         elif "longitude" in tag_name.lower():
@@ -84,10 +84,18 @@ def generate_value(tag_name, xsd_element=None):
             return str(round(random.uniform(0, 1000), 2))
 
     # 3.2 Handle positiveInt
-    if xsd_element.type.name and f"{COCO_NS}positiveint" in str(xsd_element.type.name).lower():
+    if xsd_element.type.name and f"{COCO_NS}positiveint".lower() in str(xsd_element.type.name).lower():
         return str(fake.random_int(min=1, max=5) )
 
-    # 3.3 Handle boolean
+    # 3.3 Handle unsignedInt
+    if xsd_element.type.name and f"{COCO_NS}unsignedint".lower() in str(xsd_element.type.name).lower():
+        return str(fake.random_int(min=0, max=5) )
+
+    # 3.4 Handle integer (same as positiveInt)
+    if xsd_element.type.name and f"{COCO_NS}integer".lower() in str(xsd_element.type.name).lower():
+        return str(fake.random_int(min=1, max=5) )
+
+    # 3.5 Handle boolean
     if xsd_element.type.name and f"{XML_NS}boolean".lower() in str(xsd_element.type.name).lower():
         return str(fake.boolean()).lower()
 
@@ -158,6 +166,15 @@ def generate_value(tag_name, xsd_element=None):
         return str(fake.time())
     elif f"{COCO_NS}closing_time" in tag_name.lower(): 
         return str(fake.time())    
+    #added for eob
+    elif f"{COCO_NS}timing_date" in tag_name.lower():
+        return str(fake.date())
+    elif f"{COCO_NS}serviced_date" in tag_name.lower():
+        return str(fake.date())
+    elif f"{COCO_NS}value_time" in tag_name.lower():
+        return str(fake.time())
+    elif f"{COCO_NS}due_date" in tag_name.lower():
+        return str(fake.date())
     else:
         return fake.word()
 
@@ -181,7 +198,6 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
     Returns:
         XmlElement: containing the full XML document
     """
-
     print(f"build_element called with name='{root_element_name}', xsd_element={'None' if xsd_element is None else 'provided'}")    
 
     if xsd_element is None:
@@ -191,6 +207,10 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                 raise KeyError(f"Global element '{root_element_name}' not found")
             xsd_element = schema.elements[root_element_name]
 
+    # skip all 'reference' elements - only building out inline for these samples
+    if xsd_element.name == f"{COCO_NS}reference":
+        return
+    
     xml_elem = etree.Element(root_element_name)
 
     # Add schema reference - but only set at root level
@@ -205,7 +225,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
             f"{XSI_NS}schemaLocation",
             f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}" #TODO: handle version dynamically
         ) 
-    
+
     if xsd_element.type.is_complex():
         if hasattr(xsd_element.type, 'content') and xsd_element.type.content:
             # Special handling for provider element which contains xs:choice
@@ -233,12 +253,10 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                         canonical_name=canonical_name,
                         child_choice=child_choice
                     )
-                    xml_elem.append(child_elem)
+                    # skip all 'reference' elements - only building out inline for these samples
+                    if child.name != f"{COCO_NS}reference":
+                        xml_elem.append(child_elem)
     else:
         xml_elem.text = generate_value(root_element_name, xsd_element)
-        
-        # I dont think this check for "names" is needed...
-        # if root_element_name == f"{COCO_NS}names":
-        #     xml_elem.text = generate_value(root_element_name, xsd_element)
             
     return xml_elem

@@ -4,7 +4,6 @@ from pathlib import Path
 from lxml import etree
 from tools.build_sample_file import build_element
 
-#def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child="None"):
 def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child=None):
     #Get path and load schema
     base_dir = Path(__file__).resolve().parent.parent
@@ -56,13 +55,19 @@ def main():
         "roster.xsd", 
         "roster-sample.xml")
 
+    # TODO: figure out how to handle providing_organization and practitioner XOR for EOB
+    # should be able to use same logic as for provider-directory... but not working as is 
     build_sample_file(
        "eob",
-       "eob_list", 
-       "eob.xsd", 
+       "eob_list",
+       "eob.xsd",
        "eob-sample.xml")
 
-#    build_sample_file("clinicals", "clinical.xsd", "clinical-sample.xml")
+    build_sample_file(
+        "clinical", 
+        "clinicals",
+        "clinical.xsd", 
+        "clinical-sample.xml")
 
 if __name__ == "__main__":
     main()

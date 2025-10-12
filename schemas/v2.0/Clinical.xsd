@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+<xs:schema 
+	targetNamespace="http://cocodata.org" 
+	attributeFormDefault="unqualified"
+	elementFormDefault="qualified" 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	version="2.0">
+	xmlns="http://cocodata.org" 
+	version="2.0">	
+	
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string-->
 	<xs:simpleType name="string">
@@ -78,12 +83,6 @@
 	<xs:simpleType name="decimal">
 		<xs:restriction base="xs:decimal">
 			<xs:pattern value="-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<!--Regular Expression for Boolean-->
-	<xs:simpleType name="boolean">
-		<xs:restriction base="xs:boolean">
-			<xs:pattern value="true|false"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="language">
@@ -573,7 +572,7 @@
 			<xs:element name="value_quantity" type="quantity" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_codeable_concept" type="codeable_concept" minOccurs="0"
 				maxOccurs="1"/>
-			<xs:element name="value_boolean" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value_boolean" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_string" type="string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_integer" type="integer" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_range" type="range" minOccurs="0" maxOccurs="1"/>
@@ -633,7 +632,7 @@
 			</xs:element>
 			<xs:element name="value_codeable_concept" type="codeable_concept" minOccurs="0"
 				maxOccurs="1"/>
-			<xs:element name="value_boolean" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value_boolean" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_string" type="string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_integer" type="integer" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_range" type="range" minOccurs="0" maxOccurs="1"/>
@@ -1328,7 +1327,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1">
+			<xs:element name="is_active" type="xs:boolean" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 					Whether this practitioner's record is in active use
@@ -1372,7 +1371,7 @@
 			</xs:element>
 			<!--The name(s) associated with the practitioner-->
 			<xs:element name="name" minOccurs="1" maxOccurs="unbounded" type="string"/>
-			<xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
@@ -1665,7 +1664,7 @@
 			<xs:element name="deceased" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="is_deceased" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_deceased" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="deceased_date_time" type="dateTime" minOccurs="0"
 							maxOccurs="1"/>
 					</xs:sequence>
@@ -1701,7 +1700,7 @@
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="is_preferred" type="boolean" minOccurs="0"
+									<xs:element name="is_preferred" type="xs:boolean" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -3409,7 +3408,7 @@
 			<xs:element name="deceased" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="is_deceased" type="boolean" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="is_deceased" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="deceased_date_time" type="dateTime" minOccurs="0"
 							maxOccurs="1"/>
 					</xs:sequence>
@@ -3445,7 +3444,7 @@
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="is_preferred" type="boolean" minOccurs="0"
+									<xs:element name="is_preferred" type="xs:boolean" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -5245,7 +5244,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:choice>
-												<xs:element name="reported_boolean" type="boolean"
+												<xs:element name="reported_boolean" type="xs:boolean"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="reported_reference"
 												minOccurs="0" maxOccurs="1">
@@ -6191,7 +6190,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="primary_source" type="boolean"
+												<xs:element name="primary_source" type="xs:boolean"
 												minOccurs="1" maxOccurs="1"/>
 												<!--<xs:element name="subject" minOccurs="1" maxOccurs="1" type="member_person"/>-->
 												<xs:element maxOccurs="1" minOccurs="0"
