@@ -30,7 +30,7 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
 
     # Write to file - changing this impacts where the script is run from CLI
     name = output_file_name
-    with open("samples/v2.0/" + name, "wb") as f:
+    with open("canonical-samples/v2.0/" + name, "wb") as f:
         f.write(etree.tostring(built_xml, pretty_print=True, xml_declaration=True, encoding='UTF-8'))
     print("Sample XML generated as ../samples/v2.0/" + name)
 

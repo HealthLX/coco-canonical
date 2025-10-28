@@ -10,5 +10,5 @@ def schemas_dir(project_root):
     return project_root / "schemas"
 
 @pytest.fixture
-def samples_dir(project_root):
-    return project_root / "samples"
+def canonical_samples_dir(project_root):
+    return project_root / "canonical-samples"
