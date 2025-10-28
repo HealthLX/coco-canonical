@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Coverage xmlns="http://hl7.org/fhir">
+  <id value="-"/>
+  <contained/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <identifier>
+    <type>
+      <coding>
+        <code value="MB"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <display value="Member Number"/>
+      </coding>
+    </type>
+    <value value=""/>
+  </identifier>
+  <status value="active"/>
+  <type/>
+  <policyHolder>
+    <reference value="Patient/-"/>
+  </policyHolder>
+  <subscriber>
+    <reference value="Patient/-"/>
+  </subscriber>
+  <subscriberId value=""/>
+  <beneficiary>
+    <reference value="Patient/-"/>
+  </beneficiary>
+  <dependent value=""/>
+  <relationship>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <display value=""/>
+    </coding>
+  </relationship>
+  <period>
+    <start value=""/>
+    <end value=""/>
+  </period>
+  <payor>
+    <reference value="Organization/-"/>
+  </payor>
+  <class>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+        <code value="group"/>
+      </coding>
+    </type>
+    <value value=""/>
+  </class>
+  <class>
+    <type>
+      <coding>
+        <system value="http://data.healthlx.com/CodeSystem/coverage-class"/>
+        <code value="policy number"/>
+      </coding>
+    </type>
+    <value value=""/>
+  </class>
+  <class>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+        <code value="plan"/>
+      </coding>
+    </type>
+    <value value=""/>
+  </class>
+  <order value="1"/>
+  <network value=""/>
+  <costToBeneficiary>
+    <type/>
+    <category/>
+    <network/>
+    <unit/>
+    <term/>
+    <value/>
+    <exception>
+      <type/>
+      <period/>
+    </exception>
+  </costToBeneficiary>
+  <subrogation value=""/>
+  <contract/>
+  <insurancePlan/>
+</Coverage>

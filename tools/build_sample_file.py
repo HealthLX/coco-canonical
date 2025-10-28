@@ -53,7 +53,7 @@ def generate_value(tag_name, xsd_element=None):
         if enum_values:
             return random.choice(enum_values) # this works great for strings, for objects will need to use [e.value for e in enum_facet.enumeration]
 
-     # 2.Handle regex patterns
+    # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
     if pattern:
         pattern_str = str(pattern)

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
+  <meta>
+    <lastUpdated value="2025-10-15T21:49:01.456792-05:00"/>
+  </meta>
+  <id value="-"/>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value=""/>
+        <display value=""/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value=""/>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value=""/>
+        <display value=""/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value=""/>
+    </extension>
+  </extension>
+  <identifier>
+    <system value=""/>
+    <value value=""/>
+  </identifier>
+  <active value="true"/>
+  <gender value="unknown"/>
+  <birthDate value=""/>
+</Patient>
