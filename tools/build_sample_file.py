@@ -47,6 +47,7 @@ def generate_value(tag_name, xsd_element=None):
         return datetime.now().astimezone().isoformat(timespec="milliseconds")
 
     fake = Faker()
+
     # 1.Handle enum values
     if xsd_element.type.is_simple(): # can i remove this check?
         enum_values = getattr(xsd_element.type, "enumeration", None)
@@ -57,23 +58,11 @@ def generate_value(tag_name, xsd_element=None):
     pattern = get_pattern_from_type(xsd_element.type)
     if pattern:
         pattern_str = str(pattern)
-         # Check if the pattern looks like a datetime (contains T and time components)
+        # Check if the pattern looks like a datetime (contains T and time components)
         if "T" in pattern_str and "-" in pattern_str and ":" in pattern_str:
             return random_datetime()
+        # You can add pattern-based generation here if needed
 
-        # # this parses pattern facets in the XSD and generates values - not sure how much this is used
-        # i dont believe this is being used, should be able to delete
-        # match = re.findall(r'\{(\d+),?(\d+)?\}', pattern_str)
-        # if match:
-        #     # Handle simple numeric patterns
-        #     min_len = int(match[0][0])
-        #     max_len = int(match[0][1]) if match[0][1] else min_len
-        #     length = random.randint(min_len, max_len)
-        #     return ''.join(str(random.randint(0, 9)) for _ in range(length))
-        # else:
-        #     # Fallback
-        #     return "sample"
-        
     # 3.1 Handle decimal (e.g., latitude/longitude)
     if xsd_element.type.name and f"{COCO_NS}decimal".lower() in str(xsd_element.type.name).lower():
         if "latitude" in tag_name.lower():
@@ -100,49 +89,48 @@ def generate_value(tag_name, xsd_element=None):
         return str(fake.boolean()).lower()
 
     # TODO: consider how to organize data being set for different schemas vs lumped together here.
-    
-    # 4. Semantic defaults based on tag name
+
+    # 4. Semantic defaults via tag map instead of long if/else
     tag_map = {
-        "email": fake.email,
-        "phone": fake.phone_number,
-        "name": fake.name,
-        "address": fake.address,
-        "city": fake.city,
-        "state": fake.state,
-        "zip": fake.zipcode,
-        "postal": fake.postcode,
-        "country": fake.country,
-        "organization": fake.company,
-        "company": fake.company,
-        "url": fake.url,
-        "id": lambda: str(fake.random_int(min=100, max=999)),
-        "uuid": fake.uuid4,
-        "datetime": random_datetime,
-        "date": lambda: fake.date_this_decade().isoformat(),
-        "time": fake.time,
-        "latitude": lambda: str(round(random.uniform(-90, 90), 6)),
-        "longitude": lambda: str(round(random.uniform(-180, 180), 6)),
-        "temperature": lambda: str(round(random.uniform(-50, 50), 1)),
-        "count": lambda: str(fake.random_int(min=1, max=10)),
-        "quantity": lambda: str(fake.random_int(min=1, max=10)),
-        "version": lambda: "1.0",
-        "status": lambda: random.choice(["active", "inactive", "pending"]),
-        "description": fake.sentence,
-        "comment": fake.sentence,
-        "remarks": fake.sentence,
-        "code": lambda: str(fake.random_int(min=1000, max=9999)),
-        "number": lambda: str(fake.random_int(min=1, max=1000)),
-        "age": lambda: str(fake.random_int(min=1, max=99)),
+        f"{COCO_NS}email": lambda: fake.email(),
+        f"{COCO_NS}phone": lambda: fake.phone_number(),
+        f"{COCO_NS}name": lambda: fake.name(),
+        f"{COCO_NS}given": lambda: fake.first_name(),
+        f"{COCO_NS}family": lambda: fake.last_name(),
+        f"{COCO_NS}prefix": lambda: fake.prefix(),
+        f"{COCO_NS}suffix": lambda: fake.suffix(),
+        f"{COCO_NS}url": lambda: fake.url(),
+        f"{COCO_NS}rank": lambda: str(fake.random_int(min=1, max=5)),
+        f"{COCO_NS}id": lambda: fake.uuid4(),
+        f"{COCO_NS}date": lambda: fake.date(),
+        f"{COCO_NS}birth_date": lambda: fake.date(),
+        f"{COCO_NS}period": lambda: fake.date(),
+        f"{COCO_NS}start": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
+        f"{COCO_NS}end": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
+        f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)),
+        f"{COCO_NS}is_active": lambda: "true",
+        f"{COCO_NS}city": lambda: fake.city(),
+        f"{COCO_NS}line": lambda: fake.street_address(),
+        f"{COCO_NS}postal_code": lambda: fake.zipcode(),
+        f"{COCO_NS}country": lambda: fake.country_code(),  # must match maxLength constraints
+        f"{COCO_NS}state": lambda: fake.state_abbr(),
+        f"{COCO_NS}member_last_4_ssn": lambda: str(fake.random_int(min=1000, max=9999)),
+        f"{COCO_NS}secret_length": lambda: str(fake.random_number(digits=6, fix_len=True)),
+        f"{COCO_NS}available_start_time": lambda: str(fake.time()),
+        f"{COCO_NS}available_end_time": lambda: str(fake.time()),
+        f"{COCO_NS}opening_time": lambda: str(fake.time()),
+        f"{COCO_NS}closing_time": lambda: str(fake.time()),
+        # added for eob
+        f"{COCO_NS}timing_date": lambda: str(fake.date()),
+        f"{COCO_NS}serviced_date": lambda: str(fake.date()),
+        f"{COCO_NS}value_time": lambda: str(fake.time()),
+        f"{COCO_NS}due_date": lambda: str(fake.date()),
     }
 
-    # Match tag_name with best-fit generator
-    tag_lower = tag_name.lower()
-    for key, generator in tag_map.items():
-        if key in tag_lower:
-            value = generator()
-            return value if isinstance(value, str) else str(value)
+    if tag_name in tag_map:
+        return tag_map[tag_name]()
 
-    # fallback for any unrecognized tag
+    # fallback for any other tags
     return fake.word()
 
 def iso_datetime_z():
