@@ -102,81 +102,48 @@ def generate_value(tag_name, xsd_element=None):
     # TODO: consider how to organize data being set for different schemas vs lumped together here.
     
     # 4. Semantic defaults based on tag name
-    if f"{COCO_NS}email" in tag_name.lower():
-        return fake.email()
-    elif f"{COCO_NS}date_time_reported" in tag_name.lower():
-        return fake.date_time().isoformat()    
-    elif f"{COCO_NS}phone" in tag_name.lower():
-        return fake.phone_number()
-    elif f"{COCO_NS}name" in tag_name.lower():
-        return fake.name()
-    elif f"{COCO_NS}given" in tag_name.lower():
-        return fake.name()
-    elif f"{COCO_NS}family" in tag_name.lower():
-        return fake.name()
-    elif f"{COCO_NS}prefix" in tag_name.lower():
-        return fake.prefix()
-    elif f"{COCO_NS}suffix" in tag_name.lower():
-        return fake.suffix()
-    elif f"{COCO_NS}url" in tag_name.lower():
-        return fake.url()
-    elif f"{COCO_NS}rank" in tag_name.lower():
-        return str(fake.random_int(min=1, max=5))
-    elif f"{COCO_NS}id" in tag_name.lower():
-        return fake.uuid4()
-    elif f"{COCO_NS}date" in tag_name.lower():
-        return fake.date()
-    elif f"{COCO_NS}birth_date" in tag_name.lower():
-        return fake.date()
-    elif f"{COCO_NS}period" in tag_name.lower():
-        return fake.date()
-    elif f"{COCO_NS}start" in tag_name.lower():
-        if xsd_element.type.name == f"{XML_NS}dateTime":
-            return iso_datetime_z()
-        elif f"{XML_NS}date":
-            return fake.date()
-    elif f"{COCO_NS}end" in tag_name.lower():
-        if xsd_element.type.name == f"{XML_NS}dateTime":
-            return iso_datetime_z()
-        elif f"{XML_NS}date":
-            return fake.date()
-    elif f"{COCO_NS}npi" in tag_name.lower():
-        return str(fake.random_number(digits=10, fix_len=True)) # NPI numbers are always 10 digits
-    elif f"{COCO_NS}is_active" in tag_name.lower():
-        return "true"
-    elif f"{COCO_NS}city" in tag_name.lower():
-        return fake.city()
-    elif f"{COCO_NS}line" in tag_name.lower():
-        return fake.street_address()
-    elif f"{COCO_NS}postal_code" in tag_name.lower():
-        return fake.zipcode()
-    elif f"{COCO_NS}country" in tag_name.lower():
-        return fake.country_code()
-    elif f"{COCO_NS}state" in tag_name.lower():
-        return fake.state_abbr()
-    elif f"{COCO_NS}member_last_4_ssn" in tag_name.lower():
-        return str(fake.random_int(min=1000, max=9999))
-    elif f"{COCO_NS}secret_length" in tag_name.lower():
-        return str(fake.random_number(digits=6, fix_len=True))
-    elif f"{COCO_NS}available_start_time" in tag_name.lower():
-        return str(fake.time())
-    elif f"{COCO_NS}available_end_time" in tag_name.lower():
-        return str(fake.time())
-    elif f"{COCO_NS}opening_time" in tag_name.lower(): 
-        return str(fake.time())
-    elif f"{COCO_NS}closing_time" in tag_name.lower(): 
-        return str(fake.time())    
-    #added for eob
-    elif f"{COCO_NS}timing_date" in tag_name.lower():
-        return str(fake.date())
-    elif f"{COCO_NS}serviced_date" in tag_name.lower():
-        return str(fake.date())
-    elif f"{COCO_NS}value_time" in tag_name.lower():
-        return str(fake.time())
-    elif f"{COCO_NS}due_date" in tag_name.lower():
-        return str(fake.date())
-    else:
-        return fake.word()
+    tag_map = {
+        "email": fake.email,
+        "phone": fake.phone_number,
+        "name": fake.name,
+        "address": fake.address,
+        "city": fake.city,
+        "state": fake.state,
+        "zip": fake.zipcode,
+        "postal": fake.postcode,
+        "country": fake.country,
+        "organization": fake.company,
+        "company": fake.company,
+        "url": fake.url,
+        "id": lambda: str(fake.random_int(min=100, max=999)),
+        "uuid": fake.uuid4,
+        "datetime": random_datetime,
+        "date": lambda: fake.date_this_decade().isoformat(),
+        "time": fake.time,
+        "latitude": lambda: str(round(random.uniform(-90, 90), 6)),
+        "longitude": lambda: str(round(random.uniform(-180, 180), 6)),
+        "temperature": lambda: str(round(random.uniform(-50, 50), 1)),
+        "count": lambda: str(fake.random_int(min=1, max=10)),
+        "quantity": lambda: str(fake.random_int(min=1, max=10)),
+        "version": lambda: "1.0",
+        "status": lambda: random.choice(["active", "inactive", "pending"]),
+        "description": fake.sentence,
+        "comment": fake.sentence,
+        "remarks": fake.sentence,
+        "code": lambda: str(fake.random_int(min=1000, max=9999)),
+        "number": lambda: str(fake.random_int(min=1, max=1000)),
+        "age": lambda: str(fake.random_int(min=1, max=99)),
+    }
+
+    # Match tag_name with best-fit generator
+    tag_lower = tag_name.lower()
+    for key, generator in tag_map.items():
+        if key in tag_lower:
+            value = generator()
+            return value if isinstance(value, str) else str(value)
+
+    # fallback for any unrecognized tag
+    return fake.word()
 
 def iso_datetime_z():
     fake = Faker()
