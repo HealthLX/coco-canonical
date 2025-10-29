@@ -38,6 +38,10 @@ def random_datetime():
     random_seconds = random.randint(0, int(delta.total_seconds()))
     return (start + timedelta(seconds=random_seconds)).isoformat()
 
+def iso_datetime_z():
+    fake = Faker()
+    return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 def generate_value(tag_name, xsd_element=None):
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
     if tag_name == F"{COCO_NS}schema_version":
@@ -133,9 +137,7 @@ def generate_value(tag_name, xsd_element=None):
     # fallback for any other tags
     return fake.word()
 
-def iso_datetime_z():
-    fake = Faker()
-    return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None"):
     """
