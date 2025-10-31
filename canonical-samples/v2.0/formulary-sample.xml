@@ -1,195 +1,47 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/formulary.xsd">
   <schema_version>2.0</schema_version>
-  <sender_id>policy</sender_id>
-  <date_time_reported>2025-10-24T11:45:25.003-05:00</date_time_reported>
+  <sender_id>her</sender_id>
+  <date_time_reported>2025-10-31T15:14:01Z</date_time_reported>
   <coverage_plan>
-    <plan_id>painting</plan_id>
-    <plan_id_type>American</plan_id_type>
-    <title>expect</title>
-    <marketing_url>same</marketing_url>
-    <summary_url>gas</summary_url>
-    <formulary_url>require</formulary_url>
-    <email_plan_contact>brian39@example.com</email_plan_contact>
-    <network>article</network>
-    <status>current</status>
-    <mode>changes</mode>
-    <date>2023-01-11T08:27:58</date>
+    <plan_id>wonder</plan_id>
+    <plan_id_type>do</plan_id_type>
+    <title>answer</title>
+    <marketing_url>weight</marketing_url>
+    <summary_url>shoulder</summary_url>
+    <email_plan_contact>tell</email_plan_contact>
+    <network>true</network>
+    <status>entered-in-error</status>
+    <mode>working</mode>
     <drug_tiers>
       <drug_tier>
-        <drug_tier_id>
-          <code>specialty</code>
-          <text>water</text>
-        </drug_tier_id>
-        <mail_order>school</mail_order>
+        <drug_tier_id/>
+        <mail_order>false</mail_order>
         <cost_sharings>
           <cost_sharing>
             <pharmacy_type>1-month-out-retail</pharmacy_type>
             <copay_amount>
-              <value>915.88</value>
-              <currency>MUR</currency>
+              <value>903.9</value>
+              <currency>AWG</currency>
             </copay_amount>
-            <copay_option>no-charge</copay_option>
-            <coinsurance_rate>869.9</coinsurance_rate>
-            <coinsurance_option>no-charge-after-deductible</coinsurance_option>
+            <copay_option>after-deductible</copay_option>
+            <coinsurance_rate>297.76</coinsurance_rate>
+            <coinsurance_option>no-charge</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
             <rx_norm_code>
-              <code>information</code>
-              <display>bad</display>
+              <code>return</code>
+              <display>nice</display>
               <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
             </rx_norm_code>
             <status>inactive</status>
-            <manufacturer>
-              <name>Jason Hughes</name>
-              <alias>yard</alias>
-              <type>allow</type>
-            </manufacturer>
-            <dose_form>
-              <code>public</code>
-              <system>or</system>
-            </dose_form>
-            <ingredients>
-              <ingredient>
-                <is_active>true</is_active>
-                <strength>
-                  <numerator>
-                    <value>572.2</value>
-                    <comparator>&lt;=</comparator>
-                    <unit>agreement</unit>
-                    <system>surface</system>
-                    <code>close</code>
-                  </numerator>
-                  <denominator>
-                    <value>600.79</value>
-                    <comparator>&lt;</comparator>
-                    <unit>sign</unit>
-                    <system>reality</system>
-                    <code>evening</code>
-                  </denominator>
-                </strength>
-                <substance>
-                  <category>food</category>
-                  <description>receive</description>
-                  <code>
-                    <code>exist</code>
-                    <system>exist</system>
-                  </code>
-                </substance>
-              </ingredient>
-            </ingredients>
-            <monitoring_programs>
-              <monitoring_program>
-                <name>Emily Ramirez</name>
-                <type>nothing</type>
-              </monitoring_program>
-            </monitoring_programs>
             <monographs>
-              <monograph>
-                <type>seven</type>
-              </monograph>
+              <monograph/>
             </monographs>
-            <cost_informations>
-              <cost_information>
-                <type>college</type>
-                <source>parent</source>
-                <cost>
-                  <value>152.38</value>
-                  <currency>NZD</currency>
-                </cost>
-              </cost_information>
-            </cost_informations>
-            <plan_id>among</plan_id>
-            <prior_authorization>heavy</prior_authorization>
-            <step_therapy>I</step_therapy>
-            <quantity_limit>together</quantity_limit>
-            <medicine_classifications>
-              <medicine_classification>
-                <type>star</type>
-                <classification>away</classification>
-              </medicine_classification>
-            </medicine_classifications>
-            <formulary_drugs_alternatives>
-              <formulary_drugs_alternative>
-                <rx_norm_code>
-                  <code>third</code>
-                  <display>meet</display>
-                  <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
-                </rx_norm_code>
-                <status>inactive</status>
-                <manufacturer>
-                  <name>Mary Williams</name>
-                  <alias>price</alias>
-                  <type>alone</type>
-                </manufacturer>
-                <dose_form>
-                  <code>operation</code>
-                  <system>learn</system>
-                </dose_form>
-                <ingredients>
-                  <ingredient>
-                    <is_active>true</is_active>
-                    <strength>
-                      <numerator>
-                        <value>81.04</value>
-                        <comparator>&gt;</comparator>
-                        <unit>forget</unit>
-                        <system>economy</system>
-                        <code>there</code>
-                      </numerator>
-                      <denominator>
-                        <value>824.28</value>
-                        <comparator>&lt;=</comparator>
-                        <unit>mean</unit>
-                        <system>never</system>
-                        <code>training</code>
-                      </denominator>
-                    </strength>
-                    <substance>
-                      <category>material</category>
-                      <description>by</description>
-                      <code>
-                        <code>community</code>
-                        <system>poor</system>
-                      </code>
-                    </substance>
-                  </ingredient>
-                </ingredients>
-                <monitoring_programs>
-                  <monitoring_program>
-                    <name>Eric Collins</name>
-                    <type>point</type>
-                  </monitoring_program>
-                </monitoring_programs>
-                <monographs>
-                  <monograph>
-                    <type>here</type>
-                  </monograph>
-                </monographs>
-                <cost_informations>
-                  <cost_information>
-                    <type>peace</type>
-                    <source>less</source>
-                    <cost>
-                      <value>647.89</value>
-                      <currency>AUD</currency>
-                    </cost>
-                  </cost_information>
-                </cost_informations>
-                <plan_id>I</plan_id>
-                <prior_authorization>travel</prior_authorization>
-                <step_therapy>TV</step_therapy>
-                <quantity_limit>change</quantity_limit>
-                <medicine_classifications>
-                  <medicine_classification>
-                    <type>of</type>
-                    <classification>series</classification>
-                  </medicine_classification>
-                </medicine_classifications>
-              </formulary_drugs_alternative>
-            </formulary_drugs_alternatives>
+            <plan_id>PM</plan_id>
+            <step_therapy>false</step_therapy>
           </formulary_drug>
         </formulary_drugs>
       </drug_tier>

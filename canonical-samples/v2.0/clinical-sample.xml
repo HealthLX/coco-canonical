@@ -1,473 +1,63 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <clinicals xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/clinical.xsd">
   <schema_version>2.0</schema_version>
-  <sender_id>pass</sender_id>
-  <date_time_reported>2025-10-29T18:10:08Z</date_time_reported>
+  <sender_id>direction</sender_id>
+  <date_time_reported>2025-10-31T15:14:02Z</date_time_reported>
   <clinical>
     <patient>
-      <medical_record_number>indicate</medical_record_number>
-      <member_id>western</member_id>
-      <member_id_system>could</member_id_system>
-      <unique_person_id>manage</unique_person_id>
-      <unique_person_id_assigner>network</unique_person_id_assigner>
-      <unique_person_id_assigner_type>red</unique_person_id_assigner_type>
-      <names>
-        <name>
-          <use>maiden</use>
-          <text>good</text>
-          <family>Mcmahon</family>
-          <given>Pamela</given>
-          <prefix>Mr.</prefix>
-          <suffix>DDS</suffix>
-          <period>
-            <start>2019-03-11T00:22:26Z</start>
-            <end>2000-11-26T00:09:18Z</end>
-          </period>
-        </name>
-      </names>
-      <gender>other</gender>
-      <birth_date>2013-10-20</birth_date>
-      <marital_status>A</marital_status>
-      <deceased>
-        <is_deceased>false</is_deceased>
-        <deceased_date_time>2024-10-12T20:14:11Z</deceased_date_time>
-      </deceased>
-      <telecoms>
-        <telecom>
-          <system>email</system>
-          <value>hard</value>
-          <use>work</use>
-          <rank>2</rank>
-          <period>
-            <start>2020-07-15T01:24:55Z</start>
-            <end>2012-06-04T07:03:14Z</end>
-          </period>
-        </telecom>
-      </telecoms>
-      <addresses>
-        <address>
-          <use>temp</use>
-          <type>both</type>
-          <text>put</text>
-          <line>67874 Smith Island Suite 354</line>
-          <city>Port Suzanneport</city>
-          <district>watch</district>
-          <state>HI</state>
-          <postal_code>78613</postal_code>
-          <country>AM</country>
-          <period>
-            <start>2014-04-28T23:35:50Z</start>
-            <end>2021-12-19T02:07:05Z</end>
-          </period>
-        </address>
-      </addresses>
-      <communications>
-        <communication>
-          <language_code>zh-TW</language_code>
-          <is_preferred>true</is_preferred>
-        </communication>
-      </communications>
-      <us_core_race>
-        <omb_category_code>1002-5</omb_category_code>
-        <detailed_code>1704-6</detailed_code>
-        <text>hold</text>
-      </us_core_race>
-      <us_core_ethnicity>
-        <omb_category_code>2186-5</omb_category_code>
-        <detailed_code>2140-2</detailed_code>
-        <text>pick</text>
-      </us_core_ethnicity>
-      <us_core_birth_sex>UNK</us_core_birth_sex>
+      <reference>better</reference>
     </patient>
-    <lab_observations>
-      <lab_observation>
-        <unique_identifier>away</unique_identifier>
-        <status>amended</status>
-        <observation_code>
-          <coding>
-            <system>radio</system>
-            <version>as</version>
-            <code>resource</code>
-            <display>bit</display>
-          </coding>
-          <text>it</text>
-        </observation_code>
-        <observation_effective/>
-        <interpretation>base</interpretation>
-        <reference_range>
-          <low>
-            <value>552.33</value>
-            <unit>those</unit>
-            <system>song</system>
-            <code>nation</code>
-          </low>
-          <high>
-            <value>939.82</value>
-            <unit>positive</unit>
-            <system>gun</system>
-            <code>different</code>
-          </high>
-          <type>therapeutic</type>
-          <applies_to>
-            <coding>
-              <system>which</system>
-              <version>low</version>
-              <code>wall</code>
-              <display>sport</display>
-            </coding>
-            <text>difficult</text>
-          </applies_to>
-          <age>
-            <low>
-              <value>688.33</value>
-              <unit>key</unit>
-              <system>yard</system>
-              <code>else</code>
-            </low>
-            <high>
-              <value>693.09</value>
-              <unit>herself</unit>
-              <system>along</system>
-              <code>it</code>
-            </high>
-          </age>
-          <text>perform</text>
-        </reference_range>
-        <record_type>D</record_type>
-      </lab_observation>
-    </lab_observations>
     <allergy_intolerances>
       <allergy_intolerance>
-        <unique_identifier>story</unique_identifier>
-        <clinical_status>resolved</clinical_status>
+        <unique_identifier>pressure</unique_identifier>
         <verification_status>confirmed</verification_status>
         <type>allergy</type>
-        <category>medication</category>
         <allergy_code>
-          <code>rise</code>
-          <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
+          <code>hundred</code>
+          <system>http://snomed.info/sct</system>
         </allergy_code>
-        <reactions>
-          <reaction>
-            <manifestation>control</manifestation>
-          </reaction>
-        </reactions>
-        <onset/>
+        <onset>
+          <onset_date_time>2008-10-12T07:43:40Z</onset_date_time>
+        </onset>
         <criticality>high</criticality>
-        <recorded_date>2027-06-04T18:13:29Z</recorded_date>
-        <record_type>D</record_type>
       </allergy_intolerance>
     </allergy_intolerances>
-    <conditions>
-      <condition>
-        <unique_identifier>one</unique_identifier>
-        <condition_code>
-          <code>rule</code>
-          <system>http://snomed.info/sct</system>
-        </condition_code>
-        <category>health-concern</category>
-        <clinical_status>relapse</clinical_status>
-        <verification_status>entered-in-error</verification_status>
-        <severity>mild</severity>
-        <onset/>
-        <recorded_date>2006-10-24T01:29:56Z</recorded_date>
-        <abatement/>
-        <record_type>U</record_type>
-      </condition>
-    </conditions>
-    <procedures>
-      <procedure>
-        <unique_identifier>over</unique_identifier>
-        <procedure_code>
-          <code>enter</code>
-          <system>http://www.cms.gov/Medicare/Coding/ICD10</system>
-          <text>leader</text>
-          <extension>
-            <url>http://www.ware-wilson.com/</url>
-            <valueCode>politics</valueCode>
-          </extension>
-        </procedure_code>
-        <status>completed</status>
-        <performed/>
-        <record_type>D</record_type>
-      </procedure>
-    </procedures>
     <medication_requests>
       <medication_request>
-        <unique_identifier>drug</unique_identifier>
-        <status>unknown</status>
-        <intent>plan</intent>
-        <reported/>
+        <unique_identifier>adult</unique_identifier>
+        <status>completed</status>
+        <intent>reflex-order</intent>
+        <reported>
+          <reported_reference/>
+        </reported>
         <medication>
           <medication_code>
-            <code>win</code>
+            <code>various</code>
             <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
           </medication_code>
-          <status>entered-in-error</status>
-          <form>
-            <code>card</code>
-            <system>http://snomed.info/sct</system>
-          </form>
         </medication>
-        <encounter>
-          <identifier>section</identifier>
-          <status>in-progress</status>
-          <class>work</class>
-          <type>
-            <code>company</code>
-            <system>http://snomed.info/sct</system>
-          </type>
-          <participants>
-            <participant>
-              <type>
-                <code>simple</code>
-                <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
-              </type>
-              <period>
-                <start>2011-04-21T09:13:30Z</start>
-                <end>2012-09-27T18:47:16Z</end>
-              </period>
-              <individual>
-                <npi>3819065461</npi>
-                <names>
-                  <name>
-                    <use>temp</use>
-                    <text>produce</text>
-                    <family>Curry</family>
-                    <given>Linda</given>
-                    <prefix>Miss</prefix>
-                    <suffix>Jr.</suffix>
-                    <period>
-                      <start>2023-07-03T23:13:27Z</start>
-                      <end>2002-02-26T12:49:14Z</end>
-                    </period>
-                  </name>
-                </names>
-                <is_active>true</is_active>
-                <telecoms>
-                  <telecom>
-                    <system>fax</system>
-                    <value>style</value>
-                    <use>old</use>
-                    <rank>2</rank>
-                    <period>
-                      <start>2022-01-16T14:04:26Z</start>
-                      <end>2014-02-03T21:45:17Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>billing</use>
-                    <type>physical</type>
-                    <text>produce</text>
-                    <line>4161 Shepherd Row Suite 481</line>
-                    <city>Briggsmouth</city>
-                    <district>measure</district>
-                    <state>MO</state>
-                    <postal_code>92529</postal_code>
-                    <country>LY</country>
-                    <period>
-                      <start>2010-02-27T12:26:10Z</start>
-                      <end>2001-06-19T00:42:29Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </individual>
-            </participant>
-          </participants>
-          <period>
-            <start>2012-07-25T21:32:15Z</start>
-            <end>2005-08-24T00:37:12Z</end>
-          </period>
-          <reason_code>Mrs</reason_code>
-          <hospitalization>
-            <discharge_disposition>money</discharge_disposition>
-          </hospitalization>
-          <location>
-            <location>
-              <identifier>
-                <value>same</value>
-                <type>condition</type>
-              </identifier>
-              <status>active</status>
-              <name>Aaron Padilla</name>
-              <telecoms>
-                <telecom>
-                  <system>fax</system>
-                  <value>help</value>
-                  <use>old</use>
-                  <rank>3</rank>
-                  <period>
-                    <start>2009-08-21T04:29:41Z</start>
-                    <end>2001-04-16T15:18:52Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <address>
-                <use>billing</use>
-                <type>physical</type>
-                <text>situation</text>
-                <line>6250 Angel Inlet</line>
-                <city>South Annetteside</city>
-                <district>finally</district>
-                <state>NH</state>
-                <postal_code>63726</postal_code>
-                <country>DK</country>
-                <period>
-                  <start>2005-07-12T09:22:27Z</start>
-                  <end>2003-03-02T00:38:02Z</end>
-                </period>
-              </address>
-              <managing_organization>
-                <npi>1819639061</npi>
-                <clia>region</clia>
-                <name>Kimberly Lynch</name>
-                <is_active>false</is_active>
-                <alias>decade</alias>
-                <telecoms>
-                  <telecom>
-                    <system>other</system>
-                    <value>space</value>
-                    <use>home</use>
-                    <rank>2</rank>
-                    <period>
-                      <start>2001-12-08T08:38:49Z</start>
-                      <end>2006-07-04T18:31:23Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>work</use>
-                    <type>both</type>
-                    <text>goal</text>
-                    <line>273 Bailey Fork Apt. 903</line>
-                    <city>Feliciaview</city>
-                    <district>tend</district>
-                    <state>SC</state>
-                    <postal_code>39565</postal_code>
-                    <country>PA</country>
-                    <period>
-                      <start>2013-01-25T18:55:14Z</start>
-                      <end>2027-04-09T04:09:10Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </managing_organization>
-            </location>
-          </location>
-        </encounter>
-        <authored_on>2023-05-19T04:20:47Z</authored_on>
-        <requester/>
-        <dosage_instruction>
-          <text>our</text>
-        </dosage_instruction>
-        <record_type>U</record_type>
+        <authored_on>2011-08-19T21:33:18Z</authored_on>
       </medication_request>
     </medication_requests>
     <care_teams>
       <care_team>
-        <unique_identifier>though</unique_identifier>
+        <unique_identifier>long</unique_identifier>
         <status>proposed</status>
         <participant>
           <role>
-            <code>front</code>
+            <code>around</code>
             <system>http://snomed.info/sct</system>
           </role>
           <member>
-            <practitioner>
-              <npi>7895623923</npi>
-              <names>
-                <name>
-                  <use>nickname</use>
-                  <text>evening</text>
-                  <family>Jones</family>
-                  <given>Patricia</given>
-                  <prefix>Mr.</prefix>
-                  <suffix>MD</suffix>
-                  <period>
-                    <start>2003-12-15T13:56:10Z</start>
-                    <end>2003-03-31T07:17:46Z</end>
-                  </period>
-                </name>
-              </names>
-              <is_active>false</is_active>
-              <telecoms>
-                <telecom>
-                  <system>other</system>
-                  <value>open</value>
-                  <use>old</use>
-                  <rank>1</rank>
-                  <period>
-                    <start>2026-01-12T11:20:28Z</start>
-                    <end>2024-06-03T08:53:25Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <addresses>
-                <address>
-                  <use>billing</use>
-                  <type>postal</type>
-                  <text>base</text>
-                  <line>8751 Melinda Summit</line>
-                  <city>Brooksside</city>
-                  <district>address</district>
-                  <state>AR</state>
-                  <postal_code>09420</postal_code>
-                  <country>YE</country>
-                  <period>
-                    <start>2018-03-10T16:02:50Z</start>
-                    <end>2016-09-04T02:40:01Z</end>
-                  </period>
-                </address>
-              </addresses>
-            </practitioner>
-            <organization>
-              <npi>9751286350</npi>
-              <clia>bad</clia>
-              <name>Alyssa Meyer</name>
-              <is_active>false</is_active>
-              <alias>stay</alias>
-              <telecoms>
-                <telecom>
-                  <system>pager</system>
-                  <value>candidate</value>
-                  <use>home</use>
-                  <rank>1</rank>
-                  <period>
-                    <start>2010-11-23T15:56:38Z</start>
-                    <end>2023-10-02T14:07:42Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <addresses>
-                <address>
-                  <use>old</use>
-                  <type>postal</type>
-                  <text>medical</text>
-                  <line>89026 Davis Corner Apt. 975</line>
-                  <city>Lake Lisamouth</city>
-                  <district>doctor</district>
-                  <state>LA</state>
-                  <postal_code>40799</postal_code>
-                  <country>DO</country>
-                  <period>
-                    <start>2006-03-19T15:39:49Z</start>
-                    <end>2023-11-07T07:28:33Z</end>
-                  </period>
-                </address>
-              </addresses>
-            </organization>
+            <reference>wind</reference>
           </member>
         </participant>
-        <record_type>U</record_type>
       </care_team>
     </care_teams>
     <observation_vital_signs>
       <observation_vital_sign>
-        <unique_identifier>collection</unique_identifier>
-        <status>final</status>
+        <unique_identifier>number</unique_identifier>
+        <status>amended</status>
         <category_vs_cat>
           <coding>
             <code>vital-signs</code>
@@ -475,76 +65,14 @@
           </coding>
         </category_vs_cat>
         <code>
-          <code>8310-5</code>
-          <display>Body mass index (BMI) [Ratio]</display>
-          <system>http://loinc.org</system>
+          <code>8867-4</code>
+          <display>Vital signs,weight,height,head circumference,oxygen saturation and BMI panel</display>
         </code>
-        <effective/>
-        <has_member>
-          <unique_identifier>should</unique_identifier>
-          <status>corrected</status>
-          <category_vs_cat>
-            <coding>
-              <code>vital-signs</code>
-              <system>http://terminology.hl7.org/CodeSystem/observation-category</system>
-            </coding>
-          </category_vs_cat>
-          <code>
-            <code>8867-4</code>
-            <display>Body height</display>
-            <system>http://loinc.org</system>
-          </code>
-          <effective/>
-          <value/>
-          <data_absent_reason>
-            <code>turn</code>
-            <system>college</system>
-          </data_absent_reason>
-          <component>
-            <component_systolic_bp>
-              <code>
-                <coding_sbp_code>
-                  <code>8480-6</code>
-                  <system>http://loinc.org</system>
-                </coding_sbp_code>
-              </code>
-              <value>
-                <value>680.78</value>
-                <comparator>&gt;=</comparator>
-                <unit>unit</unit>
-                <system>http://unitsofmeasure.org</system>
-                <code>mm[Hg]</code>
-              </value>
-              <data_absent_reason>
-                <coding>
-                  <code>central</code>
-                  <system>thought</system>
-                </coding>
-              </data_absent_reason>
-            </component_systolic_bp>
-            <component_diastolic_bp>
-              <code>
-                <coding_dbp_code>
-                  <code>8462-4</code>
-                  <system>http://loinc.org</system>
-                </coding_dbp_code>
-              </code>
-              <value>
-                <value>259.71</value>
-                <comparator>&lt;</comparator>
-                <unit>cultural</unit>
-                <system>http://unitsofmeasure.org</system>
-                <code>mm[Hg]</code>
-              </value>
-              <data_absent_reason>
-                <coding>
-                  <code>imagine</code>
-                  <system>against</system>
-                </coding>
-              </data_absent_reason>
-            </component_diastolic_bp>
-          </component>
-        </has_member>
+        <effective>
+          <effective_period>
+            <start>2025-04-15T07:25:07Z</start>
+          </effective_period>
+        </effective>
         <component>
           <component_systolic_bp>
             <code>
@@ -553,19 +81,7 @@
                 <system>http://loinc.org</system>
               </coding_sbp_code>
             </code>
-            <value>
-              <value>693.55</value>
-              <comparator>&gt;</comparator>
-              <unit>common</unit>
-              <system>http://unitsofmeasure.org</system>
-              <code>mm[Hg]</code>
-            </value>
-            <data_absent_reason>
-              <coding>
-                <code>soon</code>
-                <system>nice</system>
-              </coding>
-            </data_absent_reason>
+            <data_absent_reason/>
           </component_systolic_bp>
           <component_diastolic_bp>
             <code>
@@ -574,864 +90,228 @@
                 <system>http://loinc.org</system>
               </coding_dbp_code>
             </code>
-            <value>
-              <value>128.3</value>
-              <comparator>&lt;=</comparator>
-              <unit>ball</unit>
-              <system>http://unitsofmeasure.org</system>
-              <code>mm[Hg]</code>
-            </value>
-            <data_absent_reason>
-              <coding>
-                <code>myself</code>
-                <system>tend</system>
-              </coding>
-            </data_absent_reason>
+            <data_absent_reason/>
           </component_diastolic_bp>
         </component>
-        <record_type>A</record_type>
       </observation_vital_sign>
     </observation_vital_signs>
     <practitioners>
       <practitioner>
-        <unique_identifier>can</unique_identifier>
+        <unique_identifier>manager</unique_identifier>
         <practitioner_details>
-          <npi>8351740244</npi>
           <names>
             <name>
               <use>official</use>
-              <text>data</text>
-              <family>Kline</family>
-              <given>Jared</given>
-              <prefix>Mx.</prefix>
-              <suffix>MD</suffix>
+              <family>Guzman</family>
+              <given>Melissa</given>
               <period>
-                <start>2025-07-12T17:04:51Z</start>
-                <end>2023-01-02T15:44:55Z</end>
+                <start>2005-05-31T14:19:40Z</start>
               </period>
             </name>
           </names>
-          <is_active>true</is_active>
-          <telecoms>
-            <telecom>
-              <system>fax</system>
-              <value>third</value>
-              <use>mobile</use>
-              <rank>2</rank>
-              <period>
-                <start>2014-02-17T01:18:14Z</start>
-                <end>2020-05-08T13:13:32Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>billing</use>
-              <type>postal</type>
-              <text>consumer</text>
-              <line>187 Sherman Mill</line>
-              <city>Kanebury</city>
-              <district>air</district>
-              <state>WV</state>
-              <postal_code>38733</postal_code>
-              <country>JO</country>
-              <period>
-                <start>2023-10-24T03:56:43Z</start>
-                <end>2007-06-01T10:15:46Z</end>
-              </period>
-            </address>
-          </addresses>
         </practitioner_details>
         <record_type>A</record_type>
       </practitioner>
     </practitioners>
-    <organizations>
-      <organization>
-        <unique_identifier>contain</unique_identifier>
-        <organization_details>
-          <npi>5456947380</npi>
-          <clia>very</clia>
-          <name>Jillian Williams</name>
-          <is_active>false</is_active>
-          <alias>nature</alias>
-          <telecoms>
-            <telecom>
-              <system>sms</system>
-              <value>clearly</value>
-              <use>temp</use>
-              <rank>1</rank>
-              <period>
-                <start>2002-05-27T14:53:23Z</start>
-                <end>2025-04-18T22:47:27Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>work</use>
-              <type>both</type>
-              <text>production</text>
-              <line>0488 Bruce Green</line>
-              <city>Lake Jeanfurt</city>
-              <district>degree</district>
-              <state>DC</state>
-              <postal_code>18577</postal_code>
-              <country>CV</country>
-              <period>
-                <start>2013-11-01T20:15:24Z</start>
-                <end>2016-03-10T21:47:34Z</end>
-              </period>
-            </address>
-          </addresses>
-        </organization_details>
-        <record_type>U</record_type>
-      </organization>
-    </organizations>
     <locations>
       <location>
-        <unique_identifier>organization</unique_identifier>
+        <unique_identifier>people</unique_identifier>
         <location_details>
           <identifier>
-            <value>window</value>
-            <type>every</type>
+            <value>though</value>
+            <type>security</type>
           </identifier>
           <status>inactive</status>
-          <name>Andrew Jones</name>
-          <telecoms>
-            <telecom>
-              <system>email</system>
-              <value>meeting</value>
-              <use>work</use>
-              <rank>5</rank>
-              <period>
-                <start>2028-07-28T17:55:26Z</start>
-                <end>2025-07-26T02:03:42Z</end>
-              </period>
-            </telecom>
-          </telecoms>
+          <name>Julie Murray</name>
           <address>
-            <use>home</use>
-            <type>postal</type>
-            <text>fall</text>
-            <line>188 Robyn Burg Suite 444</line>
-            <city>North Elizabeth</city>
-            <district>policy</district>
-            <state>NE</state>
-            <postal_code>44361</postal_code>
-            <country>RW</country>
-            <period>
-              <start>2024-05-20T07:41:33Z</start>
-              <end>2003-03-13T07:59:00Z</end>
-            </period>
+            <type>physical</type>
+            <line>41636 Anthony Road</line>
+            <city>Lake Carly</city>
+            <state>ND</state>
+            <postal_code>34412</postal_code>
           </address>
-          <managing_organization>
-            <npi>3704057254</npi>
-            <clia>hot</clia>
-            <name>Brenda Drake</name>
-            <is_active>false</is_active>
-            <alias>your</alias>
-            <telecoms>
-              <telecom>
-                <system>sms</system>
-                <value>run</value>
-                <use>temp</use>
-                <rank>5</rank>
-                <period>
-                  <start>2002-05-04T00:17:14Z</start>
-                  <end>2004-03-17T21:52:10Z</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <use>home</use>
-                <type>physical</type>
-                <text>set</text>
-                <line>8371 Cory Fields Suite 958</line>
-                <city>Lauraside</city>
-                <district>staff</district>
-                <state>GA</state>
-                <postal_code>59880</postal_code>
-                <country>BI</country>
-                <period>
-                  <start>2004-07-06T23:46:39Z</start>
-                  <end>2001-02-17T10:45:48Z</end>
-                </period>
-              </address>
-            </addresses>
-          </managing_organization>
         </location_details>
-        <record_type>U</record_type>
+        <record_type>D</record_type>
       </location>
     </locations>
     <encounters>
       <encounter>
-        <unique_identifier>carry</unique_identifier>
+        <unique_identifier>he</unique_identifier>
         <encounter_details>
-          <identifier>know</identifier>
-          <status>triaged</status>
-          <class>hear</class>
+          <identifier>itself</identifier>
+          <status>planned</status>
+          <class>account</class>
           <type>
-            <code>rule</code>
+            <code>continue</code>
             <system>http://snomed.info/sct</system>
           </type>
-          <participants>
-            <participant>
-              <type>
-                <code>garden</code>
-                <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
-              </type>
-              <period>
-                <start>2008-03-22T19:38:05Z</start>
-                <end>2003-02-02T02:10:33Z</end>
-              </period>
-              <individual>
-                <npi>6059270136</npi>
-                <names>
-                  <name>
-                    <use>anonymous</use>
-                    <text>finally</text>
-                    <family>Miller</family>
-                    <given>Christopher</given>
-                    <prefix>Ind.</prefix>
-                    <suffix>MD</suffix>
-                    <period>
-                      <start>2001-12-24T20:59:25Z</start>
-                      <end>2002-02-27T20:17:40Z</end>
-                    </period>
-                  </name>
-                </names>
-                <is_active>false</is_active>
-                <telecoms>
-                  <telecom>
-                    <system>email</system>
-                    <value>short</value>
-                    <use>temp</use>
-                    <rank>1</rank>
-                    <period>
-                      <start>2018-06-13T13:32:22Z</start>
-                      <end>2025-12-16T16:42:14Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>old</use>
-                    <type>postal</type>
-                    <text>make</text>
-                    <line>977 Lawson Valley Apt. 115</line>
-                    <city>Romeroside</city>
-                    <district>hope</district>
-                    <state>AL</state>
-                    <postal_code>88167</postal_code>
-                    <country>GH</country>
-                    <period>
-                      <start>2007-03-05T01:54:53Z</start>
-                      <end>2008-11-18T21:34:04Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </individual>
-            </participant>
-          </participants>
+          <participants/>
           <period>
-            <start>2014-06-13T11:40:02Z</start>
-            <end>2005-12-15T04:21:39Z</end>
+            <start>2017-08-30T01:59:32Z</start>
           </period>
-          <reason_code>anyone</reason_code>
-          <hospitalization>
-            <discharge_disposition>least</discharge_disposition>
-          </hospitalization>
+          <reason_code>include</reason_code>
+          <hospitalization/>
           <location>
             <location>
               <identifier>
-                <value>minute</value>
-                <type>decide</type>
+                <value>option</value>
+                <type>increase</type>
               </identifier>
-              <status>inactive</status>
-              <name>Yolanda Arnold</name>
-              <telecoms>
-                <telecom>
-                  <system>other</system>
-                  <value>fill</value>
-                  <use>old</use>
-                  <rank>2</rank>
-                  <period>
-                    <start>2007-12-16T11:09:14Z</start>
-                    <end>2029-12-09T14:14:47Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <address>
-                <use>home</use>
-                <type>physical</type>
-                <text>employee</text>
-                <line>83258 Scott Ports</line>
-                <city>New Shelbyborough</city>
-                <district>before</district>
-                <state>MD</state>
-                <postal_code>66111</postal_code>
-                <country>AR</country>
-                <period>
-                  <start>2015-03-03T13:08:50Z</start>
-                  <end>2007-01-07T11:00:58Z</end>
-                </period>
-              </address>
-              <managing_organization>
-                <npi>2450036010</npi>
-                <clia>thus</clia>
-                <name>Michele Duncan</name>
-                <is_active>false</is_active>
-                <alias>prove</alias>
-                <telecoms>
-                  <telecom>
-                    <system>fax</system>
-                    <value>general</value>
-                    <use>home</use>
-                    <rank>3</rank>
-                    <period>
-                      <start>2001-12-05T19:22:58Z</start>
-                      <end>2023-05-28T07:00:54Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>temp</use>
-                    <type>both</type>
-                    <text>once</text>
-                    <line>838 Mark Road Apt. 840</line>
-                    <city>Craigville</city>
-                    <district>hope</district>
-                    <state>DE</state>
-                    <postal_code>09974</postal_code>
-                    <country>LU</country>
-                    <period>
-                      <start>2001-08-25T14:35:41Z</start>
-                      <end>2005-04-11T10:45:04Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </managing_organization>
+              <status>suspended</status>
+              <name>Rebecca Lewis</name>
+              <telecoms/>
             </location>
           </location>
         </encounter_details>
         <record_type>U</record_type>
       </encounter>
     </encounters>
-    <care_plans>
-      <care_plan>
-        <unique_identifier>prevent</unique_identifier>
-        <text>
-          <status>additional</status>
-          <div>event</div>
-        </text>
-        <status>entered-in-error</status>
-        <intent>proposal</intent>
-        <category>
-          <category_assess_plan>
-            <coding>
-              <code>assess-plan</code>
-              <system>http://hl7.org/fhir/us/core/CodeSystem/careplan-category</system>
-            </coding>
-          </category_assess_plan>
-        </category>
-        <record_type>D</record_type>
-      </care_plan>
-    </care_plans>
     <goals>
       <goal>
-        <unique_identifier>field</unique_identifier>
-        <lifecycle_status>rejected</lifecycle_status>
+        <unique_identifier>record</unique_identifier>
+        <lifecycle_status>completed</lifecycle_status>
         <description>
-          <code>away</code>
-          <system>own</system>
+          <code>above</code>
+          <system>when</system>
         </description>
         <target>
-          <due_date>1983-04-06</due_date>
+          <due_date>1996-11-19</due_date>
         </target>
-        <record_type>U</record_type>
+        <record_type>D</record_type>
       </goal>
     </goals>
     <immunizations>
       <immunization>
-        <unique_identifier>first</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>investment</unique_identifier>
+        <status>completed</status>
         <status_reason>
-          <code>easy</code>
-          <system>career</system>
+          <code>against</code>
         </status_reason>
         <vaccine_code>
-          <code>partner</code>
+          <code>mind</code>
           <system>http://hl7.org/fhir/sid/cvx</system>
         </vaccine_code>
-        <occurrence/>
-        <primary_source>false</primary_source>
-        <record_type>D</record_type>
+        <occurrence>
+          <occurrence_string>admit</occurrence_string>
+        </occurrence>
+        <primary_source>true</primary_source>
       </immunization>
     </immunizations>
-    <pediatric_bmi_for_age_observations>
-      <pediatric_bmi_for_age_observation>
-        <unique_identifier>level</unique_identifier>
-        <status>entered-in-error</status>
-        <category>
-          <category_vs_cat>
-            <coding>
-              <code>vital-signs</code>
-              <system>http://terminology.hl7.org/CodeSystem/observation-category</system>
-            </coding>
-          </category_vs_cat>
-        </category>
-        <code>
-          <coding>
-            <code>59576-9</code>
-            <system>http://loinc.org</system>
-          </coding>
-        </code>
-        <effective/>
-        <value_quantity>
-          <value>820.99</value>
-          <unit>million</unit>
-          <system>who</system>
-          <code>image</code>
-          <comparator>enough</comparator>
-        </value_quantity>
-        <data_absent_reason>
-          <code>not-permitted</code>
-          <system>movement</system>
-        </data_absent_reason>
-        <component>
-          <code>
-            <code>8478-0</code>
-            <system>http://loinc.org</system>
-          </code>
-          <value/>
-          <data_absent_reason>
-            <code>as-text</code>
-            <system>child</system>
-          </data_absent_reason>
-        </component>
-        <record_type>D</record_type>
-      </pediatric_bmi_for_age_observation>
-    </pediatric_bmi_for_age_observations>
-    <pediatric_head_occipital_frontal_circumference_observations>
-      <pediatric_head_occipital_frontal_circumference_observation>
-        <unique_identifier>south</unique_identifier>
-        <status>preliminary</status>
-        <category>
-          <category_vs_cat>
-            <coding>
-              <code>vital-signs</code>
-              <system>http://terminology.hl7.org/CodeSystem/observation-category</system>
-            </coding>
-          </category_vs_cat>
-        </category>
-        <code>
-          <coding>
-            <code>8289-1</code>
-            <system>http://loinc.org</system>
-          </coding>
-        </code>
-        <effective/>
-        <value_quantity>
-          <value>10.0</value>
-          <unit>cut</unit>
-          <system>how</system>
-          <code>son</code>
-          <comparator>my</comparator>
-        </value_quantity>
-        <data_absent_reason>
-          <code>unsupported</code>
-          <system>eat</system>
-        </data_absent_reason>
-        <component>
-          <code>
-            <code>9279-1</code>
-            <system>http://loinc.org</system>
-          </code>
-          <value/>
-          <data_absent_reason>
-            <code>positive-infinity</code>
-            <system>writer</system>
-          </data_absent_reason>
-        </component>
-        <record_type>A</record_type>
-      </pediatric_head_occipital_frontal_circumference_observation>
-    </pediatric_head_occipital_frontal_circumference_observations>
-    <pediatric_weight_for_height_observations>
-      <pediatric_weight_for_height_observation>
-        <unique_identifier>either</unique_identifier>
-        <status>registered</status>
-        <category>
-          <category_vs_cat>
-            <coding>
-              <code>vital-signs</code>
-              <system>http://terminology.hl7.org/CodeSystem/observation-category</system>
-            </coding>
-          </category_vs_cat>
-        </category>
-        <code>
-          <coding>
-            <code>77606-2</code>
-            <system>http://loinc.org</system>
-          </coding>
-        </code>
-        <effective/>
-        <value_quantity>
-          <value>333.27</value>
-          <unit>forget</unit>
-          <system>practice</system>
-          <code>themselves</code>
-          <comparator>outside</comparator>
-        </value_quantity>
-        <data_absent_reason>
-          <code>not-performed</code>
-          <system>return</system>
-        </data_absent_reason>
-        <component>
-          <code>
-            <code>9843-4</code>
-            <system>http://loinc.org</system>
-          </code>
-          <value/>
-          <data_absent_reason>
-            <code>unknown</code>
-            <system>show</system>
-          </data_absent_reason>
-        </component>
-        <record_type>D</record_type>
-      </pediatric_weight_for_height_observation>
-    </pediatric_weight_for_height_observations>
     <practitioners_roles>
       <practitioner_role>
-        <unique_identifier>prove</unique_identifier>
+        <unique_identifier>research</unique_identifier>
         <practitioner>
-          <npi>6762759593</npi>
+          <npi>2992238271</npi>
           <names>
             <name>
-              <use>usual</use>
-              <text>mean</text>
-              <family>Wright</family>
-              <given>Margaret</given>
-              <prefix>Mr.</prefix>
-              <suffix>MD</suffix>
+              <text>weight</text>
+              <family>Kelly</family>
+              <given>David</given>
               <period>
-                <start>2015-05-01T15:09:56Z</start>
-                <end>2022-12-26T19:23:10Z</end>
+                <start>2005-05-05T10:24:30Z</start>
+                <end>2014-09-29T11:52:51Z</end>
               </period>
             </name>
           </names>
-          <is_active>false</is_active>
-          <telecoms>
-            <telecom>
-              <system>phone</system>
-              <value>soon</value>
-              <use>temp</use>
-              <rank>4</rank>
-              <period>
-                <start>2009-04-27T17:08:22Z</start>
-                <end>2030-06-22T01:52:05Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>work</use>
-              <type>both</type>
-              <text>sure</text>
-              <line>4594 Reyes Loaf Suite 762</line>
-              <city>Valerieborough</city>
-              <district>well</district>
-              <state>FM</state>
-              <postal_code>57569</postal_code>
-              <country>BY</country>
-              <period>
-                <start>2023-08-01T09:16:22Z</start>
-                <end>2006-04-23T22:39:39Z</end>
-              </period>
-            </address>
-          </addresses>
         </practitioner>
         <organization>
-          <npi>3820264889</npi>
-          <clia>citizen</clia>
-          <name>James Allen</name>
-          <is_active>true</is_active>
-          <alias>worry</alias>
-          <telecoms>
-            <telecom>
-              <system>sms</system>
-              <value>third</value>
-              <use>mobile</use>
-              <rank>4</rank>
-              <period>
-                <start>2016-09-11T19:21:45Z</start>
-                <end>2010-08-13T08:16:08Z</end>
-              </period>
-            </telecom>
-          </telecoms>
+          <clia>collection</clia>
+          <name>Noah Mercer</name>
+          <is_active>false</is_active>
+          <alias>community</alias>
+          <telecoms/>
           <addresses>
             <address>
-              <use>work</use>
-              <type>both</type>
-              <text>alone</text>
-              <line>3178 Nicholas Ramp Apt. 402</line>
-              <city>New Alyssaland</city>
-              <district>moment</district>
-              <state>GA</state>
-              <postal_code>52914</postal_code>
-              <country>QA</country>
+              <line>0977 Christopher Road</line>
+              <city>Danielborough</city>
+              <district>if</district>
+              <state>OK</state>
+              <postal_code>08107</postal_code>
+              <country>LC</country>
               <period>
-                <start>2006-05-04T20:34:37Z</start>
-                <end>2028-10-25T02:43:06Z</end>
+                <start>2012-03-07T13:23:33Z</start>
               </period>
             </address>
           </addresses>
         </organization>
-        <code>
-          <code>hard</code>
-          <system>http://nucc.org/provider-taxonomy</system>
-        </code>
         <specialty>
-          <code>former</code>
-          <system>http://nucc.org/provider-taxonomy</system>
+          <code>stage</code>
         </specialty>
         <location>
           <identifier>
-            <value>ability</value>
-            <type>avoid</type>
+            <value>without</value>
+            <type>sound</type>
           </identifier>
-          <status>suspended</status>
-          <name>Ronald Ho</name>
-          <telecoms>
-            <telecom>
-              <system>url</system>
-              <value>join</value>
-              <use>mobile</use>
-              <rank>4</rank>
-              <period>
-                <start>2009-01-07T10:00:34Z</start>
-                <end>2007-01-05T20:52:17Z</end>
-              </period>
-            </telecom>
-          </telecoms>
+          <name>Christina Tran</name>
+          <telecoms/>
           <address>
-            <use>old</use>
-            <type>both</type>
-            <text>mean</text>
-            <line>7858 Taylor Mission</line>
-            <city>South John</city>
-            <district>now</district>
-            <state>OH</state>
-            <postal_code>88184</postal_code>
-            <country>BN</country>
+            <text>page</text>
+            <line>719 Kennedy Parkway Apt. 595</line>
+            <city>Lake Catherine</city>
+            <state>WY</state>
+            <postal_code>27851</postal_code>
             <period>
-              <start>2025-06-10T11:59:06Z</start>
-              <end>2002-06-21T04:49:10Z</end>
+              <start>2010-03-28T22:45:20Z</start>
             </period>
           </address>
-          <managing_organization>
-            <npi>8850906498</npi>
-            <clia>win</clia>
-            <name>Tiffany Cuevas</name>
-            <is_active>true</is_active>
-            <alias>those</alias>
-            <telecoms>
-              <telecom>
-                <system>other</system>
-                <value>hour</value>
-                <use>work</use>
-                <rank>1</rank>
-                <period>
-                  <start>2028-05-30T00:45:13Z</start>
-                  <end>2025-05-05T05:32:46Z</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <use>old</use>
-                <type>physical</type>
-                <text>develop</text>
-                <line>97484 John Locks</line>
-                <city>Zacharytown</city>
-                <district>west</district>
-                <state>WV</state>
-                <postal_code>03345</postal_code>
-                <country>ML</country>
-                <period>
-                  <start>2000-12-26T06:09:28Z</start>
-                  <end>2024-05-30T09:23:36Z</end>
-                </period>
-              </address>
-            </addresses>
-          </managing_organization>
         </location>
-        <telecom>
-          <system>url</system>
-          <value>trip</value>
-          <use>temp</use>
-          <rank>5</rank>
-          <period>
-            <start>2012-07-13T15:26:41Z</start>
-            <end>2003-11-29T01:44:35Z</end>
-          </period>
-        </telecom>
-        <endpoints>
-          <identifier>
-            <value>trial</value>
-            <type>sense</type>
-          </identifier>
-          <status>entered-in-error</status>
-          <connectionType>
-            <code>dicom-qido-rs</code>
-            <system>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</system>
-          </connectionType>
-          <name>Rhonda Garcia</name>
-          <managing_organization>
-            <npi>5429401474</npi>
-            <clia>make</clia>
-            <name>Michael Green</name>
-            <is_active>false</is_active>
-            <alias>short</alias>
-            <telecoms>
-              <telecom>
-                <system>pager</system>
-                <value>child</value>
-                <use>old</use>
-                <rank>3</rank>
-                <period>
-                  <start>2025-08-19T17:00:57Z</start>
-                  <end>2020-11-13T01:53:52Z</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <use>work</use>
-                <type>physical</type>
-                <text>quite</text>
-                <line>92075 Caleb Spurs Suite 550</line>
-                <city>Port Williamview</city>
-                <district>current</district>
-                <state>NM</state>
-                <postal_code>65011</postal_code>
-                <country>VA</country>
-                <period>
-                  <start>2010-12-03T06:32:19Z</start>
-                  <end>2000-05-10T08:10:42Z</end>
-                </period>
-              </address>
-            </addresses>
-          </managing_organization>
-          <contacts>
-            <contact>
-              <system>url</system>
-              <value>month</value>
-              <use>old</use>
-              <rank>2</rank>
-              <period>
-                <start>2012-02-25T01:42:22Z</start>
-                <end>2006-04-12T14:08:06Z</end>
-              </period>
-            </contact>
-          </contacts>
-          <period>
-            <start>2016-05-05T20:58:07Z</start>
-            <end>2004-02-13T10:38:10Z</end>
-          </period>
-          <payload_type>
-            <code>role</code>
-            <system>urn:oid:1.3.6.1.4.1.19376.1.2.3</system>
-          </payload_type>
-          <payload_mime_type>
-            <code>western</code>
-            <system>urn:ietf:bcp:13</system>
-          </payload_mime_type>
-          <address>beat</address>
-          <header>very</header>
-        </endpoints>
-        <record_type>A</record_type>
+        <record_type>U</record_type>
       </practitioner_role>
     </practitioners_roles>
     <smoking_status_observations>
       <smoking_status_observation>
-        <unique_identifier>wonder</unique_identifier>
-        <status>final</status>
+        <unique_identifier>old</unique_identifier>
+        <status>entered-in-error</status>
         <code>
           <code>72166-2</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2001-03-18T18:39:56Z</issued>
+        <issued>2030-10-18T00:33:55Z</issued>
         <value_codeable_concept>
-          <code>challenge</code>
+          <code>itself</code>
           <system>http://snomed.info/sct</system>
         </value_codeable_concept>
-        <record_type>U</record_type>
       </smoking_status_observation>
     </smoking_status_observations>
     <provenances>
       <provenance>
-        <unique_identifier>common</unique_identifier>
+        <unique_identifier>note</unique_identifier>
         <target>
-          <resource_type>condition</resource_type>
-          <unique_identifier>draw</unique_identifier>
+          <resource_type>care_team</resource_type>
+          <unique_identifier>part</unique_identifier>
         </target>
-        <recorded>2015-12-09T01:29:43Z</recorded>
+        <recorded>2027-12-24T00:08:10Z</recorded>
         <agent>
           <agent_provenance_general>
             <type>
-              <code>transmitter</code>
-              <system>http://terminology.hl7.org/CodeSystem/provenance-participant-type</system>
+              <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type</system>
             </type>
-            <who/>
+            <who>
+              <organization>
+                <name>Dustin Gonzalez</name>
+                <is_active>true</is_active>
+                <alias>economic</alias>
+                <telecoms>
+                  <telecom>
+                    <system>url</system>
+                    <value>can</value>
+                    <rank>2</rank>
+                    <period>
+                      <start>2021-08-21T02:09:53Z</start>
+                      <end>2026-06-29T07:41:58Z</end>
+                    </period>
+                  </telecom>
+                </telecoms>
+                <addresses/>
+              </organization>
+            </who>
             <on_behalf_of>
-              <npi>1377529624</npi>
-              <clia>approach</clia>
-              <name>Dennis Tyler</name>
+              <clia>professional</clia>
+              <name>Sandra Wilson</name>
               <is_active>true</is_active>
-              <alias>new</alias>
-              <telecoms>
-                <telecom>
-                  <system>phone</system>
-                  <value>rock</value>
-                  <use>home</use>
-                  <rank>2</rank>
-                  <period>
-                    <start>2001-06-20T23:51:24Z</start>
-                    <end>2024-11-04T15:25:31Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <addresses>
-                <address>
-                  <use>work</use>
-                  <type>both</type>
-                  <text>approach</text>
-                  <line>195 Matthew Corner</line>
-                  <city>Floydland</city>
-                  <district>heavy</district>
-                  <state>CA</state>
-                  <postal_code>80156</postal_code>
-                  <country>VE</country>
-                  <period>
-                    <start>2010-09-17T22:57:02Z</start>
-                    <end>2026-03-11T22:47:22Z</end>
-                  </period>
-                </address>
-              </addresses>
+              <addresses/>
             </on_behalf_of>
           </agent_provenance_general>
-          <agent_provenance_author>
-            <type>
-              <coding>
-                <code>author</code>
-                <system>http://terminology.hl7.org/CodeSystem/provenance-participant-type</system>
-              </coding>
-            </type>
-            <who/>
-            <on_behalf_of/>
-          </agent_provenance_author>
           <agent_provenance_transmitter>
             <type>
               <coding>
@@ -1439,335 +319,68 @@
                 <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type</system>
               </coding>
             </type>
-            <who/>
-            <on_behalf_of/>
+            <who>
+              <practitioner>
+                <names>
+                  <name>
+                    <use>maiden</use>
+                    <text>mouth</text>
+                    <family>Griffin</family>
+                    <given>Robert</given>
+                    <period>
+                      <start>2018-12-23T06:01:00Z</start>
+                      <end>2027-06-27T18:21:34Z</end>
+                    </period>
+                  </name>
+                </names>
+                <addresses/>
+              </practitioner>
+            </who>
           </agent_provenance_transmitter>
         </agent>
-        <record_type>A</record_type>
       </provenance>
     </provenances>
-    <pulse_oximetry_observations>
-      <pulse_oximetry_observation>
-        <unique_identifier>door</unique_identifier>
-        <status>unknown</status>
-        <category>
-          <category_vs_cat>
-            <coding>
-              <code>vital-signs</code>
-              <system>http://terminology.hl7.org/CodeSystem/observation-category</system>
-            </coding>
-          </category_vs_cat>
-        </category>
-        <code>
-          <coding>
-            <coding_oxygen_sat_code>
-              <code>2708-6</code>
-              <system>http://loinc.org</system>
-            </coding_oxygen_sat_code>
-            <coding_pulse_ox>
-              <code>59408-5</code>
-              <system>http://loinc.org</system>
-            </coding_pulse_ox>
-          </coding>
-        </code>
-        <effective/>
-        <value_quantity>
-          <value>910.01</value>
-          <unit>act</unit>
-          <system>meeting</system>
-          <code>brother</code>
-          <comparator>major</comparator>
-        </value_quantity>
-        <data_absent_reason>
-          <code>temp-unknown</code>
-          <system>near</system>
-        </data_absent_reason>
-        <component>
-          <component_flow_rate>
-            <code>
-              <coding>
-                <code>3151-8</code>
-                <system>http://loinc.org</system>
-              </coding>
-            </code>
-            <value_quantity>
-              <value>820.05</value>
-              <unit>could</unit>
-              <system>simply</system>
-              <code>last</code>
-              <comparator>near</comparator>
-            </value_quantity>
-            <data_absent_reason>
-              <code>not-asked</code>
-              <system>over</system>
-            </data_absent_reason>
-          </component_flow_rate>
-          <component_concentration>
-            <code>
-              <coding>
-                <code>3150-0</code>
-                <system>http://loinc.org</system>
-              </coding>
-            </code>
-            <value_quantity>
-              <value>409.49</value>
-              <unit>discover</unit>
-              <system>attorney</system>
-              <code>speak</code>
-              <comparator>each</comparator>
-            </value_quantity>
-            <data_absent_reason>
-              <code>not-performed</code>
-              <system>local</system>
-            </data_absent_reason>
-          </component_concentration>
-        </component>
-        <record_type>D</record_type>
-      </pulse_oximetry_observation>
-    </pulse_oximetry_observations>
     <implantable_devices>
       <implantable_device>
-        <unique_identifier>compare</unique_identifier>
+        <unique_identifier>physical</unique_identifier>
         <udi_carrier>
-          <device_identifier>act</device_identifier>
-          <carrier_aidc>bmV3cw==</carrier_aidc>
-          <carrier_hrf>have</carrier_hrf>
+          <device_identifier>talk</device_identifier>
+          <carrier_aidc>ZWFjaA==</carrier_aidc>
+          <carrier_hrf>maybe</carrier_hrf>
         </udi_carrier>
-        <distinct_identifier>put</distinct_identifier>
-        <manufacture_date>2010-01-26T01:19:23Z</manufacture_date>
-        <expiration_date>2028-08-08T14:38:44Z</expiration_date>
-        <lot_number>certain</lot_number>
-        <serial_number>happen</serial_number>
+        <manufacture_date>2019-05-10T07:07:58Z</manufacture_date>
+        <lot_number>yet</lot_number>
         <type>
-          <code>short</code>
-          <system>http://snomed.info/sct</system>
+          <code>Mrs</code>
         </type>
-        <record_type>D</record_type>
+        <record_type>U</record_type>
       </implantable_device>
     </implantable_devices>
     <document_references>
       <document_reference>
-        <unique_identifier>organization</unique_identifier>
+        <unique_identifier>couple</unique_identifier>
         <status>current </status>
         <type>
-          <code>people</code>
+          <code>mind</code>
           <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
         </type>
         <category>
-          <code>shoulder</code>
-          <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category</system>
+          <code>happen</code>
         </category>
-        <author/>
-        <custodian>
-          <npi>2053994880</npi>
-          <clia>success</clia>
-          <name>Joshua Thomas</name>
-          <is_active>false</is_active>
-          <alias>check</alias>
-          <telecoms>
-            <telecom>
-              <system>fax</system>
-              <value>indicate</value>
-              <use>home</use>
-              <rank>2</rank>
-              <period>
-                <start>2015-06-27T17:35:52Z</start>
-                <end>2013-04-07T15:23:41Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>home</use>
-              <type>both</type>
-              <text>song</text>
-              <line>4706 Castro Trail</line>
-              <city>South Sarahburgh</city>
-              <district>treatment</district>
-              <state>PR</state>
-              <postal_code>73183</postal_code>
-              <country>KM</country>
-              <period>
-                <start>2019-06-22T15:56:14Z</start>
-                <end>2005-06-16T01:29:07Z</end>
-              </period>
-            </address>
-          </addresses>
-        </custodian>
-        <date>2030-03-31T21:30:33Z</date>
+        <date>2012-10-04T22:44:45Z</date>
         <content>
           <attachment>
-            <content_type>marriage</content_type>
-            <data>ZGV0YWls</data>
-            <url>https://www.johnson.biz/</url>
+            <content_type>all</content_type>
+            <data>Yml0</data>
           </attachment>
-          <format>
-            <code>also</code>
-            <system>http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem</system>
-          </format>
         </content>
-        <context>
-          <encounter>
-            <identifier>wife</identifier>
-            <status>triaged</status>
-            <class>teach</class>
-            <type>
-              <code>say</code>
-              <system>http://snomed.info/sct</system>
-            </type>
-            <participants>
-              <participant>
-                <type>
-                  <code>happen</code>
-                  <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
-                </type>
-                <period>
-                  <start>2024-02-12T20:20:17Z</start>
-                  <end>2009-10-29T06:31:53Z</end>
-                </period>
-                <individual>
-                  <npi>2594647080</npi>
-                  <names>
-                    <name>
-                      <use>official</use>
-                      <text>Republican</text>
-                      <family>Peters</family>
-                      <given>Ryan</given>
-                      <prefix>Ms.</prefix>
-                      <suffix>MD</suffix>
-                      <period>
-                        <start>2013-11-21T08:12:04Z</start>
-                        <end>2016-06-24T05:26:42Z</end>
-                      </period>
-                    </name>
-                  </names>
-                  <is_active>false</is_active>
-                  <telecoms>
-                    <telecom>
-                      <system>other</system>
-                      <value>trial</value>
-                      <use>home</use>
-                      <rank>3</rank>
-                      <period>
-                        <start>2001-04-26T16:40:58Z</start>
-                        <end>2029-09-27T18:47:09Z</end>
-                      </period>
-                    </telecom>
-                  </telecoms>
-                  <addresses>
-                    <address>
-                      <use>billing</use>
-                      <type>both</type>
-                      <text>itself</text>
-                      <line>10916 Baker Walks</line>
-                      <city>North William</city>
-                      <district>loss</district>
-                      <state>VT</state>
-                      <postal_code>84523</postal_code>
-                      <country>MZ</country>
-                      <period>
-                        <start>2024-01-23T02:44:31Z</start>
-                        <end>2012-06-19T22:43:20Z</end>
-                      </period>
-                    </address>
-                  </addresses>
-                </individual>
-              </participant>
-            </participants>
-            <period>
-              <start>2019-05-02T20:02:41Z</start>
-              <end>2018-07-20T19:31:59Z</end>
-            </period>
-            <reason_code>determine</reason_code>
-            <hospitalization>
-              <discharge_disposition>front</discharge_disposition>
-            </hospitalization>
-            <location>
-              <location>
-                <identifier>
-                  <value>head</value>
-                  <type>address</type>
-                </identifier>
-                <status>suspended</status>
-                <name>Keith Turner</name>
-                <telecoms>
-                  <telecom>
-                    <system>url</system>
-                    <value>college</value>
-                    <use>home</use>
-                    <rank>1</rank>
-                    <period>
-                      <start>2029-07-24T18:01:37Z</start>
-                      <end>2000-10-24T11:54:33Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <address>
-                  <use>old</use>
-                  <type>postal</type>
-                  <text>cultural</text>
-                  <line>533 Hernandez Parks</line>
-                  <city>West Elizabethfurt</city>
-                  <district>knowledge</district>
-                  <state>DE</state>
-                  <postal_code>82919</postal_code>
-                  <country>TV</country>
-                  <period>
-                    <start>2000-12-12T16:17:08Z</start>
-                    <end>2009-01-30T16:31:30Z</end>
-                  </period>
-                </address>
-                <managing_organization>
-                  <npi>4462705249</npi>
-                  <clia>question</clia>
-                  <name>Jason Bowman</name>
-                  <is_active>true</is_active>
-                  <alias>wait</alias>
-                  <telecoms>
-                    <telecom>
-                      <system>sms</system>
-                      <value>truth</value>
-                      <use>home</use>
-                      <rank>1</rank>
-                      <period>
-                        <start>2014-04-05T05:19:50Z</start>
-                        <end>2022-12-25T10:19:44Z</end>
-                      </period>
-                    </telecom>
-                  </telecoms>
-                  <addresses>
-                    <address>
-                      <use>old</use>
-                      <type>postal</type>
-                      <text>yet</text>
-                      <line>36307 Parks Flats Suite 108</line>
-                      <city>Michelleborough</city>
-                      <district>star</district>
-                      <state>PA</state>
-                      <postal_code>53168</postal_code>
-                      <country>BI</country>
-                      <period>
-                        <start>2023-08-13T08:45:14Z</start>
-                        <end>2024-09-24T17:58:21Z</end>
-                      </period>
-                    </address>
-                  </addresses>
-                </managing_organization>
-              </location>
-            </location>
-          </encounter>
-          <period>
-            <start>2021-07-25T19:17:04Z</start>
-            <end>2012-09-29T16:08:24Z</end>
-          </period>
-        </context>
-        <record_type>D</record_type>
+        <context/>
       </document_reference>
     </document_references>
     <diagnostic_report_labs>
       <diagnostic_report_lab>
-        <unique_identifier>could</unique_identifier>
-        <status>amended</status>
+        <unique_identifier>listen</unique_identifier>
+        <status>corrected</status>
         <category>
           <category_laboratory_slice>
             <coding>
@@ -1777,245 +390,45 @@
           </category_laboratory_slice>
         </category>
         <code>
-          <code>to</code>
+          <code>trouble</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2007-02-21T10:36:41Z</issued>
-        <effective/>
-        <performer/>
+        <issued>2025-07-01T06:52:55Z</issued>
+        <effective>
+          <effective_date_time>2015-03-28T20:22:32Z</effective_date_time>
+        </effective>
         <result>
-          <status>cancelled</status>
-          <observation_code>
-            <coding>
-              <system>draw</system>
-              <version>notice</version>
-              <code>economy</code>
-              <display>indicate</display>
-            </coding>
-            <text>safe</text>
-          </observation_code>
-          <observation_effective/>
-          <observation_value/>
-          <data_absent_reason>not-a-number</data_absent_reason>
-          <interpretation>occur</interpretation>
+          <status>corrected</status>
+          <observation_code/>
+          <data_absent_reason>temp-unknown</data_absent_reason>
+          <interpretation>maybe</interpretation>
           <reference_range>
-            <low>
-              <value>417.22</value>
-              <unit>crime</unit>
-              <system>strong</system>
-              <code>seem</code>
-            </low>
             <high>
-              <value>361.86</value>
-              <unit>realize</unit>
-              <system>score</system>
-              <code>value</code>
+              <unit>organization</unit>
             </high>
-            <type>pre-puberty</type>
-            <applies_to>
-              <coding>
-                <system>responsibility</system>
-                <version>of</version>
-                <code>environment</code>
-                <display>apply</display>
-              </coding>
-              <text>civil</text>
-            </applies_to>
-            <age>
-              <low>
-                <value>524.9</value>
-                <unit>try</unit>
-                <system>cold</system>
-                <code>probably</code>
-              </low>
-              <high>
-                <value>88.9</value>
-                <unit>free</unit>
-                <system>other</system>
-                <code>see</code>
-              </high>
-            </age>
-            <text>window</text>
           </reference_range>
         </result>
-        <record_type>D</record_type>
       </diagnostic_report_lab>
     </diagnostic_report_labs>
     <diagnostic_report_notes>
       <diagnostic_report_note>
-        <unique_identifier>environment</unique_identifier>
-        <status>cancelled</status>
+        <unique_identifier>people</unique_identifier>
+        <status>entered-in-error</status>
         <category>
-          <code>LALP7839-6B</code>
+          <code>LP29708-2</code>
           <system>http://loinc.org</system>
         </category>
         <code>
-          <code>mean</code>
+          <code>sound</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2001-07-04T12:16:57Z</issued>
-        <effective/>
-        <performer/>
-        <presented_form>
-          <content_type>myself</content_type>
-          <language>again</language>
-          <data>d2U=</data>
-          <url>https://tran.com/</url>
-          <size>0</size>
-          <hash>ZmlyZQ==</hash>
-          <title>early</title>
-          <creation>2027-08-12T00:29:56Z</creation>
-        </presented_form>
-        <encounter>
-          <identifier>west</identifier>
-          <status>onleave</status>
-          <class>director</class>
-          <type>
-            <code>improve</code>
-            <system>http://snomed.info/sct</system>
-          </type>
-          <participants>
-            <participant>
-              <type>
-                <code>guy</code>
-                <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
-              </type>
-              <period>
-                <start>2012-05-17T08:21:56Z</start>
-                <end>2011-04-06T11:49:59Z</end>
-              </period>
-              <individual>
-                <npi>5826962252</npi>
-                <names>
-                  <name>
-                    <use>official</use>
-                    <text>recent</text>
-                    <family>Houston</family>
-                    <given>Bobby</given>
-                    <prefix>Mrs.</prefix>
-                    <suffix>III</suffix>
-                    <period>
-                      <start>2003-05-23T16:59:49Z</start>
-                      <end>2007-07-19T18:40:03Z</end>
-                    </period>
-                  </name>
-                </names>
-                <is_active>false</is_active>
-                <telecoms>
-                  <telecom>
-                    <system>pager</system>
-                    <value>coach</value>
-                    <use>temp</use>
-                    <rank>2</rank>
-                    <period>
-                      <start>2006-01-18T12:31:54Z</start>
-                      <end>2028-10-09T22:58:59Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>home</use>
-                    <type>physical</type>
-                    <text>consumer</text>
-                    <line>07571 Patricia Extensions</line>
-                    <city>North Kathleenburgh</city>
-                    <district>art</district>
-                    <state>MA</state>
-                    <postal_code>62259</postal_code>
-                    <country>HU</country>
-                    <period>
-                      <start>2025-04-04T17:17:35Z</start>
-                      <end>2010-06-22T11:03:53Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </individual>
-            </participant>
-          </participants>
-          <period>
-            <start>2015-04-30T05:56:51Z</start>
-            <end>2006-01-26T09:38:01Z</end>
-          </period>
-          <reason_code>this</reason_code>
-          <hospitalization>
-            <discharge_disposition>member</discharge_disposition>
-          </hospitalization>
-          <location>
-            <location>
-              <identifier>
-                <value>window</value>
-                <type>cover</type>
-              </identifier>
-              <status>suspended</status>
-              <name>Jared Duarte</name>
-              <telecoms>
-                <telecom>
-                  <system>sms</system>
-                  <value>former</value>
-                  <use>temp</use>
-                  <rank>2</rank>
-                  <period>
-                    <start>2021-12-18T23:04:05Z</start>
-                    <end>2030-04-15T13:18:58Z</end>
-                  </period>
-                </telecom>
-              </telecoms>
-              <address>
-                <use>work</use>
-                <type>physical</type>
-                <text>learn</text>
-                <line>50495 Danielle Springs Suite 843</line>
-                <city>Hernandezside</city>
-                <district>indicate</district>
-                <state>NE</state>
-                <postal_code>59896</postal_code>
-                <country>CZ</country>
-                <period>
-                  <start>2013-11-23T00:52:50Z</start>
-                  <end>2029-10-15T00:55:28Z</end>
-                </period>
-              </address>
-              <managing_organization>
-                <npi>5131801276</npi>
-                <clia>money</clia>
-                <name>Keith Walker</name>
-                <is_active>false</is_active>
-                <alias>see</alias>
-                <telecoms>
-                  <telecom>
-                    <system>phone</system>
-                    <value>must</value>
-                    <use>old</use>
-                    <rank>2</rank>
-                    <period>
-                      <start>2024-08-08T04:09:12Z</start>
-                      <end>2011-02-23T02:52:27Z</end>
-                    </period>
-                  </telecom>
-                </telecoms>
-                <addresses>
-                  <address>
-                    <use>temp</use>
-                    <type>postal</type>
-                    <text>rise</text>
-                    <line>93476 Brian Green</line>
-                    <city>South Nancy</city>
-                    <district>pull</district>
-                    <state>NE</state>
-                    <postal_code>36838</postal_code>
-                    <country>BT</country>
-                    <period>
-                      <start>2011-03-18T23:29:45Z</start>
-                      <end>2010-09-02T23:43:59Z</end>
-                    </period>
-                  </address>
-                </addresses>
-              </managing_organization>
-            </location>
-          </location>
-        </encounter>
-        <record_type>D</record_type>
+        <issued>2030-09-24T19:59:34Z</issued>
+        <effective>
+          <effective_period>
+            <start>2027-04-26T21:29:47Z</start>
+            <end>2021-07-04T15:25:32Z</end>
+          </effective_period>
+        </effective>
       </diagnostic_report_note>
     </diagnostic_report_notes>
   </clinical>
