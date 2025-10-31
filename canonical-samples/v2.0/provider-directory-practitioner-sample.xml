@@ -1,108 +1,778 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <providers xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/provider-directory.xsd">
   <schema_version>2.0</schema_version>
-  <sender_id>bring</sender_id>
-  <date_time_reported>2025-10-31T15:14:00Z</date_time_reported>
+  <sender_id>Congress</sender_id>
+  <date_time_reported>2025-10-31T20:29:18Z</date_time_reported>
   <provider>
     <practitioner>
-      <npi>5616256149</npi>
-      <is_active>false</is_active>
+      <unique_identifier>total</unique_identifier>
+      <npi>1949435133</npi>
+      <is_active>true</is_active>
       <names>
         <name>
-          <family>Gomez</family>
+          <use>maiden</use>
+          <text>decade</text>
+          <family>Scott</family>
+          <given>Samantha</given>
           <prefix>Mr.</prefix>
           <suffix>MD</suffix>
           <period>
-            <start>2020-02-23T00:20:04Z</start>
-            <end>2001-03-26T23:39:22Z</end>
+            <start>2015-09-01T20:05:39Z</start>
+            <end>2010-08-04T17:21:08Z</end>
           </period>
         </name>
       </names>
-      <birth_date>1997-04-12</birth_date>
+      <telecoms>
+        <telecom>
+          <id>9402407c-4b1e-4edd-b853-a234c19657ab</id>
+          <system>other</system>
+          <value>figure</value>
+          <use>home</use>
+          <rank>4</rank>
+          <period>
+            <start>2024-02-17T12:50:47Z</start>
+            <end>2028-04-15T17:19:50Z</end>
+          </period>
+          <contactpoint_available_times>
+            <contactpoint_available_time>
+              <all_day>false</all_day>
+              <days_of_week>mon</days_of_week>
+              <available_start_time>02:08:25</available_start_time>
+              <available_end_time>19:47:57</available_end_time>
+            </contactpoint_available_time>
+          </contactpoint_available_times>
+          <via_intermediaries>
+            <via_intermediary>
+              <name>Stephanie Conrad</name>
+              <telecoms>
+                <telecom>
+                  <system>url</system>
+                  <value>science</value>
+                </telecom>
+              </telecoms>
+            </via_intermediary>
+          </via_intermediaries>
+        </telecom>
+      </telecoms>
+      <addresses>
+        <address>
+          <id>4ef4f820-00e9-496d-8ed1-8ced33f5bfa8</id>
+          <use>billing</use>
+          <type>physical</type>
+          <text>turn</text>
+          <line>5725 Tony Trail</line>
+          <city>Beasleyville</city>
+          <district>carry</district>
+          <state>OR</state>
+          <postal_code>40307</postal_code>
+          <country>MK</country>
+          <period>
+            <start>2011-09-25T11:17:05Z</start>
+            <end>2027-09-19T03:43:35Z</end>
+          </period>
+          <geo_locations>
+            <geo_location>
+              <latitude>88.557367</latitude>
+              <longitude>-98.679323</longitude>
+            </geo_location>
+          </geo_locations>
+        </address>
+      </addresses>
+      <gender>female</gender>
+      <birth_date>2009-06-12</birth_date>
       <qualifications>
         <qualification>
-          <identifiers/>
+          <identifiers>
+            <identifier>
+              <value>moment</value>
+              <type>stock</type>
+            </identifier>
+          </identifiers>
           <code>
-            <system>evidence</system>
-            <code>mean</code>
-            <display>type</display>
+            <system>goal</system>
+            <code>degree</code>
+            <display>federal</display>
           </code>
+          <period>
+            <start>2016-11-30T00:26:51Z</start>
+            <end>2001-01-21T02:45:42Z</end>
+          </period>
           <issuer>
             <identifier>
-              <value>happen</value>
-              <type>hospital</type>
+              <value>soon</value>
+              <type>however</type>
             </identifier>
             <period>
-              <start>2014-12-21T13:16:34Z</start>
-              <end>2011-12-19T22:31:42Z</end>
+              <start>2023-08-15T11:33:54Z</start>
+              <end>2008-11-10T22:46:46Z</end>
             </period>
-            <name>Logan Brown</name>
-            <alias>front</alias>
+            <is_active>true</is_active>
+            <type>bus</type>
+            <name>Monique Valencia</name>
+            <alias>doctor</alias>
+            <telecoms>
+              <telecom>
+                <system>pager</system>
+                <value>another</value>
+                <use>mobile</use>
+                <rank>3</rank>
+                <period>
+                  <start>2003-03-21T06:56:55Z</start>
+                  <end>2015-12-26T20:01:53Z</end>
+                </period>
+              </telecom>
+            </telecoms>
             <addresses>
               <address>
-                <use>billing</use>
+                <id>fdca04a5-daef-4ab7-b97f-a1bf119a85b6</id>
+                <use>temp</use>
                 <type>both</type>
-                <text>nice</text>
-                <line>887 Christopher Lights Apt. 762</line>
-                <city>Colemanside</city>
-                <district>ability</district>
-                <state>NC</state>
-                <postal_code>15134</postal_code>
-                <country>ER</country>
+                <text>live</text>
+                <line>9109 Angela Forest Suite 844</line>
+                <city>Kaylaborough</city>
+                <district>wide</district>
+                <state>OK</state>
+                <postal_code>31376</postal_code>
+                <country>SR</country>
                 <period>
-                  <end>2004-08-11T09:09:09Z</end>
+                  <start>2013-01-24T13:47:45Z</start>
+                  <end>2029-04-30T10:51:22Z</end>
                 </period>
-                <geo_locations/>
+                <geo_locations>
+                  <geo_location>
+                    <latitude>44.933912</latitude>
+                    <longitude>64.06763</longitude>
+                  </geo_location>
+                </geo_locations>
               </address>
             </addresses>
-            <contacts/>
+            <contacts>
+              <contact>
+                <purpose>PRESS</purpose>
+                <name>
+                  <use>anonymous</use>
+                  <text>which</text>
+                  <family>Daniel</family>
+                  <given>Lawrence</given>
+                  <prefix>Ms.</prefix>
+                  <suffix>MD</suffix>
+                  <period>
+                    <start>2002-10-28T01:01:23Z</start>
+                    <end>2004-02-02T08:11:03Z</end>
+                  </period>
+                </name>
+                <telecoms>
+                  <telecom>
+                    <system>url</system>
+                    <value>home</value>
+                    <use>home</use>
+                    <rank>5</rank>
+                    <period>
+                      <start>2011-11-24T15:39:49Z</start>
+                      <end>2010-12-19T18:28:42Z</end>
+                    </period>
+                  </telecom>
+                </telecoms>
+                <address>
+                  <id>a9763d41-22ba-47fa-8387-9c05ea6204f3</id>
+                  <use>billing</use>
+                  <type>postal</type>
+                  <text>customer</text>
+                  <line>28801 Smith Hill</line>
+                  <city>East Pennyport</city>
+                  <district>western</district>
+                  <state>SD</state>
+                  <postal_code>50497</postal_code>
+                  <country>AR</country>
+                  <period>
+                    <start>2015-09-05T04:06:34Z</start>
+                    <end>2013-03-15T22:04:59Z</end>
+                  </period>
+                  <geo_locations>
+                    <geo_location>
+                      <latitude>0.80237</latitude>
+                      <longitude>87.083524</longitude>
+                    </geo_location>
+                  </geo_locations>
+                </address>
+              </contact>
+            </contacts>
           </issuer>
-          <status>pending</status>
+          <status>issued-in-error</status>
+          <where_valid>various</where_valid>
         </qualification>
       </qualifications>
-      <communications/>
-      <not_availables/>
+      <communications>
+        <communication>
+          <language>him</language>
+          <proficiency>behind</proficiency>
+        </communication>
+      </communications>
+      <period>
+        <start>2007-11-09T11:41:29Z</start>
+        <end>2014-09-25T07:59:23Z</end>
+      </period>
+      <affiliated_organization>
+        <npi>4998209956</npi>
+        <clia>
+          <id>a21d6a07-c1cc-4f2b-940c-2c555c62be71</id>
+          <value>him</value>
+        </clia>
+        <is_active>false</is_active>
+        <types>
+          <type>prvgrp</type>
+        </types>
+        <name>Denise Butler</name>
+        <alias>herself</alias>
+        <org_description>would</org_description>
+        <part_of>
+          <npi>6585994093</npi>
+          <clia>peace</clia>
+          <is_active>true</is_active>
+          <types>
+            <type>prvgrp</type>
+          </types>
+          <name>Joshua Jones</name>
+          <alias>anyone</alias>
+          <org_description>develop</org_description>
+          <telecoms>
+            <telecom>
+              <id>86c9f8c3-d51d-441a-bfc7-32b3cc8c7094</id>
+              <system>phone</system>
+              <value>main</value>
+              <use>home</use>
+              <rank>1</rank>
+              <period>
+                <start>2008-08-01T08:39:51Z</start>
+                <end>2004-02-15T07:01:05Z</end>
+              </period>
+              <contactpoint_available_times>
+                <contactpoint_available_time>
+                  <all_day>false</all_day>
+                  <days_of_week>mon</days_of_week>
+                  <available_start_time>11:20:45</available_start_time>
+                  <available_end_time>20:10:49</available_end_time>
+                </contactpoint_available_time>
+              </contactpoint_available_times>
+              <via_intermediaries>
+                <via_intermediary>
+                  <name>Barbara Mann</name>
+                  <telecoms>
+                    <telecom>
+                      <system>email</system>
+                      <value>seem</value>
+                    </telecom>
+                  </telecoms>
+                </via_intermediary>
+              </via_intermediaries>
+            </telecom>
+          </telecoms>
+          <addresses>
+            <address>
+              <id>6f93ab39-bad6-407f-bb78-7ed3045d6112</id>
+              <use>home</use>
+              <type>physical</type>
+              <text>authority</text>
+              <line>3449 Lisa Knoll</line>
+              <city>Morsebury</city>
+              <district>may</district>
+              <state>TX</state>
+              <postal_code>86636</postal_code>
+              <country>NE</country>
+              <period>
+                <start>2029-12-28T13:53:55Z</start>
+                <end>2021-05-05T10:20:15Z</end>
+              </period>
+              <geo_locations>
+                <geo_location>
+                  <latitude>-67.316555</latitude>
+                  <longitude>-124.207451</longitude>
+                </geo_location>
+              </geo_locations>
+            </address>
+          </addresses>
+        </part_of>
+        <telecoms>
+          <telecom>
+            <id>6755e20c-012b-4a28-82dc-249be8dfaf18</id>
+            <system>phone</system>
+            <value>place</value>
+            <use>old</use>
+            <rank>3</rank>
+            <period>
+              <start>2030-12-17T04:23:10Z</start>
+              <end>2000-06-28T01:43:12Z</end>
+            </period>
+            <contactpoint_available_times>
+              <contactpoint_available_time>
+                <all_day>false</all_day>
+                <days_of_week>fri</days_of_week>
+                <available_start_time>22:07:32</available_start_time>
+                <available_end_time>20:00:32</available_end_time>
+              </contactpoint_available_time>
+            </contactpoint_available_times>
+            <via_intermediaries>
+              <via_intermediary>
+                <name>Dennis Brown</name>
+                <telecoms>
+                  <telecom>
+                    <system>url</system>
+                    <value>out</value>
+                  </telecom>
+                </telecoms>
+              </via_intermediary>
+            </via_intermediaries>
+          </telecom>
+        </telecoms>
+        <addresses>
+          <address>
+            <id>2ddaf319-0f19-4281-8b93-47328c7d3547</id>
+            <use>old</use>
+            <type>postal</type>
+            <text>three</text>
+            <line>857 Angela Keys</line>
+            <city>South Judychester</city>
+            <district>hold</district>
+            <state>ID</state>
+            <postal_code>87114</postal_code>
+            <country>CR</country>
+            <period>
+              <start>2029-12-20T03:11:40Z</start>
+              <end>2005-11-18T04:32:01Z</end>
+            </period>
+            <geo_locations>
+              <geo_location>
+                <latitude>55.966859</latitude>
+                <longitude>43.145088</longitude>
+              </geo_location>
+            </geo_locations>
+          </address>
+        </addresses>
+      </affiliated_organization>
+      <codes>
+        <code>
+          <coding>
+            <system>indeed</system>
+            <code>thought</code>
+            <display>break</display>
+          </coding>
+          <text>knowledge</text>
+        </code>
+      </codes>
+      <specialties>
+        <specialty>
+          <coding>
+            <system>ability</system>
+            <code>subject</code>
+            <display>there</display>
+          </coding>
+          <text>student</text>
+        </specialty>
+      </specialties>
+      <available_times>
+        <available_time>
+          <all_day>true</all_day>
+          <days_of_week>wed</days_of_week>
+          <available_start_time>09:53:29</available_start_time>
+          <available_end_time>03:11:56</available_end_time>
+        </available_time>
+      </available_times>
+      <not_availables>
+        <not_available>
+          <description>garden</description>
+          <period>
+            <start>2006-04-16T01:44:48Z</start>
+            <end>2004-07-30T06:57:39Z</end>
+          </period>
+        </not_available>
+      </not_availables>
+      <availability_exceptions>herself</availability_exceptions>
+      <new_patients_list>
+        <new_patients>
+          <accepting_patients>existingplusfamily</accepting_patients>
+          <from_network>
+            <network_id>eight</network_id>
+            <name>Arthur Ward</name>
+          </from_network>
+          <characteristics>up</characteristics>
+        </new_patients>
+      </new_patients_list>
       <networks>
         <network>
-          <network_id>whom</network_id>
+          <network_id>television</network_id>
+          <name>Rebecca Brown</name>
         </network>
       </networks>
-      <locations/>
+      <locations>
+        <location>
+          <status>inactive</status>
+          <operational_status>U</operational_status>
+          <identifiers>
+            <identifier>
+              <value>realize</value>
+              <type>compare</type>
+            </identifier>
+          </identifiers>
+          <name>James Hernandez</name>
+          <alias>you</alias>
+          <description>foot</description>
+          <types>
+            <type>HRAD</type>
+          </types>
+          <physical_type>official</physical_type>
+          <position>
+            <longitude>45.56195</longitude>
+            <latitude>64.187745</latitude>
+            <altitude>233.59</altitude>
+          </position>
+          <part_of>
+            <status>inactive</status>
+            <operational_status>H</operational_status>
+            <identifiers>
+              <identifier>
+                <value>series</value>
+                <type>could</type>
+              </identifier>
+            </identifiers>
+            <name>Richard Wyatt</name>
+            <alias>yet</alias>
+            <description>seem</description>
+            <types>
+              <type>PLS</type>
+            </types>
+            <physical_type>public</physical_type>
+            <position>
+              <longitude>69.016795</longitude>
+              <latitude>-54.144682</latitude>
+              <altitude>144.49</altitude>
+            </position>
+            <hours_of_operations>
+              <hours_of_operation>
+                <all_day>true</all_day>
+                <days_of_week>tue</days_of_week>
+                <opening_time>15:12:31</opening_time>
+                <closing_time>11:23:53</closing_time>
+              </hours_of_operation>
+            </hours_of_operations>
+            <availability_exceptions>throughout</availability_exceptions>
+            <accessibility>cultcomp</accessibility>
+            <new_patients_list>
+              <new_patients>
+                <accepting_patients>yes</accepting_patients>
+                <from_network>
+                  <network_id>son</network_id>
+                  <name>Erik Kane</name>
+                </from_network>
+                <characteristics>color</characteristics>
+              </new_patients>
+            </new_patients_list>
+          </part_of>
+          <hours_of_operations>
+            <hours_of_operation>
+              <all_day>false</all_day>
+              <days_of_week>thu</days_of_week>
+              <opening_time>23:19:48</opening_time>
+              <closing_time>02:43:56</closing_time>
+            </hours_of_operation>
+          </hours_of_operations>
+          <availability_exceptions>yet</availability_exceptions>
+          <accessibility>vision</accessibility>
+          <new_patients_list>
+            <new_patients>
+              <accepting_patients>existingplusfamily</accepting_patients>
+              <from_network>
+                <network_id>include</network_id>
+                <name>Tony Smith</name>
+              </from_network>
+              <characteristics>successful</characteristics>
+            </new_patients>
+          </new_patients_list>
+          <telecoms>
+            <telecom>
+              <id>8fefa4a3-8f25-46a8-b690-807ac35d4a99</id>
+              <system>url</system>
+              <value>safe</value>
+              <use>mobile</use>
+              <rank>2</rank>
+              <period>
+                <start>2013-01-18T04:37:19Z</start>
+                <end>2027-06-11T17:34:21Z</end>
+              </period>
+              <contactpoint_available_times>
+                <contactpoint_available_time>
+                  <all_day>false</all_day>
+                  <days_of_week>tue</days_of_week>
+                  <available_start_time>10:31:01</available_start_time>
+                  <available_end_time>23:31:39</available_end_time>
+                </contactpoint_available_time>
+              </contactpoint_available_times>
+              <via_intermediaries>
+                <via_intermediary>
+                  <name>Martin Richardson</name>
+                  <telecoms>
+                    <telecom>
+                      <system>email</system>
+                      <value>hope</value>
+                    </telecom>
+                  </telecoms>
+                </via_intermediary>
+              </via_intermediaries>
+            </telecom>
+          </telecoms>
+          <address>
+            <id>2f1d0a29-8cbd-41d4-aa59-8f64aa952c47</id>
+            <use>old</use>
+            <type>both</type>
+            <text>idea</text>
+            <line>14384 Jones Gateway Apt. 416</line>
+            <city>Kellyfurt</city>
+            <district>about</district>
+            <state>PA</state>
+            <postal_code>86112</postal_code>
+            <country>GM</country>
+            <period>
+              <start>2021-11-02T23:44:14Z</start>
+              <end>2013-09-11T05:44:34Z</end>
+            </period>
+            <geo_locations>
+              <geo_location>
+                <latitude>-39.747072</latitude>
+                <longitude>11.034125</longitude>
+              </geo_location>
+            </geo_locations>
+          </address>
+        </location>
+      </locations>
       <healthcare_services>
         <healthcare_service>
+          <identifiers>
+            <identifier>
+              <value>book</value>
+              <type>admit</type>
+            </identifier>
+          </identifiers>
+          <is_active>true</is_active>
           <category>Hospital</category>
           <types>
-            <type>309</type>
+            <type>69</type>
           </types>
-          <specialties/>
-          <name>Cassidy Smith</name>
+          <specialties>
+            <specialty>3418M1120X</specialty>
+          </specialties>
+          <name>Wendy Lang</name>
+          <comment>rich</comment>
+          <extra_details>who</extra_details>
           <delivery_methods>
             <delivery_method>
-              <type>virtual</type>
+              <type>physical</type>
+              <virtual_modalities>video</virtual_modalities>
               <new_patients_list>
                 <new_patients>
-                  <accepting_patients>existing</accepting_patients>
+                  <accepting_patients>existingplusfamily</accepting_patients>
                   <from_network>
-                    <network_id>show</network_id>
-                    <name>Morgan Gilmore</name>
+                    <network_id>while</network_id>
+                    <name>Kimberly Maddox</name>
                   </from_network>
-                  <characteristics>check</characteristics>
+                  <characteristics>sure</characteristics>
                 </new_patients>
               </new_patients_list>
             </delivery_method>
           </delivery_methods>
           <eligibilities>
-            <eligibility/>
+            <eligibility>
+              <code>
+                <system>different</system>
+                <code>wear</code>
+                <display>senior</display>
+              </code>
+              <comment>probably</comment>
+            </eligibility>
           </eligibilities>
-          <programs/>
-          <communications/>
+          <programs>
+            <program>
+              <code>race</code>
+              <display>perhaps</display>
+            </program>
+          </programs>
+          <characteristics>
+            <characteristic>
+              <system>detail</system>
+              <code>use</code>
+              <display>he</display>
+            </characteristic>
+          </characteristics>
+          <communications>
+            <communication>
+              <system>lay</system>
+              <code>back</code>
+              <display>new</display>
+            </communication>
+          </communications>
           <referral_methods>
             <referral_method>
-              <code>artist</code>
-              <display>no</display>
+              <code>soon</code>
+              <display>public</display>
             </referral_method>
           </referral_methods>
-          <availability_exceptions>same</availability_exceptions>
+          <appointment_required>false</appointment_required>
+          <available_times>
+            <available_time>
+              <all_day>false</all_day>
+              <days_of_week>wed</days_of_week>
+              <available_start_time>22:27:37</available_start_time>
+              <available_end_time>10:27:09</available_end_time>
+            </available_time>
+          </available_times>
+          <not_availables>
+            <not_available>
+              <description>effort</description>
+              <period>
+                <start>2011-12-10T13:29:07Z</start>
+                <end>2015-07-30T11:15:38Z</end>
+              </period>
+            </not_available>
+          </not_availables>
+          <availability_exceptions>report</availability_exceptions>
+          <locations>
+            <location>
+              <status>active</status>
+              <operational_status>H</operational_status>
+              <identifiers>
+                <identifier>
+                  <value>road</value>
+                  <type>four</type>
+                </identifier>
+              </identifiers>
+              <name>Leslie Paul</name>
+              <alias>get</alias>
+              <description>return</description>
+              <types>
+                <type>INPHARM</type>
+              </types>
+              <physical_type>case</physical_type>
+              <position>
+                <longitude>-46.364363</longitude>
+                <latitude>-78.900018</latitude>
+                <altitude>225.71</altitude>
+              </position>
+              <part_of>
+                <status>active</status>
+                <operational_status>U</operational_status>
+                <identifiers>
+                  <identifier>
+                    <value>glass</value>
+                    <type>manage</type>
+                  </identifier>
+                </identifiers>
+                <name>Jeremy Key</name>
+                <alias>particularly</alias>
+                <description>bag</description>
+                <types>
+                  <type>_IncidentalServiceDeliveryLocationRoleType</type>
+                </types>
+                <physical_type>wait</physical_type>
+                <position>
+                  <longitude>76.320799</longitude>
+                  <latitude>57.263981</latitude>
+                  <altitude>204.31</altitude>
+                </position>
+                <hours_of_operations>
+                  <hours_of_operation>
+                    <all_day>false</all_day>
+                    <days_of_week>sat</days_of_week>
+                    <opening_time>09:23:09</opening_time>
+                    <closing_time>16:40:15</closing_time>
+                  </hours_of_operation>
+                </hours_of_operations>
+                <availability_exceptions>nice</availability_exceptions>
+                <accessibility>vision</accessibility>
+                <new_patients_list>
+                  <new_patients>
+                    <accepting_patients>existingplusfamily</accepting_patients>
+                    <from_network>
+                      <network_id>writer</network_id>
+                      <name>Phillip Miller</name>
+                    </from_network>
+                    <characteristics>significant</characteristics>
+                  </new_patients>
+                </new_patients_list>
+              </part_of>
+              <hours_of_operations>
+                <hours_of_operation>
+                  <all_day>true</all_day>
+                  <days_of_week>sat</days_of_week>
+                  <opening_time>08:30:09</opening_time>
+                  <closing_time>16:59:18</closing_time>
+                </hours_of_operation>
+              </hours_of_operations>
+              <availability_exceptions>behind</availability_exceptions>
+              <accessibility>cultcomp</accessibility>
+              <new_patients_list>
+                <new_patients>
+                  <accepting_patients>no</accepting_patients>
+                  <from_network>
+                    <network_id>decide</network_id>
+                    <name>Clifford Wilkins</name>
+                  </from_network>
+                  <characteristics>behavior</characteristics>
+                </new_patients>
+              </new_patients_list>
+              <telecoms>
+                <telecom>
+                  <id>49034d22-2cdf-4781-8c42-d0f13b8bfdcb</id>
+                  <system>fax</system>
+                  <value>exactly</value>
+                  <use>home</use>
+                  <rank>5</rank>
+                  <period>
+                    <start>2029-07-27T18:15:04Z</start>
+                    <end>2005-01-11T14:18:30Z</end>
+                  </period>
+                  <contactpoint_available_times>
+                    <contactpoint_available_time>
+                      <all_day>false</all_day>
+                      <days_of_week>mon</days_of_week>
+                      <available_start_time>13:19:39</available_start_time>
+                      <available_end_time>11:27:39</available_end_time>
+                    </contactpoint_available_time>
+                  </contactpoint_available_times>
+                  <via_intermediaries>
+                    <via_intermediary>
+                      <name>Laura Lopez</name>
+                      <telecoms>
+                        <telecom>
+                          <system>sms</system>
+                          <value>culture</value>
+                        </telecom>
+                      </telecoms>
+                    </via_intermediary>
+                  </via_intermediaries>
+                </telecom>
+              </telecoms>
+              <address>
+                <id>4e88d7a3-5620-40d4-af22-f12c7ad742aa</id>
+                <use>old</use>
+                <type>both</type>
+                <text>treatment</text>
+                <line>40127 Tony Isle Suite 447</line>
+                <city>Butlerside</city>
+                <district>plan</district>
+                <state>PR</state>
+                <postal_code>10184</postal_code>
+                <country>TD</country>
+                <period>
+                  <start>2007-06-30T17:20:59Z</start>
+                  <end>2011-07-27T20:48:08Z</end>
+                </period>
+                <geo_locations>
+                  <geo_location>
+                    <latitude>4.793243</latitude>
+                    <longitude>-159.85354</longitude>
+                  </geo_location>
+                </geo_locations>
+              </address>
+            </location>
+          </locations>
         </healthcare_service>
       </healthcare_services>
     </practitioner>

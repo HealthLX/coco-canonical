@@ -1,47 +1,195 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/formulary.xsd">
   <schema_version>2.0</schema_version>
-  <sender_id>her</sender_id>
-  <date_time_reported>2025-10-31T15:14:01Z</date_time_reported>
+  <sender_id>campaign</sender_id>
+  <date_time_reported>2025-10-31T20:29:20Z</date_time_reported>
   <coverage_plan>
-    <plan_id>wonder</plan_id>
-    <plan_id_type>do</plan_id_type>
-    <title>answer</title>
-    <marketing_url>weight</marketing_url>
-    <summary_url>shoulder</summary_url>
-    <email_plan_contact>tell</email_plan_contact>
-    <network>true</network>
-    <status>entered-in-error</status>
+    <plan_id>their</plan_id>
+    <plan_id_type>finish</plan_id_type>
+    <title>yard</title>
+    <marketing_url>near</marketing_url>
+    <summary_url>third</summary_url>
+    <formulary_url>the</formulary_url>
+    <email_plan_contact>occur</email_plan_contact>
+    <network>fast</network>
+    <status>current</status>
     <mode>working</mode>
+    <date>2005-02-20T18:35:09Z</date>
     <drug_tiers>
       <drug_tier>
-        <drug_tier_id/>
-        <mail_order>false</mail_order>
+        <drug_tier_id>
+          <code>zero-cost-share-preventive</code>
+          <text>family</text>
+        </drug_tier_id>
+        <mail_order>true</mail_order>
         <cost_sharings>
           <cost_sharing>
             <pharmacy_type>1-month-out-retail</pharmacy_type>
             <copay_amount>
-              <value>903.9</value>
-              <currency>AWG</currency>
+              <value>760.49</value>
+              <currency>WST</currency>
             </copay_amount>
-            <copay_option>after-deductible</copay_option>
-            <coinsurance_rate>297.76</coinsurance_rate>
+            <copay_option>no-charge</copay_option>
+            <coinsurance_rate>94.81</coinsurance_rate>
             <coinsurance_option>no-charge</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
             <rx_norm_code>
-              <code>return</code>
-              <display>nice</display>
+              <code>sit</code>
+              <display>shoulder</display>
               <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
             </rx_norm_code>
-            <status>inactive</status>
+            <status>active</status>
+            <manufacturer>
+              <name>Erik Russell</name>
+              <alias>market</alias>
+              <type>their</type>
+            </manufacturer>
+            <dose_form>
+              <code>option</code>
+              <system>read</system>
+            </dose_form>
+            <ingredients>
+              <ingredient>
+                <is_active>false</is_active>
+                <strength>
+                  <numerator>
+                    <value>910.78</value>
+                    <comparator>&gt;=</comparator>
+                    <unit>not</unit>
+                    <system>choose</system>
+                    <code>lay</code>
+                  </numerator>
+                  <denominator>
+                    <value>137.36</value>
+                    <comparator>&gt;=</comparator>
+                    <unit>option</unit>
+                    <system>respond</system>
+                    <code>century</code>
+                  </denominator>
+                </strength>
+                <substance>
+                  <category>body</category>
+                  <description>bar</description>
+                  <code>
+                    <code>cause</code>
+                    <system>PM</system>
+                  </code>
+                </substance>
+              </ingredient>
+            </ingredients>
+            <monitoring_programs>
+              <monitoring_program>
+                <name>Jennifer Barrett</name>
+                <type>vote</type>
+              </monitoring_program>
+            </monitoring_programs>
             <monographs>
-              <monograph/>
+              <monograph>
+                <type>some</type>
+              </monograph>
             </monographs>
-            <plan_id>PM</plan_id>
-            <step_therapy>false</step_therapy>
+            <cost_informations>
+              <cost_information>
+                <type>course</type>
+                <source>against</source>
+                <cost>
+                  <value>679.85</value>
+                  <currency>MUR</currency>
+                </cost>
+              </cost_information>
+            </cost_informations>
+            <plan_id>remain</plan_id>
+            <prior_authorization>true</prior_authorization>
+            <step_therapy>true</step_therapy>
+            <quantity_limit>false</quantity_limit>
+            <medicine_classifications>
+              <medicine_classification>
+                <type>product</type>
+                <classification>we</classification>
+              </medicine_classification>
+            </medicine_classifications>
+            <formulary_drugs_alternatives>
+              <formulary_drugs_alternative>
+                <rx_norm_code>
+                  <code>conference</code>
+                  <display>necessary</display>
+                  <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
+                </rx_norm_code>
+                <status>active</status>
+                <manufacturer>
+                  <name>Hannah Smith</name>
+                  <alias>fall</alias>
+                  <type>including</type>
+                </manufacturer>
+                <dose_form>
+                  <code>wide</code>
+                  <system>soldier</system>
+                </dose_form>
+                <ingredients>
+                  <ingredient>
+                    <is_active>false</is_active>
+                    <strength>
+                      <numerator>
+                        <value>830.47</value>
+                        <comparator>&gt;=</comparator>
+                        <unit>stuff</unit>
+                        <system>give</system>
+                        <code>her</code>
+                      </numerator>
+                      <denominator>
+                        <value>3.21</value>
+                        <comparator>&gt;</comparator>
+                        <unit>particularly</unit>
+                        <system>approach</system>
+                        <code>exactly</code>
+                      </denominator>
+                    </strength>
+                    <substance>
+                      <category>chemical</category>
+                      <description>performance</description>
+                      <code>
+                        <code>parent</code>
+                        <system>wind</system>
+                      </code>
+                    </substance>
+                  </ingredient>
+                </ingredients>
+                <monitoring_programs>
+                  <monitoring_program>
+                    <name>Shannon Parks</name>
+                    <type>adult</type>
+                  </monitoring_program>
+                </monitoring_programs>
+                <monographs>
+                  <monograph>
+                    <type>nice</type>
+                  </monograph>
+                </monographs>
+                <cost_informations>
+                  <cost_information>
+                    <type>exactly</type>
+                    <source>become</source>
+                    <cost>
+                      <value>131.87</value>
+                      <currency>GEL</currency>
+                    </cost>
+                  </cost_information>
+                </cost_informations>
+                <plan_id>forward</plan_id>
+                <prior_authorization>false</prior_authorization>
+                <step_therapy>true</step_therapy>
+                <quantity_limit>true</quantity_limit>
+                <medicine_classifications>
+                  <medicine_classification>
+                    <type>movie</type>
+                    <classification>single</classification>
+                  </medicine_classification>
+                </medicine_classifications>
+              </formulary_drugs_alternative>
+            </formulary_drugs_alternatives>
           </formulary_drug>
         </formulary_drugs>
       </drug_tier>

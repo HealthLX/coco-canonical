@@ -207,13 +207,24 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
 
                 # --- Normal element processing ---
                 count = 0
+                # --- START FIX: Force include optional elements for a full sample ---
+                # We are building a "full" sample, so we want to *include*
+                # optional elements (min_occurs="0") instead of skipping them.
+                
                 if particle.min_occurs == 0:
-                    if random.choice([True, False]):  # 50/50 chance to skip
-                        return  # Skipped
-                    else:
-                        count = 1  # Include it once
+                    count = 1  # Always include at least one
                 else:
                     count = particle.min_occurs or 1  # Handle required (1 or more)
+                
+                # This logic was in your original file and is good for picking a random number
+                # of items if max_occurs is greater than 1.
+                if particle.max_occurs and particle.max_occurs > 1:
+                    # Pick a random number between 1 (our new minimum) and max_occurs
+                    # We'll cap it at 3 to avoid huge files
+                    max_items = min(particle.max_occurs, 3) 
+                    count = random.randint(count, max_items)
+                # --- END FIX ---
+                
 
                 for _ in range(count):
                     child_elem = build_element(
@@ -250,8 +261,22 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                         possible_choices = list(particle)  # Get all particles in the choice
                         if not possible_choices:
                             return  # Empty choice
+                        
+                        # --- FIX ---
+                        # Filter out the <reference> element to *prefer* the full data block
+                        non_reference_choices = [
+                            p for p in possible_choices
+                            if not (isinstance(p, XsdElement) and p.name == f"{COCO_NS}reference")
+                        ]
 
-                        chosen_particle = random.choice(possible_choices)
+                        if non_reference_choices:
+                            # We found at least one non-reference choice (e.g., the full <sequence>)
+                            # Randomly pick from this *filtered* list
+                            chosen_particle = random.choice(non_reference_choices)
+                        else:
+                            # If, for some reason, *only* reference options exist, just pick one
+                            chosen_particle = random.choice(possible_choices)
+                        # --- END FIX ---
 
                         # Process the *one* chosen particle
                         process_particle(
