@@ -264,7 +264,6 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                         process_particle(
                             sub_particle, parent_xml_elem, depth_level, choice_override)
 
-        # --- End of helper function ---
 
         # Start processing the *main* content model (e.g., the <xs:sequence> of 'patient')
         # We pass the 'child_choice' from the function args as the 'choice_override'
