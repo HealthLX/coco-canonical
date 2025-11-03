@@ -129,12 +129,12 @@ The following environment setup is required for all of the above features. Pytho
 
 While not required, using a python virtual environment will help to keep things isolated from any OS level configuration your system may have with python. A requirements.txt file is included in the source control package for restoring all dependencies.
 
-| **Step**                                 | **Command**                                   |
-|------------------------------------------|-----------------------------------------------|
-| Create Python virtual environment        | `python3 -m venv venv`                        |
-| Activate virtual environment             | `source venv/bin/activate`                    |
-| Install dependencies from requirements   | `pip install -r requirements.txt`  |
-| Update the requirements.txt file         | `pip freeze > requirements.txt`    |
+| **Step**                               | **macOS / Linux Command**                    | **Windows Command**        |
+|----------------------------------------|----------------------------------------------|-----------------------------------------------------------|
+| Create Python virtual environment      | `python3 -m venv venv`                       | `python -m venv venv`                                     |
+| Activate virtual environment           | `source venv/bin/activate`                   | `venv\Scripts\activate`                                   |
+| Install dependencies from requirements | `pip install -r requirements.txt`            | `pip install -r requirements.txt`                         |
+| Update the requirements.txt file       | `pip freeze > requirements.txt`              | `pip freeze > requirements.txt`                           |
 
 ### Refresh python virtual environment
 
