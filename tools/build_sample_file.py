@@ -5,8 +5,8 @@ from pathlib import Path
 import re
 from datetime import datetime, timedelta, timezone
 import xmlschema
-from xmlschema.validators import XsdElement  # change: needed for type checking
-import base64  # change: needed for base64Binary values
+from xmlschema.validators import XsdElement  # needed for type checking
+import base64  # needed for base64Binary values
 
 COCO_NS_BARE = "http://cocodata.org"
 XSI_NS_BARE = "http://www.w3.org/2001/XMLSchema-instance"
@@ -34,13 +34,13 @@ def random_datetime():
     end = datetime(2030, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
     delta = end - start
     random_seconds = random.randint(0, int(delta.total_seconds()))
-    # change: ensure UTC Z
+    # ensure UTC Z
     return (start + timedelta(seconds=random_seconds)).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def iso_datetime_z():
     fake = Faker()
-    # change: matches XSD instant pattern
+    # matches XSD instant pattern
     return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
@@ -55,7 +55,7 @@ def generate_value(tag_name, xsd_element=None):
 
     fake = Faker()
 
-    # change: normalize type name once
+    # normalize type name once
     type_name = str(xsd_element.type.name).lower(
     ) if xsd_element.type and xsd_element.type.name else ""
 
