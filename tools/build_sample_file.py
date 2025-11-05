@@ -5,8 +5,8 @@ from pathlib import Path
 import re
 from datetime import datetime, timedelta, timezone
 import xmlschema
-from xmlschema.validators import XsdElement  #change: needed for type checking
-import base64  #change: needed for base64Binary values
+from xmlschema.validators import XsdElement  # change: needed for type checking
+import base64  # change: needed for base64Binary values
 
 COCO_NS_BARE = "http://cocodata.org"
 XSI_NS_BARE = "http://www.w3.org/2001/XMLSchema-instance"
@@ -34,13 +34,13 @@ def random_datetime():
     end = datetime(2030, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
     delta = end - start
     random_seconds = random.randint(0, int(delta.total_seconds()))
-    #change: ensure UTC Z
+    # change: ensure UTC Z
     return (start + timedelta(seconds=random_seconds)).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def iso_datetime_z():
     fake = Faker()
-    #change: matches XSD instant pattern
+    # change: matches XSD instant pattern
     return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
@@ -50,20 +50,21 @@ def generate_value(tag_name, xsd_element=None):
         return "2.0"
 
     if tag_name == f"{COCO_NS}date_time_reported":
-        #change: match XSD instant
+        # change: match XSD instant
         return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
     fake = Faker()
 
-    #change: normalize type name once
+    # change: normalize type name once
     type_name = str(xsd_element.type.name).lower(
     ) if xsd_element.type and xsd_element.type.name else ""
 
     # 1.Handle enum values
-    if getattr(xsd_element.type, "is_simple", lambda: False)(): # can i remove this check?
+    if getattr(xsd_element.type, "is_simple", lambda: False)():  # can i remove this check?
         enum_values = getattr(xsd_element.type, "enumeration", None)
         if enum_values:
-            return random.choice(enum_values) # this works great for strings, for objects will need to use [e.value for e in enum_facet.enumeration]
+            # this works great for strings, for objects will need to use [e.value for e in enum_facet.enumeration]
+            return random.choice(enum_values)
 
     # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
@@ -91,7 +92,7 @@ def generate_value(tag_name, xsd_element=None):
     # 3.5 Handle boolean
     if "boolean" in type_name:
         return str(fake.boolean()).lower()
-    if "base64binary" in type_name:  #change: fix base64Binary errors
+    if "base64binary" in type_name:  # change: fix base64Binary errors
         sample_bytes = fake.word().encode("utf-8")
         return base64.b64encode(sample_bytes).decode("ascii")
 
@@ -108,12 +109,15 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}url": lambda: fake.url(),
         f"{COCO_NS}rank": lambda: str(fake.random_int(min=1, max=5)),
         f"{COCO_NS}id": lambda: fake.uuid4(),
-        f"{COCO_NS}date": lambda: iso_datetime_z(),  #change: ensure compliant dateTime
+        
+        # 'date' should be a date (YYYY-MM-DD), not a dateTime ---
+        f"{COCO_NS}date": lambda: fake.date(),  # change: was iso_datetime_z()
+        
         f"{COCO_NS}birth_date": lambda: fake.date(),
         f"{COCO_NS}period": lambda: fake.date(),
         f"{COCO_NS}start": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
         f"{COCO_NS}end": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
-        f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)), # NPI numbers are always 10 digits
+        f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)),  # NPI numbers are always 10 digits
         f"{COCO_NS}is_active": lambda: "true",
         f"{COCO_NS}city": lambda: fake.city(),
         f"{COCO_NS}line": lambda: fake.street_address(),
@@ -126,7 +130,15 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}available_end_time": lambda: str(fake.time()),
         f"{COCO_NS}opening_time": lambda: str(fake.time()),
         f"{COCO_NS}closing_time": lambda: str(fake.time()),
-        #added for eob
+        
+        # --- Add specific email tags ---
+        f"{COCO_NS}email_plan_contact": lambda: fake.email(),
+        f"{COCO_NS}email_address": lambda: fake.email(),
+
+        # added for eob
+        # ---  Add 'timing' as a date type ---
+        f"{COCO_NS}timing": lambda: fake.date(),
+
         f"{COCO_NS}timing_date": lambda: str(fake.date()),
         f"{COCO_NS}serviced_date": lambda: str(fake.date()),
         f"{COCO_NS}value_time": lambda: str(fake.time()),
@@ -160,10 +172,11 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
     if xsd_element is None:
         if root_element_name not in schema.elements:
             print(f"ERROR: '{root_element_name}' not found in global elements")
-            print(f"Available global elements: {list(schema.elements.keys())}")
-            raise KeyError(f"Global element '{root_element_name}' not found")
+            print(
+                f"Available global elements: {list(schema.elements.keys())}")
+            raise KeyError(
+                f"Global element '{root_element_name}' not found")
         xsd_element = schema.elements[root_element_name]
-
 
     xml_elem = etree.Element(root_element_name)
 
@@ -172,13 +185,14 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
         # Make canonical *in* the cocodata namespace and declare xsi prefix
         xml_elem = etree.Element(
             f"{COCO_NS}{root_element_name}",
-            nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE}, # set default ns + xsi prefix
+            # set default ns + xsi prefix
+            nsmap={None: COCO_NS_BARE, "xsi": XSI_NS_BARE},
         )
         # Set xsi:schemaLocation using Clark notation
         xml_elem.set(
-            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}") #TODO: handle version dynamically
+            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}")  # TODO: handle version dynamically
 
-    #change: Handle content generation based on type
+    # change: Handle content generation based on type
 
     # Case 1: Simple type (xs:string, xs:int) OR Complex type with simple content (<elem attr="val">text</elem>)
     # These types should receive a generated text value.
@@ -190,12 +204,12 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
     # Case 2: Complex type with complex content (child elements)
     # These types should have child elements added recursively.
     elif getattr(xsd_element.type, "is_complex", lambda: False)() and \
-           (getattr(xsd_element.type, "has_complex_content", lambda: False)() or getattr(xsd_element.type, "has_mixed_content", lambda: False)()) and \
-           hasattr(xsd_element.type, 'content') and xsd_element.type.content:
+         (getattr(xsd_element.type, "has_complex_content", lambda: False)() or getattr(xsd_element.type, "has_mixed_content", lambda: False)()) and \
+         hasattr(xsd_element.type, 'content') and xsd_element.type.content:
 
         content_model = xsd_element.type.content
 
-        #change: NEW RECURSIVE FUNCTION TO PROCESS GROUPS
+        # change: NEW RECURSIVE FUNCTION TO PROCESS GROUPS
         # This helper function correctly walks the XSD content model tree (sequences, choices, elements)
         def process_particle(particle, parent_xml_elem, depth_level, choice_override=None):
             """
@@ -209,20 +223,18 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                 count = 0
                 # We are building a "full" sample, so we want to *include*
                 # optional elements (min_occurs="0") instead of skipping them.
-                
+
                 if particle.min_occurs == 0:
                     count = 1  # Always include at least one
                 else:
-                    count = particle.min_occurs or 1  # Handle required (1 or more)
-                
-                # This logic was in your original file and is good for picking a random number
+                    # Handle required (1 or more)
+                    count = particle.min_occurs or 1
+
                 # of items if max_occurs is greater than 1.
                 if particle.max_occurs and particle.max_occurs > 1:
                     # Pick a random number between 1 (our new minimum) and max_occurs
-                    max_items = min(particle.max_occurs, 3) 
+                    max_items = min(particle.max_occurs, 3)
                     count = random.randint(count, max_items)
-
-                
 
                 for _ in range(count):
                     child_elem = build_element(
@@ -256,10 +268,11 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                                     break  # Found and processed
                     else:
                         # --- Normal <xs:choice> ---
-                        possible_choices = list(particle)  # Get all particles in the choice
+                        possible_choices = list(
+                            particle)  # Get all particles in the choice
                         if not possible_choices:
                             return  # Empty choice
-                        
+
                         # Filter out the <reference> element to *prefer* the full data block
                         non_reference_choices = [
                             p for p in possible_choices
@@ -269,7 +282,8 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                         if non_reference_choices:
                             # We found at least one non-reference choice (e.g., the full <sequence>)
                             # Randomly pick from this *filtered* list
-                            chosen_particle = random.choice(non_reference_choices)
+                            chosen_particle = random.choice(
+                                non_reference_choices)
                         else:
                             # If, for some reason, *only* reference options exist, just pick one
                             chosen_particle = random.choice(possible_choices)
@@ -284,7 +298,6 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                     for sub_particle in particle:
                         process_particle(
                             sub_particle, parent_xml_elem, depth_level, choice_override)
-
 
         # Start processing the *main* content model (e.g., the <xs:sequence> of 'patient')
         # We pass the 'child_choice' from the function args as the 'choice_override'
