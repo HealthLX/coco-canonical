@@ -110,7 +110,7 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}rank": lambda: str(fake.random_int(min=1, max=5)),
         f"{COCO_NS}id": lambda: fake.uuid4(),
         
-        # 'date' should be a date (YYYY-MM-DD), not a dateTime ---
+        # 'date' should be a date (YYYY-MM-DD), not a dateTime
         f"{COCO_NS}date": lambda: fake.date(),  # change: was iso_datetime_z()
         
         f"{COCO_NS}birth_date": lambda: fake.date(),
@@ -131,12 +131,12 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}opening_time": lambda: str(fake.time()),
         f"{COCO_NS}closing_time": lambda: str(fake.time()),
         
-        # --- Add specific email tags ---
+        # add specific email tags
         f"{COCO_NS}email_plan_contact": lambda: fake.email(),
         f"{COCO_NS}email_address": lambda: fake.email(),
 
         # added for eob
-        # ---  Add 'timing' as a date type ---
+        # add 'timing' as a date type
         f"{COCO_NS}timing": lambda: fake.date(),
 
         f"{COCO_NS}timing_date": lambda: str(fake.date()),
