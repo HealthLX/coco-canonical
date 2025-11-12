@@ -136,6 +136,34 @@ While not required, using a python virtual environment will help to keep things 
 | Install dependencies from requirements | `pip install -r requirements.txt`            | `pip install -r requirements.txt`                         |
 | Update the requirements.txt file       | `pip freeze > requirements.txt`              | `pip freeze > requirements.txt`                           |
 
+### Install via pyproject.toml (Preferred)
+
+Dependency management, project metadata, and tooling configuration have been migrated to `pyproject.toml`.
+
+| Purpose | macOS / Linux | Windows |
+|---------|----------------|---------|
+| Install runtime dependencies | `pip install .` | `pip install .` |
+| Install with dev/test extras | `pip install .[dev]` | `pip install .[dev]` |
+| Run tests | `pytest` | `pytest` |
+
+Notes:
+
+1. You no longer need to manually maintain `requirements.txt`; transitive dependencies (e.g., `pluggy`, `iniconfig`) are pulled automatically.
+2. To add a new direct dependency, edit the `dependencies` array in `pyproject.toml` and re-run `pip install .`.
+3. Legacy instructions using `requirements.txt` remain for backward compatibility but will be removed in a future release.
+
+#### Updating dependencies
+
+Edit `pyproject.toml` and bump versions (use compatible `<` upper bounds when possible). Then run:
+
+```bash
+pip install --upgrade .[dev]
+```
+
+#### Why migrate?
+
+PEP 621 standardizes project metadata, enabling modern build backends and simpler installs (`pip install .`). It also centralizes tool configuration (e.g., pytest) and prepares the project for publishing should that be desired later.
+
 ### Refresh python virtual environment
 
 Sometimes the virtual environment will get into a bad state. Deactivating and reactivating it should resolve any issues.
