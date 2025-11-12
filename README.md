@@ -164,6 +164,23 @@ pip install --upgrade .[dev]
 
 PEP 621 standardizes project metadata, enabling modern build backends and simpler installs (`pip install .`). It also centralizes tool configuration (e.g., pytest) and prepares the project for publishing should that be desired later.
 
+### Generate sample files via YAML config
+
+The sample file generation is now configuration-driven using YAML. Edit `config/sample_builds.yaml` to add or remove builds, then run:
+
+| Purpose | macOS / Linux | Windows |
+|---------|----------------|---------|
+| Generate all samples from config | `python -m tools.build_all_sample_files` | `python -m tools.build_all_sample_files` |
+| Use a custom config path | `python -m tools.build_all_sample_files --config path/to/file.yaml` | `python -m tools.build_all_sample_files --config path\to\file.yaml` |
+
+YAML keys per build entry:
+
+- `canonical_name` (string)
+- `root_element_name` (string)
+- `schema_file_name` (string)
+- `output_file_name` (string)
+- `provider_directory_child` (string, optional)
+
 ### Refresh python virtual environment
 
 Sometimes the virtual environment will get into a bad state. Deactivating and reactivating it should resolve any issues.

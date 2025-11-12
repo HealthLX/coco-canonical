@@ -29,7 +29,8 @@ dependencies = [
   "xmlschema>=3.2,<5.0",     # XSD handling and validation
   "saxonche>=12.5,<13.0",    # XSLT 3.0 engine
   "Faker>=24.0,<38.0",       # sample data generation
-  "rstr>=3.2,<4.0"           # regex-based string generation
+  "rstr>=3.2,<4.0",          # regex-based string generation
+  "pyyaml>=6.0,<7.0"         # YAML config parsing for sample builders
 ]
 
 [project.optional-dependencies]

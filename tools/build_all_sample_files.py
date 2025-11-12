@@ -3,6 +3,8 @@ import xmlschema
 from pathlib import Path
 from lxml import etree
 from tools.build_sample_file import build_element
+import yaml
+import argparse
 
 def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child=None):
     #Get path and load schema
@@ -35,45 +37,48 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     print("Sample XML generated as ../samples/v2.0/" + name)
 
 def main():
-    build_sample_file(
-       "providerdirectory", 
-       "providers", 
-       "provider-directory.xsd", 
-       "provider-directory-practitioner-sample.xml", 
-       provider_directory_child="practitioner")
-   
-    build_sample_file(
-       "providerdirectory", 
-       "providers", 
-       "provider-directory.xsd", 
-       "provider-directory-organization-sample.xml", 
-       provider_directory_child="providing_organization")
+    """Build sample files driven by a YAML configuration."""
+    here = Path(__file__).resolve()
+    project_root = here.parents[1]
 
-    build_sample_file(
-        "roster", 
-        "roster", 
-        "roster.xsd", 
-        "roster-sample.xml")
+    parser = argparse.ArgumentParser(description="Generate sample files from YAML config")
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=project_root / "config" / "sample_builds.yaml",
+        help="Path to YAML config listing sample builds",
+    )
+    args = parser.parse_args()
 
-    build_sample_file(
-        "forumarly", 
-        "coverage_plans", 
-        "formulary.xsd", 
-        "formulary-sample.xml")
+    if not args.config.exists():
+        raise FileNotFoundError(f"Config file not found: {args.config}")
 
-    # TODO: figure out how to handle providing_organization and practitioner XOR for EOB
-    # should be able to use same logic as for provider-directory... but not working as is 
-    build_sample_file(
-       "eob",
-       "eob_list",
-       "eob.xsd",
-       "eob-sample.xml")
+    with open(args.config, "r", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f) or {}
 
-    build_sample_file(
-        "clinical", 
-        "clinicals",
-        "clinical.xsd", 
-        "clinical-sample.xml")
+    builds = cfg.get("builds", [])
+    if not builds:
+        raise ValueError("No 'builds' entries found in config YAML")
+
+    print(f"Using config: {args.config}")
+    for idx, b in enumerate(builds, start=1):
+        canonical_name = b.get("canonical_name")
+        root_element_name = b.get("root_element_name")
+        schema_file_name = b.get("schema_file_name")
+        output_file_name = b.get("output_file_name")
+        provider_directory_child = b.get("provider_directory_child")
+
+        if not all([canonical_name, root_element_name, schema_file_name, output_file_name]):
+            raise ValueError(f"Missing required keys in build #{idx}: {b}")
+
+        print(f"[{idx}/{len(builds)}] Building {output_file_name} from {schema_file_name} ...")
+        build_sample_file(
+            canonical_name,
+            root_element_name,
+            schema_file_name,
+            output_file_name,
+            provider_directory_child=provider_directory_child,
+        )
 
 if __name__ == "__main__":
     main()
