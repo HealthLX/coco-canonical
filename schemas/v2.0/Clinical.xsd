@@ -10,10 +10,12 @@
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
 
 	<!--Data Type Declaration-->
+	
 	<xs:element name="ProviderNPI" type="core:NPI"/>
     <xs:element name="PatientAge" type="core:positiveInt"/>
     <xs:element name="RecordCount" type="core:unsignedInt"/>
     <xs:element name="Description" type="core:string"/>
+
 	<!--Regular Expression for Integer-->
 	<xs:simpleType name="integer">
 		<xs:restriction base="xs:integer">
