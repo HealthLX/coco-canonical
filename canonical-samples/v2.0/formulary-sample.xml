@@ -1,353 +1,191 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/formulary.xsd">
   <schema_version>2.0</schema_version>
-<<<<<<< HEAD
-  <sender_id>five</sender_id>
-  <date_time_reported>2025-11-19T16:11:51Z</date_time_reported>
+  <sender_id>water</sender_id>
+  <date_time_reported>2025-11-19T21:51:09Z</date_time_reported>
   <coverage_plan>
-    <plan_id>health</plan_id>
-    <plan_id_type>building</plan_id_type>
-    <title>east</title>
-    <marketing_url>table</marketing_url>
-    <summary_url>professor</summary_url>
-    <formulary_url>clearly</formulary_url>
-    <email_plan_contact>donnanolan@example.org</email_plan_contact>
-    <network>bank</network>
+    <plan_id>build</plan_id>
+    <plan_id_type>early</plan_id_type>
+    <title>major</title>
+    <marketing_url>wish</marketing_url>
+    <summary_url>name</summary_url>
+    <formulary_url>money</formulary_url>
+    <email_plan_contact>joshua29@example.org</email_plan_contact>
+    <network>move</network>
     <status>entered-in-error</status>
     <mode>changes</mode>
-    <date>2012-04-04T15:23:08Z</date>
+    <date>2016-01-02T03:24:18Z</date>
     <drug_tiers>
       <drug_tier>
         <drug_tier_id>
-          <code>non-preferred-brand</code>
-          <text>certain</text>
-=======
-  <sender_id>feeling</sender_id>
-  <date_time_reported>2025-11-05T19:58:26Z</date_time_reported>
-  <coverage_plan>
-    <plan_id>long</plan_id>
-    <plan_id_type>major</plan_id_type>
-    <title>describe</title>
-    <marketing_url>population</marketing_url>
-    <summary_url>PM</summary_url>
-    <formulary_url>like</formulary_url>
-    <email_plan_contact>vnelson@example.com</email_plan_contact>
-    <network>option</network>
-    <status>entered-in-error</status>
-    <mode>working</mode>
-    <date>2003-12-04T10:58:31Z</date>
-    <drug_tiers>
-      <drug_tier>
-        <drug_tier_id>
-          <code>non-preferred-generic</code>
-          <text>tough</text>
->>>>>>> origin/main
+          <code>generic</code>
+          <text>arrive</text>
         </drug_tier_id>
         <mail_order>false</mail_order>
         <cost_sharings>
           <cost_sharing>
-<<<<<<< HEAD
-            <pharmacy_type>3-month-in-retail</pharmacy_type>
+            <pharmacy_type>3-month-in-mail</pharmacy_type>
             <copay_amount>
-              <value>83.74</value>
-              <currency>ALL</currency>
+              <value>648.13</value>
+              <currency>NIO</currency>
             </copay_amount>
-            <copay_option>no-charge</copay_option>
-            <coinsurance_rate>22.31</coinsurance_rate>
-=======
-            <pharmacy_type>1-month-out-mail</pharmacy_type>
-            <copay_amount>
-              <value>947.28</value>
-              <currency>AOA</currency>
-            </copay_amount>
-            <copay_option>after-deductible</copay_option>
-            <coinsurance_rate>455.73</coinsurance_rate>
->>>>>>> origin/main
-            <coinsurance_option>after-deductible</coinsurance_option>
+            <copay_option>no-charge-after-deductible</copay_option>
+            <coinsurance_rate>254.25</coinsurance_rate>
+            <coinsurance_option>no-charge</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
             <rx_norm_code>
-<<<<<<< HEAD
-              <code>western</code>
-              <display>everyone</display>
-=======
-              <code>leader</code>
-              <display>power</display>
->>>>>>> origin/main
+              <code>left</code>
+              <display>each</display>
               <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
             </rx_norm_code>
-            <status>entered-in-error</status>
+            <status>inactive</status>
             <manufacturer>
-<<<<<<< HEAD
-              <name>Zachary Martinez</name>
-              <alias>party</alias>
-              <type>wish</type>
+              <name>Tony Mason</name>
+              <alias>run</alias>
+              <type>environment</type>
             </manufacturer>
             <dose_form>
-              <code>too</code>
-              <system>free</system>
-=======
-              <name>Gina Sutton</name>
-              <alias>expect</alias>
-              <type>manage</type>
-            </manufacturer>
-            <dose_form>
-              <code>field</code>
-              <system>structure</system>
->>>>>>> origin/main
+              <code>type</code>
+              <system>indeed</system>
             </dose_form>
             <ingredients>
               <ingredient>
                 <is_active>false</is_active>
                 <strength>
                   <numerator>
-<<<<<<< HEAD
-                    <value>747.0</value>
-                    <comparator>&gt;=</comparator>
-                    <unit>public</unit>
-                    <system>range</system>
-                    <code>case</code>
-                  </numerator>
-                  <denominator>
-                    <value>313.45</value>
-                    <comparator>&gt;=</comparator>
-                    <unit>kind</unit>
-                    <system>first</system>
-                    <code>health</code>
-                  </denominator>
-                </strength>
-                <substance>
-                  <category>body</category>
-                  <description>issue</description>
-                  <code>
-                    <code>check</code>
-                    <system>beat</system>
-=======
-                    <value>27.25</value>
-                    <comparator>&gt;</comparator>
-                    <unit>daughter</unit>
-                    <system>turn</system>
-                    <code>none</code>
-                  </numerator>
-                  <denominator>
-                    <value>554.45</value>
+                    <value>231.7</value>
                     <comparator>&lt;=</comparator>
-                    <unit>class</unit>
-                    <system>situation</system>
-                    <code>couple</code>
+                    <unit>outside</unit>
+                    <system>collection</system>
+                    <code>quickly</code>
+                  </numerator>
+                  <denominator>
+                    <value>677.09</value>
+                    <comparator>&gt;=</comparator>
+                    <unit>animal</unit>
+                    <system>create</system>
+                    <code>last</code>
                   </denominator>
                 </strength>
                 <substance>
-                  <category>chemical</category>
-                  <description>sign</description>
+                  <category>biological</category>
+                  <description>identify</description>
                   <code>
-                    <code>challenge</code>
-                    <system>together</system>
->>>>>>> origin/main
+                    <code>talk</code>
+                    <system>find</system>
                   </code>
                 </substance>
               </ingredient>
             </ingredients>
             <monitoring_programs>
               <monitoring_program>
-<<<<<<< HEAD
-                <name>Tracy Washington</name>
-                <type>environmental</type>
-=======
-                <name>Jamie Anderson</name>
-                <type>force</type>
->>>>>>> origin/main
+                <name>Jordan Kerr</name>
+                <type>safe</type>
               </monitoring_program>
             </monitoring_programs>
             <monographs>
               <monograph>
-<<<<<<< HEAD
-                <type>guy</type>
-=======
-                <type>lot</type>
->>>>>>> origin/main
+                <type>city</type>
               </monograph>
             </monographs>
             <cost_informations>
               <cost_information>
-<<<<<<< HEAD
-                <type>head</type>
-                <source>clearly</source>
+                <type>than</type>
+                <source>security</source>
                 <cost>
-                  <value>486.57</value>
-                  <currency>MZN</currency>
+                  <value>437.57</value>
+                  <currency>NOK</currency>
                 </cost>
               </cost_information>
             </cost_informations>
-            <plan_id>friend</plan_id>
-=======
-                <type>sell</type>
-                <source>mission</source>
-                <cost>
-                  <value>841.59</value>
-                  <currency>JPY</currency>
-                </cost>
-              </cost_information>
-            </cost_informations>
-            <plan_id>speech</plan_id>
->>>>>>> origin/main
-            <prior_authorization>true</prior_authorization>
+            <plan_id>than</plan_id>
+            <prior_authorization>false</prior_authorization>
             <step_therapy>false</step_therapy>
             <quantity_limit>false</quantity_limit>
             <medicine_classifications>
               <medicine_classification>
-<<<<<<< HEAD
-                <type>raise</type>
-                <classification>network</classification>
-=======
-                <type>military</type>
-                <classification>decision</classification>
->>>>>>> origin/main
+                <type>newspaper</type>
+                <classification>expect</classification>
               </medicine_classification>
             </medicine_classifications>
             <formulary_drugs_alternatives>
               <formulary_drugs_alternative>
                 <rx_norm_code>
-<<<<<<< HEAD
-                  <code>organization</code>
-                  <display>star</display>
-=======
-                  <code>either</code>
-                  <display>result</display>
->>>>>>> origin/main
+                  <code>develop</code>
+                  <display>rather</display>
                   <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
                 </rx_norm_code>
                 <status>active</status>
                 <manufacturer>
-<<<<<<< HEAD
-                  <name>James Garner</name>
-                  <alias>season</alias>
-                  <type>successful</type>
+                  <name>Sean Duffy</name>
+                  <alias>how</alias>
+                  <type>level</type>
                 </manufacturer>
                 <dose_form>
-                  <code>hotel</code>
-                  <system>sister</system>
-=======
-                  <name>Joseph Lewis</name>
-                  <alias>popular</alias>
-                  <type>push</type>
-                </manufacturer>
-                <dose_form>
-                  <code>democratic</code>
-                  <system>another</system>
->>>>>>> origin/main
+                  <code>soldier</code>
+                  <system>quickly</system>
                 </dose_form>
                 <ingredients>
                   <ingredient>
                     <is_active>true</is_active>
                     <strength>
                       <numerator>
-<<<<<<< HEAD
-                        <value>217.82</value>
-                        <comparator>&lt;=</comparator>
-                        <unit>agreement</unit>
-                        <system>hand</system>
-                        <code>modern</code>
+                        <value>200.53</value>
+                        <comparator>&gt;=</comparator>
+                        <unit>accept</unit>
+                        <system>usually</system>
+                        <code>more</code>
                       </numerator>
                       <denominator>
-                        <value>831.17</value>
-                        <comparator>&gt;=</comparator>
-                        <unit>pay</unit>
-                        <system>reveal</system>
-                        <code>over</code>
+                        <value>861.3</value>
+                        <comparator>&lt;=</comparator>
+                        <unit>particularly</unit>
+                        <system>I</system>
+                        <code>fear</code>
                       </denominator>
                     </strength>
                     <substance>
                       <category>biological</category>
-                      <description>they</description>
+                      <description>example</description>
                       <code>
-                        <code>outside</code>
-                        <system>want</system>
-=======
-                        <value>694.44</value>
-                        <comparator>&gt;</comparator>
-                        <unit>power</unit>
-                        <system>challenge</system>
-                        <code>indeed</code>
-                      </numerator>
-                      <denominator>
-                        <value>906.73</value>
-                        <comparator>&lt;</comparator>
-                        <unit>either</unit>
-                        <system>may</system>
-                        <code>choose</code>
-                      </denominator>
-                    </strength>
-                    <substance>
-                      <category>allergen</category>
-                      <description>high</description>
-                      <code>
-                        <code>would</code>
-                        <system>leg</system>
->>>>>>> origin/main
+                        <code>daughter</code>
+                        <system>cup</system>
                       </code>
                     </substance>
                   </ingredient>
                 </ingredients>
                 <monitoring_programs>
                   <monitoring_program>
-<<<<<<< HEAD
-                    <name>Keith Taylor</name>
-                    <type>fight</type>
-=======
-                    <name>Pamela Baker</name>
-                    <type>firm</type>
->>>>>>> origin/main
+                    <name>Hannah Woodward</name>
+                    <type>type</type>
                   </monitoring_program>
                 </monitoring_programs>
                 <monographs>
                   <monograph>
-<<<<<<< HEAD
-                    <type>her</type>
-=======
-                    <type>answer</type>
->>>>>>> origin/main
+                    <type>opportunity</type>
                   </monograph>
                 </monographs>
                 <cost_informations>
                   <cost_information>
-<<<<<<< HEAD
-                    <type>build</type>
-                    <source>expert</source>
+                    <type>cover</type>
+                    <source>every</source>
                     <cost>
-                      <value>113.17</value>
-                      <currency>KZT</currency>
+                      <value>472.55</value>
+                      <currency>EUR</currency>
                     </cost>
                   </cost_information>
                 </cost_informations>
-                <plan_id>shoulder</plan_id>
+                <plan_id>language</plan_id>
                 <prior_authorization>true</prior_authorization>
                 <step_therapy>false</step_therapy>
                 <quantity_limit>true</quantity_limit>
                 <medicine_classifications>
                   <medicine_classification>
-                    <type>Mrs</type>
-                    <classification>foreign</classification>
-=======
-                    <type>account</type>
-                    <source>any</source>
-                    <cost>
-                      <value>318.33</value>
-                      <currency>GHS</currency>
-                    </cost>
-                  </cost_information>
-                </cost_informations>
-                <plan_id>dark</plan_id>
-                <prior_authorization>false</prior_authorization>
-                <step_therapy>true</step_therapy>
-                <quantity_limit>false</quantity_limit>
-                <medicine_classifications>
-                  <medicine_classification>
-                    <type>realize</type>
-                    <classification>group</classification>
->>>>>>> origin/main
+                    <type>make</type>
+                    <classification>statement</classification>
                   </medicine_classification>
                 </medicine_classifications>
               </formulary_drugs_alternative>
