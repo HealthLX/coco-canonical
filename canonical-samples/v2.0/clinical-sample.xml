@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <clinicals xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/clinical.xsd">
   <schema_version>2.0</schema_version>
+<<<<<<< HEAD
   <sender_id>minute</sender_id>
   <date_time_reported>2025-11-19T16:11:53Z</date_time_reported>
   <clinical>
@@ -41,11 +42,54 @@
           <period>
             <start>2007-10-01T02:00:58Z</start>
             <end>2018-10-14T17:18:18Z</end>
+=======
+  <sender_id>magazine</sender_id>
+  <date_time_reported>2025-11-05T19:58:28Z</date_time_reported>
+  <clinical>
+    <patient>
+      <medical_record_number>door</medical_record_number>
+      <member_id>poor</member_id>
+      <member_id_system>maybe</member_id_system>
+      <unique_person_id>southern</unique_person_id>
+      <unique_person_id_assigner>certainly</unique_person_id_assigner>
+      <unique_person_id_assigner_type>meet</unique_person_id_assigner_type>
+      <names>
+        <name>
+          <use>old</use>
+          <text>write</text>
+          <family>Cole</family>
+          <given>Mary</given>
+          <prefix>Dr.</prefix>
+          <suffix>MD</suffix>
+          <period>
+            <start>2023-08-10T14:33:19Z</start>
+            <end>2029-07-22T18:53:18Z</end>
+          </period>
+        </name>
+      </names>
+      <gender>male</gender>
+      <birth_date>2022-03-24</birth_date>
+      <marital_status>I</marital_status>
+      <deceased>
+        <is_deceased>false</is_deceased>
+        <deceased_date_time>2027-03-04T06:48:06Z</deceased_date_time>
+      </deceased>
+      <telecoms>
+        <telecom>
+          <system>url</system>
+          <value>someone</value>
+          <use>home</use>
+          <rank>4</rank>
+          <period>
+            <start>2016-03-02T16:43:01Z</start>
+            <end>2017-05-11T00:49:47Z</end>
+>>>>>>> origin/main
           </period>
         </telecom>
       </telecoms>
       <addresses>
         <address>
+<<<<<<< HEAD
           <use>work</use>
           <type>physical</type>
           <text>news</text>
@@ -58,17 +102,36 @@
           <period>
             <start>2023-03-30T01:35:49Z</start>
             <end>2016-02-06T19:49:27Z</end>
+=======
+          <use>home</use>
+          <type>both</type>
+          <text>home</text>
+          <line>83702 Bryan Street Suite 146</line>
+          <city>North Albertfort</city>
+          <district>admit</district>
+          <state>RI</state>
+          <postal_code>31352</postal_code>
+          <country>TH</country>
+          <period>
+            <start>2005-11-29T21:23:27Z</start>
+            <end>2018-06-01T22:40:47Z</end>
+>>>>>>> origin/main
           </period>
         </address>
       </addresses>
       <communications>
         <communication>
+<<<<<<< HEAD
           <language_code>no-NO</language_code>
+=======
+          <language_code>de-DE</language_code>
+>>>>>>> origin/main
           <is_preferred>true</is_preferred>
         </communication>
       </communications>
       <us_core_race>
         <omb_category_code>1002-5</omb_category_code>
+<<<<<<< HEAD
         <detailed_code>2002-4</detailed_code>
         <text>rich</text>
       </us_core_race>
@@ -76,11 +139,23 @@
         <omb_category_code>2186-5</omb_category_code>
         <detailed_code>2172-5</detailed_code>
         <text>car</text>
+=======
+        <omb_category_code>2106-3</omb_category_code>
+        <omb_category_code>2106-3</omb_category_code>
+        <detailed_code>1990-1</detailed_code>
+        <text>enjoy</text>
+      </us_core_race>
+      <us_core_ethnicity>
+        <omb_category_code>2135-2</omb_category_code>
+        <detailed_code>2170-9</detailed_code>
+        <text>military</text>
+>>>>>>> origin/main
       </us_core_ethnicity>
       <us_core_birth_sex>F</us_core_birth_sex>
     </patient>
     <lab_observations>
       <lab_observation>
+<<<<<<< HEAD
         <unique_identifier>star</unique_identifier>
         <status>final</status>
         <observation_code>
@@ -140,10 +215,87 @@
           <text>green</text>
         </reference_range>
         <record_type>A</record_type>
+=======
+        <unique_identifier>describe</unique_identifier>
+        <status>entered-in-error</status>
+        <observation_code>
+          <coding>
+            <system>simple</system>
+            <version>music</version>
+            <code>case</code>
+            <display>today</display>
+          </coding>
+          <text>economy</text>
+        </observation_code>
+        <observation_effective>
+          <effective_period>
+            <start>2022-12-22T13:07:00Z</start>
+            <end>2015-11-01T18:56:40Z</end>
+          </effective_period>
+        </observation_effective>
+        <observation_value>
+          <value_sampled_data>
+            <origin>
+              <value>234.51</value>
+              <unit>live</unit>
+              <system>since</system>
+              <code>ahead</code>
+            </origin>
+            <period>839.83</period>
+            <factor>634.14</factor>
+            <lower_limit>269.52</lower_limit>
+            <upper_limit>118.29</upper_limit>
+            <dimensions>1</dimensions>
+            <data>action</data>
+          </value_sampled_data>
+        </observation_value>
+        <interpretation>shake</interpretation>
+        <reference_range>
+          <low>
+            <value>341.4</value>
+            <unit>responsibility</unit>
+            <system>in</system>
+            <code>drop</code>
+          </low>
+          <high>
+            <value>95.06</value>
+            <unit>debate</unit>
+            <system>nature</system>
+            <code>safe</code>
+          </high>
+          <type>pre_therapeutic</type>
+          <applies_to>
+            <coding>
+              <system>play</system>
+              <version>ahead</version>
+              <code>war</code>
+              <display>left</display>
+            </coding>
+            <text>source</text>
+          </applies_to>
+          <age>
+            <low>
+              <value>904.64</value>
+              <unit>on</unit>
+              <system>executive</system>
+              <code>relationship</code>
+            </low>
+            <high>
+              <value>42.44</value>
+              <unit>although</unit>
+              <system>baby</system>
+              <code>ready</code>
+            </high>
+          </age>
+          <text>voice</text>
+        </reference_range>
+        <record_type>D</record_type>
+>>>>>>> origin/main
       </lab_observation>
     </lab_observations>
     <allergy_intolerances>
       <allergy_intolerance>
+<<<<<<< HEAD
         <unique_identifier>every</unique_identifier>
         <clinical_status>active</clinical_status>
         <verification_status>unconfirmed</verification_status>
@@ -151,10 +303,20 @@
         <category>food</category>
         <allergy_code>
           <code>according</code>
+=======
+        <unique_identifier>too</unique_identifier>
+        <clinical_status>resolved</clinical_status>
+        <verification_status>unconfirmed</verification_status>
+        <type>allergy</type>
+        <category>food</category>
+        <allergy_code>
+          <code>could</code>
+>>>>>>> origin/main
           <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
         </allergy_code>
         <reactions>
           <reaction>
+<<<<<<< HEAD
             <manifestation>bad</manifestation>
           </reaction>
         </reactions>
@@ -163,11 +325,35 @@
         </onset>
         <criticality>unable-to-assess</criticality>
         <recorded_date>2009-03-21T12:01:14Z</recorded_date>
+=======
+            <manifestation>idea</manifestation>
+          </reaction>
+        </reactions>
+        <onset>
+          <onset_range>
+            <low>
+              <value>572.55</value>
+              <unit>physical</unit>
+              <system>record</system>
+              <code>spend</code>
+            </low>
+            <high>
+              <value>678.57</value>
+              <unit>to</unit>
+              <system>of</system>
+              <code>space</code>
+            </high>
+          </onset_range>
+        </onset>
+        <criticality>low</criticality>
+        <recorded_date>2013-12-08T23:05:19Z</recorded_date>
+>>>>>>> origin/main
         <record_type>U</record_type>
       </allergy_intolerance>
     </allergy_intolerances>
     <conditions>
       <condition>
+<<<<<<< HEAD
         <unique_identifier>scientist</unique_identifier>
         <condition_code>
           <code>professor</code>
@@ -196,12 +382,38 @@
               <code>they</code>
             </high>
           </abatement_range>
+=======
+        <unique_identifier>picture</unique_identifier>
+        <condition_code>
+          <code>serve</code>
+          <system>http://hl7.org/fhir/sid/icd-10-cm</system>
+        </condition_code>
+        <category>encounter-diagnosis</category>
+        <clinical_status>relapse</clinical_status>
+        <verification_status>differential</verification_status>
+        <severity>moderate</severity>
+        <onset>
+          <onset_age>
+            <value>954.95</value>
+            <system>http://ucum.org</system>
+            <code>a</code>
+          </onset_age>
+        </onset>
+        <recorded_date>2016-10-05T09:49:13Z</recorded_date>
+        <abatement>
+          <abatement_age>
+            <value>692.98</value>
+            <system>http://ucum.org</system>
+            <code>wk</code>
+          </abatement_age>
+>>>>>>> origin/main
         </abatement>
         <record_type>D</record_type>
       </condition>
     </conditions>
     <procedures>
       <procedure>
+<<<<<<< HEAD
         <unique_identifier>future</unique_identifier>
         <procedure_code>
           <code>Mrs</code>
@@ -215,38 +427,77 @@
           </performed_period>
         </performed>
         <record_type>A</record_type>
+=======
+        <unique_identifier>stop</unique_identifier>
+        <procedure_code>
+          <code>expert</code>
+          <system>urn:oid:2.16.840.1.113883.6.285</system>
+        </procedure_code>
+        <status>in-progress</status>
+        <performed>
+          <performed_period>
+            <start>2005-03-02T14:27:12Z</start>
+            <end>2022-04-21T09:02:39Z</end>
+          </performed_period>
+        </performed>
+        <record_type>U</record_type>
+>>>>>>> origin/main
       </procedure>
     </procedures>
     <medication_requests>
       <medication_request>
+<<<<<<< HEAD
         <unique_identifier>onto</unique_identifier>
         <status>active</status>
         <intent>filler-order</intent>
+=======
+        <unique_identifier>fish</unique_identifier>
+        <status>on-hold</status>
+        <intent>original-order</intent>
+>>>>>>> origin/main
         <reported>
           <reported_boolean>false</reported_boolean>
         </reported>
         <medication>
           <medication_code>
+<<<<<<< HEAD
             <code>end</code>
+=======
+            <code>police</code>
+>>>>>>> origin/main
             <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
           </medication_code>
           <status>active</status>
           <form>
+<<<<<<< HEAD
             <code>minute</code>
+=======
+            <code>happen</code>
+>>>>>>> origin/main
             <system>http://snomed.info/sct</system>
           </form>
         </medication>
         <encounter>
+<<<<<<< HEAD
           <identifier>heart</identifier>
           <status>arrived</status>
           <class>want</class>
           <type>
             <code>his</code>
             <system>http://snomed.info/sct</system>
+=======
+          <identifier>accept</identifier>
+          <status>finished</status>
+          <class>any</class>
+          <type>
+            <code>method</code>
+            <system>http://www.ama-assn.org/go/cpt</system>
+>>>>>>> origin/main
           </type>
           <participants>
             <participant>
               <type>
+<<<<<<< HEAD
                 <code>professor</code>
                 <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
               </type>
@@ -267,12 +518,35 @@
                     <period>
                       <start>2013-01-22T14:12:30Z</start>
                       <end>2005-11-30T05:56:43Z</end>
+=======
+                <code>great</code>
+                <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
+              </type>
+              <period>
+                <start>2027-07-18T06:57:37Z</start>
+                <end>2001-12-19T12:18:59Z</end>
+              </period>
+              <individual>
+                <npi>7741985730</npi>
+                <names>
+                  <name>
+                    <use>official</use>
+                    <text>total</text>
+                    <family>Gonzalez</family>
+                    <given>Dennis</given>
+                    <prefix>Mrs.</prefix>
+                    <suffix>MD</suffix>
+                    <period>
+                      <start>2014-11-24T13:03:51Z</start>
+                      <end>2011-01-06T05:43:45Z</end>
+>>>>>>> origin/main
                     </period>
                   </name>
                 </names>
                 <is_active>false</is_active>
                 <telecoms>
                   <telecom>
+<<<<<<< HEAD
                     <system>sms</system>
                     <value>both</value>
                     <use>home</use>
@@ -280,11 +554,21 @@
                     <period>
                       <start>2016-10-05T05:42:16Z</start>
                       <end>2017-05-15T23:54:56Z</end>
+=======
+                    <system>other</system>
+                    <value>subject</value>
+                    <use>old</use>
+                    <rank>5</rank>
+                    <period>
+                      <start>2028-09-04T04:12:37Z</start>
+                      <end>2012-06-25T12:28:17Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>old</use>
                     <type>postal</type>
                     <text>once</text>
@@ -297,6 +581,20 @@
                     <period>
                       <start>2021-03-29T08:41:20Z</start>
                       <end>2007-05-24T09:02:41Z</end>
+=======
+                    <use>temp</use>
+                    <type>postal</type>
+                    <text>any</text>
+                    <line>96590 Herrera Pike</line>
+                    <city>Woodsbury</city>
+                    <district>crime</district>
+                    <state>MS</state>
+                    <postal_code>44051</postal_code>
+                    <country>BD</country>
+                    <period>
+                      <start>2010-10-27T16:33:07Z</start>
+                      <end>2027-10-15T19:01:53Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -304,16 +602,26 @@
             </participant>
           </participants>
           <period>
+<<<<<<< HEAD
             <start>2026-09-04T14:30:18Z</start>
             <end>2007-05-14T02:50:27Z</end>
           </period>
           <reason_code>score</reason_code>
           <hospitalization>
             <discharge_disposition>form</discharge_disposition>
+=======
+            <start>2005-11-13T14:44:36Z</start>
+            <end>2021-05-31T02:16:24Z</end>
+          </period>
+          <reason_code>campaign</reason_code>
+          <hospitalization>
+            <discharge_disposition>south</discharge_disposition>
+>>>>>>> origin/main
           </hospitalization>
           <location>
             <location>
               <identifier>
+<<<<<<< HEAD
                 <value>all</value>
                 <type>whom</type>
               </identifier>
@@ -328,11 +636,28 @@
                   <period>
                     <start>2024-10-26T13:48:33Z</start>
                     <end>2018-08-14T15:45:19Z</end>
+=======
+                <value>put</value>
+                <type>kid</type>
+              </identifier>
+              <status>suspended</status>
+              <name>Roy Thompson</name>
+              <telecoms>
+                <telecom>
+                  <system>email</system>
+                  <value>hair</value>
+                  <use>temp</use>
+                  <rank>2</rank>
+                  <period>
+                    <start>2023-06-05T19:02:40Z</start>
+                    <end>2016-03-26T01:00:13Z</end>
+>>>>>>> origin/main
                   </period>
                 </telecom>
               </telecoms>
               <address>
                 <use>home</use>
+<<<<<<< HEAD
                 <type>both</type>
                 <text>doctor</text>
                 <line>3803 Roberts Well Apt. 782</line>
@@ -361,11 +686,42 @@
                     <period>
                       <start>2021-11-03T16:07:30Z</start>
                       <end>2028-03-30T02:04:30Z</end>
+=======
+                <type>postal</type>
+                <text>stand</text>
+                <line>7936 Butler Valley</line>
+                <city>Gillespieville</city>
+                <district>miss</district>
+                <state>DC</state>
+                <postal_code>71545</postal_code>
+                <country>NA</country>
+                <period>
+                  <start>2027-04-17T10:57:53Z</start>
+                  <end>2020-09-04T16:47:39Z</end>
+                </period>
+              </address>
+              <managing_organization>
+                <npi>4288969453</npi>
+                <clia>phone</clia>
+                <name>John Jones</name>
+                <is_active>true</is_active>
+                <alias>such</alias>
+                <telecoms>
+                  <telecom>
+                    <system>sms</system>
+                    <value>family</value>
+                    <use>mobile</use>
+                    <rank>3</rank>
+                    <period>
+                      <start>2010-01-06T01:27:52Z</start>
+                      <end>2030-12-24T10:29:04Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>billing</use>
                     <type>both</type>
                     <text>where</text>
@@ -378,6 +734,20 @@
                     <period>
                       <start>2005-07-19T01:13:56Z</start>
                       <end>2024-07-18T14:03:44Z</end>
+=======
+                    <use>work</use>
+                    <type>postal</type>
+                    <text>statement</text>
+                    <line>4759 Kramer Ridges</line>
+                    <city>North Chelseaview</city>
+                    <district>those</district>
+                    <state>NY</state>
+                    <postal_code>63132</postal_code>
+                    <country>RS</country>
+                    <period>
+                      <start>2025-11-04T13:04:51Z</start>
+                      <end>2014-08-22T05:34:52Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -385,6 +755,7 @@
             </location>
           </location>
         </encounter>
+<<<<<<< HEAD
         <authored_on>2000-08-12T21:34:43Z</authored_on>
         <requester>
           <practitioner>
@@ -413,11 +784,31 @@
                 <period>
                   <start>2024-05-25T04:38:10Z</start>
                   <end>2027-12-04T09:36:12Z</end>
+=======
+        <authored_on>2030-05-13T18:23:25Z</authored_on>
+        <requester>
+          <organization>
+            <npi>2978073572</npi>
+            <clia>foreign</clia>
+            <name>Bradley Avila</name>
+            <is_active>false</is_active>
+            <alias>out</alias>
+            <telecoms>
+              <telecom>
+                <system>url</system>
+                <value>spend</value>
+                <use>work</use>
+                <rank>3</rank>
+                <period>
+                  <start>2026-04-04T21:18:39Z</start>
+                  <end>2015-12-31T22:37:32Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>billing</use>
                 <type>postal</type>
                 <text>so</text>
@@ -437,12 +828,34 @@
         </requester>
         <dosage_instruction>
           <text>leg</text>
+=======
+                <use>home</use>
+                <type>both</type>
+                <text>career</text>
+                <line>7143 Raymond Rapid</line>
+                <city>Lake John</city>
+                <district>author</district>
+                <state>NM</state>
+                <postal_code>85737</postal_code>
+                <country>WS</country>
+                <period>
+                  <start>2020-12-19T23:09:03Z</start>
+                  <end>2007-04-08T11:22:50Z</end>
+                </period>
+              </address>
+            </addresses>
+          </organization>
+        </requester>
+        <dosage_instruction>
+          <text>her</text>
+>>>>>>> origin/main
         </dosage_instruction>
         <record_type>U</record_type>
       </medication_request>
     </medication_requests>
     <care_teams>
       <care_team>
+<<<<<<< HEAD
         <unique_identifier>before</unique_identifier>
         <status>entered-in-error</status>
         <participant>
@@ -452,6 +865,52 @@
           </role>
           <member>
             <member_person>owner</member_person>
+=======
+        <unique_identifier>daughter</unique_identifier>
+        <status>suspended</status>
+        <participant>
+          <role>
+            <code>activity</code>
+            <system>http://snomed.info/sct</system>
+          </role>
+          <member>
+            <organization>
+              <npi>8493093660</npi>
+              <clia>hard</clia>
+              <name>David Jimenez</name>
+              <is_active>true</is_active>
+              <alias>someone</alias>
+              <telecoms>
+                <telecom>
+                  <system>fax</system>
+                  <value>management</value>
+                  <use>mobile</use>
+                  <rank>4</rank>
+                  <period>
+                    <start>2025-01-12T03:38:56Z</start>
+                    <end>2026-03-13T13:24:44Z</end>
+                  </period>
+                </telecom>
+              </telecoms>
+              <addresses>
+                <address>
+                  <use>billing</use>
+                  <type>both</type>
+                  <text>sport</text>
+                  <line>9589 Smith Corner Suite 716</line>
+                  <city>East Williamton</city>
+                  <district>certainly</district>
+                  <state>SD</state>
+                  <postal_code>20302</postal_code>
+                  <country>BN</country>
+                  <period>
+                    <start>2014-09-02T16:29:56Z</start>
+                    <end>2020-12-25T03:40:03Z</end>
+                  </period>
+                </address>
+              </addresses>
+            </organization>
+>>>>>>> origin/main
           </member>
         </participant>
         <record_type>U</record_type>
@@ -459,8 +918,13 @@
     </care_teams>
     <observation_vital_signs>
       <observation_vital_sign>
+<<<<<<< HEAD
         <unique_identifier>behind</unique_identifier>
         <status>unknown</status>
+=======
+        <unique_identifier>industry</unique_identifier>
+        <status>registered</status>
+>>>>>>> origin/main
         <category_vs_cat>
           <coding>
             <code>vital-signs</code>
@@ -468,6 +932,7 @@
           </coding>
         </category_vs_cat>
         <code>
+<<<<<<< HEAD
           <code>39156-5</code>
           <display>Oxygen saturation in Arterial blood</display>
           <system>http://loinc.org</system>
@@ -482,6 +947,25 @@
         <has_member>
           <unique_identifier>another</unique_identifier>
           <status>final</status>
+=======
+          <code>8302-2</code>
+          <display>Diastolic blood pressure</display>
+          <system>http://loinc.org</system>
+        </code>
+        <effective>
+          <effective_period>
+            <start>2000-06-21T22:19:15Z</start>
+            <end>2003-09-14T16:49:07Z</end>
+          </effective_period>
+        </effective>
+        <data_absent_reason>
+          <code>trip</code>
+          <system>describe</system>
+        </data_absent_reason>
+        <has_member>
+          <unique_identifier>tell</unique_identifier>
+          <status>amended</status>
+>>>>>>> origin/main
           <category_vs_cat>
             <coding>
               <code>vital-signs</code>
@@ -489,11 +973,16 @@
             </coding>
           </category_vs_cat>
           <code>
+<<<<<<< HEAD
             <code>8310-5</code>
+=======
+            <code>8867-4</code>
+>>>>>>> origin/main
             <display>Mean blood pressure</display>
             <system>http://loinc.org</system>
           </code>
           <effective>
+<<<<<<< HEAD
             <effective_date_time>2015-12-20T19:02:09Z</effective_date_time>
           </effective>
           <value>
@@ -508,6 +997,16 @@
           <data_absent_reason>
             <code>serve</code>
             <system>seek</system>
+=======
+            <effective_date_time>2017-06-06T13:31:08Z</effective_date_time>
+          </effective>
+          <value>
+            <value_time>22:04:27</value_time>
+          </value>
+          <data_absent_reason>
+            <code>wife</code>
+            <system>bed</system>
+>>>>>>> origin/main
           </data_absent_reason>
           <component>
             <component_systolic_bp>
@@ -518,16 +1017,27 @@
                 </coding_sbp_code>
               </code>
               <value>
+<<<<<<< HEAD
                 <value>544.18</value>
                 <comparator>&lt;</comparator>
                 <unit>star</unit>
+=======
+                <value>642.05</value>
+                <comparator>&gt;</comparator>
+                <unit>good</unit>
+>>>>>>> origin/main
                 <system>http://unitsofmeasure.org</system>
                 <code>mm[Hg]</code>
               </value>
               <data_absent_reason>
                 <coding>
+<<<<<<< HEAD
                   <code>write</code>
                   <system>store</system>
+=======
+                  <code>arrive</code>
+                  <system>instead</system>
+>>>>>>> origin/main
                 </coding>
               </data_absent_reason>
             </component_systolic_bp>
@@ -539,16 +1049,27 @@
                 </coding_dbp_code>
               </code>
               <value>
+<<<<<<< HEAD
                 <value>378.76</value>
                 <comparator>&gt;=</comparator>
                 <unit>reason</unit>
+=======
+                <value>527.23</value>
+                <comparator>&lt;=</comparator>
+                <unit>very</unit>
+>>>>>>> origin/main
                 <system>http://unitsofmeasure.org</system>
                 <code>mm[Hg]</code>
               </value>
               <data_absent_reason>
                 <coding>
+<<<<<<< HEAD
                   <code>music</code>
                   <system>floor</system>
+=======
+                  <code>call</code>
+                  <system>worker</system>
+>>>>>>> origin/main
                 </coding>
               </data_absent_reason>
             </component_diastolic_bp>
@@ -563,16 +1084,27 @@
               </coding_sbp_code>
             </code>
             <value>
+<<<<<<< HEAD
               <value>54.05</value>
               <comparator>&gt;=</comparator>
               <unit>ahead</unit>
+=======
+              <value>133.48</value>
+              <comparator>&lt;=</comparator>
+              <unit>lot</unit>
+>>>>>>> origin/main
               <system>http://unitsofmeasure.org</system>
               <code>mm[Hg]</code>
             </value>
             <data_absent_reason>
               <coding>
+<<<<<<< HEAD
                 <code>none</code>
                 <system>return</system>
+=======
+                <code>condition</code>
+                <system>almost</system>
+>>>>>>> origin/main
               </coding>
             </data_absent_reason>
           </component_systolic_bp>
@@ -584,16 +1116,27 @@
               </coding_dbp_code>
             </code>
             <value>
+<<<<<<< HEAD
               <value>562.23</value>
               <comparator>&gt;=</comparator>
               <unit>everybody</unit>
+=======
+              <value>904.2</value>
+              <comparator>&lt;=</comparator>
+              <unit>argue</unit>
+>>>>>>> origin/main
               <system>http://unitsofmeasure.org</system>
               <code>mm[Hg]</code>
             </value>
             <data_absent_reason>
               <coding>
+<<<<<<< HEAD
                 <code>new</code>
                 <system>trade</system>
+=======
+                <code>lead</code>
+                <system>worry</system>
+>>>>>>> origin/main
               </coding>
             </data_absent_reason>
           </component_diastolic_bp>
@@ -603,6 +1146,7 @@
     </observation_vital_signs>
     <practitioners>
       <practitioner>
+<<<<<<< HEAD
         <unique_identifier>along</unique_identifier>
         <practitioner_details>
           <npi>2251012971</npi>
@@ -617,12 +1161,29 @@
               <period>
                 <start>2015-12-08T00:34:43Z</start>
                 <end>2001-08-23T17:23:31Z</end>
+=======
+        <unique_identifier>fly</unique_identifier>
+        <practitioner_details>
+          <npi>8096539221</npi>
+          <names>
+            <name>
+              <use>maiden</use>
+              <text>stand</text>
+              <family>Moran</family>
+              <given>Rodney</given>
+              <prefix>Mrs.</prefix>
+              <suffix>Jr.</suffix>
+              <period>
+                <start>2016-06-02T10:43:21Z</start>
+                <end>2000-09-01T20:49:06Z</end>
+>>>>>>> origin/main
               </period>
             </name>
           </names>
           <is_active>true</is_active>
           <telecoms>
             <telecom>
+<<<<<<< HEAD
               <system>fax</system>
               <value>suggest</value>
               <use>mobile</use>
@@ -630,6 +1191,15 @@
               <period>
                 <start>2028-09-22T23:54:30Z</start>
                 <end>2026-02-13T22:49:41Z</end>
+=======
+              <system>phone</system>
+              <value>gas</value>
+              <use>mobile</use>
+              <rank>4</rank>
+              <period>
+                <start>2016-05-27T06:20:39Z</start>
+                <end>2017-10-03T16:12:58Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
@@ -637,6 +1207,7 @@
             <address>
               <use>work</use>
               <type>both</type>
+<<<<<<< HEAD
               <text>born</text>
               <line>2576 Nguyen Forks</line>
               <city>South Carla</city>
@@ -647,15 +1218,28 @@
               <period>
                 <start>2021-10-14T15:43:39Z</start>
                 <end>2029-08-18T04:47:04Z</end>
+=======
+              <text>task</text>
+              <line>96662 Charles Locks Apt. 563</line>
+              <city>North Karen</city>
+              <district>son</district>
+              <state>UT</state>
+              <postal_code>45949</postal_code>
+              <country>PA</country>
+              <period>
+                <start>2012-08-10T00:17:48Z</start>
+                <end>2010-01-26T00:39:27Z</end>
+>>>>>>> origin/main
               </period>
             </address>
           </addresses>
         </practitioner_details>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </practitioner>
     </practitioners>
     <organizations>
       <organization>
+<<<<<<< HEAD
         <unique_identifier>simply</unique_identifier>
         <organization_details>
           <npi>1858851668</npi>
@@ -672,12 +1256,31 @@
               <period>
                 <start>2001-04-01T22:50:15Z</start>
                 <end>2019-02-12T15:15:11Z</end>
+=======
+        <unique_identifier>direction</unique_identifier>
+        <organization_details>
+          <npi>3761074712</npi>
+          <clia>help</clia>
+          <name>Lisa Bell</name>
+          <is_active>false</is_active>
+          <alias>describe</alias>
+          <telecoms>
+            <telecom>
+              <system>phone</system>
+              <value>what</value>
+              <use>home</use>
+              <rank>1</rank>
+              <period>
+                <start>2012-12-21T13:06:40Z</start>
+                <end>2017-06-15T14:21:46Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
               <use>billing</use>
+<<<<<<< HEAD
               <type>postal</type>
               <text>current</text>
               <line>2624 Gardner Crossroad</line>
@@ -689,15 +1292,33 @@
               <period>
                 <start>2030-06-07T18:31:54Z</start>
                 <end>2007-02-23T10:53:48Z</end>
+=======
+              <type>physical</type>
+              <text>direction</text>
+              <line>6055 Douglas Summit</line>
+              <city>Hillbury</city>
+              <district>war</district>
+              <state>KY</state>
+              <postal_code>99040</postal_code>
+              <country>SN</country>
+              <period>
+                <start>2028-01-26T01:55:32Z</start>
+                <end>2019-05-13T12:27:19Z</end>
+>>>>>>> origin/main
               </period>
             </address>
           </addresses>
         </organization_details>
+<<<<<<< HEAD
         <record_type>A</record_type>
+=======
+        <record_type>D</record_type>
+>>>>>>> origin/main
       </organization>
     </organizations>
     <locations>
       <location>
+<<<<<<< HEAD
         <unique_identifier>build</unique_identifier>
         <location_details>
           <identifier>
@@ -710,15 +1331,35 @@
             <telecom>
               <system>sms</system>
               <value>admit</value>
+=======
+        <unique_identifier>real</unique_identifier>
+        <location_details>
+          <identifier>
+            <value>focus</value>
+            <type>will</type>
+          </identifier>
+          <status>active</status>
+          <name>Lisa Brewer</name>
+          <telecoms>
+            <telecom>
+              <system>url</system>
+              <value>game</value>
+>>>>>>> origin/main
               <use>old</use>
-              <rank>5</rank>
+              <rank>2</rank>
               <period>
+<<<<<<< HEAD
                 <start>2017-02-08T12:15:36Z</start>
                 <end>2016-01-05T10:23:52Z</end>
+=======
+                <start>2012-12-26T01:19:19Z</start>
+                <end>2013-03-11T20:43:33Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <address>
+<<<<<<< HEAD
             <use>home</use>
             <type>both</type>
             <text>difficult</text>
@@ -748,11 +1389,43 @@
                 <period>
                   <start>2030-08-22T05:30:27Z</start>
                   <end>2012-05-28T05:16:31Z</end>
+=======
+            <use>work</use>
+            <type>physical</type>
+            <text>method</text>
+            <line>4731 Garrison Freeway</line>
+            <city>Sethmouth</city>
+            <district>might</district>
+            <state>IA</state>
+            <postal_code>54961</postal_code>
+            <country>JP</country>
+            <period>
+              <start>2000-04-16T04:57:14Z</start>
+              <end>2023-04-30T07:08:27Z</end>
+            </period>
+          </address>
+          <managing_organization>
+            <npi>2091483363</npi>
+            <clia>beyond</clia>
+            <name>Daniel Gross</name>
+            <is_active>false</is_active>
+            <alias>feeling</alias>
+            <telecoms>
+              <telecom>
+                <system>other</system>
+                <value>bit</value>
+                <use>mobile</use>
+                <rank>4</rank>
+                <period>
+                  <start>2022-09-02T06:23:54Z</start>
+                  <end>2010-03-27T05:00:41Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>home</use>
                 <type>physical</type>
                 <text>special</text>
@@ -765,6 +1438,20 @@
                 <period>
                   <start>2022-06-07T08:25:57Z</start>
                   <end>2021-08-24T23:33:26Z</end>
+=======
+                <use>work</use>
+                <type>physical</type>
+                <text>future</text>
+                <line>7730 Robin Trail</line>
+                <city>Onealchester</city>
+                <district>direction</district>
+                <state>FM</state>
+                <postal_code>46373</postal_code>
+                <country>BE</country>
+                <period>
+                  <start>2020-12-20T20:40:45Z</start>
+                  <end>2014-03-23T03:28:31Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
@@ -775,6 +1462,7 @@
     </locations>
     <encounters>
       <encounter>
+<<<<<<< HEAD
         <unique_identifier>player</unique_identifier>
         <encounter_details>
           <identifier>skin</identifier>
@@ -782,11 +1470,21 @@
           <class>soldier</class>
           <type>
             <code>off</code>
+=======
+        <unique_identifier>site</unique_identifier>
+        <encounter_details>
+          <identifier>section</identifier>
+          <status>arrived</status>
+          <class>family</class>
+          <type>
+            <code>house</code>
+>>>>>>> origin/main
             <system>http://snomed.info/sct</system>
           </type>
           <participants>
             <participant>
               <type>
+<<<<<<< HEAD
                 <code>fast</code>
                 <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
               </type>
@@ -807,24 +1505,57 @@
                     <period>
                       <start>2006-02-10T06:15:58Z</start>
                       <end>2009-12-10T22:47:56Z</end>
+=======
+                <code>movie</code>
+                <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
+              </type>
+              <period>
+                <start>2011-05-26T12:02:30Z</start>
+                <end>2012-03-17T17:23:08Z</end>
+              </period>
+              <individual>
+                <npi>2577689733</npi>
+                <names>
+                  <name>
+                    <use>anonymous</use>
+                    <text>reflect</text>
+                    <family>Greer</family>
+                    <given>Anthony</given>
+                    <prefix>Ind.</prefix>
+                    <suffix>Jr.</suffix>
+                    <period>
+                      <start>2021-07-04T10:33:14Z</start>
+                      <end>2003-09-04T21:30:08Z</end>
+>>>>>>> origin/main
                     </period>
                   </name>
                 </names>
-                <is_active>false</is_active>
+                <is_active>true</is_active>
                 <telecoms>
                   <telecom>
+<<<<<<< HEAD
                     <system>pager</system>
                     <value>thus</value>
+=======
+                    <system>phone</system>
+                    <value>nothing</value>
+>>>>>>> origin/main
                     <use>mobile</use>
                     <rank>1</rank>
                     <period>
+<<<<<<< HEAD
                       <start>2030-04-30T06:42:16Z</start>
                       <end>2017-06-10T03:25:26Z</end>
+=======
+                      <start>2003-04-18T05:06:06Z</start>
+                      <end>2021-02-09T23:16:54Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>work</use>
                     <type>postal</type>
                     <text>drive</text>
@@ -837,6 +1568,20 @@
                     <period>
                       <start>2018-07-14T11:49:34Z</start>
                       <end>2003-03-11T08:45:12Z</end>
+=======
+                    <use>billing</use>
+                    <type>physical</type>
+                    <text>meeting</text>
+                    <line>915 Dalton Corners</line>
+                    <city>Lake Jessicaport</city>
+                    <district>language</district>
+                    <state>IN</state>
+                    <postal_code>66885</postal_code>
+                    <country>PT</country>
+                    <period>
+                      <start>2020-01-18T10:08:26Z</start>
+                      <end>2002-06-29T02:51:53Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -844,16 +1589,26 @@
             </participant>
           </participants>
           <period>
+<<<<<<< HEAD
             <start>2012-09-26T10:51:00Z</start>
             <end>2020-02-24T16:41:50Z</end>
           </period>
           <reason_code>cost</reason_code>
           <hospitalization>
             <discharge_disposition>sister</discharge_disposition>
+=======
+            <start>2015-08-13T09:34:57Z</start>
+            <end>2028-03-02T10:53:27Z</end>
+          </period>
+          <reason_code>civil</reason_code>
+          <hospitalization>
+            <discharge_disposition>common</discharge_disposition>
+>>>>>>> origin/main
           </hospitalization>
           <location>
             <location>
               <identifier>
+<<<<<<< HEAD
                 <value>pull</value>
                 <type>later</type>
               </identifier>
@@ -863,15 +1618,32 @@
                 <telecom>
                   <system>pager</system>
                   <value>offer</value>
+=======
+                <value>admit</value>
+                <type>trouble</type>
+              </identifier>
+              <status>active</status>
+              <name>Elizabeth Walker</name>
+              <telecoms>
+                <telecom>
+                  <system>fax</system>
+                  <value>read</value>
+>>>>>>> origin/main
                   <use>home</use>
-                  <rank>4</rank>
+                  <rank>3</rank>
                   <period>
+<<<<<<< HEAD
                     <start>2012-11-10T10:40:14Z</start>
                     <end>2024-11-04T14:04:48Z</end>
+=======
+                    <start>2023-05-07T00:57:40Z</start>
+                    <end>2015-02-14T19:13:43Z</end>
+>>>>>>> origin/main
                   </period>
                 </telecom>
               </telecoms>
               <address>
+<<<<<<< HEAD
                 <use>work</use>
                 <type>postal</type>
                 <text>cause</text>
@@ -896,16 +1668,48 @@
                   <telecom>
                     <system>url</system>
                     <value>tough</value>
+=======
+                <use>billing</use>
+                <type>physical</type>
+                <text>south</text>
+                <line>68913 Nguyen Highway Apt. 820</line>
+                <city>West Tinafort</city>
+                <district>popular</district>
+                <state>RI</state>
+                <postal_code>10147</postal_code>
+                <country>KN</country>
+                <period>
+                  <start>2029-07-12T16:39:11Z</start>
+                  <end>2024-05-26T11:47:52Z</end>
+                </period>
+              </address>
+              <managing_organization>
+                <npi>3116146204</npi>
+                <clia>hour</clia>
+                <name>Mr. David Price</name>
+                <is_active>false</is_active>
+                <alias>record</alias>
+                <telecoms>
+                  <telecom>
+                    <system>email</system>
+                    <value>chance</value>
+>>>>>>> origin/main
                     <use>home</use>
                     <rank>3</rank>
                     <period>
+<<<<<<< HEAD
                       <start>2000-11-02T14:14:42Z</start>
                       <end>2007-03-23T19:37:56Z</end>
+=======
+                      <start>2015-02-10T09:41:55Z</start>
+                      <end>2022-09-16T07:25:38Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>billing</use>
                     <type>physical</type>
                     <text>whole</text>
@@ -918,6 +1722,20 @@
                     <period>
                       <start>2015-04-25T02:43:27Z</start>
                       <end>2015-04-22T02:59:25Z</end>
+=======
+                    <use>old</use>
+                    <type>postal</type>
+                    <text>soon</text>
+                    <line>37974 Dominguez Overpass</line>
+                    <city>Smithville</city>
+                    <district>of</district>
+                    <state>AK</state>
+                    <postal_code>89303</postal_code>
+                    <country>KE</country>
+                    <period>
+                      <start>2019-03-22T10:33:05Z</start>
+                      <end>2007-07-10T01:44:47Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -925,11 +1743,16 @@
             </location>
           </location>
         </encounter_details>
+<<<<<<< HEAD
         <record_type>A</record_type>
+=======
+        <record_type>D</record_type>
+>>>>>>> origin/main
       </encounter>
     </encounters>
     <care_plans>
       <care_plan>
+<<<<<<< HEAD
         <unique_identifier>information</unique_identifier>
         <text>
           <status>additional</status>
@@ -937,6 +1760,15 @@
         </text>
         <status>revoked</status>
         <intent>option</intent>
+=======
+        <unique_identifier>south</unique_identifier>
+        <text>
+          <status>additional</status>
+          <div>say</div>
+        </text>
+        <status>completed</status>
+        <intent>plan</intent>
+>>>>>>> origin/main
         <category>
           <category_assess_plan>
             <coding>
@@ -950,6 +1782,7 @@
     </care_plans>
     <goals>
       <goal>
+<<<<<<< HEAD
         <unique_identifier>far</unique_identifier>
         <lifecycle_status>planned</lifecycle_status>
         <description>
@@ -960,10 +1793,23 @@
           <due_date>2000-10-23</due_date>
         </target>
         <record_type>A</record_type>
+=======
+        <unique_identifier>as</unique_identifier>
+        <lifecycle_status>completed</lifecycle_status>
+        <description>
+          <code>positive</code>
+          <system>per</system>
+        </description>
+        <target>
+          <due_date>2016-03-30</due_date>
+        </target>
+        <record_type>U</record_type>
+>>>>>>> origin/main
       </goal>
     </goals>
     <immunizations>
       <immunization>
+<<<<<<< HEAD
         <unique_identifier>his</unique_identifier>
         <status>not-done</status>
         <status_reason>
@@ -976,6 +1822,20 @@
         </vaccine_code>
         <occurrence>
           <occurrence_string>camera</occurrence_string>
+=======
+        <unique_identifier>senior</unique_identifier>
+        <status>not-done</status>
+        <status_reason>
+          <code>western</code>
+          <system>third</system>
+        </status_reason>
+        <vaccine_code>
+          <code>budget</code>
+          <system>http://hl7.org/fhir/sid/cvx</system>
+        </vaccine_code>
+        <occurrence>
+          <occurrence_string>bank</occurrence_string>
+>>>>>>> origin/main
         </occurrence>
         <primary_source>true</primary_source>
         <record_type>U</record_type>
@@ -983,8 +1843,13 @@
     </immunizations>
     <pediatric_bmi_for_age_observations>
       <pediatric_bmi_for_age_observation>
+<<<<<<< HEAD
         <unique_identifier>how</unique_identifier>
         <status>final</status>
+=======
+        <unique_identifier>couple</unique_identifier>
+        <status>unknown</status>
+>>>>>>> origin/main
         <category>
           <category_vs_cat>
             <coding>
@@ -1000,6 +1865,7 @@
           </coding>
         </code>
         <effective>
+<<<<<<< HEAD
           <effective_date_time>2017-03-08T03:59:39Z</effective_date_time>
         </effective>
         <value_quantity>
@@ -1037,6 +1903,43 @@
           <data_absent_reason>
             <code>not-asked</code>
             <system>huge</system>
+=======
+          <effective_period>
+            <start>2029-10-26T05:16:10Z</start>
+            <end>2029-12-23T03:34:00Z</end>
+          </effective_period>
+        </effective>
+        <value_quantity>
+          <value>590.24</value>
+          <unit>expert</unit>
+          <system>foot</system>
+          <code>hear</code>
+          <comparator>apply</comparator>
+        </value_quantity>
+        <data_absent_reason>
+          <code>not-permitted</code>
+          <system>system</system>
+        </data_absent_reason>
+        <component>
+          <code>
+            <code>8478-0</code>
+            <system>http://loinc.org</system>
+          </code>
+          <value>
+            <value_codeable_concept>
+              <coding>
+                <system>machine</system>
+                <version>paper</version>
+                <code>long</code>
+                <display>news</display>
+              </coding>
+              <text>goal</text>
+            </value_codeable_concept>
+          </value>
+          <data_absent_reason>
+            <code>positive-infinity</code>
+            <system>consider</system>
+>>>>>>> origin/main
           </data_absent_reason>
         </component>
         <record_type>A</record_type>
@@ -1044,8 +1947,13 @@
     </pediatric_bmi_for_age_observations>
     <pediatric_head_occipital_frontal_circumference_observations>
       <pediatric_head_occipital_frontal_circumference_observation>
+<<<<<<< HEAD
         <unique_identifier>generation</unique_identifier>
         <status>unknown</status>
+=======
+        <unique_identifier>fine</unique_identifier>
+        <status>final</status>
+>>>>>>> origin/main
         <category>
           <category_vs_cat>
             <coding>
@@ -1062,6 +1970,7 @@
         </code>
         <effective>
           <effective_period>
+<<<<<<< HEAD
             <start>2019-06-01T21:31:16Z</start>
             <end>2020-03-22T02:48:36Z</end>
           </effective_period>
@@ -1088,15 +1997,48 @@
           <data_absent_reason>
             <code>not-permitted</code>
             <system>general</system>
+=======
+            <start>2026-08-17T17:20:25Z</start>
+            <end>2003-06-17T21:42:52Z</end>
+          </effective_period>
+        </effective>
+        <value_quantity>
+          <value>776.73</value>
+          <unit>likely</unit>
+          <system>agent</system>
+          <code>treatment</code>
+          <comparator>finish</comparator>
+        </value_quantity>
+        <data_absent_reason>
+          <code>unknown</code>
+          <system>through</system>
+        </data_absent_reason>
+        <component>
+          <code>
+            <code>8478-0</code>
+            <system>http://loinc.org</system>
+          </code>
+          <value>
+            <value_date_time>2027-05-25T21:05:06Z</value_date_time>
+          </value>
+          <data_absent_reason>
+            <code>negative-infinity</code>
+            <system>seven</system>
+>>>>>>> origin/main
           </data_absent_reason>
         </component>
-        <record_type>A</record_type>
+        <record_type>D</record_type>
       </pediatric_head_occipital_frontal_circumference_observation>
     </pediatric_head_occipital_frontal_circumference_observations>
     <pediatric_weight_for_height_observations>
       <pediatric_weight_for_height_observation>
+<<<<<<< HEAD
         <unique_identifier>director</unique_identifier>
         <status>cancelled</status>
+=======
+        <unique_identifier>almost</unique_identifier>
+        <status>registered</status>
+>>>>>>> origin/main
         <category>
           <category_vs_cat>
             <coding>
@@ -1113,6 +2055,7 @@
         </code>
         <effective>
           <effective_period>
+<<<<<<< HEAD
             <start>2004-05-10T15:06:10Z</start>
             <end>2021-04-21T04:26:06Z</end>
           </effective_period>
@@ -1139,13 +2082,55 @@
           <data_absent_reason>
             <code>error</code>
             <system>yes</system>
+=======
+            <start>2003-12-17T09:14:25Z</start>
+            <end>2002-07-15T09:30:42Z</end>
+          </effective_period>
+        </effective>
+        <value_quantity>
+          <value>604.12</value>
+          <unit>response</unit>
+          <system>same</system>
+          <code>city</code>
+          <comparator>arm</comparator>
+        </value_quantity>
+        <data_absent_reason>
+          <code>negative-infinity</code>
+          <system>be</system>
+        </data_absent_reason>
+        <component>
+          <code>
+            <code>9279-1</code>
+            <system>http://loinc.org</system>
+          </code>
+          <value>
+            <value_range>
+              <low>
+                <value>945.38</value>
+                <unit>finish</unit>
+                <system>team</system>
+                <code>law</code>
+              </low>
+              <high>
+                <value>850.29</value>
+                <unit>sometimes</unit>
+                <system>standard</system>
+                <code>ask</code>
+              </high>
+            </value_range>
+          </value>
+          <data_absent_reason>
+            <code>as-text</code>
+            <system>memory</system>
+>>>>>>> origin/main
           </data_absent_reason>
         </component>
-        <record_type>U</record_type>
+        <record_type>D</record_type>
       </pediatric_weight_for_height_observation>
     </pediatric_weight_for_height_observations>
     <practitioners_roles>
       <practitioner_role>
+<<<<<<< HEAD
         <unique_identifier>take</unique_identifier>
         <practitioner>
           <npi>8162259479</npi>
@@ -1160,12 +2145,29 @@
               <period>
                 <start>2006-07-29T06:57:19Z</start>
                 <end>2027-06-26T07:55:31Z</end>
+=======
+        <unique_identifier>especially</unique_identifier>
+        <practitioner>
+          <npi>1064112812</npi>
+          <names>
+            <name>
+              <use>official</use>
+              <text>it</text>
+              <family>Cooper</family>
+              <given>Michele</given>
+              <prefix>Mr.</prefix>
+              <suffix>MD</suffix>
+              <period>
+                <start>2025-03-16T09:39:20Z</start>
+                <end>2008-05-03T10:26:49Z</end>
+>>>>>>> origin/main
               </period>
             </name>
           </names>
-          <is_active>false</is_active>
+          <is_active>true</is_active>
           <telecoms>
             <telecom>
+<<<<<<< HEAD
               <system>sms</system>
               <value>maintain</value>
               <use>temp</use>
@@ -1173,11 +2175,21 @@
               <period>
                 <start>2006-11-09T09:19:23Z</start>
                 <end>2007-03-13T07:57:24Z</end>
+=======
+              <system>fax</system>
+              <value>hotel</value>
+              <use>work</use>
+              <rank>5</rank>
+              <period>
+                <start>2014-08-20T14:27:52Z</start>
+                <end>2007-04-04T14:38:56Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
+<<<<<<< HEAD
               <use>temp</use>
               <type>both</type>
               <text>baby</text>
@@ -1190,11 +2202,26 @@
               <period>
                 <start>2007-04-04T17:04:13Z</start>
                 <end>2007-01-25T14:40:14Z</end>
+=======
+              <use>billing</use>
+              <type>physical</type>
+              <text>important</text>
+              <line>71263 Taylor Shore</line>
+              <city>South Daniel</city>
+              <district>peace</district>
+              <state>NH</state>
+              <postal_code>64039</postal_code>
+              <country>CR</country>
+              <period>
+                <start>2008-10-16T22:01:54Z</start>
+                <end>2029-08-28T17:13:54Z</end>
+>>>>>>> origin/main
               </period>
             </address>
           </addresses>
         </practitioner>
         <organization>
+<<<<<<< HEAD
           <npi>2555414209</npi>
           <clia>guy</clia>
           <name>Abigail Castaneda</name>
@@ -1209,11 +2236,28 @@
               <period>
                 <start>2016-04-17T22:34:22Z</start>
                 <end>2011-01-09T12:26:29Z</end>
+=======
+          <npi>5621582333</npi>
+          <clia>beautiful</clia>
+          <name>David Jones</name>
+          <is_active>true</is_active>
+          <alias>unit</alias>
+          <telecoms>
+            <telecom>
+              <system>other</system>
+              <value>must</value>
+              <use>temp</use>
+              <rank>4</rank>
+              <period>
+                <start>2008-09-10T19:50:21Z</start>
+                <end>2002-10-25T18:50:50Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
+<<<<<<< HEAD
               <use>old</use>
               <type>both</type>
               <text>food</text>
@@ -1226,20 +2270,43 @@
               <period>
                 <start>2018-06-27T11:54:54Z</start>
                 <end>2025-10-24T22:38:08Z</end>
+=======
+              <use>work</use>
+              <type>physical</type>
+              <text>open</text>
+              <line>503 Porter Flats Suite 324</line>
+              <city>North Edwardchester</city>
+              <district>performance</district>
+              <state>MI</state>
+              <postal_code>67717</postal_code>
+              <country>IQ</country>
+              <period>
+                <start>2029-08-23T16:16:37Z</start>
+                <end>2024-06-26T08:36:03Z</end>
+>>>>>>> origin/main
               </period>
             </address>
           </addresses>
         </organization>
         <code>
+<<<<<<< HEAD
           <code>drive</code>
           <system>http://nucc.org/provider-taxonomy</system>
         </code>
         <specialty>
           <code>culture</code>
+=======
+          <code>security</code>
+          <system>http://nucc.org/provider-taxonomy</system>
+        </code>
+        <specialty>
+          <code>develop</code>
+>>>>>>> origin/main
           <system>http://nucc.org/provider-taxonomy</system>
         </specialty>
         <location>
           <identifier>
+<<<<<<< HEAD
             <value>fund</value>
             <type>page</type>
           </identifier>
@@ -1254,10 +2321,27 @@
               <period>
                 <start>2011-07-06T13:00:23Z</start>
                 <end>2015-02-04T11:45:13Z</end>
+=======
+            <value>into</value>
+            <type>sister</type>
+          </identifier>
+          <status>suspended</status>
+          <name>Nathan Hall</name>
+          <telecoms>
+            <telecom>
+              <system>email</system>
+              <value>clearly</value>
+              <use>mobile</use>
+              <rank>3</rank>
+              <period>
+                <start>2009-12-13T05:21:53Z</start>
+                <end>2028-07-19T17:02:19Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <address>
+<<<<<<< HEAD
             <use>home</use>
             <type>postal</type>
             <text>game</text>
@@ -1287,11 +2371,43 @@
                 <period>
                   <start>2015-05-13T17:38:03Z</start>
                   <end>2007-02-06T20:49:20Z</end>
+=======
+            <use>temp</use>
+            <type>physical</type>
+            <text>newspaper</text>
+            <line>0347 Judy Islands</line>
+            <city>Vasquezville</city>
+            <district>threat</district>
+            <state>NM</state>
+            <postal_code>04644</postal_code>
+            <country>BI</country>
+            <period>
+              <start>2003-07-21T02:42:30Z</start>
+              <end>2020-03-23T22:56:34Z</end>
+            </period>
+          </address>
+          <managing_organization>
+            <npi>2023970539</npi>
+            <clia>each</clia>
+            <name>Victoria Calhoun</name>
+            <is_active>false</is_active>
+            <alias>computer</alias>
+            <telecoms>
+              <telecom>
+                <system>email</system>
+                <value>entire</value>
+                <use>old</use>
+                <rank>2</rank>
+                <period>
+                  <start>2029-11-17T16:55:35Z</start>
+                  <end>2023-04-26T04:33:15Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>temp</use>
                 <type>physical</type>
                 <text>near</text>
@@ -1304,6 +2420,20 @@
                 <period>
                   <start>2006-02-07T16:01:55Z</start>
                   <end>2008-03-15T03:44:13Z</end>
+=======
+                <use>work</use>
+                <type>physical</type>
+                <text>onto</text>
+                <line>5011 Rodriguez Junctions Suite 098</line>
+                <city>New Carlymouth</city>
+                <district>product</district>
+                <state>ND</state>
+                <postal_code>43420</postal_code>
+                <country>NO</country>
+                <period>
+                  <start>2003-08-13T21:31:04Z</start>
+                  <end>2007-09-05T03:01:02Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
@@ -1311,16 +2441,26 @@
         </location>
         <telecom>
           <system>fax</system>
+<<<<<<< HEAD
           <value>last</value>
           <use>work</use>
           <rank>4</rank>
           <period>
             <start>2011-11-10T23:38:15Z</start>
             <end>2008-10-11T22:27:11Z</end>
+=======
+          <value>program</value>
+          <use>temp</use>
+          <rank>2</rank>
+          <period>
+            <start>2022-02-23T22:00:11Z</start>
+            <end>2013-12-18T14:44:59Z</end>
+>>>>>>> origin/main
           </period>
         </telecom>
         <endpoints>
           <identifier>
+<<<<<<< HEAD
             <value>business</value>
             <type>should</type>
           </identifier>
@@ -1345,11 +2485,38 @@
                 <period>
                   <start>2008-03-22T23:15:14Z</start>
                   <end>2010-10-22T12:34:36Z</end>
+=======
+            <value>available</value>
+            <type>eight</type>
+          </identifier>
+          <status>error</status>
+          <connectionType>
+            <code>hl7v2-mllp</code>
+            <system>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</system>
+          </connectionType>
+          <name>Kelly Pace</name>
+          <managing_organization>
+            <npi>2596369814</npi>
+            <clia>budget</clia>
+            <name>Christine Collins</name>
+            <is_active>false</is_active>
+            <alias>seem</alias>
+            <telecoms>
+              <telecom>
+                <system>other</system>
+                <value>ago</value>
+                <use>work</use>
+                <rank>3</rank>
+                <period>
+                  <start>2018-03-12T21:43:42Z</start>
+                  <end>2013-02-05T23:35:14Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>work</use>
                 <type>physical</type>
                 <text>financial</text>
@@ -1362,12 +2529,27 @@
                 <period>
                   <start>2008-02-24T14:26:06Z</start>
                   <end>2012-10-11T09:53:02Z</end>
+=======
+                <use>home</use>
+                <type>both</type>
+                <text>environmental</text>
+                <line>43734 Taylor Underpass</line>
+                <city>Mackstad</city>
+                <district>thousand</district>
+                <state>WI</state>
+                <postal_code>67512</postal_code>
+                <country>LB</country>
+                <period>
+                  <start>2023-01-10T14:16:50Z</start>
+                  <end>2022-03-15T13:54:06Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
           </managing_organization>
           <contacts>
             <contact>
+<<<<<<< HEAD
               <system>phone</system>
               <value>together</value>
               <use>temp</use>
@@ -1375,10 +2557,20 @@
               <period>
                 <start>2029-06-16T20:15:55Z</start>
                 <end>2004-05-28T18:02:46Z</end>
+=======
+              <system>other</system>
+              <value>wear</value>
+              <use>temp</use>
+              <rank>3</rank>
+              <period>
+                <start>2021-11-18T06:11:24Z</start>
+                <end>2006-01-17T14:47:42Z</end>
+>>>>>>> origin/main
               </period>
             </contact>
           </contacts>
           <period>
+<<<<<<< HEAD
             <start>2007-12-06T09:01:23Z</start>
             <end>2019-04-24T05:29:31Z</end>
           </period>
@@ -1394,19 +2586,47 @@
           <header>after</header>
         </endpoints>
         <record_type>D</record_type>
+=======
+            <start>2029-07-08T08:50:18Z</start>
+            <end>2012-01-31T22:59:12Z</end>
+          </period>
+          <payload_type>
+            <code>will</code>
+            <system>http://terminology.hl7.org/CodeSystem/endpoint-payload-type</system>
+          </payload_type>
+          <payload_mime_type>
+            <code>him</code>
+            <system>urn:ietf:bcp:13</system>
+          </payload_mime_type>
+          <address>trial</address>
+          <header>sort</header>
+        </endpoints>
+        <record_type>U</record_type>
+>>>>>>> origin/main
       </practitioner_role>
     </practitioners_roles>
     <smoking_status_observations>
       <smoking_status_observation>
+<<<<<<< HEAD
         <unique_identifier>this</unique_identifier>
         <status>final</status>
+=======
+        <unique_identifier>conference</unique_identifier>
+        <status>entered-in-error</status>
+>>>>>>> origin/main
         <code>
           <code>72166-2</code>
           <system>http://loinc.org</system>
         </code>
+<<<<<<< HEAD
         <issued>2018-09-13T07:20:54Z</issued>
         <value_codeable_concept>
           <code>different</code>
+=======
+        <issued>2018-06-17T21:27:11Z</issued>
+        <value_codeable_concept>
+          <code>stock</code>
+>>>>>>> origin/main
           <system>http://snomed.info/sct</system>
         </value_codeable_concept>
         <record_type>A</record_type>
@@ -1414,6 +2634,7 @@
     </smoking_status_observations>
     <provenances>
       <provenance>
+<<<<<<< HEAD
         <unique_identifier>hear</unique_identifier>
         <target>
           <resource_type>document_reference</resource_type>
@@ -1453,11 +2674,64 @@
                     <period>
                       <start>2020-07-17T09:42:22Z</start>
                       <end>2028-04-01T17:42:06Z</end>
+=======
+        <unique_identifier>pretty</unique_identifier>
+        <target>
+          <resource_type>patient</resource_type>
+          <unique_identifier>civil</unique_identifier>
+        </target>
+        <recorded>2003-10-21T01:40:57Z</recorded>
+        <agent>
+          <agent_provenance_general>
+            <type>
+              <code>verifier</code>
+              <system>http://terminology.hl7.org/CodeSystem/provenance-participant-type</system>
+            </type>
+            <who>
+              <patient>
+                <medical_record_number>sort</medical_record_number>
+                <member_id>again</member_id>
+                <member_id_system>cover</member_id_system>
+                <unique_person_id>those</unique_person_id>
+                <unique_person_id_assigner>too</unique_person_id_assigner>
+                <unique_person_id_assigner_type>black</unique_person_id_assigner_type>
+                <names>
+                  <name>
+                    <use>temp</use>
+                    <text>approach</text>
+                    <family>Buchanan</family>
+                    <given>April</given>
+                    <prefix>Mrs.</prefix>
+                    <suffix>MD</suffix>
+                    <period>
+                      <start>2001-12-09T01:18:18Z</start>
+                      <end>2001-09-28T12:53:42Z</end>
+                    </period>
+                  </name>
+                </names>
+                <gender>female</gender>
+                <birth_date>1973-03-16</birth_date>
+                <marital_status>M</marital_status>
+                <deceased>
+                  <is_deceased>false</is_deceased>
+                  <deceased_date_time>2029-11-15T01:54:43Z</deceased_date_time>
+                </deceased>
+                <telecoms>
+                  <telecom>
+                    <system>pager</system>
+                    <value>apply</value>
+                    <use>work</use>
+                    <rank>3</rank>
+                    <period>
+                      <start>2017-09-27T09:03:24Z</start>
+                      <end>2018-06-07T10:49:27Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>home</use>
                     <type>physical</type>
                     <text>financial</text>
@@ -1490,11 +2764,63 @@
                   <period>
                     <start>2003-07-05T01:34:47Z</start>
                     <end>2000-06-15T20:55:18Z</end>
+=======
+                    <use>billing</use>
+                    <type>postal</type>
+                    <text>site</text>
+                    <line>9151 Powell Orchard Suite 003</line>
+                    <city>Sharonside</city>
+                    <district>once</district>
+                    <state>PW</state>
+                    <postal_code>29616</postal_code>
+                    <country>MT</country>
+                    <period>
+                      <start>2005-04-28T21:54:07Z</start>
+                      <end>2028-06-05T02:01:03Z</end>
+                    </period>
+                  </address>
+                </addresses>
+                <communications>
+                  <communication>
+                    <language_code>sv</language_code>
+                    <is_preferred>true</is_preferred>
+                  </communication>
+                </communications>
+                <us_core_race>
+                  <omb_category_code>2054-5</omb_category_code>
+                  <detailed_code>1705-3</detailed_code>
+                  <text>left</text>
+                </us_core_race>
+                <us_core_ethnicity>
+                  <omb_category_code>2135-2</omb_category_code>
+                  <detailed_code>2133-7</detailed_code>
+                  <text>available</text>
+                </us_core_ethnicity>
+                <us_core_birth_sex>F</us_core_birth_sex>
+              </patient>
+            </who>
+            <on_behalf_of>
+              <npi>7721066785</npi>
+              <clia>should</clia>
+              <name>Michael Ward</name>
+              <is_active>true</is_active>
+              <alias>already</alias>
+              <telecoms>
+                <telecom>
+                  <system>sms</system>
+                  <value>drug</value>
+                  <use>old</use>
+                  <rank>4</rank>
+                  <period>
+                    <start>2007-03-20T15:48:40Z</start>
+                    <end>2016-07-26T04:36:36Z</end>
+>>>>>>> origin/main
                   </period>
                 </telecom>
               </telecoms>
               <addresses>
                 <address>
+<<<<<<< HEAD
                   <use>home</use>
                   <type>both</type>
                   <text>threat</text>
@@ -1507,6 +2833,20 @@
                   <period>
                     <start>2022-05-07T11:44:48Z</start>
                     <end>2026-11-21T15:06:29Z</end>
+=======
+                  <use>work</use>
+                  <type>physical</type>
+                  <text>budget</text>
+                  <line>5304 Dawson Trafficway Apt. 569</line>
+                  <city>Melindabury</city>
+                  <district>find</district>
+                  <state>LA</state>
+                  <postal_code>85887</postal_code>
+                  <country>SL</country>
+                  <period>
+                    <start>2017-09-04T21:54:57Z</start>
+                    <end>2018-05-11T22:27:47Z</end>
+>>>>>>> origin/main
                   </period>
                 </address>
               </addresses>
@@ -1520,6 +2860,7 @@
               </coding>
             </type>
             <who>
+<<<<<<< HEAD
               <practitioner>
                 <npi>4392026379</npi>
                 <names>
@@ -1546,11 +2887,51 @@
                     <period>
                       <start>2008-10-07T02:01:45Z</start>
                       <end>2000-05-01T05:38:37Z</end>
+=======
+              <patient>
+                <medical_record_number>strategy</medical_record_number>
+                <member_id>believe</member_id>
+                <member_id_system>popular</member_id_system>
+                <unique_person_id>international</unique_person_id>
+                <unique_person_id_assigner>develop</unique_person_id_assigner>
+                <unique_person_id_assigner_type>paper</unique_person_id_assigner_type>
+                <names>
+                  <name>
+                    <use>official</use>
+                    <text>last</text>
+                    <family>Armstrong</family>
+                    <given>Cynthia</given>
+                    <prefix>Mrs.</prefix>
+                    <suffix>DDS</suffix>
+                    <period>
+                      <start>2010-06-08T04:10:40Z</start>
+                      <end>2030-02-25T20:45:45Z</end>
+                    </period>
+                  </name>
+                </names>
+                <gender>unknown</gender>
+                <birth_date>1985-03-12</birth_date>
+                <marital_status>I</marital_status>
+                <deceased>
+                  <is_deceased>false</is_deceased>
+                  <deceased_date_time>2015-09-10T02:56:55Z</deceased_date_time>
+                </deceased>
+                <telecoms>
+                  <telecom>
+                    <system>email</system>
+                    <value>there</value>
+                    <use>mobile</use>
+                    <rank>5</rank>
+                    <period>
+                      <start>2025-02-09T15:22:06Z</start>
+                      <end>2022-08-14T08:06:38Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>home</use>
                     <type>physical</type>
                     <text>really</text>
@@ -1623,16 +3004,35 @@
                     <period>
                       <start>2000-07-11T07:51:11Z</start>
                       <end>2024-10-11T06:31:27Z</end>
+=======
+                    <use>old</use>
+                    <type>postal</type>
+                    <text>realize</text>
+                    <line>14266 Berg Rest</line>
+                    <city>Lake Ryanport</city>
+                    <district>serious</district>
+                    <state>TX</state>
+                    <postal_code>41063</postal_code>
+                    <country>CH</country>
+                    <period>
+                      <start>2009-02-25T05:23:54Z</start>
+                      <end>2019-07-08T10:25:00Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
                 <communications>
                   <communication>
+<<<<<<< HEAD
                     <language_code>sr</language_code>
+=======
+                    <language_code>pl</language_code>
+>>>>>>> origin/main
                     <is_preferred>false</is_preferred>
                   </communication>
                 </communications>
                 <us_core_race>
+<<<<<<< HEAD
                   <omb_category_code>1002-5</omb_category_code>
                   <omb_category_code>2076-8</omb_category_code>
                   <omb_category_code>2076-8</omb_category_code>
@@ -1646,6 +3046,70 @@
                 </us_core_ethnicity>
                 <us_core_birth_sex>UNK</us_core_birth_sex>
               </patient>
+=======
+                  <omb_category_code>2028-9</omb_category_code>
+                  <omb_category_code>2106-3</omb_category_code>
+                  <omb_category_code>2076-8</omb_category_code>
+                  <detailed_code>1055-3</detailed_code>
+                  <text>deep</text>
+                </us_core_race>
+                <us_core_ethnicity>
+                  <omb_category_code>2186-5</omb_category_code>
+                  <detailed_code>2162-6</detailed_code>
+                  <text>whether</text>
+                </us_core_ethnicity>
+                <us_core_birth_sex>UNK</us_core_birth_sex>
+              </patient>
+            </who>
+            <on_behalf_of>
+              <practitioner>
+                <npi>7428296370</npi>
+                <names>
+                  <name>
+                    <use>anonymous</use>
+                    <text>night</text>
+                    <family>Hart</family>
+                    <given>Anthony</given>
+                    <prefix>Mr.</prefix>
+                    <suffix>MD</suffix>
+                    <period>
+                      <start>2009-11-11T12:11:15Z</start>
+                      <end>2001-12-12T05:12:53Z</end>
+                    </period>
+                  </name>
+                </names>
+                <is_active>true</is_active>
+                <telecoms>
+                  <telecom>
+                    <system>email</system>
+                    <value>career</value>
+                    <use>mobile</use>
+                    <rank>4</rank>
+                    <period>
+                      <start>2022-04-25T17:36:53Z</start>
+                      <end>2029-11-27T00:55:06Z</end>
+                    </period>
+                  </telecom>
+                </telecoms>
+                <addresses>
+                  <address>
+                    <use>work</use>
+                    <type>both</type>
+                    <text>arrive</text>
+                    <line>1571 Wesley Mills Apt. 897</line>
+                    <city>East Nicole</city>
+                    <district>able</district>
+                    <state>OH</state>
+                    <postal_code>56471</postal_code>
+                    <country>LR</country>
+                    <period>
+                      <start>2013-05-07T16:46:28Z</start>
+                      <end>2011-12-22T08:57:41Z</end>
+                    </period>
+                  </address>
+                </addresses>
+              </practitioner>
+>>>>>>> origin/main
             </on_behalf_of>
           </agent_provenance_author>
           <agent_provenance_transmitter>
@@ -1656,6 +3120,7 @@
               </coding>
             </type>
             <who>
+<<<<<<< HEAD
               <patient>
                 <medical_record_number>like</medical_record_number>
                 <member_id>all</member_id>
@@ -1693,11 +3158,40 @@
                     <period>
                       <start>2018-11-11T00:09:16Z</start>
                       <end>2008-04-28T11:37:28Z</end>
+=======
+              <practitioner>
+                <npi>5636691278</npi>
+                <names>
+                  <name>
+                    <use>old</use>
+                    <text>maybe</text>
+                    <family>Gonzalez</family>
+                    <given>Justin</given>
+                    <prefix>Dr.</prefix>
+                    <suffix>III</suffix>
+                    <period>
+                      <start>2027-06-08T04:17:02Z</start>
+                      <end>2011-09-26T18:22:26Z</end>
+                    </period>
+                  </name>
+                </names>
+                <is_active>false</is_active>
+                <telecoms>
+                  <telecom>
+                    <system>fax</system>
+                    <value>range</value>
+                    <use>temp</use>
+                    <rank>3</rank>
+                    <period>
+                      <start>2020-04-13T00:32:22Z</start>
+                      <end>2008-01-30T07:47:08Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>old</use>
                     <type>physical</type>
                     <text>before</text>
@@ -1776,10 +3270,103 @@
                     <period>
                       <start>2014-06-06T17:30:40Z</start>
                       <end>2000-10-15T01:45:17Z</end>
+=======
+                    <use>temp</use>
+                    <type>both</type>
+                    <text>if</text>
+                    <line>959 Gina Manor Apt. 429</line>
+                    <city>West Daniellemouth</city>
+                    <district>fall</district>
+                    <state>FL</state>
+                    <postal_code>21565</postal_code>
+                    <country>TV</country>
+                    <period>
+                      <start>2027-04-10T00:52:38Z</start>
+                      <end>2004-04-11T13:46:37Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
               </practitioner>
+            </who>
+            <on_behalf_of>
+              <patient>
+                <medical_record_number>type</medical_record_number>
+                <member_id>south</member_id>
+                <member_id_system>fly</member_id_system>
+                <unique_person_id>perform</unique_person_id>
+                <unique_person_id_assigner>second</unique_person_id_assigner>
+                <unique_person_id_assigner_type>represent</unique_person_id_assigner_type>
+                <names>
+                  <name>
+                    <use>official</use>
+                    <text>front</text>
+                    <family>Dunn</family>
+                    <given>James</given>
+                    <prefix>Mr.</prefix>
+                    <suffix>Jr.</suffix>
+                    <period>
+                      <start>2002-01-12T05:14:56Z</start>
+                      <end>2018-06-06T10:25:52Z</end>
+                    </period>
+                  </name>
+                </names>
+                <gender>male</gender>
+                <birth_date>1975-01-18</birth_date>
+                <marital_status>S</marital_status>
+                <deceased>
+                  <is_deceased>true</is_deceased>
+                  <deceased_date_time>2020-01-30T08:22:38Z</deceased_date_time>
+                </deceased>
+                <telecoms>
+                  <telecom>
+                    <system>url</system>
+                    <value>ball</value>
+                    <use>mobile</use>
+                    <rank>1</rank>
+                    <period>
+                      <start>2005-04-02T20:52:10Z</start>
+                      <end>2008-10-28T16:41:39Z</end>
+                    </period>
+                  </telecom>
+                </telecoms>
+                <addresses>
+                  <address>
+                    <use>temp</use>
+                    <type>both</type>
+                    <text>almost</text>
+                    <line>7934 Barton Keys</line>
+                    <city>Bellbury</city>
+                    <district>change</district>
+                    <state>PR</state>
+                    <postal_code>47392</postal_code>
+                    <country>IS</country>
+                    <period>
+                      <start>2017-11-01T00:43:41Z</start>
+                      <end>2019-04-17T10:16:20Z</end>
+                    </period>
+                  </address>
+                </addresses>
+                <communications>
+                  <communication>
+                    <language_code>en-US</language_code>
+                    <is_preferred>true</is_preferred>
+                  </communication>
+                </communications>
+                <us_core_race>
+                  <omb_category_code>2106-3</omb_category_code>
+                  <omb_category_code>1002-5</omb_category_code>
+                  <omb_category_code>2106-3</omb_category_code>
+                  <detailed_code>2500-7</detailed_code>
+                  <text>father</text>
+                </us_core_race>
+                <us_core_ethnicity>
+                  <omb_category_code>2135-2</omb_category_code>
+                  <detailed_code>2160-0</detailed_code>
+                  <text>south</text>
+                </us_core_ethnicity>
+                <us_core_birth_sex>M</us_core_birth_sex>
+              </patient>
             </on_behalf_of>
           </agent_provenance_transmitter>
         </agent>
@@ -1788,8 +3375,13 @@
     </provenances>
     <pulse_oximetry_observations>
       <pulse_oximetry_observation>
+<<<<<<< HEAD
         <unique_identifier>by</unique_identifier>
         <status>amended</status>
+=======
+        <unique_identifier>whole</unique_identifier>
+        <status>final</status>
+>>>>>>> origin/main
         <category>
           <category_vs_cat>
             <coding>
@@ -1811,6 +3403,7 @@
           </coding>
         </code>
         <effective>
+<<<<<<< HEAD
           <effective_date_time>2015-09-24T05:54:35Z</effective_date_time>
         </effective>
         <value_quantity>
@@ -1823,6 +3416,20 @@
         <data_absent_reason>
           <code>positive-infinity</code>
           <system>commercial</system>
+=======
+          <effective_date_time>2026-12-27T09:15:15Z</effective_date_time>
+        </effective>
+        <value_quantity>
+          <value>656.15</value>
+          <unit>surface</unit>
+          <system>civil</system>
+          <code>material</code>
+          <comparator>require</comparator>
+        </value_quantity>
+        <data_absent_reason>
+          <code>unsupported</code>
+          <system>natural</system>
+>>>>>>> origin/main
         </data_absent_reason>
         <component>
           <component_flow_rate>
@@ -1833,6 +3440,7 @@
               </coding>
             </code>
             <value_quantity>
+<<<<<<< HEAD
               <value>474.61</value>
               <unit>finish</unit>
               <system>letter</system>
@@ -1842,6 +3450,17 @@
             <data_absent_reason>
               <code>not-permitted</code>
               <system>ago</system>
+=======
+              <value>491.05</value>
+              <unit>suggest</unit>
+              <system>culture</system>
+              <code>may</code>
+              <comparator>term</comparator>
+            </value_quantity>
+            <data_absent_reason>
+              <code>not-permitted</code>
+              <system>conference</system>
+>>>>>>> origin/main
             </data_absent_reason>
           </component_flow_rate>
           <component_concentration>
@@ -1852,6 +3471,7 @@
               </coding>
             </code>
             <value_quantity>
+<<<<<<< HEAD
               <value>398.54</value>
               <unit>almost</unit>
               <system>bar</system>
@@ -1865,10 +3485,26 @@
           </component_concentration>
         </component>
         <record_type>D</record_type>
+=======
+              <value>866.17</value>
+              <unit>cost</unit>
+              <system>quality</system>
+              <code>paper</code>
+              <comparator>huge</comparator>
+            </value_quantity>
+            <data_absent_reason>
+              <code>as-text</code>
+              <system>American</system>
+            </data_absent_reason>
+          </component_concentration>
+        </component>
+        <record_type>U</record_type>
+>>>>>>> origin/main
       </pulse_oximetry_observation>
     </pulse_oximetry_observations>
     <implantable_devices>
       <implantable_device>
+<<<<<<< HEAD
         <unique_identifier>discussion</unique_identifier>
         <udi_carrier>
           <device_identifier>girl</device_identifier>
@@ -1885,10 +3521,29 @@
           <system>http://snomed.info/sct</system>
         </type>
         <record_type>U</record_type>
+=======
+        <unique_identifier>state</unique_identifier>
+        <udi_carrier>
+          <device_identifier>put</device_identifier>
+          <carrier_aidc>UE0=</carrier_aidc>
+          <carrier_hrf>very</carrier_hrf>
+        </udi_carrier>
+        <distinct_identifier>result</distinct_identifier>
+        <manufacture_date>2001-05-31T03:14:37Z</manufacture_date>
+        <expiration_date>2009-09-22T01:46:05Z</expiration_date>
+        <lot_number>eat</lot_number>
+        <serial_number>available</serial_number>
+        <type>
+          <code>some</code>
+          <system>http://snomed.info/sct</system>
+        </type>
+        <record_type>A</record_type>
+>>>>>>> origin/main
       </implantable_device>
     </implantable_devices>
     <document_references>
       <document_reference>
+<<<<<<< HEAD
         <unique_identifier>care</unique_identifier>
         <status>entered-in-error</status>
         <type>
@@ -1926,11 +3581,40 @@
                 <period>
                   <start>2006-09-17T12:50:32Z</start>
                   <end>2002-01-31T22:53:39Z</end>
+=======
+        <unique_identifier>discuss</unique_identifier>
+        <status>current </status>
+        <type>
+          <code>send</code>
+          <system>http://loinc.org</system>
+        </type>
+        <category>
+          <code>return</code>
+          <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category</system>
+        </category>
+        <author>
+          <organization>
+            <npi>9109546918</npi>
+            <clia>should</clia>
+            <name>Trevor Simpson</name>
+            <is_active>true</is_active>
+            <alias>detail</alias>
+            <telecoms>
+              <telecom>
+                <system>url</system>
+                <value>wall</value>
+                <use>old</use>
+                <rank>3</rank>
+                <period>
+                  <start>2009-06-30T06:04:19Z</start>
+                  <end>2013-07-01T10:37:02Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>work</use>
                 <type>both</type>
                 <text>strategy</text>
@@ -1943,12 +3627,27 @@
                 <period>
                   <start>2000-08-22T08:51:08Z</start>
                   <end>2002-04-13T23:11:22Z</end>
+=======
+                <use>old</use>
+                <type>both</type>
+                <text>through</text>
+                <line>04509 Nichole Keys</line>
+                <city>Hobbsview</city>
+                <district>together</district>
+                <state>IN</state>
+                <postal_code>49358</postal_code>
+                <country>KM</country>
+                <period>
+                  <start>2030-06-29T11:26:12Z</start>
+                  <end>2012-04-28T04:55:09Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
           </practitioner>
         </author>
         <custodian>
+<<<<<<< HEAD
           <npi>5804210795</npi>
           <clia>design</clia>
           <name>Brian Flynn</name>
@@ -1963,11 +3662,28 @@
               <period>
                 <start>2029-11-06T11:17:25Z</start>
                 <end>2004-02-23T03:50:52Z</end>
+=======
+          <npi>6554796275</npi>
+          <clia>where</clia>
+          <name>Susan Frazier</name>
+          <is_active>false</is_active>
+          <alias>give</alias>
+          <telecoms>
+            <telecom>
+              <system>phone</system>
+              <value>very</value>
+              <use>work</use>
+              <rank>5</rank>
+              <period>
+                <start>2003-01-01T06:00:52Z</start>
+                <end>2025-08-10T08:39:22Z</end>
+>>>>>>> origin/main
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
+<<<<<<< HEAD
               <use>old</use>
               <type>physical</type>
               <text>reality</text>
@@ -1980,10 +3696,25 @@
               <period>
                 <start>2009-08-17T14:11:24Z</start>
                 <end>2015-11-30T13:48:58Z</end>
+=======
+              <use>temp</use>
+              <type>postal</type>
+              <text>executive</text>
+              <line>6632 Wyatt Shore</line>
+              <city>Joelview</city>
+              <district>economic</district>
+              <state>AZ</state>
+              <postal_code>15888</postal_code>
+              <country>CZ</country>
+              <period>
+                <start>2005-05-21T01:41:06Z</start>
+                <end>2021-12-26T00:22:28Z</end>
+>>>>>>> origin/main
               </period>
             </address>
           </addresses>
         </custodian>
+<<<<<<< HEAD
         <date>2011-04-19T04:35:50Z</date>
         <content>
           <attachment>
@@ -1993,21 +3724,42 @@
           </attachment>
           <format>
             <code>approach</code>
+=======
+        <date>2013-09-13T04:35:44Z</date>
+        <content>
+          <attachment>
+            <content_type>join</content_type>
+            <data>YmV0dGVy</data>
+            <url>https://www.white-young.biz/</url>
+          </attachment>
+          <format>
+            <code>evidence</code>
+>>>>>>> origin/main
             <system>http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem</system>
           </format>
         </content>
         <context>
           <encounter>
+<<<<<<< HEAD
             <identifier>eight</identifier>
             <status>finished</status>
             <class>smile</class>
             <type>
               <code>act</code>
               <system>http://www.ama-assn.org/go/cpt</system>
+=======
+            <identifier>those</identifier>
+            <status>in-progress</status>
+            <class>where</class>
+            <type>
+              <code>charge</code>
+              <system>http://snomed.info/sct</system>
+>>>>>>> origin/main
             </type>
             <participants>
               <participant>
                 <type>
+<<<<<<< HEAD
                   <code>can</code>
                   <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
                 </type>
@@ -2028,12 +3780,35 @@
                       <period>
                         <start>2025-07-21T22:40:16Z</start>
                         <end>2005-03-15T13:22:40Z</end>
+=======
+                  <code>picture</code>
+                  <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
+                </type>
+                <period>
+                  <start>2007-08-03T18:52:15Z</start>
+                  <end>2009-07-19T03:55:01Z</end>
+                </period>
+                <individual>
+                  <npi>2007166295</npi>
+                  <names>
+                    <name>
+                      <use>usual</use>
+                      <text>without</text>
+                      <family>Brown</family>
+                      <given>Amy</given>
+                      <prefix>Mr.</prefix>
+                      <suffix>PhD</suffix>
+                      <period>
+                        <start>2018-03-09T20:41:08Z</start>
+                        <end>2005-05-13T12:09:31Z</end>
+>>>>>>> origin/main
                       </period>
                     </name>
                   </names>
-                  <is_active>true</is_active>
+                  <is_active>false</is_active>
                   <telecoms>
                     <telecom>
+<<<<<<< HEAD
                       <system>phone</system>
                       <value>mean</value>
                       <use>mobile</use>
@@ -2041,11 +3816,21 @@
                       <period>
                         <start>2001-10-27T17:19:54Z</start>
                         <end>2010-03-13T16:44:38Z</end>
+=======
+                      <system>pager</system>
+                      <value>hour</value>
+                      <use>old</use>
+                      <rank>1</rank>
+                      <period>
+                        <start>2021-06-25T11:02:48Z</start>
+                        <end>2027-01-06T01:42:45Z</end>
+>>>>>>> origin/main
                       </period>
                     </telecom>
                   </telecoms>
                   <addresses>
                     <address>
+<<<<<<< HEAD
                       <use>temp</use>
                       <type>postal</type>
                       <text>make</text>
@@ -2058,6 +3843,20 @@
                       <period>
                         <start>2007-01-25T21:21:21Z</start>
                         <end>2013-12-31T12:16:17Z</end>
+=======
+                      <use>work</use>
+                      <type>postal</type>
+                      <text>consider</text>
+                      <line>495 Lauren Knoll Suite 226</line>
+                      <city>Johnsonmouth</city>
+                      <district>thing</district>
+                      <state>RI</state>
+                      <postal_code>26551</postal_code>
+                      <country>PH</country>
+                      <period>
+                        <start>2003-12-30T17:01:44Z</start>
+                        <end>2005-01-22T22:17:09Z</end>
+>>>>>>> origin/main
                       </period>
                     </address>
                   </addresses>
@@ -2065,16 +3864,26 @@
               </participant>
             </participants>
             <period>
+<<<<<<< HEAD
               <start>2000-11-15T02:49:56Z</start>
               <end>2027-12-28T16:20:05Z</end>
             </period>
             <reason_code>kind</reason_code>
             <hospitalization>
               <discharge_disposition>their</discharge_disposition>
+=======
+              <start>2029-06-20T02:59:34Z</start>
+              <end>2014-05-09T19:38:50Z</end>
+            </period>
+            <reason_code>election</reason_code>
+            <hospitalization>
+              <discharge_disposition>material</discharge_disposition>
+>>>>>>> origin/main
             </hospitalization>
             <location>
               <location>
                 <identifier>
+<<<<<<< HEAD
                   <value>bring</value>
                   <type>sometimes</type>
                 </identifier>
@@ -2089,10 +3898,27 @@
                     <period>
                       <start>2028-02-01T18:20:38Z</start>
                       <end>2001-05-09T15:59:24Z</end>
+=======
+                  <value>theory</value>
+                  <type>create</type>
+                </identifier>
+                <status>active</status>
+                <name>John Andrews</name>
+                <telecoms>
+                  <telecom>
+                    <system>url</system>
+                    <value>model</value>
+                    <use>mobile</use>
+                    <rank>1</rank>
+                    <period>
+                      <start>2002-08-08T22:11:15Z</start>
+                      <end>2030-06-24T13:10:34Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <address>
+<<<<<<< HEAD
                   <use>temp</use>
                   <type>both</type>
                   <text>different</text>
@@ -2122,11 +3948,43 @@
                       <period>
                         <start>2026-07-11T12:51:34Z</start>
                         <end>2021-11-15T03:14:45Z</end>
+=======
+                  <use>old</use>
+                  <type>physical</type>
+                  <text>financial</text>
+                  <line>19324 Dawn Skyway</line>
+                  <city>New Tammy</city>
+                  <district>PM</district>
+                  <state>MO</state>
+                  <postal_code>94770</postal_code>
+                  <country>SV</country>
+                  <period>
+                    <start>2002-09-27T12:57:55Z</start>
+                    <end>2011-06-24T15:42:19Z</end>
+                  </period>
+                </address>
+                <managing_organization>
+                  <npi>6883987812</npi>
+                  <clia>my</clia>
+                  <name>Kathleen Williams</name>
+                  <is_active>false</is_active>
+                  <alias>section</alias>
+                  <telecoms>
+                    <telecom>
+                      <system>sms</system>
+                      <value>too</value>
+                      <use>old</use>
+                      <rank>3</rank>
+                      <period>
+                        <start>2021-06-23T22:18:46Z</start>
+                        <end>2026-11-04T07:04:57Z</end>
+>>>>>>> origin/main
                       </period>
                     </telecom>
                   </telecoms>
                   <addresses>
                     <address>
+<<<<<<< HEAD
                       <use>temp</use>
                       <type>both</type>
                       <text>base</text>
@@ -2139,6 +3997,20 @@
                       <period>
                         <start>2027-08-08T14:17:25Z</start>
                         <end>2025-01-27T11:21:03Z</end>
+=======
+                      <use>old</use>
+                      <type>physical</type>
+                      <text>take</text>
+                      <line>369 Brown Isle</line>
+                      <city>Stephenmouth</city>
+                      <district>final</district>
+                      <state>MH</state>
+                      <postal_code>31374</postal_code>
+                      <country>NA</country>
+                      <period>
+                        <start>2011-08-04T16:07:40Z</start>
+                        <end>2011-07-05T04:49:40Z</end>
+>>>>>>> origin/main
                       </period>
                     </address>
                   </addresses>
@@ -2147,8 +4019,13 @@
             </location>
           </encounter>
           <period>
+<<<<<<< HEAD
             <start>2026-06-21T01:08:37Z</start>
             <end>2022-12-07T05:45:42Z</end>
+=======
+            <start>2028-01-18T21:36:40Z</start>
+            <end>2000-09-21T10:12:03Z</end>
+>>>>>>> origin/main
           </period>
         </context>
         <record_type>D</record_type>
@@ -2156,8 +4033,13 @@
     </document_references>
     <diagnostic_report_labs>
       <diagnostic_report_lab>
+<<<<<<< HEAD
         <unique_identifier>defense</unique_identifier>
         <status>final</status>
+=======
+        <unique_identifier>another</unique_identifier>
+        <status>cancelled</status>
+>>>>>>> origin/main
         <category>
           <category_laboratory_slice>
             <coding>
@@ -2167,6 +4049,7 @@
           </category_laboratory_slice>
         </category>
         <code>
+<<<<<<< HEAD
           <code>mention</code>
           <system>http://loinc.org</system>
         </code>
@@ -2185,16 +4068,56 @@
               <telecom>
                 <system>sms</system>
                 <value>line</value>
-                <use>work</use>
-                <rank>1</rank>
+=======
+          <code>garden</code>
+          <system>http://loinc.org</system>
+        </code>
+        <issued>2029-01-12T05:43:14Z</issued>
+        <effective>
+          <effective_period>
+            <start>2026-02-12T14:52:17Z</start>
+            <end>2028-07-27T04:10:02Z</end>
+          </effective_period>
+        </effective>
+        <performer>
+          <reported_practitioner>
+            <npi>4962468745</npi>
+            <names>
+              <name>
+                <use>temp</use>
+                <text>condition</text>
+                <family>Williamson</family>
+                <given>Tina</given>
+                <prefix>Miss</prefix>
+                <suffix>DVM</suffix>
                 <period>
+                  <start>2018-12-02T14:19:18Z</start>
+                  <end>2004-12-29T03:36:10Z</end>
+                </period>
+              </name>
+            </names>
+            <is_active>false</is_active>
+            <telecoms>
+              <telecom>
+                <system>phone</system>
+                <value>mean</value>
+>>>>>>> origin/main
+                <use>work</use>
+                <rank>3</rank>
+                <period>
+<<<<<<< HEAD
                   <start>2021-04-15T18:42:48Z</start>
                   <end>2003-11-03T12:37:04Z</end>
+=======
+                  <start>2021-11-13T20:54:50Z</start>
+                  <end>2000-08-26T09:37:03Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
+<<<<<<< HEAD
                 <use>home</use>
                 <type>both</type>
                 <text>society</text>
@@ -2207,12 +4130,27 @@
                 <period>
                   <start>2019-06-14T11:28:21Z</start>
                   <end>2026-02-04T15:22:55Z</end>
+=======
+                <use>work</use>
+                <type>both</type>
+                <text>bit</text>
+                <line>1139 Kurt Rest Apt. 443</line>
+                <city>Knappshire</city>
+                <district>teacher</district>
+                <state>RI</state>
+                <postal_code>41542</postal_code>
+                <country>PS</country>
+                <period>
+                  <start>2026-07-17T21:30:51Z</start>
+                  <end>2022-03-23T15:16:26Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
-          </reported_organization>
+          </reported_practitioner>
         </performer>
         <result>
+<<<<<<< HEAD
           <status>cancelled</status>
           <observation_code>
             <coding>
@@ -2246,10 +4184,56 @@
               <unit>whether</unit>
               <system>unit</system>
               <code>suffer</code>
+=======
+          <status>final</status>
+          <observation_code>
+            <coding>
+              <system>hour</system>
+              <version>kind</version>
+              <code>attention</code>
+              <display>seem</display>
+            </coding>
+            <text>expect</text>
+          </observation_code>
+          <observation_effective>
+            <effective_date_time>2030-09-16T17:01:42Z</effective_date_time>
+          </observation_effective>
+          <observation_value>
+            <value_range>
+              <low>
+                <value>424.25</value>
+                <unit>country</unit>
+                <system>style</system>
+                <code>actually</code>
+              </low>
+              <high>
+                <value>191.03</value>
+                <unit>start</unit>
+                <system>newspaper</system>
+                <code>which</code>
+              </high>
+            </value_range>
+          </observation_value>
+          <data_absent_reason>temp-unknown</data_absent_reason>
+          <interpretation>idea</interpretation>
+          <reference_range>
+            <low>
+              <value>445.99</value>
+              <unit>car</unit>
+              <system>least</system>
+              <code>indicate</code>
+            </low>
+            <high>
+              <value>689.01</value>
+              <unit>with</unit>
+              <system>whose</system>
+              <code>similar</code>
+>>>>>>> origin/main
             </high>
             <type>luteal</type>
             <applies_to>
               <coding>
+<<<<<<< HEAD
                 <system>positive</system>
                 <version>push</version>
                 <code>line</code>
@@ -2272,6 +4256,30 @@
               </high>
             </age>
             <text>point</text>
+=======
+                <system>official</system>
+                <version>free</version>
+                <code>same</code>
+                <display>ten</display>
+              </coding>
+              <text>page</text>
+            </applies_to>
+            <age>
+              <low>
+                <value>225.32</value>
+                <unit>feel</unit>
+                <system>available</system>
+                <code>level</code>
+              </low>
+              <high>
+                <value>193.88</value>
+                <unit>civil</unit>
+                <system>up</system>
+                <code>section</code>
+              </high>
+            </age>
+            <text>sing</text>
+>>>>>>> origin/main
           </reference_range>
         </result>
         <record_type>A</record_type>
@@ -2279,6 +4287,7 @@
     </diagnostic_report_labs>
     <diagnostic_report_notes>
       <diagnostic_report_note>
+<<<<<<< HEAD
         <unique_identifier>source</unique_identifier>
         <status>partial</status>
         <category>
@@ -2307,12 +4316,46 @@
                 <period>
                   <start>2008-10-03T04:24:15Z</start>
                   <end>2002-01-08T14:13:21Z</end>
+=======
+        <unique_identifier>particularly</unique_identifier>
+        <status>registered</status>
+        <category>
+          <code>LALP7839-6B</code>
+          <system>http://loinc.org</system>
+        </category>
+        <code>
+          <code>participant</code>
+          <system>http://loinc.org</system>
+        </code>
+        <issued>2006-12-26T19:48:57Z</issued>
+        <effective>
+          <effective_period>
+            <start>2001-07-15T02:33:43Z</start>
+            <end>2014-11-20T23:05:35Z</end>
+          </effective_period>
+        </effective>
+        <performer>
+          <reported_practitioner>
+            <npi>8113921629</npi>
+            <names>
+              <name>
+                <use>maiden</use>
+                <text>mind</text>
+                <family>Carlson</family>
+                <given>Heather</given>
+                <prefix>Mr.</prefix>
+                <suffix>MD</suffix>
+                <period>
+                  <start>2026-05-01T20:29:31Z</start>
+                  <end>2028-06-30T22:39:22Z</end>
+>>>>>>> origin/main
                 </period>
               </name>
             </names>
-            <is_active>true</is_active>
+            <is_active>false</is_active>
             <telecoms>
               <telecom>
+<<<<<<< HEAD
                 <system>phone</system>
                 <value>cultural</value>
                 <use>temp</use>
@@ -2320,6 +4363,15 @@
                 <period>
                   <start>2021-10-17T22:04:55Z</start>
                   <end>2000-08-15T08:47:02Z</end>
+=======
+                <system>other</system>
+                <value>memory</value>
+                <use>home</use>
+                <rank>3</rank>
+                <period>
+                  <start>2013-09-03T15:21:53Z</start>
+                  <end>2001-09-18T10:40:33Z</end>
+>>>>>>> origin/main
                 </period>
               </telecom>
             </telecoms>
@@ -2327,6 +4379,7 @@
               <address>
                 <use>work</use>
                 <type>physical</type>
+<<<<<<< HEAD
                 <text>radio</text>
                 <line>5598 Rich Wall</line>
                 <city>Lake Mary</city>
@@ -2337,12 +4390,25 @@
                 <period>
                   <start>2014-01-03T12:46:07Z</start>
                   <end>2015-05-01T20:31:59Z</end>
+=======
+                <text>campaign</text>
+                <line>8624 Thomas Manors Suite 086</line>
+                <city>West Ianstad</city>
+                <district>leader</district>
+                <state>RI</state>
+                <postal_code>86873</postal_code>
+                <country>CV</country>
+                <period>
+                  <start>2027-11-13T15:55:21Z</start>
+                  <end>2016-04-27T17:00:55Z</end>
+>>>>>>> origin/main
                 </period>
               </address>
             </addresses>
           </reported_practitioner>
         </performer>
         <presented_form>
+<<<<<<< HEAD
           <content_type>sport</content_type>
           <language>structure</language>
           <data>YnVpbGRpbmc=</data>
@@ -2358,11 +4424,29 @@
           <class>heavy</class>
           <type>
             <code>article</code>
+=======
+          <content_type>write</content_type>
+          <language>gas</language>
+          <data>YmVmb3Jl</data>
+          <url>https://durham.biz/</url>
+          <size>2</size>
+          <hash>c3BlYWs=</hash>
+          <title>choose</title>
+          <creation>2023-05-08T08:33:22Z</creation>
+        </presented_form>
+        <encounter>
+          <identifier>the</identifier>
+          <status>finished</status>
+          <class>bed</class>
+          <type>
+            <code>service</code>
+>>>>>>> origin/main
             <system>http://www.ama-assn.org/go/cpt</system>
           </type>
           <participants>
             <participant>
               <type>
+<<<<<<< HEAD
                 <code>me</code>
                 <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
               </type>
@@ -2383,12 +4467,35 @@
                     <period>
                       <start>2005-01-04T01:19:59Z</start>
                       <end>2007-01-19T08:09:47Z</end>
+=======
+                <code>ahead</code>
+                <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
+              </type>
+              <period>
+                <start>2028-04-23T20:37:19Z</start>
+                <end>2026-10-26T05:25:24Z</end>
+              </period>
+              <individual>
+                <npi>8754414487</npi>
+                <names>
+                  <name>
+                    <use>usual</use>
+                    <text>value</text>
+                    <family>Chavez</family>
+                    <given>Felicia</given>
+                    <prefix>Mx.</prefix>
+                    <suffix>DDS</suffix>
+                    <period>
+                      <start>2021-05-25T05:12:24Z</start>
+                      <end>2003-01-10T22:55:38Z</end>
+>>>>>>> origin/main
                     </period>
                   </name>
                 </names>
-                <is_active>false</is_active>
+                <is_active>true</is_active>
                 <telecoms>
                   <telecom>
+<<<<<<< HEAD
                     <system>phone</system>
                     <value>quality</value>
                     <use>work</use>
@@ -2396,11 +4503,21 @@
                     <period>
                       <start>2030-11-08T14:22:19Z</start>
                       <end>2009-12-09T16:33:36Z</end>
+=======
+                    <system>fax</system>
+                    <value>challenge</value>
+                    <use>old</use>
+                    <rank>3</rank>
+                    <period>
+                      <start>2009-08-02T11:16:07Z</start>
+                      <end>2027-03-02T11:57:18Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>old</use>
                     <type>postal</type>
                     <text>door</text>
@@ -2413,6 +4530,20 @@
                     <period>
                       <start>2019-08-12T08:20:26Z</start>
                       <end>2019-09-16T01:32:46Z</end>
+=======
+                    <use>home</use>
+                    <type>both</type>
+                    <text>special</text>
+                    <line>2352 Middleton Freeway</line>
+                    <city>Jamiemouth</city>
+                    <district>rise</district>
+                    <state>AR</state>
+                    <postal_code>13862</postal_code>
+                    <country>CI</country>
+                    <period>
+                      <start>2005-04-11T10:46:20Z</start>
+                      <end>2008-12-03T22:56:58Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -2420,16 +4551,26 @@
             </participant>
           </participants>
           <period>
+<<<<<<< HEAD
             <start>2012-03-10T04:42:11Z</start>
             <end>2012-05-08T08:11:33Z</end>
           </period>
           <reason_code>them</reason_code>
           <hospitalization>
             <discharge_disposition>new</discharge_disposition>
+=======
+            <start>2010-03-05T17:52:20Z</start>
+            <end>2019-10-07T16:35:18Z</end>
+          </period>
+          <reason_code>mother</reason_code>
+          <hospitalization>
+            <discharge_disposition>structure</discharge_disposition>
+>>>>>>> origin/main
           </hospitalization>
           <location>
             <location>
               <identifier>
+<<<<<<< HEAD
                 <value>recent</value>
                 <type>morning</type>
               </identifier>
@@ -2444,12 +4585,29 @@
                   <period>
                     <start>2025-10-05T10:06:17Z</start>
                     <end>2004-06-30T03:07:17Z</end>
+=======
+                <value>focus</value>
+                <type>seem</type>
+              </identifier>
+              <status>active</status>
+              <name>Julie Martinez</name>
+              <telecoms>
+                <telecom>
+                  <system>email</system>
+                  <value>common</value>
+                  <use>temp</use>
+                  <rank>2</rank>
+                  <period>
+                    <start>2027-11-09T04:30:41Z</start>
+                    <end>2014-03-19T17:40:09Z</end>
+>>>>>>> origin/main
                   </period>
                 </telecom>
               </telecoms>
               <address>
                 <use>old</use>
                 <type>physical</type>
+<<<<<<< HEAD
                 <text>safe</text>
                 <line>096 Ward Loop</line>
                 <city>Pamelahaven</city>
@@ -2477,11 +4635,41 @@
                     <period>
                       <start>2025-03-08T02:28:42Z</start>
                       <end>2028-12-05T02:51:20Z</end>
+=======
+                <text>role</text>
+                <line>584 Russell Trail</line>
+                <city>Fieldsville</city>
+                <district>sure</district>
+                <state>AR</state>
+                <postal_code>14649</postal_code>
+                <country>LI</country>
+                <period>
+                  <start>2027-07-10T09:29:19Z</start>
+                  <end>2021-05-15T01:31:30Z</end>
+                </period>
+              </address>
+              <managing_organization>
+                <npi>7987495974</npi>
+                <clia>treatment</clia>
+                <name>Brandy Smith</name>
+                <is_active>true</is_active>
+                <alias>scientist</alias>
+                <telecoms>
+                  <telecom>
+                    <system>other</system>
+                    <value>thought</value>
+                    <use>temp</use>
+                    <rank>1</rank>
+                    <period>
+                      <start>2009-06-18T22:41:23Z</start>
+                      <end>2022-07-04T18:17:08Z</end>
+>>>>>>> origin/main
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
+<<<<<<< HEAD
                     <use>temp</use>
                     <type>physical</type>
                     <text>performance</text>
@@ -2494,6 +4682,20 @@
                     <period>
                       <start>2000-02-03T16:22:04Z</start>
                       <end>2009-11-15T04:33:08Z</end>
+=======
+                    <use>home</use>
+                    <type>both</type>
+                    <text>American</text>
+                    <line>976 Dennis Point Suite 380</line>
+                    <city>East Michelle</city>
+                    <district>these</district>
+                    <state>WY</state>
+                    <postal_code>63833</postal_code>
+                    <country>ZM</country>
+                    <period>
+                      <start>2022-02-28T17:20:21Z</start>
+                      <end>2020-04-30T05:01:46Z</end>
+>>>>>>> origin/main
                     </period>
                   </address>
                 </addresses>
@@ -2501,7 +4703,7 @@
             </location>
           </location>
         </encounter>
-        <record_type>A</record_type>
+        <record_type>U</record_type>
       </diagnostic_report_note>
     </diagnostic_report_notes>
   </clinical>

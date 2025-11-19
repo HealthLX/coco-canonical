@@ -15,19 +15,11 @@
     <xs:element name="Description" type="core:string"/> -->
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string-->
-	<xs:simpleType name="string">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[ \r\n\t\S]+"/>
-		</xs:restriction>
-	</xs:simpleType>
+	
 	<!--Regular Expression for NPI-->
 	
 	<!--Regular Expression for Positive Integer-->
-	<xs:simpleType name="positiveInt">
-		<xs:restriction base="xs:positiveInteger">
-			<xs:pattern value="\+?[1-9][0-9]*"/>
-		</xs:restriction>
-	</xs:simpleType>
+	
 	<!--Regular Expression for unsignedInt Integer-->
 	<xs:simpleType name="unsignedInt">
 		<xs:restriction base="xs:unsignedInt">
@@ -67,7 +59,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="currency">
-		<xs:restriction base="string">
+		<xs:restriction base="core:string">
 			<xs:enumeration value="AED"/>
 			<xs:enumeration value="AFN"/>
 			<xs:enumeration value="ALL"/>
@@ -253,7 +245,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="adjudication_category">
-		<xs:restriction base="string">
+		<xs:restriction base="core:string">
 			<xs:enumeration value="submitted"/>
 			<xs:enumeration value="copay"/>
 			<xs:enumeration value="eligible"/>
@@ -281,17 +273,17 @@
 	</xs:complexType>
 	<xs:complexType name="identifier">
 		<xs:sequence>
-			<xs:element name="value" type="string" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="type" type="string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="system" type="string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value" type="core:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="core:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="system" type="core:string" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="eob_identifier">
 		<xs:sequence>
-			<xs:element name="value" type="string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="value" type="core:string" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="type" minOccurs="1" maxOccurs="1">
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="uc"/>
 					</xs:restriction>
 				</xs:simpleType>
@@ -309,31 +301,31 @@
 	<xs:complexType name="quantity">
 		<xs:sequence>
 			<xs:element name="value" type="decimal" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="comparator" type="string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="unit" type="string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="system" type="string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="code" type="string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="comparator" type="core:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="unit" type="core:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="system" type="core:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="code" type="core:string" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="value">
 		<xs:choice>
 			<xs:element name="value_boolean" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="value_string" type="string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="value_string" type="core:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="value_quantity" minOccurs="0" maxOccurs="1" type="quantity"/>
 			<xs:element name="value_reference" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="reference" type="string" minOccurs="0" maxOccurs="1"/>
-						<xs:element name="type" type="string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="reference" type="core:string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="type" type="core:string" minOccurs="0" maxOccurs="1"/>
 						<xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="1"/>
-						<xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="display" type="core:string" minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
 	<xs:simpleType name="language">
-		<xs:restriction base="string">
+		<xs:restriction base="core:string">
 			<xs:enumeration value="ar"/>
 			<xs:enumeration value="bn"/>
 			<xs:enumeration value="cs"/>
@@ -395,7 +387,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="reference">
-		<xs:restriction base="string"/>
+		<xs:restriction base="core:string"/>
 	</xs:simpleType>
 	<xs:complexType name="human_name">
 		<xs:sequence>
@@ -407,7 +399,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="usual"/>
 						<xs:enumeration value="official"/>
 						<xs:enumeration value="temp"/>
@@ -419,7 +411,7 @@
 				</xs:simpleType>
 			</xs:element>
 			<!--Text representation of the full name-->
-			<xs:element name="text" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="text" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to enter the entire name
@@ -427,7 +419,7 @@
 				</xs:annotation>
 			</xs:element>
 			<!--Family name (often called 'Surname')-->
-			<xs:element name="family" type="string" minOccurs="1" maxOccurs="1">
+			<xs:element name="family" type="core:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Family name (often called 'Surname') 
@@ -435,7 +427,7 @@
 				</xs:annotation>
 			</xs:element>
 			<!--Given names (not always 'first'). Includes middle names,Given Names appear in the correct order for presenting the name-->
-			<xs:element name="given" type="string" minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="given" type="core:string" minOccurs="1" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>
 						Given names (not always 'first'). Includes middle names
@@ -443,9 +435,9 @@
 				</xs:annotation>
 			</xs:element>
 			<!--Parts that come before the name-->
-			<xs:element name="prefix" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="prefix" type="core:string" minOccurs="0" maxOccurs="unbounded"/>
 			<!--	Parts that come after the name-->
-			<xs:element name="suffix" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="suffix" type="core:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
 				<xs:annotation>
 					<xs:documentation>
@@ -465,7 +457,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="home"/>
 						<xs:enumeration value="work"/>
 						<xs:enumeration value="temp"/>
@@ -482,7 +474,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="postal"/>
 						<xs:enumeration value="physical"/>
 						<xs:enumeration value="both"/>
@@ -490,7 +482,7 @@
 				</xs:simpleType>
 			</xs:element>
 			<!--Text representation of the address-->
-			<xs:element name="text" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="text" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the address in it's entirety (e.g. 123 Test Way City, State 12345)
@@ -498,8 +490,8 @@
 				</xs:annotation>
 			</xs:element>
 			<!--Street name, number, direction & P.O. Box etc.-->
-			<xs:element name="line" type="string" minOccurs="1" maxOccurs="unbounded"/>
-			<xs:element name="city" type="string" minOccurs="1" maxOccurs="1">
+			<xs:element name="line" type="core:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="city" type="core:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Name of city, town etc.
@@ -507,21 +499,21 @@
 				</xs:annotation>
 			</xs:element>
 			<!--District name (aka county)-->
-			<xs:element name="district" maxOccurs="1" minOccurs="0" type="string">
+			<xs:element name="district" maxOccurs="1" minOccurs="0" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the District name (aka county)
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="state" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="state" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Sub-unit of country (abbreviations ok)
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="postal_code" type="string" maxOccurs="1" minOccurs="1">
+			<xs:element name="postal_code" type="core:string" maxOccurs="1" minOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						The postal code or post code of the address.  The postal code supports an unlimited amount of numbers and letters.
@@ -554,7 +546,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="phone"/>
 						<xs:enumeration value="fax"/>
 						<xs:enumeration value="email"/>
@@ -566,7 +558,7 @@
 				</xs:simpleType>
 			</xs:element>
 			<!--	The actual contact point details-->
-			<xs:element name="value" type="string" minOccurs="1" maxOccurs="1">
+			<xs:element name="value" type="core:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						The actual value of the contact point
@@ -580,7 +572,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="home"/>
 						<xs:enumeration value="work"/>
 						<xs:enumeration value="temp"/>
@@ -589,7 +581,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="rank" type="positiveInt" minOccurs="0" maxOccurs="1">
+			<xs:element name="rank" type="core:positiveInt" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Specify preferred order of use (1 = highest)
@@ -616,7 +608,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="tax" type="string" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="tax" type="core:string" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>
 							An identifier for the person as this agent
@@ -634,7 +626,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="reference" minOccurs="1" maxOccurs="1" type="string"/>
+				<xs:element name="reference" minOccurs="1" maxOccurs="1" type="core:string"/>
 			</xs:choice>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
@@ -664,7 +656,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="clia" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="clia" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 							Clinical Laboratory Improvement Amendments (CLIA) Number for laboratories
@@ -682,8 +674,8 @@
 			<!--Payer ID-->
 			<xs:element name="payer_id" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
 			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="name" minOccurs="1" maxOccurs="1" type="string"/>
-			<xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="core:string"/>
+			<xs:element name="alias" type="core:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
@@ -704,35 +696,35 @@
 	</xs:complexType>
 	<xs:complexType name="member_person">
 		<xs:sequence>
-			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to identify the system that issues the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Subscriber ID. 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						This is the person's unique member number in the Payer system across plans.  This number is not reused for anyone else.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 							Organization that issued id 
@@ -740,7 +732,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner_type"
-				type="string">
+				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Type of organization that issued id  
@@ -762,7 +754,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="male"/>
 						<xs:enumeration value="female"/>
 						<xs:enumeration value="other"/>
@@ -790,7 +782,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="A"/>
 						<xs:enumeration value="D"/>
 						<xs:enumeration value="I"/>
@@ -849,12 +841,12 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="urn:ietf:bcp:47"/>
 												</xs:restriction>
 												</xs:simpleType>
 												</xs:element>
-												<xs:element name="display" type="string"
+												<xs:element name="display" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -892,7 +884,7 @@
 								<xs:sequence>
 									<xs:element name="code" minOccurs="1" maxOccurs="1">
 										<xs:simpleType>
-											<xs:restriction base="string">
+											<xs:restriction base="core:string">
 												<xs:enumeration value="1002-5"/>
 												<xs:enumeration value="2028-9"/>
 												<xs:enumeration value="2054-5"/>
@@ -905,7 +897,7 @@
 									</xs:element>
 									<xs:element name="system" minOccurs="0" maxOccurs="1">
 										<xs:simpleType>
-											<xs:restriction base="string">
+											<xs:restriction base="core:string">
 												<xs:enumeration
 												value="urn:oid:2.16.840.1.113883.6.238"/>
 												<xs:enumeration
@@ -1845,7 +1837,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 									Use this element for adding a text description
@@ -1865,7 +1857,7 @@
 												</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
-								<xs:restriction base="string">
+								<xs:restriction base="core:string">
 									<xs:enumeration value="2135-2"/>
 									<xs:enumeration value="2186-5"/>
 								</xs:restriction>
@@ -1924,7 +1916,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 													Use this element for adding a text description if the ethnicity is not listed within the enummeration
@@ -1941,7 +1933,7 @@
 									</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="M"/>
 						<xs:enumeration value="F"/>
 						<xs:enumeration value="UNK"/>
@@ -1952,35 +1944,35 @@
 	</xs:complexType>
 	<xs:complexType name="subscriber_person">
 		<xs:sequence>
-			<xs:element maxOccurs="1" minOccurs="0" name="member_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to identify the system that issues the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Subscriber ID. 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						This is the person's unique member number in the Payer system across plans.  This number is not reused for anyone else.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 							Organization that issued id 
@@ -1988,7 +1980,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner_type"
-				type="string">
+				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Type of organization that issued id  
@@ -2010,7 +2002,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="male"/>
 						<xs:enumeration value="female"/>
 						<xs:enumeration value="other"/>
@@ -2038,7 +2030,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="A"/>
 						<xs:enumeration value="D"/>
 						<xs:enumeration value="I"/>
@@ -2100,7 +2092,7 @@
 												</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="display" type="string" minOccurs="0"
+									<xs:element name="display" type="core:string" minOccurs="0"
 										maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
@@ -2124,7 +2116,7 @@
 										</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
-								<xs:restriction base="string">
+								<xs:restriction base="core:string">
 									<xs:enumeration value="1002-5"/>
 									<xs:enumeration value="2028-9"/>
 									<xs:enumeration value="2054-5"/>
@@ -3061,7 +3053,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 									Use this element for adding a text description
@@ -3081,7 +3073,7 @@
 												</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
-								<xs:restriction base="string">
+								<xs:restriction base="core:string">
 									<xs:enumeration value="2135-2"/>
 									<xs:enumeration value="2186-5"/>
 								</xs:restriction>
@@ -3140,7 +3132,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 													Use this element for adding a text description if the ethnicity is not listed within the enummeration
@@ -3157,7 +3149,7 @@
 									</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="M"/>
 						<xs:enumeration value="F"/>
 						<xs:enumeration value="UNK"/>
@@ -3181,7 +3173,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="clia" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="clia" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Clinical Laboratory Improvement Amendments (CLIA) Number for laboratories
@@ -3199,8 +3191,8 @@
 			<!--Payer ID-->
 			<xs:element name="payer_id" minOccurs="0" maxOccurs="unbounded" type="identifier"/>
 			<xs:element name="is_active" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="name" minOccurs="1" maxOccurs="1" type="string"/>
-			<xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="name" minOccurs="1" maxOccurs="1" type="core:string"/>
+			<xs:element name="alias" type="core:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecoms" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
@@ -3249,7 +3241,7 @@
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="type" minOccurs="0" maxOccurs="1" type="string">
+			<xs:element name="type" minOccurs="0" maxOccurs="1" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Coverage category such as medical or accident.The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) or a direct payment by an individual or organization.More information can be found here:  http://hl7.org/fhir/R4/valueset-coverage-type.html
@@ -3267,7 +3259,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="child"/>
 						<xs:enumeration value="parent"/>
 						<xs:enumeration value="spouse"/>
@@ -3289,7 +3281,7 @@
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="subscriber_id" minOccurs="1" maxOccurs="1" type="string"/>
+			<xs:element name="subscriber_id" minOccurs="1" maxOccurs="1" type="core:string"/>
 			<!--Identfies the status of the coverage information (default: active)-->
 			<!--draft | active | retired | unknown-->
 			<xs:element name="status" minOccurs="1" maxOccurs="1">
@@ -3299,7 +3291,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="active"/>
 						<xs:enumeration value="cancelled"/>
 						<xs:enumeration value="draft"/>
@@ -3321,7 +3313,7 @@
 									<xs:element name="plan" minOccurs="0" maxOccurs="1">
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="value" type="string" minOccurs="1"
+												<xs:element name="value" type="core:string" minOccurs="1"
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -3329,7 +3321,7 @@
 														</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="name" type="string" minOccurs="0"
+												<xs:element name="name" type="core:string" minOccurs="0"
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -3348,7 +3340,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="plan"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -3356,7 +3348,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/coverage-class"
 												/>
@@ -3372,7 +3364,7 @@
 									<xs:element name="group" minOccurs="0" maxOccurs="1">
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="value" type="string" minOccurs="1"
+												<xs:element name="value" type="core:string" minOccurs="1"
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -3380,7 +3372,7 @@
 														</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="name" type="string" minOccurs="0"
+												<xs:element name="name" type="core:string" minOccurs="0"
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -3399,7 +3391,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="group"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -3407,7 +3399,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/coverage-class"
 												/>
@@ -3423,9 +3415,9 @@
 									<xs:element name="coverage_class" minOccurs="0" maxOccurs="1">
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="value" type="string" minOccurs="1"
+												<xs:element name="value" type="core:string" minOccurs="1"
 												maxOccurs="1"/>
-												<xs:element name="name" type="string" minOccurs="0"
+												<xs:element name="name" type="core:string" minOccurs="0"
 												maxOccurs="1"/>
 												<xs:element name="type" minOccurs="1" maxOccurs="1">
 												<xs:annotation>
@@ -3438,7 +3430,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="group"/>
 												<xs:enumeration value="subgroup"/>
 												<xs:enumeration value="plan"/>
@@ -3456,7 +3448,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/coverage-class"
 												/>
@@ -3475,40 +3467,40 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="order" type="positiveInt" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="order" type="core:positiveInt" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="member_person">
 		<xs:sequence>
-			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to identify the system that issues the Member ID . 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Use this element to list the Subscriber ID. 
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						This is the person's unique member number in the Payer system across plans.  This number is not reused for anyone else.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="string">
+			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 							Organization that issued id 
@@ -3516,7 +3508,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner_type"
-				type="string">
+				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Type of organization that issued id  
@@ -3538,7 +3530,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="male"/>
 						<xs:enumeration value="female"/>
 						<xs:enumeration value="other"/>
@@ -3566,7 +3558,7 @@
 					</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="A"/>
 						<xs:enumeration value="D"/>
 						<xs:enumeration value="I"/>
@@ -3625,12 +3617,12 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="urn:ietf:bcp:47"/>
 												</xs:restriction>
 												</xs:simpleType>
 												</xs:element>
-												<xs:element name="display" type="string"
+												<xs:element name="display" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -3668,7 +3660,7 @@
 								<xs:sequence>
 									<xs:element name="code" minOccurs="1" maxOccurs="1">
 										<xs:simpleType>
-											<xs:restriction base="string">
+											<xs:restriction base="core:string">
 												<xs:enumeration value="1002-5"/>
 												<xs:enumeration value="2028-9"/>
 												<xs:enumeration value="2054-5"/>
@@ -3681,7 +3673,7 @@
 									</xs:element>
 									<xs:element name="system" minOccurs="0" maxOccurs="1">
 										<xs:simpleType>
-											<xs:restriction base="string">
+											<xs:restriction base="core:string">
 												<xs:enumeration
 												value="urn:oid:2.16.840.1.113883.6.238"/>
 												<xs:enumeration
@@ -4621,7 +4613,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 									Use this element for adding a text description
@@ -4641,7 +4633,7 @@
 												</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
-								<xs:restriction base="string">
+								<xs:restriction base="core:string">
 									<xs:enumeration value="2135-2"/>
 									<xs:enumeration value="2186-5"/>
 								</xs:restriction>
@@ -4700,7 +4692,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element maxOccurs="1" minOccurs="1" name="text" type="string">
+						<xs:element maxOccurs="1" minOccurs="1" name="text" type="core:string">
 							<xs:annotation>
 								<xs:documentation>
 													Use this element for adding a text description if the ethnicity is not listed within the enummeration
@@ -4717,7 +4709,7 @@
 									</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
-					<xs:restriction base="string">
+					<xs:restriction base="core:string">
 						<xs:enumeration value="M"/>
 						<xs:enumeration value="F"/>
 						<xs:enumeration value="UNK"/>
@@ -4728,21 +4720,21 @@
 	</xs:group>
 	<xs:group name="patient">
 		<xs:sequence>
-			<xs:element name="med_rec_num" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="med_rec_num" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Medical record number
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="pat_acct_num" type="string" minOccurs="0" maxOccurs="1">
+			<xs:element name="pat_acct_num" type="core:string" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						Patient account Number
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="unique_member_id" type="string">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="unique_member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
 						Mastered person identifier that is a unique identifier for a member assigned by the Payer across all lines of business   
@@ -4769,7 +4761,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element maxOccurs="1" minOccurs="1" name="sender_id" type="string">
+				<xs:element maxOccurs="1" minOccurs="1" name="sender_id" type="core:string">
 					<xs:annotation>
 						<xs:documentation>
 							This element is used to the unique identifier assigned to your organization
@@ -4809,7 +4801,7 @@
 						</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="active"/>
 										<xs:enumeration value="cancelled"/>
 										<xs:enumeration value="draft"/>
@@ -4824,7 +4816,7 @@
 									</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="institutional"/>
 										<xs:enumeration value="oral"/>
 										<xs:enumeration value="pharmacy"/>
@@ -4845,7 +4837,7 @@
 									</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="inpatient"/>
 										<xs:enumeration value="outpatient"/>
 										<xs:enumeration value="Inpatient-Institutional"/>
@@ -4860,7 +4852,7 @@
 						</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="claim"/>
 										<xs:enumeration value="preauthorization"/>
 										<xs:enumeration value="predetermination"/>
@@ -4878,7 +4870,7 @@
 						</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="queued"/>
 										<xs:enumeration value="complete"/>
 										<xs:enumeration value="error"/>
@@ -4886,8 +4878,8 @@
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="disposition" type="string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="pre_auth_ref" type="string" minOccurs="0"
+							<xs:element name="disposition" type="core:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="pre_auth_ref" type="core:string" minOccurs="0"
 								maxOccurs="unbounded"/>
 							<xs:element name="pre_auth_ref_periods" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
@@ -4964,7 +4956,7 @@
 									</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="name" type="string" minOccurs="0"
+										<xs:element name="name" type="core:string" minOccurs="0"
 											maxOccurs="1">
 											<xs:annotation>
 												<xs:documentation>
@@ -4972,7 +4964,7 @@
 									</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="alias" type="string" minOccurs="0"
+										<xs:element name="alias" type="core:string" minOccurs="0"
 											maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>
@@ -4980,7 +4972,7 @@
 									</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="description" type="string" minOccurs="0"
+										<xs:element name="description" type="core:string" minOccurs="0"
 											maxOccurs="1">
 											<xs:annotation>
 												<xs:documentation>
@@ -4996,7 +4988,7 @@
 									</xs:documentation>
 											</xs:annotation>
 											<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="DX"/>
 												<xs:enumeration value="CVDX"/>
 												<xs:enumeration value="CATH"/>
@@ -5154,7 +5146,7 @@
 												<xs:element name="code" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="prior"/>
 												<xs:enumeration value="replacedby"/>
 												</xs:restriction>
@@ -5163,7 +5155,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"/>
 												<xs:enumeration
@@ -5224,7 +5216,7 @@
 												<xs:element name="code" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="beneficiary"/>
 												<xs:enumeration value="subscriber"/>
 												<xs:enumeration value="provider"/>
@@ -5235,7 +5227,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayeeType"/>
 												<xs:enumeration
@@ -5253,7 +5245,7 @@
 												<xs:sequence>
 												<xs:choice>
 												<xs:element name="reference" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="practitioner" minOccurs="1"
 												maxOccurs="1" type="practitioner"/>
 												<xs:element name="providing_organization"
@@ -5274,7 +5266,7 @@
 											<xs:complexType>
 												<xs:sequence>
 												<!--Order of care team-->
-												<xs:element name="sequence" type="positiveInt" minOccurs="0" maxOccurs="1">
+												<xs:element name="sequence" type="core:positiveInt" minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
 										Order of the care team
@@ -5297,7 +5289,7 @@
 												<xs:sequence>
 												<xs:choice>
 												<xs:element name="reference" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="practitioner" minOccurs="1"
 												maxOccurs="1" type="practitioner"/>
 												<xs:element name="providing_organization"
@@ -5321,7 +5313,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="primary"/>
 												<xs:enumeration value="attending"/>
 												<xs:enumeration value="referring"/>
@@ -5338,7 +5330,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
 												<xs:enumeration
@@ -5359,12 +5351,12 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/ex-providerqualification"/>
 												<xs:enumeration
@@ -5394,7 +5386,7 @@
 											</xs:annotation>
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1"/>
 												<xs:element name="diagnosis_code" minOccurs="1"
 												maxOccurs="1">
@@ -5410,7 +5402,7 @@
 												maxOccurs="unbounded">
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5421,7 +5413,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/sid/icd-10-cm"/>
 												<xs:enumeration
@@ -5432,9 +5424,9 @@
 												</xs:simpleType>
 												</xs:element>
 												<!--ICD code version-->
-												<xs:element name="version" type="string"
+												<xs:element name="version" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="display" type="string"
+												<xs:element name="display" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5460,7 +5452,7 @@
 												<xs:element name="code" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="principal"/>
 												<xs:enumeration value="admitting"/>
 												<xs:enumeration value="other"/>
@@ -5484,7 +5476,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
 												<xs:enumeration
@@ -5505,12 +5497,12 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.nubc.org/CodeSystem/PresentOnAdmissionIndicator"/>
 												<xs:enumeration
@@ -5522,7 +5514,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="package_code" type="string"
+												<xs:element name="package_code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 											</xs:complexType>
@@ -5537,7 +5529,7 @@
 											maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1"/>
 												<!--ICD-10-PCS Codes-->
 												<xs:element name="procedure_code" minOccurs="1"
@@ -5550,12 +5542,12 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Procedurecode-->
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="1" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://www.ama-assn.org/go/cpt"/>
 												<xs:enumeration value="http://snomed.info/sct"/>
@@ -5573,10 +5565,10 @@
 												</xs:restriction>
 												</xs:simpleType>
 												</xs:element>
-												<xs:element name="version" type="string"
+												<xs:element name="version" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<!--ProcedureDescription-->
-												<xs:element name="display" type="string"
+												<xs:element name="display" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -5586,7 +5578,7 @@
 												</xs:element>
 												<!--Procedure type-only required for Inpatient-Institutional-->
 												<xs:element name="type" minOccurs="0"
-												maxOccurs="unbounded" type="string">
+												maxOccurs="unbounded" type="core:string">
 
 												<xs:annotation>
 												<xs:documentation>
@@ -5603,7 +5595,7 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="precedence" type="positiveInt" minOccurs="0"
+							<xs:element name="precedence" type="core:positiveInt" minOccurs="0"
 								maxOccurs="1"/>
 							<xs:element name="insurances" minOccurs="1" maxOccurs="1">
 								<xs:complexType>
@@ -5620,7 +5612,7 @@
 									</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="pre_auth_ref" type="string"
+												<xs:element name="pre_auth_ref" type="core:string"
 												minOccurs="0" maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5651,7 +5643,7 @@
 											<xs:complexType>
 												<xs:sequence>
 												<!--Line number-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5660,7 +5652,7 @@
 												</xs:annotation>
 												</xs:element>
 												<xs:element name="care_team_sequence"
-												type="positiveInt" minOccurs="0"
+												type="core:positiveInt" minOccurs="0"
 												maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5669,7 +5661,7 @@
 												</xs:annotation>
 												</xs:element>
 												<xs:element name="diagnosis_sequence"
-												type="positiveInt" minOccurs="0"
+												type="core:positiveInt" minOccurs="0"
 												maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5678,7 +5670,7 @@
 												</xs:annotation>
 												</xs:element>
 												<xs:element name="procedure_sequence"
-												type="positiveInt" minOccurs="0"
+												type="core:positiveInt" minOccurs="0"
 												maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5687,7 +5679,7 @@
 												</xs:annotation>
 												</xs:element>
 												<xs:element name="information_sequence"
-												type="positiveInt" minOccurs="0"
+												type="core:positiveInt" minOccurs="0"
 												maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5705,10 +5697,10 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 
 												<xs:annotation>
 												<xs:documentation>
@@ -5721,7 +5713,7 @@
 												</xs:element>
 												<!--Type of service-->
 												<xs:element name="category" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 																Benefit classification.  More information can be found here:  http://hl7.org/fhir/R4/valueset-ex-benefitcategory.html
@@ -5743,12 +5735,12 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-													<xs:element name="code" type="string"
+													<xs:element name="code" type="core:string"
 													minOccurs="1" maxOccurs="1"/>
 													<xs:element name="system" minOccurs="0"
 													maxOccurs="1">
 													<xs:simpleType>
-													<xs:restriction base="string">
+													<xs:restriction base="core:string">
 													<xs:enumeration
 													value="http://www.ama-assn.org/go/cpt"/>
 													<xs:enumeration
@@ -5765,8 +5757,8 @@
 													</xs:restriction>
 													</xs:simpleType>
 													</xs:element>
-													<xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
-													<xs:element name="text" type="string" minOccurs="0" maxOccurs="1"/>
+													<xs:element name="display" type="core:string" minOccurs="0" maxOccurs="1"/>
+													<xs:element name="text" type="core:string" minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
@@ -5781,12 +5773,12 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://www.ama-assn.org/go/cpt"/>
 												<xs:enumeration
@@ -5802,7 +5794,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="program_code" type="string"
+												<xs:element name="program_code" type="core:string"
 												minOccurs="0" maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5834,11 +5826,11 @@
 												<xs:sequence>
 												<xs:element name="value" type="decimal"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="unit" type="string"
+												<xs:element name="unit" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="system" type="string"
+												<xs:element name="system" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -5888,7 +5880,7 @@
 												</xs:complexType>
 												</xs:element>
 												<!--Applicable note numbers-->
-												<xs:element name="note_number" type="positiveInt"
+												<xs:element name="note_number" type="core:positiveInt"
 												minOccurs="0" maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5903,7 +5895,7 @@
 												<xs:sequence>
 												<xs:choice>
 												<xs:element name="location_codeable_concept"
-												minOccurs="0" maxOccurs="1" type="string"/>
+												minOccurs="0" maxOccurs="1" type="core:string"/>
 												<xs:element name="location_address" minOccurs="0"
 												maxOccurs="1" type="address"/>
 												<xs:element name="location_reference"
@@ -5923,7 +5915,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="name" type="string"
+												<xs:element name="name" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5931,7 +5923,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="alias" type="string"
+												<xs:element name="alias" type="core:string"
 												minOccurs="0" maxOccurs="unbounded">
 												<xs:annotation>
 												<xs:documentation>
@@ -5939,7 +5931,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="description" type="string"
+												<xs:element name="description" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -5956,7 +5948,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="DX"/>
 												<xs:enumeration value="CVDX"/>
 												<xs:enumeration value="CATH"/>
@@ -6123,7 +6115,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/adjudication"/>
 												<xs:enumeration
@@ -6135,7 +6127,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6180,7 +6172,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="denialreason"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -6188,7 +6180,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator"
 												/>
@@ -6204,12 +6196,12 @@
 												</xs:annotation>
 												<xs:complexType>
 												<xs:sequence>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="1" maxOccurs="1"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://x12.org/codes/claim-adjustment-reason-codes"/>
 												<xs:enumeration
@@ -6258,7 +6250,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="allowedunits"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -6266,7 +6258,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator"
 												/>
@@ -6276,7 +6268,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6321,7 +6313,7 @@
 															</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="innetwork"/>
 												<xs:enumeration value="outofnetwork"/>
 												<xs:enumeration value="other"/>
@@ -6329,7 +6321,7 @@
 												</xs:simpleType>
 												</xs:element>
 												<!--Line benefit payment status-->
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6373,7 +6365,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/adjudication"/>
 												<xs:enumeration
@@ -6387,7 +6379,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6433,7 +6425,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="product_or_service"
-												type="string" minOccurs="1" maxOccurs="1">
+												type="core:string" minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
 													Billing, service, product, or drug code
@@ -6447,11 +6439,11 @@
 												<xs:sequence>
 												<xs:element name="value" type="decimal"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="unit" type="string"
+												<xs:element name="unit" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="system" type="string"
+												<xs:element name="system" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
-												<xs:element name="code" type="string"
+												<xs:element name="code" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -6489,7 +6481,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/adjudication"/>
 												<xs:enumeration
@@ -6501,7 +6493,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6544,7 +6536,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="denialreason"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -6552,7 +6544,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator"
 												/>
@@ -6562,7 +6554,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6606,7 +6598,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/adjudication"/>
 												<xs:enumeration
@@ -6620,7 +6612,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6678,7 +6670,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication"/>
 												<xs:enumeration
@@ -6727,7 +6719,7 @@
 																						</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="innetwork"/>
 												<xs:enumeration value="outofnetwork"/>
 												<xs:enumeration value="other"/>
@@ -6737,7 +6729,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus"/>
 
@@ -6785,7 +6777,7 @@
 									</xs:documentation>
 											</xs:annotation>
 											<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="paid"/>
 												<xs:enumeration value="denied"/>
 												<xs:enumeration value="partiallypaid"/>
@@ -6810,7 +6802,7 @@
 											</xs:complexType>
 										</xs:element>
 										<!--Claim payment denial code-->
-										<xs:element name="adjustment_reason" type="string"
+										<xs:element name="adjustment_reason" type="core:string"
 											minOccurs="0" maxOccurs="1">
 											<xs:annotation>
 												<xs:documentation>
@@ -6872,7 +6864,7 @@
 											</xs:annotation>
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="number" type="positiveInt"
+												<xs:element name="number" type="core:positiveInt"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6888,14 +6880,14 @@
 									</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="display"/>
 												<xs:enumeration value="print"/>
 												<xs:enumeration value="printoper"/>
 												</xs:restriction>
 												</xs:simpleType>
 												</xs:element>
-												<xs:element name="text" type="string"
+												<xs:element name="text" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6930,7 +6922,7 @@
 												<xs:sequence>
 												<!--paid,denied-->
 												<xs:element name="category" minOccurs="1"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 																Benefit Category Codes.  More information can be found here:  http://hl7.org/fhir/R4/valueset-ex-benefitcategory.html
@@ -6947,7 +6939,7 @@
 									</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="name" type="string"
+												<xs:element name="name" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6955,7 +6947,7 @@
 									</xs:documentation>
 												</xs:annotation>
 												</xs:element>
-												<xs:element name="description" type="string"
+												<xs:element name="description" type="core:string"
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -6964,7 +6956,7 @@
 												</xs:annotation>
 												</xs:element>
 												<xs:element name="network" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 										In or out of network.  More information can be found here:  http://hl7.org/fhir/R4/valueset-benefit-network.html
@@ -6975,7 +6967,7 @@
 
 												</xs:element>
 												<xs:element name="unit" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 										Individual or family.  More information can be found here:  http://hl7.org/fhir/R4/valueset-benefit-unit.html
@@ -6986,7 +6978,7 @@
 
 												</xs:element>
 												<xs:element name="term" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 										Annual or lifetime.  More information can be found here:  http://hl7.org/fhir/R4/valueset-benefit-term.html
@@ -7005,7 +6997,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="type" minOccurs="1"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 													Benefit classification.  More information can be found here:  http://hl7.org/fhir/R4/valueset-benefit-type.html
@@ -7021,7 +7013,7 @@
 												<xs:choice>
 												<xs:element name="allowed_unsigned_int"
 												type="unsignedInt" minOccurs="0" maxOccurs="1"/>
-												<xs:element name="allowed_string" type="string"
+												<xs:element name="allowed_string" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												<xs:element name="allowed_money" minOccurs="0"
 												maxOccurs="1">
@@ -7098,7 +7090,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7118,7 +7110,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="billingnetworkcontractingstatus"/>
 												</xs:restriction>
@@ -7127,7 +7119,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7144,7 +7136,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="contracted"/>
 												<xs:enumeration value="noncontracted"/>
 												</xs:restriction>
@@ -7153,7 +7145,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus"
 												/>
@@ -7167,7 +7159,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7178,7 +7170,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7198,7 +7190,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="admissionperiod"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7206,7 +7198,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7217,7 +7209,7 @@
 												</xs:complexType>
 												</xs:element>
 												<xs:element name="code" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 
 												<xs:annotation>
 												<xs:documentation>
@@ -7237,7 +7229,7 @@
 												</xs:element>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7248,7 +7240,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7268,7 +7260,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="clmrecvddate"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7276,7 +7268,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7287,7 +7279,7 @@
 												</xs:complexType>
 												</xs:element>
 												<xs:element name="code" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 
 												<xs:annotation>
 												<xs:documentation>
@@ -7300,7 +7292,7 @@
 												maxOccurs="1" type="date"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7311,7 +7303,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7331,7 +7323,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="typeofbill"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7339,7 +7331,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7354,11 +7346,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.nubc.org/CodeSystem/TypeOfBill"
 												/>
@@ -7372,7 +7364,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7383,7 +7375,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7403,7 +7395,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="pointoforigin"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7411,7 +7403,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7426,11 +7418,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.nubc.org/CodeSystem/PointOfOrigin"
 												/>
@@ -7444,7 +7436,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7455,7 +7447,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7475,7 +7467,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="admtype"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7483,7 +7475,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7498,11 +7490,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.nubc.org/CodeSystem/PriorityTypeOfAdmitOrVisit"
 												/>
@@ -7516,7 +7508,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7527,7 +7519,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7547,7 +7539,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="discharge-status"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7555,7 +7547,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7570,11 +7562,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.nubc.org/CodeSystem/PatDischargeStatus"
 												/>
@@ -7588,7 +7580,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7598,7 +7590,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7618,7 +7610,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="drg"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7626,7 +7618,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7641,11 +7633,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/AcuteInpatientPPS/MS-DRG-Classifications-and-Software"/>
 												<xs:enumeration
@@ -7660,7 +7652,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7672,7 +7664,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7692,7 +7684,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="performingnetworkcontractingstatus"/>
 												</xs:restriction>
@@ -7701,7 +7693,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7718,7 +7710,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="contracted"/>
 												<xs:enumeration value="noncontracted"/>
 												</xs:restriction>
@@ -7727,7 +7719,7 @@
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus"
 												/>
@@ -7741,7 +7733,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7752,7 +7744,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7772,7 +7764,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="servicefacility"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7780,7 +7772,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7791,7 +7783,7 @@
 												</xs:complexType>
 												</xs:element>
 												<xs:element name="code" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 																					Preferred code sets list:
@@ -7810,7 +7802,7 @@
 												</xs:sequence>
 												</xs:complexType>
 												</xs:element>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7822,7 +7814,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7842,7 +7834,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="brandgenericcode"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7850,7 +7842,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7865,11 +7857,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/NCPDP/BrandGenericIndicator"
 												/>
@@ -7883,7 +7875,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7894,7 +7886,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7914,7 +7906,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="rxorigincode"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7922,7 +7914,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -7937,11 +7929,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/NCPDP/PrescriptionOriginCode"
 												/>
@@ -7955,7 +7947,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -7965,7 +7957,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -7990,7 +7982,7 @@
 																				</xs:documentation>
 												</xs:annotation>
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="compoundcode"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -7998,7 +7990,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -8013,11 +8005,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/NCPDP/CompoundCode"
 												/>
@@ -8031,7 +8023,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -8041,7 +8033,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -8061,7 +8053,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="dayssupply"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -8069,7 +8061,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -8080,7 +8072,7 @@
 												</xs:complexType>
 												</xs:element>
 												<xs:element name="code" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 																					Preferred code sets list:
@@ -8092,7 +8084,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="quantity"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -8102,7 +8094,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -8122,7 +8114,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="dawcode"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -8130,7 +8122,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -8145,11 +8137,11 @@
 												<xs:complexType>
 												<xs:sequence>
 												<xs:element name="code" minOccurs="1"
-												maxOccurs="1" type="string"/>
+												maxOccurs="1" type="core:string"/>
 												<xs:element name="system" minOccurs="0"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://terminology.hl7.org/CodeSystem/NCPDP/DispensedAsWrittenOrProductSelectionCode"
 												/>
@@ -8163,7 +8155,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="value"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -8173,7 +8165,7 @@
 												<xs:complexType>
 												<xs:sequence>
 												<!--Information instance identifier-->
-												<xs:element name="sequence" type="positiveInt"
+												<xs:element name="sequence" type="core:positiveInt"
 												minOccurs="1" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
@@ -8193,7 +8185,7 @@
 												<xs:element name="code" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration value="refillnum"/>
 												</xs:restriction>
 												</xs:simpleType>
@@ -8201,7 +8193,7 @@
 												<xs:element name="system" minOccurs="1"
 												maxOccurs="1">
 												<xs:simpleType>
-												<xs:restriction base="string">
+												<xs:restriction base="core:string">
 												<xs:enumeration
 												value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"
 												/>
@@ -8212,7 +8204,7 @@
 												</xs:complexType>
 												</xs:element>
 												<xs:element name="code" minOccurs="0"
-												maxOccurs="1" type="string">
+												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
 																	
@@ -8225,7 +8217,7 @@
 												maxOccurs="1" type="timing"/>
 												<xs:element name="value" minOccurs="0"
 												maxOccurs="1" type="quantity"/>
-												<xs:element name="reason" type="string"
+												<xs:element name="reason" type="core:string"
 												minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 												</xs:complexType>
@@ -8243,7 +8235,7 @@
                                     </xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="string">
+									<xs:restriction base="core:string">
 										<xs:enumeration value="A"/>
 										<xs:enumeration value="U"/>
 										<xs:enumeration value="D"/>

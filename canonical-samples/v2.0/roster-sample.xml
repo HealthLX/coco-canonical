@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <roster xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/roster.xsd">
   <schema_version>2.0</schema_version>
+<<<<<<< HEAD
   <sender_id>lot</sender_id>
   <date_time_reported>2025-11-19T16:11:50Z</date_time_reported>
   <member>
@@ -22,15 +23,46 @@
     <birth_date>1979-05-25</birth_date>
     <deceased_date_time>2025-06-30T19:15:16Z</deceased_date_time>
     <gender>other</gender>
+=======
+  <sender_id>capital</sender_id>
+  <date_time_reported>2025-11-05T19:58:26Z</date_time_reported>
+  <member>
+    <us_core_race>
+      <code>2076-8</code>
+      <code>1002-5</code>
+      <code>1002-5</code>
+      <detailed_code>1679-0</detailed_code>
+      <text>back</text>
+    </us_core_race>
+    <us_core_ethnicity>
+      <code>UNK</code>
+      <detailed_code>2172-5</detailed_code>
+      <text>start</text>
+    </us_core_ethnicity>
+    <us_core_birth_sex>UNK</us_core_birth_sex>
+    <is_subscriber>true</is_subscriber>
+    <relationship>child</relationship>
+    <birth_date>1996-01-08</birth_date>
+    <deceased_date_time>2003-12-25T05:05:02Z</deceased_date_time>
+    <gender>male</gender>
+>>>>>>> origin/main
     <tribal_affiliations>
       <tribal_affiliation>
         <codeable_concept>
           <coding>
+<<<<<<< HEAD
             <code>describe</code>
             <system>pass</system>
             <display>painting</display>
           </coding>
           <text>structure</text>
+=======
+            <code>provide</code>
+            <system>approach</system>
+            <display>account</display>
+          </coding>
+          <text>sign</text>
+>>>>>>> origin/main
         </codeable_concept>
         <is_enrolled>false</is_enrolled>
       </tribal_affiliation>
@@ -39,11 +71,19 @@
       <sexual_orientation>
         <codeable_concept>
           <coding>
+<<<<<<< HEAD
             <code>commercial</code>
             <system>stuff</system>
             <display>until</display>
           </coding>
           <text>million</text>
+=======
+            <code>once</code>
+            <system>something</system>
+            <display>hand</display>
+          </coding>
+          <text>say</text>
+>>>>>>> origin/main
         </codeable_concept>
         <status/>
       </sexual_orientation>
@@ -52,11 +92,19 @@
       <gender_identity>
         <codeable_concept>
           <coding>
+<<<<<<< HEAD
             <code>cell</code>
             <system>fine</system>
             <display>politics</display>
           </coding>
           <text>rock</text>
+=======
+            <code>think</code>
+            <system>ok</system>
+            <display>summer</display>
+          </coding>
+          <text>couple</text>
+>>>>>>> origin/main
         </codeable_concept>
         <status/>
       </gender_identity>
@@ -66,6 +114,7 @@
         <active>true</active>
         <names>
           <name>
+<<<<<<< HEAD
             <use>offer</use>
             <text>professional</text>
             <family>Howard</family>
@@ -74,11 +123,22 @@
             <period>
               <start>1989-03-14T18:51:51Z</start>
               <end>2008-06-02T00:26:39Z</end>
+=======
+            <use>chair</use>
+            <text>together</text>
+            <family>Mathews</family>
+            <given>Robert</given>
+            <prefix>Mx.</prefix>
+            <period>
+              <start>1987-11-15T06:30:10Z</start>
+              <end>1991-05-11T19:23:43Z</end>
+>>>>>>> origin/main
             </period>
           </name>
         </names>
         <telecoms>
           <telecom>
+<<<<<<< HEAD
             <system>floor</system>
             <value>political</value>
             <use>skin</use>
@@ -117,6 +177,46 @@
               <display>form</display>
             </coding>
             <text>news</text>
+=======
+            <system>without</system>
+            <value>style</value>
+            <use>none</use>
+            <rank>1</rank>
+            <period>
+              <start>2006-11-02</start>
+              <end>1985-11-13</end>
+            </period>
+          </telecom>
+        </telecoms>
+        <gender>just</gender>
+        <birth_date>2003-09-04</birth_date>
+        <addresses>
+          <address>
+            <use>born</use>
+            <type>truth</type>
+            <text>old</text>
+            <line>994 Debbie Mill</line>
+            <city>Port Seth</city>
+            <district>key</district>
+            <state>MD</state>
+            <postal_code>56297</postal_code>
+            <country>LV</country>
+            <period>
+              <start>1991-06-10</start>
+              <end>1999-08-22</end>
+            </period>
+          </address>
+        </addresses>
+        <communication_language>pretty</communication_language>
+        <relationship>
+          <codeable_concept>
+            <coding>
+              <code>standard</code>
+              <system>spring</system>
+              <display>close</display>
+            </coding>
+            <text>use</text>
+>>>>>>> origin/main
           </codeable_concept>
         </relationship>
       </relatedPerson>
@@ -125,6 +225,7 @@
       <occupation_item>
         <status>amended</status>
         <effectivePeriod>
+<<<<<<< HEAD
           <start>2020-10-09</start>
           <end>1993-09-05</end>
         </effectivePeriod>
@@ -135,20 +236,41 @@
             <display>final</display>
           </coding>
           <text>include</text>
+=======
+          <start>2002-06-14</start>
+          <end>2009-02-06</end>
+        </effectivePeriod>
+        <codeable_concept>
+          <coding>
+            <code>maintain</code>
+            <system>industry</system>
+            <display>manager</display>
+          </coding>
+          <text>address</text>
+>>>>>>> origin/main
         </codeable_concept>
         <industry>
           <codeable_concept>
             <coding>
+<<<<<<< HEAD
               <code>drug</code>
               <system>ok</system>
               <display>most</display>
             </coding>
             <text>we</text>
+=======
+              <code>weight</code>
+              <system>watch</system>
+              <display>ten</display>
+            </coding>
+            <text>sell</text>
+>>>>>>> origin/main
           </codeable_concept>
         </industry>
       </occupation_item>
     </occupations>
     <unique_person_ids>
+<<<<<<< HEAD
       <unique_person_id>work</unique_person_id>
       <unique_person_id_assigner>strong</unique_person_id_assigner>
       <unique_person_id_assigner_type>world</unique_person_id_assigner_type>
@@ -173,11 +295,38 @@
         <period>
           <start>1970-04-23T02:59:40Z</start>
           <end>1974-02-21T07:24:08Z</end>
+=======
+      <unique_person_id>home</unique_person_id>
+      <unique_person_id_assigner>whatever</unique_person_id_assigner>
+      <unique_person_id_assigner_type>present</unique_person_id_assigner_type>
+    </unique_person_ids>
+    <member_identity>
+      <member_last_4_ssn>4943</member_last_4_ssn>
+      <secret_display_name>such</secret_display_name>
+      <secret_value>million</secret_value>
+      <secret_length>1</secret_length>
+    </member_identity>
+    <member_id>free</member_id>
+    <member_id_system>program</member_id_system>
+    <subscriber_id>resource</subscriber_id>
+    <names>
+      <name>
+        <use>usual</use>
+        <text>very</text>
+        <family>Bishop</family>
+        <given>Tonya</given>
+        <prefix>Misc.</prefix>
+        <suffix>Jr.</suffix>
+        <period>
+          <start>1986-01-16T17:55:40Z</start>
+          <end>2022-02-07T16:11:19Z</end>
+>>>>>>> origin/main
         </period>
       </name>
     </names>
     <telecoms>
       <telecom>
+<<<<<<< HEAD
         <system>pager</system>
         <value>security</value>
         <use>work</use>
@@ -185,11 +334,21 @@
         <period>
           <start>2008-12-19T07:42:17Z</start>
           <end>1991-11-12T04:16:40Z</end>
+=======
+        <system>other</system>
+        <value>be</value>
+        <use>home</use>
+        <rank>3</rank>
+        <period>
+          <start>1989-08-30T06:05:52Z</start>
+          <end>1976-01-14T00:57:27Z</end>
+>>>>>>> origin/main
         </period>
       </telecom>
     </telecoms>
     <addresses>
       <address>
+<<<<<<< HEAD
         <use>temp</use>
         <type>physical</type>
         <text>prepare</text>
@@ -202,10 +361,25 @@
         <period>
           <start>2017-08-07T23:51:37Z</start>
           <end>2019-02-14T00:14:42Z</end>
+=======
+        <use>work</use>
+        <type>physical</type>
+        <text>job</text>
+        <line>1452 Jay Mall Suite 225</line>
+        <city>New Gabriel</city>
+        <district>different</district>
+        <state>ID</state>
+        <postal_code>08887</postal_code>
+        <country>ZM</country>
+        <period>
+          <start>2012-12-12T20:59:21Z</start>
+          <end>1994-07-17T15:56:39Z</end>
+>>>>>>> origin/main
         </period>
       </address>
     </addresses>
     <health_coverage>
+<<<<<<< HEAD
       <group_number>according</group_number>
       <policy_number>rather</policy_number>
       <plan_id>wish</plan_id>
@@ -251,11 +425,59 @@
             <period>
               <start>1986-07-15T19:41:30Z</start>
               <end>1970-09-07T14:32:33Z</end>
+=======
+      <group_number>several</group_number>
+      <policy_number>former</policy_number>
+      <plan_id>bag</plan_id>
+      <plan_name>hard</plan_name>
+      <coverage_status>than</coverage_status>
+      <coverage_type>
+        <codeable_concept>
+          <coding>
+            <code>general</code>
+            <system>full</system>
+            <display>should</display>
+          </coding>
+          <text>good</text>
+        </codeable_concept>
+      </coverage_type>
+      <coverage_period>
+        <start>1990-05-28T06:28:59Z</start>
+        <end>2005-01-13T09:40:16Z</end>
+      </coverage_period>
+      <network_id>challenge</network_id>
+      <payor>
+        <tax>
+          <value>top</value>
+          <type>hear</type>
+        </tax>
+        <naic_code>
+          <value>food</value>
+          <type>ask</type>
+        </naic_code>
+        <payer_id>
+          <value>direction</value>
+          <type>receive</type>
+        </payer_id>
+        <is_active>true</is_active>
+        <name>Alicia Porter</name>
+        <alias>small</alias>
+        <telecoms>
+          <telecom>
+            <system>other</system>
+            <value>author</value>
+            <use>old</use>
+            <rank>3</rank>
+            <period>
+              <start>1980-09-21T01:58:49Z</start>
+              <end>1974-03-30T14:40:29Z</end>
+>>>>>>> origin/main
             </period>
           </telecom>
         </telecoms>
         <addresses>
           <address>
+<<<<<<< HEAD
             <use>old</use>
             <type>physical</type>
             <text>fund</text>
@@ -268,6 +490,20 @@
             <period>
               <start>1994-05-02T15:46:18Z</start>
               <end>1998-08-11T23:48:54Z</end>
+=======
+            <use>billing</use>
+            <type>both</type>
+            <text>during</text>
+            <line>37038 Martinez Fall</line>
+            <city>Sandersburgh</city>
+            <district>room</district>
+            <state>MO</state>
+            <postal_code>06115</postal_code>
+            <country>MK</country>
+            <period>
+              <start>2006-05-28T12:42:53Z</start>
+              <end>1979-12-06T01:10:07Z</end>
+>>>>>>> origin/main
             </period>
           </address>
         </addresses>
@@ -275,6 +511,7 @@
     </health_coverage>
     <communications>
       <communication>
+<<<<<<< HEAD
         <language_code>en-AU</language_code>
         <display>future</display>
         <is_preferred>false</is_preferred>
@@ -296,6 +533,29 @@
         <email_address>williamparker@example.org</email_address>
         <start>2008-11-30T16:35:10Z</start>
         <end>2004-09-02T06:53:55Z</end>
+=======
+        <language_code>sl</language_code>
+        <display>prove</display>
+        <is_preferred>true</is_preferred>
+      </communication>
+    </communications>
+    <smoking_status>77176002</smoking_status>
+    <record_type>U</record_type>
+    <unique_record_identifier>able</unique_record_identifier>
+    <delegates>
+      <delegate>
+        <family>Johnson</family>
+        <given>William</given>
+        <telecoms>
+          <telecom>
+            <system>mobile</system>
+            <value>point</value>
+          </telecom>
+        </telecoms>
+        <email_address>harrismichelle@example.org</email_address>
+        <start>2007-08-12T17:45:57Z</start>
+        <end>2020-07-25T06:56:34Z</end>
+>>>>>>> origin/main
         <is_member>false</is_member>
       </delegate>
     </delegates>
