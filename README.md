@@ -127,30 +127,30 @@ The following environment setup is required for all of the above features. Pytho
 
 ### Setup python virtual environment
 
-While not required, using a python virtual environment will help to keep things isolated from any OS level configuration your system may have with python. A requirements.txt file is included in the source control package for restoring all dependencies.
+
+While not required, using a python virtual environment will help to keep things isolated from any OS level configuration your system may have with python. All dependency management is now handled via `pyproject.toml`.
 
 | **Step**                               | **macOS / Linux Command**                    | **Windows Command**        |
-|----------------------------------------|----------------------------------------------|-----------------------------------------------------------|
-| Create Python virtual environment      | `python3 -m venv venv`                       | `python -m venv venv`                                     |
-| Activate virtual environment           | `source venv/bin/activate`                   | `venv\Scripts\activate`                                   |
-| Install dependencies from requirements | `pip install -r requirements.txt`            | `pip install -r requirements.txt`                         |
-| Update the requirements.txt file       | `pip freeze > requirements.txt`              | `pip freeze > requirements.txt`                           |
+|----------------------------------------|----------------------------------------------|---------------------------|
+| Create Python virtual environment      | `python3 -m venv venv`                       | `python -m venv venv`     |
+| Activate virtual environment           | `source venv/bin/activate`                   | `venv\Scripts\activate` |
+| Install dependencies from pyproject.toml| `pip install .`                             | `pip install .`           |
 
-### Install via pyproject.toml (Preferred)
 
-Dependency management, project metadata, and tooling configuration have been migrated to `pyproject.toml`.
+### Dependency Management via pyproject.toml
+
+All dependency management, project metadata, and tooling configuration are handled in `pyproject.toml`.
 
 | Purpose | macOS / Linux | Windows |
-|---------|----------------|---------|
+|---------|---------------|---------|
 | Install runtime dependencies | `pip install .` | `pip install .` |
 | Install with dev/test extras | `pip install .[dev]` | `pip install .[dev]` |
 | Run tests | `pytest` | `pytest` |
 
 Notes:
 
-1. You no longer need to manually maintain `requirements.txt`; transitive dependencies (e.g., `pluggy`, `iniconfig`) are pulled automatically.
+1. You do not need to manually maintain a `requirements.txt` file; all dependencies are managed in `pyproject.toml`.
 2. To add a new direct dependency, edit the `dependencies` array in `pyproject.toml` and re-run `pip install .`.
-3. Legacy instructions using `requirements.txt` remain for backward compatibility but will be removed in a future release.
 
 #### Updating dependencies
 
@@ -160,9 +160,9 @@ Edit `pyproject.toml` and bump versions (use compatible `<` upper bounds when po
 pip install --upgrade .[dev]
 ```
 
-#### Why migrate?
+#### Why use pyproject.toml?
 
-PEP 621 standardizes project metadata, enabling modern build backends and simpler installs (`pip install .`). It also centralizes tool configuration (e.g., pytest) and prepares the project for publishing should that be desired later.
+PEP 621 standardizes project metadata, enables modern build backends and simpler installs (`pip install .`), centralizes tool configuration (e.g., pytest), and prepares the project for publishing if desired.
 
 ### Generate sample files via YAML config
 
@@ -181,6 +181,7 @@ YAML keys per build entry:
 - `output_file_name` (string)
 - `provider_directory_child` (string, optional)
 
+
 ### Refresh python virtual environment
 
 Sometimes the virtual environment will get into a bad state. Deactivating and reactivating it should resolve any issues.
@@ -188,5 +189,5 @@ Sometimes the virtual environment will get into a bad state. Deactivating and re
 | **Step**                                 | **Command**                                  |
 |------------------------------------------|----------------------------------------------|
 | deactivate current environment           | `deactivate`                                 |
-| follow the steps above                   | n/a                                          |  
+| follow the steps above                   | n/a                                          |
 
