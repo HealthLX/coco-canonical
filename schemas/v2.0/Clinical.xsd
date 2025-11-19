@@ -11,10 +11,10 @@
 
 	<!--Data Type Declaration-->
 	
-	<xs:element name="ProviderNPI" type="core:NPI"/>
+	<!-- <xs:element name="ProviderNPI" type="core:NPI"/>
     <xs:element name="PatientAge" type="core:positiveInt"/>
     <xs:element name="RecordCount" type="core:unsignedInt"/>
-    <xs:element name="Description" type="core:string"/>
+    <xs:element name="Description" type="core:string"/> -->
 
 	<!--Regular Expression for Integer-->
 	<xs:simpleType name="integer">

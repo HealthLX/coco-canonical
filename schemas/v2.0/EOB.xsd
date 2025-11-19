@@ -4,8 +4,15 @@
 	attributeFormDefault="unqualified"
 	elementFormDefault="qualified" 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:core="http://cocodata.org/core"
 	xmlns="http://cocodata.org" 
 	version="2.0">
+	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
+
+	<!-- <xs:element name="ProviderNPI" type="core:NPI"/>
+    <xs:element name="PatientAge" type="core:positiveInt"/>
+    <xs:element name="RecordCount" type="core:unsignedInt"/>
+    <xs:element name="Description" type="core:string"/> -->
 	<!--Data Type Declaration-->
 	<!--Regular Expression for string-->
 	<xs:simpleType name="string">
@@ -14,11 +21,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Regular Expression for NPI-->
-	<xs:simpleType name="NPI">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[0-9]{10}"/>
-		</xs:restriction>
-	</xs:simpleType>
+	
 	<!--Regular Expression for Positive Integer-->
 	<xs:simpleType name="positiveInt">
 		<xs:restriction base="xs:positiveInteger">
@@ -606,7 +609,7 @@
 	<xs:complexType name="practitioner">
 		<xs:sequence>
 			<!--Claim billing provider NPI-->
-			<xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1">
+			<xs:element name="npi" type="core:NPI" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 							National Provider Identifier (NPI)
@@ -654,7 +657,7 @@
 	<xs:complexType name="organization">
 		<xs:sequence>
 			<!--Claim billing provider NPI-->
-			<xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1">
+			<xs:element name="npi" type="core:NPI" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 							National Provider Identifier (NPI)
@@ -3171,7 +3174,7 @@
 	<xs:group name="organization">
 		<xs:sequence>
 			<!--Claim billing provider NPI-->
-			<xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1">
+			<xs:element name="npi" type="core:NPI" minOccurs="0" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
 						National Provider Identifier (NPI)
