@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coco-canonical"
+version = "0.1.0"
+description = "HealthLX canonical models, tools, and transforms for XML/XSD and FHIR mappings"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "HealthLX" }
+]
+keywords = ["healthcare", "FHIR", "XSD", "XML", "canonical", "HL7"]
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development",
+]
+
+# Runtime dependencies for the tools/package
+dependencies = [
+  "lxml>=5.3,<7.0",          # validate/parse XML
+  "xmlschema>=3.2,<5.0",     # XSD handling and validation
+  "saxonche>=12.5,<13.0",    # XSLT 3.0 engine
+  "Faker>=24.0,<38.0",       # sample data generation
+  "rstr>=3.2,<4.0",          # regex-based string generation
+  "pyyaml>=6.0,<7.0"         # YAML config parsing for sample builders
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9.0",
+  "pytest-cov>=5.0,<7.0",
+  "coverage>=7.0,<8.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/HealthLX/coco-canonical"
+Repository = "https://github.com/HealthLX/coco-canonical"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["tools", "tools.*"]
+exclude = ["tests*", "schemas*", "transforms*", "canonical-samples*", "fhir-samples*", "config*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit"]
+addopts = "-ra"
