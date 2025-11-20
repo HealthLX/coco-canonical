@@ -127,14 +127,60 @@ The following environment setup is required for all of the above features. Pytho
 
 ### Setup python virtual environment
 
-While not required, using a python virtual environment will help to keep things isolated from any OS level configuration your system may have with python. A requirements.txt file is included in the source control package for restoring all dependencies.
+
+While not required, using a python virtual environment will help to keep things isolated from any OS level configuration your system may have with python. All dependency management is now handled via `pyproject.toml`.
 
 | **Step**                               | **macOS / Linux Command**                    | **Windows Command**        |
-|----------------------------------------|----------------------------------------------|-----------------------------------------------------------|
-| Create Python virtual environment      | `python3 -m venv venv`                       | `python -m venv venv`                                     |
-| Activate virtual environment           | `source venv/bin/activate`                   | `venv\Scripts\activate`                                   |
-| Install dependencies from requirements | `pip install -r requirements.txt`            | `pip install -r requirements.txt`                         |
-| Update the requirements.txt file       | `pip freeze > requirements.txt`              | `pip freeze > requirements.txt`                           |
+|----------------------------------------|----------------------------------------------|---------------------------|
+| Create Python virtual environment      | `python3 -m venv venv`                       | `python -m venv venv`     |
+| Activate virtual environment           | `source venv/bin/activate`                   | `venv\Scripts\activate` |
+| Install dependencies from pyproject.toml| `pip install .`                             | `pip install .`           |
+
+
+### Dependency Management via pyproject.toml
+
+All dependency management, project metadata, and tooling configuration are handled in `pyproject.toml`.
+
+| Purpose | macOS / Linux | Windows |
+|---------|---------------|---------|
+| Install runtime dependencies | `pip install .` | `pip install .` |
+| Install with dev/test extras | `pip install .[dev]` | `pip install .[dev]` |
+| Run tests | `pytest` | `pytest` |
+
+Notes:
+
+1. You do not need to manually maintain a `requirements.txt` file; all dependencies are managed in `pyproject.toml`.
+2. To add a new direct dependency, edit the `dependencies` array in `pyproject.toml` and re-run `pip install .`.
+
+#### Updating dependencies
+
+Edit `pyproject.toml` and bump versions (use compatible `<` upper bounds when possible). Then run:
+
+```bash
+pip install --upgrade .[dev]
+```
+
+#### Why use pyproject.toml?
+
+PEP 621 standardizes project metadata, enables modern build backends and simpler installs (`pip install .`), centralizes tool configuration (e.g., pytest), and prepares the project for publishing if desired.
+
+### Generate sample files via YAML config
+
+The sample file generation is now configuration-driven using YAML. Edit `config/sample_builds.yaml` to add or remove builds, then run:
+
+| Purpose | macOS / Linux | Windows |
+|---------|----------------|---------|
+| Generate all samples from config | `python -m tools.build_all_sample_files` | `python -m tools.build_all_sample_files` |
+| Use a custom config path | `python -m tools.build_all_sample_files --config path/to/file.yaml` | `python -m tools.build_all_sample_files --config path\to\file.yaml` |
+
+YAML keys per build entry:
+
+- `canonical_name` (string)
+- `root_element_name` (string)
+- `schema_file_name` (string)
+- `output_file_name` (string)
+- `provider_directory_child` (string, optional)
+
 
 ### Refresh python virtual environment
 
@@ -143,5 +189,5 @@ Sometimes the virtual environment will get into a bad state. Deactivating and re
 | **Step**                                 | **Command**                                  |
 |------------------------------------------|----------------------------------------------|
 | deactivate current environment           | `deactivate`                                 |
-| follow the steps above                   | n/a                                          |  
+| follow the steps above                   | n/a                                          |
 

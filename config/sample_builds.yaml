@@ -1,0 +1,41 @@
+# Sample file builder configuration
+# Each entry describes a sample XML file to generate from a canonical XSD
+
+builds:
+  # Provider Directory - practitioner
+  - canonical_name: providerdirectory
+    root_element_name: providers
+    schema_file_name: provider-directory.xsd
+    output_file_name: provider-directory-practitioner-sample.xml
+    provider_directory_child: practitioner
+
+  # Provider Directory - providing_organization
+  - canonical_name: providerdirectory
+    root_element_name: providers
+    schema_file_name: provider-directory.xsd
+    output_file_name: provider-directory-organization-sample.xml
+    provider_directory_child: providing_organization
+
+  # Roster
+  - canonical_name: roster
+    root_element_name: roster
+    schema_file_name: roster.xsd
+    output_file_name: roster-sample.xml
+
+  # Formulary
+  - canonical_name: formulary
+    root_element_name: coverage_plans
+    schema_file_name: formulary.xsd
+    output_file_name: formulary-sample.xml
+
+  # Explanation of Benefits (EOB)
+  - canonical_name: eob
+    root_element_name: eob_list
+    schema_file_name: eob.xsd
+    output_file_name: eob-sample.xml
+
+  # Clinical
+  - canonical_name: clinical
+    root_element_name: clinicals
+    schema_file_name: clinical.xsd
+    output_file_name: clinical-sample.xml
