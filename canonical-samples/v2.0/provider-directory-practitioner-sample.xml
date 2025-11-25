@@ -426,8 +426,8 @@
             <altitude>38.52</altitude>
           </position>
           <part_of>
-            <status>suspended</status>
-            <operational_status>C</operational_status>
+            <status>inactive</status>
+            <operational_status>U</operational_status>
             <identifiers>
               <identifier>
                 <value>management</value>
@@ -479,7 +479,7 @@
           <accessibility>cognitive</accessibility>
           <new_patients_list>
             <new_patients>
-              <accepting_patients>no</accepting_patients>
+              <accepting_patients>existingplusfamily</accepting_patients>
               <from_network>
                 <network_id>assume</network_id>
                 <name>Sandra Neal</name>
@@ -656,8 +656,8 @@
                 <altitude>490.65</altitude>
               </position>
               <part_of>
-                <status>suspended</status>
-                <operational_status>O</operational_status>
+                <status>active</status>
+                <operational_status>U</operational_status>
                 <identifiers>
                   <identifier>
                     <value>meeting</value>

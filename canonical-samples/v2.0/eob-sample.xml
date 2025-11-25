@@ -298,7 +298,35 @@
               </period>
             </address>
           </addresses>
-        </providing_organization>
+          <communications>
+            <communication>
+              <language>
+                <language_code>de-DE</language_code>
+                <system>urn:ietf:bcp:47</system>
+                <display>bit</display>
+              </language>
+              <is_preferred>true</is_preferred>
+            </communication>
+          </communications>
+          <us_core_race>
+            <omb_category_code>
+              <code>1002-5</code>
+              <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
+            </omb_category_code>
+            <omb_category_code>
+              <code>2028-9</code>
+              <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
+            </omb_category_code>
+            <detailed_code>1065-2</detailed_code>
+            <text>man</text>
+          </us_core_race>
+          <us_core_ethnicity>
+            <omb_category_code>2186-5</omb_category_code>
+            <detailed_code>2172-5</detailed_code>
+            <text>contain</text>
+          </us_core_ethnicity>
+          <us_core_birth_sex>UNK</us_core_birth_sex>
+        </patient>
       </party>
     </payee>
     <care_teams>
@@ -997,7 +1025,7 @@
           <reason>owner</reason>
         </adm_type>
         <discharge_status>
-          <sequence>4</sequence>
+          <sequence>5</sequence>
           <category>
             <code>discharge-status</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1049,12 +1077,12 @@
             <timing_date>2014-02-19</timing_date>
           </timing>
           <value>
-            <value_boolean>true</value_boolean>
+            <value_boolean>false</value_boolean>
           </value>
           <reason>international</reason>
         </performing_network_contracting_status>
         <service_facility>
-          <sequence>1</sequence>
+          <sequence>5</sequence>
           <category>
             <code>servicefacility</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1143,7 +1171,7 @@
           <reason>hold</reason>
         </brand_generic_code>
         <rx_origin_code>
-          <sequence>2</sequence>
+          <sequence>1</sequence>
           <category>
             <code>rxorigincode</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1191,7 +1219,7 @@
           <reason>sing</reason>
         </compound_code>
         <days_supply>
-          <sequence>2</sequence>
+          <sequence>5</sequence>
           <category>
             <code>dayssupply</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>

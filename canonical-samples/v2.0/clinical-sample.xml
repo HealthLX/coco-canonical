@@ -78,7 +78,7 @@
         <detailed_code>2160-0</detailed_code>
         <text>pass</text>
       </us_core_ethnicity>
-      <us_core_birth_sex>M</us_core_birth_sex>
+      <us_core_birth_sex>F</us_core_birth_sex>
     </patient>
     <lab_observations>
       <lab_observation>
@@ -146,7 +146,7 @@
         <clinical_status>active</clinical_status>
         <verification_status>refuted</verification_status>
         <type>allergy</type>
-        <category>food</category>
+        <category>biologic</category>
         <allergy_code>
           <code>large</code>
           <system>http://snomed.info/sct</system>
@@ -213,7 +213,7 @@
         <performed>
           <performed_date_time>2003-02-16T18:21:38Z</performed_date_time>
         </performed>
-        <record_type>U</record_type>
+        <record_type>D</record_type>
       </procedure>
     </procedures>
     <medication_requests>
@@ -306,7 +306,7 @@
             <code>drive</code>
             <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
           </medication_code>
-          <status>entered-in-error</status>
+          <status>inactive</status>
           <form>
             <code>yard</code>
             <system>http://snomed.info/sct</system>
@@ -339,7 +339,7 @@
                     <family>Lam</family>
                     <given>Edward</given>
                     <prefix>Mrs.</prefix>
-                    <suffix>MD</suffix>
+                    <suffix>DDS</suffix>
                     <period>
                       <start>2016-09-18T05:07:11Z</start>
                       <end>2010-09-29T05:17:04Z</end>
@@ -565,7 +565,7 @@
             </practitioner>
           </member>
         </participant>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </care_team>
     </care_teams>
     <observation_vital_signs>
@@ -762,7 +762,7 @@
               </period>
             </name>
           </names>
-          <is_active>false</is_active>
+          <is_active>true</is_active>
           <telecoms>
             <telecom>
               <system>phone</system>
@@ -1120,7 +1120,7 @@
           <occurrence_date_time>2024-08-03T13:18:05Z</occurrence_date_time>
         </occurrence>
         <primary_source>true</primary_source>
-        <record_type>D</record_type>
+        <record_type>U</record_type>
       </immunization>
     </immunizations>
     <pediatric_bmi_for_age_observations>
@@ -2041,7 +2041,7 @@
             </data_absent_reason>
           </component_concentration>
         </component>
-        <record_type>U</record_type>
+        <record_type>D</record_type>
       </pulse_oximetry_observation>
     </pulse_oximetry_observations>
     <implantable_devices>
@@ -2410,7 +2410,7 @@
               <system>soldier</system>
               <code>agency</code>
             </high>
-            <type>pre_therapeutic</type>
+            <type>postmenopausal</type>
             <applies_to>
               <coding>
                 <system>push</system>
@@ -2437,7 +2437,7 @@
             <text>else</text>
           </reference_range>
         </result>
-        <record_type>A</record_type>
+        <record_type>U</record_type>
       </diagnostic_report_lab>
     </diagnostic_report_labs>
     <diagnostic_report_notes>
@@ -2603,7 +2603,7 @@
                 </telecom>
               </telecoms>
               <address>
-                <use>old</use>
+                <use>temp</use>
                 <type>physical</type>
                 <text>treatment</text>
                 <line>36145 Sheila Unions Apt. 190</line>

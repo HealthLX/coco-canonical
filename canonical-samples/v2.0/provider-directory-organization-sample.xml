@@ -232,7 +232,7 @@
               <end>2009-11-30T15:14:06Z</end>
             </period>
           </name>
-          <purpose>PAYOR</purpose>
+          <purpose>PRESS</purpose>
           <telecoms>
             <telecom>
               <id>799b1413-efcb-4997-9138-fb8c9ab979b2</id>
@@ -628,7 +628,7 @@
             <accessibility>vision</accessibility>
             <new_patients_list>
               <new_patients>
-                <accepting_patients>yes</accepting_patients>
+                <accepting_patients>existingplusfamily</accepting_patients>
                 <from_network>
                   <network_id>daughter</network_id>
                   <name>Christian Smith</name>
@@ -784,7 +784,7 @@
               <display>sometimes</display>
             </referral_method>
           </referral_methods>
-          <appointment_required>true</appointment_required>
+          <appointment_required>false</appointment_required>
           <available_times>
             <available_time>
               <all_day>true</all_day>
