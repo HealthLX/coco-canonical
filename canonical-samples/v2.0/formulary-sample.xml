@@ -1,191 +1,191 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v2.0/formulary.xsd">
   <schema_version>2.0</schema_version>
-  <sender_id>water</sender_id>
-  <date_time_reported>2025-11-19T21:51:09Z</date_time_reported>
+  <sender_id>letter</sender_id>
+  <date_time_reported>2025-11-25T19:19:12Z</date_time_reported>
   <coverage_plan>
-    <plan_id>build</plan_id>
-    <plan_id_type>early</plan_id_type>
-    <title>major</title>
-    <marketing_url>wish</marketing_url>
-    <summary_url>name</summary_url>
-    <formulary_url>money</formulary_url>
-    <email_plan_contact>joshua29@example.org</email_plan_contact>
-    <network>move</network>
-    <status>entered-in-error</status>
-    <mode>changes</mode>
-    <date>2016-01-02T03:24:18Z</date>
+    <plan_id>executive</plan_id>
+    <plan_id_type>sea</plan_id_type>
+    <title>left</title>
+    <marketing_url>need</marketing_url>
+    <summary_url>conference</summary_url>
+    <formulary_url>professional</formulary_url>
+    <email_plan_contact>lwyatt@example.org</email_plan_contact>
+    <network>likely</network>
+    <status>retired</status>
+    <mode>working</mode>
+    <date>2010-01-24T17:26:02Z</date>
     <drug_tiers>
       <drug_tier>
         <drug_tier_id>
-          <code>generic</code>
-          <text>arrive</text>
+          <code>medical-service</code>
+          <text>yourself</text>
         </drug_tier_id>
-        <mail_order>false</mail_order>
+        <mail_order>true</mail_order>
         <cost_sharings>
           <cost_sharing>
-            <pharmacy_type>3-month-in-mail</pharmacy_type>
+            <pharmacy_type>1-month-in-mail</pharmacy_type>
             <copay_amount>
-              <value>648.13</value>
-              <currency>NIO</currency>
+              <value>663.69</value>
+              <currency>LYD</currency>
             </copay_amount>
-            <copay_option>no-charge-after-deductible</copay_option>
-            <coinsurance_rate>254.25</coinsurance_rate>
-            <coinsurance_option>no-charge</coinsurance_option>
+            <copay_option>no-charge</copay_option>
+            <coinsurance_rate>994.18</coinsurance_rate>
+            <coinsurance_option>no-charge-after-deductible</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
             <rx_norm_code>
-              <code>left</code>
-              <display>each</display>
+              <code>but</code>
+              <display>source</display>
               <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
             </rx_norm_code>
-            <status>inactive</status>
+            <status>entered-in-error</status>
             <manufacturer>
-              <name>Tony Mason</name>
-              <alias>run</alias>
-              <type>environment</type>
+              <name>Alan Cooper</name>
+              <alias>part</alias>
+              <type>church</type>
             </manufacturer>
             <dose_form>
-              <code>type</code>
-              <system>indeed</system>
+              <code>school</code>
+              <system>base</system>
             </dose_form>
             <ingredients>
               <ingredient>
-                <is_active>false</is_active>
+                <is_active>true</is_active>
                 <strength>
                   <numerator>
-                    <value>231.7</value>
-                    <comparator>&lt;=</comparator>
-                    <unit>outside</unit>
-                    <system>collection</system>
-                    <code>quickly</code>
+                    <value>427.74</value>
+                    <comparator>&gt;</comparator>
+                    <unit>company</unit>
+                    <system>process</system>
+                    <code>part</code>
                   </numerator>
                   <denominator>
-                    <value>677.09</value>
-                    <comparator>&gt;=</comparator>
-                    <unit>animal</unit>
-                    <system>create</system>
-                    <code>last</code>
+                    <value>831.95</value>
+                    <comparator>&gt;</comparator>
+                    <unit>relate</unit>
+                    <system>night</system>
+                    <code>morning</code>
                   </denominator>
                 </strength>
                 <substance>
-                  <category>biological</category>
-                  <description>identify</description>
+                  <category>food</category>
+                  <description>within</description>
                   <code>
-                    <code>talk</code>
-                    <system>find</system>
+                    <code>heavy</code>
+                    <system>own</system>
                   </code>
                 </substance>
               </ingredient>
             </ingredients>
             <monitoring_programs>
               <monitoring_program>
-                <name>Jordan Kerr</name>
-                <type>safe</type>
+                <name>Daniel Terry</name>
+                <type>across</type>
               </monitoring_program>
             </monitoring_programs>
             <monographs>
               <monograph>
-                <type>city</type>
+                <type>study</type>
               </monograph>
             </monographs>
             <cost_informations>
               <cost_information>
-                <type>than</type>
-                <source>security</source>
+                <type>doctor</type>
+                <source>spend</source>
                 <cost>
-                  <value>437.57</value>
-                  <currency>NOK</currency>
+                  <value>830.17</value>
+                  <currency>CUP</currency>
                 </cost>
               </cost_information>
             </cost_informations>
-            <plan_id>than</plan_id>
-            <prior_authorization>false</prior_authorization>
+            <plan_id>time</plan_id>
+            <prior_authorization>true</prior_authorization>
             <step_therapy>false</step_therapy>
             <quantity_limit>false</quantity_limit>
             <medicine_classifications>
               <medicine_classification>
-                <type>newspaper</type>
-                <classification>expect</classification>
+                <type>memory</type>
+                <classification>one</classification>
               </medicine_classification>
             </medicine_classifications>
             <formulary_drugs_alternatives>
               <formulary_drugs_alternative>
                 <rx_norm_code>
-                  <code>develop</code>
-                  <display>rather</display>
+                  <code>single</code>
+                  <display>let</display>
                   <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
                 </rx_norm_code>
-                <status>active</status>
+                <status>entered-in-error</status>
                 <manufacturer>
-                  <name>Sean Duffy</name>
-                  <alias>how</alias>
-                  <type>level</type>
+                  <name>Taylor Stephens</name>
+                  <alias>carry</alias>
+                  <type>standard</type>
                 </manufacturer>
                 <dose_form>
-                  <code>soldier</code>
-                  <system>quickly</system>
+                  <code>into</code>
+                  <system>win</system>
                 </dose_form>
                 <ingredients>
                   <ingredient>
-                    <is_active>true</is_active>
+                    <is_active>false</is_active>
                     <strength>
                       <numerator>
-                        <value>200.53</value>
-                        <comparator>&gt;=</comparator>
-                        <unit>accept</unit>
-                        <system>usually</system>
-                        <code>more</code>
+                        <value>538.71</value>
+                        <comparator>&gt;</comparator>
+                        <unit>evening</unit>
+                        <system>dog</system>
+                        <code>boy</code>
                       </numerator>
                       <denominator>
-                        <value>861.3</value>
-                        <comparator>&lt;=</comparator>
-                        <unit>particularly</unit>
-                        <system>I</system>
-                        <code>fear</code>
+                        <value>701.93</value>
+                        <comparator>&gt;=</comparator>
+                        <unit>understand</unit>
+                        <system>thousand</system>
+                        <code>name</code>
                       </denominator>
                     </strength>
                     <substance>
-                      <category>biological</category>
-                      <description>example</description>
+                      <category>material</category>
+                      <description>life</description>
                       <code>
-                        <code>daughter</code>
-                        <system>cup</system>
+                        <code>if</code>
+                        <system>own</system>
                       </code>
                     </substance>
                   </ingredient>
                 </ingredients>
                 <monitoring_programs>
                   <monitoring_program>
-                    <name>Hannah Woodward</name>
-                    <type>type</type>
+                    <name>Laura Reynolds</name>
+                    <type>affect</type>
                   </monitoring_program>
                 </monitoring_programs>
                 <monographs>
                   <monograph>
-                    <type>opportunity</type>
+                    <type>like</type>
                   </monograph>
                 </monographs>
                 <cost_informations>
                   <cost_information>
-                    <type>cover</type>
-                    <source>every</source>
+                    <type>take</type>
+                    <source>town</source>
                     <cost>
-                      <value>472.55</value>
-                      <currency>EUR</currency>
+                      <value>160.66</value>
+                      <currency>HKD</currency>
                     </cost>
                   </cost_information>
                 </cost_informations>
-                <plan_id>language</plan_id>
+                <plan_id>per</plan_id>
                 <prior_authorization>true</prior_authorization>
-                <step_therapy>false</step_therapy>
+                <step_therapy>true</step_therapy>
                 <quantity_limit>true</quantity_limit>
                 <medicine_classifications>
                   <medicine_classification>
-                    <type>make</type>
-                    <classification>statement</classification>
+                    <type>part</type>
+                    <classification>tree</classification>
                   </medicine_classification>
                 </medicine_classifications>
               </formulary_drugs_alternative>
