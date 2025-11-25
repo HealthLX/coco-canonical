@@ -9,18 +9,6 @@
 	version="2.0">
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
 
-	<!-- <xs:element name="ProviderNPI" type="core:NPI"/>
-    <xs:element name="PatientAge" type="core:positiveInt"/>
-    <xs:element name="RecordCount" type="core:unsignedInt"/>
-    <xs:element name="Description" type="core:string"/> -->
-	<!--Data Type Declaration-->
-	<!--Regular Expression for string-->
-	
-	<!--Regular Expression for NPI-->
-	
-	<!--Regular Expression for Positive Integer-->
-	
-	<!--Regular Expression for unsignedInt Integer-->
 	<xs:simpleType name="unsignedInt">
 		<xs:restriction base="xs:unsignedInt">
 			<xs:pattern value="0|([1-9][0-9]*)"/>
