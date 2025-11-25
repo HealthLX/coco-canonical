@@ -1,10 +1,3 @@
-# Deprecated: dependency management has moved  
-# to pyproject.toml ([project] dependencies). 
-# This file remains for backward compatibility 
-# with older workflows and will be removed in 
-# a future release. Prefer:                  
-#   pip install .[dev]                       
-
 coverage==7.5.1
 elementpath==5.0.3
 exceptiongroup==1.3.0
