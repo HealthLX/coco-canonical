@@ -16,6 +16,7 @@
     </us_core_ethnicity>
     <us_core_birth_sex>UNK</us_core_birth_sex>
     <is_subscriber>false</is_subscriber>
+    <is_subscriber>false</is_subscriber>
     <relationship>child</relationship>
     <birth_date>1974-11-10</birth_date>
     <deceased_date_time>2020-06-13T23:50:40Z</deceased_date_time>
@@ -30,6 +31,7 @@
           </coding>
           <text>a</text>
         </codeable_concept>
+        <is_enrolled>true</is_enrolled>
         <is_enrolled>true</is_enrolled>
       </tribal_affiliation>
     </tribal_affiliations>
@@ -61,6 +63,7 @@
     </gender_identities>
     <relatedPersons>
       <relatedPerson>
+        <active>false</active>
         <active>false</active>
         <names>
           <name>
@@ -121,6 +124,7 @@
     </relatedPersons>
     <occupations>
       <occupation_item>
+        <status>final</status>
         <status>final</status>
         <effectivePeriod>
           <start>2010-11-22</start>

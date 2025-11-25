@@ -149,6 +149,7 @@
             <contacts>
               <contact>
                 <purpose>PAYOR</purpose>
+                <purpose>PAYOR</purpose>
                 <name>
                   <use>usual</use>
                   <text>option</text>
@@ -219,6 +220,7 @@
           <value>television</value>
         </clia>
         <is_active>false</is_active>
+        <is_active>false</is_active>
         <types>
           <type>fac</type>
         </types>
@@ -230,6 +232,7 @@
           <clia>myself</clia>
           <is_active>true</is_active>
           <types>
+            <type>atyprv</type>
             <type>atyprv</type>
           </types>
           <name>Nathan Hines</name>
@@ -428,6 +431,8 @@
           <part_of>
             <status>inactive</status>
             <operational_status>U</operational_status>
+            <status>inactive</status>
+            <operational_status>U</operational_status>
             <identifiers>
               <identifier>
                 <value>management</value>
@@ -479,6 +484,7 @@
           <accessibility>cognitive</accessibility>
           <new_patients_list>
             <new_patients>
+              <accepting_patients>existingplusfamily</accepting_patients>
               <accepting_patients>existingplusfamily</accepting_patients>
               <from_network>
                 <network_id>assume</network_id>
@@ -615,6 +621,7 @@
             </referral_method>
           </referral_methods>
           <appointment_required>false</appointment_required>
+          <appointment_required>false</appointment_required>
           <available_times>
             <available_time>
               <all_day>false</all_day>
@@ -656,6 +663,8 @@
                 <altitude>490.65</altitude>
               </position>
               <part_of>
+                <status>active</status>
+                <operational_status>U</operational_status>
                 <status>active</status>
                 <operational_status>U</operational_status>
                 <identifiers>

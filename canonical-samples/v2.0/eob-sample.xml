@@ -327,6 +327,35 @@
           </us_core_ethnicity>
           <us_core_birth_sex>UNK</us_core_birth_sex>
         </patient>
+          <communications>
+            <communication>
+              <language>
+                <language_code>de-DE</language_code>
+                <system>urn:ietf:bcp:47</system>
+                <display>bit</display>
+              </language>
+              <is_preferred>true</is_preferred>
+            </communication>
+          </communications>
+          <us_core_race>
+            <omb_category_code>
+              <code>1002-5</code>
+              <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
+            </omb_category_code>
+            <omb_category_code>
+              <code>2028-9</code>
+              <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
+            </omb_category_code>
+            <detailed_code>1065-2</detailed_code>
+            <text>man</text>
+          </us_core_race>
+          <us_core_ethnicity>
+            <omb_category_code>2186-5</omb_category_code>
+            <detailed_code>2172-5</detailed_code>
+            <text>contain</text>
+          </us_core_ethnicity>
+          <us_core_birth_sex>UNK</us_core_birth_sex>
+        </patient>
       </party>
     </payee>
     <care_teams>
@@ -654,6 +683,7 @@
           <currency>SZL</currency>
         </net>
         <note_number>2</note_number>
+        <note_number>2</note_number>
         <location>
           <location_address>
             <use>billing</use>
@@ -801,6 +831,7 @@
         <in_out_network>
           <category>
             <code>outofnetwork</code>
+            <code>outofnetwork</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus</system>
           </category>
           <amount>
@@ -857,6 +888,7 @@
             </allowed>
             <used>
               <used_unsigned_int>1</used_unsigned_int>
+              <used_unsigned_int>1</used_unsigned_int>
             </used>
           </financial>
         </financials>
@@ -892,6 +924,7 @@
           <reason>memory</reason>
         </billing_network_contracting_status>
         <admission_period>
+          <sequence>1</sequence>
           <sequence>1</sequence>
           <category>
             <code>admissionperiod</code>
@@ -941,6 +974,7 @@
           <reason>month</reason>
         </clm_recvd_date>
         <type_of_bill>
+          <sequence>2</sequence>
           <sequence>2</sequence>
           <category>
             <code>typeofbill</code>
@@ -1026,6 +1060,7 @@
         </adm_type>
         <discharge_status>
           <sequence>5</sequence>
+          <sequence>5</sequence>
           <category>
             <code>discharge-status</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1043,6 +1078,7 @@
           <reason>itself</reason>
         </discharge_status>
         <drg>
+          <sequence>5</sequence>
           <sequence>5</sequence>
           <category>
             <code>drg</code>
@@ -1065,6 +1101,7 @@
         </drg>
         <performing_network_contracting_status>
           <sequence>5</sequence>
+          <sequence>5</sequence>
           <category>
             <code>performingnetworkcontractingstatus</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1078,10 +1115,12 @@
           </timing>
           <value>
             <value_boolean>false</value_boolean>
+            <value_boolean>false</value_boolean>
           </value>
           <reason>international</reason>
         </performing_network_contracting_status>
         <service_facility>
+          <sequence>5</sequence>
           <sequence>5</sequence>
           <category>
             <code>servicefacility</code>
@@ -1172,6 +1211,7 @@
         </brand_generic_code>
         <rx_origin_code>
           <sequence>1</sequence>
+          <sequence>1</sequence>
           <category>
             <code>rxorigincode</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1219,6 +1259,7 @@
           <reason>sing</reason>
         </compound_code>
         <days_supply>
+          <sequence>5</sequence>
           <sequence>5</sequence>
           <category>
             <code>dayssupply</code>

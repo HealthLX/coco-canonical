@@ -79,6 +79,7 @@
         <text>pass</text>
       </us_core_ethnicity>
       <us_core_birth_sex>F</us_core_birth_sex>
+      <us_core_birth_sex>F</us_core_birth_sex>
     </patient>
     <lab_observations>
       <lab_observation>
@@ -147,6 +148,7 @@
         <verification_status>refuted</verification_status>
         <type>allergy</type>
         <category>biologic</category>
+        <category>biologic</category>
         <allergy_code>
           <code>large</code>
           <system>http://snomed.info/sct</system>
@@ -210,9 +212,11 @@
           <system>urn:oid:2.16.840.1.113883.6.285</system>
         </procedure_code>
         <status>unknown</status>
+        <status>unknown</status>
         <performed>
           <performed_date_time>2003-02-16T18:21:38Z</performed_date_time>
         </performed>
+        <record_type>D</record_type>
         <record_type>D</record_type>
       </procedure>
     </procedures>
@@ -307,6 +311,7 @@
             <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
           </medication_code>
           <status>inactive</status>
+          <status>inactive</status>
           <form>
             <code>yard</code>
             <system>http://snomed.info/sct</system>
@@ -339,6 +344,7 @@
                     <family>Lam</family>
                     <given>Edward</given>
                     <prefix>Mrs.</prefix>
+                    <suffix>DDS</suffix>
                     <suffix>DDS</suffix>
                     <period>
                       <start>2016-09-18T05:07:11Z</start>
@@ -566,6 +572,7 @@
           </member>
         </participant>
         <record_type>A</record_type>
+        <record_type>A</record_type>
       </care_team>
     </care_teams>
     <observation_vital_signs>
@@ -763,6 +770,7 @@
             </name>
           </names>
           <is_active>true</is_active>
+          <is_active>true</is_active>
           <telecoms>
             <telecom>
               <system>phone</system>
@@ -793,6 +801,7 @@
             </address>
           </addresses>
         </practitioner_details>
+        <record_type>D</record_type>
         <record_type>D</record_type>
       </practitioner>
     </practitioners>
@@ -1088,6 +1097,7 @@
           </category_assess_plan>
         </category>
         <record_type>A</record_type>
+        <record_type>A</record_type>
       </care_plan>
     </care_plans>
     <goals>
@@ -1120,6 +1130,7 @@
           <occurrence_date_time>2024-08-03T13:18:05Z</occurrence_date_time>
         </occurrence>
         <primary_source>true</primary_source>
+        <record_type>U</record_type>
         <record_type>U</record_type>
       </immunization>
     </immunizations>
@@ -1535,6 +1546,7 @@
           <code>material</code>
           <system>http://snomed.info/sct</system>
         </value_codeable_concept>
+        <record_type>D</record_type>
         <record_type>D</record_type>
       </smoking_status_observation>
     </smoking_status_observations>
@@ -2042,6 +2054,7 @@
           </component_concentration>
         </component>
         <record_type>D</record_type>
+        <record_type>D</record_type>
       </pulse_oximetry_observation>
     </pulse_oximetry_observations>
     <implantable_devices>
@@ -2318,6 +2331,7 @@
           </period>
         </context>
         <record_type>U</record_type>
+        <record_type>U</record_type>
       </document_reference>
     </document_references>
     <diagnostic_report_labs>
@@ -2377,6 +2391,7 @@
               </address>
             </addresses>
           </reported_organization>
+          </reported_organization>
         </performer>
         <result>
           <status>registered</status>
@@ -2411,6 +2426,7 @@
               <code>agency</code>
             </high>
             <type>postmenopausal</type>
+            <type>postmenopausal</type>
             <applies_to>
               <coding>
                 <system>push</system>
@@ -2437,6 +2453,7 @@
             <text>else</text>
           </reference_range>
         </result>
+        <record_type>U</record_type>
         <record_type>U</record_type>
       </diagnostic_report_lab>
     </diagnostic_report_labs>
@@ -2604,6 +2621,7 @@
               </telecoms>
               <address>
                 <use>temp</use>
+                <use>temp</use>
                 <type>physical</type>
                 <text>treatment</text>
                 <line>36145 Sheila Unions Apt. 190</line>
@@ -2656,6 +2674,7 @@
             </location>
           </location>
         </encounter>
+        <record_type>D</record_type>
         <record_type>D</record_type>
       </diagnostic_report_note>
     </diagnostic_report_notes>
