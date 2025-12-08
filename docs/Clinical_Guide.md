@@ -15,10 +15,11 @@
 3. [Interoperability](#interoperability)
 4. [Change Log](#change-log)
 5. [Simple Types](#simple-types)
-6. [Complex Types](#complex-types)
-7. [Required Elements of Clinical XSD](#required-elements-of-clinical-xsd)
-8. [All Elements of Clinical XSD](#all-elements-of-clinical-xsd)
-9. [Practical Guidance](#practical-guidance)
+6. [Core Model Types](#core-model-types)
+7. [Complex Types](#complex-types)
+8. [Required Elements of Clinical XSD](#required-elements-of-clinical-xsd)
+9. [All Elements of Clinical XSD](#all-elements-of-clinical-xsd)
+10. [Practical Guidance](#practical-guidance)
 
 ## Disclaimer
 
@@ -62,6 +63,18 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | language | core:string | – |  |
 | currency | core:string | – |  |
 | reference | xs:string | – |  |
+
+
+## Core Model Types
+
+The following types are imported from the Core-model. See [Core-model Guide](Core-model_Guide.md) for complete documentation.
+
+| Name | Base Type | Description | Pattern |
+| --- | --- | --- | --- |
+| NPI | xs:string | – | [0-9]{10} |
+| positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
+| string | xs:string | – | [ \r\n\t\S]+ |
+| unsignedInt | xs:unsignedInt | – | 0|([1-9][0-9]*) |
 
 
 ## Complex Types

@@ -128,6 +128,123 @@ def get_documentation(elem):
     annotation = elem.find("xs:annotation/xs:documentation", ns)
     return ' '.join(annotation.text.strip().split()) if annotation is not None and annotation.text else "–"
 
+def detect_core_model_import(root, xsd_path):
+    """
+    Detect if the schema imports the core model and return the path to Core-model.xsd.
+    
+    Args:
+        root: The root element of the parsed XSD schema
+        xsd_path: Path to the current XSD file
+        
+    Returns:
+        Path to Core-model.xsd if found, None otherwise
+    """
+    core_namespace = "http://cocodata.org/core"
+    
+    # Find all import elements
+    for import_elem in root.findall("./xs:import", ns):
+        namespace = import_elem.get("namespace")
+        schema_location = import_elem.get("schemaLocation")
+        
+        if namespace == core_namespace and schema_location:
+            # Resolve relative path
+            xsd_dir = Path(xsd_path).parent
+            core_model_path = (xsd_dir / schema_location).resolve()
+            
+            # Check if file exists
+            if core_model_path.exists():
+                return str(core_model_path)
+    
+    return None
+
+def parse_core_model_types(core_model_path):
+    """
+    Parse the Core-model.xsd file and extract its simple types.
+    
+    Args:
+        core_model_path: Path to Core-model.xsd
+        
+    Returns:
+        Dictionary mapping type names to their definitions [name, base, doc, pattern]
+    """
+    try:
+        tree = etree.parse(core_model_path)
+        root = tree.getroot()
+        
+        # Use existing parse_simple_types function
+        simple_types = parse_simple_types(root)
+        
+        # Convert to dictionary for easy lookup
+        core_types_dict = {}
+        for st in simple_types:
+            name = st[0]
+            if name != "–":
+                core_types_dict[name] = st
+        
+        return core_types_dict
+    except Exception as e:
+        print(f"Warning: Could not parse Core-model.xsd at {core_model_path}: {e}")
+        return {}
+
+def find_used_core_types(root):
+    """
+    Find which core model types are actually used in the schema.
+    
+    Args:
+        root: The root element of the parsed XSD schema
+        
+    Returns:
+        Set of core type names (without the 'core:' prefix) that are used
+    """
+    used_types = set()
+    
+    # Find all elements with type attributes starting with "core:"
+    for elem in root.findall(".//xs:element", ns):
+        elem_type = elem.get("type", "")
+        if elem_type.startswith("core:"):
+            type_name = elem_type.replace("core:", "")
+            used_types.add(type_name)
+    
+    # Find all restrictions with base attributes starting with "core:"
+    for restriction in root.findall(".//xs:restriction", ns):
+        base = restriction.get("base", "")
+        if base.startswith("core:"):
+            type_name = base.replace("core:", "")
+            used_types.add(type_name)
+    
+    return used_types
+
+def generate_core_types_section(core_types_dict, used_types):
+    """
+    Generate the Core Model Types section for the documentation.
+    
+    Args:
+        core_types_dict: Dictionary of all core model types
+        used_types: Set of core type names that are actually used
+        
+    Returns:
+        Markdown string for the Core Model Types section, or empty string if no types used
+    """
+    if not used_types:
+        return ""
+    
+    # Filter to only include used types
+    used_core_types = []
+    for type_name in sorted(used_types):
+        if type_name in core_types_dict:
+            used_core_types.append(core_types_dict[type_name])
+    
+    if not used_core_types:
+        return ""
+    
+    output = "## Core Model Types\n\n"
+    output += "The following types are imported from the Core-model. "
+    output += "See [Core-model Guide](Core-model_Guide.md) for complete documentation.\n\n"
+    output += to_md_table(["Name", "Base Type", "Description", "Pattern"], used_core_types)
+    output += "\n\n"
+    
+    return output
+
 def parse_simple_types(root):
     simple_types = []
     for st in root.findall("./xs:simpleType", ns):
@@ -338,7 +455,7 @@ def generate_header(root, schema_info):
     
     return output
 
-def generate_toc(schema_info):
+def generate_toc(schema_info, has_core_types=False):
     """Generate table of contents with section links matching PDF format."""
     # Create URL-safe anchor from schema name
     schema_anchor = schema_info.display_name.lower().replace(' ', '-')
@@ -349,10 +466,19 @@ def generate_toc(schema_info):
     output += "3. [Interoperability](#interoperability)\n"
     output += "4. [Change Log](#change-log)\n"
     output += "5. [Simple Types](#simple-types)\n"
-    output += "6. [Complex Types](#complex-types)\n"
-    output += f"7. [Required Elements of {schema_info.display_name} XSD](#required-elements-of-{schema_anchor}-xsd)\n"
-    output += f"8. [All Elements of {schema_info.display_name} XSD](#all-elements-of-{schema_anchor}-xsd)\n"
-    output += "9. [Practical Guidance](#practical-guidance)\n\n"
+    
+    section_num = 6
+    if has_core_types:
+        output += f"{section_num}. [Core Model Types](#core-model-types)\n"
+        section_num += 1
+    
+    output += f"{section_num}. [Complex Types](#complex-types)\n"
+    section_num += 1
+    output += f"{section_num}. [Required Elements of {schema_info.display_name} XSD](#required-elements-of-{schema_anchor}-xsd)\n"
+    section_num += 1
+    output += f"{section_num}. [All Elements of {schema_info.display_name} XSD](#all-elements-of-{schema_anchor}-xsd)\n"
+    section_num += 1
+    output += f"{section_num}. [Practical Guidance](#practical-guidance)\n\n"
     
     return output
 
@@ -378,13 +504,24 @@ def generate_markdown(xsd_path, release_tag=None):
     # Create SchemaInfo object from XSD file
     schema_info = SchemaInfo.from_xsd(xsd_path)
 
+    # Detect core model import and parse core types if present
+    core_model_path = detect_core_model_import(root, xsd_path)
+    core_types_dict = {}
+    used_core_types = set()
+    has_core_types = False
+    
+    if core_model_path:
+        core_types_dict = parse_core_model_types(core_model_path)
+        used_core_types = find_used_core_types(root)
+        has_core_types = len(used_core_types) > 0
+
     output = ""
     
     # Header with logo, title, version, and date
     output += generate_header(root, schema_info)
     
-    # Table of contents
-    output += generate_toc(schema_info)
+    # Table of contents (include core types section if present)
+    output += generate_toc(schema_info, has_core_types)
     
     # Disclaimer
     output += generate_disclaimer()
@@ -406,6 +543,10 @@ def generate_markdown(xsd_path, release_tag=None):
     if simple_types:
         output += "## Simple Types\n\n"
         output += to_md_table(["Name", "Base Type", "Description", "Pattern"], simple_types) + "\n\n"
+    
+    # Core Model Types (if imported and used)
+    if has_core_types:
+        output += generate_core_types_section(core_types_dict, used_core_types)
     
     # Complex types - generate individual tables for each
     complex_types = parse_complex_types(root)
