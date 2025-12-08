@@ -447,7 +447,7 @@ def generate_header(root, schema_info):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
     
-    output = "![HLX Logo](assets/hlx_logo.png)\n\n"
+    output = "![HLX Logo](../assets/hlx_logo.png)\n\n"
     output += f"# {schema_info.display_name} Implementation Guide\n\n"
     output += f"**HLX0123 HLX {schema_info.display_name} IG (XSD_V{version})**\n\n"
     output += f"**Version {version}**\n\n"
