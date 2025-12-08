@@ -1,4 +1,4 @@
-![HLX Logo](assets/hlx_logo.png)
+![HLX Logo](../assets/hlx_logo.png)
 
 # provider-directory Implementation Guide
 
