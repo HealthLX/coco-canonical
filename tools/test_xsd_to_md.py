@@ -38,10 +38,10 @@ def process_schema(xsd_path, release_tag=None):
         print(result.stderr, file=sys.stderr)
     
     if result.returncode != 0:
-        print(f"❌ Failed to generate markdown for {schema_name}")
+        print(f"Failed to generate markdown for {schema_name}")
         return False, output_path
     else:
-        print(f"✅ Successfully generated: {output_path}\n")
+        print(f"Successfully generated: {output_path}\n")
         return True, output_path
 
 def main():
@@ -63,13 +63,13 @@ def main():
     # Discover all .xsd files in schemas/v2.0/ directory
     schemas_dir = Path("schemas") / "v2.0"
     if not schemas_dir.exists():
-        print(f"❌ Error: schemas directory not found: {schemas_dir}")
+        print(f"Failed: Error: schemas directory not found: {schemas_dir}")
         sys.exit(1)
     
     xsd_files = sorted(schemas_dir.glob("*.xsd"))
     
     if not xsd_files:
-        print(f"❌ No XSD files found in {schemas_dir}")
+        print(f"Failed: No XSD files found in {schemas_dir}")
         sys.exit(1)
     
     print(f"Found {len(xsd_files)} schema(s) to process:\n")
@@ -89,7 +89,7 @@ def main():
     failed = len(results) - successful
     
     for schema_name, success, output_path in results:
-        status = "✅" if success else "❌"
+        status = "Success" if success else "Failed"
         print(f"{status} {schema_name}.xsd → {output_path}")
     
     print(f"\nTotal: {successful} successful, {failed} failed (out of {len(results)})")
