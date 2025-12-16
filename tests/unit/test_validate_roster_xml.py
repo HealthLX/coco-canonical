@@ -10,7 +10,7 @@
 # from tools.generate_roster_sample_xml import generate_sample
 
 # def test_generate_then_validate_roster(tmp_path: Path):
-#     xsd = project_root / "schemas" / "v2.0" / "Roster.xsd"
+#     xsd = project_root / "schemas" / "v10.0" / "Roster.xsd"
 #     assert xsd.exists(), f"Missing schema: {xsd}"
 
 #     out_xml = tmp_path / "roster-sample.xml"

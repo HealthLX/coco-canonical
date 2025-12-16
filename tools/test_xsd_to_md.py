@@ -45,7 +45,7 @@ def process_schema(xsd_path, release_tag=None):
         return True, output_path
 
 def main():
-    """Main function that processes all schemas in the schemas/v2.0/ directory."""
+    """Main function that processes all schemas in the schemas/v10.0/ directory."""
     print("="*80)
     print("XSD to Markdown - Generate All Schemas")
     print("="*80)
@@ -60,8 +60,8 @@ def main():
     docs_dir.mkdir(exist_ok=True)
     print(f"Output directory: {docs_dir}\n")
     
-    # Discover all .xsd files in schemas/v2.0/ directory
-    schemas_dir = Path("schemas") / "v2.0"
+    # Discover all .xsd files in schemas/v10.0/ directory
+    schemas_dir = Path("schemas") / "v10.0"
     if not schemas_dir.exists():
         print(f"Failed: Error: schemas directory not found: {schemas_dir}")
         sys.exit(1)

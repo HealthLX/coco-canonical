@@ -317,7 +317,7 @@ def generate_change_log(schema_info, release_tag=None):
     """Generate change log section with table format."""
     # Use release_tag version if available, otherwise use XSD version
     if release_tag:
-        # Extract version from release tag (e.g., "roster-v6.1" -> "6.1")
+        # Extract version from release tag (e.g., "roster-v10.1" -> "10.1")
         # Try to extract version after "v" or use the full tag
         version_match = re.search(r'v?(\d+\.\d+)', release_tag)
         version = version_match.group(1) if version_match else release_tag

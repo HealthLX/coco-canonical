@@ -1,12 +1,12 @@
 ![HLX Logo](../assets/hlx_logo.png)
 
-# Core-model Implementation Guide
+# Core-Model Implementation Guide
 
-**HLX0123 HLX Core-model IG (XSD_V2.0)**
+**HLX0123 HLX Core-Model IG (XSD_V10.0)**
 
-**Version 2.0**
+**Version 10.0**
 
-**December 8, 2025**
+**December 16, 2025**
 
 **Table of Contents**
 
@@ -16,8 +16,8 @@
 4. [Change Log](#change-log)
 5. [Simple Types](#simple-types)
 6. [Complex Types](#complex-types)
-7. [Required Elements of Core-model XSD](#required-elements-of-core-model-xsd)
-8. [All Elements of Core-model XSD](#all-elements-of-core-model-xsd)
+7. [Required Elements of Core-Model XSD](#required-elements-of-core-model-xsd)
+8. [All Elements of Core-Model XSD](#all-elements-of-core-model-xsd)
 9. [Practical Guidance](#practical-guidance)
 
 ## Disclaimer
@@ -26,7 +26,7 @@ This document is provided by HealthLX for informational purposes only. Informati
 
 ## Overview
 
-This implementation guide provides field mappings and requirements for HealthLX Core-model data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
+This implementation guide provides field mappings and requirements for HealthLX Core-Model data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
 ## Encoding
 
@@ -44,7 +44,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 2.0 | December 8, 2025 |
+| 10.0 | December 16, 2025 |
 
 ## Simple Types
 
@@ -56,11 +56,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | unsignedInt | xs:unsignedInt | – | 0|([1-9][0-9]*) |
 
 
-## Required Elements of Core-model XSD
+## Required Elements of Core-Model XSD
 
 No elements found.
 
-## All Elements of Core-model XSD
+## All Elements of Core-Model XSD
 
 No elements found.
 
@@ -68,7 +68,7 @@ No elements found.
 
 ### Submission Frequency
 
-Core-model files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
+Core-Model files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
 ### Adds, Updates, and Deletes
 

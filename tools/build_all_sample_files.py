@@ -9,7 +9,7 @@ import argparse
 def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child=None):
     #Get path and load schema
     base_dir = Path(__file__).resolve().parent.parent
-    schema_path = base_dir / "schemas" / "v2.0" / f"{schema_file_name}"
+    schema_path = base_dir / "schemas" / "v10.0" / f"{schema_file_name}"
     schema = xmlschema.XMLSchema(str(schema_path))
 
     # call builder function and pass in schema, along with root name to get the process started (recursion takes over once in function)
@@ -32,9 +32,9 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
 
     # Write to file - changing this impacts where the script is run from CLI
     name = output_file_name
-    with open("canonical-samples/v2.0/" + name, "wb") as f:
+    with open("canonical-samples/v10.0/" + name, "wb") as f:
         f.write(etree.tostring(built_xml, pretty_print=True, xml_declaration=True, encoding='UTF-8'))
-    print("Sample XML generated as ../samples/v2.0/" + name)
+    print("Sample XML generated as ../samples/v10.0/" + name)
 
 def main():
     """Build sample files driven by a YAML configuration."""

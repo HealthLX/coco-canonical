@@ -1,5 +1,5 @@
 <xsl:stylesheet 
-	version="2.0" 
+	version="10.0" 
 	xmlns="http://hl7.org/fhir"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

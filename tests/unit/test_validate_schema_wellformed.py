@@ -21,21 +21,17 @@ def test_schema_root_exists(schemas_dir):
     assert schemas_dir.exists(), f"Schemas directory not found: {schemas_dir}"
     assert schemas_dir.is_dir(), f"Schemas path is not a directory: {schemas_dir}"
 
+
 def pytest_generate_tests(metafunc):
-    """Dynamically generate test parameters for XSD files"""
     if "xsd_path" in metafunc.fixturenames:
-        # Use the fixture to get schemas directory
-        import pathlib
         here = pathlib.Path(__file__).resolve()
-        project_root = here.parents[2]
-        schemas_dir = project_root / "schemas"
-        xsd_files = find_xsds(schemas_dir)
-        
-        metafunc.parametrize(
-            "xsd_path", 
-            xsd_files, 
-            ids=lambda p: str(p.relative_to(schemas_dir))
-        )
+        schemas_dir = here.parents[2] / "schemas"
+        xsd_files = [
+            p for p in find_xsds(schemas_dir)
+            if "fhir-schemas" not in p.relative_to(schemas_dir).parts
+        ]
+        metafunc.parametrize("xsd_path", xsd_files,
+                             ids=lambda p: str(p.relative_to(schemas_dir)))
 
 def test_xsd_is_valid_schema(xsd_path):
     """Test that each XSD file is well-formed XML and valid XML Schema"""

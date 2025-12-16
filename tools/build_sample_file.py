@@ -47,7 +47,7 @@ def iso_datetime_z():
 def generate_value(tag_name, xsd_element=None):
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
     if tag_name == f"{COCO_NS}schema_version":
-        return "2.0"
+        return "10.0"
 
     if tag_name == f"{COCO_NS}date_time_reported":
         # change: match XSD instant
@@ -190,7 +190,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
         )
         # Set xsi:schemaLocation using Clark notation
         xml_elem.set(
-            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/v2.0/{schema.name}")  # TODO: handle version dynamically
+            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/v10.0/{schema.name}")  # TODO: handle version dynamically
 
     # change: Handle content generation based on type
 
