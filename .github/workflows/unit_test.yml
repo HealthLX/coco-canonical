@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  well_formedness_check:
     runs-on: ubuntu-latest
 
     steps:
