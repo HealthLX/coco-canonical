@@ -28,7 +28,7 @@ dependencies = [
   "lxml>=5.3,<7.0",          # validate/parse XML
   "xmlschema>=3.2,<5.0",     # XSD handling and validation
   "saxonche>=12.5,<13.0",    # XSLT 3.0 engine
-  "Faker>=24.0,<38.0",       # sample data generation
+  "Faker>=24.0,<39.0",       # sample data generation
   "rstr>=3.2,<4.0",          # regex-based string generation
   "pyyaml>=6.0,<7.0"         # YAML config parsing for sample builders
 ]
