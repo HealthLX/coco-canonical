@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema 
-	targetNamespace="http://cocodata.org" 
+<xs:schema
+	targetNamespace="http://cocodata.org"
 	attributeFormDefault="unqualified"
-	elementFormDefault="qualified" 
+	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:core="http://cocodata.org/core"
-	xmlns="http://cocodata.org" 
-	version="2.0">	
+	xmlns="http://cocodata.org"
+	version="10.0">
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
 
 
@@ -342,7 +342,7 @@
 			<xs:element name="family" type="core:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
-						Family name (often called 'Surname') 
+						Family name (often called 'Surname')
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1258,7 +1258,7 @@
 				<xs:annotation>
 					<xs:documentation>
 				These codes represents year, month, week, day, hour, and minute .
-				‘a’- year,'mo' - month,'wk' - week,'d' - day, 'h' - hour and 'min' - minute.    
+				‘a’- year,'mo' - month,'wk' - week,'d' - day, 'h' - hour and 'min' - minute.
 			</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
@@ -1548,14 +1548,14 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Member ID . 
+						Use this element to list the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to identify the system that issues the Member ID . 
+						Use this element to identify the system that issues the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1569,7 +1569,7 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-							Organization that issued id 
+							Organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1577,7 +1577,7 @@
 				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Type of organization that issued id  
+						Type of organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1674,7 +1674,7 @@
 										type="language">
 										<xs:annotation>
 											<xs:documentation>
-											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
@@ -3229,14 +3229,14 @@
 			</xs:element>
 			<xs:element name="interpretation" minOccurs="0" maxOccurs="unbounded" type="core:string">
 				<xs:annotation>
-					<xs:documentation>	
+					<xs:documentation>
 						A categorical assessment of an observation value. For example, high, low, normal.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="reference_range" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>		
+					<xs:documentation>
 					Guidance on how to interpret the value by comparison to a normal or recommended range. Multiple reference ranges are interpreted as an "OR". In other words, to represent two distinct target populations, two referenceRange elements would be used.
 					</xs:documentation>
 				</xs:annotation>
@@ -3292,14 +3292,14 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Member ID . 
+						Use this element to list the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to identify the system that issues the Member ID . 
+						Use this element to identify the system that issues the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3313,7 +3313,7 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-							Organization that issued id 
+							Organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3321,7 +3321,7 @@
 				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Type of organization that issued id  
+						Type of organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3418,7 +3418,7 @@
 										type="language">
 										<xs:annotation>
 											<xs:documentation>
-											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
@@ -4541,7 +4541,7 @@
 							<xs:element name="patient">
 								<xs:complexType>
 									<xs:choice>
-										<xs:group  ref="member_person_group"/> 
+										<xs:group  ref="member_person_group"/>
 										<xs:element name="reference" type="reference"/>
 									</xs:choice>
 								</xs:complexType>
@@ -4646,7 +4646,7 @@
 												<xs:element name="interpretation" minOccurs="0"
 												maxOccurs="unbounded" type="core:string">
 												<xs:annotation>
-												<xs:documentation>	
+												<xs:documentation>
 																A categorical assessment of an observation value. For example, high, low, normal.
                                                             </xs:documentation>
 												</xs:annotation>
@@ -4654,7 +4654,7 @@
 												<xs:element name="reference_range" minOccurs="0"
 												maxOccurs="unbounded">
 												<xs:annotation>
-												<xs:documentation>		
+												<xs:documentation>
 															Guidance on how to interpret the value by comparison to a normal or recommended range. Multiple reference ranges are interpreted as an "OR". In other words, to represent two distinct target populations, two referenceRange elements would be used.
                                                             </xs:documentation>
 												</xs:annotation>
@@ -4848,7 +4848,7 @@
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
-                                                                	
+
 																Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.
                                                             </xs:documentation>
 												</xs:annotation>
@@ -4902,7 +4902,7 @@
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
-																					Identification of the condition, problem or diagnosis. 
+																					Identification of the condition, problem or diagnosis.
 																					A detailed list of codes can be found here http://hl7.org/fhir/us/core/ValueSet-us-core-condition-code.html
 																				</xs:documentation>
 												</xs:annotation>
@@ -5414,7 +5414,7 @@
 														<xs:choice>
 															<xs:group ref="practitioner"/>
 															<xs:group ref="organization"/>
-															<xs:element name="member_person" type="xs:string"/> 
+															<xs:element name="member_person" type="xs:string"/>
 															<xs:element name="reference" type="reference"/>
 														</xs:choice>
 												</xs:complexType>
@@ -5906,11 +5906,11 @@
 												type="core:string">
 												<xs:annotation>
 												<xs:documentation>
-																					
+
 																		 The actual narrative content, a stripped down version of XHTML.The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, elements (either name or href), images and internally contained stylesheets. The XHTML content SHALL NOT contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.
 																		 Example:
-																		
-																			
+
+
 																			<!-- <div
 																			xmlns="http://www.w3.org/1999/xhtml"><p>
 																				   This is an <i>example</i> with some <b>xhtml</b> formatting.

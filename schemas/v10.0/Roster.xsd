@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema 
-	targetNamespace="http://cocodata.org" 
+<xs:schema
+	targetNamespace="http://cocodata.org"
 	attributeFormDefault="unqualified"
-	elementFormDefault="qualified" 
+	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:core="http://cocodata.org/core"
-	xmlns="http://cocodata.org" 
-	version="2.0">
+	xmlns="http://cocodata.org"
+	version="10.0">
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
 
 	<!--Regular Expression for string: Comment pattern if you want to allow empty strings-->

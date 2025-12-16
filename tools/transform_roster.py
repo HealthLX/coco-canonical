@@ -77,25 +77,15 @@ def apply_xslt_with_params(xml_file, xslt_file, params=None, output_file=None):
 if __name__ == "__main__":
     # Setup paths
     base_dir = os.path.dirname(os.path.dirname(__file__)) # go up one from /tools
-    xml_file = os.path.join(base_dir, "canonical-samples/v2.0/roster-sample.xml")
+    xml_file = os.path.join(base_dir, "canonical-samples/v10.0/roster-sample.xml")
 
     # Define all three transformations
     # TODO: move these to config files
     transformations = [
         {
             "name": "patient",
-            "xslt": os.path.join(base_dir, "transforms/v2.0/roster-patient.xsl"),
-            "output": os.path.join(base_dir, "fhir-samples/v2.0/roster-patient-fhir.xml")
-        },
-        {
-            "name": "coverage",
-            "xslt": os.path.join(base_dir, "transforms/v2.0/roster-coverage.xsl"),
-            "output": os.path.join(base_dir, "fhir-samples/v2.0/roster-coverage-fhir.xml")
-        },
-        {
-            "name": "observation",
-            "xslt": os.path.join(base_dir, "transforms/v2.0/roster-observation.xsl"),
-            "output": os.path.join(base_dir, "fhir-samples/v2.0/roster-observation-fhir.xml")
+            "xslt": os.path.join(base_dir, "transforms/v10.0/roster-patient.xsl"),
+            "output": os.path.join(base_dir, "fhir-samples/v10.0/roster-patient-fhir.xml")
         }
     ]
 

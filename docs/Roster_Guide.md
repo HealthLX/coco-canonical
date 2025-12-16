@@ -2,11 +2,11 @@
 
 # Roster Implementation Guide
 
-**HLX0123 HLX Roster IG (XSD_V2.0)**
+**HLX0123 HLX Roster IG (XSD_V10.0)**
 
-**Version 2.0**
+**Version 10.0**
 
-**December 8, 2025**
+**December 16, 2025**
 
 **Table of Contents**
 
@@ -44,7 +44,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 2.0 | December 8, 2025 |
+| 10.0 | December 16, 2025 |
 
 ## Simple Types
 

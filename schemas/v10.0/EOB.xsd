@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema 
-	targetNamespace="http://cocodata.org" 
+<xs:schema
+	targetNamespace="http://cocodata.org"
 	attributeFormDefault="unqualified"
-	elementFormDefault="qualified" 
+	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:core="http://cocodata.org/core"
-	xmlns="http://cocodata.org" 
-	version="2.0">
+	xmlns="http://cocodata.org"
+	version="10.0">
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
 
 	<xs:simpleType name="unsignedInt">
@@ -410,7 +410,7 @@
 			<xs:element name="family" type="core:string" minOccurs="1" maxOccurs="1">
 				<xs:annotation>
 					<xs:documentation>
-						Family name (often called 'Surname') 
+						Family name (often called 'Surname')
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -687,21 +687,21 @@
 			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Member ID . 
+						Use this element to list the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to identify the system that issues the Member ID . 
+						Use this element to identify the system that issues the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Subscriber ID. 
+						Use this element to list the Subscriber ID.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -715,7 +715,7 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-							Organization that issued id 
+							Organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -723,7 +723,7 @@
 				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Type of organization that issued id  
+						Type of organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -819,7 +819,7 @@
 									<xs:element name="language" minOccurs="1" maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
-											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 										</xs:documentation>
 										</xs:annotation>
 										<xs:complexType>
@@ -1935,21 +1935,21 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Member ID . 
+						Use this element to list the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to identify the system that issues the Member ID . 
+						Use this element to identify the system that issues the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Subscriber ID. 
+						Use this element to list the Subscriber ID.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1963,7 +1963,7 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-							Organization that issued id 
+							Organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1971,7 +1971,7 @@
 				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Type of organization that issued id  
+						Type of organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -2068,7 +2068,7 @@
 										type="language">
 										<xs:annotation>
 											<xs:documentation>
-											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 										</xs:documentation>
 										</xs:annotation>
 									</xs:element>
@@ -3218,7 +3218,7 @@
 													</xs:documentation>
 													</xs:annotation>
 														<xs:complexType>
-														
+
 														</xs:complexType>
 													</xs:element> -->
 			<xs:element name="payor" minOccurs="1" maxOccurs="1">
@@ -3235,7 +3235,7 @@
 						Coverage category such as medical or accident.The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) or a direct payment by an individual or organization.More information can be found here:  http://hl7.org/fhir/R4/valueset-coverage-type.html
 						preferred code sets list:
 						pay	,EHCPOL	,HSAPOL	,AUTOPOL	,COL	,UNINSMOT	,PUBLICPOL	,DENTPRG	,DISEASEPRG	,CANPRG	,ENDRENAL	,HIVAIDS	,MANDPOL	,MENTPRG	,SAFNET	,SUBPRG	,SUBSIDIZ	,SUBSIDMC	,SUBSUPP	,WCBPOL	,DENTAL	,DISEASE	,DRUGPOL	,HIP	,LTC	,MCPOL	,POS	,HMO	,PPO	,MENTPOL	,SUBPOL	,VISPOL	,DIS	,EWB	,FLEXP	,LIFE	,ANNU	,TLIFE	,ULIFE	,PNC	,REI	,SURPL	,UMBRL	,CHAR	,CRIME	,EAP	,GOVEMP	,HIRISK	,IND	,MILITARY	,RETIRE	,SOCIAL	,VET
-						
+
 					</xs:documentation>
 				</xs:annotation>
 
@@ -3305,7 +3305,7 @@
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
-															Business concept used by a health plan to describe its benefit offerings 
+															Business concept used by a health plan to describe its benefit offerings
 														</xs:documentation>
 												</xs:annotation>
 												</xs:element>
@@ -3463,21 +3463,21 @@
 			<xs:element maxOccurs="1" minOccurs="1" name="member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Member ID . 
+						Use this element to list the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="0" name="member_id_system" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to identify the system that issues the Member ID . 
+						Use this element to identify the system that issues the Member ID .
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element maxOccurs="1" minOccurs="1" name="subscriber_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Use this element to list the Subscriber ID. 
+						Use this element to list the Subscriber ID.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3491,7 +3491,7 @@
 			<xs:element maxOccurs="1" minOccurs="0" name="unique_person_id_assigner" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-							Organization that issued id 
+							Organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3499,7 +3499,7 @@
 				type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Type of organization that issued id  
+						Type of organization that issued id
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -3595,7 +3595,7 @@
 									<xs:element name="language" minOccurs="1" maxOccurs="1">
 										<xs:annotation>
 											<xs:documentation>
-											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+											This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 										</xs:documentation>
 										</xs:annotation>
 										<xs:complexType>
@@ -4725,7 +4725,7 @@
 			<xs:element minOccurs="0" maxOccurs="unbounded" name="unique_member_id" type="core:string">
 				<xs:annotation>
 					<xs:documentation>
-						Mastered person identifier that is a unique identifier for a member assigned by the Payer across all lines of business   
+						Mastered person identifier that is a unique identifier for a member assigned by the Payer across all lines of business
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -4778,14 +4778,14 @@
 								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-									This is a unique business identifier assigned to the EOB.  In the event, that this EOB changes in either status or content, the replacement EOB would be expected to have the same identifier.   
+									This is a unique business identifier assigned to the EOB.  In the event, that this EOB changes in either status or content, the replacement EOB would be expected to have the same identifier.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="status" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-							Claim processing status code 
+							Claim processing status code
 						</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
@@ -4886,7 +4886,7 @@
 											<xs:annotation>
 												<xs:documentation>
 									Please include the following claim identifiers
-									-The Payer Claim Control Number as it would be returned on the 835 2100 CLP07.  This number must apply to the entire claim. Please use an identifier.type of DCN.  
+									-The Payer Claim Control Number as it would be returned on the 835 2100 CLP07.  This number must apply to the entire claim. Please use an identifier.type of DCN.
 								   - If available, the Claim Identifier for Transmission Intermediaries as sent to the payer on the 837 2300 Ref*D9. Please use an identifier.type of D9
 									</xs:documentation>
 											</xs:annotation>
@@ -5290,9 +5290,9 @@
 												maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
-									This element defines Function within the team,Enumuration set is combined list of possible code value set from each profile: 
-									Inpatient-Facility and Outpatient-Facility (primary,attending,performing,referring,operating,otheroperating), 
-									Pharmacy (prescribing,primary) 
+									This element defines Function within the team,Enumuration set is combined list of possible code value set from each profile:
+									Inpatient-Facility and Outpatient-Facility (primary,attending,performing,referring,operating,otheroperating),
+									Pharmacy (prescribing,primary)
 									and Professional-NonClinician (primary,performing,referring,supervisor,purchasedservice)
 									</xs:documentation>
 												</xs:annotation>
@@ -6887,7 +6887,7 @@
 												minOccurs="0" maxOccurs="1">
 												<xs:annotation>
 												<xs:documentation>
-										This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html 
+										This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47).  More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html
 									</xs:documentation>
 												</xs:annotation>
 												</xs:element>
@@ -8195,7 +8195,7 @@
 												maxOccurs="1" type="core:string">
 												<xs:annotation>
 												<xs:documentation>
-																	
+
 																					Preferred code sets list:
 																					student,disabled
 																				</xs:documentation>

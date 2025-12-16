@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema 	
-	targetNamespace="http://cocodata.org" 
+<xs:schema
+	targetNamespace="http://cocodata.org"
 	attributeFormDefault="unqualified"
-	elementFormDefault="qualified" 
+	elementFormDefault="qualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:core="http://cocodata.org/core"
-	xmlns="http://cocodata.org" 
-	version="2.0">
+	xmlns="http://cocodata.org"
+	version="10.0">
 	<xs:import namespace="http://cocodata.org/core" schemaLocation="Core-model.xsd"/>
-	
+
 	<xs:simpleType name="string">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[ \r\n\t\S]+"/>
@@ -281,7 +281,7 @@
 							<xs:complexType>
 								<xs:sequence>
 									<xs:element name="code" minOccurs="1" maxOccurs="1" type="string"/>
-									
+
 									<xs:element name="display" type="string" minOccurs="1" maxOccurs="1"/>
 									<xs:element name="system" minOccurs="1" maxOccurs="1">
 										<xs:simpleType>
@@ -2916,7 +2916,7 @@
 																</xs:annotation>
 															</xs:element>
 														</xs:sequence>
-														
+
 													</xs:complexType>
 												</xs:element>
 											</xs:sequence>
@@ -5620,7 +5620,7 @@
 																</xs:annotation>
 															</xs:element>
 														</xs:sequence>
-														
+
 													</xs:complexType>
 												</xs:element>
 											</xs:sequence>
@@ -5720,7 +5720,7 @@
 							<xs:element name="plan_id_type" type="string" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. 
+										Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID.
 										Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc
 									</xs:documentation>
 								</xs:annotation>
@@ -5811,7 +5811,7 @@
 																at least supply one or the other- "code" or "text"
 															</xs:documentation>
 																</xs:annotation>
-																
+
 																<xs:element name="code" minOccurs="0" maxOccurs="1">
 																	<xs:simpleType>
 																		<xs:restriction base="string">
@@ -5828,7 +5828,7 @@
 																	</xs:simpleType>
 																</xs:element>
 																<xs:element name="text" type="string" minOccurs="0" maxOccurs="1"/>
-															
+
 															</xs:sequence>
 														</xs:complexType>
 													</xs:element>
@@ -5871,7 +5871,7 @@
 																							</xs:annotation>
 																						</xs:element>
 																					</xs:sequence>
-																				
+
 																				</xs:complexType>
 																			</xs:element>
 																			<!--Qualifier of copay amount-->
