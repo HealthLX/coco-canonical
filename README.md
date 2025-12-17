@@ -23,10 +23,39 @@
   - [Refresh python virtual environment](#refresh-python-virtual-environment)
   - [How to run script](#how-to-run-script)
 
-## 1. Project Overview
-This repository contains the HealthLX canonical data models used for ingestion and mapping to FHIR, along with several features to support use of those canonical models in a real-world environment. These canonical models use XML Schema (XSD) version 1.0 for maximum compatibility across systems. To shape the development and management of this project a set of guiding principles has been developed:
+## 1. CoCo Project Overview
+This repository contains the HealthLX canonical data models used for ingestion and mapping to FHIR, along with several features to support use of those canonical models in a real-world environment. These canonical models use XML Schema (XSD) version 1.0 for maximum compatibility across systems.
+
+
+### Why CoCo Exists
+CMS interoperability regulations (including CMS-9115-F and CMS-0057-F) define *what* must happen, but not *how* systems should implement, observe, or explain compliance in real-world environments. CoCo exists to provide a **canonical, open, and inspectable representation of CMS compliance intent** that can be consistently implemented across heterogeneous payer systems and downstream FHIR platforms. CoCo does not replace payer adjudication logic. CoCo makes compliance **explicit, observable, and explainable**.
+
+### What CoCo Does *Not* Do
+CoCo does not attempt to:
+- Certify the correctness of utilization management decisions
+- Replace payer-specific adjudication logic
+- Guarantee deterministic outcomes from legacy UM systems
+
+CMS-0057-F prior authorization responses depend on decision logic embedded in payer systems that may be opaque, non-deterministic, or human-influenced. CoCo focuses on **process conformance and interface integrity**, not adjudication correctness.
+
+### Who CoCo is for
+| Audience       | Value Provided |
+|---------------|----------------|
+| Developers    | Clear, versioned compliance artifacts without interpreting regulation text |
+| Regulators    | Transparent, inspectable representations of regulatory intent |
+| Health Plans  | Reduced compliance ambiguity and improved audit readiness |
+| Vendors       | A neutral, canonical compliance layer independent of platform |
+
+### Governance & Evolution
+CoCo is an open-source project stewarded by [HealthLX](https://healthlx.com) and the community. Its evolution is driven by:
+- Changes in CMS regulations
+- Community feedback and implementation experience
+- A commitment to transparency, reproducibility, and regulatory alignment
+
+All canonical artifacts are versioned and traceable to regulatory source material.
 
 ### Guiding Principles
+To shape the development and management of this project a set of guiding principles has been developed:
 1. Reuse is encouraged where possible, so long as it does not create overly complex schema models
 2. A strongly typed model approach will be used to drive consistent business meaning
 3. All schema files will follow consistent XML namespace and versioning practices
@@ -118,7 +147,7 @@ Integration tests are not included in the open source version of this project.
 
 ### Mapping
 
-Canonical to FHIR mappings are not included in the open source version of this project.
+Canonical to FHIR mappings are not included in the open source of CoCo. Application compliance bindings to Smile Digital Health, Health Samurai, and Firely are available through HealthLX sales. sales@healthlx.com
 
 ## 4. Environment Setup
 
