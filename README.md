@@ -130,7 +130,7 @@ Testing is organized into unit tests and integration tests. Unit tests are inclu
 
 Currently there are two primary types of unit tests:
 1. Validation of generated files against their schema files to ensure the generators continue creating valid XML to the schema each one uses.
-2. Validation of canonical schema files to ensure valid XML Schema 1.0
+2. Validation of canonical schema files to ensure valid XML Schema 1.0.
 
 ##### Execution
 
