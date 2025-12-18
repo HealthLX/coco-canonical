@@ -41,8 +41,41 @@ This project enforces formatting via `.editorconfig`, which most editors support
 3. Commit your changes with a clear message.
 4. Open a Pull Request.
 
+## 3. Verified Commits Requirement
+To maintain the integrity of our healthcare data standards, coco-canonical requires all commits to be cryptographically signed. Signed commits receive a Verified badge, proving the code came from you and has not been altered.
 
-## 3. Code of conduct
+Option 1: Use SSH (Simplest)
+If you already use an SSH key to push code, you can use it to sign commits as well.
 
-Be respectful, collaborative, and constructive. See `CODE_OF_CONDUCT.md` for details.
+1. Add your key to GitHub:
+- Go to your GitHub SSH Settings.
+- Paste your public key (usually in ~/.ssh/id_ed25519.pub).
+- Important: Set the "Key type" to Signing Key.
+2. Configure Git locally: Run these three commands in your terminal:
+
+`git config --global gpg.format ssh`
+
+`git config --global user.signingkey ~/.ssh/id_ed25519.pub`
+
+`git config --global commit.gpgsign true`
+
+Option 2: Use GPG (Traditional)
+If you prefer GPG or already have a GPG key, follow these steps:
+
+1. Generate a key: Run gpg --full-generate-key (select RSA 4096-bit).
+2. Add to GitHub: Export your public key and add it as a New GPG Key in your GitHub Settings.
+3. Configure Git:
+
+`git config --global user.signingkey YOUR_GPG_KEY_ID`
+
+`git config --global commit.gpgsign true`
+
+### Tips for Success
+- Email Match: Your local Git email (git config user.email) must match the email on your GitHub profile and your signing key.
+- GitHub Desktop: Once the local Git commands above are run, GitHub Desktop will automatically sign your commits.
+- Official Docs: For detailed troubleshooting, see the [GitHub Signature Verification Guide](https://docs.github.com/en/authentication/managing-commit-signature-verification).
+
+## 4. Code of conduct
+
+Be respectful, collaborative, and constructive.
 
