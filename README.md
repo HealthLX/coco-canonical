@@ -108,6 +108,24 @@ Documentation is automatically generated using python, with the output published
   - `Set as the latest release` is checked
 - Click `Publish release`
 
+#### Quick Documentation Generation Tool
+
+Use `build_xsd_docs.py` to quickly generate markdown documentation for all XSD schemas in a specified `schemas/` subfolder:
+
+**Input Parameters:**
+- `subfolder` (required): Subfolder name within `schemas/` directory (e.g., `v10.0`)
+- `--release-tag` or `-r` (optional): Release tag for versioning
+
+```bash
+# Generate docs for schemas in schemas/v10.0/
+python tools/build_xsd_docs.py v10.0
+
+# With optional release tag
+python tools/build_xsd_docs.py v10.0 --release-tag v0.6
+```
+
+The script processes all `.xsd` files in the specified directory and generates corresponding markdown files in `docs/`.
+
 ### Sample Files
 
 Sample files are generated from the canonical schema files provided. The sample file generator uses the faker library in python. Sample files can be used to create realistic data for testing purposes in systems, or for use in collaboration with industry partners on what instances of these canonical files should look like.
