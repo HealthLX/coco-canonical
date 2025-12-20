@@ -1,7 +1,8 @@
 """
-Generate markdown documentation for all XSD schemas.
-Processes all .xsd files in the schemas/ directory and generates corresponding markdown files.
+Generate markdown documentation for all XSD schemas in a specified schemas/ subfolder.
+Processes all .xsd files in the specified schemas/ subdirectory and generates corresponding markdown files.
 """
+import argparse
 import subprocess
 import sys
 from pathlib import Path
@@ -45,25 +46,47 @@ def process_schema(xsd_path, release_tag=None):
         return True, output_path
 
 def main():
-    """Main function that processes all schemas in the schemas/v10.0/ directory."""
+    """
+    Main function that processes all schemas in a specified schemas/ subfolder.
+    Uses argparse to accept the subfolder name as a required argument and optional release tag.
+    """
+    parser = argparse.ArgumentParser(
+        description='Generate markdown documentation for XSD schemas in a schemas/ subfolder'
+    )
+    parser.add_argument(
+        'subfolder',
+        help='Subfolder name within schemas/ (e.g., v10.0)'
+    )
+    parser.add_argument(
+        '--release-tag', '-r',
+        help='Optional release tag for versioning'
+    )
+    
+    args = parser.parse_args()
+    
+    # Validate subfolder is not fhir-schemas
+    if args.subfolder == 'fhir-schemas' or args.subfolder.startswith('fhir-schemas/'):
+        print(f"Error: fhir-schemas directory is excluded from processing")
+        sys.exit(1)
+    
     print("="*80)
     print("XSD to Markdown - Generate All Schemas")
     print("="*80)
     
-    # Get optional release tag from command line
-    release_tag = sys.argv[1] if len(sys.argv) > 1 else None
-    if release_tag:
-        print(f"\nUsing release tag: {release_tag}")
+    if args.release_tag:
+        print(f"\nUsing release tag: {args.release_tag}")
     
     # Create docs directory
     docs_dir = Path("docs")
     docs_dir.mkdir(exist_ok=True)
     print(f"Output directory: {docs_dir}\n")
     
-    # Discover all .xsd files in schemas/v10.0/ directory
-    schemas_dir = Path("schemas") / "v10.0"
+    # Discover all .xsd files in schemas/<subfolder>/ directory
+    schemas_dir = Path("schemas") / args.subfolder
+    
+    # Validate directory exists
     if not schemas_dir.exists():
-        print(f"Failed: Error: schemas directory not found: {schemas_dir}")
+        print(f"Error: Directory not found: {schemas_dir}")
         sys.exit(1)
     
     xsd_files = sorted(schemas_dir.glob("*.xsd"))
@@ -77,7 +100,7 @@ def main():
     # Process each schema
     results = []
     for xsd_path in xsd_files:
-        success, output_path = process_schema(xsd_path, release_tag)
+        success, output_path = process_schema(xsd_path, args.release_tag)
         results.append((xsd_path.stem, success, output_path))
     
     # Print summary
