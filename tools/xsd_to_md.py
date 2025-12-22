@@ -112,7 +112,7 @@ def generate_markdown(xsd_path, release_tag=None):
             simple_types = parse_simple_types(root)
             if simple_types:
                 output += "## Simple Types\n\n"
-                output += to_md_table(["Name", "Base Type", "Description", "Enumerations", "Constraints"], simple_types) + "\n\n"
+                output += to_md_table(["Name", "Base Type", "Description", "Pattern"], simple_types) + "\n\n"
             
             # Core Model Types (if imported and used)
             if has_core_types:

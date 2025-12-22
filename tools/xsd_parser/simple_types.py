@@ -71,7 +71,7 @@ def extract_facets(restriction_elem) -> str:
 
 
 def parse_simple_types(root):
-    """Parse simple types with enumerations, facets, and patterns."""
+    """Parse simple types and return 4 columns: Name, Base Type, Description, Pattern."""
     simple_types = []
     try:
         for st in root.findall("./xs:simpleType", ns):
@@ -85,28 +85,15 @@ def parse_simple_types(root):
                 base = restriction.get("base", "–") if restriction is not None else "–"
                 doc = get_documentation(st)
                 
-                # Extract pattern
-                pattern_value = "–"
+                # Extract pattern (show directly without prefix)
+                pattern_value = ""
                 if restriction is not None:
                     pattern = restriction.find("xs:pattern", ns)
                     if pattern is not None:
-                        pattern_value = pattern.get("value", "–")
+                        pattern_value = pattern.get("value", "")
                 
-                # Extract enumerations
-                enumerations = extract_enumerations(restriction)
-                
-                # Extract facets
-                facets = extract_facets(restriction)
-                
-                # Combine pattern and facets into constraints column
-                constraints = []
-                if pattern_value and pattern_value != "–":
-                    constraints.append(f"Pattern: {pattern_value}")
-                if facets and facets != "–":
-                    constraints.append(facets)
-                constraints_str = "; ".join(constraints) if constraints else "–"
-                
-                simple_types.append([name, base, doc, enumerations, constraints_str])
+                # Return 4 columns: Name, Base Type, Description, Pattern
+                simple_types.append([name, base, doc, pattern_value])
             except Exception as e:
                 logger.warning(f"Error parsing simple type: {e}")
                 continue

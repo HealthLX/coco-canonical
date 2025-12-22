@@ -48,14 +48,14 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 ## Simple Types
 
-| Name | Base Type | Description | Enumerations | Constraints |
-| --- | --- | --- | --- | --- |
-| string | xs:string | – | – | Pattern: [ \r\n\t\S]+ |
-| decimal | xs:decimal | – | – | Pattern: -?(0\|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)? |
-| boolean | xs:boolean | – | – | Pattern: true\|false |
-| date | xs:date | – | – | Pattern: ([12]\d{3}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])) |
-| dateTime | xs:string | – | – | Pattern: ([12]\d{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])(T([01][0-9]\|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z\|(\+\|-)((0[0-9]\|1[0-3]):(00\|15\|30\|45)\|14:00))?))? |
-| currency | string | – | AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BOV, BRL, BSD, BTN, BWP, BYN, BZD, CAD, CDF, CHE, CHF, CHW, CLF, CLP, CNY, COP, COU, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRU, MUR, MVR, MWK, MXN, MXV, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, SSP, STN, SVC, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TVD, TWD, TZS, UAH, UGX, USD, USN, UYI, UYU, UZS, VEF, VND, VUV, WST, XAF, XAG, XAU, XBA, XBB, XBC, XBD, XCD, XDR, XOF, XPD, XPF, XPT, XSU, XTS, XUA, XXX, YER, ZAR, ZMW, ZWL | – |
+| Name | Base Type | Description | Pattern |
+| --- | --- | --- | --- |
+| string | xs:string | – | [ \r\n\t\S]+ |
+| decimal | xs:decimal | – | -?(0\|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)? |
+| boolean | xs:boolean | – | true\|false |
+| date | xs:date | – | ([12]\d{3}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])) |
+| dateTime | xs:string | – | ([12]\d{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])(T([01][0-9]\|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z\|(\+\|-)((0[0-9]\|1[0-3]):(00\|15\|30\|45)\|14:00))?))? |
+| currency | string | – |  |
 
 
 ## Complex Types
@@ -65,7 +65,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 0 | 1 | – |
-| comparator | xs:string (enum: <, <=, >=, >) | 0 | 1 | A list of Quantity Comparator's can be found here: http://hl7.org/fhir/R4/valueset-quantity-comparator.html |
+| comparator | – | 0 | 1 | A list of Quantity Comparator's can be found here: http://hl7.org/fhir/R4/valueset-quantity-comparator.html |
 | unit | string | 0 | 1 | Unit representation (e.g. mcg) |
 | system | string | 0 | 1 | The URI of the system that defines the coded unit form |
 | code | string | 0 | 1 | Coded form of the unit |
@@ -79,8 +79,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | rx_norm_code | – | 1 | 1 | A list of RxNorm Codes can be found here: http://hl7.org/fhir/us/core/STU3/ValueSet-us-core-medication-codes.html |
 | code | string | 1 | 1 | – |
 | display | string | 1 | 1 | – |
-| system | string (enum: http://www.nlm.nih.gov/research/umls/rxnorm) | 1 | 1 | – |
-| status | string (enum: active, inactive, entered-in-error) | 0 | 1 | Status of medication. Status options can be found here: http://hl7.org/fhir/R4/valueset-medicationknowledge-status.html |
+| system | – | 1 | 1 | – |
+| status | – | 0 | 1 | Status of medication. Status options can be found here: http://hl7.org/fhir/R4/valueset-medicationknowledge-status.html |
 | manufacturer | – | 0 | 1 | Manufacturer of the medication |
 | name | string | 1 | 1 | – |
 | alias | string | 0 | unbounded | – |
@@ -95,7 +95,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | numerator | quantity | 0 | 1 | – |
 | denominator | quantity | 0 | 1 | – |
 | substance | – | 1 | 1 | – |
-| category | string (enum: allergen, biological, body, chemical, food, drug, material) | 0 | unbounded | Select the substance categories. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-category.html |
+| category | – | 0 | unbounded | Select the substance categories. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-category.html |
 | description | string | 1 | 1 | – |
 | code | – | 1 | 1 | – |
 | code | – | 1 | 1 | Select what substance this is. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-code.html |
@@ -133,8 +133,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | rx_norm_code | – | 1 | 1 | A list of RxNorm Codes can be found here: http://hl7.org/fhir/us/core/STU3/ValueSet-us-core-medication-codes.html |
 | code | string | 1 | 1 | – |
 | display | string | 1 | 1 | – |
-| system | string (enum: http://www.nlm.nih.gov/research/umls/rxnorm) | 1 | 1 | – |
-| status | string (enum: active, inactive, entered-in-error) | 0 | 1 | Status of medication. Status options can be found here: http://hl7.org/fhir/R4/valueset-medicationknowledge-status.html |
+| system | – | 1 | 1 | – |
+| status | – | 0 | 1 | Status of medication. Status options can be found here: http://hl7.org/fhir/R4/valueset-medicationknowledge-status.html |
 | manufacturer | – | 0 | 1 | Manufacturer of the medication |
 | name | string | 1 | 1 | – |
 | alias | string | 0 | unbounded | – |
@@ -149,7 +149,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | numerator | quantity | 0 | 1 | – |
 | denominator | quantity | 0 | 1 | – |
 | substance | – | 1 | 1 | – |
-| category | string (enum: allergen, biological, body, chemical, food, drug, material) | 0 | unbounded | Select the substance categories. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-category.html |
+| category | – | 0 | unbounded | Select the substance categories. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-category.html |
 | description | string | 1 | 1 | – |
 | code | – | 1 | 1 | – |
 | code | – | 1 | 1 | Select what substance this is. A full list can be found here: http://hl7.org/fhir/R4/valueset-substance-code.html |
@@ -192,17 +192,17 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | title | coverage_plan | 1..1 | – | – | string |
 | summary_url | coverage_plan | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
 | network | coverage_plan | 1..unbounded | – | – | string |
-| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | string (enum: current, retired, entered-in-error) |
-| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | string (enum: working, snapshot, changes) |
+| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | – |
+| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | – |
 | drug_tiers | coverage_plan | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
 | drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
 | drug_tier_id | drug_tier | 1..1 | – | – | – |
 | mail_order | drug_tier | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | string (enum: 1-month-in-retail, 1-month-out-retail, 1-month-in-mail, 1-month-out-mail, 3-month-in-retail, 3-month-out-retail, 3-month-in-mail, 3-month-out-mail) |
+| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
 | copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | string (enum: after-deductible, before-deductible, no-charge, no-charge-after-deductible) |
+| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | string (enum: after-deductible, no-charge, no-charge-after-deductible) |
+| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
 
 
@@ -223,24 +223,24 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | formulary_url | coverage_plan | 0..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
 | email_plan_contact | coverage_plan | 0..1 | – | – | string |
 | network | coverage_plan | 1..unbounded | – | – | string |
-| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | string (enum: current, retired, entered-in-error) |
-| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | string (enum: working, snapshot, changes) |
+| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | – |
+| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | – |
 | date | coverage_plan | 0..1 | – | – | dateTime |
 | drug_tiers | coverage_plan | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
 | drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
 | drug_tier_id | drug_tier | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | string (enum: generic, preferred-generic, non-preferred-generic, specialty, brand, preferred-brand, non-preferred-brand, zero-cost-share-preventive, medical-service) |
+| code | drug_tier_id | 0..1 | – | – | – |
 | text | drug_tier_id | 0..1 | – | – | string |
 | mail_order | drug_tier | 1..1 | – | – | boolean |
 | cost_sharings | drug_tier | 0..1 | – | – | – |
 | cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | string (enum: 1-month-in-retail, 1-month-out-retail, 1-month-in-mail, 1-month-out-mail, 3-month-in-retail, 3-month-out-retail, 3-month-in-mail, 3-month-out-mail) |
+| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
 | copay_amount | cost_sharing | 1..1 | – | – | – |
 | value | copay_amount | 0..1 | – | – | decimal |
 | currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | string (enum: after-deductible, before-deductible, no-charge, no-charge-after-deductible) |
+| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | string (enum: after-deductible, no-charge, no-charge-after-deductible) |
+| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
 
 

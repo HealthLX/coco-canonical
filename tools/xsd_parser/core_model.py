@@ -133,12 +133,8 @@ def generate_core_types_section(core_types_dict, used_types):
     output += "The following types are imported from the Core-model. "
     output += "See [Core-model Guide](Core-model_Guide.md) for complete documentation.\n\n"
     
-    # Handle both old format (4 columns) and new format (5 columns)
-    if used_core_types and len(used_core_types[0]) == 5:
-        output += to_md_table(["Name", "Base Type", "Description", "Enumerations", "Constraints"], used_core_types)
-    else:
-        # Fallback for old format
-        output += to_md_table(["Name", "Base Type", "Description", "Pattern"], used_core_types)
+    # Use 4-column format: Name, Base Type, Description, Pattern
+    output += to_md_table(["Name", "Base Type", "Description", "Pattern"], used_core_types)
     
     output += "\n\n"
     

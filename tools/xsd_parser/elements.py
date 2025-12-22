@@ -10,19 +10,29 @@ from .simple_types import extract_enumerations
 def get_tag_name(elem) -> str:
     """Safely get the tag name from an lxml element."""
     try:
+        # First try QName on the element itself - this is the most reliable
+        try:
+            qname = etree.QName(elem)
+            return qname.localname
+        except (TypeError, ValueError, AttributeError):
+            pass
+        
+        # Fallback: try accessing tag attribute
         if not hasattr(elem, 'tag'):
             return ""
         
-        # Get the tag attribute
         tag = getattr(elem, 'tag', None)
         if tag is None:
             return ""
         
-        # If tag is callable (a method), skip it - this shouldn't happen with proper Elements
+        # If tag is callable (a method), try calling it
         if callable(tag):
-            return ""
+            try:
+                tag = tag()
+            except:
+                return ""
         
-        # Convert to string - this should work for strings, QName objects, etc.
+        # Convert to string
         tag_str = str(tag)
         
         # Remove namespace prefix if present (format: {namespace}localname)
@@ -36,7 +46,7 @@ def get_tag_name(elem) -> str:
 
 
 def extract_element_type_info(elem) -> str:
-    """Extract type information including anonymous simple types with enumerations."""
+    """Extract type information. Returns '–' for enum types to match old doc style."""
     # Check for explicit type attribute
     elem_type = elem.get("type", "")
     if elem_type:
@@ -47,11 +57,12 @@ def extract_element_type_info(elem) -> str:
     if simple_type is not None:
         restriction = simple_type.find("xs:restriction", ns)
         if restriction is not None:
-            base = restriction.get("base", "")
             enumerations = extract_enumerations(restriction)
+            # Return '–' for enum types to match old doc format
             if enumerations and enumerations != "–":
-                return f"{base} (enum: {enumerations})"
-            return base
+                return "–"
+            base = restriction.get("base", "")
+            return base if base else "–"
     
     return "–"
 
@@ -63,12 +74,30 @@ def parse_choice_or_all(container_elem, parent_name: str, container_type: str) -
         children = []
         for child in container_elem:
             tag_name = get_tag_name(child)
+            # If tag_name is empty, try to infer from attributes (elements have "name" or "ref")
+            if not tag_name:
+                # Fallback: check if it looks like an element (has name or ref attribute)
+                if child.get("name") or child.get("ref"):
+                    tag_name = "element"
+                else:
+                    # Try to get tag via string conversion as last resort
+                    try:
+                        tag_str = str(child.tag) if hasattr(child, 'tag') else ""
+                        if "element" in tag_str.lower() or child.get("name") or child.get("ref"):
+                            tag_name = "element"
+                    except:
+                        pass
+            
             if tag_name == "element":
                 children.append(child)
             elif tag_name in ("choice", "sequence", "all"):
                 # Nested containers
                 nested_rows = parse_choice_or_all(child, parent_name, tag_name)
                 rows.extend(nested_rows)
+            elif not tag_name:
+                # If we still can't determine, but it has a name attribute, treat as element
+                if child.get("name") or child.get("ref"):
+                    children.append(child)
         
         if children:
             # Document as choice or all
@@ -140,6 +169,10 @@ def parse_element_recursive(elem, depth=0, parent_name=""):
                     # Parse sequence children
                     for child in container:
                         child_tag = get_tag_name(child)
+                        # Fallback: if tag_name is empty but has name/ref, treat as element
+                        if not child_tag and (child.get("name") or child.get("ref")):
+                            child_tag = "element"
+                        
                         if child_tag == "element":
                             rows.extend(parse_element_recursive(child, depth + 1, name))
                         elif child_tag in ("choice", "all"):
@@ -150,6 +183,9 @@ def parse_element_recursive(elem, depth=0, parent_name=""):
                                 group_name = group_ref.split(":")[-1] if ":" in group_ref else group_ref
                                 # Need root to resolve group - will handle in caller
                                 logger.warning(f"Group reference '{group_ref}' found but root not available in recursive context")
+                        elif not child_tag and (child.get("name") or child.get("ref")):
+                            # Last resort: treat as element if it has name/ref
+                            rows.extend(parse_element_recursive(child, depth + 1, name))
                 
                 elif container_tag in ("choice", "all"):
                     rows.extend(parse_choice_or_all(container, name, container_tag))
@@ -197,6 +233,10 @@ def parse_element_with_groups(elem, root, depth=0, parent_name=""):
                 if container_tag == "sequence":
                     for child in container:
                         child_tag = get_tag_name(child)
+                        # Fallback: if tag_name is empty but has name/ref, treat as element
+                        if not child_tag and (child.get("name") or child.get("ref")):
+                            child_tag = "element"
+                        
                         if child_tag == "element":
                             rows.extend(parse_element_with_groups(child, root, depth + 1, name))
                         elif child_tag in ("choice", "all"):
@@ -211,6 +251,9 @@ def parse_element_with_groups(elem, root, depth=0, parent_name=""):
                                     if row[1] == "":  # Empty parent means it's a direct child
                                         row[1] = name
                                 rows.extend(group_rows)
+                        elif not child_tag and (child.get("name") or child.get("ref")):
+                            # Last resort: treat as element if it has name/ref
+                            rows.extend(parse_element_with_groups(child, root, depth + 1, name))
                 
                 elif container_tag in ("choice", "all"):
                     rows.extend(parse_choice_or_all(container, name, container_tag))

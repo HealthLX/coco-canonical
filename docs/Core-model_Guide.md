@@ -48,12 +48,12 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 ## Simple Types
 
-| Name | Base Type | Description | Enumerations | Constraints |
-| --- | --- | --- | --- | --- |
-| string | xs:string | – | – | Pattern: [ \r\n\t\S]+ |
-| NPI | xs:string | – | – | Pattern: [0-9]{10} |
-| positiveInt | xs:positiveInteger | – | – | Pattern: \+?[1-9][0-9]* |
-| unsignedInt | xs:unsignedInt | – | – | Pattern: 0\|([1-9][0-9]*) |
+| Name | Base Type | Description | Pattern |
+| --- | --- | --- | --- |
+| string | xs:string | – | [ \r\n\t\S]+ |
+| NPI | xs:string | – | [0-9]{10} |
+| positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
+| unsignedInt | xs:unsignedInt | – | 0\|([1-9][0-9]*) |
 
 
 ## Required Elements of Core-Model XSD
