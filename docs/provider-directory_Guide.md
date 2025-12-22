@@ -428,11 +428,17 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | sender_id | providers | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
 | date_time_reported | providers | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | provider | providers | 1..unbounded | – | – | – |
-| – | provider | – | All of (any order): practitioner, providing_organization | – | sequence |
+| – | provider | – | One of: practitioner, providing_organization | – | choice |
 | practitioner | provider | 1..unbounded | Practitioner is a person who is directly or indirectly involved in the provisioning of healthcare | – | – |
 | names | practitioner | 1..1 | – | – | – |
 | name | names | 1..unbounded | – | – | human_name |
+| specialty | specialties | 1..unbounded | – | – | codeable_concept |
 | providing_organization | provider | 1..unbounded | This element is used when the Provider Type is an organizatiaon | – | – |
+| clia | clias | 1..unbounded | – | – | clia |
+| is_active | providing_organization | 1..1 | – | – | xs:boolean |
+| name | providing_organization | 1..1 | – | – | string |
+| code | codes | 1..unbounded | Value Set for Organization Affiliation Roles. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrganizationAffiliationRoleVS.html | – | codeable_concept |
+| specialty | specialties | 1..unbounded | – | – | codeable_concept |
 
 
 ## All Elements of Provider-Directory XSD
@@ -444,7 +450,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | sender_id | providers | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
 | date_time_reported | providers | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | provider | providers | 1..unbounded | – | – | – |
-| – | provider | – | All of (any order): practitioner, providing_organization | – | sequence |
+| – | provider | – | One of: practitioner, providing_organization | – | choice |
 | practitioner | provider | 1..unbounded | Practitioner is a person who is directly or indirectly involved in the provisioning of healthcare | – | – |
 | unique_identifier | practitioner | 0..1 | – | – | string |
 | npi | practitioner | 0..1 | – | – | NPI |
@@ -456,8 +462,61 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | addresses | practitioner | 0..1 | – | – | – |
 | address | addresses | 0..unbounded | – | – | address |
 | gender | practitioner | 0..1 | – | – | string (enum: male, female, other, unknown) |
+| birth_date | practitioner | 0..1 | – | – | date |
+| qualifications | practitioner | 0..1 | – | – | – |
+| qualification | qualifications | 0..unbounded | – | – | qualification |
+| communications | practitioner | 0..1 | – | – | – |
+| communication | communications | 0..unbounded | – | – | languages |
+| period | practitioner | 0..1 | – | – | period |
+| affiliated_organization | practitioner | 0..1 | – | – | organization |
+| codes | practitioner | 0..1 | – | – | – |
+| code | codes | 0..unbounded | This element is used to indicate the role of a Practitioner. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-PractitionerRoleVS.html | – | codeable_concept |
+| specialties | practitioner | 0..1 | – | – | – |
+| specialty | specialties | 1..unbounded | – | – | codeable_concept |
+| available_times | practitioner | 0..1 | – | – | – |
+| available_time | available_times | 0..unbounded | – | – | available_time |
+| not_availables | practitioner | 0..1 | – | – | – |
+| not_available | not_availables | 0..unbounded | – | – | not_available |
+| availability_exceptions | practitioner | 0..1 | – | – | string |
+| new_patients_list | practitioner | 0..1 | – | – | – |
+| new_patients | new_patients_list | 0..unbounded | – | – | new_patients |
+| networks | practitioner | 0..1 | – | – | networks |
+| locations | practitioner | 0..1 | – | – | locations |
+| healthcare_services | practitioner | 0..1 | – | – | healthcare_services |
 | providing_organization | provider | 1..unbounded | This element is used when the Provider Type is an organizatiaon | – | – |
 | unique_identifier | providing_organization | 0..1 | – | – | string |
+| npi | providing_organization | 0..1 | – | – | NPI |
+| clias | providing_organization | 0..1 | – | – | – |
+| clia | clias | 1..unbounded | – | – | clia |
+| is_active | providing_organization | 1..1 | – | – | xs:boolean |
+| types | providing_organization | 0..1 | – | – | – |
+| type | types | 0..unbounded | Organization type, a full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrgTypeVS.html | – | type_of_organization |
+| name | providing_organization | 1..1 | – | – | string |
+| alias | providing_organization | 0..unbounded | A list of alternate names that the organization is known as, or was known as in the past | – | string |
+| org_description | providing_organization | 0..1 | – | – | string |
+| telecoms | providing_organization | 0..1 | – | – | – |
+| telecom | telecoms | 0..unbounded | – | – | telecom |
+| addresses | providing_organization | 0..1 | – | – | – |
+| address | addresses | 0..unbounded | – | – | address |
+| codes | providing_organization | 0..1 | – | – | – |
+| code | codes | 1..unbounded | Value Set for Organization Affiliation Roles. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrganizationAffiliationRoleVS.html | – | codeable_concept |
+| specialties | providing_organization | 0..1 | – | – | – |
+| specialty | specialties | 1..unbounded | – | – | codeable_concept |
+| qualifications | providing_organization | 0..1 | – | – | – |
+| qualification | qualifications | 0..unbounded | – | – | qualification |
+| contacts | providing_organization | 0..1 | – | – | – |
+| contact | contacts | 0..unbounded | – | – | – |
+| name | contact | 0..1 | – | – | human_name |
+| purpose | contact | 0..1 | The purpose of this contact within is within the organization. A full list can be found here: https://www.hl7.org/fhir/valueset-contactentity-type.html | – | string (enum: BILL, ADMIN, HR, PAYOR, PATINF, PRESS) |
+| telecoms | contact | 0..1 | – | – | – |
+| telecom | telecoms | 0..unbounded | – | – | telecom |
+| address | contact | 0..unbounded | – | – | address |
+| period | providing_organization | 0..1 | The period during which the participatingOrganization is affiliated with the primary organization | – | period |
+| affiliated_organization | providing_organization | 0..1 | – | – | organization |
+| part_of | providing_organization | 0..1 | – | – | organization |
+| networks | providing_organization | 0..1 | – | – | networks |
+| locations | providing_organization | 0..1 | – | – | locations |
+| healthcare_services | providing_organization | 0..1 | – | – | healthcare_services |
 
 
 ## Practical Guidance

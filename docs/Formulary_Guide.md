@@ -187,6 +187,23 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | sender_id | coverage_plans | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
 | date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | coverage_plan | coverage_plans | 1..unbounded | – | – | – |
+| plan_id | coverage_plan | 1..1 | – | – | string |
+| plan_id_type | coverage_plan | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
+| title | coverage_plan | 1..1 | – | – | string |
+| summary_url | coverage_plan | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
+| network | coverage_plan | 1..unbounded | – | – | string |
+| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | string (enum: current, retired, entered-in-error) |
+| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | string (enum: working, snapshot, changes) |
+| drug_tiers | coverage_plan | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
+| drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
+| drug_tier_id | drug_tier | 1..1 | – | – | – |
+| mail_order | drug_tier | 1..1 | – | – | boolean |
+| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | string (enum: 1-month-in-retail, 1-month-out-retail, 1-month-in-mail, 1-month-out-mail, 3-month-in-retail, 3-month-out-retail, 3-month-in-mail, 3-month-out-mail) |
+| copay_amount | cost_sharing | 1..1 | – | – | – |
+| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | string (enum: after-deductible, before-deductible, no-charge, no-charge-after-deductible) |
+| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
+| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | string (enum: after-deductible, no-charge, no-charge-after-deductible) |
+| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
 
 
 ## All Elements of Formulary XSD
@@ -198,6 +215,33 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | sender_id | coverage_plans | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
 | date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | coverage_plan | coverage_plans | 1..unbounded | – | – | – |
+| plan_id | coverage_plan | 1..1 | – | – | string |
+| plan_id_type | coverage_plan | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
+| title | coverage_plan | 1..1 | – | – | string |
+| marketing_url | coverage_plan | 0..1 | The URL that goes directly to the plan brochure for the specific standard plan or plan variation | – | string |
+| summary_url | coverage_plan | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
+| formulary_url | coverage_plan | 0..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
+| email_plan_contact | coverage_plan | 0..1 | – | – | string |
+| network | coverage_plan | 1..unbounded | – | – | string |
+| status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | string (enum: current, retired, entered-in-error) |
+| mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | string (enum: working, snapshot, changes) |
+| date | coverage_plan | 0..1 | – | – | dateTime |
+| drug_tiers | coverage_plan | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
+| drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
+| drug_tier_id | drug_tier | 1..1 | – | – | – |
+| code | drug_tier_id | 0..1 | – | – | string (enum: generic, preferred-generic, non-preferred-generic, specialty, brand, preferred-brand, non-preferred-brand, zero-cost-share-preventive, medical-service) |
+| text | drug_tier_id | 0..1 | – | – | string |
+| mail_order | drug_tier | 1..1 | – | – | boolean |
+| cost_sharings | drug_tier | 0..1 | – | – | – |
+| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
+| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | string (enum: 1-month-in-retail, 1-month-out-retail, 1-month-in-mail, 1-month-out-mail, 3-month-in-retail, 3-month-out-retail, 3-month-in-mail, 3-month-out-mail) |
+| copay_amount | cost_sharing | 1..1 | – | – | – |
+| value | copay_amount | 0..1 | – | – | decimal |
+| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | string (enum: after-deductible, before-deductible, no-charge, no-charge-after-deductible) |
+| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
+| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | string (enum: after-deductible, no-charge, no-charge-after-deductible) |
+| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
 
 
 ## Practical Guidance

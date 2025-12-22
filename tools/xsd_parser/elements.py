@@ -10,21 +10,29 @@ from .simple_types import extract_enumerations
 def get_tag_name(elem) -> str:
     """Safely get the tag name from an lxml element."""
     try:
-        # Try to get localname (part after namespace)
-        qname = etree.QName(elem)
-        return qname.localname
-    except (AttributeError, TypeError):
-        # Fallback to string conversion
         if not hasattr(elem, 'tag'):
             return ""
-        try:
-            tag = str(elem.tag)
-        except (TypeError, AttributeError):
+        
+        # Get the tag attribute
+        tag = getattr(elem, 'tag', None)
+        if tag is None:
             return ""
-        # Remove namespace prefix if present
-        if "}" in tag:
-            return tag.split("}")[-1]
-        return tag
+        
+        # If tag is callable (a method), skip it - this shouldn't happen with proper Elements
+        if callable(tag):
+            return ""
+        
+        # Convert to string - this should work for strings, QName objects, etc.
+        tag_str = str(tag)
+        
+        # Remove namespace prefix if present (format: {namespace}localname)
+        if "}" in tag_str:
+            return tag_str.split("}")[-1]
+        
+        return tag_str
+    except Exception as e:
+        # Silently return empty string on any error
+        return ""
 
 
 def extract_element_type_info(elem) -> str:

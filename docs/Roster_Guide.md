@@ -208,6 +208,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | given | name | 1..unbounded | Given names (not always 'first'). Includes middle names | – | string |
 | telecom | telecoms | 1..unbounded | Contact points of telecommunications. Please provide at least one form of contact (e.g. phone, email, etc.) | – | – |
 | system | telecom | 1..1 | Use this element to descripbe the contact point. https://www.hl7.org/fhir/valueset-contact-point-system.html | – | string (enum: phone, fax, email, pager, url, sms, other) |
+| value | telecom | 1..1 | The actual value of the contact point. This is a free form text field allowing country and extension. (e.g. (+001) 111-111-1111 x1111) | – | string |
 | address | addresses | 1..unbounded | Use this element to list all the addresses the member is associated with. It is recommended that at least one address be supplied for identification purposes. | – | – |
 | text | address | 1..1 | Use this element to list the address in it's entirety (e.g. 123 Test Way City, State 12345) | – | string |
 | line | address | 1..unbounded | – | – | string |
@@ -230,6 +231,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecoms | delegate | 1..1 | – | – | – |
 | telecom | telecoms | 1..unbounded | Contact points of telecommunications. | – | – |
 | system | telecom | 1..1 | – | – | string (enum: phone, mobile) |
+| value | telecom | 1..1 | – | – | string |
 | email_address | delegate | 1..1 | – | – | string |
 | is_member | delegate | 1..1 | Fixed to false | – | string (enum: false) |
 
@@ -336,6 +338,10 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecoms | member | 0..1 | – | – | – |
 | telecom | telecoms | 1..unbounded | Contact points of telecommunications. Please provide at least one form of contact (e.g. phone, email, etc.) | – | – |
 | system | telecom | 1..1 | Use this element to descripbe the contact point. https://www.hl7.org/fhir/valueset-contact-point-system.html | – | string (enum: phone, fax, email, pager, url, sms, other) |
+| value | telecom | 1..1 | The actual value of the contact point. This is a free form text field allowing country and extension. (e.g. (+001) 111-111-1111 x1111) | – | string |
+| use | telecom | 0..1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html | – | string (enum: home, work, temp, old, mobile) |
+| rank | telecom | 0..1 | Specify preferred order of use (1 = highest) | – | positiveInt |
+| period | telecom | 0..1 | Time period when the contact point was/is in use | – | period |
 | addresses | member | 0..1 | – | – | – |
 | address | addresses | 1..unbounded | Use this element to list all the addresses the member is associated with. It is recommended that at least one address be supplied for identification purposes. | – | – |
 | use | address | 0..1 | The use of this address. More information can be found here: http://hl7.org/fhir/R4/valueset-address-use.html | – | string (enum: home, work, temp, old, billing) |
@@ -374,6 +380,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecoms | delegate | 1..1 | – | – | – |
 | telecom | telecoms | 1..unbounded | Contact points of telecommunications. | – | – |
 | system | telecom | 1..1 | – | – | string (enum: phone, mobile) |
+| value | telecom | 1..1 | – | – | string |
 | email_address | delegate | 1..1 | – | – | string |
 | start | delegate | 0..1 | – | – | dateTime |
 | end | delegate | 0..1 | – | – | dateTime |

@@ -296,6 +296,183 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | sender_id | eob_list | 1..1 | This element is used to the unique identifier assigned to your organization | – | core:string |
 | date_time_reported | eob_list | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | eob | eob_list | 1..unbounded | – | – | – |
+| eob_identifier | eob | 1..1 | This is a unique business identifier assigned to the EOB. In the event, that this EOB changes in either status or content, the replacement EOB would be expected to have the same identifier. | – | eob_identifier |
+| status | eob | 1..1 | Claim processing status code | – | core:string (enum: active, cancelled, draft, entered-in-error) |
+| type | eob | 1..1 | Claim type code (institutional, oral, pharmacy, professional or vision) | – | core:string (enum: institutional, oral, pharmacy, professional, vision, Institutional, Oral, Pharmacy, Professional, Vision) |
+| use | eob | 1..1 | The purpose of the Claim: predetermination, preauthorization, claim. More information can be found here: http://hl7.org/fhir/R4/valueset-claim-use.html | – | core:string (enum: claim, preauthorization, predetermination) |
+| created | eob | 1..1 | – | – | dateTime |
+| outcome | eob | 1..1 | This value set includes Claim Processing Outcome codes. More information can be found here: http://hl7.org/fhir/R4/valueset-remittance-outcome.html | – | core:string (enum: queued, complete, error, partial) |
+| claim | eob | 1..1 | – | – | – |
+| identifier | claim | 1..unbounded | Please include the following claim identifiers -The Payer Claim Control Number as it would be returned on the 835 2100 CLP07. This number must apply to the entire claim. Please use an identifier.type of DCN. - If available, the Claim Identifier for Transmission Intermediaries as sent to the payer on the 837 2300 Ref*D9. Please use an identifier.type of D9 | – | identifier |
+| patient | eob | 1..1 | – | – | – |
+| insurer | eob | 1..1 | – | – | – |
+| provider | eob | 1..1 | – | – | – |
+| – | provider | – | One of: practitioner, providing_organization | – | choice |
+| practitioner | provider | 1..1 | – | – | practitioner |
+| providing_organization | provider | 1..1 | – | – | organization |
+| relationship | related | 1..1 | How the reference claim is related (prior or replacedby) | – | – |
+| reference | related | 1..1 | File or case reference (Identifier) | – | identifier |
+| created | claim | 1..1 | claim creation date | – | dateTime |
+| type | payee | 1..1 | Category of recipient | – | – |
+| party | payee | 1..1 | – | – | – |
+| – | party | – | One of: reference, practitioner, providing_organization, patient | – | choice |
+| reference | party | 1..1 | – | – | core:string |
+| practitioner | party | 1..1 | – | – | practitioner |
+| providing_organization | party | 1..1 | – | – | organization |
+| patient | party | 1..1 | – | – | member_person |
+| provider | care_team | 1..1 | – | – | – |
+| – | provider | – | One of: reference, practitioner, providing_organization | – | choice |
+| reference | provider | 1..1 | – | – | core:string |
+| practitioner | provider | 1..1 | – | – | practitioner |
+| providing_organization | provider | 1..1 | – | – | organization |
+| role | care_team | 1..1 | This element defines Function within the team,Enumuration set is combined list of possible code value set from each profile: Inpatient-Facility and Outpatient-Facility (primary,attending,performing,referring,operating,otheroperating), Pharmacy (prescribing,primary) and Professional-NonClinician (primary,performing,referring,supervisor,purchasedservice) | – | – |
+| code | role | 1..1 | – | – | core:string (enum: primary, attending, referring, operating, otheroperating, performing, supervisor, purchasedservice, prescribing, rendering) |
+| sequence | diagnosis | 1..1 | – | – | core:positiveInt |
+| diagnosis_code | diagnosis | 1..1 | ICD-10 Codes | – | – |
+| coding | diagnosis_code | 1..unbounded | – | – | – |
+| code | coding | 1..1 | ICD-10-CM Diagnosis Codes-Large list of codes hence no enumeration included | – | core:string |
+| sequence | procedure | 1..1 | – | – | core:positiveInt |
+| procedure_code | procedure | 1..1 | – | – | – |
+| coding | procedure_code | 1..unbounded | – | – | – |
+| code | coding | 1..1 | – | – | core:string |
+| insurances | eob | 1..1 | – | – | – |
+| insurance | insurances | 1..unbounded | – | – | – |
+| is_focal | insurance | 1..1 | Is Coverage to be used for adjudication | – | xs:boolean |
+| coverage | insurance | 1..1 | – | – | – |
+| sequence | item | 1..1 | Item instance identifier | – | core:positiveInt |
+| product_or_service | item | 1..1 | Current Procedural Terminology (CPT) - Healthcare Common Procedure Coding System (HCPCS) level II alphanumeric codes - Procedure Codes NDC or Compound | – | – |
+| code | product_or_service | 1..1 | – | – | core:string |
+| – | serviced | – | One of: serviced_date, serviced_period | – | choice |
+| – | location | – | One of: location_codeable_concept, location_address, location_reference | – | choice |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| code | denial_reason | 1..1 | – | – | core:string (enum: denialreason) |
+| system | denial_reason | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | denial_reason | 1..1 | Adjudication Denial Reason | – | – |
+| code | reason | 1..1 | – | – | core:string |
+| category | allowed_units | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | core:string (enum: allowedunits) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| category | in_out_network | 1..1 | Indicates the in network or out of network payment status of the claim. More info can be found here: http://hl7.org/fhir/us/carin-bb/STU1/ValueSet-C4BBPayerBenefitPaymentStatus.html | – | core:string (enum: innetwork, outofnetwork, other) |
+| category | adjudication_generic | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| product_or_service | detail | 1..1 | Billing, service, product, or drug code | – | core:string |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| amount | adjudication_amount_type | 1..1 | – | – | – |
+| category | denial_reason | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | core:string (enum: denialreason) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| category | adjudication_generic | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| totals | eob | 1..1 | – | – | – |
+| total | totals | 1..unbounded | – | – | – |
+| adjudication_amount_type | total | 1..unbounded | – | – | – |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication, http://terminology.hl7.org/CodeSystem/adjudication) |
+| amount | adjudication_amount_type | 1..1 | – | – | – |
+| value | amount | 1..1 | – | – | decimal |
+| category | in_out_network | 1..1 | – | – | – |
+| code | category | 1..1 | Indicates the in network or out of network payment status of the claim. More info can be found here: : http://hl7.org/fhir/us/carin-bb/STU1/ValueSet-C4BBPayerBenefitPaymentStatus.html | – | core:string (enum: innetwork, outofnetwork, other) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus) |
+| amount | in_out_network | 1..1 | – | – | – |
+| value | amount | 1..1 | – | – | decimal |
+| category | benefit_balance | 1..1 | Benefit Category Codes. More information can be found here: http://hl7.org/fhir/R4/valueset-ex-benefitcategory.html Preferred code sets list: 1,2,3,4,5,14,23,24,25,26,27,28,30,35,36,37,49,55,56,61,62,63,69,76,F1,F3,F4,F6 | – | core:string |
+| type | financial | 1..1 | Benefit classification. More information can be found here: http://hl7.org/fhir/R4/valueset-benefit-type.html Preferred code sets list: benefit,deductible,visit,room,copay,copay-percent,copay-maximum,vision-exam,vision-glasses,vision-contacts,medical-primarycare,pharmacy-dispense | – | core:string |
+| – | allowed | – | One of: allowed_unsigned_int, allowed_string, allowed_money | – | choice |
+| – | used | – | One of: used_unsigned_int, used_money | – | choice |
+| sequence | billing_network_contracting_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | billing_network_contracting_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: billingnetworkcontractingstatus) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | billing_network_contracting_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: contracted, noncontracted) |
+| sequence | admission_period | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | admission_period | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: admissionperiod) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| timing | admission_period | 1..1 | – | – | – |
+| timingPeriod | timing | 1..1 | – | – | period |
+| sequence | clm_recvd_date | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | clm_recvd_date | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: clmrecvddate) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| timing | clm_recvd_date | 1..1 | – | – | date |
+| sequence | type_of_bill | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | type_of_bill | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: typeofbill) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | type_of_bill | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | point_of_origin | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | point_of_origin | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: pointoforigin) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | code | 1..1 | – | – | core:string |
+| sequence | adm_type | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | adm_type | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: admtype) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | adm_type | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | discharge_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | discharge_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: discharge-status) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | discharge_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | drg | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | drg | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: drg) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | drg | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | performing_network_contracting_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | performing_network_contracting_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: performingnetworkcontractingstatus) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | performing_network_contracting_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: contracted, noncontracted) |
+| sequence | service_facility | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | service_facility | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: servicefacility) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| value | service_facility | 1..1 | – | – | – |
+| value_reference | value | 1..1 | – | – | organization |
+| sequence | brand_generic_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | brand_generic_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: brandgenericcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | brand_generic_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | rx_origin_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | rx_origin_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: rxorigincode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | rx_origin_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | compound_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | compound_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | ICD-10-CM Diagnosis Codes-Large list of codes hence no enumeration included | – | core:string (enum: compoundcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | compound_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | days_supply | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | days_supply | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: dayssupply) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| sequence | dawcode | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | dawcode | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: dawcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | dawcode | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| sequence | refill_num | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | refill_num | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: refillnum) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| record_type | eob | 1..1 | This element describes the action for this member (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 
 
 ## All Elements of EOB XSD
@@ -307,6 +484,466 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | sender_id | eob_list | 1..1 | This element is used to the unique identifier assigned to your organization | – | core:string |
 | date_time_reported | eob_list | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | eob | eob_list | 1..unbounded | – | – | – |
+| eob_identifier | eob | 1..1 | This is a unique business identifier assigned to the EOB. In the event, that this EOB changes in either status or content, the replacement EOB would be expected to have the same identifier. | – | eob_identifier |
+| status | eob | 1..1 | Claim processing status code | – | core:string (enum: active, cancelled, draft, entered-in-error) |
+| type | eob | 1..1 | Claim type code (institutional, oral, pharmacy, professional or vision) | – | core:string (enum: institutional, oral, pharmacy, professional, vision, Institutional, Oral, Pharmacy, Professional, Vision) |
+| sub_type | eob | 0..1 | sub type of Institutional Profiles | – | core:string (enum: inpatient, outpatient, Inpatient-Institutional, Outpatient-Institutional) |
+| use | eob | 1..1 | The purpose of the Claim: predetermination, preauthorization, claim. More information can be found here: http://hl7.org/fhir/R4/valueset-claim-use.html | – | core:string (enum: claim, preauthorization, predetermination) |
+| billable_period | eob | 0..1 | – | – | period |
+| created | eob | 1..1 | – | – | dateTime |
+| outcome | eob | 1..1 | This value set includes Claim Processing Outcome codes. More information can be found here: http://hl7.org/fhir/R4/valueset-remittance-outcome.html | – | core:string (enum: queued, complete, error, partial) |
+| disposition | eob | 0..1 | – | – | core:string |
+| pre_auth_ref | eob | 0..unbounded | – | – | core:string |
+| pre_auth_ref_periods | eob | 0..1 | – | – | – |
+| pre_auth_ref_period | pre_auth_ref_periods | 0..unbounded | – | – | period |
+| claim | eob | 1..1 | – | – | – |
+| identifier | claim | 1..unbounded | Please include the following claim identifiers -The Payer Claim Control Number as it would be returned on the 835 2100 CLP07. This number must apply to the entire claim. Please use an identifier.type of DCN. - If available, the Claim Identifier for Transmission Intermediaries as sent to the payer on the 837 2300 Ref*D9. Please use an identifier.type of D9 | – | identifier |
+| created | claim | 0..1 | claim creation date | – | dateTime |
+| patient | eob | 1..1 | – | – | – |
+| insurer | eob | 1..1 | – | – | – |
+| provider | eob | 1..1 | – | – | – |
+| – | provider | – | One of: practitioner, providing_organization | – | choice |
+| practitioner | provider | 1..1 | – | – | practitioner |
+| providing_organization | provider | 1..1 | – | – | organization |
+| facility | eob | 0..1 | – | – | – |
+| identifier | facility | 0..unbounded | Claim site of service NPI | – | identifier |
+| name | facility | 0..1 | Name of the facility as used by humans | – | core:string |
+| alias | facility | 0..unbounded | A list of alternate names that the facility is known as, or was known as, in the past. | – | core:string |
+| description | facility | 0..1 | Additional details about the facility that could be displayed as further information to identify the location beyond its name. | – | core:string |
+| type | facility | 0..unbounded | A role of a place that further classifies the setting (e.g., accident site, road side, work site, community location) in which services are delivered. More information can be found here: http://hl7.org/fhir/R4/v3/ServiceDeliveryLocationRoleType/vs.html | – | core:string (enum: DX, CVDX, CATH, ECHO, GIDX, ENDOS, RADDX, RADO, RNEU, HOSP, CHR, GACH, MHSP, PSYCHF, RH, RHAT, RHII, RHMAD, RHPI, RHPIH, RHPIMS, RHPIVS, RHYAD, HU, BMTU, CCU, CHEST, EPIL, ER, ETU, HD, HLAB, INLAB, OUTLAB, HRAD, HUSCS, ICU, PEDICU, PEDNICU, INPHARM, MBL, NCCS, NS, OUTPHARM, PEDU, PHU, RHU, SLEEP, NCCF, SNF, OF, ALL, AMPUT, BMTC, BREAST, CANC, CAPC, CARD, PEDCARD, COAG, CRS, DERM, ENDO, PEDE, ENT, FMC, GI, PEDGI, GIM, GYN, HEM, PEDHEM, HTN, IEC, INFD, PEDID, INV, LYMPH, MGEN, NEPH, PEDNEPH, NEUR, OB, OMS, ONCL, PEDHO, OPH, OPTC, ORTHO, HAND, PAINCL, PC, PEDC, PEDRHEUM, POD, PREV, PROCTO, PROFF, PROS, PSI, PSY, RHEUM, SPMED, SU, PLS, URO, TR, TRAVEL, WND, RTF, PRC, SURF, DADDR, MOBL, AMB, PHARM, ACC, COMM, CSC, PTRES, SCHOOL, UPC, WORK) |
+| telecoms | facility | 0..1 | – | – | – |
+| telecom | telecoms | 0..unbounded | – | – | telecom |
+| address | facility | 0..1 | – | – | address |
+| relateds | eob | 0..1 | – | – | – |
+| related | relateds | 0..unbounded | – | – | – |
+| relationship | related | 1..1 | How the reference claim is related (prior or replacedby) | – | – |
+| code | relationship | 0..1 | – | – | core:string (enum: prior, replacedby) |
+| system | relationship | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBRelatedClaimRelationshipCodes) |
+| reference | related | 1..1 | File or case reference (Identifier) | – | identifier |
+| claim | related | 0..1 | Reference to the related claim | – | – |
+| identifier | claim | 0..unbounded | – | – | identifier |
+| created | claim | 1..1 | claim creation date | – | dateTime |
+| payee | eob | 0..1 | – | – | – |
+| type | payee | 1..1 | Category of recipient | – | – |
+| code | type | 0..1 | – | – | core:string (enum: beneficiary, subscriber, provider, other) |
+| system | type | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayeeType, http://terminology.hl7.org/CodeSystem/payeetype) |
+| party | payee | 1..1 | – | – | – |
+| – | party | – | One of: reference, practitioner, providing_organization, patient | – | choice |
+| reference | party | 1..1 | – | – | core:string |
+| practitioner | party | 1..1 | – | – | practitioner |
+| providing_organization | party | 1..1 | – | – | organization |
+| patient | party | 1..1 | – | – | member_person |
+| care_teams | eob | 0..1 | – | – | – |
+| care_team | care_teams | 0..unbounded | – | – | – |
+| sequence | care_team | 0..1 | Order of the care team | – | core:positiveInt |
+| is_responsible | care_team | 0..1 | Is this the lead practitioner? | – | xs:boolean |
+| provider | care_team | 1..1 | – | – | – |
+| – | provider | – | One of: reference, practitioner, providing_organization | – | choice |
+| reference | provider | 1..1 | – | – | core:string |
+| practitioner | provider | 1..1 | – | – | practitioner |
+| providing_organization | provider | 1..1 | – | – | organization |
+| role | care_team | 1..1 | This element defines Function within the team,Enumuration set is combined list of possible code value set from each profile: Inpatient-Facility and Outpatient-Facility (primary,attending,performing,referring,operating,otheroperating), Pharmacy (prescribing,primary) and Professional-NonClinician (primary,performing,referring,supervisor,purchasedservice) | – | – |
+| code | role | 1..1 | – | – | core:string (enum: primary, attending, referring, operating, otheroperating, performing, supervisor, purchasedservice, prescribing, rendering) |
+| system | role | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/claimcareteamrole, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimCareTeamRole) |
+| qualification | care_team | 0..1 | Practitioner credential or specialization. More information can be found here: http://hl7.org/fhir/R4/codesystem-provider-qualification.html | – | – |
+| code | qualification | 0..1 | – | – | core:string |
+| system | qualification | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/ex-providerqualification, http://nucc.org/provider-taxonomy) |
+| diagnoses | eob | 0..1 | – | – | – |
+| diagnosis | diagnoses | 0..unbounded | Required segment for Institutional[Inpatient and Outpatient] and Professional-NonClinician Profile | – | – |
+| sequence | diagnosis | 1..1 | – | – | core:positiveInt |
+| diagnosis_code | diagnosis | 1..1 | ICD-10 Codes | – | – |
+| coding | diagnosis_code | 1..unbounded | – | – | – |
+| code | coding | 1..1 | ICD-10-CM Diagnosis Codes-Large list of codes hence no enumeration included | – | core:string |
+| system | coding | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/sid/icd-10-cm, http://terminology.hl7.org/CodeSystem/icd9, http://hl7.org/fhir/sid/icd-10) |
+| version | coding | 0..1 | – | – | core:string |
+| display | coding | 0..1 | Diagnosis description | – | core:string |
+| type | diagnosis | 0..unbounded | Diagnosis type codes for inpatient, outpatient, nonclinician and pharmacy | – | – |
+| code | type | 0..1 | – | – | core:string (enum: principal, admitting, other, secondary, externalcauseofinjury, patientreasonforvisit, clinical, differential, discharge, laboratory, nursing, prenatal, radiology, remote, retrospective, self) |
+| system | type | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/ex-diagnosistype, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimDiagnosisType) |
+| on_admission | diagnosis | 0..1 | Diagnosis on Admission Codes. More information can be found here: http://hl7.org/fhir/R4/valueset-ex-diagnosis-on-admission.html | – | – |
+| code | on_admission | 0..1 | – | – | core:string |
+| system | on_admission | 0..1 | – | – | core:string (enum: https://www.nubc.org/CodeSystem/PresentOnAdmissionIndicator, http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission) |
+| package_code | diagnosis | 0..1 | – | – | core:string |
+| procedures | eob | 0..1 | – | – | – |
+| procedure | procedures | 0..unbounded | – | – | – |
+| sequence | procedure | 1..1 | – | – | core:positiveInt |
+| procedure_code | procedure | 1..1 | – | – | – |
+| coding | procedure_code | 1..unbounded | – | – | – |
+| code | coding | 1..1 | – | – | core:string |
+| system | coding | 0..1 | – | – | core:string (enum: http://www.ama-assn.org/go/cpt, http://snomed.info/sct, http://www.cms.gov/Medicare/Coding/ICD10, http://terminology.hl7.org/CodeSystem/CD2, urn:oid:2.16.840.1.113883.6.285, http://www.cms.gov/Medicare/Coding/ICD9, http://hl7.org/fhir/sid/ex-icd-10-procedures) |
+| version | coding | 0..1 | – | – | core:string |
+| display | coding | 0..1 | – | – | core:string |
+| type | procedure | 0..unbounded | Preferred codesets:principal,other | – | core:string |
+| date | procedure | 0..1 | – | – | date |
+| precedence | eob | 0..1 | – | – | core:positiveInt |
+| insurances | eob | 1..1 | – | – | – |
+| insurance | insurances | 1..unbounded | – | – | – |
+| is_focal | insurance | 1..1 | Is Coverage to be used for adjudication | – | xs:boolean |
+| pre_auth_ref | insurance | 0..unbounded | Prior authorization reference number | – | core:string |
+| coverage | insurance | 1..1 | – | – | – |
+| items | eob | 0..1 | – | – | – |
+| item | items | 0..unbounded | – | – | – |
+| sequence | item | 1..1 | Item instance identifier | – | core:positiveInt |
+| care_team_sequence | item | 0..unbounded | Applicable care team members | – | core:positiveInt |
+| diagnosis_sequence | item | 0..unbounded | Applicable diagnoses | – | core:positiveInt |
+| procedure_sequence | item | 0..unbounded | Applicable procedures | – | core:positiveInt |
+| information_sequence | item | 0..unbounded | Applicable exception and supporting information,Enumuration list is not published yet but required | – | core:positiveInt |
+| revenue | item | 0..1 | Revenue or cost center code | – | – |
+| code | revenue | 0..1 | – | – | core:string |
+| system | revenue | 0..1 | Required valid value for institutional profile:https://www.nubc.org/CodeSystem/RevenueCodes | – | core:string |
+| category | item | 0..1 | Benefit classification. More information can be found here: http://hl7.org/fhir/R4/valueset-ex-benefitcategory.html Preferred code sets list: 1 ,2 ,3 ,4 ,5 ,14 ,23 ,24 ,25 ,26 ,27 ,28 ,30 ,35 ,36 ,37 ,49 ,55 ,56 ,61 ,62 ,63 ,69 ,76 ,F1 ,F3 ,F4 ,F6 | – | core:string |
+| product_or_service | item | 1..1 | Current Procedural Terminology (CPT) - Healthcare Common Procedure Coding System (HCPCS) level II alphanumeric codes - Procedure Codes NDC or Compound | – | – |
+| code | product_or_service | 1..1 | – | – | core:string |
+| system | product_or_service | 0..1 | – | – | core:string (enum: http://www.ama-assn.org/go/cpt, http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets, http://hl7.org/fhir/sid/ndc, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBCompoundLiteral, https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/ProspMedicareFeeSvcPmtGen/HIPPSCodes, http://terminology.hl7.org/CodeSystem/data-absent-reason) |
+| display | product_or_service | 0..1 | – | – | core:string |
+| text | product_or_service | 0..1 | – | – | core:string |
+| modifier | item | 0..unbounded | Current Procedural Terminology (CPT) - Healthcare Common Procedure Coding System (HCPCS) level II alphanumeric codes - Procedure Modifier Codes ModifierTypeCodes | – | – |
+| code | modifier | 0..1 | – | – | core:string |
+| system | modifier | 0..1 | – | – | core:string (enum: http://www.ama-assn.org/go/cpt, http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets, http://hl7.org/fhir/sid/ndc, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBCompoundLiteral) |
+| program_code | item | 0..unbounded | Program Reason Codes | – | core:string |
+| serviced | item | 0..1 | Date or dates of service or product delivery | – | – |
+| – | serviced | – | One of: serviced_date, serviced_period | – | choice |
+| serviced_date | serviced | 0..1 | – | – | date |
+| serviced_period | serviced | 0..1 | – | – | period |
+| quantity | item | 0..1 | – | – | – |
+| value | quantity | 0..1 | – | – | decimal |
+| unit | quantity | 0..1 | – | – | core:string |
+| system | quantity | 0..1 | – | – | core:string |
+| code | quantity | 0..1 | – | – | core:string |
+| unit_price | item | 0..1 | – | – | – |
+| value | unit_price | 0..1 | – | – | decimal |
+| currency | unit_price | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| factor | item | 0..1 | Price scaling factor | – | decimal |
+| net | item | 0..1 | – | – | – |
+| value | net | 0..1 | – | – | decimal |
+| currency | net | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| note_number | item | 0..unbounded | Applicable note numbers | – | core:positiveInt |
+| location | item | 0..1 | – | – | – |
+| – | location | – | One of: location_codeable_concept, location_address, location_reference | – | choice |
+| location_codeable_concept | location | 0..1 | – | – | core:string |
+| location_address | location | 0..1 | – | – | address |
+| location_reference | location | 0..1 | Place of service or where product was supplied | – | – |
+| identifier | location_reference | 0..unbounded | Claim site of service NPI | – | identifier |
+| name | location_reference | 0..1 | Name of the facility as used by humans | – | core:string |
+| alias | location_reference | 0..unbounded | A list of alternate names that the facility is known as, or was known as, in the past. | – | core:string |
+| description | location_reference | 0..1 | Additional details about the facility that could be displayed as further information to identify the location beyond its name. | – | core:string |
+| type | location_reference | 0..unbounded | A role of a place that further classifies the setting (e.g., accident site, road side, work site, community location) in which services are delivered. More information can be found here: http://hl7.org/fhir/R4/v3/ServiceDeliveryLocationRoleType/vs.html | – | core:string (enum: DX, CVDX, CATH, ECHO, GIDX, ENDOS, RADDX, RADO, RNEU, HOSP, CHR, GACH, MHSP, PSYCHF, RH, RHAT, RHII, RHMAD, RHPI, RHPIH, RHPIMS, RHPIVS, RHYAD, HU, BMTU, CCU, CHEST, EPIL, ER, ETU, HD, HLAB, INLAB, OUTLAB, HRAD, HUSCS, ICU, PEDICU, PEDNICU, INPHARM, MBL, NCCS, NS, OUTPHARM, PEDU, PHU, RHU, SLEEP, NCCF, SNF, OF, ALL, AMPUT, BMTC, BREAST, CANC, CAPC, CARD, PEDCARD, COAG, CRS, DERM, ENDO, PEDE, ENT, FMC, GI, PEDGI, GIM, GYN, HEM, PEDHEM, HTN, IEC, INFD, PEDID, INV, LYMPH, MGEN, NEPH, PEDNEPH, NEUR, OB, OMS, ONCL, PEDHO, OPH, OPTC, ORTHO, HAND, PAINCL, PC, PEDC, PEDRHEUM, POD, PREV, PROCTO, PROFF, PROS, PSI, PSY, RHEUM, SPMED, SU, PLS, URO, TR, TRAVEL, WND, RTF, PRC, SURF, DADDR, MOBL, AMB, PHARM, ACC, COMM, CSC, PTRES, SCHOOL, UPC, WORK) |
+| telecoms | location_reference | 0..1 | – | – | – |
+| telecom | telecoms | 0..unbounded | – | – | telecom |
+| address | location_reference | 0..1 | – | – | address |
+| adjudications | item | 0..1 | – | – | – |
+| adjudication | adjudications | 0..unbounded | – | – | – |
+| adjudication_amount_type | adjudication | 0..unbounded | – | – | – |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/adjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication) |
+| reason | adjudication_amount_type | 0..1 | Adjudication Reason Codes | – | core:string |
+| amount | adjudication_amount_type | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | adjudication_amount_type | 0..1 | Non-monitary value | – | decimal |
+| denial_reason | adjudication | 0..unbounded | – | – | – |
+| code | denial_reason | 1..1 | – | – | core:string (enum: denialreason) |
+| system | denial_reason | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | denial_reason | 1..1 | Adjudication Denial Reason | – | – |
+| code | reason | 1..1 | – | – | core:string |
+| system | reason | 0..1 | – | – | core:string (enum: https://x12.org/codes/claim-adjustment-reason-codes, https://x12.org/codes/remittance-advice-remark-codes, http://terminology.hl7.org/CodeSystem/NCPDP/RejectCode) |
+| amount | denial_reason | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | denial_reason | 0..1 | – | – | decimal |
+| allowed_units | adjudication | 0..1 | – | – | – |
+| category | allowed_units | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | core:string (enum: allowedunits) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | allowed_units | 0..1 | Explanation of adjudication outcome | – | core:string |
+| amount | allowed_units | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | allowed_units | 0..1 | – | – | decimal |
+| in_out_network | adjudication | 0..1 | – | – | – |
+| category | in_out_network | 1..1 | Indicates the in network or out of network payment status of the claim. More info can be found here: http://hl7.org/fhir/us/carin-bb/STU1/ValueSet-C4BBPayerBenefitPaymentStatus.html | – | core:string (enum: innetwork, outofnetwork, other) |
+| reason | in_out_network | 0..1 | Adjudication Reason Codes | – | core:string |
+| amount | in_out_network | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | in_out_network | 0..1 | – | – | decimal |
+| adjudication_generic | adjudication | 0..unbounded | – | – | – |
+| category | adjudication_generic | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/adjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | adjudication_generic | 0..1 | Explanation of adjudication outcome | – | core:string |
+| amount | adjudication_generic | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | adjudication_generic | 0..1 | – | – | decimal |
+| details | item | 0..1 | – | – | – |
+| detail | details | 0..unbounded | – | – | – |
+| product_or_service | detail | 1..1 | Billing, service, product, or drug code | – | core:string |
+| quantity | detail | 0..1 | – | – | – |
+| value | quantity | 0..1 | – | – | decimal |
+| unit | quantity | 0..1 | – | – | core:string |
+| system | quantity | 0..1 | – | – | core:string |
+| code | quantity | 0..1 | – | – | core:string |
+| adjudications | eob | 0..1 | – | – | – |
+| adjudication | adjudications | 0..unbounded | – | – | – |
+| adjudication_amount_type | adjudication | 0..unbounded | – | – | – |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/adjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication) |
+| reason | adjudication_amount_type | 0..1 | Adjudication Reason Codes | – | core:string |
+| amount | adjudication_amount_type | 1..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | adjudication_amount_type | 0..1 | – | – | decimal |
+| denial_reason | adjudication | 0..unbounded | – | – | – |
+| category | denial_reason | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | core:string (enum: denialreason) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | denial_reason | 0..1 | Explanation of adjudication outcome | – | core:string |
+| amount | denial_reason | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | denial_reason | 0..1 | – | – | decimal |
+| adjudication_generic | adjudication | 0..unbounded | – | – | – |
+| category | adjudication_generic | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/adjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication, http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator) |
+| reason | adjudication_generic | 0..1 | Explanation of adjudication outcome | – | core:string |
+| amount | adjudication_generic | 0..1 | – | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| value | adjudication_generic | 0..1 | – | – | decimal |
+| totals | eob | 1..1 | – | – | – |
+| total | totals | 1..unbounded | – | – | – |
+| adjudication_amount_type | total | 1..unbounded | – | – | – |
+| category | adjudication_amount_type | 1..1 | – | – | – |
+| code | category | 1..1 | – | – | adjudication_category |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication, http://terminology.hl7.org/CodeSystem/adjudication) |
+| amount | adjudication_amount_type | 1..1 | – | – | – |
+| value | amount | 1..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| in_out_network | total | 0..1 | – | – | – |
+| category | in_out_network | 1..1 | – | – | – |
+| code | category | 1..1 | Indicates the in network or out of network payment status of the claim. More info can be found here: : http://hl7.org/fhir/us/carin-bb/STU1/ValueSet-C4BBPayerBenefitPaymentStatus.html | – | core:string (enum: innetwork, outofnetwork, other) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus) |
+| amount | in_out_network | 1..1 | – | – | – |
+| value | amount | 1..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| payment | eob | 0..1 | – | – | – |
+| type | payment | 0..1 | Indicates whether the claim / item was paid or denied. More information can be found here: http://hl7.org/fhir/us/carin-bb/STU1/ValueSet-C4BBPayerClaimPaymentStatusCode.html | – | core:string (enum: paid, denied, partiallypaid) |
+| adjustment | payment | 0..1 | – | – | – |
+| value | adjustment | 0..1 | – | – | decimal |
+| currency | adjustment | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| adjustment_reason | payment | 0..1 | Payment Adjustment Reason Code | – | core:string |
+| date | payment | 0..1 | Expected date of payment | – | date |
+| amount | payment | 0..1 | Payable amount after adjustment | – | – |
+| value | amount | 0..1 | – | – | decimal |
+| currency | amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| identifier | payment | 0..1 | Business identifier for the payment | – | identifier |
+| process_notes | eob | 0..1 | – | – | – |
+| process_note | process_notes | 0..unbounded | Note concerning adjudication | – | – |
+| number | process_note | 0..1 | Note instance identifier | – | core:positiveInt |
+| type | process_note | 0..1 | The presentation types of notes. More information can be found here: http://hl7.org/fhir/R4/valueset-note-type.html | – | core:string (enum: display, print, printoper) |
+| text | process_note | 0..1 | Note explanatory text | – | core:string |
+| language | process_note | 0..1 | This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47). More information can be found here: http://hl7.org/fhir/R4/valueset-languages.html | – | language |
+| benefit_period | eob | 0..1 | – | – | period |
+| benefit_balances | eob | 0..1 | – | – | – |
+| benefit_balance | benefit_balances | 0..unbounded | – | – | – |
+| category | benefit_balance | 1..1 | Benefit Category Codes. More information can be found here: http://hl7.org/fhir/R4/valueset-ex-benefitcategory.html Preferred code sets list: 1,2,3,4,5,14,23,24,25,26,27,28,30,35,36,37,49,55,56,61,62,63,69,76,F1,F3,F4,F6 | – | core:string |
+| is_excluded | benefit_balance | 0..1 | Excluded from the plan | – | xs:boolean |
+| name | benefit_balance | 0..1 | Short name for the benefit | – | core:string |
+| description | benefit_balance | 0..1 | Description of the benefit or services covered | – | core:string |
+| network | benefit_balance | 0..1 | In or out of network. More information can be found here: http://hl7.org/fhir/R4/valueset-benefit-network.html Preferred code sets list: in or out | – | core:string |
+| unit | benefit_balance | 0..1 | Individual or family. More information can be found here: http://hl7.org/fhir/R4/valueset-benefit-unit.html Preferred code sets list: individual or individual | – | core:string |
+| term | benefit_balance | 0..1 | Annual or lifetime. More information can be found here: http://hl7.org/fhir/R4/valueset-benefit-term.html Preferred code sets list: annual or day or lifetime | – | core:string |
+| financials | benefit_balance | 0..1 | – | – | – |
+| financial | financials | 0..unbounded | – | – | – |
+| type | financial | 1..1 | Benefit classification. More information can be found here: http://hl7.org/fhir/R4/valueset-benefit-type.html Preferred code sets list: benefit,deductible,visit,room,copay,copay-percent,copay-maximum,vision-exam,vision-glasses,vision-contacts,medical-primarycare,pharmacy-dispense | – | core:string |
+| allowed | financial | 0..1 | – | – | – |
+| – | allowed | – | One of: allowed_unsigned_int, allowed_string, allowed_money | – | choice |
+| allowed_unsigned_int | allowed | 0..1 | – | – | unsignedInt |
+| allowed_string | allowed | 0..1 | – | – | core:string |
+| allowed_money | allowed | 0..1 | – | – | – |
+| value | allowed_money | 0..1 | – | – | decimal |
+| currency | allowed_money | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| used | financial | 0..1 | – | – | – |
+| – | used | – | One of: used_unsigned_int, used_money | – | choice |
+| used_unsigned_int | used | 0..1 | – | – | unsignedInt |
+| used_money | used | 0..1 | – | – | – |
+| value | used_money | 0..1 | – | – | decimal |
+| currency | used_money | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
+| supporting_infos | eob | 0..1 | – | – | – |
+| supporting_info | supporting_infos | 0..unbounded | – | – | – |
+| billing_network_contracting_status | supporting_info | 0..1 | – | – | – |
+| sequence | billing_network_contracting_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | billing_network_contracting_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: billingnetworkcontractingstatus) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | billing_network_contracting_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: contracted, noncontracted) |
+| system | code | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus) |
+| timing | billing_network_contracting_status | 0..1 | – | – | timing |
+| value | billing_network_contracting_status | 0..1 | – | – | value |
+| reason | billing_network_contracting_status | 0..1 | – | – | core:string |
+| admission_period | supporting_info | 0..1 | – | – | – |
+| sequence | admission_period | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | admission_period | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: admissionperiod) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | admission_period | 0..1 | Preferred code sets list: student,disabled | – | core:string |
+| timing | admission_period | 1..1 | – | – | – |
+| timingPeriod | timing | 1..1 | – | – | period |
+| value | admission_period | 0..1 | – | – | value |
+| reason | admission_period | 0..1 | – | – | core:string |
+| clm_recvd_date | supporting_info | 0..1 | – | – | – |
+| sequence | clm_recvd_date | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | clm_recvd_date | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: clmrecvddate) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | clm_recvd_date | 0..1 | Preferred code sets list: student,disabled | – | core:string |
+| timing | clm_recvd_date | 1..1 | – | – | date |
+| value | clm_recvd_date | 0..1 | – | – | value |
+| reason | clm_recvd_date | 0..1 | – | – | core:string |
+| type_of_bill | supporting_info | 0..1 | – | – | – |
+| sequence | type_of_bill | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | type_of_bill | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: typeofbill) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | type_of_bill | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: https://www.nubc.org/CodeSystem/TypeOfBill) |
+| timing | type_of_bill | 0..1 | – | – | timing |
+| value | type_of_bill | 0..1 | – | – | value |
+| reason | type_of_bill | 0..1 | – | – | core:string |
+| point_of_origin | supporting_info | 0..1 | – | – | – |
+| sequence | point_of_origin | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | point_of_origin | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: pointoforigin) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | point_of_origin | 0..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: https://www.nubc.org/CodeSystem/PointOfOrigin) |
+| timing | point_of_origin | 0..1 | – | – | timing |
+| value | point_of_origin | 0..1 | – | – | value |
+| reason | point_of_origin | 0..1 | – | – | core:string |
+| adm_type | supporting_info | 0..1 | – | – | – |
+| sequence | adm_type | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | adm_type | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: admtype) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | adm_type | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: https://www.nubc.org/CodeSystem/PriorityTypeOfAdmitOrVisit) |
+| timing | adm_type | 0..1 | – | – | timing |
+| value | adm_type | 0..1 | – | – | value |
+| reason | adm_type | 0..1 | – | – | core:string |
+| discharge_status | supporting_info | 0..1 | – | – | – |
+| sequence | discharge_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | discharge_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: discharge-status) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | discharge_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: https://www.nubc.org/CodeSystem/PatDischargeStatus) |
+| timing | discharge_status | 0..1 | – | – | timing |
+| value | discharge_status | 0..1 | – | – | value |
+| reason | discharge_status | 0..1 | – | – | core:string |
+| drg | supporting_info | 0..1 | – | – | – |
+| sequence | drg | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | drg | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: drg) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | drg | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/AcuteInpatientPPS/MS-DRG-Classifications-and-Software, http://uri.hddaccess.com/cs/aprdrg) |
+| timing | drg | 0..1 | – | – | timing |
+| value | drg | 0..1 | – | – | value |
+| reason | drg | 0..1 | – | – | core:string |
+| performing_network_contracting_status | supporting_info | 0..1 | – | – | – |
+| sequence | performing_network_contracting_status | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | performing_network_contracting_status | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: performingnetworkcontractingstatus) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | performing_network_contracting_status | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: contracted, noncontracted) |
+| system | code | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus) |
+| timing | performing_network_contracting_status | 0..1 | – | – | timing |
+| value | performing_network_contracting_status | 0..1 | – | – | value |
+| reason | performing_network_contracting_status | 0..1 | – | – | core:string |
+| service_facility | supporting_info | 0..1 | – | – | – |
+| sequence | service_facility | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | service_facility | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: servicefacility) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | service_facility | 0..1 | Preferred code sets list: student,disabled | – | core:string |
+| timing | service_facility | 0..1 | – | – | timing |
+| value | service_facility | 1..1 | – | – | – |
+| value_reference | value | 1..1 | – | – | organization |
+| reason | service_facility | 0..1 | – | – | core:string |
+| brand_generic_code | supporting_info | 0..1 | – | – | – |
+| sequence | brand_generic_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | brand_generic_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: brandgenericcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | brand_generic_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/NCPDP/BrandGenericIndicator) |
+| timing | brand_generic_code | 0..1 | – | – | timing |
+| value | brand_generic_code | 0..1 | – | – | value |
+| reason | brand_generic_code | 0..1 | – | – | core:string |
+| rx_origin_code | supporting_info | 0..1 | – | – | – |
+| sequence | rx_origin_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | rx_origin_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: rxorigincode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | rx_origin_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/NCPDP/PrescriptionOriginCode) |
+| timing | rx_origin_code | 0..1 | – | – | timing |
+| value | rx_origin_code | 0..1 | – | – | value |
+| reason | rx_origin_code | 0..1 | – | – | core:string |
+| compound_code | supporting_info | 0..1 | – | – | – |
+| sequence | compound_code | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | compound_code | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | ICD-10-CM Diagnosis Codes-Large list of codes hence no enumeration included | – | core:string (enum: compoundcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | compound_code | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/NCPDP/CompoundCode) |
+| timing | compound_code | 0..1 | – | – | timing |
+| value | compound_code | 0..1 | – | – | value |
+| reason | compound_code | 0..1 | – | – | core:string |
+| days_supply | supporting_info | 0..1 | – | – | – |
+| sequence | days_supply | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | days_supply | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: dayssupply) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | days_supply | 0..1 | Preferred code sets list: student,disabled | – | core:string |
+| timing | days_supply | 0..1 | – | – | timing |
+| value | days_supply | 0..1 | – | – | quantity |
+| reason | days_supply | 0..1 | – | – | core:string |
+| dawcode | supporting_info | 0..1 | – | – | – |
+| sequence | dawcode | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | dawcode | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: dawcode) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | dawcode | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string |
+| system | code | 0..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/NCPDP/DispensedAsWrittenOrProductSelectionCode) |
+| timing | dawcode | 0..1 | – | – | timing |
+| value | dawcode | 0..1 | – | – | value |
+| reason | dawcode | 0..1 | – | – | core:string |
+| refill_num | supporting_info | 0..1 | – | – | – |
+| sequence | refill_num | 1..1 | Information instance identifier | – | core:positiveInt |
+| category | refill_num | 1..1 | Classification of the supplied information | – | – |
+| code | category | 1..1 | – | – | core:string (enum: refillnum) |
+| system | category | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType) |
+| code | refill_num | 0..1 | Preferred code sets list: student,disabled | – | core:string |
+| timing | refill_num | 0..1 | – | – | timing |
+| value | refill_num | 0..1 | – | – | quantity |
+| reason | refill_num | 0..1 | – | – | core:string |
+| record_type | eob | 1..1 | This element describes the action for this member (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 
 
 ## Practical Guidance

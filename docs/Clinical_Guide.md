@@ -601,11 +601,15 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | lab_observation | lab_observations | 1..unbounded | – | – | – |
 | unique_identifier | lab_observation | 1..1 | – | – | core:string |
 | status | lab_observation | 1..1 | Status of the observation | – | core:string (enum: registered, preliminary, final, amended, corrected, cancelled, entered-in-error, unknown) |
+| observation_code | lab_observation | 1..1 | Laboratory Test Name [LOINC COdes] | – | codeable_concept |
+| – | observation_effective | – | One of: effective_date_time, effective_period | – | choice |
+| – | lab_observation | – | One of: observation_value, data_absent_reason | – | choice |
 | allergy_intolerance | allergy_intolerances | 1..unbounded | – | – | – |
 | unique_identifier | allergy_intolerance | 1..1 | – | – | core:string |
 | allergy_code | allergy_intolerance | 1..1 | Code for an allergy or intolerance statement (either a positive or a negated/excluded statement). This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g., "No known allergy", "No known drug allergies"). | – | – |
 | code | allergy_code | 1..1 | – | – | core:string |
 | system | allergy_code | 1..1 | – | – | core:string (enum: http://snomed.info/sct, http://www.nlm.nih.gov/research/umls/rxnorm) |
+| manifestation | reaction | 1..unbounded | Clinical symptoms and/or signs that are observed or associated with the adverse reaction event. | – | core:string |
 | condition | conditions | 1..unbounded | – | – | – |
 | unique_identifier | condition | 1..1 | – | – | core:string |
 | condition_code | condition | 1..1 | Identification of the condition, problem or diagnosis. A detailed list of codes can be found here http://hl7.org/fhir/us/core/ValueSet-us-core-condition-code.html | – | – |
@@ -615,13 +619,23 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | procedure | procedures | 1..unbounded | – | – | – |
 | unique_identifier | procedure | 1..1 | – | – | core:string |
 | procedure_code | procedure | 1..1 | - Procedure codes from SNOMED CT, CPT, HCPCS II, ICD-10-PCS, or CDT. - HCPCS Level II Alphanumeric Codes are maintained by CMS and are available for public use. - Refer to urn:oid:2.16.840.1.113883.6.285 for HCPCS Level II codes. | – | – |
+| – | procedure_code | – | All of (any order): code, system | – | sequence |
+| code | procedure_code | 1..1 | – | – | xs:string |
+| system | procedure_code | 1..1 | – | – | xs:string (enum: http://www.ama-assn.org/go/cpt, http://snomed.info/sct, http://www.cms.gov/Medicare/Coding/ICD10, http://terminology.hl7.org/CodeSystem/CD2, urn:oid:2.16.840.1.113883.6.285) |
+| – | procedure_code | – | All of (any order): text, extension | – | sequence |
+| text | procedure_code | 1..1 | – | – | xs:string |
+| extension | procedure_code | 1..unbounded | – | – | – |
+| url | extension | 1..1 | – | – | xs:anyURI |
+| valueCode | extension | 1..1 | – | – | xs:string |
 | status | procedure | 1..1 | A code specifying the state of the procedure. Generally, this will be the in-progress or completed state. | – | core:string (enum: preparation, in-progress, not-done, on-hold, stopped, completed, entered-in-error, unknown) |
+| performed | procedure | 1..1 | Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured. | – | – |
+| – | performed | – | One of: performed_date_time, performed_period | – | choice |
 | medication_request | medication_requests | 1..unbounded | – | – | – |
 | unique_identifier | medication_request | 1..1 | – | – | core:string |
 | status | medication_request | 1..1 | Status of the request | – | core:string (enum: active, on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown) |
 | intent | medication_request | 1..1 | Intent of the request | – | core:string (enum: proposal, plan, order, original-order, reflex-order, filler-order, instance-order, option) |
-| – | reported | – | All of (any order): reported_boolean, reported_reference | – | sequence |
-| – | reported_reference | – | All of (any order): reported_patient, reported_practitioner, reported_organization | – | sequence |
+| – | reported | – | One of: reported_boolean, reported_reference | – | choice |
+| – | reported_reference | – | One of: reported_patient, reported_practitioner, reported_organization | – | choice |
 | medication | medication_request | 1..1 | – | – | – |
 | medication_code | medication | 1..1 | A code (or set of codes) that specify this medication, or a textual description if no code is available. An example list can be found here https://build.fhir.org/ig/HL7/US-Core-R4/ValueSet-us-core-medication-codes.html. Due to the size of this list, no enumeration is provided. | – | – |
 | code | medication_code | 1..1 | – | – | core:string |
@@ -629,7 +643,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | form | 1..1 | – | – | core:string |
 | system | form | 1..1 | – | – | core:string (enum: http://snomed.info/sct) |
 | authored_on | medication_request | 1..1 | – | – | dateTime |
-| – | requester | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | requester | – | One of: patient, practitioner, organization | – | choice |
 | patient | requester | 1..1 | – | – | member_person |
 | practitioner | requester | 1..1 | – | – | practitioner |
 | organization | requester | 1..1 | – | – | organization |
@@ -653,10 +667,20 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | observation_vital_sign | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string (enum: 85353-1, 9279-1, 8867-4, 2708-6, 8310-5, 8302-2, 9843-4, 29463-7, 39156-5, 85354-9, 8480-6, 8462-4, 8478-0) |
 | effective | observation_vital_sign | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
-| – | observation_vital_sign | – | All of (any order): value, data_absent_reason | – | sequence |
+| – | observation_vital_sign | – | One of: value, data_absent_reason | – | choice |
+| component_systolic_bp | component | 1..1 | – | – | – |
+| code | component_systolic_bp | 1..1 | – | – | – |
+| coding_sbp_code | code | 1..1 | – | – | – |
+| code | coding_sbp_code | 1..1 | – | – | core:string (enum: 8480-6) |
+| system | coding_sbp_code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| component_diastolic_bp | component | 1..1 | – | – | – |
+| code | component_diastolic_bp | 1..1 | – | – | – |
+| coding_dbp_code | code | 1..1 | – | – | – |
+| code | coding_dbp_code | 1..1 | – | – | core:string (enum: 8462-4) |
+| system | coding_dbp_code | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | practitioner | practitioners | 1..unbounded | – | – | – |
 | unique_identifier | practitioner | 1..1 | – | – | core:string |
 | practitioner_details | practitioner | 1..1 | – | – | practitioner |
@@ -693,7 +717,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | vaccine_code | 1..1 | – | – | core:string |
 | system | vaccine_code | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/sid/cvx) |
 | occurrence | immunization | 1..1 | – | – | – |
-| – | occurrence | – | All of (any order): occurrence_date_time, occurrence_string | – | sequence |
+| – | occurrence | – | One of: occurrence_date_time, occurrence_string | – | choice |
 | occurrence_date_time | occurrence | 1..1 | – | – | dateTime |
 | occurrence_string | occurrence | 1..1 | – | – | core:string |
 | primary_source | immunization | 1..1 | – | – | xs:boolean |
@@ -710,13 +734,15 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: 59576-9) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_bmi_for_age_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value | value_quantity | 1..1 | – | – | decimal |
 | unit | value_quantity | 1..1 | – | – | core:string |
 | system | value_quantity | 1..1 | – | – | core:string |
 | code | value_quantity | 1..1 | – | – | core:string |
+| code | component | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: 85353-1, 9279-1, 8867-4, 2708-6, 8310-5, 8302-2, 9843-4, 29463-7, 39156-5, 85354-9, 8480-6, 8462-4, 8478-0) |
 | pediatric_head_occipital_frontal_circumference_observation | pediatric_head_occipital_frontal_circumference_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | core:string |
 | status | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | core:string (enum: registered, preliminary, final, amended, corrected, cancelled, entered-in-error, unknown) |
@@ -730,7 +756,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: 8289-1) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value | value_quantity | 1..1 | – | – | decimal |
@@ -751,13 +777,15 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..unbounded | – | – | core:string (enum: 77606-2) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_weight_for_height_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value | value_quantity | 1..1 | – | – | decimal |
 | unit | value_quantity | 1..1 | – | – | core:string |
 | system | value_quantity | 1..1 | – | – | core:string |
 | code | value_quantity | 1..1 | – | – | core:string |
+| code | component | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: 85353-1, 9279-1, 8867-4, 2708-6, 8310-5, 8302-2, 9843-4, 29463-7, 39156-5, 85354-9, 8480-6, 8462-4, 8478-0) |
 | practitioner_role | practitioners_roles | 1..unbounded | – | – | – |
 | unique_identifier | practitioner_role | 1..1 | – | – | core:string |
 | practitioner | practitioner_role | 1..1 | – | – | practitioner |
@@ -768,6 +796,9 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | smoking_status_observation | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string (enum: 72166-2) |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| issued | smoking_status_observation | 1..1 | – | – | instant |
+| value_codeable_concept | smoking_status_observation | 1..1 | – | – | – |
+| code | value_codeable_concept | 1..1 | – | – | – |
 | provenance | provenances | 1..unbounded | – | – | – |
 | unique_identifier | provenance | 1..1 | – | – | core:string |
 | target | provenance | 1..unbounded | – | – | – |
@@ -776,7 +807,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | recorded | provenance | 1..1 | – | – | instant |
 | agent | provenance | 1..unbounded | – | – | – |
 | who | agent_provenance_general | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
@@ -785,21 +816,21 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: author) |
 | system | coding | 1..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/provenance-participant-type) |
 | who | agent_provenance_author | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
-| – | on_behalf_of | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | on_behalf_of | – | One of: patient, practitioner, organization | – | choice |
 | type | agent_provenance_transmitter | 1..1 | – | – | – |
 | coding | type | 1..unbounded | – | – | – |
 | code | coding | 1..1 | – | – | core:string (enum: transmitter) |
 | system | coding | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type) |
 | who | agent_provenance_transmitter | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
-| – | on_behalf_of | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | on_behalf_of | – | One of: patient, practitioner, organization | – | choice |
 | pulse_oximetry_observation | pulse_oximetry_observations | 1..unbounded | – | – | – |
 | unique_identifier | pulse_oximetry_observation | 1..1 | – | – | core:string |
 | status | pulse_oximetry_observation | 1..1 | – | – | core:string (enum: registered, preliminary, final, amended, corrected, cancelled, entered-in-error, unknown) |
@@ -816,7 +847,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding_pulse_ox | 1..1 | – | – | core:string (enum: 59408-5) |
 | system | coding_pulse_ox | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pulse_oximetry_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value | value_quantity | 1..1 | – | – | decimal |
@@ -853,7 +884,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | type | 1..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/v3-NullFlavor, http://loinc.org) |
 | category | document_reference | 1..unbounded | – | – | – |
 | code | category | 1..1 | – | – | core:string |
-| – | author | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | author | – | One of: patient, practitioner, organization | – | choice |
 | content | document_reference | 1..unbounded | – | – | – |
 | attachment | content | 1..1 | – | – | – |
 | content_type | attachment | 1..1 | – | – | code |
@@ -868,6 +899,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | diagnostic_report_lab | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| issued | diagnostic_report_lab | 1..1 | – | – | instant |
+| effective | diagnostic_report_lab | 1..1 | – | – | – |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
+| effective_date_time | effective | 1..1 | – | – | dateTime |
+| effective_period | effective | 1..1 | – | – | period |
+| – | performer | – | One of: reported_practitioner, reported_organization | – | choice |
 | diagnostic_report_note | diagnostic_report_notes | 1..unbounded | – | – | – |
 | unique_identifier | diagnostic_report_note | 1..1 | – | – | core:string |
 | status | diagnostic_report_note | 1..1 | – | – | core:string (enum: registered, partial, preliminary, final, amended, corrected, appended, cancelled, entered-in-error, unknown) |
@@ -877,6 +914,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | diagnostic_report_note | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| effective | diagnostic_report_note | 1..1 | – | – | – |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
+| effective_date_time | effective | 1..1 | – | – | dateTime |
+| effective_period | effective | 1..1 | – | – | period |
+| – | performer | – | One of: reported_practitioner, reported_organization | – | choice |
 
 
 ## All Elements of Clinical XSD
@@ -895,6 +937,23 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | lab_observation | lab_observations | 1..unbounded | – | – | – |
 | unique_identifier | lab_observation | 1..1 | – | – | core:string |
 | status | lab_observation | 1..1 | Status of the observation | – | core:string (enum: registered, preliminary, final, amended, corrected, cancelled, entered-in-error, unknown) |
+| observation_code | lab_observation | 1..1 | Laboratory Test Name [LOINC COdes] | – | codeable_concept |
+| observation_effective | lab_observation | 0..1 | – | – | – |
+| – | observation_effective | – | One of: effective_date_time, effective_period | – | choice |
+| effective_date_time | observation_effective | 0..1 | Clinically relevant time/time-period for observation | – | dateTime |
+| effective_period | observation_effective | 0..1 | – | – | period |
+| – | lab_observation | – | One of: observation_value, data_absent_reason | – | choice |
+| observation_value | lab_observation | 0..1 | Result of the observation | – | result_value |
+| data_absent_reason | lab_observation | 0..1 | Reason for missing data. Inputs can be found here: http://hl7.org/fhir/R4/valueset-data-absent-reason.html | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
+| interpretation | lab_observation | 0..unbounded | A categorical assessment of an observation value. For example, high, low, normal. | – | core:string |
+| reference_range | lab_observation | 0..unbounded | Guidance on how to interpret the value by comparison to a normal or recommended range. Multiple reference ranges are interpreted as an "OR". In other words, to represent two distinct target populations, two referenceRange elements would be used. | – | – |
+| low | reference_range | 0..1 | – | – | simple_quantity |
+| high | reference_range | 0..1 | – | – | simple_quantity |
+| type | reference_range | 0..1 | – | – | core:string (enum: normal, recommended, treatment, therapeutic, pre_therapeutic, post_therapeutic, endocrine, pre-puberty, follicular, midcycle, luteal, postmenopausal) |
+| applies_to | reference_range | 0..1 | – | – | codeable_concept |
+| age | reference_range | 0..1 | – | – | range |
+| text | reference_range | 0..1 | – | – | core:string |
+| record_type | lab_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | allergy_intolerances | clinical | 0..1 | – | – | – |
 | allergy_intolerance | allergy_intolerances | 1..unbounded | – | – | – |
 | unique_identifier | allergy_intolerance | 1..1 | – | – | core:string |
@@ -905,6 +964,13 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | allergy_code | allergy_intolerance | 1..1 | Code for an allergy or intolerance statement (either a positive or a negated/excluded statement). This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g., "No known allergy", "No known drug allergies"). | – | – |
 | code | allergy_code | 1..1 | – | – | core:string |
 | system | allergy_code | 1..1 | – | – | core:string (enum: http://snomed.info/sct, http://www.nlm.nih.gov/research/umls/rxnorm) |
+| reactions | allergy_intolerance | 0..1 | – | – | – |
+| reaction | reactions | 0..unbounded | Details about each adverse reaction event linked to exposure to the identified substance. | – | – |
+| manifestation | reaction | 1..unbounded | Clinical symptoms and/or signs that are observed or associated with the adverse reaction event. | – | core:string |
+| onset | allergy_intolerance | 0..1 | When allergy or intolerance was identified | – | onset |
+| criticality | allergy_intolerance | 0..1 | Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance. | – | core:string (enum: low, high, unable-to-assess) |
+| recorded_date | allergy_intolerance | 0..1 | The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date. | – | dateTime |
+| record_type | allergy_intolerance | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | conditions | clinical | 0..1 | – | – | – |
 | condition | conditions | 1..unbounded | – | – | – |
 | unique_identifier | condition | 1..1 | – | – | core:string |
@@ -914,21 +980,39 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | category | condition | 1..unbounded | Identification of the condition, problem or diagnosis | – | core:string (enum: problem-list-item, encounter-diagnosis, health-concern) |
 | clinical_status | condition | 0..1 | Preferred value set for Condition Clinical Status | – | core:string (enum: active, recurrence, relapse, inactive, remission, resolved) |
 | verification_status | condition | 0..1 | The verification status to support or decline the clinical status of the condition or diagnosis. | – | core:string (enum: unconfirmed, provisional, differential, confirmed, refuted, entered-in-error) |
+| severity | condition | 0..1 | Subjective severity of condition | – | core:string (enum: severe, moderate, mild) |
+| onset | condition | 0..1 | Estimated or actual date, date-time, or age | – | onset |
+| recorded_date | condition | 0..1 | Date of when condition was first recorded,The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date. | – | dateTime |
+| abatement | condition | 0..1 | The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate. | – | abatement |
+| record_type | condition | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | procedures | clinical | 0..1 | – | – | – |
 | procedure | procedures | 1..unbounded | – | – | – |
 | unique_identifier | procedure | 1..1 | – | – | core:string |
 | procedure_code | procedure | 1..1 | - Procedure codes from SNOMED CT, CPT, HCPCS II, ICD-10-PCS, or CDT. - HCPCS Level II Alphanumeric Codes are maintained by CMS and are available for public use. - Refer to urn:oid:2.16.840.1.113883.6.285 for HCPCS Level II codes. | – | – |
+| – | procedure_code | – | All of (any order): code, system | – | sequence |
+| code | procedure_code | 1..1 | – | – | xs:string |
+| system | procedure_code | 1..1 | – | – | xs:string (enum: http://www.ama-assn.org/go/cpt, http://snomed.info/sct, http://www.cms.gov/Medicare/Coding/ICD10, http://terminology.hl7.org/CodeSystem/CD2, urn:oid:2.16.840.1.113883.6.285) |
+| – | procedure_code | – | All of (any order): text, extension | – | sequence |
+| text | procedure_code | 1..1 | – | – | xs:string |
+| extension | procedure_code | 1..unbounded | – | – | – |
+| url | extension | 1..1 | – | – | xs:anyURI |
+| valueCode | extension | 1..1 | – | – | xs:string |
 | status | procedure | 1..1 | A code specifying the state of the procedure. Generally, this will be the in-progress or completed state. | – | core:string (enum: preparation, in-progress, not-done, on-hold, stopped, completed, entered-in-error, unknown) |
+| performed | procedure | 1..1 | Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured. | – | – |
+| – | performed | – | One of: performed_date_time, performed_period | – | choice |
+| performed_date_time | performed | 0..1 | – | – | dateTime |
+| performed_period | performed | 0..1 | – | – | period |
+| record_type | procedure | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | medication_requests | clinical | 0..1 | – | – | – |
 | medication_request | medication_requests | 1..unbounded | – | – | – |
 | unique_identifier | medication_request | 1..1 | – | – | core:string |
 | status | medication_request | 1..1 | Status of the request | – | core:string (enum: active, on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown) |
 | intent | medication_request | 1..1 | Intent of the request | – | core:string (enum: proposal, plan, order, original-order, reflex-order, filler-order, instance-order, option) |
 | reported | medication_request | 0..1 | Was medication reported by patient or not | – | – |
-| – | reported | – | All of (any order): reported_boolean, reported_reference | – | sequence |
+| – | reported | – | One of: reported_boolean, reported_reference | – | choice |
 | reported_boolean | reported | 0..1 | – | – | xs:boolean |
 | reported_reference | reported | 0..1 | – | – | – |
-| – | reported_reference | – | All of (any order): reported_patient, reported_practitioner, reported_organization | – | sequence |
+| – | reported_reference | – | One of: reported_patient, reported_practitioner, reported_organization | – | choice |
 | reported_patient | reported_reference | 0..1 | – | – | member_person |
 | reported_practitioner | reported_reference | 0..1 | – | – | practitioner |
 | reported_organization | reported_reference | 0..1 | – | – | organization |
@@ -943,12 +1027,13 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | encounter | medication_request | 0..1 | – | – | encounter |
 | authored_on | medication_request | 1..1 | – | – | dateTime |
 | requester | medication_request | 0..1 | – | – | – |
-| – | requester | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | requester | – | One of: patient, practitioner, organization | – | choice |
 | patient | requester | 1..1 | – | – | member_person |
 | practitioner | requester | 1..1 | – | – | practitioner |
 | organization | requester | 1..1 | – | – | organization |
 | dosage_instruction | medication_request | 0..unbounded | – | – | – |
 | text | dosage_instruction | 0..1 | – | – | core:string |
+| record_type | medication_request | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | care_teams | clinical | 0..1 | – | – | – |
 | care_team | care_teams | 1..unbounded | – | – | – |
 | unique_identifier | care_team | 1..1 | – | – | core:string |
@@ -961,6 +1046,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | – | member | – | One of: member_person, reference | – | choice |
 | member_person | member | 1..1 | – | – | xs:string |
 | reference | member | 1..1 | – | – | reference |
+| record_type | care_team | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | observation_vital_signs | clinical | 0..1 | – | – | – |
 | observation_vital_sign | observation_vital_signs | 1..unbounded | – | – | – |
 | unique_identifier | observation_vital_sign | 1..1 | – | – | core:string |
@@ -974,15 +1060,37 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | display | code | 0..1 | – | – | core:string (enum: Vital signs,weight,height,head circumference,oxygen saturation and BMI panel, Respiratory rate, Heart rate, Oxygen saturation in Arterial blood, Body temperature, Body height, Head Occipital-frontal circumference, Body weight, Body mass index (BMI) [Ratio], Blood pressure panel with all children optional, Systolic blood pressure, Diastolic blood pressure, Mean blood pressure) |
 | system | code | 0..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | observation_vital_sign | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
-| – | observation_vital_sign | – | All of (any order): value, data_absent_reason | – | sequence |
+| – | observation_vital_sign | – | One of: value, data_absent_reason | – | choice |
 | value | observation_vital_sign | 0..1 | Vital Signs value are recorded using the Quantity data type | – | result_value_vital_sign_profile |
 | data_absent_reason | observation_vital_sign | 0..1 | – | – | – |
 | code | data_absent_reason | 0..1 | – | – | core:string |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | has_member | observation_vital_sign | 0..unbounded | – | – | vital_signs |
+| component | observation_vital_sign | 0..unbounded | Used when reporting systolic and diastolic blood pressure. | – | – |
+| component_systolic_bp | component | 1..1 | – | – | – |
+| code | component_systolic_bp | 1..1 | – | – | – |
+| coding_sbp_code | code | 1..1 | – | – | – |
+| code | coding_sbp_code | 1..1 | – | – | core:string (enum: 8480-6) |
+| system | coding_sbp_code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| value | component_systolic_bp | 0..1 | – | – | quantity_bp_systolic |
+| data_absent_reason | component_systolic_bp | 0..1 | Why the component result is missing | – | – |
+| coding | data_absent_reason | 0..1 | – | – | – |
+| code | coding | 0..1 | – | – | core:string |
+| system | coding | 0..1 | – | – | core:string |
+| component_diastolic_bp | component | 1..1 | – | – | – |
+| code | component_diastolic_bp | 1..1 | – | – | – |
+| coding_dbp_code | code | 1..1 | – | – | – |
+| code | coding_dbp_code | 1..1 | – | – | core:string (enum: 8462-4) |
+| system | coding_dbp_code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| value | component_diastolic_bp | 0..1 | – | – | quantity_bp_diastolic |
+| data_absent_reason | component_diastolic_bp | 0..1 | – | – | – |
+| coding | data_absent_reason | 0..1 | – | – | – |
+| code | coding | 0..1 | – | – | core:string |
+| system | coding | 0..1 | – | – | core:string |
+| record_type | observation_vital_sign | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | practitioners | clinical | 0..1 | – | – | – |
 | practitioner | practitioners | 1..unbounded | – | – | – |
 | unique_identifier | practitioner | 1..1 | – | – | core:string |
@@ -1002,6 +1110,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | encounter | encounters | 1..unbounded | – | – | – |
 | unique_identifier | encounter | 1..1 | – | – | core:string |
 | encounter_details | encounter | 1..1 | – | – | encounter |
+| record_type | encounter | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | care_plans | clinical | 0..1 | – | – | – |
 | care_plan | care_plans | 1..unbounded | – | – | – |
 | unique_identifier | care_plan | 1..1 | – | – | core:string |
@@ -1015,6 +1124,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | coding | category_assess_plan | 1..unbounded | – | – | – |
 | code | coding | 1..1 | – | – | core:string (enum: assess-plan) |
 | system | coding | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/core/CodeSystem/careplan-category) |
+| record_type | care_plan | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | goals | clinical | 0..1 | – | – | – |
 | goal | goals | 1..unbounded | – | – | – |
 | unique_identifier | goal | 1..1 | – | – | core:string |
@@ -1024,6 +1134,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | description | 0..1 | – | – | – |
 | target | goal | 0..unbounded | – | – | – |
 | due_date | target | 0..1 | – | – | date |
+| record_type | goal | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | immunizations | clinical | 0..1 | – | – | – |
 | immunization | immunizations | 1..unbounded | – | – | – |
 | unique_identifier | immunization | 1..1 | – | – | core:string |
@@ -1035,10 +1146,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | vaccine_code | 1..1 | – | – | core:string |
 | system | vaccine_code | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/sid/cvx) |
 | occurrence | immunization | 1..1 | – | – | – |
-| – | occurrence | – | All of (any order): occurrence_date_time, occurrence_string | – | sequence |
+| – | occurrence | – | One of: occurrence_date_time, occurrence_string | – | choice |
 | occurrence_date_time | occurrence | 1..1 | – | – | dateTime |
 | occurrence_string | occurrence | 1..1 | – | – | core:string |
 | primary_source | immunization | 1..1 | – | – | xs:boolean |
+| record_type | immunization | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | pediatric_bmi_for_age_observations | clinical | 0..1 | – | – | – |
 | pediatric_bmi_for_age_observation | pediatric_bmi_for_age_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_bmi_for_age_observation | 1..1 | – | – | core:string |
@@ -1053,7 +1165,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: 59576-9) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_bmi_for_age_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value_quantity | pediatric_bmi_for_age_observation | 0..1 | Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept. | – | – |
@@ -1065,6 +1177,15 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | data_absent_reason | pediatric_bmi_for_age_observation | 0..1 | – | – | – |
 | code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
 | system | data_absent_reason | 0..1 | – | – | core:string |
+| component | pediatric_bmi_for_age_observation | 0..unbounded | – | – | – |
+| code | component | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: 85353-1, 9279-1, 8867-4, 2708-6, 8310-5, 8302-2, 9843-4, 29463-7, 39156-5, 85354-9, 8480-6, 8462-4, 8478-0) |
+| system | code | 0..1 | – | – | core:string (enum: http://loinc.org) |
+| value | component | 0..1 | – | – | result_value |
+| data_absent_reason | component | 0..1 | – | – | – |
+| code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
+| system | data_absent_reason | 0..1 | – | – | core:string |
+| record_type | pediatric_bmi_for_age_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | pediatric_head_occipital_frontal_circumference_observations | clinical | 0..1 | – | – | – |
 | pediatric_head_occipital_frontal_circumference_observation | pediatric_head_occipital_frontal_circumference_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | core:string |
@@ -1079,7 +1200,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: 8289-1) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value_quantity | pediatric_head_occipital_frontal_circumference_observation | 0..1 | Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept. | – | – |
@@ -1099,6 +1220,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | data_absent_reason | component | 0..1 | – | – | – |
 | code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
 | system | data_absent_reason | 0..1 | – | – | core:string |
+| record_type | pediatric_head_occipital_frontal_circumference_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | pediatric_weight_for_height_observations | clinical | 0..1 | – | – | – |
 | pediatric_weight_for_height_observation | pediatric_weight_for_height_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_weight_for_height_observation | 1..1 | – | – | core:string |
@@ -1113,7 +1235,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..unbounded | – | – | core:string (enum: 77606-2) |
 | system | coding | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pediatric_weight_for_height_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value_quantity | pediatric_weight_for_height_observation | 0..1 | Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept. | – | – |
@@ -1125,6 +1247,15 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | data_absent_reason | pediatric_weight_for_height_observation | 0..1 | – | – | – |
 | code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
 | system | data_absent_reason | 0..1 | – | – | core:string |
+| component | pediatric_weight_for_height_observation | 0..unbounded | – | – | – |
+| code | component | 1..1 | – | – | – |
+| code | code | 1..1 | – | – | core:string (enum: 85353-1, 9279-1, 8867-4, 2708-6, 8310-5, 8302-2, 9843-4, 29463-7, 39156-5, 85354-9, 8480-6, 8462-4, 8478-0) |
+| system | code | 0..1 | – | – | core:string (enum: http://loinc.org) |
+| value | component | 0..1 | – | – | result_value |
+| data_absent_reason | component | 0..1 | – | – | – |
+| code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
+| system | data_absent_reason | 0..1 | – | – | core:string |
+| record_type | pediatric_weight_for_height_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | practitioners_roles | clinical | 0..1 | – | – | – |
 | practitioner_role | practitioners_roles | 1..unbounded | – | – | – |
 | unique_identifier | practitioner_role | 1..1 | – | – | core:string |
@@ -1147,6 +1278,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | smoking_status_observation | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string (enum: 72166-2) |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| issued | smoking_status_observation | 1..1 | – | – | instant |
+| value_codeable_concept | smoking_status_observation | 1..1 | – | – | – |
+| code | value_codeable_concept | 1..1 | – | – | – |
+| system | value_codeable_concept | 0..1 | – | – | core:string (enum: http://snomed.info/sct) |
+| record_type | smoking_status_observation | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | provenances | clinical | 0..1 | – | – | – |
 | provenance | provenances | 1..unbounded | – | – | – |
 | unique_identifier | provenance | 1..1 | – | – | core:string |
@@ -1160,7 +1296,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | type | 0..1 | – | – | core:string (enum: transmitter, enterer, performer, author, verifier, legal, attester, informant, custodian, assembler, composer) |
 | system | type | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type, http://terminology.hl7.org/CodeSystem/provenance-participant-type) |
 | who | agent_provenance_general | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
@@ -1171,12 +1307,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: author) |
 | system | coding | 1..1 | – | – | core:string (enum: http://terminology.hl7.org/CodeSystem/provenance-participant-type) |
 | who | agent_provenance_author | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
 | on_behalf_of | agent_provenance_author | 0..1 | – | – | – |
-| – | on_behalf_of | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | on_behalf_of | – | One of: patient, practitioner, organization | – | choice |
 | patient | on_behalf_of | 0..1 | – | – | member_person |
 | practitioner | on_behalf_of | 0..1 | – | – | practitioner |
 | organization | on_behalf_of | 0..1 | – | – | organization |
@@ -1186,12 +1322,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | core:string (enum: transmitter) |
 | system | coding | 1..1 | – | – | core:string (enum: http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type) |
 | who | agent_provenance_transmitter | 1..1 | – | – | – |
-| – | who | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | who | – | One of: patient, practitioner, organization | – | choice |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
 | on_behalf_of | agent_provenance_transmitter | 0..1 | – | – | – |
-| – | on_behalf_of | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | on_behalf_of | – | One of: patient, practitioner, organization | – | choice |
 | patient | on_behalf_of | 0..1 | – | – | member_person |
 | practitioner | on_behalf_of | 0..1 | – | – | practitioner |
 | organization | on_behalf_of | 0..1 | – | – | organization |
@@ -1214,7 +1350,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding_pulse_ox | 1..1 | – | – | core:string (enum: 59408-5) |
 | system | coding_pulse_ox | 1..1 | – | – | core:string (enum: http://loinc.org) |
 | effective | pulse_oximetry_observation | 1..1 | – | – | – |
-| – | effective | – | All of (any order): effective_date_time, effective_period | – | sequence |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | value_quantity | pulse_oximetry_observation | 0..1 | Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept. | – | – |
@@ -1255,6 +1391,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | data_absent_reason | component_concentration | 0..1 | – | – | – |
 | code | data_absent_reason | 0..1 | – | – | core:string (enum: unknown, asked-unknown, temp-unknown, not-asked, asked-declined, masked, not-applicable, unsupported, as-text, error, not-a-number, negative-infinity, positive-infinity, not-performed, not-permitted) |
 | system | data_absent_reason | 0..1 | – | – | core:string |
+| record_type | pulse_oximetry_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | implantable_devices | clinical | 0..1 | – | – | – |
 | implantable_device | implantable_devices | 1..unbounded | – | – | – |
 | unique_identifier | implantable_device | 1..1 | – | – | core:string |
@@ -1270,6 +1407,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | type | implantable_device | 1..1 | – | – | – |
 | code | type | 1..1 | – | – | core:string |
 | system | type | 0..1 | – | – | core:string (enum: http://snomed.info/sct) |
+| record_type | implantable_device | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | document_references | clinical | 0..1 | – | – | – |
 | document_reference | document_references | 1..unbounded | – | – | – |
 | unique_identifier | document_reference | 1..1 | – | – | core:string |
@@ -1281,7 +1419,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | category | 1..1 | – | – | core:string |
 | system | category | 0..1 | – | – | core:string (enum: http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category) |
 | author | document_reference | 0..unbounded | – | – | – |
-| – | author | – | All of (any order): patient, practitioner, organization | – | sequence |
+| – | author | – | One of: patient, practitioner, organization | – | choice |
 | patient | author | 0..1 | – | – | member_person |
 | practitioner | author | 0..1 | – | – | practitioner |
 | organization | author | 0..1 | – | – | organization |
@@ -1298,6 +1436,7 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | context | document_reference | 0..1 | – | – | – |
 | encounter | context | 0..1 | – | – | encounter |
 | period | context | 0..1 | – | – | period |
+| record_type | document_reference | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | diagnostic_report_labs | clinical | 0..1 | – | – | – |
 | diagnostic_report_lab | diagnostic_report_labs | 1..unbounded | – | – | – |
 | unique_identifier | diagnostic_report_lab | 1..1 | – | – | core:string |
@@ -1310,6 +1449,17 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | diagnostic_report_lab | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| issued | diagnostic_report_lab | 1..1 | – | – | instant |
+| effective | diagnostic_report_lab | 1..1 | – | – | – |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
+| effective_date_time | effective | 1..1 | – | – | dateTime |
+| effective_period | effective | 1..1 | – | – | period |
+| performer | diagnostic_report_lab | 0..unbounded | – | – | – |
+| – | performer | – | One of: reported_practitioner, reported_organization | – | choice |
+| reported_practitioner | performer | 0..1 | – | – | practitioner |
+| reported_organization | performer | 0..1 | – | – | organization |
+| result | diagnostic_report_lab | 0..unbounded | – | – | lab_observation_result |
+| record_type | diagnostic_report_lab | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 | diagnostic_report_notes | clinical | 0..1 | – | – | – |
 | diagnostic_report_note | diagnostic_report_notes | 1..unbounded | – | – | – |
 | unique_identifier | diagnostic_report_note | 1..1 | – | – | core:string |
@@ -1320,6 +1470,18 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | diagnostic_report_note | 1..1 | – | – | – |
 | code | code | 1..1 | – | – | core:string |
 | system | code | 1..1 | – | – | core:string (enum: http://loinc.org) |
+| issued | diagnostic_report_note | 0..1 | – | – | instant |
+| effective | diagnostic_report_note | 1..1 | – | – | – |
+| – | effective | – | One of: effective_date_time, effective_period | – | choice |
+| effective_date_time | effective | 1..1 | – | – | dateTime |
+| effective_period | effective | 1..1 | – | – | period |
+| performer | diagnostic_report_note | 0..unbounded | – | – | – |
+| – | performer | – | One of: reported_practitioner, reported_organization | – | choice |
+| reported_practitioner | performer | 0..1 | – | – | practitioner |
+| reported_organization | performer | 0..1 | – | – | organization |
+| presented_form | diagnostic_report_note | 0..unbounded | – | – | attachment |
+| encounter | diagnostic_report_note | 0..1 | – | – | encounter |
+| record_type | diagnostic_report_note | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | core:string (enum: A, U, D) |
 
 
 ## Practical Guidance
