@@ -161,6 +161,57 @@ def generate_practical_guidance(schema_info: SchemaInfo):
     return output
 
 
+def get_section_title(parent_name: str) -> str:
+    """Map parent element names to section titles for grouping."""
+    section_mapping = {
+        "": "Root Elements",
+        "clinicals": "Root Elements",
+        "clinical": "Clinical Data",
+        "patient": "Patient Information",
+        "lab_observations": "Laboratory Result Observations",
+        "lab_observation": "Laboratory Result Observations",
+        "allergy_intolerances": "Allergy Intolerance",
+        "allergy_intolerance": "Allergy Intolerance",
+        "conditions": "Conditions",
+        "condition": "Conditions",
+        "procedures": "Procedures",
+        "procedure": "Procedures",
+        "medication_requests": "Medication Requests",
+        "medication_request": "Medication Requests",
+        "care_teams": "Care Teams",
+        "care_team": "Care Teams",
+        "observation_vital_signs": "Vital Signs",
+        "observation_vital_sign": "Vital Signs",
+        "practitioners": "Practitioners",
+        "practitioner": "Practitioners",
+        "organizations": "Organizations",
+        "organization": "Organizations",
+        "locations": "Locations",
+        "location": "Locations",
+        "encounters": "Encounters",
+        "encounter": "Encounters",
+        "care_plans": "Care Plans",
+        "care_plan": "Care Plans",
+        "goals": "Goals",
+        "goal": "Goals",
+        "immunizations": "Immunizations",
+        "immunization": "Immunizations",
+        "pediatric_bmi_for_age_observations": "Pediatric BMI for Age Observations",
+        "pediatric_bmi_for_age_observation": "Pediatric BMI for Age Observations",
+        "pediatric_head_occipital_frontal_circumference_observations": "Pediatric Head Occipital Frontal Circumference Observations",
+        "pediatric_head_occipital_frontal_circumference_observation": "Pediatric Head Occipital Frontal Circumference Observations",
+        "pediatric_weight_for_height_observations": "Pediatric Weight for Height Observations",
+        "pediatric_weight_for_height_observation": "Pediatric Weight for Height Observations",
+        "practitioner_roles": "Practitioner Roles",
+        "practitioner_role": "Practitioner Roles",
+        "smoking_status_observations": "Smoking Status Observations",
+        "smoking_status_observation": "Smoking Status Observations",
+        "provenances": "Provenances",
+        "provenance": "Provenances",
+    }
+    return section_mapping.get(parent_name, None)
+
+
 def generate_element_table(title, elements, schema_info: SchemaInfo):
     """Generate element table with 6 columns: Name, Parent, Cardinality, Description, Examples, Data Type."""
     output = f"## {title}\n\n"
@@ -172,6 +223,94 @@ def generate_element_table(title, elements, schema_info: SchemaInfo):
     headers = ["Name", "Parent", "Cardinality", "Description", "Examples", "Data Type"]
     output += to_md_table(headers, elements)
     output += "\n\n"
+    
+    return output
+
+
+def is_top_level_section_element(element_name: str) -> bool:
+    """Check if an element name represents a top-level section marker."""
+    top_level_sections = [
+        "clinicals", "clinical", "patient", "lab_observations", "allergy_intolerances",
+        "conditions", "procedures", "medication_requests", "care_teams",
+        "observation_vital_signs", "practitioners", "organizations", "locations",
+        "encounters", "care_plans", "goals", "immunizations",
+        "pediatric_bmi_for_age_observations", "pediatric_head_occipital_frontal_circumference_observations",
+        "pediatric_weight_for_height_observations", "practitioner_roles",
+        "smoking_status_observations", "provenances"
+    ]
+    return element_name in top_level_sections
+
+
+def get_top_level_section(element_name: str, parent_name: str, current_section: str = None) -> str:
+    """Determine the top-level section for an element based on its name and parent."""
+    # If this element is itself a top-level section marker, use it
+    if is_top_level_section_element(element_name):
+        section_title = get_section_title(element_name)
+        if section_title:
+            return section_title
+    
+    # Check parent for section mapping
+    section_title = get_section_title(parent_name)
+    if section_title:
+        return section_title
+    
+    # Special handling for root elements
+    if not parent_name or parent_name == "":
+        return "Root Elements"
+    
+    # For nested elements, inherit from current section if we have one
+    if current_section:
+        return current_section
+    
+    return "Other Elements"
+
+
+def generate_element_table_with_sections(title, elements, schema_info: SchemaInfo):
+    """Generate element table with section headers grouping elements by clinical purpose."""
+    output = f"## {title}\n\n"
+    
+    if not elements:
+        output += "No elements found.\n\n"
+        return output
+    
+    # Group elements by section
+    current_section = None
+    section_elements = []
+    all_sections = []
+    
+    for element in elements:
+        # element format: [name, parent, cardinality, description, examples, data_type]
+        if len(element) < 2:
+            continue
+            
+        element_name = element[0] if element[0] else ""
+        parent_name = element[1] if element[1] else ""
+        
+        # Determine which section this element belongs to
+        section_title = get_top_level_section(element_name, parent_name, current_section)
+        
+        # If we're starting a new section, save the previous one
+        if section_title != current_section:
+            if current_section and section_elements:
+                all_sections.append((current_section, section_elements))
+            current_section = section_title
+            section_elements = []
+        
+        section_elements.append(element)
+    
+    # Add the last section
+    if current_section and section_elements:
+        all_sections.append((current_section, section_elements))
+    
+    # Generate output with section headers
+    headers = ["Name", "Parent", "Cardinality", "Description", "Examples", "Data Type"]
+    
+    for section_title, section_elements_list in all_sections:
+        # Add section header
+        output += f"### {section_title}\n\n"
+        # Add table for this section
+        output += to_md_table(headers, section_elements_list)
+        output += "\n\n"
     
     return output
 

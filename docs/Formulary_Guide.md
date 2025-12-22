@@ -208,6 +208,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 ## All Elements of Formulary XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | coverage_plans |  | 1..1 | The CoveragePlan resource represents a health plan health plan and contains links to administrative information, a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models | – | – |

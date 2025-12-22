@@ -923,16 +923,36 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 
 ## All Elements of Clinical XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | clinicals |  | 1..1 | – | – | – |
 | schema_version | clinicals | 1..1 | This element defines what version of the clinical schema you will be validating against (e.g. 1.0) | – | xs:decimal |
 | sender_id | clinicals | 1..1 | This element is used to the unique identifier assigned to your organization | – | core:string |
 | date_time_reported | clinicals | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
+
+
+### Clinical Data
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | clinical | clinicals | 1..unbounded | – | – | – |
+
+
+### Patient Information
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | patient | clinical | 1..1 | – | – | – |
 | – | patient | – | One of: reference | – | choice |
 | reference | patient | 1..1 | – | – | reference |
+
+
+### Laboratory Result Observations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | lab_observations | clinical | 0..1 | – | – | – |
 | lab_observation | lab_observations | 1..unbounded | – | – | – |
 | unique_identifier | lab_observation | 1..1 | – | – | core:string |
@@ -954,6 +974,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | age | reference_range | 0..1 | – | – | range |
 | text | reference_range | 0..1 | – | – | core:string |
 | record_type | lab_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Allergy Intolerance
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | allergy_intolerances | clinical | 0..1 | – | – | – |
 | allergy_intolerance | allergy_intolerances | 1..unbounded | – | – | – |
 | unique_identifier | allergy_intolerance | 1..1 | – | – | core:string |
@@ -971,6 +997,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | criticality | allergy_intolerance | 0..1 | Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance. | – | – |
 | recorded_date | allergy_intolerance | 0..1 | The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date. | – | dateTime |
 | record_type | allergy_intolerance | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Conditions
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | conditions | clinical | 0..1 | – | – | – |
 | condition | conditions | 1..unbounded | – | – | – |
 | unique_identifier | condition | 1..1 | – | – | core:string |
@@ -985,6 +1017,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | recorded_date | condition | 0..1 | Date of when condition was first recorded,The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date. | – | dateTime |
 | abatement | condition | 0..1 | The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate. | – | abatement |
 | record_type | condition | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Procedures
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | procedures | clinical | 0..1 | – | – | – |
 | procedure | procedures | 1..unbounded | – | – | – |
 | unique_identifier | procedure | 1..1 | – | – | core:string |
@@ -1003,6 +1041,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | performed_date_time | performed | 0..1 | – | – | dateTime |
 | performed_period | performed | 0..1 | – | – | period |
 | record_type | procedure | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Medication Requests
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | medication_requests | clinical | 0..1 | – | – | – |
 | medication_request | medication_requests | 1..unbounded | – | – | – |
 | unique_identifier | medication_request | 1..1 | – | – | core:string |
@@ -1028,12 +1072,30 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | authored_on | medication_request | 1..1 | – | – | dateTime |
 | requester | medication_request | 0..1 | – | – | – |
 | – | requester | – | One of: patient, practitioner, organization | – | choice |
+
+
+### Patient Information
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | patient | requester | 1..1 | – | – | member_person |
 | practitioner | requester | 1..1 | – | – | practitioner |
 | organization | requester | 1..1 | – | – | organization |
+
+
+### Medication Requests
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | dosage_instruction | medication_request | 0..unbounded | – | – | – |
 | text | dosage_instruction | 0..1 | – | – | core:string |
 | record_type | medication_request | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Care Teams
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | care_teams | clinical | 0..1 | – | – | – |
 | care_team | care_teams | 1..unbounded | – | – | – |
 | unique_identifier | care_team | 1..1 | – | – | core:string |
@@ -1047,6 +1109,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | member_person | member | 1..1 | – | – | xs:string |
 | reference | member | 1..1 | – | – | reference |
 | record_type | care_team | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Vital Signs
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | observation_vital_signs | clinical | 0..1 | – | – | – |
 | observation_vital_sign | observation_vital_signs | 1..unbounded | – | – | – |
 | unique_identifier | observation_vital_sign | 1..1 | – | – | core:string |
@@ -1091,26 +1159,56 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 0..1 | – | – | core:string |
 | system | coding | 0..1 | – | – | core:string |
 | record_type | observation_vital_sign | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Practitioners
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | practitioners | clinical | 0..1 | – | – | – |
 | practitioner | practitioners | 1..unbounded | – | – | – |
 | unique_identifier | practitioner | 1..1 | – | – | core:string |
 | practitioner_details | practitioner | 1..1 | – | – | practitioner |
 | record_type | practitioner | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Organizations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | organizations | clinical | 0..1 | – | – | – |
 | organization | organizations | 1..unbounded | – | – | – |
 | unique_identifier | organization | 1..1 | – | – | core:string |
 | organization_details | organization | 1..1 | – | – | organization |
 | record_type | organization | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Locations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | locations | clinical | 0..1 | – | – | – |
 | location | locations | 1..unbounded | – | – | – |
 | unique_identifier | location | 1..1 | – | – | core:string |
 | location_details | location | 1..1 | – | – | location |
 | record_type | location | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Encounters
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | encounters | clinical | 0..1 | – | – | – |
 | encounter | encounters | 1..unbounded | – | – | – |
 | unique_identifier | encounter | 1..1 | – | – | core:string |
 | encounter_details | encounter | 1..1 | – | – | encounter |
 | record_type | encounter | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Care Plans
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | care_plans | clinical | 0..1 | – | – | – |
 | care_plan | care_plans | 1..unbounded | – | – | – |
 | unique_identifier | care_plan | 1..1 | – | – | core:string |
@@ -1125,6 +1223,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | – |
 | system | coding | 1..1 | – | – | – |
 | record_type | care_plan | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Goals
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | goals | clinical | 0..1 | – | – | – |
 | goal | goals | 1..unbounded | – | – | – |
 | unique_identifier | goal | 1..1 | – | – | core:string |
@@ -1135,6 +1239,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | target | goal | 0..unbounded | – | – | – |
 | due_date | target | 0..1 | – | – | date |
 | record_type | goal | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Immunizations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | immunizations | clinical | 0..1 | – | – | – |
 | immunization | immunizations | 1..unbounded | – | – | – |
 | unique_identifier | immunization | 1..1 | – | – | core:string |
@@ -1151,6 +1261,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | occurrence_string | occurrence | 1..1 | – | – | core:string |
 | primary_source | immunization | 1..1 | – | – | xs:boolean |
 | record_type | immunization | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Pediatric BMI for Age Observations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | pediatric_bmi_for_age_observations | clinical | 0..1 | – | – | – |
 | pediatric_bmi_for_age_observation | pediatric_bmi_for_age_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_bmi_for_age_observation | 1..1 | – | – | core:string |
@@ -1186,6 +1302,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_bmi_for_age_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Pediatric Head Occipital Frontal Circumference Observations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | pediatric_head_occipital_frontal_circumference_observations | clinical | 0..1 | – | – | – |
 | pediatric_head_occipital_frontal_circumference_observation | pediatric_head_occipital_frontal_circumference_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_head_occipital_frontal_circumference_observation | 1..1 | – | – | core:string |
@@ -1221,6 +1343,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_head_occipital_frontal_circumference_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Pediatric Weight for Height Observations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | pediatric_weight_for_height_observations | clinical | 0..1 | – | – | – |
 | pediatric_weight_for_height_observation | pediatric_weight_for_height_observations | 1..unbounded | – | – | – |
 | unique_identifier | pediatric_weight_for_height_observation | 1..1 | – | – | core:string |
@@ -1256,8 +1384,20 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_weight_for_height_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Clinical Data
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | practitioners_roles | clinical | 0..1 | – | – | – |
 | practitioner_role | practitioners_roles | 1..unbounded | – | – | – |
+
+
+### Practitioner Roles
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | unique_identifier | practitioner_role | 1..1 | – | – | core:string |
 | practitioner | practitioner_role | 1..1 | – | – | practitioner |
 | organization | practitioner_role | 1..1 | – | – | organization |
@@ -1271,6 +1411,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | practitioner_role | 0..unbounded | – | – | telecom |
 | endpoints | practitioner_role | 0..unbounded | – | – | endpoint |
 | record_type | practitioner_role | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Smoking Status Observations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | smoking_status_observations | clinical | 0..1 | – | – | – |
 | smoking_status_observation | smoking_status_observations | 1..unbounded | – | – | – |
 | unique_identifier | smoking_status_observation | 1..1 | – | – | core:string |
@@ -1283,6 +1429,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | value_codeable_concept | 1..1 | – | – | – |
 | system | value_codeable_concept | 0..1 | – | – | – |
 | record_type | smoking_status_observation | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Provenances
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | provenances | clinical | 0..1 | – | – | – |
 | provenance | provenances | 1..unbounded | – | – | – |
 | unique_identifier | provenance | 1..1 | – | – | core:string |
@@ -1297,6 +1449,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | type | 0..1 | – | – | – |
 | who | agent_provenance_general | 1..1 | – | – | – |
 | – | who | – | One of: patient, practitioner, organization | – | choice |
+
+
+### Patient Information
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | patient | who | 1..1 | – | – | member_person |
 | practitioner | who | 1..1 | – | – | practitioner |
 | organization | who | 1..1 | – | – | organization |
@@ -1331,7 +1489,19 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | patient | on_behalf_of | 0..1 | – | – | member_person |
 | practitioner | on_behalf_of | 0..1 | – | – | practitioner |
 | organization | on_behalf_of | 0..1 | – | – | organization |
+
+
+### Provenances
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | record_type | provenance | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Clinical Data
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | pulse_oximetry_observations | clinical | 0..1 | – | – | – |
 | pulse_oximetry_observation | pulse_oximetry_observations | 1..unbounded | – | – | – |
 | unique_identifier | pulse_oximetry_observation | 1..1 | – | – | core:string |
@@ -1420,6 +1590,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | category | 0..1 | – | – | – |
 | author | document_reference | 0..unbounded | – | – | – |
 | – | author | – | One of: patient, practitioner, organization | – | choice |
+
+
+### Patient Information
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | patient | author | 0..1 | – | – | member_person |
 | practitioner | author | 0..1 | – | – | practitioner |
 | organization | author | 0..1 | – | – | organization |
@@ -1437,6 +1613,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | encounter | context | 0..1 | – | – | encounter |
 | period | context | 0..1 | – | – | period |
 | record_type | document_reference | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
+
+
+### Clinical Data
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | diagnostic_report_labs | clinical | 0..1 | – | – | – |
 | diagnostic_report_lab | diagnostic_report_labs | 1..unbounded | – | – | – |
 | unique_identifier | diagnostic_report_lab | 1..1 | – | – | core:string |

@@ -238,6 +238,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 ## All Elements of Roster XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | roster |  | 1..1 | – | – | – |

@@ -443,6 +443,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 ## All Elements of Provider-Directory XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | providers |  | 1..1 | – | – | – |
@@ -452,6 +454,12 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | provider | providers | 1..unbounded | – | – | – |
 | – | provider | – | One of: practitioner, providing_organization | – | choice |
 | practitioner | provider | 1..unbounded | Practitioner is a person who is directly or indirectly involved in the provisioning of healthcare | – | – |
+
+
+### Practitioners
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | unique_identifier | practitioner | 0..1 | – | – | string |
 | npi | practitioner | 0..1 | – | – | NPI |
 | is_active | practitioner | 0..1 | Whether this practitioner's record is in active use | – | xs:boolean |
@@ -481,7 +489,19 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | new_patients_list | practitioner | 0..1 | – | – | – |
 | new_patients | new_patients_list | 0..unbounded | – | – | new_patients |
 | networks | practitioner | 0..1 | – | – | networks |
+
+
+### Locations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | locations | practitioner | 0..1 | – | – | locations |
+
+
+### Practitioners
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | healthcare_services | practitioner | 0..1 | – | – | healthcare_services |
 | providing_organization | provider | 1..unbounded | This element is used when the Provider Type is an organizatiaon | – | – |
 | unique_identifier | providing_organization | 0..1 | – | – | string |
@@ -515,6 +535,12 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | affiliated_organization | providing_organization | 0..1 | – | – | organization |
 | part_of | providing_organization | 0..1 | – | – | organization |
 | networks | providing_organization | 0..1 | – | – | networks |
+
+
+### Locations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | locations | providing_organization | 0..1 | – | – | locations |
 | healthcare_services | providing_organization | 0..1 | – | – | healthcare_services |
 

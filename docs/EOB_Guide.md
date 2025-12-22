@@ -477,6 +477,8 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 
 ## All Elements of EOB XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | eob_list |  | 1..1 | – | – | – |
@@ -499,6 +501,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | claim | eob | 1..1 | – | – | – |
 | identifier | claim | 1..unbounded | Please include the following claim identifiers -The Payer Claim Control Number as it would be returned on the 835 2100 CLP07. This number must apply to the entire claim. Please use an identifier.type of DCN. - If available, the Claim Identifier for Transmission Intermediaries as sent to the payer on the 837 2300 Ref*D9. Please use an identifier.type of D9 | – | identifier |
 | created | claim | 0..1 | claim creation date | – | dateTime |
+
+
+### Patient Information
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | patient | eob | 1..1 | – | – | – |
 | insurer | eob | 1..1 | – | – | – |
 | provider | eob | 1..1 | – | – | – |
@@ -533,6 +541,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | practitioner | party | 1..1 | – | – | practitioner |
 | providing_organization | party | 1..1 | – | – | organization |
 | patient | party | 1..1 | – | – | member_person |
+
+
+### Care Teams
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | care_teams | eob | 0..1 | – | – | – |
 | care_team | care_teams | 0..unbounded | – | – | – |
 | sequence | care_team | 0..1 | Order of the care team | – | core:positiveInt |
@@ -564,6 +578,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | on_admission | 0..1 | – | – | core:string |
 | system | on_admission | 0..1 | – | – | – |
 | package_code | diagnosis | 0..1 | – | – | core:string |
+
+
+### Procedures
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | procedures | eob | 0..1 | – | – | – |
 | procedure | procedures | 0..unbounded | – | – | – |
 | sequence | procedure | 1..1 | – | – | core:positiveInt |
@@ -619,6 +639,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | currency | net | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
 | note_number | item | 0..unbounded | Applicable note numbers | – | core:positiveInt |
 | location | item | 0..1 | – | – | – |
+
+
+### Locations
+
+| Name | Parent | Cardinality | Description | Examples | Data Type |
+| --- | --- | --- | --- | --- | --- |
 | – | location | – | One of: location_codeable_concept, location_address, location_reference | – | choice |
 | location_codeable_concept | location | 0..1 | – | – | core:string |
 | location_address | location | 0..1 | – | – | address |

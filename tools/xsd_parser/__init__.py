@@ -29,6 +29,7 @@ from .markdown_gen import (
     generate_change_log,
     generate_practical_guidance,
     generate_element_table,
+    generate_element_table_with_sections,
     generate_data_type_definitions
 )
 from .validation import (
@@ -67,6 +68,7 @@ __all__ = [
     'generate_change_log',
     'generate_practical_guidance',
     'generate_element_table',
+    'generate_element_table_with_sections',
     'generate_data_type_definitions',
     # Validation
     'validate_xsd_file',

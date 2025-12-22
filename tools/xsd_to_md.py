@@ -34,6 +34,7 @@ from xsd_parser import (
     generate_change_log,
     generate_practical_guidance,
     generate_element_table,
+    generate_element_table_with_sections,
     to_md_table,
     verify_schema_coverage,
 )
@@ -129,9 +130,9 @@ def generate_markdown(xsd_path, release_tag=None):
             required_elements = parse_required_elements(root, schema_info)
             output += generate_element_table(f"Required Elements of {schema_info.display_name} XSD", required_elements, schema_info)
             
-            # All Elements table
+            # All Elements table (with section headers)
             all_elements = parse_all_elements(root, schema_info)
-            output += generate_element_table(f"All Elements of {schema_info.display_name} XSD", all_elements, schema_info)
+            output += generate_element_table_with_sections(f"All Elements of {schema_info.display_name} XSD", all_elements, schema_info)
             
             # Practical Guidance
             output += generate_practical_guidance(schema_info)
