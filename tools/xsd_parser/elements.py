@@ -1,9 +1,30 @@
 """Element parsing with support for choices, groups, and all."""
 from typing import List
+from lxml import etree
 from .constants import ns, logger
 from .exceptions import SchemaValidationError
 from .utils import get_documentation
 from .simple_types import extract_enumerations
+
+
+def get_tag_name(elem) -> str:
+    """Safely get the tag name from an lxml element."""
+    try:
+        # Try to get localname (part after namespace)
+        qname = etree.QName(elem)
+        return qname.localname
+    except (AttributeError, TypeError):
+        # Fallback to string conversion
+        if not hasattr(elem, 'tag'):
+            return ""
+        try:
+            tag = str(elem.tag)
+        except (TypeError, AttributeError):
+            return ""
+        # Remove namespace prefix if present
+        if "}" in tag:
+            return tag.split("}")[-1]
+        return tag
 
 
 def extract_element_type_info(elem) -> str:
@@ -33,11 +54,12 @@ def parse_choice_or_all(container_elem, parent_name: str, container_type: str) -
     try:
         children = []
         for child in container_elem:
-            if child.tag.endswith("element"):
+            tag_name = get_tag_name(child)
+            if tag_name == "element":
                 children.append(child)
-            elif child.tag.endswith("choice") or child.tag.endswith("sequence") or child.tag.endswith("all"):
+            elif tag_name in ("choice", "sequence", "all"):
                 # Nested containers
-                nested_rows = parse_choice_or_all(child, parent_name, child.tag.split("}")[-1])
+                nested_rows = parse_choice_or_all(child, parent_name, tag_name)
                 rows.extend(nested_rows)
         
         if children:
@@ -68,8 +90,8 @@ def parse_group_reference(root, group_name: str) -> List[List[str]]:
         rows = []
         # Parse the group's content (sequence, choice, or all)
         for container in group_def:
-            if container.tag.endswith("sequence") or container.tag.endswith("choice") or container.tag.endswith("all"):
-                container_type = container.tag.split("}")[-1]
+            container_type = get_tag_name(container)
+            if container_type in ("sequence", "choice", "all"):
                 rows.extend(parse_choice_or_all(container, "", container_type))
         return rows
     except Exception as e:
@@ -104,23 +126,24 @@ def parse_element_recursive(elem, depth=0, parent_name=""):
         if complex_type is not None:
             # Check for sequence, choice, all, or group
             for container in complex_type:
-                container_tag = container.tag.split("}")[-1] if "}" in container.tag else container.tag
+                container_tag = get_tag_name(container)
                 
                 if container_tag == "sequence":
                     # Parse sequence children
                     for child in container:
-                        if child.tag.endswith("element"):
+                        child_tag = get_tag_name(child)
+                        if child_tag == "element":
                             rows.extend(parse_element_recursive(child, depth + 1, name))
-                        elif child.tag.endswith("choice") or child.tag.endswith("all"):
-                            rows.extend(parse_choice_or_all(child, name, container_tag))
-                        elif child.tag.endswith("group"):
+                        elif child_tag in ("choice", "all"):
+                            rows.extend(parse_choice_or_all(child, name, child_tag))
+                        elif child_tag == "group":
                             group_ref = child.get("ref", "")
                             if group_ref:
                                 group_name = group_ref.split(":")[-1] if ":" in group_ref else group_ref
                                 # Need root to resolve group - will handle in caller
                                 logger.warning(f"Group reference '{group_ref}' found but root not available in recursive context")
                 
-                elif container_tag == "choice" or container_tag == "all":
+                elif container_tag in ("choice", "all"):
                     rows.extend(parse_choice_or_all(container, name, container_tag))
                 
                 elif container_tag == "group":
@@ -161,15 +184,16 @@ def parse_element_with_groups(elem, root, depth=0, parent_name=""):
             
             # Parse content model
             for container in complex_type:
-                container_tag = container.tag.split("}")[-1] if "}" in container.tag else container.tag
+                container_tag = get_tag_name(container)
                 
                 if container_tag == "sequence":
                     for child in container:
-                        if child.tag.endswith("element"):
+                        child_tag = get_tag_name(child)
+                        if child_tag == "element":
                             rows.extend(parse_element_with_groups(child, root, depth + 1, name))
-                        elif child.tag.endswith("choice") or child.tag.endswith("all"):
-                            rows.extend(parse_choice_or_all(child, name, container_tag))
-                        elif child.tag.endswith("group"):
+                        elif child_tag in ("choice", "all"):
+                            rows.extend(parse_choice_or_all(child, name, child_tag))
+                        elif child_tag == "group":
                             group_ref = child.get("ref", "")
                             if group_ref:
                                 group_name = group_ref.split(":")[-1] if ":" in group_ref else group_ref
@@ -180,7 +204,7 @@ def parse_element_with_groups(elem, root, depth=0, parent_name=""):
                                         row[1] = name
                                 rows.extend(group_rows)
                 
-                elif container_tag == "choice" or container_tag == "all":
+                elif container_tag in ("choice", "all"):
                     rows.extend(parse_choice_or_all(container, name, container_tag))
                 
                 elif container_tag == "group":
