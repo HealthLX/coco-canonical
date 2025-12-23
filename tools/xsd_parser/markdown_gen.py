@@ -5,11 +5,24 @@ from .schema_info import SchemaInfo
 
 
 def escape_markdown_table_cell(text):
-    """Escape special characters in markdown table cells."""
+    """Escape special characters in markdown table cells.
+    
+    In markdown tables, only pipe characters (|) need escaping to prevent
+    breaking table structure. Other regex special characters ([, ], (, ), etc.)
+    render correctly without escaping. Newlines are replaced with spaces to
+    keep table rows on single lines.
+    
+    Args:
+        text: String to escape for markdown table cell
+        
+    Returns:
+        Escaped string safe for use in markdown table cells
+    """
     if not isinstance(text, str):
         text = str(text)
-    # Replace pipe characters and newlines
-    text = text.replace("|", "\\|")
+    # Only escape unescaped pipes to avoid double-escaping
+    text = re.sub(r'(?<!\\)\|', r'\\|', text)
+    # Replace newlines with spaces
     text = text.replace("\n", " ")
     return text
 
