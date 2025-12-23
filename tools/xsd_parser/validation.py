@@ -48,12 +48,48 @@ def verify_schema_coverage(root, schema_info, simple_types, complex_types, all_e
         # Check root element exists
         root_elem = root.find(f"./xs:element[@name='{schema_info.root_element}']", ns)
         if root_elem is None:
-            warnings.append(f"Root element '{schema_info.root_element}' not found in schema")
+            # Check if this is a Core-Model file (library schema without root elements)
+            is_core_model = (
+                "core" in schema_info.display_name.lower() and "model" in schema_info.display_name.lower()
+            ) or "core-model" in schema_info.file_path.lower()
+            
+            if is_core_model:
+                logger.info(f"Core-Model file detected: {schema_info.display_name}. This is a library schema without root elements (expected).")
+            else:
+                warnings.append(f"Root element '{schema_info.root_element}' not found in schema")
         
-        # Check for groups
+        # Check for groups and verify their elements are documented
         groups = root.findall("./xs:group", ns)
         if groups:
             logger.info(f"Found {len(groups)} group definition(s) in schema")
+            # Extract all element names from groups
+            from .elements import parse_group_reference
+            group_element_names = set()
+            for group in groups:
+                group_name = group.get("name")
+                if group_name:
+                    # Parse group to get its elements
+                    group_elements = parse_group_reference(root, group_name)
+                    for elem_row in group_elements:
+                        if len(elem_row) > 0 and elem_row[0] and elem_row[0] != "–":
+                            group_element_names.add(elem_row[0])
+            
+            # Check if group elements are documented (either in all_elements or as complex type fields)
+            if group_element_names:
+                # Get all documented element names from root elements
+                documented_element_names = {elem[0] for elem in all_elements if len(elem) > 0 and elem[0] and elem[0] != "–"}
+                # Also check complex type field names
+                documented_complex_field_names = set()
+                for ct_name, ct_elements in complex_types.items():
+                    for field_row in ct_elements:
+                        if len(field_row) > 0 and field_row[0] and field_row[0] != "–":
+                            documented_complex_field_names.add(field_row[0])
+                
+                # Combine all documented names
+                all_documented_names = documented_element_names.union(documented_complex_field_names)
+                missing_group_elements = group_element_names - all_documented_names
+                if missing_group_elements:
+                    warnings.append(f"Undocumented group elements: {', '.join(sorted(missing_group_elements))}")
         
     except Exception as e:
         logger.warning(f"Error during coverage verification: {e}")

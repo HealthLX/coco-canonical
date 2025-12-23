@@ -22,7 +22,12 @@ def extract_enumerations(restriction_elem) -> str:
 
 
 def extract_facets(restriction_elem) -> str:
-    """Extract all facets (minLength, maxLength, minInclusive, maxInclusive, etc.) from a restriction."""
+    """Extract all facets (minLength, maxLength, minInclusive, maxInclusive, etc.) from a restriction.
+    
+    NOTE: This function is not currently used but is kept for future use.
+    It can be used to display constraint information (length limits, value ranges, etc.)
+    in the Simple Types table documentation.
+    """
     if restriction_elem is None:
         return "–"
     
