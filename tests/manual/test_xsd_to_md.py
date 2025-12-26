@@ -2,10 +2,10 @@
 
 Usage:
     # Test a specific XSD against its markdown documentation:
-    pytest tests/unit/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md
+    pytest tests/manual/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md
     
     # Test with verbose output:
-    pytest tests/unit/test_xsd_to_md.py --xsd-path schemas/v10.0/EOB.xsd --md-path docs/EOB_Guide.md -v
+    pytest tests/manual/test_xsd_to_md.py --xsd-path schemas/v10.0/EOB.xsd --md-path docs/EOB_Guide.md -v
     
     # Both --xsd-path and --md-path are required (paths are relative to project root)
 """
@@ -44,7 +44,7 @@ def pytest_generate_tests(metafunc):
         
         # Both paths must be provided
         if not xsd_path or not md_path:
-            pytest.skip("Both --xsd-path and --md-path must be provided. Example: pytest tests/unit/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md")
+            pytest.skip("Both --xsd-path and --md-path must be provided. Example: pytest tests/manual/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md")
         
         # Extract name from XSD path
         name = Path(xsd_path).stem
@@ -57,7 +57,7 @@ def test_xsd_generates_correct_markdown(project_root, test_name, xsd_path, md_pa
     Both --xsd-path and --md-path must be provided via command line.
     
     Example:
-        pytest tests/unit/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md
+        pytest tests/manual/test_xsd_to_md.py --xsd-path schemas/v10.0/Clinical.xsd --md-path docs/Clinical_Guide.md
     """
     xsd_full_path = project_root / xsd_path
     md_full_path = project_root / md_path
@@ -103,3 +103,4 @@ def test_xsd_generates_correct_markdown(project_root, test_name, xsd_path, md_pa
         # Check that patterns with pipes are properly escaped
         assert "\\|" in generated_simple or "|" not in generated_simple, \
             f"{test_name}: Unescaped pipes found in Simple Types patterns"
+
