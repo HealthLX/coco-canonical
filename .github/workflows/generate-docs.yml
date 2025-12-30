@@ -1,0 +1,117 @@
+name: Generate and Publish Documentation
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      schema_name:
+        description: 'Schema name to process (leave empty for all schemas)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - 'Clinical'
+          - 'Core-Model'
+          - 'EOB'
+          - 'Formulary'
+          - 'Provider-Directory'
+          - 'Roster'
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || 'manual' }}
+      SCHEMA_NAME: ${{ inputs.schema_name }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate Markdown from XSD
+      run: |
+        mkdir -p docs
+        if [ -z "$SCHEMA_NAME" ]; then
+          # Process all schemas
+          echo "Processing all schemas in schemas/v10.0/"
+          python tools/build_xsd_docs.py v10.0 --release-tag $RELEASE_TAG
+        else
+          # Process specific schema
+          echo "Processing schema: $SCHEMA_NAME"
+          python tools/xsd_to_md.py \
+            schemas/v10.0/${SCHEMA_NAME}.xsd \
+            docs/${SCHEMA_NAME}_Guide.md \
+            $RELEASE_TAG
+        fi
+
+    - name: Commit and push docs to gh-pages branch
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Save generated docs to temporary location before branch checkout
+        mkdir -p /tmp/generated-docs
+        cp -r docs/*.md /tmp/generated-docs/ 2>/dev/null || true
+        
+        # Checkout or create gh-pages branch
+        if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+          echo "gh-pages branch exists, checking out..."
+          git fetch origin gh-pages
+          git checkout gh-pages
+          git reset --hard origin/gh-pages
+        else
+          echo "gh-pages branch does not exist, creating..."
+          git checkout --orphan gh-pages
+          git rm -rf . || true
+        fi
+        
+        # Restore generated docs to the branch
+        mkdir -p docs
+        cp /tmp/generated-docs/*.md docs/ 2>/dev/null || true
+        
+        # Add generated docs
+        git add docs/*.md
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          COMMIT_MSG="Update documentation from $RELEASE_TAG"
+          if [ "$SCHEMA_NAME" != "" ]; then
+            COMMIT_MSG="Update $SCHEMA_NAME documentation from $RELEASE_TAG"
+          fi
+          git commit -m "$COMMIT_MSG"
+          
+          # Push to gh-pages branch only (never main)
+          echo "Pushing to gh-pages branch..."
+          git push origin HEAD:gh-pages || {
+            echo "Error: Failed to push changes to gh-pages branch"
+            exit 1
+          }
+          echo "Successfully pushed to gh-pages branch"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Markdown to release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: docs/*.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
