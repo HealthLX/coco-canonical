@@ -46,7 +46,7 @@ jobs:
 
     - name: Generate Markdown from XSD
       run: |
-        mkdir -p docs docs/release_docs
+        mkdir -p docs
         if [ -z "$SCHEMA_NAME" ]; then
           # Process all schemas
           echo "Processing all schemas in schemas/v10.0/"
@@ -59,8 +59,6 @@ jobs:
             docs/${SCHEMA_NAME}_Guide.md \
             $RELEASE_TAG
         fi
-        # Copy generated docs to release_docs folder
-        cp docs/*_Guide.md docs/release_docs/ 2>/dev/null || true
 
     - name: Commit and push docs to repo
       run: |
@@ -80,18 +78,18 @@ jobs:
           git reset --hard origin/$BRANCH
         fi
         
-        # ONLY add release_docs files - nothing else
-        git add docs/release_docs/*.md
+        # ONLY add docs files - nothing else
+        git add docs/*_Guide.md
         
-        # Verify we're only committing docs/release_docs files
+        # Verify we're only committing docs files
         STAGED_FILES=$(git diff --staged --name-only)
         if [ -z "$STAGED_FILES" ]; then
           echo "No changes to commit"
         else
-          # Double-check: ensure all staged files are in docs/release_docs
+          # Double-check: ensure all staged files are in docs folder and are Guide files
           for file in $STAGED_FILES; do
-            if [[ ! "$file" =~ ^docs/release_docs/.*\.md$ ]]; then
-              echo "ERROR: Attempted to commit file outside docs/release_docs: $file"
+            if [[ ! "$file" =~ ^docs/.*_Guide\.md$ ]]; then
+              echo "ERROR: Attempted to commit file outside docs/ or not a Guide file: $file"
               git reset
               exit 1
             fi
