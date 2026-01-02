@@ -6,7 +6,7 @@
 
 **Version 10.0**
 
-**December 26, 2025**
+**January 2, 2026**
 
 **Table of Contents**
 
@@ -44,7 +44,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 10.0 | December 26, 2025 |
+| 10.0 | January 2, 2026 |
 
 ## Simple Types
 
