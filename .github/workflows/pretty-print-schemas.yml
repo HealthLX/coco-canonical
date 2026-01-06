@@ -1,0 +1,77 @@
+name: Pretty Print Schema Files
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  format-schemas:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+        ref: ${{ github.event.pull_request.head.ref || github.ref }}
+
+    - name: Install xmllint
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libxml2-utils
+
+    - name: Format XSD schema files
+      run: |
+        SCHEMA_DIR="schemas/v10.0"
+        
+        # Format each XSD file in schemas/v10.0/
+        for xsd_file in "$SCHEMA_DIR"/*.xsd; do
+          if [ -f "$xsd_file" ]; then
+            echo "Formatting $xsd_file"
+            # Use xmllint to format the file
+            # xmllint --format uses 2-space indentation by default
+            xmllint --format "$xsd_file" > "${xsd_file}.tmp" && mv "${xsd_file}.tmp" "$xsd_file"
+          fi
+        done
+
+    - name: Commit and push formatted files
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Determine the branch
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          BRANCH="${{ github.head_ref }}"
+        else
+          BRANCH="${{ github.ref_name }}"
+        fi
+        
+        # Only add XSD files from schemas/v10.0/
+        git add schemas/v10.0/*.xsd
+        
+        # Check if there are any changes
+        if git diff --staged --quiet; then
+          echo "No formatting changes detected"
+        else
+          # Verify we're only committing schema files
+          STAGED_FILES=$(git diff --staged --name-only)
+          for file in $STAGED_FILES; do
+            if [[ ! "$file" =~ ^schemas/v10\.0/.*\.xsd$ ]]; then
+              echo "ERROR: Attempted to commit file outside schemas/v10.0/ or not an XSD file: $file"
+              git reset
+              exit 1
+            fi
+          done
+          
+          git commit -m "Format schema files (auto-generated)"
+          git push origin HEAD:$BRANCH
+          echo "Successfully pushed formatted schema files to $BRANCH branch"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
