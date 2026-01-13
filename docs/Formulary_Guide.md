@@ -6,7 +6,7 @@
 
 **Version 10.0**
 
-**December 16, 2025**
+**January 2, 2026**
 
 **Table of Contents**
 
@@ -44,17 +44,17 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 10.0 | December 16, 2025 |
+| 10.0 | January 2, 2026 |
 
 ## Simple Types
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
 | string | xs:string | – | [ \r\n\t\S]+ |
-| decimal | xs:decimal | – | -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)? |
-| boolean | xs:boolean | – | true|false |
-| date | xs:date | – | ([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])) |
-| dateTime | xs:string | – | ([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))? |
+| decimal | xs:decimal | – | -?(0\|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)? |
+| boolean | xs:boolean | – | true\|false |
+| date | xs:date | – | ([12]\d{3}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])) |
+| dateTime | xs:string | – | ([12]\d{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])(T([01][0-9]\|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z\|(\+\|-)((0[0-9]\|1[0-3]):(00\|15\|30\|45)\|14:00))?))? |
 | currency | string | – |  |
 
 
@@ -183,9 +183,9 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | coverage_plans |  | 1..1 | The CoveragePlan resource represents a health plan health plan and contains links to administrative information, a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models | – | – |
-| schema_version | coverage_plans | 1..1 | This element defines what version of the roster schema you will be validating against (e.g. 1.0) | – | – |
+| schema_version | coverage_plans | 1..1 | This element defines what version of the roster schema you will be validating against (e.g. 1.0) | – | xs:decimal |
 | sender_id | coverage_plans | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
-| date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | – |
+| date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | coverage_plan | coverage_plans | 1..unbounded | – | – | – |
 | plan_id | coverage_plan | 1..1 | – | – | string |
 | plan_id_type | coverage_plan | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
@@ -203,204 +203,19 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
 | coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | drug_tiers | 1..1 | – | – | – |
-| mail_order | drug_tiers | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tiers | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tiers | 1..1 | – | – | – |
-| copay_option | drug_tiers | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tiers | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tiers | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tiers | 1..1 | – | – | formulary_drugs |
-| drug_tier | coverage_plan | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | coverage_plan | 1..1 | – | – | – |
-| mail_order | coverage_plan | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | coverage_plan | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | coverage_plan | 1..1 | – | – | – |
-| copay_option | coverage_plan | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | coverage_plan | 1..1 | – | – | decimal |
-| coinsurance_option | coverage_plan | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | coverage_plan | 1..1 | – | – | formulary_drugs |
-| plan_id | coverage_plans | 1..1 | – | – | string |
-| plan_id_type | coverage_plans | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
-| title | coverage_plans | 1..1 | – | – | string |
-| summary_url | coverage_plans | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
-| network | coverage_plans | 1..unbounded | – | – | string |
-| status | coverage_plans | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | – |
-| mode | coverage_plans | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | – |
-| drug_tiers | coverage_plans | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
-| drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | drug_tiers | 1..1 | – | – | – |
-| mail_order | drug_tiers | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tiers | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tiers | 1..1 | – | – | – |
-| copay_option | drug_tiers | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tiers | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tiers | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tiers | 1..1 | – | – | formulary_drugs |
-| drug_tier | coverage_plans | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | coverage_plans | 1..1 | – | – | – |
-| mail_order | coverage_plans | 1..1 | – | – | boolean |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | coverage_plans | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | coverage_plans | 1..1 | – | – | – |
-| copay_option | coverage_plans | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | coverage_plans | 1..1 | – | – | decimal |
-| coinsurance_option | coverage_plans | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | coverage_plans | 1..1 | – | – | formulary_drugs |
 
 
 ## All Elements of Formulary XSD
 
+### Root Elements
+
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | coverage_plans |  | 1..1 | The CoveragePlan resource represents a health plan health plan and contains links to administrative information, a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models | – | – |
-| schema_version | coverage_plans | 1..1 | This element defines what version of the roster schema you will be validating against (e.g. 1.0) | – | – |
+| schema_version | coverage_plans | 1..1 | This element defines what version of the roster schema you will be validating against (e.g. 1.0) | – | xs:decimal |
 | sender_id | coverage_plans | 1..1 | This element is used to the unique identifier assigned to your organization | – | string |
-| date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | – |
+| date_time_reported | coverage_plans | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
 | coverage_plan | coverage_plans | 1..unbounded | – | – | – |
 | plan_id | coverage_plan | 1..1 | – | – | string |
 | plan_id_type | coverage_plan | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
@@ -408,7 +223,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | marketing_url | coverage_plan | 0..1 | The URL that goes directly to the plan brochure for the specific standard plan or plan variation | – | string |
 | summary_url | coverage_plan | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
 | formulary_url | coverage_plan | 0..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
-| email_plan_contact | coverage_plan | 0..1 | – | – | – |
+| email_plan_contact | coverage_plan | 0..1 | – | – | string |
 | network | coverage_plan | 1..unbounded | – | – | string |
 | status | coverage_plan | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | – |
 | mode | coverage_plan | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | – |
@@ -418,8 +233,6 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | drug_tier_id | drug_tier | 1..1 | – | – | – |
 | code | drug_tier_id | 0..1 | – | – | – |
 | text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tier | 0..1 | – | – | – |
-| text | drug_tier | 0..1 | – | – | string |
 | mail_order | drug_tier | 1..1 | – | – | boolean |
 | cost_sharings | drug_tier | 0..1 | – | – | – |
 | cost_sharing | cost_sharings | 0..unbounded | – | – | – |
@@ -427,377 +240,10 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | copay_amount | cost_sharing | 1..1 | – | – | – |
 | value | copay_amount | 0..1 | – | – | decimal |
 | currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
 | copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
 | coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tier | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tier | 0..1 | – | – | decimal |
-| currency | drug_tier | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | drug_tiers | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tiers | 0..1 | – | – | – |
-| text | drug_tiers | 0..1 | – | – | string |
-| mail_order | drug_tiers | 1..1 | – | – | boolean |
-| cost_sharings | drug_tiers | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tiers | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tiers | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tiers | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tiers | 0..1 | – | – | decimal |
-| currency | drug_tiers | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tiers | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tiers | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tiers | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tiers | 1..1 | – | – | formulary_drugs |
-| drug_tier | coverage_plan | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tier | 0..1 | – | – | – |
-| text | drug_tier | 0..1 | – | – | string |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| cost_sharings | drug_tier | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tier | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tier | 0..1 | – | – | decimal |
-| currency | drug_tier | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | coverage_plan | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | coverage_plan | 0..1 | – | – | – |
-| text | coverage_plan | 0..1 | – | – | string |
-| mail_order | coverage_plan | 1..1 | – | – | boolean |
-| cost_sharings | coverage_plan | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | coverage_plan | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | coverage_plan | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | coverage_plan | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | coverage_plan | 0..1 | – | – | decimal |
-| currency | coverage_plan | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | coverage_plan | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | coverage_plan | 1..1 | – | – | decimal |
-| coinsurance_option | coverage_plan | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | coverage_plan | 1..1 | – | – | formulary_drugs |
-| plan_id | coverage_plans | 1..1 | – | – | string |
-| plan_id_type | coverage_plans | 1..1 | Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID. Other recommended values: commercial, QHP, Medicare Advantage, Medicaid, Dental Plan, vision, Indian Health Service etc | – | string |
-| title | coverage_plans | 1..1 | – | – | string |
-| marketing_url | coverage_plans | 0..1 | The URL that goes directly to the plan brochure for the specific standard plan or plan variation | – | string |
-| summary_url | coverage_plans | 1..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
-| formulary_url | coverage_plans | 0..1 | The URL that goes directly to the formulary brochure for the specific standard plan or plan variation. | – | string |
-| email_plan_contact | coverage_plans | 0..1 | – | – | – |
-| network | coverage_plans | 1..unbounded | – | – | string |
-| status | coverage_plans | 1..1 | The CoveragePlan Status (current, retired, entered-in-error). More details can be found here: http://hl7.org/fhir/R4/valueset-list-status.html | – | – |
-| mode | coverage_plans | 1..1 | The CoveragePlan Mode (working, snapshot, changes). More details can be found here: http://hl7.org/fhir/R4/valueset-list-mode.html | – | – |
-| date | coverage_plans | 0..1 | – | – | dateTime |
-| drug_tiers | coverage_plans | 1..1 | A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element. | – | – |
-| drug_tier | drug_tiers | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tier | 0..1 | – | – | – |
-| text | drug_tier | 0..1 | – | – | string |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| cost_sharings | drug_tier | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tier | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tier | 0..1 | – | – | decimal |
-| currency | drug_tier | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | drug_tiers | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tiers | 0..1 | – | – | – |
-| text | drug_tiers | 0..1 | – | – | string |
-| mail_order | drug_tiers | 1..1 | – | – | boolean |
-| cost_sharings | drug_tiers | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tiers | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tiers | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tiers | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tiers | 0..1 | – | – | decimal |
-| currency | drug_tiers | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tiers | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tiers | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tiers | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tiers | 1..1 | – | – | formulary_drugs |
-| drug_tier | coverage_plans | 1..unbounded | The drug tier of a particular medication in a health plan. Base set are examples. Each plan may have its own controlled vocabulary. | – | – |
-| drug_tier_id | drug_tier | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | drug_tier | 0..1 | – | – | – |
-| text | drug_tier | 0..1 | – | – | string |
-| mail_order | drug_tier | 1..1 | – | – | boolean |
-| cost_sharings | drug_tier | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | drug_tier | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | drug_tier | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | drug_tier | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | drug_tier | 0..1 | – | – | decimal |
-| currency | drug_tier | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | drug_tier | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | drug_tier | 1..1 | – | – | decimal |
-| coinsurance_option | drug_tier | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
-| drug_tier_id | coverage_plans | 1..1 | – | – | – |
-| code | drug_tier_id | 0..1 | – | – | – |
-| text | drug_tier_id | 0..1 | – | – | string |
-| code | coverage_plans | 0..1 | – | – | – |
-| text | coverage_plans | 0..1 | – | – | string |
-| mail_order | coverage_plans | 1..1 | – | – | boolean |
-| cost_sharings | coverage_plans | 0..1 | – | – | – |
-| cost_sharing | cost_sharings | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | cost_sharings | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharings | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharings | 0..1 | – | – | decimal |
-| currency | cost_sharings | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharings | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharings | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharings | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| cost_sharing | coverage_plans | 0..unbounded | – | – | – |
-| pharmacy_type | cost_sharing | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | cost_sharing | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | cost_sharing | 0..1 | – | – | decimal |
-| currency | cost_sharing | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | cost_sharing | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
-| coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| pharmacy_type | coverage_plans | 1..1 | Types of Pharmacies. Each payer will have its own controlled vocabulary. More inoformation can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-PharmacyTypeVS.html | – | – |
-| copay_amount | coverage_plans | 1..1 | – | – | – |
-| value | copay_amount | 0..1 | – | – | decimal |
-| currency | copay_amount | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| value | coverage_plans | 0..1 | – | – | decimal |
-| currency | coverage_plans | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
-| copay_option | coverage_plans | 1..1 | Copay options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CopayOptionVS.html | – | – |
-| coinsurance_rate | coverage_plans | 1..1 | – | – | decimal |
-| coinsurance_option | coverage_plans | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
-| formulary_drugs | coverage_plans | 1..1 | – | – | formulary_drugs |
 
 
 ## Practical Guidance

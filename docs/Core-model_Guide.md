@@ -6,7 +6,7 @@
 
 **Version 10.0**
 
-**December 16, 2025**
+**January 2, 2026**
 
 **Table of Contents**
 
@@ -44,7 +44,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 10.0 | December 16, 2025 |
+| 10.0 | January 2, 2026 |
 
 ## Simple Types
 
@@ -53,7 +53,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | string | xs:string | – | [ \r\n\t\S]+ |
 | NPI | xs:string | – | [0-9]{10} |
 | positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
-| unsignedInt | xs:unsignedInt | – | 0|([1-9][0-9]*) |
+| unsignedInt | xs:unsignedInt | – | 0\|([1-9][0-9]*) |
 
 
 ## Required Elements of Core-Model XSD
