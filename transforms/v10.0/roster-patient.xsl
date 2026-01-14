@@ -91,15 +91,7 @@
 						<xsl:attribute name="value" select="$race_code"/>
 					</code>
 					<display>
-						<xsl:attribute name="value">
-							<xsl:choose>
-								<xsl:when test="$race_code = 'UNK'">unknown</xsl:when>
-								<xsl:when test="$race_code = 'ASKU'">asked but unknown</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="coco:member/coco:us_core_race/coco:text"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:attribute>
+						<xsl:attribute name="value" select="coco:member/coco:us_core_race/coco:text"/>
 					</display>
 				</valueCoding>
 			</extension>
@@ -114,30 +106,12 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
 			<extension url="ombCategory">
 				<valueCoding>
-					<xsl:variable name="eth_code" select="coco:member/coco:us_core_ethnicity/coco:code[1]"/>
-					<system>
-						<xsl:choose>
-							<xsl:when test="$eth_code = 'UNK' or $eth_code = 'ASKU'">
-								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:attribute name="value">urn:oid:2.16.840.1.113883.6.238</xsl:attribute>
-							</xsl:otherwise>
-						</xsl:choose>
-					</system>
+					<system value="urn:oid:2.16.840.1.113883.6.238"/>
 					<code>
-						<xsl:attribute name="value" select="$eth_code"/>
+						<xsl:attribute name="value" select="coco:member/coco:us_core_ethnicity/coco:code"/>
 					</code>
 					<display>
-						<xsl:attribute name="value">
-							<xsl:choose>
-								<xsl:when test="$eth_code = 'UNK'">unknown</xsl:when>
-								<xsl:when test="$eth_code = 'ASKU'">asked but unknown</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="coco:member/coco:us_core_ethnicity/coco:text"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:attribute>
+						<xsl:attribute name="value" select="coco:member/coco:us_core_ethnicity/coco:text"/>
 					</display>
 				</valueCoding>
 			</extension>
@@ -604,8 +578,7 @@
 									</xsl:attribute>
 								</code>
 								<display>
-									<xsl:attribute name="value">
-										<xsl:value-of select="./coco:language_code"/> </xsl:attribute>
+									<xsl:attribute name="value" select="./coco:display"/>
 								</display>
 							</coding>
 						</xsl:when>

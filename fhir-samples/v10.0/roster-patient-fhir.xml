@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:coco="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <text>
-    <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Patient Resource generated from COCO Roster for: 
-						Burns, 
-						Maria</p>
-    </div>
-  </text>
-  <id value="-television"/>
+  <id value="-brother"/>
   <meta>
-    <lastUpdated value="2026-01-14T14:13:52.9284841-06:00"/>
+    <lastUpdated value="2026-01-14T15:04:25.9661707-06:00"/>
   </meta>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
     <extension url="ombCategory">
@@ -21,72 +13,72 @@
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="drop"/>
+      <valueString value="American Indian or Alaska Native"/>
     </extension>
   </extension>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value="2186-5"/>
-        <display value="Not Hispanic or Latino"/>
+        <code value="2135-2"/>
+        <display value="Hispanic or Latino"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="partner"/>
+      <valueString value="Hispanic or Latino"/>
     </extension>
   </extension>
   <identifier>
     <system value="http://terminology.cocodata.org/identifiers/member-id"/>
-    <value value="television"/>
+    <value value="brother"/>
   </identifier>
   <active value="true"/>
   <name>
-    <use value="anonymous"/>
-    <text value="laugh"/>
-    <family value="Burns"/>
-    <given value="Maria"/>
+    <use value="nickname"/>
+    <text value="American Indian or Alaska Native"/>
+    <family value="Swanson"/>
+    <given value="Danielle"/>
     <prefix value="Mr."/>
-    <suffix value="Jr."/>
+    <suffix value="MD"/>
     <period>
-      <start value="2020-09-12T18:59:22Z"/>
-      <end value="2023-09-03T21:08:48Z"/>
+      <start value="2020-10-01T18:38:45Z"/>
+      <end value="2024-03-15T20:49:42Z"/>
     </period>
   </name>
   <telecom>
-    <system value="url"/>
-    <value value="south"/>
+    <system value="sms"/>
+    <value value="win"/>
     <use value="mobile"/>
     <rank value="1"/>
     <period>
-      <start value="2018-12-19T16:01:57Z"/>
-      <end value="2023-06-06T06:01:41Z"/>
+      <start value="2020-08-25T08:32:45Z"/>
+      <end value="2023-07-14T03:00:06Z"/>
     </period>
   </telecom>
-  <gender value="unknown"/>
-  <birthDate value="2004-06-13"/>
-  <deceasedDateTime value="2015-08-05T22:18:41Z"/>
+  <gender value="female"/>
+  <birthDate value="2005-07-10"/>
+  <deceasedDateTime value="2017-08-05T22:54:29Z"/>
   <address>
-    <type value="postal"/>
-    <line value="34072 Jennifer Plaza Apt. 774"/>
-    <city value="New Kyleview"/>
-    <district value="century"/>
-    <state value="HI"/>
-    <postalCode value="40060"/>
-    <country value="TN"/>
+    <type value="physical"/>
+    <line value="9512 David Square Suite 296"/>
+    <city value="Cooktown"/>
+    <district value="happy"/>
+    <state value="KY"/>
+    <postalCode value="10736"/>
+    <country value="SC"/>
     <period>
-      <start value="2016-11-13T15:37:11Z"/>
-      <end value="2022-07-13T15:10:09Z"/>
+      <start value="2016-07-22T17:09:01Z"/>
+      <end value="2025-06-18T05:04:44Z"/>
     </period>
   </address>
   <communication>
     <language>
       <coding>
         <system value="urn:ietf:bcp:47"/>
-        <code value="io"/>
-        <display value="Ido"/>
+        <code value="gn"/>
+        <display value="Guarani"/>
       </coding>
     </language>
-    <preferred value="true"/>
+    <preferred value="false"/>
   </communication>
 </Patient>
