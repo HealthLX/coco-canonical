@@ -3,7 +3,8 @@
 	xmlns="http://hl7.org/fhir"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:coco="http://cocodata.org">
+	xmlns:coco="http://cocodata.org"
+	exclude-result-prefixes="coco">
 	<xsl:preserve-space elements="*"/>
 	<xsl:output method="xml" indent="no"/>
 	<xsl:template match="/coco:roster">
@@ -56,18 +57,15 @@
 	<!-- Subtemplates -->
 	<xsl:template name="resource_meta">
 		<meta>
-			<!-- not a valid FHIR element
-			<source>
-				<xsl:attribute name="value">
-					<xsl:value-of select="/member/parentfile"/>
-				</xsl:attribute>
-			</source> -->
 			<lastUpdated>
-				<xsl:attribute name="value">
-					<!--Get current date time-->
-					<xsl:value-of select="current-dateTime()"/>
-				</xsl:attribute>
+				<xsl:attribute name="value" select="current-dateTime()"/>
 			</lastUpdated>
+
+			<xsl:if test="coco:member/coco:parentfile != ''">
+				<source>
+					<xsl:attribute name="value" select="coco:member/coco:parentfile"/>
+				</source>
+			</xsl:if>
 		</meta>
 	</xsl:template>
 
@@ -91,7 +89,17 @@
 						<xsl:attribute name="value" select="$race_code"/>
 					</code>
 					<display>
-						<xsl:attribute name="value" select="coco:member/coco:us_core_race/coco:text"/>
+						<xsl:attribute name="value">
+							<xsl:choose>
+								<xsl:when test="$race_code = 'UNK'">unknown</xsl:when>
+								<xsl:when test="$race_code = 'ASKU'">asked but unknown</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="if (coco:member/coco:us_core_race/coco:text != '') 
+									                      then coco:member/coco:us_core_race/coco:text 
+									                      else 'unknown'"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:attribute>
 					</display>
 				</valueCoding>
 			</extension>
@@ -106,12 +114,23 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
 			<extension url="ombCategory">
 				<valueCoding>
+					<xsl:variable name="eth_code" select="coco:member/coco:us_core_ethnicity/coco:code"/>
 					<system value="urn:oid:2.16.840.1.113883.6.238"/>
 					<code>
-						<xsl:attribute name="value" select="coco:member/coco:us_core_ethnicity/coco:code"/>
+						<xsl:attribute name="value" select="$eth_code"/>
 					</code>
 					<display>
-						<xsl:attribute name="value" select="coco:member/coco:us_core_ethnicity/coco:text"/>
+						<xsl:attribute name="value">
+							<xsl:choose>
+								<xsl:when test="$eth_code = 'UNK'">unknown</xsl:when>
+								<xsl:when test="$eth_code = 'ASKU'">asked but unknown</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="if (coco:member/coco:us_core_ethnicity/coco:text != '') 
+									                      then coco:member/coco:us_core_ethnicity/coco:text 
+									                      else 'unknown'"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:attribute>
 					</display>
 				</valueCoding>
 			</extension>
