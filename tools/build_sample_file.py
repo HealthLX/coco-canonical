@@ -22,6 +22,7 @@ FORMULARY_SCHEMA = "formulary.xsd"
 CLINICAL_SCHEMA = "clinical.xsd"
 
 
+
 def get_pattern_from_type(xsd_type):
     for facet_name, facet in xsd_type.facets.items():
         if 'pattern' in facet_name:
@@ -29,19 +30,67 @@ def get_pattern_from_type(xsd_type):
     return None
 
 
-def random_datetime():
-    start = datetime(2000, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
-    end = datetime(2030, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
+def random_datetime(days_offset=0):
+    # Base range: 2010 to 2020
+    start = datetime(2010, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+    end = datetime(2020, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
     delta = end - start
     random_seconds = random.randint(0, int(delta.total_seconds()))
-    # ensure UTC Z
-    return (start + timedelta(seconds=random_seconds)).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    # Apply offset: negative for older (start), positive for newer (end)
+    dt = (start + timedelta(seconds=random_seconds) + timedelta(days=days_offset))
+    return dt.replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
-
-def iso_datetime_z():
+def iso_datetime_z(days_offset=0):
+    """
+    Generates a UTC timestamp. 
+    Use negative days_offset for the past, positive for the future.
+    """
     fake = Faker()
-    # matches XSD instant pattern
-    return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # Generate a date, then apply the offset
+    base_dt = fake.date_time_between(start_date="-10y", end_date="now", tzinfo=timezone.utc)
+    final_dt = base_dt + timedelta(days=days_offset)
+    return final_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _generate_period_start(tag_name, xsd_element):
+    """
+    Generate a start date for a period element.
+    Uses a date range (5-10 years ago) that's guaranteed to be before end dates.
+    """
+    fake = Faker()
+    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
+    
+    if is_datetime:
+        # Generate a dateTime in the past (5-10 years ago)
+        # This range is guaranteed to be before end dates (which are 0-4 years ago)
+        start_dt = fake.date_time_between(start_date="-10y", end_date="-5y", tzinfo=timezone.utc)
+        return start_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        # Generate a date in the past (5-10 years ago)
+        # This range is guaranteed to be before end dates (which are 0-4 years ago)
+        start_date = fake.date_between(start_date="-10y", end_date="-5y")
+        return str(start_date)
+
+
+def _generate_period_end(tag_name, xsd_element):
+    """
+    Generate an end date for a period element.
+    Uses a date range (0-4 years ago to today) that's guaranteed to be after start dates.
+    Start dates are 5-10 years ago, so end dates from 0-4 years ago are guaranteed to be after.
+    """
+    fake = Faker()
+    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
+    
+    if is_datetime:
+        # Generate end date from 0-4 years ago to now
+        # This is guaranteed to be after start dates (which are 5-10 years ago)
+        end_dt = fake.date_time_between(start_date="-4y", end_date="now", tzinfo=timezone.utc)
+        return end_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        # Generate end date from 0-4 years ago to today
+        # This is guaranteed to be after start dates (which are 5-10 years ago)
+        end_date = fake.date_between(start_date="-4y", end_date="today")
+        return str(end_date)
 
 
 def generate_value(tag_name, xsd_element=None):
@@ -65,6 +114,66 @@ def generate_value(tag_name, xsd_element=None):
         if enum_values:
             # this works great for strings, for objects will need to use [e.value for e in enum_facet.enumeration]
             return random.choice(enum_values)
+    
+    # FIX: Handle Race/Ethnicity codes - improved enum extraction and fallback
+    # Valid OMB Race Category codes (from FHIR US Core) - separate NullFlavor from actual codes
+    # Actual race codes (from urn:oid:2.16.840.1.113883.6.238)
+    valid_race_codes = ["1002-5", "2028-9", "2054-5", "2076-8", "2106-3"]
+    # NullFlavor codes (from http://terminology.hl7.org/CodeSystem/v3-NullFlavor)
+    null_flavor_codes = ["UNK", "ASKU"]
+    # Valid OMB Ethnicity Category codes (from FHIR US Core) - separate NullFlavor from actual codes
+    valid_ethnicity_codes = ["2135-2", "2186-5"]
+    # Note: NullFlavor codes are shared between race and ethnicity
+    
+    # Try to extract enum values from facets (more reliable method)
+    if hasattr(xsd_element.type, 'facets'):
+        for facet_name, facet in xsd_element.type.facets.items():
+            if 'enumeration' in facet_name.lower():
+                try:
+                    if hasattr(facet, 'enumeration'):
+                        enum_list = []
+                        for e in facet.enumeration:
+                            if hasattr(e, 'value'):
+                                enum_list.append(e.value)
+                            elif hasattr(e, 'text'):
+                                enum_list.append(e.text)
+                            else:
+                                enum_list.append(str(e))
+                        if enum_list:
+                            return random.choice(enum_list)
+                except (AttributeError, TypeError):
+                    pass
+    
+    # Fallback for race/ethnicity codes: Check element context
+    # For 'code' elements within us_core_race or us_core_ethnicity
+    # FIX: Only return ONE code - prefer actual codes over NullFlavor (90% actual, 10% NullFlavor)
+    if tag_name == f"{COCO_NS}code":
+        # Check if parent element name suggests race context
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        # Try to get parent from the element's type or annotations
+        # If we can't determine context, check if enum values match race codes
+        if any(code in elem_name_str.lower() for code in ["race", "ethnicity"]):
+            # Determine if race or ethnicity based on context
+            if "race" in elem_name_str.lower():
+                # Prefer actual race codes (90% chance), otherwise use NullFlavor (10% chance)
+                if random.random() < 0.9:
+                    return random.choice(valid_race_codes)
+                else:
+                    return random.choice(null_flavor_codes)
+            elif "ethnicity" in elem_name_str.lower():
+                # Prefer actual ethnicity codes (90% chance), otherwise use NullFlavor (10% chance)
+                if random.random() < 0.9:
+                    return random.choice(valid_ethnicity_codes)
+                else:
+                    return random.choice(null_flavor_codes)
+    
+    # Handle omb_category_code specifically (used in ethnicity contexts)
+    if tag_name == f"{COCO_NS}omb_category_code":
+        # Prefer actual ethnicity codes (90% chance), otherwise use NullFlavor (10% chance)
+        if random.random() < 0.9:
+            return random.choice(valid_ethnicity_codes)
+        else:
+            return random.choice(null_flavor_codes)
 
     # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
@@ -111,12 +220,14 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}id": lambda: fake.uuid4(),
         
         # 'date' should be a date (YYYY-MM-DD), not a dateTime
-        f"{COCO_NS}date": lambda: fake.date(),  # change: was iso_datetime_z()
+        f"{COCO_NS}date": lambda: str(fake.date()),  # change: was iso_datetime_z()
         
-        f"{COCO_NS}birth_date": lambda: fake.date(),
-        f"{COCO_NS}period": lambda: fake.date(),
-        f"{COCO_NS}start": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
-        f"{COCO_NS}end": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
+        f"{COCO_NS}birth_date": lambda: str(fake.date()),
+        f"{COCO_NS}period": lambda: str(fake.date()),
+        # FIX: Ensure Start is always before End
+        # Generate start dates in the past, and track them for end date generation
+        f"{COCO_NS}start": lambda: _generate_period_start(tag_name, xsd_element),
+        f"{COCO_NS}end": lambda: _generate_period_end(tag_name, xsd_element),
         f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)),  # NPI numbers are always 10 digits
         f"{COCO_NS}is_active": lambda: "true",
         f"{COCO_NS}city": lambda: fake.city(),
@@ -137,13 +248,43 @@ def generate_value(tag_name, xsd_element=None):
 
         # added for eob
         # add 'timing' as a date type
-        f"{COCO_NS}timing": lambda: fake.date(),
+        f"{COCO_NS}timing": lambda: str(fake.date()),
 
         f"{COCO_NS}timing_date": lambda: str(fake.date()),
         f"{COCO_NS}serviced_date": lambda: str(fake.date()),
         f"{COCO_NS}value_time": lambda: str(fake.time()),
         f"{COCO_NS}due_date": lambda: str(fake.date()),
+        
+        # FIX: Ensure member_id_system is an absolute reference (full URL)
+        f"{COCO_NS}member_id_system": lambda: "http://terminology.cocodata.org/identifiers/member-id",
+        
+        # FIX: Race/Ethnicity codes - these will be handled by enum extraction above,
+        # but adding here as explicit fallback for code elements in race/ethnicity contexts
+        # Note: The enum handling should catch these, but this ensures valid codes are used
     }
+    
+    # Additional check: If this is a 'code' element and we haven't handled it yet,
+    # and enum extraction didn't work, try to use race/ethnicity codes as fallback
+    # This handles the case where the element is in a race/ethnicity context but
+    # enum extraction failed
+    if tag_name == f"{COCO_NS}code" and tag_name not in tag_map:
+        # Try to infer from element name or type
+        elem_str = str(xsd_element.name if hasattr(xsd_element, 'name') and xsd_element.name else "")
+        type_str = type_name.lower()
+        context_str = f"{elem_str} {type_str}".lower()
+        
+        if "race" in context_str:
+            # Prefer actual race codes (90% chance), otherwise use NullFlavor (10% chance)
+            if random.random() < 0.9:
+                return random.choice(valid_race_codes)
+            else:
+                return random.choice(null_flavor_codes)
+        elif "ethnicity" in context_str:
+            # Prefer actual ethnicity codes (90% chance), otherwise use NullFlavor (10% chance)
+            if random.random() < 0.9:
+                return random.choice(valid_ethnicity_codes)
+            else:
+                return random.choice(null_flavor_codes)
 
     if tag_name in tag_map:
         return tag_map[tag_name]()

@@ -1,84 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Patient xmlns="http://hl7.org/fhir" xmlns:coco="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
-  <id value="we"/>
+<Patient xmlns="http://hl7.org/fhir" xmlns:coco="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-television"/>
   <meta>
-    <lastUpdated value="2026-01-14T11:19:47.9061665-06:00"/>
+    <lastUpdated value="2026-01-14T13:11:53.1391559-06:00"/>
   </meta>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
         <code value="1002-5"/>
-        <display value="professional"/>
+        <display value="American Indian or Alaska Native"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="professional"/>
+      <valueString value="drop"/>
     </extension>
   </extension>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value="ASKU"/>
-        <display value="Congress"/>
+        <code value="2186-5"/>
+        <display value="Not Hispanic or Latino"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="Congress"/>
+      <valueString value="partner"/>
     </extension>
   </extension>
   <identifier>
-    <system value="rather"/>
-    <value value="coach"/>
+    <system value="http://terminology.cocodata.org/identifiers/member-id"/>
+    <value value="television"/>
   </identifier>
   <active value="true"/>
   <name>
-    <use value="old"/>
-    <text value="country"/>
-    <family value="Lewis"/>
-    <given value="Rebecca"/>
-    <prefix value="Mx."/>
-    <suffix value="PhD"/>
+    <use value="anonymous"/>
+    <text value="laugh"/>
+    <family value="Burns"/>
+    <given value="Maria"/>
+    <prefix value="Mr."/>
+    <suffix value="Jr."/>
     <period>
-      <start value="1984-11-19T23:57:14Z"/>
-      <end value="1970-10-13T14:52:25Z"/>
+      <start value="2020-09-12T18:59:22Z"/>
+      <end value="2023-09-03T21:08:48Z"/>
     </period>
   </name>
   <telecom>
-    <system value="sms"/>
-    <value value="PM"/>
+    <system value="url"/>
+    <value value="south"/>
     <use value="mobile"/>
     <rank value="1"/>
     <period>
-      <start value="2000-02-06T05:38:13Z"/>
-      <end value="1970-11-19T22:04:10Z"/>
+      <start value="2018-12-19T16:01:57Z"/>
+      <end value="2023-06-06T06:01:41Z"/>
     </period>
   </telecom>
-  <gender value="other"/>
-  <birthDate value="1993-09-17"/>
-  <deceasedDateTime value="2027-11-01T09:32:49Z"/>
+  <gender value="unknown"/>
+  <birthDate value="2004-06-13"/>
+  <deceasedDateTime value="2015-08-05T22:18:41Z"/>
   <address>
-    <use value="home"/>
     <type value="postal"/>
-    <text value="again"/>
-    <line value="83375 Jones Walk Apt. 484"/>
-    <city value="Kiaraborough"/>
-    <district value="full"/>
-    <state value="MO"/>
-    <postalCode value="76663"/>
-    <country value="USA"/>
+    <line value="34072 Jennifer Plaza Apt. 774"/>
+    <city value="New Kyleview"/>
+    <district value="century"/>
+    <state value="HI"/>
+    <postalCode value="40060"/>
+    <country value="TN"/>
     <period>
-      <start value="1989-06-22T01:14:57Z"/>
-      <end value="2003-02-10T23:53:55Z"/>
+      <start value="2016-11-13T15:37:11Z"/>
+      <end value="2022-07-13T15:10:09Z"/>
     </period>
   </address>
   <communication>
     <language>
       <coding>
         <system value="urn:ietf:bcp:47"/>
-        <code value="ca"/>
-        <display value="between"/>
+        <code value="io"/>
+        <display value="io"/>
       </coding>
     </language>
     <preferred value="true"/>

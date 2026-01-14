@@ -7,10 +7,13 @@
 	<xsl:preserve-space elements="*"/>
 	<xsl:output method="xml" indent="no"/>
 	<xsl:template match="/coco:roster">
-		<Patient xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
+		<Patient>
 			<id>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:roster/coco:member/coco:member_id"/>
+					<!-- <xsl:value-of select="/coco:roster/coco:member/coco:member_id"/> -->
+					<xsl:value-of
+						select="concat(/coco:roster/coco:member/coco:customername, '-', /coco:roster/coco:member/coco:unique_person_ids/coco:unique_person_id)"
+					/>
 				</xsl:attribute>
 			</id>
 			<xsl:call-template name="resource_meta"/>
@@ -73,15 +76,35 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
 			<extension url="ombCategory">
 				<valueCoding>
-					<system value="urn:oid:2.16.840.1.113883.6.238"/>
+					<!-- FIX: Select only ONE code - prefer actual race codes over NullFlavor -->
+					<!-- First, try to find an actual race code (not UNK or ASKU) -->
+					<xsl:variable name="actual_race_code" select="/coco:roster/coco:member/coco:us_core_race/coco:code[. != 'UNK' and . != 'ASKU'][1]"/>
+					<!-- If no actual race code, use the first NullFlavor code -->
+					<xsl:variable name="null_flavor_code" select="/coco:roster/coco:member/coco:us_core_race/coco:code[. = 'UNK' or . = 'ASKU'][1]"/>
+					<!-- Choose the actual race code if available, otherwise use NullFlavor -->
+					<xsl:variable name="selected_code" select="if ($actual_race_code) then $actual_race_code else $null_flavor_code"/>
+					
+					<system>
+						<xsl:choose>
+							<xsl:when test="$selected_code = 'UNK' or $selected_code = 'ASKU'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">urn:oid:2.16.840.1.113883.6.238</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
+					</system>
 					<code>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:code[1]"/>
+							<xsl:value-of select="$selected_code"/>
 						</xsl:attribute>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:text"/>
+							<!-- FIX: Use proper display names for race codes instead of text field -->
+							<xsl:call-template name="get_race_display">
+								<xsl:with-param name="race_code" select="$selected_code"/>
+							</xsl:call-template>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -100,15 +123,35 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
 			<extension url="ombCategory">
 				<valueCoding>
-					<system value="urn:oid:2.16.840.1.113883.6.238"/>
+					<!-- FIX: Select only ONE code - prefer actual ethnicity codes over NullFlavor -->
+					<!-- First, try to find an actual ethnicity code (not UNK or ASKU) -->
+					<xsl:variable name="actual_ethnicity_code" select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[. != 'UNK' and . != 'ASKU'][1]"/>
+					<!-- If no actual ethnicity code, use the first NullFlavor code -->
+					<xsl:variable name="null_flavor_code" select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[. = 'UNK' or . = 'ASKU'][1]"/>
+					<!-- Choose the actual ethnicity code if available, otherwise use NullFlavor -->
+					<xsl:variable name="selected_code" select="if ($actual_ethnicity_code) then $actual_ethnicity_code else $null_flavor_code"/>
+					
+					<system>
+						<xsl:choose>
+							<xsl:when test="$selected_code = 'UNK' or $selected_code = 'ASKU'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">urn:oid:2.16.840.1.113883.6.238</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
+					</system>
 					<code>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[1]"/>
+							<xsl:value-of select="$selected_code"/>
 						</xsl:attribute>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:text"/>
+							<!-- FIX: Use proper display names for ethnicity codes instead of text field -->
+							<xsl:call-template name="get_ethnicity_display">
+								<xsl:with-param name="ethnicity_code" select="$selected_code"/>
+							</xsl:call-template>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -332,9 +375,8 @@
 	<xsl:template name="patient_gender">
 		<xsl:attribute name="value">
 			<xsl:choose>
-				<xsl:when test="/coco:roster/coco:member/coco:gender = 'male'">male</xsl:when>
-				<xsl:when test="/coco:roster/coco:member/coco:gender = 'female'">female</xsl:when>
-				<xsl:when test="/coco:roster/coco:member/coco:gender = 'other'">other</xsl:when>
+				<xsl:when test="starts-with(/coco:roster/coco:member/coco:gender, 'male')">male</xsl:when>
+				<xsl:when test="starts-with(/coco:roster/coco:member/coco:gender, 'female')">female</xsl:when>
 				<xsl:otherwise>unknown</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
@@ -344,60 +386,79 @@
 		<xsl:for-each select="/coco:roster/coco:member/coco:addresses/coco:address">
 			<address>
 				<!-- 0..1 home | work | temp | old | billing - purpose of this address -->
-				<xsl:if test="./coco:use">
-					<use>
-						<xsl:attribute name="value">
-							<xsl:value-of select="./coco:use"/>
-						</xsl:attribute>
-					</use>
-				</xsl:if>
+				<!-- <use>
+					<xsl:attribute name="value">
+						<xsl:value-of select="lower-case(address_use)"/>
+					</xsl:attribute>
+				</use> -->
 				<!-- 0..1 postal | physical | both -->
-				<type>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:type"/>
-					</xsl:attribute>
-				</type>
-				<!-- 0..1 Text representation of the address -->
-				<xsl:if test="./coco:text">
-					<text>
+				<xsl:if test="./coco:type">
+					<type>
 						<xsl:attribute name="value">
-							<xsl:value-of select="./coco:text"/>
+							<xsl:value-of select="./coco:type"/>
 						</xsl:attribute>
-					</text>
+					</type>
 				</xsl:if>
+				<!-- 0..1 Text representation of the address -->
+				<!-- 
+				<text>
+					<xsl:attribute name="value">
+						<xsl:value-of select=""/>
+					</xsl:attribute>
+				</text>
+				 -->
 				<!-- 0..* Street name, number, direction & P.O. Box etc. -->
-				<line>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:line"/>
-					</xsl:attribute>
-				</line>
+				<xsl:for-each select="./coco:line">
+					<line>
+						<xsl:attribute name="value">
+							<xsl:value-of select="."/>
+						</xsl:attribute>
+					</line>
+				</xsl:for-each>
 				<!-- 0..1 Name of city, town etc. -->
-				<city>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:city"/>
-					</xsl:attribute>
-				</city>
+				<xsl:if test="./coco:city">
+					<city>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:city"/>
+						</xsl:attribute>
+					</city>
+				</xsl:if>
 				<!-- 0..1 District name (aka county) -->
-				<district>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:district"/>
-					</xsl:attribute>
-				</district>
+				<xsl:if test="./coco:district">
+					<district>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:district"/>
+						</xsl:attribute>
+					</district>
+				</xsl:if>
 				<!-- 0..1 Sub-unit of country (abbreviations ok) -->
-				<state>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:state"/>
-					</xsl:attribute>
-				</state>
+				<xsl:if test="./coco:state">
+					<state>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:state"/>
+						</xsl:attribute>
+					</state>
+				</xsl:if>
 				<!-- 0..1 Postal code for area -->
-				<postalCode>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./coco:postal_code"/>
-					</xsl:attribute>
-				</postalCode>
+				<xsl:if test="./coco:postal_code">
+					<postalCode>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:postal_code"/>
+						</xsl:attribute>
+					</postalCode>
+				</xsl:if>
 				<!-- 0..1 Country (e.g. can be ISO 3166 2 or 3 letter code) -->
 				<country>
-					<xsl:attribute name="value">USA</xsl:attribute>
+					<xsl:choose>
+						<xsl:when test="./coco:country">
+							<xsl:attribute name="value">
+								<xsl:value-of select="./coco:country"/>
+							</xsl:attribute>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:attribute name="value">USA</xsl:attribute>
+						</xsl:otherwise>
+					</xsl:choose>
 				</country>
 				<!-- 0..1 Period Time period when address was/is in use -->
 				<xsl:if test="coco:period">
@@ -563,7 +624,10 @@
 								</code>
 								<display>
 									<xsl:attribute name="value">
-										<xsl:value-of select="./coco:display"/>
+										<!-- FIX: Generate proper display name from language code -->
+										<xsl:call-template name="get_language_display">
+											<xsl:with-param name="lang_code" select="./coco:language_code"/>
+										</xsl:call-template>
 									</xsl:attribute>
 								</display>
 							</coding>
