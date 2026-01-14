@@ -6,17 +6,14 @@
 	xmlns:coco="http://cocodata.org">
 	<xsl:preserve-space elements="*"/>
 	<xsl:output method="xml" indent="no"/>
-	<xsl:template match="*">
+	<xsl:template match="/coco:roster">
 		<Patient xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
-			<xsl:call-template name="resource_meta"/>
 			<id>
 				<xsl:attribute name="value">
-					<!-- <xsl:value-of select="/coco:member/coco:member_id"/> -->
-					<xsl:value-of
-						select="concat(/coco:member/coco:customername, '-', /coco:member/coco:unique_person_ids/coco:unique_person_id)"
-					/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:member_id"/>
 				</xsl:attribute>
 			</id>
+			<xsl:call-template name="resource_meta"/>
 			<xsl:call-template name="resource_extensions"/>
 			<xsl:call-template name="resource_identifier"/>
 			<active value="true"/>
@@ -29,9 +26,17 @@
 
 			<birthDate>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:birth_date"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:birth_date"/>
 				</xsl:attribute>
 			</birthDate>
+
+			<xsl:if test="/coco:roster/coco:member/coco:deceased_date_time">
+				<deceasedDateTime>
+					<xsl:attribute name="value">
+						<xsl:value-of select="/coco:roster/coco:member/coco:deceased_date_time"/>
+					</xsl:attribute>
+				</deceasedDateTime>
+			</xsl:if>
 
 			<xsl:call-template name="patient_address"/>
 
@@ -71,12 +76,12 @@
 					<system value="urn:oid:2.16.840.1.113883.6.238"/>
 					<code>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:member/coco:us_core_race/coco:code"/>
+							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:code[1]"/>
 						</xsl:attribute>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:member/coco:us_core_race/coco:text"/>
+							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:text"/>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -85,7 +90,7 @@
 			<extension url="text">
 				<valueString>
 					<xsl:attribute name="value">
-						<xsl:value-of select="/coco:member/coco:us_core_race/coco:text"/>
+						<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:text"/>
 					</xsl:attribute>
 
 				</valueString>
@@ -98,12 +103,12 @@
 					<system value="urn:oid:2.16.840.1.113883.6.238"/>
 					<code>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:member/coco:us_core_ethnicity/coco:code"/>
+							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[1]"/>
 						</xsl:attribute>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="/coco:member/coco:us_core_ethnicity/coco:text"/>
+							<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:text"/>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -112,7 +117,7 @@
 			<extension url="text">
 				<valueString>
 					<xsl:attribute name="value">
-						<xsl:value-of select="/coco:member/coco:us_core_ethnicity/coco:text"/>
+						<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:text"/>
 					</xsl:attribute>
 
 				</valueString>
@@ -191,13 +196,13 @@
 			</type> -->
 			<system>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:member_id_system"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:member_id_system"/>
 				</xsl:attribute>
 			</system>
 			<value>
 				<xsl:attribute name="value">
 					<xsl:value-of
-						select="/coco:member/coco:unique_person_ids/coco:unique_person_id"
+						select="/coco:roster/coco:member/coco:unique_person_ids/coco:unique_person_id"
 					/>
 				</xsl:attribute>
 			</value>
@@ -205,7 +210,7 @@
 	</xsl:template>
 
 	<xsl:template name="patient_name">
-		<xsl:for-each select="/coco:member/coco:names/coco:name">
+		<xsl:for-each select="/coco:roster/coco:member/coco:names/coco:name">
 			<name>
 				<!-- 0..1 usual | official | temp | nickname | anonymous | old | maiden -->
 				<xsl:if test="coco:use">
@@ -275,7 +280,7 @@
 	</xsl:template>
 
 	<xsl:template name="patient_telecom">
-		<xsl:for-each select="/coco:member/coco:telecoms/coco:telecom">
+		<xsl:for-each select="/coco:roster/coco:member/coco:telecoms/coco:telecom">
 			<telecom>
 				<!-- ?? 0..1 phone | fax | email | pager | url | sms | other -->
 				<system>
@@ -327,22 +332,25 @@
 	<xsl:template name="patient_gender">
 		<xsl:attribute name="value">
 			<xsl:choose>
-				<xsl:when test="starts-with(/coco:member/coco:gender, 'male')">male</xsl:when>
-				<xsl:when test="starts-with(/coco:member/coco:gender, 'female')">female</xsl:when>
+				<xsl:when test="/coco:roster/coco:member/coco:gender = 'male'">male</xsl:when>
+				<xsl:when test="/coco:roster/coco:member/coco:gender = 'female'">female</xsl:when>
+				<xsl:when test="/coco:roster/coco:member/coco:gender = 'other'">other</xsl:when>
 				<xsl:otherwise>unknown</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
 	</xsl:template>
 
 	<xsl:template name="patient_address">
-		<xsl:for-each select="/coco:member/coco:addresses/coco:address">
+		<xsl:for-each select="/coco:roster/coco:member/coco:addresses/coco:address">
 			<address>
 				<!-- 0..1 home | work | temp | old | billing - purpose of this address -->
-				<!-- <use>
-					<xsl:attribute name="value">
-						<xsl:value-of select="lower-case(address_use)"/>
-					</xsl:attribute>
-				</use> -->
+				<xsl:if test="./coco:use">
+					<use>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:use"/>
+						</xsl:attribute>
+					</use>
+				</xsl:if>
 				<!-- 0..1 postal | physical | both -->
 				<type>
 					<xsl:attribute name="value">
@@ -350,13 +358,13 @@
 					</xsl:attribute>
 				</type>
 				<!-- 0..1 Text representation of the address -->
-				<!-- 
-				<text>
-					<xsl:attribute name="value">
-						<xsl:value-of select=""/>
-					</xsl:attribute>
-				</text>
-				 -->
+				<xsl:if test="./coco:text">
+					<text>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./coco:text"/>
+						</xsl:attribute>
+					</text>
+				</xsl:if>
 				<!-- 0..* Street name, number, direction & P.O. Box etc. -->
 				<line>
 					<xsl:attribute name="value">
@@ -421,25 +429,25 @@
 			<!-- 0..1 Identity of the terminology system -->
 			<system>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:marital_status_system"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:marital_status_system"/>
 				</xsl:attribute>
 			</system>
 			<!-- 0..1 Version of the system - if relevant -->
 			<version>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:marital_status_version"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:marital_status_version"/>
 				</xsl:attribute>
 			</version>
 			<!-- 0..1 Symbol in syntax defined by the system -->
 			<code>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:marital_status_code"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:marital_status_code"/>
 				</xsl:attribute>
 			</code>
 			<!-- 0..1 Representation defined by the system -->
 			<display>
 				<xsl:attribute name="value">
-					<xsl:value-of select="/coco:member/coco:marital_status_display"/>
+					<xsl:value-of select="/coco:roster/coco:member/coco:marital_status_display"/>
 				</xsl:attribute>
 			</display>
 			<!-- MAPPING NOT IMPLEMENTED: -->
@@ -455,13 +463,13 @@
 		<!-- 0..1 Plain text representation of the concept -->
 		<text>
 			<xsl:attribute name="value">
-				<xsl:value-of select="/coco:member/coco:marital_status_text"/>
+				<xsl:value-of select="/coco:roster/coco:member/coco:marital_status_text"/>
 			</xsl:attribute>
 		</text>
 	</xsl:template>
 
 	<xsl:template name="patient_contact">
-		<xsl:for-each select="/coco:member/coco:member_contacts/coco:member_contact">
+		<xsl:for-each select="/coco:roster/coco:member/coco:member_contacts/coco:member_contact">
 			<!-- 0..* A contact party (e.g. guardian, partner, friend) for the patient -->
 			<contact>
 				<!-- 0..* CodeableConcept The kind of relationship -->
@@ -540,7 +548,7 @@
 	</xsl:template>
 
 	<xsl:template name="patient_communication">
-		<xsl:for-each select="/coco:member/coco:communications/coco:communication">
+		<xsl:for-each select="/coco:roster/coco:member/coco:communications/coco:communication">
 			<communication>
 				<language>
 					<xsl:choose>
