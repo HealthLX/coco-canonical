@@ -101,10 +101,7 @@
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<!-- FIX: Use proper display names for race codes instead of text field -->
-							<xsl:call-template name="get_race_display">
-								<xsl:with-param name="race_code" select="$selected_code"/>
-							</xsl:call-template>
+							<xsl:value-of select="$selected_code"/>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -148,10 +145,7 @@
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<!-- FIX: Use proper display names for ethnicity codes instead of text field -->
-							<xsl:call-template name="get_ethnicity_display">
-								<xsl:with-param name="ethnicity_code" select="$selected_code"/>
-							</xsl:call-template>
+							<xsl:value-of select="$selected_code"/>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -624,10 +618,7 @@
 								</code>
 								<display>
 									<xsl:attribute name="value">
-										<!-- FIX: Generate proper display name from language code -->
-										<xsl:call-template name="get_language_display">
-											<xsl:with-param name="lang_code" select="./coco:language_code"/>
-										</xsl:call-template>
+										<xsl:value-of select="./coco:language_code"/>
 									</xsl:attribute>
 								</display>
 							</coding>

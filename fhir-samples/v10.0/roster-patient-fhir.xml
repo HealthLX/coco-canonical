@@ -2,14 +2,14 @@
 <Patient xmlns="http://hl7.org/fhir" xmlns:coco="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <id value="-television"/>
   <meta>
-    <lastUpdated value="2026-01-14T13:11:53.1391559-06:00"/>
+    <lastUpdated value="2026-01-14T13:51:33.3247741-06:00"/>
   </meta>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
         <code value="1002-5"/>
-        <display value="American Indian or Alaska Native"/>
+        <display value="1002-5"/>
       </valueCoding>
     </extension>
     <extension url="text">
@@ -21,7 +21,7 @@
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
         <code value="2186-5"/>
-        <display value="Not Hispanic or Latino"/>
+        <display value="2186-5"/>
       </valueCoding>
     </extension>
     <extension url="text">
