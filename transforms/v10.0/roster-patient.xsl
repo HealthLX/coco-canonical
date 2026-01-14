@@ -76,17 +76,10 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
 			<extension url="ombCategory">
 				<valueCoding>
-					<!-- FIX: Select only ONE code - prefer actual race codes over NullFlavor -->
-					<!-- First, try to find an actual race code (not UNK or ASKU) -->
-					<xsl:variable name="actual_race_code" select="/coco:roster/coco:member/coco:us_core_race/coco:code[. != 'UNK' and . != 'ASKU'][1]"/>
-					<!-- If no actual race code, use the first NullFlavor code -->
-					<xsl:variable name="null_flavor_code" select="/coco:roster/coco:member/coco:us_core_race/coco:code[. = 'UNK' or . = 'ASKU'][1]"/>
-					<!-- Choose the actual race code if available, otherwise use NullFlavor -->
-					<xsl:variable name="selected_code" select="if ($actual_race_code) then $actual_race_code else $null_flavor_code"/>
-					
+					<xsl:variable name="race_code" select="coco:member/coco:us_core_race/coco:code[1]"/>
 					<system>
 						<xsl:choose>
-							<xsl:when test="$selected_code = 'UNK' or $selected_code = 'ASKU'">
+							<xsl:when test="$race_code = 'UNK' or $race_code = 'ASKU'">
 								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
 							</xsl:when>
 							<xsl:otherwise>
@@ -95,13 +88,17 @@
 						</xsl:choose>
 					</system>
 					<code>
-						<xsl:attribute name="value">
-							<xsl:value-of select="$selected_code"/>
-						</xsl:attribute>
+						<xsl:attribute name="value" select="$race_code"/>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="$selected_code"/>
+							<xsl:choose>
+								<xsl:when test="$race_code = 'UNK'">unknown</xsl:when>
+								<xsl:when test="$race_code = 'ASKU'">asked but unknown</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="coco:member/coco:us_core_race/coco:text"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
@@ -109,10 +106,7 @@
 
 			<extension url="text">
 				<valueString>
-					<xsl:attribute name="value">
-						<xsl:value-of select="/coco:roster/coco:member/coco:us_core_race/coco:text"/>
-					</xsl:attribute>
-
+					<xsl:attribute name="value" select="coco:member/coco:us_core_race/coco:text"/>
 				</valueString>
 			</extension>
 		</extension>
@@ -120,17 +114,10 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
 			<extension url="ombCategory">
 				<valueCoding>
-					<!-- FIX: Select only ONE code - prefer actual ethnicity codes over NullFlavor -->
-					<!-- First, try to find an actual ethnicity code (not UNK or ASKU) -->
-					<xsl:variable name="actual_ethnicity_code" select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[. != 'UNK' and . != 'ASKU'][1]"/>
-					<!-- If no actual ethnicity code, use the first NullFlavor code -->
-					<xsl:variable name="null_flavor_code" select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:code[. = 'UNK' or . = 'ASKU'][1]"/>
-					<!-- Choose the actual ethnicity code if available, otherwise use NullFlavor -->
-					<xsl:variable name="selected_code" select="if ($actual_ethnicity_code) then $actual_ethnicity_code else $null_flavor_code"/>
-					
+					<xsl:variable name="eth_code" select="coco:member/coco:us_core_ethnicity/coco:code[1]"/>
 					<system>
 						<xsl:choose>
-							<xsl:when test="$selected_code = 'UNK' or $selected_code = 'ASKU'">
+							<xsl:when test="$eth_code = 'UNK' or $eth_code = 'ASKU'">
 								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
 							</xsl:when>
 							<xsl:otherwise>
@@ -139,24 +126,24 @@
 						</xsl:choose>
 					</system>
 					<code>
-						<xsl:attribute name="value">
-							<xsl:value-of select="$selected_code"/>
-						</xsl:attribute>
+						<xsl:attribute name="value" select="$eth_code"/>
 					</code>
 					<display>
 						<xsl:attribute name="value">
-							<xsl:value-of select="$selected_code"/>
+							<xsl:choose>
+								<xsl:when test="$eth_code = 'UNK'">unknown</xsl:when>
+								<xsl:when test="$eth_code = 'ASKU'">asked but unknown</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="coco:member/coco:us_core_ethnicity/coco:text"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:attribute>
 					</display>
 				</valueCoding>
 			</extension>
-
 			<extension url="text">
 				<valueString>
-					<xsl:attribute name="value">
-						<xsl:value-of select="/coco:roster/coco:member/coco:us_core_ethnicity/coco:text"/>
-					</xsl:attribute>
-
+					<xsl:attribute name="value" select="coco:member/coco:us_core_ethnicity/coco:text"/>
 				</valueString>
 			</extension>
 		</extension>
@@ -618,8 +605,7 @@
 								</code>
 								<display>
 									<xsl:attribute name="value">
-										<xsl:value-of select="./coco:language_code"/>
-									</xsl:attribute>
+										<xsl:value-of select="./coco:language_code"/> </xsl:attribute>
 								</display>
 							</coding>
 						</xsl:when>

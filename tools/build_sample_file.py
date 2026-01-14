@@ -21,6 +21,31 @@ EOB_SCHEMA = "eob.xsd"
 FORMULARY_SCHEMA = "formulary.xsd"
 CLINICAL_SCHEMA = "clinical.xsd"
 
+# Code-Display mappings for FHIR validation compliance
+RACE_DISPLAY_MAP = {
+    "1002-5": "American Indian or Alaska Native",
+    "2028-9": "Asian",
+    "2054-5": "Black or African American",
+    "2076-8": "Native Hawaiian or Other Pacific Islander",
+    "2106-3": "White",
+    "UNK": "unknown",
+    "ASKU": "asked but unknown"
+}
+
+ETHNICITY_DISPLAY_MAP = {
+    "2135-2": "Hispanic or Latino",
+    "2186-5": "Not Hispanic or Latino",
+    "UNK": "unknown",
+    "ASKU": "asked but unknown"
+}
+
+LANGUAGE_DISPLAY_MAP = {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "io": "Ido"
+}
+
 
 
 def get_pattern_from_type(xsd_type):
@@ -175,6 +200,41 @@ def generate_value(tag_name, xsd_element=None):
         else:
             return random.choice(null_flavor_codes)
 
+    # FIX: Handle display names based on context
+    if tag_name == f"{COCO_NS}display":
+        # Try to determine context from element name or parent
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        context_str = elem_name_str.lower()
+        
+        # Check if we're in a language context
+        if "language" in context_str or "communication" in context_str:
+            # Return a random display from language map
+            return random.choice(list(LANGUAGE_DISPLAY_MAP.values()))
+        # For race/ethnicity, we'll return a valid display (XSLT will override with correct one)
+        elif "race" in context_str:
+            return random.choice(list(RACE_DISPLAY_MAP.values()))
+        elif "ethnicity" in context_str:
+            return random.choice(list(ETHNICITY_DISPLAY_MAP.values()))
+        # Default fallback
+        return "English"
+
+    # FIX: Handle text elements for Race/Ethnicity
+    if tag_name == f"{COCO_NS}text":
+        # Try to determine context
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        context_str = elem_name_str.lower()
+        
+        if "race" in context_str:
+            return random.choice(list(RACE_DISPLAY_MAP.values()))
+        elif "ethnicity" in context_str:
+            return random.choice(list(ETHNICITY_DISPLAY_MAP.values()))
+        # Default fallback
+        return "American Indian or Alaska Native"
+
+    # FIX: Handle language_code to return valid language codes
+    if tag_name == f"{COCO_NS}language_code":
+        return random.choice(list(LANGUAGE_DISPLAY_MAP.keys()))
+
     # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
     if pattern:
@@ -256,7 +316,7 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}due_date": lambda: str(fake.date()),
         
         # FIX: Ensure member_id_system is an absolute reference (full URL)
-        f"{COCO_NS}member_id_system": lambda: "http://terminology.cocodata.org/identifiers/member-id",
+        f"{COCO_NS}member_id_system": lambda: "http://terminology.cocodata.org/identifiers/member-id"
         
         # FIX: Race/Ethnicity codes - these will be handled by enum extraction above,
         # but adding here as explicit fallback for code elements in race/ethnicity contexts
