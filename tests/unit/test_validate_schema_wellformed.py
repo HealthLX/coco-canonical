@@ -43,8 +43,8 @@ def test_xsd_is_valid_schema(xsd_path):
         pytest.fail(f"XML syntax error in {xsd_path}: {e}")
 
     try:
-        # In xmlschema 4.2.0+, base_url should be absolute or omitted (xmlschema infers it from file path)
-        # Using resolve() to get absolute path for base_url to ensure proper resolution
-        xmlschema.XMLSchema(str(xsd_path), base_url=str(xsd_path.parent.resolve()))
+        # In xmlschema 4.2.0+, when source is a file path, base_url can be omitted
+        # xmlschema automatically infers the base URL from the file path
+        xmlschema.XMLSchema(str(xsd_path.resolve()))
     except Exception as e:
         pytest.fail(f"Schema validation error in {xsd_path}: {e}")
