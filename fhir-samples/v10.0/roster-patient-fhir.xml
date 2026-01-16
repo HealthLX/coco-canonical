@@ -1,38 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-all"/>
   <meta>
-    <lastUpdated value="2025-12-16T12:00:21.243299-06:00"/>
+    <lastUpdated value="2026-01-16T12:09:49.4046537-06:00"/>
   </meta>
-  <id value="-"/>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value=""/>
-        <display value=""/>
+        <code value="1002-5"/>
+        <display value="American Indian or Alaska Native"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value=""/>
+      <valueString value="American Indian or Alaska Native"/>
     </extension>
   </extension>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value=""/>
-        <display value=""/>
+        <code value="2135-2"/>
+        <display value="Hispanic or Latino"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value=""/>
+      <valueString value="Hispanic or Latino"/>
     </extension>
   </extension>
   <identifier>
-    <system value=""/>
-    <value value=""/>
+    <system value="http://terminology.cocodata.org/identifiers/member-id"/>
+    <value value="all"/>
   </identifier>
   <active value="true"/>
+  <name>
+    <use value="official"/>
+    <text value="American Indian or Alaska Native"/>
+    <family value="Welch"/>
+    <given value="John"/>
+    <prefix value="Mr."/>
+    <suffix value="PhD"/>
+    <period>
+      <start value="2019-11-02T08:10:26Z"/>
+      <end value="2023-08-08T12:56:51Z"/>
+    </period>
+  </name>
+  <telecom>
+    <system value="pager"/>
+    <value value="institution"/>
+    <use value="home"/>
+    <rank value="1"/>
+    <period>
+      <start value="2019-02-23T02:42:43Z"/>
+      <end value="2025-03-09T10:28:23Z"/>
+    </period>
+  </telecom>
   <gender value="unknown"/>
-  <birthDate value=""/>
+  <birthDate value="2011-09-15"/>
+  <deceasedDateTime value="2019-04-18T04:27:59Z"/>
+  <address>
+    <type value="both"/>
+    <line value="95821 Danielle Creek Apt. 373"/>
+    <city value="West Carrie"/>
+    <district value="time"/>
+    <state value="MP"/>
+    <postalCode value="17275"/>
+    <country value="TN"/>
+    <period>
+      <start value="2017-12-05T10:01:49Z"/>
+      <end value="2023-10-27T23:00:44Z"/>
+    </period>
+  </address>
+  <communication>
+    <language>
+      <coding>
+        <system value="urn:ietf:bcp:47"/>
+        <code value="bm"/>
+        <display value="Bambara"/>
+      </coding>
+    </language>
+    <preferred value="false"/>
+  </communication>
 </Patient>

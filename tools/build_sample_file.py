@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 import xmlschema
 from xmlschema.validators import XsdElement  # needed for type checking
 import base64  # needed for base64Binary values
+from . import fhir_mappings  # FHIR code-display mappings for validation compliance
 
 COCO_NS_BARE = "http://cocodata.org"
 XSI_NS_BARE = "http://www.w3.org/2001/XMLSchema-instance"
@@ -21,6 +22,12 @@ EOB_SCHEMA = "eob.xsd"
 FORMULARY_SCHEMA = "formulary.xsd"
 CLINICAL_SCHEMA = "clinical.xsd"
 
+# Import FHIR code-display mappings from centralized module
+RACE_DISPLAY_MAP = fhir_mappings.RACE_DISPLAY_MAP
+ETHNICITY_DISPLAY_MAP = fhir_mappings.ETHNICITY_DISPLAY_MAP
+LANGUAGE_DISPLAY_MAP = fhir_mappings.LANGUAGE_DISPLAY_MAP
+
+
 
 def get_pattern_from_type(xsd_type):
     for facet_name, facet in xsd_type.facets.items():
@@ -29,22 +36,70 @@ def get_pattern_from_type(xsd_type):
     return None
 
 
-def random_datetime():
-    start = datetime(2000, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
-    end = datetime(2030, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
+def random_datetime(days_offset=0):
+    # Base range: 2010 to 2020
+    start = datetime(2010, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+    end = datetime(2020, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
     delta = end - start
     random_seconds = random.randint(0, int(delta.total_seconds()))
-    # ensure UTC Z
-    return (start + timedelta(seconds=random_seconds)).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    # Apply offset: negative for older (start), positive for newer (end)
+    dt = (start + timedelta(seconds=random_seconds) + timedelta(days=days_offset))
+    return dt.replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
-
-def iso_datetime_z():
+def iso_datetime_z(days_offset=0):
+    """
+    Generates a UTC timestamp. 
+    Use negative days_offset for the past, positive for the future.
+    """
     fake = Faker()
-    # matches XSD instant pattern
-    return fake.date_time(tzinfo=timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # Generate a date, then apply the offset
+    base_dt = fake.date_time_between(start_date="-10y", end_date="now", tzinfo=timezone.utc)
+    final_dt = base_dt + timedelta(days=days_offset)
+    return final_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def generate_value(tag_name, xsd_element=None):
+def _generate_period_start(tag_name, xsd_element):
+    """
+    Generate a start date for a period element.
+    Uses a date range (5-10 years ago) that's guaranteed to be before end dates.
+    """
+    fake = Faker()
+    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
+    
+    if is_datetime:
+        # Generate a dateTime in the past (5-10 years ago)
+        # This range is guaranteed to be before end dates (which are 0-4 years ago)
+        start_dt = fake.date_time_between(start_date="-10y", end_date="-5y", tzinfo=timezone.utc)
+        return start_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        # Generate a date in the past (5-10 years ago)
+        # This range is guaranteed to be before end dates (which are 0-4 years ago)
+        start_date = fake.date_between(start_date="-10y", end_date="-5y")
+        return str(start_date)
+
+
+def _generate_period_end(tag_name, xsd_element):
+    """
+    Generate an end date for a period element.
+    Uses a date range (0-4 years ago to today) that's guaranteed to be after start dates.
+    Start dates are 5-10 years ago, so end dates from 0-4 years ago are guaranteed to be after.
+    """
+    fake = Faker()
+    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
+    
+    if is_datetime:
+        # Generate end date from 0-4 years ago to now
+        # This is guaranteed to be after start dates (which are 5-10 years ago)
+        end_dt = fake.date_time_between(start_date="-4y", end_date="now", tzinfo=timezone.utc)
+        return end_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    else:
+        # Generate end date from 0-4 years ago to today
+        # This is guaranteed to be after start dates (which are 5-10 years ago)
+        end_date = fake.date_between(start_date="-4y", end_date="today")
+        return str(end_date)
+
+
+def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dict=None):
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
     if tag_name == f"{COCO_NS}schema_version":
         return "10.0"
@@ -59,12 +114,249 @@ def generate_value(tag_name, xsd_element=None):
     type_name = str(xsd_element.type.name).lower(
     ) if xsd_element.type and xsd_element.type.name else ""
 
-    # 1.Handle enum values
+    # FIX: Handle Race/Ethnicity codes FIRST - before enum extraction
+    # Valid OMB Race Category codes (from FHIR US Core) - separate NullFlavor from actual codes
+    # Use helper functions from fhir_mappings module
+    valid_race_codes = fhir_mappings.get_race_codes_without_nullflavor()
+    # NullFlavor codes (from http://terminology.hl7.org/CodeSystem/v3-NullFlavor)
+    null_flavor_codes = ["UNK", "ASKU"]
+    # Valid OMB Ethnicity Category codes (from FHIR US Core) - separate NullFlavor from actual codes
+    valid_ethnicity_codes = fhir_mappings.get_ethnicity_codes_without_nullflavor()
+    # Note: NullFlavor codes are shared between race and ethnicity
+    
+    # Check for race/ethnicity context BEFORE enum extraction to prevent ASKU/UNK for ethnicity
+    if tag_name == f"{COCO_NS}code":
+        # Check parent element context (more reliable than element name)
+        parent_context = ""
+        if parent_xml_elem is not None:
+            # Get parent tag name (strip namespace)
+            parent_tag = parent_xml_elem.tag.split('}')[-1] if '}' in parent_xml_elem.tag else parent_xml_elem.tag
+            parent_context = parent_tag.lower()
+        
+        # Also check element name as fallback
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        context_str = f"{parent_context} {elem_name_str}".lower()
+        
+        # Determine if race or ethnicity based on context
+        if "race" in context_str or "us_core_race" in context_str:
+            # Prefer actual race codes (90% chance), otherwise use NullFlavor (10% chance)
+            race_code = random.choice(valid_race_codes) if random.random() < 0.9 else random.choice(null_flavor_codes)
+            # Store the FIRST code in context for display/text generation (XSLT uses first code)
+            if context_dict is not None:
+                if 'race_code' not in context_dict:  # Only store the first code
+                    context_dict['race_code'] = race_code
+            return race_code
+        elif "ethnicity" in context_str or "us_core_ethnicity" in context_str:
+            # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
+            eth_code = random.choice(valid_ethnicity_codes)
+            # Store the code in context for display/text generation
+            if context_dict is not None:
+                context_dict['ethnicity_code'] = eth_code
+            return eth_code
+    
+    # Handle omb_category_code specifically (used in ethnicity contexts)
+    if tag_name == f"{COCO_NS}omb_category_code":
+        # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
+        return random.choice(valid_ethnicity_codes)
+
+    # 1.Handle enum values (AFTER race/ethnicity check to prevent ASKU for ethnicity)
     if getattr(xsd_element.type, "is_simple", lambda: False)():  # can i remove this check?
         enum_values = getattr(xsd_element.type, "enumeration", None)
         if enum_values:
+            # For ethnicity codes, filter out UNK/ASKU - check parent context
+            if tag_name == f"{COCO_NS}code":
+                parent_context = ""
+                if parent_xml_elem is not None:
+                    parent_tag = parent_xml_elem.tag.split('}')[-1] if '}' in parent_xml_elem.tag else parent_xml_elem.tag
+                    parent_context = parent_tag.lower()
+                elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+                context_str = f"{parent_context} {elem_name_str}".lower()
+                if "ethnicity" in context_str or "us_core_ethnicity" in context_str:
+                    # Filter enum values to only valid ethnicity codes
+                    filtered_enum = [v for v in enum_values if v in valid_ethnicity_codes]
+                    if filtered_enum:
+                        eth_code = random.choice(filtered_enum)
+                        if context_dict is not None:
+                            context_dict['ethnicity_code'] = eth_code
+                        return eth_code
             # this works great for strings, for objects will need to use [e.value for e in enum_facet.enumeration]
             return random.choice(enum_values)
+    
+    # Try to extract enum values from facets (more reliable method)
+    if hasattr(xsd_element.type, 'facets'):
+        for facet_name, facet in xsd_element.type.facets.items():
+            if 'enumeration' in facet_name.lower():
+                try:
+                    if hasattr(facet, 'enumeration'):
+                        enum_list = []
+                        for e in facet.enumeration:
+                            if hasattr(e, 'value'):
+                                enum_list.append(e.value)
+                            elif hasattr(e, 'text'):
+                                enum_list.append(e.text)
+                            else:
+                                enum_list.append(str(e))
+                        if enum_list:
+                            # For ethnicity codes, filter out UNK/ASKU - check parent context
+                            if tag_name == f"{COCO_NS}code":
+                                parent_context = ""
+                                if parent_xml_elem is not None:
+                                    parent_tag = parent_xml_elem.tag.split('}')[-1] if '}' in parent_xml_elem.tag else parent_xml_elem.tag
+                                    parent_context = parent_tag.lower()
+                                elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+                                context_str = f"{parent_context} {elem_name_str}".lower()
+                                if "ethnicity" in context_str or "us_core_ethnicity" in context_str:
+                                    # Filter enum values to only valid ethnicity codes
+                                    filtered_enum = [v for v in enum_list if v in valid_ethnicity_codes]
+                                    if filtered_enum:
+                                        eth_code = random.choice(filtered_enum)
+                                        if context_dict is not None:
+                                            context_dict['ethnicity_code'] = eth_code
+                                        return eth_code
+                            return random.choice(enum_list)
+                except (AttributeError, TypeError):
+                    pass
+    
+    # Handle omb_category_code specifically (used in ethnicity contexts)
+    if tag_name == f"{COCO_NS}omb_category_code":
+        # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
+        return random.choice(valid_ethnicity_codes)
+
+    # FIX: Handle display names based on context - ensure they match the code
+    if tag_name == f"{COCO_NS}display":
+        # Check parent element context (more reliable)
+        parent_context = ""
+        if parent_xml_elem is not None:
+            parent_tag = parent_xml_elem.tag.split('}')[-1] if '}' in parent_xml_elem.tag else parent_xml_elem.tag
+            parent_context = parent_tag.lower()
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        context_str = f"{parent_context} {elem_name_str}".lower()
+        
+        # Check if we're in a language context - look for sibling language_code
+        if "language" in context_str or "communication" in context_str:
+            # First check context dict (most reliable)
+            if context_dict is not None and 'language_code' in context_dict:
+                lang_code = context_dict['language_code']
+                display = fhir_mappings.get_language_display(lang_code)
+                if display and display != lang_code:  # Only use if we got a real display, not the code fallback
+                    return display
+            # Fallback: look for language_code in parent's children (siblings)
+            if parent_xml_elem is not None:
+                # Look for language_code in parent's children (siblings)
+                # Handle both namespaced and non-namespaced tags
+                for child in parent_xml_elem:
+                    # Get local name (strip namespace if present)
+                    child_local_name = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+                    if child_local_name == "language_code" and child.text:
+                        lang_code = child.text
+                        display = fhir_mappings.get_language_display(lang_code)
+                        if display and display != lang_code:  # Only use if we got a real display, not the code fallback
+                            return display
+            return random.choice(list(LANGUAGE_DISPLAY_MAP.values()))
+        # For race/ethnicity, look for sibling code (parent_context already set above)
+        if "race" in context_str or "us_core_race" in context_str:
+            # First check context dict (most reliable) - use FIRST code (XSLT uses first code)
+            if context_dict is not None and 'race_code' in context_dict:
+                race_code = context_dict['race_code']
+                display = fhir_mappings.get_race_display(race_code)
+                if display:
+                    return display
+            # Fallback: look for FIRST code in parent's children (siblings) - XSLT uses first code
+            if parent_xml_elem is not None:
+                # Look for FIRST code in parent's children (siblings)
+                # Handle both namespaced and non-namespaced tags
+                for child in parent_xml_elem:
+                    child_local_name = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+                    if child_local_name == "code" and child.text:
+                        race_code = child.text
+                        display = fhir_mappings.get_race_display(race_code)
+                        if display:
+                            return display
+                        break  # Use first code only
+            return random.choice(list(RACE_DISPLAY_MAP.values()))
+        elif "ethnicity" in context_str or "us_core_ethnicity" in context_str:
+            # First check context dict (most reliable)
+            if context_dict is not None and 'ethnicity_code' in context_dict:
+                eth_code = context_dict['ethnicity_code']
+                display = fhir_mappings.get_ethnicity_display(eth_code)
+                if display:
+                    return display
+            # Fallback: look for code in parent's children (siblings)
+            if parent_xml_elem is not None:
+                # Look for code in parent's children (siblings)
+                # Handle both namespaced and non-namespaced tags
+                for child in parent_xml_elem:
+                    child_local_name = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+                    if child_local_name == "code" and child.text:
+                        eth_code = child.text
+                        display = fhir_mappings.get_ethnicity_display(eth_code)
+                        if display:
+                            return display
+            return random.choice(list(ETHNICITY_DISPLAY_MAP.values()))
+        # Default fallback
+        return "English"
+
+    # FIX: Handle text elements for Race/Ethnicity - ensure they match the code
+    if tag_name == f"{COCO_NS}text":
+        # Check parent element context (more reliable)
+        parent_context = ""
+        if parent_xml_elem is not None:
+            parent_tag = parent_xml_elem.tag.split('}')[-1] if '}' in parent_xml_elem.tag else parent_xml_elem.tag
+            parent_context = parent_tag.lower()
+        elem_name_str = str(xsd_element.name) if hasattr(xsd_element, 'name') and xsd_element.name else ""
+        context_str = f"{parent_context} {elem_name_str}".lower()
+        
+        if "race" in context_str or "us_core_race" in context_str:
+            # First check context dict (most reliable) - use FIRST code (XSLT uses first code)
+            if context_dict is not None and 'race_code' in context_dict:
+                race_code = context_dict['race_code']
+                display = fhir_mappings.get_race_display(race_code)
+                if display:
+                    return display
+            # Fallback: look for FIRST code in parent's children (siblings) - XSLT uses first code
+            if parent_xml_elem is not None:
+                # Look for FIRST code in parent's children (siblings)
+                # Handle both namespaced and non-namespaced tags
+                for child in parent_xml_elem:
+                    child_local_name = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+                    if child_local_name == "code" and child.text:
+                        race_code = child.text
+                        display = fhir_mappings.get_race_display(race_code)
+                        if display:
+                            return display
+                        break  # Use first code only
+            return random.choice(list(RACE_DISPLAY_MAP.values()))
+        elif "ethnicity" in context_str or "us_core_ethnicity" in context_str:
+            # First check context dict (most reliable)
+            if context_dict is not None and 'ethnicity_code' in context_dict:
+                eth_code = context_dict['ethnicity_code']
+                display = fhir_mappings.get_ethnicity_display(eth_code)
+                if display:
+                    return display
+            # Fallback: look for code in parent's children (siblings)
+            if parent_xml_elem is not None:
+                # Look for code in parent's children (siblings)
+                # Handle both namespaced and non-namespaced tags
+                for child in parent_xml_elem:
+                    child_local_name = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+                    if child_local_name == "code" and child.text:
+                        eth_code = child.text
+                        display = fhir_mappings.get_ethnicity_display(eth_code)
+                        if display:
+                            return display
+            return random.choice(list(ETHNICITY_DISPLAY_MAP.values()))
+        # Default fallback
+        return "American Indian or Alaska Native"
+
+    # FIX: Handle language_code to return valid language codes
+    if tag_name == f"{COCO_NS}language_code":
+        # Get all language codes including compound codes
+        all_lang_codes = list(LANGUAGE_DISPLAY_MAP.keys())
+        lang_code = random.choice(all_lang_codes)
+        # Store the code in context for display generation
+        if context_dict is not None:
+            context_dict['language_code'] = lang_code
+        return lang_code
 
     # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
@@ -111,12 +403,14 @@ def generate_value(tag_name, xsd_element=None):
         f"{COCO_NS}id": lambda: fake.uuid4(),
         
         # 'date' should be a date (YYYY-MM-DD), not a dateTime
-        f"{COCO_NS}date": lambda: fake.date(),  # change: was iso_datetime_z()
+        f"{COCO_NS}date": lambda: str(fake.date()),  # change: was iso_datetime_z()
         
-        f"{COCO_NS}birth_date": lambda: fake.date(),
-        f"{COCO_NS}period": lambda: fake.date(),
-        f"{COCO_NS}start": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
-        f"{COCO_NS}end": lambda: iso_datetime_z() if xsd_element.type.name == f"{XML_NS}dateTime" else fake.date(),
+        f"{COCO_NS}birth_date": lambda: str(fake.date()),
+        f"{COCO_NS}period": lambda: str(fake.date()),
+        # FIX: Ensure Start is always before End
+        # Generate start dates in the past, and track them for end date generation
+        f"{COCO_NS}start": lambda: _generate_period_start(tag_name, xsd_element),
+        f"{COCO_NS}end": lambda: _generate_period_end(tag_name, xsd_element),
         f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)),  # NPI numbers are always 10 digits
         f"{COCO_NS}is_active": lambda: "true",
         f"{COCO_NS}city": lambda: fake.city(),
@@ -137,13 +431,40 @@ def generate_value(tag_name, xsd_element=None):
 
         # added for eob
         # add 'timing' as a date type
-        f"{COCO_NS}timing": lambda: fake.date(),
+        f"{COCO_NS}timing": lambda: str(fake.date()),
 
         f"{COCO_NS}timing_date": lambda: str(fake.date()),
         f"{COCO_NS}serviced_date": lambda: str(fake.date()),
         f"{COCO_NS}value_time": lambda: str(fake.time()),
         f"{COCO_NS}due_date": lambda: str(fake.date()),
+        
+        # FIX: Ensure member_id_system is an absolute reference (full URL)
+        f"{COCO_NS}member_id_system": lambda: "http://terminology.cocodata.org/identifiers/member-id"
+        
+        # FIX: Race/Ethnicity codes - these will be handled by enum extraction above,
+        # but adding here as explicit fallback for code elements in race/ethnicity contexts
+        # Note: The enum handling should catch these, but this ensures valid codes are used
     }
+    
+    # Additional check: If this is a 'code' element and we haven't handled it yet,
+    # and enum extraction didn't work, try to use race/ethnicity codes as fallback
+    # This handles the case where the element is in a race/ethnicity context but
+    # enum extraction failed
+    if tag_name == f"{COCO_NS}code" and tag_name not in tag_map:
+        # Try to infer from element name or type
+        elem_str = str(xsd_element.name if hasattr(xsd_element, 'name') and xsd_element.name else "")
+        type_str = type_name.lower()
+        context_str = f"{elem_str} {type_str}".lower()
+        
+        if "race" in context_str:
+            # Prefer actual race codes (90% chance), otherwise use NullFlavor (10% chance)
+            if random.random() < 0.9:
+                return random.choice(valid_race_codes)
+            else:
+                return random.choice(null_flavor_codes)
+        elif "ethnicity" in context_str:
+            # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
+            return random.choice(valid_ethnicity_codes)
 
     if tag_name in tag_map:
         return tag_map[tag_name]()
@@ -151,7 +472,7 @@ def generate_value(tag_name, xsd_element=None):
     return fake.word()
 
 
-def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None"):
+def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None", parent_xml_elem=None, context_dict=None):
     """
     recursively builds xml elements and returns as an xml document; 
     handles building for practitioner or providingOrganization for provider-directory
@@ -199,7 +520,10 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
     if getattr(xsd_element.type, "is_simple", lambda: False)() or \
        (getattr(xsd_element.type, "is_complex", lambda: False)() and getattr(xsd_element.type, "has_simple_content", lambda: False)()):
 
-        xml_elem.text = generate_value(root_element_name, xsd_element)
+        # Create context dict if not provided (for storing codes to use in display generation)
+        if context_dict is None:
+            context_dict = {}
+        xml_elem.text = generate_value(root_element_name, xsd_element, parent_xml_elem=parent_xml_elem, context_dict=context_dict)
 
     # Case 2: Complex type with complex content (child elements)
     # These types should have child elements added recursively.
@@ -209,9 +533,13 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
 
         content_model = xsd_element.type.content
 
+        # Create context dict if not provided (for storing codes to use in display generation)
+        if context_dict is None:
+            context_dict = {}
+        
         # change: NEW RECURSIVE FUNCTION TO PROCESS GROUPS
         # This helper function correctly walks the XSD content model tree (sequences, choices, elements)
-        def process_particle(particle, parent_xml_elem, depth_level, choice_override=None):
+        def process_particle(particle, parent_xml_elem, depth_level, choice_override=None, ctx_dict=None):
             """
             Recursively processes an XSD particle (Element, Choice, Sequence, All)
             """
@@ -238,7 +566,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
 
                 for _ in range(count):
                     child_elem = build_element(
-                        particle.name, schema, xsd_element=particle, depth=depth_level, child_choice=choice_override
+                        particle.name, schema, xsd_element=particle, depth=depth_level, child_choice=choice_override, parent_xml_elem=parent_xml_elem, context_dict=ctx_dict
                     )
                     if child_elem is not None:
                         parent_xml_elem.append(child_elem)
@@ -264,7 +592,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                                 if child_local_name == choice_override:
                                     # Process only this chosen particle
                                     process_particle(
-                                        choice_child, parent_xml_elem, depth_level, choice_override)
+                                        choice_child, parent_xml_elem, depth_level, choice_override, ctx_dict=ctx_dict)
                                     break  # Found and processed
                     else:
                         # --- Normal <xs:choice> ---
@@ -290,18 +618,18 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
 
                         # Process the *one* chosen particle
                         process_particle(
-                            chosen_particle, parent_xml_elem, depth_level, choice_override)
+                            chosen_particle, parent_xml_elem, depth_level, choice_override, ctx_dict=ctx_dict)
 
                 elif group_model in ('sequence', 'all'):
                     # --- Handle <xs:sequence> or <xs:all> ---
                     # Process *all* sub-particles in order
                     for sub_particle in particle:
                         process_particle(
-                            sub_particle, parent_xml_elem, depth_level, choice_override)
+                            sub_particle, parent_xml_elem, depth_level, choice_override, ctx_dict=ctx_dict)
 
         # Start processing the *main* content model (e.g., the <xs:sequence> of 'patient')
         # We pass the 'child_choice' from the function args as the 'choice_override'
-        process_particle(content_model, xml_elem, depth + 1, child_choice)
+        process_particle(content_model, xml_elem, depth + 1, child_choice, ctx_dict=context_dict)
 
     # Case 3: Complex type with empty content (<elem attr="val"/>)
     # This element has no children and no text, so we do nothing.

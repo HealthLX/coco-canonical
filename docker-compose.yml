@@ -1,0 +1,9 @@
+services:
+  # The Sidecar Engine (The 'Warm' Validator)
+  validator:
+    image: infernocommunity/fhir-validator-service:latest
+    ports:
+      - "4567:4567"
+    volumes:
+      # Map your local assets folder so the validator can see your zip file
+      - ./assets/fhir-packages:/home/validator/igs

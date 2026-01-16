@@ -30,7 +30,8 @@ dependencies = [
   "saxonche>=12.5,<13.0",    # XSLT 3.0 engine
   "Faker>=24.0,<39.0",       # sample data generation
   "rstr>=3.2,<4.0",          # regex-based string generation
-  "pyyaml>=6.0,<7.0"         # YAML config parsing for sample builders
+  "pyyaml>=6.0,<7.0",        # YAML config parsing for sample builders
+  "requests>=2.31,<3.0"      # HTTP client for validator service
 ]
 
 [project.optional-dependencies]
