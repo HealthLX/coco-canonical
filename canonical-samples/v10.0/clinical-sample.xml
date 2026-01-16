@@ -1,141 +1,137 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <clinicals xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v10.0/clinical.xsd">
   <schema_version>10.0</schema_version>
-  <sender_id>world</sender_id>
-  <date_time_reported>2026-01-15T19:14:47Z</date_time_reported>
+  <sender_id>body</sender_id>
+  <date_time_reported>2026-01-16T18:09:38Z</date_time_reported>
   <clinical>
     <patient>
-      <medical_record_number>certain</medical_record_number>
-      <member_id>surface</member_id>
+      <medical_record_number>recently</medical_record_number>
+      <member_id>media</member_id>
       <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-      <unique_person_id>image</unique_person_id>
-      <unique_person_id_assigner>six</unique_person_id_assigner>
-      <unique_person_id_assigner_type>participant</unique_person_id_assigner_type>
+      <unique_person_id>environment</unique_person_id>
+      <unique_person_id_assigner>you</unique_person_id_assigner>
+      <unique_person_id_assigner_type>court</unique_person_id_assigner_type>
       <names>
         <name>
-          <use>anonymous</use>
+          <use>maiden</use>
           <text>American Indian or Alaska Native</text>
-          <family>Holt</family>
-          <given>Micheal</given>
-          <prefix>Mr.</prefix>
-          <suffix>DDS</suffix>
+          <family>Hendrix</family>
+          <given>Devon</given>
+          <prefix>Mrs.</prefix>
+          <suffix>DVM</suffix>
           <period>
-            <start>2012-09-09T14:36:01Z</start>
-            <end>2011-04-11T14:52:40Z</end>
+            <start>2016-11-11T18:49:09Z</start>
+            <end>2015-08-30T10:56:56Z</end>
           </period>
         </name>
       </names>
-      <gender>other</gender>
-      <birth_date>1970-02-11</birth_date>
+      <gender>unknown</gender>
+      <birth_date>2025-02-06</birth_date>
       <marital_status>L</marital_status>
       <deceased>
-        <is_deceased>false</is_deceased>
-        <deceased_date_time>2011-01-16T16:59:42Z</deceased_date_time>
+        <is_deceased>true</is_deceased>
+        <deceased_date_time>2011-01-18T03:03:36Z</deceased_date_time>
       </deceased>
       <telecoms>
         <telecom>
-          <system>email</system>
-          <value>huge</value>
-          <use>home</use>
+          <system>sms</system>
+          <value>star</value>
+          <use>mobile</use>
           <rank>1</rank>
           <period>
-            <start>2017-11-06T14:24:52Z</start>
-            <end>2013-12-21T06:14:16Z</end>
+            <start>2019-01-23T23:05:48Z</start>
+            <end>2015-05-05T02:27:31Z</end>
           </period>
         </telecom>
       </telecoms>
       <addresses>
         <address>
-          <use>work</use>
-          <type>both</type>
+          <use>old</use>
+          <type>physical</type>
           <text>American Indian or Alaska Native</text>
-          <line>19283 Ashley Passage Suite 195</line>
-          <city>New Marissaberg</city>
-          <district>idea</district>
-          <state>AL</state>
-          <postal_code>84959</postal_code>
-          <country>LK</country>
+          <line>66921 Michael Hill</line>
+          <city>Novakfurt</city>
+          <district>low</district>
+          <state>IA</state>
+          <postal_code>14502</postal_code>
+          <country>TL</country>
           <period>
-            <start>2018-05-27T18:24:29Z</start>
-            <end>2019-06-01T03:19:04Z</end>
+            <start>2016-04-27T17:41:54Z</start>
+            <end>2015-10-18T16:27:06Z</end>
           </period>
         </address>
       </addresses>
       <communications>
         <communication>
-          <language_code>fr-CH</language_code>
+          <language_code>no</language_code>
           <is_preferred>false</is_preferred>
         </communication>
       </communications>
       <us_core_race>
         <omb_category_code>2186-5</omb_category_code>
-        <omb_category_code>2186-5</omb_category_code>
-        <detailed_code>1496-9</detailed_code>
-        <text>American Indian or Alaska Native</text>
+        <detailed_code>1866-3</detailed_code>
+        <text>Black or African American</text>
       </us_core_race>
       <us_core_ethnicity>
         <omb_category_code>2186-5</omb_category_code>
-        <detailed_code>2146-9</detailed_code>
-        <text>Hispanic or Latino</text>
+        <detailed_code>2174-1</detailed_code>
+        <text>unknown</text>
       </us_core_ethnicity>
       <us_core_birth_sex>F</us_core_birth_sex>
     </patient>
     <lab_observations>
       <lab_observation>
-        <unique_identifier>explain</unique_identifier>
-        <status>unknown</status>
+        <unique_identifier>attorney</unique_identifier>
+        <status>final</status>
         <observation_code>
           <coding>
-            <system>long</system>
-            <version>use</version>
-            <code>charge</code>
+            <system>scene</system>
+            <version>decide</version>
+            <code>loss</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
         </observation_code>
         <observation_effective>
-          <effective_period>
-            <start>2012-01-09T18:54:08Z</start>
-            <end>2010-09-26T19:34:38Z</end>
-          </effective_period>
+          <effective_date_time>2017-08-18T13:41:29Z</effective_date_time>
         </observation_effective>
-        <data_absent_reason>positive-infinity</data_absent_reason>
-        <interpretation>even</interpretation>
+        <data_absent_reason>as-text</data_absent_reason>
+        <interpretation>father</interpretation>
         <reference_range>
           <low>
-            <value>336.7</value>
-            <unit>weight</unit>
-            <system>analysis</system>
-            <code>ever</code>
+            <value>175.74</value>
+            <unit>already</unit>
+            <system>sit</system>
+            <code>Democrat</code>
           </low>
           <high>
-            <value>274.9</value>
-            <unit>edge</unit>
-            <system>suggest</system>
-            <code>test</code>
+            <value>765.66</value>
+            <unit>with</unit>
+            <system>activity</system>
+            <code>beat</code>
           </high>
-          <type>treatment</type>
+          <type>recommended</type>
           <applies_to>
             <coding>
-              <system>maintain</system>
-              <version>increase</version>
-              <code>hot</code>
+              <system>thank</system>
+              <version>catch</version>
+              <code>man</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
           </applies_to>
           <age>
             <low>
-              <value>253.37</value>
-              <unit>budget</unit>
-              <system>water</system>
-              <code>morning</code>
+              <value>622.15</value>
+              <unit>third</unit>
+              <system>actually</system>
+              <code>budget</code>
             </low>
             <high>
-              <value>418.99</value>
-              <unit>fast</unit>
-              <system>program</system>
-              <code>him</code>
+              <value>898.05</value>
+              <unit>never</unit>
+              <system>industry</system>
+              <code>east</code>
             </high>
           </age>
           <text>American Indian or Alaska Native</text>
@@ -145,154 +141,163 @@
     </lab_observations>
     <allergy_intolerances>
       <allergy_intolerance>
-        <unique_identifier>himself</unique_identifier>
+        <unique_identifier>care</unique_identifier>
         <clinical_status>active</clinical_status>
         <verification_status>refuted</verification_status>
         <type>allergy</type>
-        <category>medication</category>
+        <category>environment</category>
         <allergy_code>
-          <code>media</code>
+          <code>large</code>
           <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
         </allergy_code>
         <reactions>
           <reaction>
-            <manifestation>pressure</manifestation>
+            <manifestation>imagine</manifestation>
           </reaction>
         </reactions>
         <onset>
           <onset_age>
-            <value>433.25</value>
+            <value>857.51</value>
             <system>http://ucum.org</system>
-            <code>a</code>
+            <code>mo</code>
           </onset_age>
         </onset>
-        <criticality>high</criticality>
-        <recorded_date>2018-09-27T20:25:35Z</recorded_date>
-        <record_type>A</record_type>
+        <criticality>unable-to-assess</criticality>
+        <recorded_date>2017-06-02T06:09:21Z</recorded_date>
+        <record_type>U</record_type>
       </allergy_intolerance>
     </allergy_intolerances>
     <conditions>
       <condition>
-        <unique_identifier>military</unique_identifier>
+        <unique_identifier>go</unique_identifier>
         <condition_code>
-          <code>key</code>
+          <code>measure</code>
           <system>http://hl7.org/fhir/sid/icd-10-cm</system>
         </condition_code>
         <category>health-concern</category>
-        <clinical_status>active</clinical_status>
-        <verification_status>entered-in-error</verification_status>
-        <severity>mild</severity>
+        <clinical_status>resolved</clinical_status>
+        <verification_status>unconfirmed</verification_status>
+        <severity>moderate</severity>
         <onset>
-          <onset_date_time>2010-09-23T19:10:55Z</onset_date_time>
+          <onset_string>after</onset_string>
         </onset>
-        <recorded_date>2016-04-21T22:44:32Z</recorded_date>
+        <recorded_date>2018-04-15T02:07:15Z</recorded_date>
         <abatement>
-          <abatement_age>
-            <value>512.17</value>
-            <system>http://ucum.org</system>
-            <code>h</code>
-          </abatement_age>
+          <abatement_range>
+            <low>
+              <value>7.1</value>
+              <unit>concern</unit>
+              <system>get</system>
+              <code>never</code>
+            </low>
+            <high>
+              <value>182.39</value>
+              <unit>citizen</unit>
+              <system>pick</system>
+              <code>focus</code>
+            </high>
+          </abatement_range>
         </abatement>
-        <record_type>A</record_type>
+        <record_type>D</record_type>
       </condition>
     </conditions>
     <procedures>
       <procedure>
-        <unique_identifier>morning</unique_identifier>
+        <unique_identifier>ball</unique_identifier>
         <procedure_code>
-          <code>school</code>
-          <system>http://www.ama-assn.org/go/cpt</system>
+          <text>American Indian or Alaska Native</text>
+          <extension>
+            <url>https://hahn.com/</url>
+            <valueCode>run</valueCode>
+          </extension>
         </procedure_code>
-        <status>stopped</status>
+        <status>unknown</status>
         <performed>
-          <performed_period>
-            <start>2017-08-01T20:52:20Z</start>
-            <end>2020-05-11T08:52:09Z</end>
-          </performed_period>
+          <performed_date_time>2014-12-29T10:16:38Z</performed_date_time>
         </performed>
-        <record_type>D</record_type>
+        <record_type>U</record_type>
       </procedure>
     </procedures>
     <medication_requests>
       <medication_request>
-        <unique_identifier>authority</unique_identifier>
-        <status>stopped</status>
-        <intent>option</intent>
+        <unique_identifier>catch</unique_identifier>
+        <status>cancelled</status>
+        <intent>original-order</intent>
         <reported>
           <reported_boolean>true</reported_boolean>
         </reported>
         <medication>
           <medication_code>
-            <code>face</code>
+            <code>question</code>
             <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
           </medication_code>
-          <status>active</status>
+          <status>inactive</status>
           <form>
-            <code>trade</code>
+            <code>into</code>
             <system>http://snomed.info/sct</system>
           </form>
         </medication>
         <encounter>
-          <identifier>official</identifier>
-          <status>onleave</status>
-          <class>approach</class>
+          <identifier>still</identifier>
+          <status>planned</status>
+          <class>sign</class>
           <type>
-            <code>during</code>
-            <system>http://snomed.info/sct</system>
+            <code>necessary</code>
+            <system>http://www.ama-assn.org/go/cpt</system>
           </type>
           <participants>
             <participant>
               <type>
-                <code>near</code>
-                <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
+                <code>key</code>
+                <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
               </type>
               <period>
-                <start>2017-06-28T11:10:05Z</start>
-                <end>2019-06-20T09:29:51Z</end>
+                <start>2013-02-05T12:49:56Z</start>
+                <end>2014-10-01T22:40:45Z</end>
               </period>
               <individual>
-                <npi>6499624313</npi>
+                <npi>3220396212</npi>
                 <names>
                   <name>
-                    <use>maiden</use>
+                    <use>temp</use>
                     <text>American Indian or Alaska Native</text>
-                    <family>May</family>
-                    <given>Christine</given>
+                    <family>Hoffman</family>
+                    <given>Martha</given>
                     <prefix>Mr.</prefix>
                     <suffix>MD</suffix>
                     <period>
-                      <start>2012-09-20T05:09:56Z</start>
-                      <end>2013-03-15T19:55:47Z</end>
+                      <start>2014-04-09T00:31:25Z</start>
+                      <end>2020-07-11T14:19:05Z</end>
                     </period>
                   </name>
                 </names>
-                <is_active>true</is_active>
+                <is_active>false</is_active>
                 <telecoms>
                   <telecom>
-                    <system>url</system>
-                    <value>two</value>
-                    <use>home</use>
-                    <rank>5</rank>
+                    <system>phone</system>
+                    <value>city</value>
+                    <use>temp</use>
+                    <rank>3</rank>
                     <period>
-                      <start>2019-05-03T18:06:36Z</start>
-                      <end>2011-03-29T00:17:46Z</end>
+                      <start>2016-02-05T13:09:07Z</start>
+                      <end>2015-12-22T13:54:47Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>work</use>
-                    <type>physical</type>
+                    <use>home</use>
+                    <type>both</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>846 Huffman Passage</line>
-                    <city>Joshuaberg</city>
-                    <district>heavy</district>
-                    <state>MD</state>
-                    <postal_code>05522</postal_code>
-                    <country>FR</country>
+                    <line>66710 Hansen Rapid</line>
+                    <city>Port Leah</city>
+                    <district>them</district>
+                    <state>NJ</state>
+                    <postal_code>95018</postal_code>
+                    <country>BZ</country>
                     <period>
-                      <start>2019-10-09T06:45:40Z</start>
-                      <end>2020-09-13T20:38:25Z</end>
+                      <start>2017-08-21T21:41:21Z</start>
+                      <end>2017-10-31T12:26:26Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -300,80 +305,80 @@
             </participant>
           </participants>
           <period>
-            <start>2016-04-04T09:33:53Z</start>
-            <end>2017-06-24T03:08:59Z</end>
+            <start>2016-01-19T14:37:56Z</start>
+            <end>2016-11-17T19:37:54Z</end>
           </period>
           <reason_code>onto</reason_code>
           <hospitalization>
-            <discharge_disposition>society</discharge_disposition>
+            <discharge_disposition>professor</discharge_disposition>
           </hospitalization>
           <location>
             <location>
               <identifier>
-                <value>best</value>
-                <type>eight</type>
+                <value>what</value>
+                <type>rate</type>
               </identifier>
-              <status>active</status>
-              <name>April Garrett</name>
+              <status>suspended</status>
+              <name>Robert King</name>
               <telecoms>
                 <telecom>
-                  <system>pager</system>
-                  <value>white</value>
-                  <use>temp</use>
-                  <rank>1</rank>
+                  <system>sms</system>
+                  <value>resource</value>
+                  <use>mobile</use>
+                  <rank>5</rank>
                   <period>
-                    <start>2019-02-13T06:27:04Z</start>
-                    <end>2010-01-24T17:45:46Z</end>
+                    <start>2014-03-26T12:01:23Z</start>
+                    <end>2016-08-30T00:14:49Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <address>
-                <use>old</use>
-                <type>postal</type>
+                <use>home</use>
+                <type>physical</type>
                 <text>American Indian or Alaska Native</text>
-                <line>38396 Jordan View</line>
-                <city>New Valerieton</city>
-                <district>start</district>
-                <state>MD</state>
-                <postal_code>71731</postal_code>
-                <country>CV</country>
+                <line>441 Brown Divide</line>
+                <city>Paulamouth</city>
+                <district>ball</district>
+                <state>NC</state>
+                <postal_code>52997</postal_code>
+                <country>MT</country>
                 <period>
-                  <start>2020-12-21T20:42:00Z</start>
-                  <end>2013-06-18T01:24:53Z</end>
+                  <start>2014-11-20T15:32:46Z</start>
+                  <end>2014-11-11T18:29:04Z</end>
                 </period>
               </address>
               <managing_organization>
-                <npi>7897945324</npi>
-                <clia>site</clia>
-                <name>Brandon Boyd</name>
-                <is_active>true</is_active>
-                <alias>word</alias>
+                <npi>4017350379</npi>
+                <clia>to</clia>
+                <name>Cindy Ramirez</name>
+                <is_active>false</is_active>
+                <alias>accept</alias>
                 <telecoms>
                   <telecom>
-                    <system>phone</system>
-                    <value>debate</value>
+                    <system>sms</system>
+                    <value>behavior</value>
                     <use>temp</use>
-                    <rank>3</rank>
+                    <rank>5</rank>
                     <period>
-                      <start>2019-06-10T22:13:02Z</start>
-                      <end>2016-02-02T01:20:44Z</end>
+                      <start>2016-09-23T18:10:46Z</start>
+                      <end>2011-06-27T10:21:36Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>billing</use>
-                    <type>physical</type>
+                    <use>old</use>
+                    <type>postal</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>3362 Gates Greens</line>
-                    <city>Lake Amyville</city>
-                    <district>our</district>
-                    <state>DC</state>
-                    <postal_code>40252</postal_code>
-                    <country>FR</country>
+                    <line>450 Eric Extensions Suite 243</line>
+                    <city>Ryanmouth</city>
+                    <district>avoid</district>
+                    <state>NC</state>
+                    <postal_code>18328</postal_code>
+                    <country>CH</country>
                     <period>
-                      <start>2020-01-29T06:06:49Z</start>
-                      <end>2017-08-14T13:59:44Z</end>
+                      <start>2017-01-21T12:36:11Z</start>
+                      <end>2012-02-09T07:43:41Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -381,108 +386,108 @@
             </location>
           </location>
         </encounter>
-        <authored_on>2016-11-15T00:06:53Z</authored_on>
+        <authored_on>2016-01-17T07:54:47Z</authored_on>
         <requester>
-          <practitioner>
-            <npi>1677969720</npi>
-            <names>
-              <name>
-                <use>old</use>
-                <text>American Indian or Alaska Native</text>
-                <family>Stevens</family>
-                <given>Leah</given>
-                <prefix>Mrs.</prefix>
-                <suffix>Jr.</suffix>
-                <period>
-                  <start>2017-07-20T15:39:44Z</start>
-                  <end>2010-12-28T10:40:09Z</end>
-                </period>
-              </name>
-            </names>
+          <organization>
+            <npi>5784695294</npi>
+            <clia>amount</clia>
+            <name>Clifford Hart</name>
             <is_active>false</is_active>
+            <alias>teacher</alias>
             <telecoms>
               <telecom>
-                <system>url</system>
-                <value>explain</value>
-                <use>work</use>
-                <rank>4</rank>
+                <system>phone</system>
+                <value>particularly</value>
+                <use>temp</use>
+                <rank>1</rank>
                 <period>
-                  <start>2014-08-28T09:53:47Z</start>
-                  <end>2017-02-18T04:34:21Z</end>
+                  <start>2019-06-18T15:47:12Z</start>
+                  <end>2014-08-24T10:16:33Z</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
-                <use>home</use>
-                <type>postal</type>
+                <use>old</use>
+                <type>both</type>
                 <text>American Indian or Alaska Native</text>
-                <line>26171 Greene Vista Suite 228</line>
-                <city>Lake Kennethburgh</city>
-                <district>policy</district>
-                <state>PR</state>
-                <postal_code>25212</postal_code>
-                <country>CY</country>
+                <line>78128 Lisa Ford Suite 977</line>
+                <city>West Nathanville</city>
+                <district>entire</district>
+                <state>VI</state>
+                <postal_code>59514</postal_code>
+                <country>BS</country>
                 <period>
-                  <start>2018-10-25T02:52:48Z</start>
-                  <end>2015-07-09T23:34:51Z</end>
+                  <start>2017-03-22T12:21:42Z</start>
+                  <end>2016-12-17T10:38:34Z</end>
                 </period>
               </address>
             </addresses>
-          </practitioner>
+          </organization>
         </requester>
         <dosage_instruction>
           <text>American Indian or Alaska Native</text>
         </dosage_instruction>
-        <record_type>D</record_type>
+        <record_type>A</record_type>
       </medication_request>
     </medication_requests>
     <care_teams>
       <care_team>
-        <unique_identifier>difficult</unique_identifier>
-        <status>active</status>
+        <unique_identifier>head</unique_identifier>
+        <status>suspended</status>
         <participant>
           <role>
-            <code>college</code>
-            <system>http://snomed.info/sct</system>
+            <code>sense</code>
+            <system>http://nucc.org/provider-taxonomy</system>
           </role>
           <member>
-            <organization>
-              <npi>1300952784</npi>
-              <clia>offer</clia>
-              <name>Daniel Morrow</name>
+            <practitioner>
+              <npi>3511017286</npi>
+              <names>
+                <name>
+                  <use>official</use>
+                  <text>American Indian or Alaska Native</text>
+                  <family>Wallace</family>
+                  <given>Cathy</given>
+                  <prefix>Dr.</prefix>
+                  <suffix>DDS</suffix>
+                  <period>
+                    <start>2015-08-27T01:31:23Z</start>
+                    <end>2012-06-19T22:32:32Z</end>
+                  </period>
+                </name>
+              </names>
               <is_active>true</is_active>
-              <alias>line</alias>
               <telecoms>
                 <telecom>
-                  <system>other</system>
-                  <value>citizen</value>
-                  <use>old</use>
-                  <rank>3</rank>
+                  <system>fax</system>
+                  <value>above</value>
+                  <use>work</use>
+                  <rank>2</rank>
                   <period>
-                    <start>2018-10-09T03:55:42Z</start>
-                    <end>2015-08-02T21:26:48Z</end>
+                    <start>2015-09-13T18:44:06Z</start>
+                    <end>2012-07-04T16:13:12Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <addresses>
                 <address>
-                  <use>billing</use>
-                  <type>both</type>
+                  <use>work</use>
+                  <type>postal</type>
                   <text>American Indian or Alaska Native</text>
-                  <line>9008 Dunn Forge Suite 864</line>
-                  <city>Lake Lindsey</city>
-                  <district>culture</district>
-                  <state>IA</state>
-                  <postal_code>66386</postal_code>
-                  <country>TV</country>
+                  <line>2361 Nichols Highway Suite 676</line>
+                  <city>Lake Carlos</city>
+                  <district>morning</district>
+                  <state>MD</state>
+                  <postal_code>17014</postal_code>
+                  <country>BF</country>
                   <period>
-                    <start>2010-08-26T06:10:18Z</start>
-                    <end>2018-12-25T00:55:18Z</end>
+                    <start>2019-01-11T04:10:20Z</start>
+                    <end>2019-08-17T21:25:48Z</end>
                   </period>
                 </address>
               </addresses>
-            </organization>
+            </practitioner>
           </member>
         </participant>
         <record_type>A</record_type>
@@ -490,7 +495,7 @@
     </care_teams>
     <observation_vital_signs>
       <observation_vital_sign>
-        <unique_identifier>mention</unique_identifier>
+        <unique_identifier>perhaps</unique_identifier>
         <status>preliminary</status>
         <category_vs_cat>
           <coding>
@@ -499,22 +504,36 @@
           </coding>
         </category_vs_cat>
         <code>
-          <code>8867-4</code>
-          <display>Mean blood pressure</display>
+          <code>8480-6</code>
+          <display>Body temperature</display>
           <system>http://loinc.org</system>
         </code>
         <effective>
           <effective_period>
-            <start>2010-12-09T00:53:46Z</start>
-            <end>2010-11-10T20:26:24Z</end>
+            <start>2018-10-17T21:54:19Z</start>
+            <end>2012-06-14T08:02:09Z</end>
           </effective_period>
         </effective>
-        <data_absent_reason>
-          <code>base</code>
-          <system>particularly</system>
-        </data_absent_reason>
+        <value>
+          <value_quantity_bp_systolic_diastolic>
+            <value_quantity_bp_systolic>
+              <value>274.17</value>
+              <comparator>&lt;</comparator>
+              <unit>participant</unit>
+              <system>http://unitsofmeasure.org</system>
+              <code>mm[Hg]</code>
+            </value_quantity_bp_systolic>
+            <value_quantity_bp_diastolic>
+              <value>183.93</value>
+              <comparator>&lt;=</comparator>
+              <unit>campaign</unit>
+              <system>http://unitsofmeasure.org</system>
+              <code>mm[Hg]</code>
+            </value_quantity_bp_diastolic>
+          </value_quantity_bp_systolic_diastolic>
+        </value>
         <has_member>
-          <unique_identifier>which</unique_identifier>
+          <unique_identifier>investment</unique_identifier>
           <status>registered</status>
           <category_vs_cat>
             <coding>
@@ -523,25 +542,25 @@
             </coding>
           </category_vs_cat>
           <code>
-            <code>85353-1</code>
+            <code>8302-2</code>
             <display>Blood pressure panel with all children optional</display>
             <system>http://loinc.org</system>
           </code>
           <effective>
-            <effective_date_time>2013-01-18T17:12:50Z</effective_date_time>
+            <effective_date_time>2014-09-06T13:10:40Z</effective_date_time>
           </effective>
           <value>
-            <value_quantity_oxygen_saturation>
-              <value>125.18</value>
-              <comparator>&gt;</comparator>
-              <unit>technology</unit>
+            <value_quantity_heart_rate>
+              <value>675.43</value>
+              <comparator>&lt;=</comparator>
+              <unit>drug</unit>
               <system>http://unitsofmeasure.org</system>
-              <code>%</code>
-            </value_quantity_oxygen_saturation>
+              <code>/min</code>
+            </value_quantity_heart_rate>
           </value>
           <data_absent_reason>
-            <code>property</code>
-            <system>just</system>
+            <code>remember</code>
+            <system>area</system>
           </data_absent_reason>
           <component>
             <component_systolic_bp>
@@ -552,16 +571,16 @@
                 </coding_sbp_code>
               </code>
               <value>
-                <value>814.26</value>
-                <comparator>&gt;</comparator>
-                <unit>rise</unit>
+                <value>983.72</value>
+                <comparator>&gt;=</comparator>
+                <unit>hair</unit>
                 <system>http://unitsofmeasure.org</system>
                 <code>mm[Hg]</code>
               </value>
               <data_absent_reason>
                 <coding>
-                  <code>account</code>
-                  <system>receive</system>
+                  <code>brother</code>
+                  <system>weight</system>
                 </coding>
               </data_absent_reason>
             </component_systolic_bp>
@@ -573,16 +592,16 @@
                 </coding_dbp_code>
               </code>
               <value>
-                <value>824.43</value>
-                <comparator>&gt;</comparator>
-                <unit>within</unit>
+                <value>452.81</value>
+                <comparator>&lt;</comparator>
+                <unit>career</unit>
                 <system>http://unitsofmeasure.org</system>
                 <code>mm[Hg]</code>
               </value>
               <data_absent_reason>
                 <coding>
-                  <code>sell</code>
-                  <system>join</system>
+                  <code>note</code>
+                  <system>prove</system>
                 </coding>
               </data_absent_reason>
             </component_diastolic_bp>
@@ -597,16 +616,16 @@
               </coding_sbp_code>
             </code>
             <value>
-              <value>847.08</value>
-              <comparator>&lt;</comparator>
-              <unit>woman</unit>
+              <value>500.03</value>
+              <comparator>&lt;=</comparator>
+              <unit>campaign</unit>
               <system>http://unitsofmeasure.org</system>
               <code>mm[Hg]</code>
             </value>
             <data_absent_reason>
               <coding>
-                <code>manage</code>
-                <system>exactly</system>
+                <code>pay</code>
+                <system>machine</system>
               </coding>
             </data_absent_reason>
           </component_systolic_bp>
@@ -618,94 +637,52 @@
               </coding_dbp_code>
             </code>
             <value>
-              <value>785.17</value>
-              <comparator>&gt;</comparator>
-              <unit>growth</unit>
+              <value>953.37</value>
+              <comparator>&lt;</comparator>
+              <unit>toward</unit>
               <system>http://unitsofmeasure.org</system>
               <code>mm[Hg]</code>
             </value>
             <data_absent_reason>
               <coding>
-                <code>detail</code>
-                <system>give</system>
+                <code>fear</code>
+                <system>author</system>
               </coding>
             </data_absent_reason>
           </component_diastolic_bp>
         </component>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </observation_vital_sign>
     </observation_vital_signs>
     <practitioners>
       <practitioner>
-        <unique_identifier>change</unique_identifier>
+        <unique_identifier>pass</unique_identifier>
         <practitioner_details>
-          <npi>5707703713</npi>
+          <npi>1529317089</npi>
           <names>
             <name>
-              <use>usual</use>
+              <use>temp</use>
               <text>American Indian or Alaska Native</text>
-              <family>Marshall</family>
-              <given>April</given>
-              <prefix>Mr.</prefix>
+              <family>Lewis</family>
+              <given>Richard</given>
+              <prefix>Mx.</prefix>
               <suffix>MD</suffix>
               <period>
-                <start>2017-09-29T19:09:32Z</start>
-                <end>2020-09-12T19:07:43Z</end>
+                <start>2010-10-02T15:07:11Z</start>
+                <end>2017-08-15T04:05:54Z</end>
               </period>
             </name>
           </names>
-          <is_active>false</is_active>
-          <telecoms>
-            <telecom>
-              <system>fax</system>
-              <value>until</value>
-              <use>temp</use>
-              <rank>2</rank>
-              <period>
-                <start>2010-10-28T05:37:17Z</start>
-                <end>2019-10-18T07:36:22Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>temp</use>
-              <type>physical</type>
-              <text>American Indian or Alaska Native</text>
-              <line>32171 Gonzalez Parkways</line>
-              <city>Joannastad</city>
-              <district>ahead</district>
-              <state>OR</state>
-              <postal_code>50465</postal_code>
-              <country>LY</country>
-              <period>
-                <start>2017-11-09T07:13:11Z</start>
-                <end>2019-12-29T07:14:46Z</end>
-              </period>
-            </address>
-          </addresses>
-        </practitioner_details>
-        <record_type>D</record_type>
-      </practitioner>
-    </practitioners>
-    <organizations>
-      <organization>
-        <unique_identifier>group</unique_identifier>
-        <organization_details>
-          <npi>8379131538</npi>
-          <clia>base</clia>
-          <name>Christopher Reese</name>
           <is_active>true</is_active>
-          <alias>rock</alias>
           <telecoms>
             <telecom>
-              <system>url</system>
-              <value>open</value>
-              <use>mobile</use>
-              <rank>3</rank>
+              <system>email</system>
+              <value>around</value>
+              <use>temp</use>
+              <rank>4</rank>
               <period>
-                <start>2015-12-21T09:12:44Z</start>
-                <end>2016-01-17T17:41:35Z</end>
+                <start>2010-03-30T20:04:12Z</start>
+                <end>2013-08-12T05:38:39Z</end>
               </period>
             </telecom>
           </telecoms>
@@ -714,15 +691,57 @@
               <use>temp</use>
               <type>postal</type>
               <text>American Indian or Alaska Native</text>
-              <line>77815 Patricia Grove Suite 318</line>
-              <city>Smithhaven</city>
-              <district>where</district>
-              <state>AS</state>
-              <postal_code>86349</postal_code>
-              <country>ES</country>
+              <line>15381 Phillips Ville</line>
+              <city>Angelaview</city>
+              <district>push</district>
+              <state>GU</state>
+              <postal_code>54216</postal_code>
+              <country>IS</country>
               <period>
-                <start>2019-12-24T05:50:04Z</start>
-                <end>2012-08-07T13:55:37Z</end>
+                <start>2012-03-27T04:21:56Z</start>
+                <end>2018-11-25T02:54:00Z</end>
+              </period>
+            </address>
+          </addresses>
+        </practitioner_details>
+        <record_type>A</record_type>
+      </practitioner>
+    </practitioners>
+    <organizations>
+      <organization>
+        <unique_identifier>hospital</unique_identifier>
+        <organization_details>
+          <npi>1105168032</npi>
+          <clia>very</clia>
+          <name>Jason Stone</name>
+          <is_active>true</is_active>
+          <alias>citizen</alias>
+          <telecoms>
+            <telecom>
+              <system>sms</system>
+              <value>note</value>
+              <use>mobile</use>
+              <rank>5</rank>
+              <period>
+                <start>2014-01-09T05:41:01Z</start>
+                <end>2011-08-26T04:48:10Z</end>
+              </period>
+            </telecom>
+          </telecoms>
+          <addresses>
+            <address>
+              <use>home</use>
+              <type>both</type>
+              <text>American Indian or Alaska Native</text>
+              <line>69000 Wilson Branch Apt. 842</line>
+              <city>Markshire</city>
+              <district>lose</district>
+              <state>RI</state>
+              <postal_code>59842</postal_code>
+              <country>SK</country>
+              <period>
+                <start>2011-05-21T23:19:34Z</start>
+                <end>2010-02-15T06:24:30Z</end>
               </period>
             </address>
           </addresses>
@@ -732,56 +751,56 @@
     </organizations>
     <locations>
       <location>
-        <unique_identifier>throughout</unique_identifier>
+        <unique_identifier>see</unique_identifier>
         <location_details>
           <identifier>
-            <value>various</value>
-            <type>national</type>
+            <value>general</value>
+            <type>race</type>
           </identifier>
-          <status>inactive</status>
-          <name>Joseph Miller</name>
+          <status>suspended</status>
+          <name>Kevin Davis</name>
           <telecoms>
             <telecom>
-              <system>pager</system>
-              <value>exactly</value>
-              <use>temp</use>
-              <rank>2</rank>
+              <system>fax</system>
+              <value>themselves</value>
+              <use>work</use>
+              <rank>5</rank>
               <period>
-                <start>2014-01-19T13:53:00Z</start>
-                <end>2019-07-16T06:09:50Z</end>
+                <start>2013-02-21T18:55:33Z</start>
+                <end>2019-04-26T18:13:32Z</end>
               </period>
             </telecom>
           </telecoms>
           <address>
-            <use>temp</use>
+            <use>home</use>
             <type>physical</type>
             <text>American Indian or Alaska Native</text>
-            <line>795 Myers Vista Suite 746</line>
-            <city>Lake Michele</city>
-            <district>western</district>
-            <state>AR</state>
-            <postal_code>26227</postal_code>
-            <country>WS</country>
+            <line>63255 Nelson Terrace</line>
+            <city>Amandaborough</city>
+            <district>national</district>
+            <state>TX</state>
+            <postal_code>18165</postal_code>
+            <country>AO</country>
             <period>
-              <start>2015-03-06T10:53:01Z</start>
-              <end>2014-09-10T03:28:58Z</end>
+              <start>2017-05-06T12:42:04Z</start>
+              <end>2017-01-03T19:46:09Z</end>
             </period>
           </address>
           <managing_organization>
-            <npi>2644702711</npi>
-            <clia>scene</clia>
-            <name>Jeffery Davenport</name>
-            <is_active>false</is_active>
-            <alias>strategy</alias>
+            <npi>2335168629</npi>
+            <clia>data</clia>
+            <name>Alexis Dunn</name>
+            <is_active>true</is_active>
+            <alias>race</alias>
             <telecoms>
               <telecom>
-                <system>phone</system>
-                <value>whom</value>
-                <use>old</use>
+                <system>pager</system>
+                <value>budget</value>
+                <use>home</use>
                 <rank>2</rank>
                 <period>
-                  <start>2012-11-23T10:53:59Z</start>
-                  <end>2014-12-28T12:15:59Z</end>
+                  <start>2016-03-06T23:29:31Z</start>
+                  <end>2014-09-17T21:26:43Z</end>
                 </period>
               </telecom>
             </telecoms>
@@ -790,87 +809,87 @@
                 <use>home</use>
                 <type>both</type>
                 <text>American Indian or Alaska Native</text>
-                <line>889 Christina Point Apt. 151</line>
-                <city>New Teresa</city>
-                <district>foreign</district>
-                <state>MS</state>
-                <postal_code>58962</postal_code>
-                <country>TN</country>
+                <line>8253 Abbott Ranch</line>
+                <city>New Michelle</city>
+                <district>job</district>
+                <state>LA</state>
+                <postal_code>89201</postal_code>
+                <country>MW</country>
                 <period>
-                  <start>2018-05-05T02:14:46Z</start>
-                  <end>2016-07-26T17:36:22Z</end>
+                  <start>2016-06-09T09:00:49Z</start>
+                  <end>2017-11-17T18:40:28Z</end>
                 </period>
               </address>
             </addresses>
           </managing_organization>
         </location_details>
-        <record_type>A</record_type>
+        <record_type>U</record_type>
       </location>
     </locations>
     <encounters>
       <encounter>
-        <unique_identifier>would</unique_identifier>
+        <unique_identifier>face</unique_identifier>
         <encounter_details>
-          <identifier>if</identifier>
-          <status>triaged</status>
-          <class>prove</class>
+          <identifier>use</identifier>
+          <status>finished</status>
+          <class>assume</class>
           <type>
-            <code>subject</code>
+            <code>its</code>
             <system>http://snomed.info/sct</system>
           </type>
           <participants>
             <participant>
               <type>
-                <code>people</code>
+                <code>thank</code>
                 <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
               </type>
               <period>
-                <start>2020-03-27T02:07:11Z</start>
-                <end>2015-04-17T09:21:08Z</end>
+                <start>2015-04-20T14:49:49Z</start>
+                <end>2013-10-31T02:28:54Z</end>
               </period>
               <individual>
-                <npi>9437305349</npi>
+                <npi>4512577108</npi>
                 <names>
                   <name>
-                    <use>old</use>
+                    <use>anonymous</use>
                     <text>American Indian or Alaska Native</text>
-                    <family>Jones</family>
-                    <given>Mary</given>
-                    <prefix>Ind.</prefix>
-                    <suffix>MD</suffix>
+                    <family>Wade</family>
+                    <given>Susan</given>
+                    <prefix>Mr.</prefix>
+                    <suffix>III</suffix>
                     <period>
-                      <start>2016-08-18T23:25:12Z</start>
-                      <end>2014-09-18T01:45:31Z</end>
+                      <start>2018-03-20T20:04:27Z</start>
+                      <end>2015-06-02T15:28:20Z</end>
                     </period>
                   </name>
                 </names>
-                <is_active>false</is_active>
+                <is_active>true</is_active>
                 <telecoms>
                   <telecom>
-                    <system>pager</system>
-                    <value>what</value>
-                    <use>home</use>
+                    <system>email</system>
+                    <value>present</value>
+                    <use>temp</use>
                     <rank>2</rank>
                     <period>
-                      <start>2016-10-26T08:48:16Z</start>
-                      <end>2011-07-05T01:00:06Z</end>
+                      <start>2015-03-08T01:37:34Z</start>
+                      <end>2010-08-12T11:55:38Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>old</use>
-                    <type>postal</type>
+                    <use>work</use>
+                    <type>both</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>94384 Taylor Greens</line>
-                    <city>Patrickmouth</city>
-                    <district>decide</district>
-                    <state>AL</state>
-                    <postal_code>05588</postal_code>
-                    <country>PY</country>
+                    <line>44779 Amanda Ville</line>
+                    <city>Travisfort</city>
+                    <district>attack</district>
+                    <state>HI</state>
+                    <postal_code>03351</postal_code>
+                    <country>ID</country>
                     <period>
-                      <start>2019-10-07T13:54:50Z</start>
-                      <end>2013-05-13T01:13:15Z</end>
+                      <start>2014-02-20T11:58:59Z</start>
+                      <end>2012-08-04T13:55:07Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -878,80 +897,80 @@
             </participant>
           </participants>
           <period>
-            <start>2012-04-04T14:36:23Z</start>
-            <end>2015-06-29T18:44:19Z</end>
+            <start>2018-08-03T05:29:56Z</start>
+            <end>2018-07-25T22:24:10Z</end>
           </period>
-          <reason_code>yeah</reason_code>
+          <reason_code>during</reason_code>
           <hospitalization>
-            <discharge_disposition>report</discharge_disposition>
+            <discharge_disposition>information</discharge_disposition>
           </hospitalization>
           <location>
             <location>
               <identifier>
-                <value>let</value>
-                <type>picture</type>
+                <value>outside</value>
+                <type>stage</type>
               </identifier>
               <status>inactive</status>
-              <name>Dr. Ricky Davies</name>
+              <name>Amanda Torres</name>
               <telecoms>
                 <telecom>
-                  <system>fax</system>
-                  <value>some</value>
-                  <use>home</use>
-                  <rank>3</rank>
+                  <system>sms</system>
+                  <value>white</value>
+                  <use>work</use>
+                  <rank>2</rank>
                   <period>
-                    <start>2018-05-21T21:35:50Z</start>
-                    <end>2020-12-03T08:43:53Z</end>
+                    <start>2019-09-15T01:51:31Z</start>
+                    <end>2017-07-21T21:45:41Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <address>
-                <use>old</use>
-                <type>both</type>
+                <use>billing</use>
+                <type>postal</type>
                 <text>American Indian or Alaska Native</text>
-                <line>374 Watson Divide</line>
-                <city>Bonniefurt</city>
-                <district>discover</district>
-                <state>VT</state>
-                <postal_code>55411</postal_code>
-                <country>KW</country>
+                <line>727 Sims Estate Suite 207</line>
+                <city>Kristenmouth</city>
+                <district>minute</district>
+                <state>MI</state>
+                <postal_code>85311</postal_code>
+                <country>BR</country>
                 <period>
-                  <start>2011-07-28T13:34:57Z</start>
-                  <end>2015-06-18T00:59:31Z</end>
+                  <start>2013-11-21T18:53:53Z</start>
+                  <end>2020-11-04T20:59:38Z</end>
                 </period>
               </address>
               <managing_organization>
-                <npi>7440311984</npi>
-                <clia>close</clia>
-                <name>Justin Contreras</name>
-                <is_active>false</is_active>
-                <alias>someone</alias>
+                <npi>2342843129</npi>
+                <clia>share</clia>
+                <name>Kevin Flynn</name>
+                <is_active>true</is_active>
+                <alias>either</alias>
                 <telecoms>
                   <telecom>
-                    <system>url</system>
-                    <value>reveal</value>
-                    <use>mobile</use>
-                    <rank>1</rank>
+                    <system>phone</system>
+                    <value>suggest</value>
+                    <use>work</use>
+                    <rank>5</rank>
                     <period>
-                      <start>2012-09-24T20:29:11Z</start>
-                      <end>2012-04-30T17:33:24Z</end>
+                      <start>2014-08-02T19:56:53Z</start>
+                      <end>2011-07-20T19:30:30Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
                     <use>work</use>
-                    <type>postal</type>
+                    <type>physical</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>7962 Day Avenue Suite 298</line>
-                    <city>East Nicholasland</city>
-                    <district>cover</district>
-                    <state>NE</state>
-                    <postal_code>99317</postal_code>
-                    <country>KN</country>
+                    <line>490 James Throughway Apt. 745</line>
+                    <city>Port Danielle</city>
+                    <district>goal</district>
+                    <state>OH</state>
+                    <postal_code>16017</postal_code>
+                    <country>AG</country>
                     <period>
-                      <start>2011-08-21T00:18:18Z</start>
-                      <end>2011-10-09T06:57:39Z</end>
+                      <start>2013-04-21T10:39:03Z</start>
+                      <end>2017-06-15T00:08:48Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -959,18 +978,18 @@
             </location>
           </location>
         </encounter_details>
-        <record_type>A</record_type>
+        <record_type>D</record_type>
       </encounter>
     </encounters>
     <care_plans>
       <care_plan>
-        <unique_identifier>course</unique_identifier>
+        <unique_identifier>song</unique_identifier>
         <text>
-          <status>generated</status>
-          <div>fact</div>
+          <status>additional</status>
+          <div>perform</div>
         </text>
-        <status>draft</status>
-        <intent>plan</intent>
+        <status>entered-in-error</status>
+        <intent>option</intent>
         <category>
           <category_assess_plan>
             <coding>
@@ -984,41 +1003,41 @@
     </care_plans>
     <goals>
       <goal>
-        <unique_identifier>oil</unique_identifier>
-        <lifecycle_status>on-hold</lifecycle_status>
+        <unique_identifier>support</unique_identifier>
+        <lifecycle_status>proposed</lifecycle_status>
         <description>
-          <code>medical</code>
-          <system>themselves</system>
+          <code>skill</code>
+          <system>sign</system>
         </description>
         <target>
-          <due_date>1970-01-14</due_date>
+          <due_date>2005-02-17</due_date>
         </target>
         <record_type>A</record_type>
       </goal>
     </goals>
     <immunizations>
       <immunization>
-        <unique_identifier>low</unique_identifier>
+        <unique_identifier>official</unique_identifier>
         <status>not-done</status>
         <status_reason>
-          <code>other</code>
-          <system>shoulder</system>
+          <code>eat</code>
+          <system>them</system>
         </status_reason>
         <vaccine_code>
-          <code>black</code>
+          <code>Democrat</code>
           <system>http://hl7.org/fhir/sid/cvx</system>
         </vaccine_code>
         <occurrence>
-          <occurrence_string>room</occurrence_string>
+          <occurrence_string>study</occurrence_string>
         </occurrence>
-        <primary_source>false</primary_source>
+        <primary_source>true</primary_source>
         <record_type>U</record_type>
       </immunization>
     </immunizations>
     <pediatric_bmi_for_age_observations>
       <pediatric_bmi_for_age_observation>
-        <unique_identifier>fall</unique_identifier>
-        <status>amended</status>
+        <unique_identifier>effect</unique_identifier>
+        <status>registered</status>
         <category>
           <category_vs_cat>
             <coding>
@@ -1034,39 +1053,39 @@
           </coding>
         </code>
         <effective>
-          <effective_date_time>2012-06-14T13:46:12Z</effective_date_time>
+          <effective_date_time>2015-05-15T23:18:13Z</effective_date_time>
         </effective>
         <value_quantity>
-          <value>884.32</value>
-          <unit>ready</unit>
-          <system>effect</system>
-          <code>add</code>
-          <comparator>TV</comparator>
+          <value>458.3</value>
+          <unit>suddenly</unit>
+          <system>watch</system>
+          <code>catch</code>
+          <comparator>star</comparator>
         </value_quantity>
         <data_absent_reason>
-          <code>as-text</code>
-          <system>letter</system>
+          <code>temp-unknown</code>
+          <system>set</system>
         </data_absent_reason>
         <component>
           <code>
-            <code>8310-5</code>
+            <code>9279-1</code>
             <system>http://loinc.org</system>
           </code>
           <value>
-            <value_time>03:10:51</value_time>
+            <value_string>everything</value_string>
           </value>
           <data_absent_reason>
             <code>not-asked</code>
-            <system>such</system>
+            <system>task</system>
           </data_absent_reason>
         </component>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </pediatric_bmi_for_age_observation>
     </pediatric_bmi_for_age_observations>
     <pediatric_head_occipital_frontal_circumference_observations>
       <pediatric_head_occipital_frontal_circumference_observation>
-        <unique_identifier>author</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>senior</unique_identifier>
+        <status>amended</status>
         <category>
           <category_vs_cat>
             <coding>
@@ -1082,54 +1101,55 @@
           </coding>
         </code>
         <effective>
-          <effective_date_time>2019-10-28T19:29:59Z</effective_date_time>
+          <effective_period>
+            <start>2010-07-04T23:15:59Z</start>
+            <end>2012-06-12T14:57:40Z</end>
+          </effective_period>
         </effective>
         <value_quantity>
-          <value>49.03</value>
-          <unit>table</unit>
-          <system>wish</system>
-          <code>behind</code>
-          <comparator>travel</comparator>
+          <value>830.88</value>
+          <unit>set</unit>
+          <system>language</system>
+          <code>reach</code>
+          <comparator>community</comparator>
         </value_quantity>
         <data_absent_reason>
-          <code>as-text</code>
-          <system>keep</system>
+          <code>unsupported</code>
+          <system>company</system>
         </data_absent_reason>
         <component>
           <code>
-            <code>8302-2</code>
+            <code>9279-1</code>
             <system>http://loinc.org</system>
           </code>
           <value>
-            <value_ratio>
-              <numerator>
-                <value>499.6</value>
-                <comparator>&gt;</comparator>
-                <unit>history</unit>
-                <system>week</system>
-                <code>him</code>
-              </numerator>
-              <denominator>
-                <value>910.73</value>
-                <comparator>&lt;=</comparator>
-                <unit>arrive</unit>
-                <system>land</system>
-                <code>consumer</code>
-              </denominator>
-            </value_ratio>
+            <value_sampled_data>
+              <origin>
+                <value>347.75</value>
+                <unit>prepare</unit>
+                <system>science</system>
+                <code>television</code>
+              </origin>
+              <period>951.92</period>
+              <factor>335.3</factor>
+              <lower_limit>541.67</lower_limit>
+              <upper_limit>506.91</upper_limit>
+              <dimensions>2</dimensions>
+              <data>put</data>
+            </value_sampled_data>
           </value>
           <data_absent_reason>
-            <code>error</code>
-            <system>simple</system>
+            <code>not-performed</code>
+            <system>also</system>
           </data_absent_reason>
         </component>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </pediatric_head_occipital_frontal_circumference_observation>
     </pediatric_head_occipital_frontal_circumference_observations>
     <pediatric_weight_for_height_observations>
       <pediatric_weight_for_height_observation>
-        <unique_identifier>its</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>impact</unique_identifier>
+        <status>preliminary</status>
         <category>
           <category_vs_cat>
             <coding>
@@ -1145,434 +1165,387 @@
           </coding>
         </code>
         <effective>
-          <effective_period>
-            <start>2016-09-07T17:50:59Z</start>
-            <end>2014-12-27T07:48:48Z</end>
-          </effective_period>
+          <effective_date_time>2020-07-29T12:27:47Z</effective_date_time>
         </effective>
         <value_quantity>
-          <value>954.1</value>
-          <unit>discussion</unit>
-          <system>like</system>
-          <code>commercial</code>
-          <comparator>part</comparator>
+          <value>166.94</value>
+          <unit>wide</unit>
+          <system>continue</system>
+          <code>hot</code>
+          <comparator>you</comparator>
         </value_quantity>
         <data_absent_reason>
-          <code>error</code>
-          <system>so</system>
+          <code>asked-declined</code>
+          <system>situation</system>
         </data_absent_reason>
         <component>
           <code>
-            <code>85353-1</code>
+            <code>8310-5</code>
             <system>http://loinc.org</system>
           </code>
           <value>
-            <value_period>
-              <start>2013-03-12T12:15:03Z</start>
-              <end>2018-05-31T12:02:48Z</end>
-            </value_period>
+            <value_time>12:55:48</value_time>
           </value>
           <data_absent_reason>
-            <code>not-permitted</code>
-            <system>during</system>
+            <code>not-applicable</code>
+            <system>air</system>
           </data_absent_reason>
         </component>
-        <record_type>D</record_type>
+        <record_type>A</record_type>
       </pediatric_weight_for_height_observation>
     </pediatric_weight_for_height_observations>
     <practitioners_roles>
       <practitioner_role>
-        <unique_identifier>leg</unique_identifier>
+        <unique_identifier>politics</unique_identifier>
         <practitioner>
-          <npi>6351521973</npi>
+          <npi>6641598960</npi>
           <names>
             <name>
-              <use>anonymous</use>
+              <use>nickname</use>
               <text>American Indian or Alaska Native</text>
-              <family>Martin</family>
-              <given>Alice</given>
-              <prefix>Mx.</prefix>
-              <suffix>III</suffix>
+              <family>Johnson</family>
+              <given>Vanessa</given>
+              <prefix>Mr.</prefix>
+              <suffix>Jr.</suffix>
               <period>
-                <start>2019-03-14T20:59:52Z</start>
-                <end>2020-01-25T05:47:52Z</end>
+                <start>2013-01-11T11:30:17Z</start>
+                <end>2010-06-09T12:21:28Z</end>
               </period>
             </name>
           </names>
           <is_active>true</is_active>
           <telecoms>
             <telecom>
-              <system>sms</system>
-              <value>score</value>
-              <use>mobile</use>
-              <rank>3</rank>
-              <period>
-                <start>2017-01-06T04:10:01Z</start>
-                <end>2010-02-01T16:34:16Z</end>
-              </period>
-            </telecom>
-          </telecoms>
-          <addresses>
-            <address>
-              <use>temp</use>
-              <type>physical</type>
-              <text>American Indian or Alaska Native</text>
-              <line>6178 Abigail Mission Suite 691</line>
-              <city>New Dawnville</city>
-              <district>mind</district>
-              <state>VT</state>
-              <postal_code>51801</postal_code>
-              <country>ID</country>
-              <period>
-                <start>2010-05-04T16:16:57Z</start>
-                <end>2011-03-18T16:40:12Z</end>
-              </period>
-            </address>
-          </addresses>
-        </practitioner>
-        <organization>
-          <npi>7282785521</npi>
-          <clia>under</clia>
-          <name>Robert Riley</name>
-          <is_active>false</is_active>
-          <alias>concern</alias>
-          <telecoms>
-            <telecom>
               <system>phone</system>
-              <value>painting</value>
-              <use>work</use>
-              <rank>2</rank>
+              <value>hope</value>
+              <use>mobile</use>
+              <rank>1</rank>
               <period>
-                <start>2014-12-24T05:45:04Z</start>
-                <end>2018-11-05T18:59:42Z</end>
+                <start>2019-09-16T05:44:16Z</start>
+                <end>2012-11-20T06:45:04Z</end>
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
               <use>old</use>
-              <type>postal</type>
+              <type>both</type>
               <text>American Indian or Alaska Native</text>
-              <line>51987 Cole Falls</line>
-              <city>West Brandonside</city>
-              <district>concern</district>
-              <state>NC</state>
-              <postal_code>84377</postal_code>
+              <line>606 Cody Squares</line>
+              <city>Lake Kimberlyfort</city>
+              <district>professor</district>
+              <state>GU</state>
+              <postal_code>37746</postal_code>
+              <country>TZ</country>
+              <period>
+                <start>2015-11-20T09:43:55Z</start>
+                <end>2015-05-02T06:36:53Z</end>
+              </period>
+            </address>
+          </addresses>
+        </practitioner>
+        <organization>
+          <npi>2530190723</npi>
+          <clia>TV</clia>
+          <name>Megan Henry</name>
+          <is_active>false</is_active>
+          <alias>speak</alias>
+          <telecoms>
+            <telecom>
+              <system>phone</system>
+              <value>address</value>
+              <use>temp</use>
+              <rank>4</rank>
+              <period>
+                <start>2014-10-08T01:20:34Z</start>
+                <end>2019-07-07T09:56:17Z</end>
+              </period>
+            </telecom>
+          </telecoms>
+          <addresses>
+            <address>
+              <use>temp</use>
+              <type>both</type>
+              <text>American Indian or Alaska Native</text>
+              <line>3616 Wiley Prairie Apt. 171</line>
+              <city>New Cassiefurt</city>
+              <district>woman</district>
+              <state>DE</state>
+              <postal_code>64376</postal_code>
               <country>PT</country>
               <period>
-                <start>2017-06-02T15:29:36Z</start>
-                <end>2017-12-13T19:04:08Z</end>
+                <start>2014-03-25T20:15:22Z</start>
+                <end>2015-05-11T14:17:22Z</end>
               </period>
             </address>
           </addresses>
         </organization>
         <code>
-          <code>day</code>
+          <code>scene</code>
           <system>http://nucc.org/provider-taxonomy</system>
         </code>
         <specialty>
-          <code>table</code>
+          <code>old</code>
           <system>http://nucc.org/provider-taxonomy</system>
         </specialty>
         <location>
           <identifier>
-            <value>group</value>
-            <type>old</type>
+            <value>some</value>
+            <type>support</type>
           </identifier>
-          <status>active</status>
-          <name>Donna Davis</name>
+          <status>inactive</status>
+          <name>Steven Hopkins</name>
           <telecoms>
             <telecom>
-              <system>url</system>
-              <value>high</value>
-              <use>home</use>
+              <system>email</system>
+              <value>care</value>
+              <use>temp</use>
               <rank>1</rank>
               <period>
-                <start>2018-12-24T07:49:23Z</start>
-                <end>2012-12-28T11:15:08Z</end>
+                <start>2016-07-04T07:01:04Z</start>
+                <end>2015-06-15T08:52:45Z</end>
               </period>
             </telecom>
           </telecoms>
           <address>
-            <use>billing</use>
-            <type>physical</type>
+            <use>old</use>
+            <type>both</type>
             <text>American Indian or Alaska Native</text>
-            <line>675 Kramer Circle Apt. 371</line>
-            <city>Lake Danielburgh</city>
-            <district>sometimes</district>
-            <state>CT</state>
-            <postal_code>37487</postal_code>
-            <country>LT</country>
+            <line>58352 Turner Centers Suite 344</line>
+            <city>Lake Adammouth</city>
+            <district>language</district>
+            <state>HI</state>
+            <postal_code>42317</postal_code>
+            <country>BN</country>
             <period>
-              <start>2017-06-18T17:08:40Z</start>
-              <end>2014-11-12T08:09:56Z</end>
+              <start>2013-09-06T02:57:20Z</start>
+              <end>2019-11-24T02:45:18Z</end>
             </period>
           </address>
           <managing_organization>
-            <npi>2384836615</npi>
-            <clia>ground</clia>
-            <name>Jennifer Davis</name>
+            <npi>8988778616</npi>
+            <clia>eye</clia>
+            <name>Jacob Fowler</name>
             <is_active>true</is_active>
-            <alias>list</alias>
+            <alias>guy</alias>
             <telecoms>
               <telecom>
-                <system>other</system>
-                <value>whatever</value>
-                <use>temp</use>
-                <rank>4</rank>
+                <system>url</system>
+                <value>dark</value>
+                <use>old</use>
+                <rank>5</rank>
                 <period>
-                  <start>2019-09-12T21:22:18Z</start>
-                  <end>2012-07-28T12:56:13Z</end>
+                  <start>2016-10-29T12:31:25Z</start>
+                  <end>2019-05-16T13:49:35Z</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
-                <use>old</use>
+                <use>work</use>
                 <type>physical</type>
                 <text>American Indian or Alaska Native</text>
-                <line>34827 Rose Viaduct Suite 506</line>
-                <city>Robynhaven</city>
-                <district>Republican</district>
-                <state>RI</state>
-                <postal_code>20975</postal_code>
-                <country>NA</country>
+                <line>8777 George Crest Suite 543</line>
+                <city>Port Joseph</city>
+                <district>family</district>
+                <state>OH</state>
+                <postal_code>42168</postal_code>
+                <country>LU</country>
                 <period>
-                  <start>2010-10-03T21:53:07Z</start>
-                  <end>2019-06-13T08:25:11Z</end>
+                  <start>2017-07-08T10:16:48Z</start>
+                  <end>2019-05-09T05:08:57Z</end>
                 </period>
               </address>
             </addresses>
           </managing_organization>
         </location>
         <telecom>
-          <system>other</system>
-          <value>effort</value>
-          <use>home</use>
-          <rank>4</rank>
+          <system>email</system>
+          <value>card</value>
+          <use>mobile</use>
+          <rank>5</rank>
           <period>
-            <start>2016-03-24T10:16:51Z</start>
-            <end>2014-12-17T06:04:57Z</end>
+            <start>2016-01-10T17:47:49Z</start>
+            <end>2015-12-15T18:31:52Z</end>
           </period>
         </telecom>
         <endpoints>
           <identifier>
-            <value>realize</value>
-            <type>decision</type>
+            <value>century</value>
+            <type>plan</type>
           </identifier>
           <status>active</status>
           <connectionType>
             <code>hl7-fhir-rest</code>
             <system>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</system>
           </connectionType>
-          <name>Jasmin Diaz</name>
+          <name>Brandy Mcmahon</name>
           <managing_organization>
-            <npi>4114720397</npi>
-            <clia>like</clia>
-            <name>Jonathan Baker</name>
-            <is_active>true</is_active>
-            <alias>rule</alias>
+            <npi>7611507908</npi>
+            <clia>increase</clia>
+            <name>Todd Weaver</name>
+            <is_active>false</is_active>
+            <alias>entire</alias>
             <telecoms>
               <telecom>
-                <system>sms</system>
-                <value>however</value>
-                <use>mobile</use>
-                <rank>4</rank>
+                <system>fax</system>
+                <value>ask</value>
+                <use>old</use>
+                <rank>2</rank>
                 <period>
-                  <start>2014-12-11T05:55:24Z</start>
-                  <end>2017-06-06T14:16:45Z</end>
+                  <start>2018-02-22T08:09:59Z</start>
+                  <end>2012-12-20T23:48:57Z</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
                 <use>billing</use>
-                <type>physical</type>
+                <type>postal</type>
                 <text>American Indian or Alaska Native</text>
-                <line>651 Michelle Orchard</line>
-                <city>Port Emmastad</city>
-                <district>participant</district>
-                <state>MA</state>
-                <postal_code>42982</postal_code>
-                <country>GM</country>
+                <line>72071 Martinez Gateway Apt. 808</line>
+                <city>New Evelynmouth</city>
+                <district>leader</district>
+                <state>IA</state>
+                <postal_code>07323</postal_code>
+                <country>VU</country>
                 <period>
-                  <start>2011-09-20T01:31:31Z</start>
-                  <end>2018-04-05T05:46:19Z</end>
+                  <start>2012-02-14T06:13:25Z</start>
+                  <end>2014-01-02T17:15:40Z</end>
                 </period>
               </address>
             </addresses>
           </managing_organization>
           <contacts>
             <contact>
-              <system>email</system>
-              <value>TV</value>
+              <system>sms</system>
+              <value>money</value>
               <use>home</use>
-              <rank>2</rank>
+              <rank>3</rank>
               <period>
-                <start>2017-01-10T20:09:09Z</start>
-                <end>2018-05-24T22:09:11Z</end>
+                <start>2019-06-26T00:58:10Z</start>
+                <end>2012-05-05T22:18:08Z</end>
               </period>
             </contact>
           </contacts>
           <period>
-            <start>2010-09-26T06:34:55Z</start>
-            <end>2019-03-16T03:28:29Z</end>
+            <start>2015-08-14T12:35:38Z</start>
+            <end>2011-02-01T16:11:07Z</end>
           </period>
           <payload_type>
-            <code>shoulder</code>
-            <system>urn:oid:1.3.6.1.4.1.19376.1.2.3</system>
+            <code>your</code>
+            <system>http://terminology.hl7.org/CodeSystem/endpoint-payload-type</system>
           </payload_type>
           <payload_mime_type>
-            <code>enjoy</code>
+            <code>attack</code>
             <system>urn:ietf:bcp:13</system>
           </payload_mime_type>
-          <address>source</address>
-          <header>structure</header>
+          <address>million</address>
+          <header>vote</header>
         </endpoints>
-        <record_type>D</record_type>
+        <record_type>U</record_type>
       </practitioner_role>
     </practitioners_roles>
     <smoking_status_observations>
       <smoking_status_observation>
-        <unique_identifier>around</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>hit</unique_identifier>
+        <status>final</status>
         <code>
           <code>72166-2</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2019-02-27T09:10:40Z</issued>
+        <issued>2012-08-10T00:19:28Z</issued>
         <value_codeable_concept>
-          <code>blue</code>
+          <code>fly</code>
           <system>http://snomed.info/sct</system>
         </value_codeable_concept>
-        <record_type>D</record_type>
+        <record_type>A</record_type>
       </smoking_status_observation>
     </smoking_status_observations>
     <provenances>
       <provenance>
-        <unique_identifier>join</unique_identifier>
+        <unique_identifier>area</unique_identifier>
         <target>
-          <resource_type>observation_vital_sign</resource_type>
-          <unique_identifier>discussion</unique_identifier>
+          <resource_type>pulse_oximetry_observation</resource_type>
+          <unique_identifier>stock</unique_identifier>
         </target>
-        <recorded>2017-02-10T08:00:42Z</recorded>
+        <recorded>2018-02-17T17:08:56Z</recorded>
         <agent>
           <agent_provenance_general>
             <type>
-              <code>transmitter</code>
+              <code>informant</code>
               <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type</system>
             </type>
             <who>
-              <patient>
-                <medical_record_number>morning</medical_record_number>
-                <member_id>wrong</member_id>
-                <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-                <unique_person_id>though</unique_person_id>
-                <unique_person_id_assigner>agreement</unique_person_id_assigner>
-                <unique_person_id_assigner_type>teach</unique_person_id_assigner_type>
-                <names>
-                  <name>
-                    <use>official</use>
-                    <text>American Indian or Alaska Native</text>
-                    <family>Williams</family>
-                    <given>David</given>
-                    <prefix>Mx.</prefix>
-                    <suffix>DVM</suffix>
-                    <period>
-                      <start>2019-10-07T12:57:57Z</start>
-                      <end>2012-07-17T03:32:09Z</end>
-                    </period>
-                  </name>
-                </names>
-                <gender>male</gender>
-                <birth_date>2006-07-02</birth_date>
-                <marital_status>S</marital_status>
-                <deceased>
-                  <is_deceased>true</is_deceased>
-                  <deceased_date_time>2010-08-24T00:02:09Z</deceased_date_time>
-                </deceased>
+              <organization>
+                <npi>8337778526</npi>
+                <clia>add</clia>
+                <name>Lisa Nichols</name>
+                <is_active>true</is_active>
+                <alias>program</alias>
                 <telecoms>
                   <telecom>
-                    <system>url</system>
-                    <value>rock</value>
-                    <use>old</use>
+                    <system>phone</system>
+                    <value>cultural</value>
+                    <use>work</use>
                     <rank>4</rank>
                     <period>
-                      <start>2011-02-24T14:47:18Z</start>
-                      <end>2020-02-17T06:13:59Z</end>
+                      <start>2012-12-03T18:00:27Z</start>
+                      <end>2018-11-10T17:13:01Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>work</use>
-                    <type>both</type>
+                    <use>billing</use>
+                    <type>physical</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>321 Kim Ramp Apt. 765</line>
-                    <city>Carrollfort</city>
-                    <district>produce</district>
-                    <state>TX</state>
-                    <postal_code>94880</postal_code>
-                    <country>UY</country>
+                    <line>507 Wolf Land Apt. 175</line>
+                    <city>Ashleyport</city>
+                    <district>financial</district>
+                    <state>MT</state>
+                    <postal_code>06013</postal_code>
+                    <country>FM</country>
                     <period>
-                      <start>2010-02-15T21:11:23Z</start>
-                      <end>2015-09-29T20:43:05Z</end>
+                      <start>2020-01-17T11:33:59Z</start>
+                      <end>2011-08-26T03:24:20Z</end>
                     </period>
                   </address>
                 </addresses>
-                <communications>
-                  <communication>
-                    <language_code>en-AU</language_code>
-                    <is_preferred>false</is_preferred>
-                  </communication>
-                </communications>
-                <us_core_race>
-                  <omb_category_code>2135-2</omb_category_code>
-                  <omb_category_code>2135-2</omb_category_code>
-                  <omb_category_code>2186-5</omb_category_code>
-                  <detailed_code>1681-6</detailed_code>
-                  <text>asked but unknown</text>
-                </us_core_race>
-                <us_core_ethnicity>
-                  <omb_category_code>2186-5</omb_category_code>
-                  <detailed_code>2176-6</detailed_code>
-                  <text>unknown</text>
-                </us_core_ethnicity>
-                <us_core_birth_sex>F</us_core_birth_sex>
-              </patient>
+              </organization>
             </who>
             <on_behalf_of>
-              <npi>6525847468</npi>
-              <clia>property</clia>
-              <name>Joshua West</name>
-              <is_active>true</is_active>
-              <alias>usually</alias>
+              <npi>7538199064</npi>
+              <clia>anything</clia>
+              <name>Peter Martin</name>
+              <is_active>false</is_active>
+              <alias>against</alias>
               <telecoms>
                 <telecom>
-                  <system>sms</system>
-                  <value>cup</value>
+                  <system>phone</system>
+                  <value>special</value>
                   <use>old</use>
-                  <rank>2</rank>
+                  <rank>1</rank>
                   <period>
-                    <start>2012-03-24T06:48:49Z</start>
-                    <end>2018-09-04T23:35:48Z</end>
+                    <start>2018-03-20T23:37:44Z</start>
+                    <end>2012-03-04T07:19:20Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <addresses>
                 <address>
-                  <use>home</use>
-                  <type>physical</type>
+                  <use>old</use>
+                  <type>postal</type>
                   <text>American Indian or Alaska Native</text>
-                  <line>7067 Bonnie Bridge</line>
-                  <city>New Carlos</city>
-                  <district>national</district>
-                  <state>NC</state>
-                  <postal_code>29858</postal_code>
-                  <country>KG</country>
+                  <line>34835 Hicks Cape</line>
+                  <city>North Stacie</city>
+                  <district>the</district>
+                  <state>MN</state>
+                  <postal_code>74256</postal_code>
+                  <country>BI</country>
                   <period>
-                    <start>2015-02-17T12:57:18Z</start>
-                    <end>2015-12-31T13:41:43Z</end>
+                    <start>2018-12-21T18:33:07Z</start>
+                    <end>2016-08-08T06:48:06Z</end>
                   </period>
                 </address>
               </addresses>
@@ -1587,99 +1560,99 @@
             </type>
             <who>
               <patient>
-                <medical_record_number>above</medical_record_number>
-                <member_id>computer</member_id>
+                <medical_record_number>security</medical_record_number>
+                <member_id>will</member_id>
                 <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-                <unique_person_id>bit</unique_person_id>
-                <unique_person_id_assigner>leg</unique_person_id_assigner>
-                <unique_person_id_assigner_type>company</unique_person_id_assigner_type>
+                <unique_person_id>member</unique_person_id>
+                <unique_person_id_assigner>heavy</unique_person_id_assigner>
+                <unique_person_id_assigner_type>various</unique_person_id_assigner_type>
                 <names>
                   <name>
-                    <use>usual</use>
+                    <use>anonymous</use>
                     <text>American Indian or Alaska Native</text>
-                    <family>Ramirez</family>
-                    <given>Jasmine</given>
-                    <prefix>Mrs.</prefix>
-                    <suffix>Jr.</suffix>
+                    <family>White</family>
+                    <given>Michelle</given>
+                    <prefix>Mx.</prefix>
+                    <suffix>MD</suffix>
                     <period>
-                      <start>2019-06-08T16:25:37Z</start>
-                      <end>2014-05-13T16:58:33Z</end>
+                      <start>2019-10-17T02:40:39Z</start>
+                      <end>2018-08-24T19:34:38Z</end>
                     </period>
                   </name>
                 </names>
                 <gender>other</gender>
-                <birth_date>2025-02-19</birth_date>
+                <birth_date>1982-01-24</birth_date>
                 <marital_status>S</marital_status>
                 <deceased>
-                  <is_deceased>false</is_deceased>
-                  <deceased_date_time>2016-08-03T11:26:46Z</deceased_date_time>
+                  <is_deceased>true</is_deceased>
+                  <deceased_date_time>2018-08-15T09:05:47Z</deceased_date_time>
                 </deceased>
                 <telecoms>
                   <telecom>
-                    <system>phone</system>
-                    <value>seek</value>
-                    <use>old</use>
-                    <rank>5</rank>
+                    <system>other</system>
+                    <value>year</value>
+                    <use>temp</use>
+                    <rank>1</rank>
                     <period>
-                      <start>2013-11-04T22:37:31Z</start>
-                      <end>2011-01-20T07:48:20Z</end>
+                      <start>2012-01-06T15:40:15Z</start>
+                      <end>2020-06-27T02:38:21Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>temp</use>
+                    <use>billing</use>
                     <type>both</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>5571 Joel Fort</line>
-                    <city>Lake Samanthamouth</city>
-                    <district>investment</district>
-                    <state>OR</state>
-                    <postal_code>79323</postal_code>
-                    <country>AO</country>
+                    <line>745 Carr Union</line>
+                    <city>South Karen</city>
+                    <district>ever</district>
+                    <state>SD</state>
+                    <postal_code>03506</postal_code>
+                    <country>EC</country>
                     <period>
-                      <start>2011-09-14T10:47:58Z</start>
-                      <end>2011-07-25T17:50:10Z</end>
+                      <start>2014-09-26T14:34:47Z</start>
+                      <end>2019-05-20T04:21:16Z</end>
                     </period>
                   </address>
                 </addresses>
                 <communications>
                   <communication>
-                    <language_code>fy</language_code>
+                    <language_code>fr-FR</language_code>
                     <is_preferred>false</is_preferred>
                   </communication>
                 </communications>
                 <us_core_race>
-                  <omb_category_code>2135-2</omb_category_code>
                   <omb_category_code>2186-5</omb_category_code>
                   <omb_category_code>2135-2</omb_category_code>
-                  <detailed_code>1070-2</detailed_code>
-                  <text>Native Hawaiian or Other Pacific Islander</text>
+                  <omb_category_code>2186-5</omb_category_code>
+                  <detailed_code>1204-7</detailed_code>
+                  <text>American Indian or Alaska Native</text>
                 </us_core_race>
                 <us_core_ethnicity>
-                  <omb_category_code>2186-5</omb_category_code>
-                  <detailed_code>2184-0</detailed_code>
-                  <text>asked but unknown</text>
+                  <omb_category_code>2135-2</omb_category_code>
+                  <detailed_code>2149-3</detailed_code>
+                  <text>Hispanic or Latino</text>
                 </us_core_ethnicity>
                 <us_core_birth_sex>UNK</us_core_birth_sex>
               </patient>
             </who>
             <on_behalf_of>
               <organization>
-                <npi>9152405960</npi>
-                <clia>late</clia>
-                <name>Erin Madden</name>
+                <npi>2911357249</npi>
+                <clia>son</clia>
+                <name>Frank Nicholson</name>
                 <is_active>false</is_active>
-                <alias>group</alias>
+                <alias>new</alias>
                 <telecoms>
                   <telecom>
-                    <system>url</system>
-                    <value>whether</value>
-                    <use>old</use>
-                    <rank>2</rank>
+                    <system>fax</system>
+                    <value>dinner</value>
+                    <use>home</use>
+                    <rank>4</rank>
                     <period>
-                      <start>2018-07-27T23:25:27Z</start>
-                      <end>2017-10-09T20:51:41Z</end>
+                      <start>2020-03-21T16:05:50Z</start>
+                      <end>2015-03-25T13:57:22Z</end>
                     </period>
                   </telecom>
                 </telecoms>
@@ -1688,15 +1661,15 @@
                     <use>home</use>
                     <type>postal</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>5984 Oconnell Springs</line>
-                    <city>Jamesland</city>
-                    <district>education</district>
-                    <state>IA</state>
-                    <postal_code>46973</postal_code>
-                    <country>GH</country>
+                    <line>93373 Rivera Falls Suite 202</line>
+                    <city>East Danielborough</city>
+                    <district>wrong</district>
+                    <state>NH</state>
+                    <postal_code>80020</postal_code>
+                    <country>LV</country>
                     <period>
-                      <start>2017-12-03T23:31:57Z</start>
-                      <end>2011-02-10T03:34:07Z</end>
+                      <start>2015-03-11T08:54:21Z</start>
+                      <end>2012-04-30T15:04:59Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -1711,76 +1684,115 @@
               </coding>
             </type>
             <who>
-              <organization>
-                <npi>1581890533</npi>
-                <clia>American</clia>
-                <name>Beth Lee</name>
-                <is_active>false</is_active>
-                <alias>not</alias>
+              <patient>
+                <medical_record_number>last</medical_record_number>
+                <member_id>way</member_id>
+                <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
+                <unique_person_id>firm</unique_person_id>
+                <unique_person_id_assigner>value</unique_person_id_assigner>
+                <unique_person_id_assigner_type>everybody</unique_person_id_assigner_type>
+                <names>
+                  <name>
+                    <use>usual</use>
+                    <text>American Indian or Alaska Native</text>
+                    <family>Gonzales</family>
+                    <given>Jeremy</given>
+                    <prefix>Mx.</prefix>
+                    <suffix>MD</suffix>
+                    <period>
+                      <start>2011-03-14T12:25:08Z</start>
+                      <end>2014-06-11T08:40:53Z</end>
+                    </period>
+                  </name>
+                </names>
+                <gender>female</gender>
+                <birth_date>2013-05-10</birth_date>
+                <marital_status>P</marital_status>
+                <deceased>
+                  <is_deceased>true</is_deceased>
+                  <deceased_date_time>2020-03-28T21:44:42Z</deceased_date_time>
+                </deceased>
                 <telecoms>
                   <telecom>
-                    <system>phone</system>
-                    <value>hold</value>
-                    <use>old</use>
-                    <rank>5</rank>
+                    <system>other</system>
+                    <value>never</value>
+                    <use>home</use>
+                    <rank>4</rank>
                     <period>
-                      <start>2013-02-01T20:25:42Z</start>
-                      <end>2014-09-10T08:19:21Z</end>
+                      <start>2018-07-30T08:32:04Z</start>
+                      <end>2012-02-07T11:01:07Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>work</use>
+                    <use>home</use>
                     <type>both</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>778 Mark Prairie</line>
-                    <city>Laceymouth</city>
-                    <district>believe</district>
-                    <state>FL</state>
-                    <postal_code>82292</postal_code>
-                    <country>AU</country>
+                    <line>545 Tony Trail</line>
+                    <city>Port William</city>
+                    <district>white</district>
+                    <state>MI</state>
+                    <postal_code>79014</postal_code>
+                    <country>SY</country>
                     <period>
-                      <start>2018-07-08T05:27:50Z</start>
-                      <end>2016-01-10T20:26:06Z</end>
+                      <start>2013-04-16T15:32:56Z</start>
+                      <end>2019-08-23T15:06:38Z</end>
                     </period>
                   </address>
                 </addresses>
-              </organization>
+                <communications>
+                  <communication>
+                    <language_code>en-AU</language_code>
+                    <is_preferred>false</is_preferred>
+                  </communication>
+                </communications>
+                <us_core_race>
+                  <omb_category_code>2186-5</omb_category_code>
+                  <detailed_code>2131-1</detailed_code>
+                  <text>American Indian or Alaska Native</text>
+                </us_core_race>
+                <us_core_ethnicity>
+                  <omb_category_code>2135-2</omb_category_code>
+                  <detailed_code>2163-4</detailed_code>
+                  <text>Not Hispanic or Latino</text>
+                </us_core_ethnicity>
+                <us_core_birth_sex>F</us_core_birth_sex>
+              </patient>
             </who>
             <on_behalf_of>
               <organization>
-                <npi>3209425344</npi>
-                <clia>make</clia>
-                <name>Ryan Jennings</name>
+                <npi>3754179247</npi>
+                <clia>write</clia>
+                <name>Mrs. Sherry Duncan</name>
                 <is_active>false</is_active>
-                <alias>then</alias>
+                <alias>alone</alias>
                 <telecoms>
                   <telecom>
-                    <system>fax</system>
-                    <value>ever</value>
+                    <system>phone</system>
+                    <value>born</value>
                     <use>work</use>
-                    <rank>2</rank>
+                    <rank>1</rank>
                     <period>
-                      <start>2016-04-17T17:09:04Z</start>
-                      <end>2017-10-24T00:09:53Z</end>
+                      <start>2017-09-19T17:26:27Z</start>
+                      <end>2012-09-23T18:45:18Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>old</use>
+                    <use>home</use>
                     <type>postal</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>39192 Joshua Hills Suite 893</line>
-                    <city>Dianeton</city>
-                    <district>watch</district>
-                    <state>NE</state>
-                    <postal_code>37653</postal_code>
-                    <country>BD</country>
+                    <line>126 Jasmine Plaza</line>
+                    <city>Jackburgh</city>
+                    <district>collection</district>
+                    <state>WY</state>
+                    <postal_code>60907</postal_code>
+                    <country>KW</country>
                     <period>
-                      <start>2014-06-02T07:45:42Z</start>
-                      <end>2014-06-04T17:05:11Z</end>
+                      <start>2010-07-31T07:21:59Z</start>
+                      <end>2011-01-25T23:17:30Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -1788,13 +1800,13 @@
             </on_behalf_of>
           </agent_provenance_transmitter>
         </agent>
-        <record_type>A</record_type>
+        <record_type>U</record_type>
       </provenance>
     </provenances>
     <pulse_oximetry_observations>
       <pulse_oximetry_observation>
-        <unique_identifier>quite</unique_identifier>
-        <status>cancelled</status>
+        <unique_identifier>production</unique_identifier>
+        <status>preliminary</status>
         <category>
           <category_vs_cat>
             <coding>
@@ -1816,21 +1828,18 @@
           </coding>
         </code>
         <effective>
-          <effective_period>
-            <start>2018-08-23T11:11:57Z</start>
-            <end>2012-02-24T15:26:34Z</end>
-          </effective_period>
+          <effective_date_time>2010-02-23T18:24:54Z</effective_date_time>
         </effective>
         <value_quantity>
-          <value>889.05</value>
-          <unit>provide</unit>
-          <system>one</system>
-          <code>find</code>
-          <comparator>participant</comparator>
+          <value>554.75</value>
+          <unit>ask</unit>
+          <system>never</system>
+          <code>personal</code>
+          <comparator>style</comparator>
         </value_quantity>
         <data_absent_reason>
-          <code>negative-infinity</code>
-          <system>color</system>
+          <code>not-a-number</code>
+          <system>often</system>
         </data_absent_reason>
         <component>
           <component_flow_rate>
@@ -1841,15 +1850,15 @@
               </coding>
             </code>
             <value_quantity>
-              <value>213.12</value>
-              <unit>already</unit>
-              <system>cost</system>
-              <code>figure</code>
-              <comparator>gun</comparator>
+              <value>134.78</value>
+              <unit>shoulder</unit>
+              <system>statement</system>
+              <code>last</code>
+              <comparator>recently</comparator>
             </value_quantity>
             <data_absent_reason>
-              <code>not-applicable</code>
-              <system>form</system>
+              <code>error</code>
+              <system>ball</system>
             </data_absent_reason>
           </component_flow_rate>
           <component_concentration>
@@ -1860,15 +1869,15 @@
               </coding>
             </code>
             <value_quantity>
-              <value>206.98</value>
-              <unit>drop</unit>
-              <system>suffer</system>
-              <code>seek</code>
-              <comparator>visit</comparator>
+              <value>405.04</value>
+              <unit>loss</unit>
+              <system>everyone</system>
+              <code>it</code>
+              <comparator>safe</comparator>
             </value_quantity>
             <data_absent_reason>
-              <code>masked</code>
-              <system>minute</system>
+              <code>error</code>
+              <system>me</system>
             </data_absent_reason>
           </component_concentration>
         </component>
@@ -1877,193 +1886,154 @@
     </pulse_oximetry_observations>
     <implantable_devices>
       <implantable_device>
-        <unique_identifier>analysis</unique_identifier>
+        <unique_identifier>sure</unique_identifier>
         <udi_carrier>
-          <device_identifier>maintain</device_identifier>
-          <carrier_aidc>YXNzdW1l</carrier_aidc>
-          <carrier_hrf>listen</carrier_hrf>
+          <device_identifier>computer</device_identifier>
+          <carrier_aidc>ZGlzY3Vzcw==</carrier_aidc>
+          <carrier_hrf>fish</carrier_hrf>
         </udi_carrier>
-        <distinct_identifier>situation</distinct_identifier>
-        <manufacture_date>2016-10-03T03:45:22Z</manufacture_date>
-        <expiration_date>2011-01-11T12:45:00Z</expiration_date>
-        <lot_number>song</lot_number>
-        <serial_number>follow</serial_number>
+        <distinct_identifier>card</distinct_identifier>
+        <manufacture_date>2012-11-27T17:40:29Z</manufacture_date>
+        <expiration_date>2012-09-02T17:56:00Z</expiration_date>
+        <lot_number>piece</lot_number>
+        <serial_number>myself</serial_number>
         <type>
-          <code>board</code>
+          <code>level</code>
           <system>http://snomed.info/sct</system>
         </type>
-        <record_type>D</record_type>
+        <record_type>A</record_type>
       </implantable_device>
     </implantable_devices>
     <document_references>
       <document_reference>
-        <unique_identifier>thousand</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>six</unique_identifier>
+        <status>current </status>
         <type>
-          <code>common</code>
+          <code>main</code>
           <system>http://loinc.org</system>
         </type>
         <category>
-          <code>station</code>
+          <code>establish</code>
           <system>http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category</system>
         </category>
         <author>
-          <patient>
-            <medical_record_number>admit</medical_record_number>
-            <member_id>show</member_id>
-            <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-            <unique_person_id>huge</unique_person_id>
-            <unique_person_id_assigner>war</unique_person_id_assigner>
-            <unique_person_id_assigner_type>strong</unique_person_id_assigner_type>
-            <names>
-              <name>
-                <use>temp</use>
-                <text>American Indian or Alaska Native</text>
-                <family>Paul</family>
-                <given>Eugene</given>
-                <prefix>Mrs.</prefix>
-                <suffix>MD</suffix>
-                <period>
-                  <start>2019-06-30T04:38:20Z</start>
-                  <end>2013-02-03T06:11:17Z</end>
-                </period>
-              </name>
-            </names>
-            <gender>female</gender>
-            <birth_date>2025-09-29</birth_date>
-            <marital_status>T</marital_status>
-            <deceased>
-              <is_deceased>false</is_deceased>
-              <deceased_date_time>2020-04-29T22:06:22Z</deceased_date_time>
-            </deceased>
+          <organization>
+            <npi>9142723109</npi>
+            <clia>without</clia>
+            <name>Trevor Olson</name>
+            <is_active>true</is_active>
+            <alias>energy</alias>
             <telecoms>
               <telecom>
                 <system>sms</system>
-                <value>smile</value>
-                <use>old</use>
-                <rank>3</rank>
+                <value>begin</value>
+                <use>work</use>
+                <rank>2</rank>
                 <period>
-                  <start>2012-12-07T22:36:20Z</start>
-                  <end>2016-07-01T18:21:52Z</end>
+                  <start>2012-04-01T03:30:15Z</start>
+                  <end>2010-10-13T02:48:27Z</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
                 <use>work</use>
-                <type>both</type>
+                <type>physical</type>
                 <text>American Indian or Alaska Native</text>
-                <line>012 Frederick Spur</line>
-                <city>Port Megan</city>
-                <district>movement</district>
-                <state>ID</state>
-                <postal_code>10774</postal_code>
-                <country>BT</country>
+                <line>4045 Mccall Land Apt. 858</line>
+                <city>Brownton</city>
+                <district>product</district>
+                <state>WA</state>
+                <postal_code>10882</postal_code>
+                <country>ES</country>
                 <period>
-                  <start>2018-01-18T16:26:01Z</start>
-                  <end>2020-03-21T04:18:32Z</end>
+                  <start>2011-02-06T01:20:51Z</start>
+                  <end>2013-01-25T06:22:30Z</end>
                 </period>
               </address>
             </addresses>
-            <communications>
-              <communication>
-                <language_code>fr-CH</language_code>
-                <is_preferred>true</is_preferred>
-              </communication>
-            </communications>
-            <us_core_race>
-              <omb_category_code>2186-5</omb_category_code>
-              <detailed_code>1297-1</detailed_code>
-              <text>Native Hawaiian or Other Pacific Islander</text>
-            </us_core_race>
-            <us_core_ethnicity>
-              <omb_category_code>2186-5</omb_category_code>
-              <detailed_code>2176-6</detailed_code>
-              <text>Hispanic or Latino</text>
-            </us_core_ethnicity>
-            <us_core_birth_sex>UNK</us_core_birth_sex>
-          </patient>
+          </organization>
         </author>
         <custodian>
-          <npi>6426873327</npi>
-          <clia>standard</clia>
-          <name>Ashlee Padilla</name>
-          <is_active>true</is_active>
-          <alias>others</alias>
+          <npi>1483731640</npi>
+          <clia>specific</clia>
+          <name>Peggy Kelly</name>
+          <is_active>false</is_active>
+          <alias>factor</alias>
           <telecoms>
             <telecom>
-              <system>url</system>
-              <value>employee</value>
-              <use>old</use>
+              <system>sms</system>
+              <value>hot</value>
+              <use>temp</use>
               <rank>1</rank>
               <period>
-                <start>2017-12-18T16:37:25Z</start>
-                <end>2012-07-09T12:38:41Z</end>
+                <start>2017-04-11T12:58:58Z</start>
+                <end>2017-10-09T05:38:13Z</end>
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
               <use>old</use>
-              <type>both</type>
+              <type>postal</type>
               <text>American Indian or Alaska Native</text>
-              <line>307 Marks Prairie</line>
-              <city>Sanfordville</city>
-              <district>chair</district>
-              <state>CT</state>
-              <postal_code>28020</postal_code>
-              <country>UG</country>
+              <line>34559 Jody Dale</line>
+              <city>Robertchester</city>
+              <district>smile</district>
+              <state>KY</state>
+              <postal_code>18363</postal_code>
+              <country>MA</country>
               <period>
-                <start>2013-07-17T20:39:47Z</start>
-                <end>2012-01-02T10:59:56Z</end>
+                <start>2017-06-10T10:53:00Z</start>
+                <end>2013-02-16T11:30:34Z</end>
               </period>
             </address>
           </addresses>
         </custodian>
-        <date>2011-01-22T15:47:20Z</date>
+        <date>2020-07-11T23:57:33Z</date>
         <content>
           <attachment>
-            <content_type>now</content_type>
-            <data>Y29uZGl0aW9u</data>
-            <url>https://ali.biz/</url>
+            <content_type>democratic</content_type>
+            <data>cGFwZXI=</data>
+            <url>http://www.miller.info/</url>
           </attachment>
           <format>
-            <code>return</code>
+            <code>me</code>
             <system>http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem</system>
           </format>
         </content>
         <context>
           <encounter>
-            <identifier>stock</identifier>
+            <identifier>time</identifier>
             <status>finished</status>
-            <class>door</class>
+            <class>tree</class>
             <type>
-              <code>future</code>
+              <code>national</code>
               <system>http://www.ama-assn.org/go/cpt</system>
             </type>
             <participants>
               <participant>
                 <type>
-                  <code>special</code>
+                  <code>executive</code>
                   <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
                 </type>
                 <period>
-                  <start>2020-05-17T14:47:57Z</start>
-                  <end>2019-08-26T02:49:34Z</end>
+                  <start>2013-12-23T09:49:32Z</start>
+                  <end>2016-03-28T05:15:51Z</end>
                 </period>
                 <individual>
-                  <npi>9861852456</npi>
+                  <npi>7531538354</npi>
                   <names>
                     <name>
                       <use>old</use>
                       <text>American Indian or Alaska Native</text>
-                      <family>Norris</family>
-                      <given>Douglas</given>
-                      <prefix>Mx.</prefix>
-                      <suffix>PhD</suffix>
+                      <family>Curtis</family>
+                      <given>Michelle</given>
+                      <prefix>Dr.</prefix>
+                      <suffix>Jr.</suffix>
                       <period>
-                        <start>2017-05-31T21:07:30Z</start>
-                        <end>2018-12-20T03:41:00Z</end>
+                        <start>2014-11-03T22:34:43Z</start>
+                        <end>2019-08-31T03:18:48Z</end>
                       </period>
                     </name>
                   </names>
@@ -2071,29 +2041,29 @@
                   <telecoms>
                     <telecom>
                       <system>pager</system>
-                      <value>and</value>
-                      <use>home</use>
-                      <rank>1</rank>
+                      <value>heavy</value>
+                      <use>work</use>
+                      <rank>3</rank>
                       <period>
-                        <start>2012-07-05T19:22:53Z</start>
-                        <end>2019-12-24T09:46:18Z</end>
+                        <start>2019-12-25T01:05:17Z</start>
+                        <end>2018-01-25T00:06:12Z</end>
                       </period>
                     </telecom>
                   </telecoms>
                   <addresses>
                     <address>
-                      <use>old</use>
-                      <type>both</type>
+                      <use>home</use>
+                      <type>physical</type>
                       <text>American Indian or Alaska Native</text>
-                      <line>9227 Harris Harbors Apt. 357</line>
-                      <city>East Melanie</city>
-                      <district>Congress</district>
-                      <state>SD</state>
-                      <postal_code>56893</postal_code>
-                      <country>PY</country>
+                      <line>57018 Ramos Place Suite 929</line>
+                      <city>Johnshire</city>
+                      <district>common</district>
+                      <state>TX</state>
+                      <postal_code>64115</postal_code>
+                      <country>QA</country>
                       <period>
-                        <start>2019-03-15T14:48:12Z</start>
-                        <end>2020-02-28T10:40:42Z</end>
+                        <start>2013-04-26T08:30:16Z</start>
+                        <end>2019-06-02T21:48:41Z</end>
                       </period>
                     </address>
                   </addresses>
@@ -2101,80 +2071,80 @@
               </participant>
             </participants>
             <period>
-              <start>2015-09-23T16:59:53Z</start>
-              <end>2015-12-10T15:12:13Z</end>
+              <start>2017-08-22T03:46:31Z</start>
+              <end>2010-02-16T05:30:57Z</end>
             </period>
-            <reason_code>sign</reason_code>
+            <reason_code>experience</reason_code>
             <hospitalization>
-              <discharge_disposition>believe</discharge_disposition>
+              <discharge_disposition>police</discharge_disposition>
             </hospitalization>
             <location>
               <location>
                 <identifier>
-                  <value>much</value>
-                  <type>single</type>
+                  <value>black</value>
+                  <type>option</type>
                 </identifier>
-                <status>active</status>
-                <name>Michael Shannon</name>
+                <status>suspended</status>
+                <name>Steve White</name>
                 <telecoms>
                   <telecom>
-                    <system>pager</system>
-                    <value>matter</value>
-                    <use>temp</use>
+                    <system>phone</system>
+                    <value>condition</value>
+                    <use>home</use>
                     <rank>3</rank>
                     <period>
-                      <start>2012-02-17T11:37:44Z</start>
-                      <end>2013-02-07T02:56:24Z</end>
+                      <start>2012-11-17T16:16:38Z</start>
+                      <end>2020-07-01T08:22:46Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <address>
-                  <use>home</use>
+                  <use>old</use>
                   <type>physical</type>
                   <text>American Indian or Alaska Native</text>
-                  <line>47617 Julia Lodge</line>
-                  <city>New Nicole</city>
-                  <district>believe</district>
-                  <state>GU</state>
-                  <postal_code>26601</postal_code>
-                  <country>BW</country>
+                  <line>2562 Barnett Circle</line>
+                  <city>Longstad</city>
+                  <district>media</district>
+                  <state>AZ</state>
+                  <postal_code>11469</postal_code>
+                  <country>MD</country>
                   <period>
-                    <start>2017-01-01T13:55:26Z</start>
-                    <end>2016-09-19T13:43:28Z</end>
+                    <start>2015-06-30T22:47:56Z</start>
+                    <end>2012-10-20T22:06:27Z</end>
                   </period>
                 </address>
                 <managing_organization>
-                  <npi>8861674341</npi>
-                  <clia>listen</clia>
-                  <name>Nicholas Walton</name>
+                  <npi>7127014845</npi>
+                  <clia>help</clia>
+                  <name>Ross Sanders</name>
                   <is_active>true</is_active>
-                  <alias>support</alias>
+                  <alias>significant</alias>
                   <telecoms>
                     <telecom>
-                      <system>url</system>
-                      <value>difference</value>
-                      <use>home</use>
-                      <rank>4</rank>
+                      <system>fax</system>
+                      <value>might</value>
+                      <use>work</use>
+                      <rank>2</rank>
                       <period>
-                        <start>2012-01-28T09:16:35Z</start>
-                        <end>2020-10-01T07:21:47Z</end>
+                        <start>2017-01-07T22:51:27Z</start>
+                        <end>2017-12-05T19:34:25Z</end>
                       </period>
                     </telecom>
                   </telecoms>
                   <addresses>
                     <address>
-                      <use>work</use>
+                      <use>home</use>
                       <type>both</type>
                       <text>American Indian or Alaska Native</text>
-                      <line>3443 Walters Turnpike Apt. 027</line>
-                      <city>West Donald</city>
-                      <district>right</district>
-                      <state>OR</state>
-                      <postal_code>52819</postal_code>
-                      <country>PG</country>
+                      <line>44897 Deborah Plaza Apt. 902</line>
+                      <city>Amandaville</city>
+                      <district>no</district>
+                      <state>MP</state>
+                      <postal_code>16564</postal_code>
+                      <country>JP</country>
                       <period>
-                        <start>2011-12-04T03:20:46Z</start>
-                        <end>2016-01-01T07:25:11Z</end>
+                        <start>2020-12-31T05:11:51Z</start>
+                        <end>2020-04-27T05:57:55Z</end>
                       </period>
                     </address>
                   </addresses>
@@ -2183,17 +2153,17 @@
             </location>
           </encounter>
           <period>
-            <start>2010-06-21T08:10:13Z</start>
-            <end>2018-01-06T01:25:35Z</end>
+            <start>2017-02-20T09:45:31Z</start>
+            <end>2014-05-12T15:48:53Z</end>
           </period>
         </context>
-        <record_type>A</record_type>
+        <record_type>D</record_type>
       </document_reference>
     </document_references>
     <diagnostic_report_labs>
       <diagnostic_report_lab>
-        <unique_identifier>arm</unique_identifier>
-        <status>entered-in-error</status>
+        <unique_identifier>system</unique_identifier>
+        <status>registered</status>
         <category>
           <category_laboratory_slice>
             <coding>
@@ -2203,154 +2173,170 @@
           </category_laboratory_slice>
         </category>
         <code>
-          <code>letter</code>
+          <code>member</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2011-05-07T08:02:25Z</issued>
+        <issued>2019-04-21T06:55:06Z</issued>
         <effective>
           <effective_period>
-            <start>2010-01-01T13:02:00Z</start>
-            <end>2015-12-03T22:17:45Z</end>
+            <start>2013-08-13T01:16:32Z</start>
+            <end>2020-03-18T21:16:11Z</end>
           </effective_period>
         </effective>
         <performer>
-          <reported_organization>
-            <npi>9420417582</npi>
-            <clia>recent</clia>
-            <name>Corey Sharp</name>
+          <reported_practitioner>
+            <npi>7983724774</npi>
+            <names>
+              <name>
+                <use>official</use>
+                <text>American Indian or Alaska Native</text>
+                <family>Ferguson</family>
+                <given>Deanna</given>
+                <prefix>Mr.</prefix>
+                <suffix>MD</suffix>
+                <period>
+                  <start>2011-06-10T16:34:41Z</start>
+                  <end>2016-01-21T15:01:31Z</end>
+                </period>
+              </name>
+            </names>
             <is_active>true</is_active>
-            <alias>actually</alias>
             <telecoms>
               <telecom>
-                <system>pager</system>
-                <value>citizen</value>
+                <system>fax</system>
+                <value>television</value>
                 <use>work</use>
-                <rank>2</rank>
+                <rank>3</rank>
                 <period>
-                  <start>2014-11-11T10:20:58Z</start>
-                  <end>2010-12-03T03:41:47Z</end>
+                  <start>2015-09-15T21:09:32Z</start>
+                  <end>2017-04-01T18:40:33Z</end>
                 </period>
               </telecom>
             </telecoms>
             <addresses>
               <address>
                 <use>work</use>
-                <type>both</type>
+                <type>physical</type>
                 <text>American Indian or Alaska Native</text>
-                <line>226 Mark Springs</line>
-                <city>East Angelastad</city>
-                <district>land</district>
-                <state>PW</state>
-                <postal_code>16400</postal_code>
-                <country>CY</country>
+                <line>61694 Garza Spurs Apt. 491</line>
+                <city>Elliottton</city>
+                <district>deal</district>
+                <state>MT</state>
+                <postal_code>93229</postal_code>
+                <country>UG</country>
                 <period>
-                  <start>2018-05-22T02:35:58Z</start>
-                  <end>2014-11-12T02:10:49Z</end>
+                  <start>2013-06-27T14:22:46Z</start>
+                  <end>2019-10-06T11:29:27Z</end>
                 </period>
               </address>
             </addresses>
-          </reported_organization>
+          </reported_practitioner>
         </performer>
         <result>
-          <status>entered-in-error</status>
+          <status>final</status>
           <observation_code>
             <coding>
-              <system>significant</system>
-              <version>old</version>
-              <code>play</code>
+              <system>each</system>
+              <version>worker</version>
+              <code>stuff</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
           </observation_code>
           <observation_effective>
             <effective_period>
-              <start>2018-09-17T11:01:30Z</start>
-              <end>2020-10-14T10:13:13Z</end>
+              <start>2020-09-22T21:33:13Z</start>
+              <end>2017-02-05T20:03:59Z</end>
             </effective_period>
           </observation_effective>
           <observation_value>
-            <value_integer>4</value_integer>
+            <value_codeable_concept>
+              <coding>
+                <system>leader</system>
+                <version>firm</version>
+                <code>eye</code>
+                <display>English</display>
+              </coding>
+              <text>American Indian or Alaska Native</text>
+            </value_codeable_concept>
           </observation_value>
           <data_absent_reason>masked</data_absent_reason>
-          <interpretation>military</interpretation>
+          <interpretation>future</interpretation>
           <reference_range>
             <low>
-              <value>864.58</value>
-              <unit>author</unit>
-              <system>anything</system>
-              <code>sea</code>
+              <value>718.34</value>
+              <unit>western</unit>
+              <system>myself</system>
+              <code>church</code>
             </low>
             <high>
-              <value>33.45</value>
-              <unit>then</unit>
-              <system>force</system>
-              <code>sister</code>
+              <value>617.38</value>
+              <unit>recent</unit>
+              <system>study</system>
+              <code>significant</code>
             </high>
-            <type>luteal</type>
+            <type>postmenopausal</type>
             <applies_to>
               <coding>
-                <system>task</system>
-                <version>court</version>
-                <code>same</code>
+                <system>small</system>
+                <version>present</version>
+                <code>behind</code>
                 <display>English</display>
               </coding>
               <text>American Indian or Alaska Native</text>
             </applies_to>
             <age>
               <low>
-                <value>910.56</value>
-                <unit>apply</unit>
-                <system>best</system>
-                <code>describe</code>
+                <value>572.47</value>
+                <unit>wind</unit>
+                <system>side</system>
+                <code>benefit</code>
               </low>
               <high>
-                <value>105.96</value>
-                <unit>call</unit>
-                <system>water</system>
-                <code>out</code>
+                <value>388.49</value>
+                <unit>concern</unit>
+                <system>election</system>
+                <code>cultural</code>
               </high>
             </age>
             <text>American Indian or Alaska Native</text>
           </reference_range>
         </result>
-        <record_type>A</record_type>
+        <record_type>D</record_type>
       </diagnostic_report_lab>
     </diagnostic_report_labs>
     <diagnostic_report_notes>
       <diagnostic_report_note>
-        <unique_identifier>short</unique_identifier>
-        <status>partial</status>
+        <unique_identifier>bring</unique_identifier>
+        <status>final</status>
         <category>
           <code>LP29684-5</code>
           <system>http://loinc.org</system>
         </category>
         <code>
-          <code>near</code>
+          <code>walk</code>
           <system>http://loinc.org</system>
         </code>
-        <issued>2014-12-21T22:06:35Z</issued>
+        <issued>2010-07-14T18:09:44Z</issued>
         <effective>
-          <effective_period>
-            <start>2018-05-28T13:09:19Z</start>
-            <end>2012-09-29T11:28:16Z</end>
-          </effective_period>
+          <effective_date_time>2011-05-23T05:13:25Z</effective_date_time>
         </effective>
         <performer>
           <reported_organization>
-            <npi>6989489869</npi>
-            <clia>such</clia>
-            <name>Melissa Sims</name>
+            <npi>3396879415</npi>
+            <clia>floor</clia>
+            <name>Douglas Harris</name>
             <is_active>false</is_active>
-            <alias>laugh</alias>
+            <alias>nature</alias>
             <telecoms>
               <telecom>
                 <system>phone</system>
-                <value>election</value>
-                <use>mobile</use>
-                <rank>2</rank>
+                <value>student</value>
+                <use>work</use>
+                <rank>3</rank>
                 <period>
-                  <start>2013-06-10T11:43:36Z</start>
-                  <end>2011-12-23T10:00:29Z</end>
+                  <start>2017-02-06T18:30:02Z</start>
+                  <end>2012-10-16T23:22:30Z</end>
                 </period>
               </telecom>
             </telecoms>
@@ -2359,91 +2345,91 @@
                 <use>billing</use>
                 <type>both</type>
                 <text>American Indian or Alaska Native</text>
-                <line>569 Gary Locks</line>
-                <city>Kellychester</city>
-                <district>nothing</district>
-                <state>NV</state>
-                <postal_code>22251</postal_code>
-                <country>CF</country>
+                <line>48726 Davis Wells Suite 860</line>
+                <city>Gallagherchester</city>
+                <district>response</district>
+                <state>CO</state>
+                <postal_code>97832</postal_code>
+                <country>DE</country>
                 <period>
-                  <start>2020-01-26T01:29:52Z</start>
-                  <end>2012-06-24T08:38:05Z</end>
+                  <start>2015-09-08T02:34:17Z</start>
+                  <end>2012-08-30T21:36:10Z</end>
                 </period>
               </address>
             </addresses>
           </reported_organization>
         </performer>
         <presented_form>
-          <content_type>thus</content_type>
-          <language>try</language>
-          <data>TXJz</data>
-          <url>https://www.miller-pennington.com/</url>
-          <size>3</size>
-          <hash>bmV3cw==</hash>
-          <title>recognize</title>
-          <creation>2014-06-18T07:38:16Z</creation>
+          <content_type>moment</content_type>
+          <language>across</language>
+          <data>c3RvcmU=</data>
+          <url>http://gonzalez.com/</url>
+          <size>4</size>
+          <hash>Zm9ybWVy</hash>
+          <title>education</title>
+          <creation>2012-08-23T00:31:49Z</creation>
         </presented_form>
         <encounter>
-          <identifier>marriage</identifier>
-          <status>arrived</status>
-          <class>again</class>
+          <identifier>agency</identifier>
+          <status>triaged</status>
+          <class>always</class>
           <type>
-            <code>single</code>
+            <code>deep</code>
             <system>http://www.ama-assn.org/go/cpt</system>
           </type>
           <participants>
             <participant>
               <type>
-                <code>job</code>
-                <system>http://terminology.hl7.org/CodeSystem/participant-type</system>
+                <code>nothing</code>
+                <system>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</system>
               </type>
               <period>
-                <start>2015-01-25T00:23:47Z</start>
-                <end>2014-10-02T15:47:01Z</end>
+                <start>2013-06-17T03:44:27Z</start>
+                <end>2017-09-22T01:36:39Z</end>
               </period>
               <individual>
-                <npi>9810219048</npi>
+                <npi>2473278736</npi>
                 <names>
                   <name>
-                    <use>official</use>
+                    <use>temp</use>
                     <text>American Indian or Alaska Native</text>
-                    <family>Morgan</family>
-                    <given>Morgan</given>
-                    <prefix>Mr.</prefix>
-                    <suffix>Jr.</suffix>
+                    <family>Mitchell</family>
+                    <given>Christine</given>
+                    <prefix>Mx.</prefix>
+                    <suffix>MD</suffix>
                     <period>
-                      <start>2016-02-03T14:52:58Z</start>
-                      <end>2016-10-04T05:05:39Z</end>
+                      <start>2014-08-03T13:30:55Z</start>
+                      <end>2013-12-06T17:02:10Z</end>
                     </period>
                   </name>
                 </names>
                 <is_active>false</is_active>
                 <telecoms>
                   <telecom>
-                    <system>url</system>
-                    <value>property</value>
-                    <use>temp</use>
+                    <system>other</system>
+                    <value>loss</value>
+                    <use>old</use>
                     <rank>3</rank>
                     <period>
-                      <start>2014-06-25T05:08:45Z</start>
-                      <end>2019-02-19T06:58:33Z</end>
+                      <start>2019-03-28T23:38:02Z</start>
+                      <end>2014-04-11T19:06:09Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>billing</use>
-                    <type>physical</type>
+                    <use>temp</use>
+                    <type>both</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>68003 Esparza Divide Apt. 507</line>
-                    <city>Conwayburgh</city>
-                    <district>history</district>
-                    <state>PA</state>
-                    <postal_code>14632</postal_code>
-                    <country>GB</country>
+                    <line>668 Francisco Station Suite 124</line>
+                    <city>Garrisonberg</city>
+                    <district>business</district>
+                    <state>MS</state>
+                    <postal_code>60268</postal_code>
+                    <country>SL</country>
                     <period>
-                      <start>2020-03-20T17:06:07Z</start>
-                      <end>2012-02-10T22:40:58Z</end>
+                      <start>2018-12-17T21:12:54Z</start>
+                      <end>2016-10-24T12:16:56Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -2451,80 +2437,80 @@
             </participant>
           </participants>
           <period>
-            <start>2012-09-24T18:51:06Z</start>
-            <end>2013-05-15T02:42:57Z</end>
+            <start>2017-10-26T12:54:18Z</start>
+            <end>2015-05-27T04:40:40Z</end>
           </period>
-          <reason_code>see</reason_code>
+          <reason_code>growth</reason_code>
           <hospitalization>
-            <discharge_disposition>support</discharge_disposition>
+            <discharge_disposition>always</discharge_disposition>
           </hospitalization>
           <location>
             <location>
               <identifier>
-                <value>plant</value>
-                <type>improve</type>
+                <value>miss</value>
+                <type>that</type>
               </identifier>
-              <status>suspended</status>
-              <name>Carl Byrd</name>
+              <status>inactive</status>
+              <name>William White</name>
               <telecoms>
                 <telecom>
-                  <system>email</system>
-                  <value>already</value>
-                  <use>home</use>
-                  <rank>1</rank>
+                  <system>pager</system>
+                  <value>town</value>
+                  <use>work</use>
+                  <rank>4</rank>
                   <period>
-                    <start>2015-10-06T09:37:16Z</start>
-                    <end>2020-02-11T17:56:02Z</end>
+                    <start>2016-10-08T06:57:22Z</start>
+                    <end>2019-03-09T03:13:19Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <address>
-                <use>work</use>
-                <type>both</type>
+                <use>old</use>
+                <type>physical</type>
                 <text>American Indian or Alaska Native</text>
-                <line>387 Tracy Shoals Apt. 643</line>
-                <city>Walkerborough</city>
-                <district>question</district>
-                <state>IA</state>
-                <postal_code>58620</postal_code>
-                <country>GA</country>
+                <line>819 Benitez Shoal</line>
+                <city>Lake Emily</city>
+                <district>value</district>
+                <state>WV</state>
+                <postal_code>84243</postal_code>
+                <country>PK</country>
                 <period>
-                  <start>2016-08-26T09:46:47Z</start>
-                  <end>2010-10-12T22:40:51Z</end>
+                  <start>2011-10-09T15:32:25Z</start>
+                  <end>2017-04-16T08:11:05Z</end>
                 </period>
               </address>
               <managing_organization>
-                <npi>7849837239</npi>
-                <clia>item</clia>
-                <name>Michelle Terrell</name>
-                <is_active>false</is_active>
-                <alias>ability</alias>
+                <npi>9667218373</npi>
+                <clia>represent</clia>
+                <name>Destiny Gill</name>
+                <is_active>true</is_active>
+                <alias>feeling</alias>
                 <telecoms>
                   <telecom>
-                    <system>pager</system>
-                    <value>trade</value>
-                    <use>work</use>
-                    <rank>5</rank>
+                    <system>fax</system>
+                    <value>try</value>
+                    <use>old</use>
+                    <rank>3</rank>
                     <period>
-                      <start>2012-07-27T07:09:29Z</start>
-                      <end>2015-04-01T15:21:09Z</end>
+                      <start>2015-05-26T08:02:48Z</start>
+                      <end>2012-05-02T18:27:36Z</end>
                     </period>
                   </telecom>
                 </telecoms>
                 <addresses>
                   <address>
-                    <use>old</use>
-                    <type>both</type>
+                    <use>home</use>
+                    <type>postal</type>
                     <text>American Indian or Alaska Native</text>
-                    <line>95179 Lara Fords Apt. 436</line>
-                    <city>Rebeccatown</city>
-                    <district>surface</district>
-                    <state>SC</state>
-                    <postal_code>06694</postal_code>
-                    <country>NP</country>
+                    <line>999 Dustin Club</line>
+                    <city>East Jose</city>
+                    <district>cut</district>
+                    <state>IA</state>
+                    <postal_code>54118</postal_code>
+                    <country>MT</country>
                     <period>
-                      <start>2014-11-26T00:36:57Z</start>
-                      <end>2011-06-29T04:49:13Z</end>
+                      <start>2020-01-07T21:49:11Z</start>
+                      <end>2013-07-26T14:21:11Z</end>
                     </period>
                   </address>
                 </addresses>
@@ -2532,7 +2518,7 @@
             </location>
           </location>
         </encounter>
-        <record_type>U</record_type>
+        <record_type>A</record_type>
       </diagnostic_report_note>
     </diagnostic_report_notes>
   </clinical>

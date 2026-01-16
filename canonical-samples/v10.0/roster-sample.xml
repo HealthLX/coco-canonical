@@ -1,33 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <roster xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v10.0/roster.xsd">
   <schema_version>10.0</schema_version>
-  <sender_id>civil</sender_id>
-  <date_time_reported>2026-01-15T19:14:43Z</date_time_reported>
+  <sender_id>available</sender_id>
+  <date_time_reported>2026-01-16T18:09:36Z</date_time_reported>
   <member>
     <us_core_race>
-      <code>2076-8</code>
       <code>1002-5</code>
-      <code>1002-5</code>
-      <detailed_code>1579-2</detailed_code>
-      <text>Native Hawaiian or Other Pacific Islander</text>
+      <detailed_code>1574-3</detailed_code>
+      <text>American Indian or Alaska Native</text>
     </us_core_race>
     <us_core_ethnicity>
       <code>2135-2</code>
-      <detailed_code>2167-5</detailed_code>
+      <detailed_code>2138-6</detailed_code>
       <text>Hispanic or Latino</text>
     </us_core_ethnicity>
-    <us_core_birth_sex>UNK</us_core_birth_sex>
-    <is_subscriber>false</is_subscriber>
-    <relationship>common</relationship>
-    <birth_date>1979-07-14</birth_date>
-    <deceased_date_time>2018-09-21T13:27:34Z</deceased_date_time>
-    <gender>female</gender>
+    <us_core_birth_sex>M</us_core_birth_sex>
+    <is_subscriber>true</is_subscriber>
+    <relationship>self</relationship>
+    <birth_date>2011-09-15</birth_date>
+    <deceased_date_time>2019-04-18T04:27:59Z</deceased_date_time>
+    <gender>unknown</gender>
     <tribal_affiliations>
       <tribal_affiliation>
         <codeable_concept>
           <coding>
-            <code>station</code>
-            <system>administration</system>
+            <code>young</code>
+            <system>public</system>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -39,8 +37,8 @@
       <sexual_orientation>
         <codeable_concept>
           <coding>
-            <code>education</code>
-            <system>perform</system>
+            <code>make</code>
+            <system>accept</system>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -52,8 +50,8 @@
       <gender_identity>
         <codeable_concept>
           <coding>
-            <code>protect</code>
-            <system>attack</system>
+            <code>successful</code>
+            <system>per</system>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -66,54 +64,54 @@
         <active>true</active>
         <names>
           <name>
-            <use>trip</use>
+            <use>speech</use>
             <text>American Indian or Alaska Native</text>
-            <family>Wallace</family>
-            <given>Wanda</given>
-            <prefix>Mx.</prefix>
+            <family>Smith</family>
+            <given>Adam</given>
+            <prefix>Mr.</prefix>
             <period>
-              <start>2018-04-14T16:02:02Z</start>
-              <end>2025-04-17T02:01:49Z</end>
+              <start>2020-11-25T01:45:29Z</start>
+              <end>2023-11-07T07:10:43Z</end>
             </period>
           </name>
         </names>
         <telecoms>
           <telecom>
-            <system>very</system>
-            <value>price</value>
-            <use>sign</use>
+            <system>anyone</system>
+            <value>same</value>
+            <use>enter</use>
             <rank>1</rank>
             <period>
-              <start>2019-10-03</start>
-              <end>2024-04-29</end>
+              <start>2019-02-03</start>
+              <end>2022-07-20</end>
             </period>
           </telecom>
         </telecoms>
-        <gender>security</gender>
-        <birth_date>2019-10-18</birth_date>
+        <gender>such</gender>
+        <birth_date>1970-04-03</birth_date>
         <addresses>
           <address>
-            <use>parent</use>
-            <type>season</type>
+            <use>dream</use>
+            <type>prevent</type>
             <text>American Indian or Alaska Native</text>
-            <line>556 John Trail Apt. 493</line>
-            <city>New Cheyenne</city>
-            <district>military</district>
-            <state>OR</state>
-            <postal_code>74631</postal_code>
-            <country>MT</country>
+            <line>720 Vincent Bypass Suite 259</line>
+            <city>Karenton</city>
+            <district>college</district>
+            <state>WY</state>
+            <postal_code>09865</postal_code>
+            <country>AF</country>
             <period>
-              <start>2016-04-19</start>
-              <end>2024-12-23</end>
+              <start>2018-04-05</start>
+              <end>2024-08-20</end>
             </period>
           </address>
         </addresses>
-        <communication_language>democratic</communication_language>
+        <communication_language>try</communication_language>
         <relationship>
           <codeable_concept>
             <coding>
-              <code>evening</code>
-              <system>will</system>
+              <code>necessary</code>
+              <system>size</system>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -123,15 +121,15 @@
     </relatedPersons>
     <occupations>
       <occupation_item>
-        <status>registered</status>
+        <status>amended</status>
         <effectivePeriod>
-          <start>2019-08-31</start>
-          <end>2024-09-04</end>
+          <start>2020-12-18</start>
+          <end>2023-01-16</end>
         </effectivePeriod>
         <codeable_concept>
           <coding>
-            <code>news</code>
-            <system>on</system>
+            <code>total</code>
+            <system>worker</system>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -139,8 +137,8 @@
         <industry>
           <codeable_concept>
             <coding>
-              <code>be</code>
-              <system>rule</system>
+              <code>edge</code>
+              <system>certainly</system>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -149,125 +147,125 @@
       </occupation_item>
     </occupations>
     <unique_person_ids>
-      <unique_person_id>difficult</unique_person_id>
-      <unique_person_id_assigner>institution</unique_person_id_assigner>
-      <unique_person_id_assigner_type>role</unique_person_id_assigner_type>
+      <unique_person_id>all</unique_person_id>
+      <unique_person_id_assigner>nor</unique_person_id_assigner>
+      <unique_person_id_assigner_type>daughter</unique_person_id_assigner_type>
     </unique_person_ids>
     <member_identity>
-      <member_last_4_ssn>1898</member_last_4_ssn>
-      <secret_display_name>individual</secret_display_name>
-      <secret_value>keep</secret_value>
-      <secret_length>4</secret_length>
+      <member_last_4_ssn>1809</member_last_4_ssn>
+      <secret_display_name>unit</secret_display_name>
+      <secret_value>behavior</secret_value>
+      <secret_length>3</secret_length>
     </member_identity>
-    <member_id>cover</member_id>
+    <member_id>network</member_id>
     <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-    <subscriber_id>off</subscriber_id>
+    <subscriber_id>town</subscriber_id>
     <names>
       <name>
-        <use>nickname</use>
+        <use>official</use>
         <text>American Indian or Alaska Native</text>
-        <family>Valdez</family>
-        <given>Tyler</given>
-        <prefix>Dr.</prefix>
-        <suffix>DDS</suffix>
+        <family>Welch</family>
+        <given>John</given>
+        <prefix>Mr.</prefix>
+        <suffix>PhD</suffix>
         <period>
-          <start>2018-01-25T11:09:39Z</start>
-          <end>2025-04-26T01:55:13Z</end>
+          <start>2019-11-02T08:10:26Z</start>
+          <end>2023-08-08T12:56:51Z</end>
         </period>
       </name>
     </names>
     <telecoms>
       <telecom>
         <system>pager</system>
-        <value>important</value>
-        <use>work</use>
-        <rank>4</rank>
+        <value>institution</value>
+        <use>home</use>
+        <rank>2</rank>
         <period>
-          <start>2019-01-05T12:23:16Z</start>
-          <end>2023-12-27T05:29:37Z</end>
+          <start>2019-02-23T02:42:43Z</start>
+          <end>2025-03-09T10:28:23Z</end>
         </period>
       </telecom>
     </telecoms>
     <addresses>
       <address>
-        <use>work</use>
-        <type>physical</type>
+        <use>temp</use>
+        <type>both</type>
         <text>American Indian or Alaska Native</text>
-        <line>819 Logan Springs</line>
-        <city>Kevinmouth</city>
-        <district>respond</district>
-        <state>MO</state>
-        <postal_code>04563</postal_code>
-        <country>GB</country>
+        <line>95821 Danielle Creek Apt. 373</line>
+        <city>West Carrie</city>
+        <district>time</district>
+        <state>MP</state>
+        <postal_code>17275</postal_code>
+        <country>TN</country>
         <period>
-          <start>2020-06-24T08:33:12Z</start>
-          <end>2023-10-07T15:30:34Z</end>
+          <start>2017-12-05T10:01:49Z</start>
+          <end>2023-10-27T23:00:44Z</end>
         </period>
       </address>
     </addresses>
     <health_coverage>
-      <group_number>herself</group_number>
-      <policy_number>environment</policy_number>
-      <plan_id>right</plan_id>
-      <plan_name>pull</plan_name>
-      <coverage_status>however</coverage_status>
+      <group_number>finally</group_number>
+      <policy_number>when</policy_number>
+      <plan_id>drop</plan_id>
+      <plan_name>loss</plan_name>
+      <coverage_status>thing</coverage_status>
       <coverage_type>
         <codeable_concept>
           <coding>
-            <code>officer</code>
-            <system>quickly</system>
+            <code>may</code>
+            <system>news</system>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
         </codeable_concept>
       </coverage_type>
       <coverage_period>
-        <start>2018-10-21T22:36:19Z</start>
-        <end>2023-06-04T11:37:03Z</end>
+        <start>2018-12-25T06:29:45Z</start>
+        <end>2024-06-23T04:01:54Z</end>
       </coverage_period>
-      <network_id>great</network_id>
+      <network_id>trip</network_id>
       <payor>
         <tax>
-          <value>lose</value>
-          <type>together</type>
+          <value>study</value>
+          <type>trade</type>
         </tax>
         <naic_code>
-          <value>level</value>
-          <type>skill</type>
+          <value>type</value>
+          <type>exist</type>
         </naic_code>
         <payer_id>
-          <value>shake</value>
-          <type>fly</type>
+          <value>like</value>
+          <type>these</type>
         </payer_id>
-        <is_active>false</is_active>
-        <name>Andrew Young</name>
-        <alias>center</alias>
+        <is_active>true</is_active>
+        <name>Bruce Fisher</name>
+        <alias>vote</alias>
         <telecoms>
           <telecom>
-            <system>phone</system>
-            <value>ok</value>
-            <use>old</use>
-            <rank>5</rank>
+            <system>pager</system>
+            <value>cup</value>
+            <use>temp</use>
+            <rank>1</rank>
             <period>
-              <start>2019-06-25T18:08:34Z</start>
-              <end>2022-02-06T19:51:37Z</end>
+              <start>2016-10-14T14:41:01Z</start>
+              <end>2024-12-22T19:43:54Z</end>
             </period>
           </telecom>
         </telecoms>
         <addresses>
           <address>
-            <use>work</use>
-            <type>postal</type>
+            <use>billing</use>
+            <type>physical</type>
             <text>American Indian or Alaska Native</text>
-            <line>2343 Sparks Roads Suite 203</line>
-            <city>West Michael</city>
-            <district>onto</district>
-            <state>SD</state>
-            <postal_code>44483</postal_code>
-            <country>TN</country>
+            <line>7667 Julia Loaf</line>
+            <city>Kelleyton</city>
+            <district>role</district>
+            <state>CT</state>
+            <postal_code>07838</postal_code>
+            <country>TG</country>
             <period>
-              <start>2016-06-08T06:08:43Z</start>
-              <end>2025-02-06T13:06:08Z</end>
+              <start>2019-07-31T18:45:08Z</start>
+              <end>2024-09-22T13:14:22Z</end>
             </period>
           </address>
         </addresses>
@@ -275,27 +273,27 @@
     </health_coverage>
     <communications>
       <communication>
-        <language_code>ga</language_code>
-        <display>Irish</display>
-        <is_preferred>true</is_preferred>
+        <language_code>bm</language_code>
+        <display>Bambara</display>
+        <is_preferred>false</is_preferred>
       </communication>
     </communications>
-    <smoking_status>428071000124103</smoking_status>
-    <record_type>A</record_type>
-    <unique_record_identifier>future</unique_record_identifier>
+    <smoking_status>449868002</smoking_status>
+    <record_type>D</record_type>
+    <unique_record_identifier>left</unique_record_identifier>
     <delegates>
       <delegate>
-        <family>Rosales</family>
-        <given>John</given>
+        <family>Myers</family>
+        <given>Jessica</given>
         <telecoms>
           <telecom>
-            <system>phone</system>
-            <value>hundred</value>
+            <system>mobile</system>
+            <value>effort</value>
           </telecom>
         </telecoms>
-        <email_address>ginakelly@example.org</email_address>
-        <start>2020-05-31T05:09:19Z</start>
-        <end>2011-10-11T09:39:43Z</end>
+        <email_address>george36@example.org</email_address>
+        <start>2010-09-23T07:53:31Z</start>
+        <end>2014-07-18T02:46:02Z</end>
         <is_member>false</is_member>
       </delegate>
     </delegates>
