@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+from pathlib import Path
 from tools.transform_roster import apply_xslt
 
 # The URL of your local sidecar service
@@ -14,8 +15,9 @@ def test_patient_validation():
     """
     Transform roster XML to FHIR Patient XML and validate it against US Core Patient profile.
     """
-    # Setup paths
-    base_dir = os.path.dirname(__file__)
+    # Setup paths - get project root (go up 3 levels from tests/manual/)
+    project_root = Path(__file__).parent.parent.parent
+    base_dir = str(project_root)
     roster_xml = os.path.join(base_dir, "canonical-samples/v10.0/roster-sample.xml")
     xslt_file = os.path.join(base_dir, "transforms/v10.0/roster-patient.xsl")
     
