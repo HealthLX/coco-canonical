@@ -4,6 +4,7 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:coco="http://cocodata.org"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xpath-default-namespace="http://cocodata.org"
 	exclude-result-prefixes="coco">
 	<xsl:preserve-space elements="*"/>
@@ -19,6 +20,7 @@
 				</xsl:attribute>
 			</id>
 			<xsl:call-template name="resource_meta"/>
+			<xsl:call-template name="resource_text"/>
 			<xsl:call-template name="resource_extensions"/>
 			<xsl:call-template name="resource_identifier"/>
 			<active value="true"/>
@@ -56,6 +58,41 @@
 	</xsl:template>
 
 	<!-- Subtemplates -->
+	<xsl:template name="resource_text">
+		<text>
+			<status>
+				<xsl:attribute name="value">generated</xsl:attribute>
+			</status>
+			<xhtml:div xmlns="http://www.w3.org/1999/xhtml">
+				<xsl:variable name="patient_name">
+					<xsl:choose>
+						<xsl:when test="/roster/member/names/name[1]/text">
+							<xsl:value-of select="/roster/member/names/name[1]/text"/>
+						</xsl:when>
+						<xsl:when test="/roster/member/names/name[1]/given or /roster/member/names/name[1]/family">
+							<xsl:value-of select="concat(/roster/member/names/name[1]/given, ' ', /roster/member/names/name[1]/family)"/>
+						</xsl:when>
+						<xsl:otherwise>Unknown</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="patient_gender">
+					<xsl:choose>
+						<xsl:when test="starts-with(/roster/member/gender, 'male')">Male</xsl:when>
+						<xsl:when test="starts-with(/roster/member/gender, 'female')">Female</xsl:when>
+						<xsl:otherwise>Unknown</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:value-of select="concat('Patient: ', normalize-space($patient_name))"/>
+				<xsl:if test="$patient_gender != 'Unknown'">
+					<xsl:value-of select="concat(', ', $patient_gender)"/>
+				</xsl:if>
+				<xsl:if test="/roster/member/birth_date">
+					<xsl:value-of select="concat(', DOB: ', /roster/member/birth_date)"/>
+				</xsl:if>
+			</xhtml:div>
+		</text>
+	</xsl:template>
+
 	<xsl:template name="resource_meta">
 		<meta>
 			<lastUpdated>
