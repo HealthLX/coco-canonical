@@ -9,6 +9,8 @@ pluggy==1.6.0
 Pygments==2.19.2
 pytest==9.0.2
 pytest-cov==6.2.1
+pyyaml>=6.0,<7.0
+requests>=2.31,<3.0
 rstr==3.2.2
 saxonche==12.9.0
 tomli==2.3.0

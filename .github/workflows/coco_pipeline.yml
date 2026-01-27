@@ -1,0 +1,87 @@
+name: CoCo Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      contents: read
+    outputs:
+      roster: ${{ steps.filter.outputs.roster }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for Roster schema changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filters: |
+            roster:
+              - 'schemas/v10.0/Roster.xsd'
+
+  run-pipeline:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.roster == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Start Docker Compose services
+        run: |
+          docker compose up -d
+          echo "Waiting for validator service to be ready..."
+          timeout 60 bash -c 'until curl -f http://localhost:4567/health; do sleep 2; done' || true
+
+      - name: Load FHIR package
+        run: |
+          if [ -f "assets/fhir-packages/package.tgz" ]; then
+            curl -X POST \
+              -H 'Content-Type: application/gzip' \
+              -H 'Content-Encoding: gzip' \
+              --data-binary '@assets/fhir-packages/package.tgz' \
+              'http://localhost:4567/igs' || echo "Warning: Failed to load FHIR package"
+          else
+            echo "Warning: FHIR package not found"
+          fi
+
+      - name: Run pipeline for Roster
+        run: |
+          python tools/run_pipeline.py --target roster
+
+      - name: Auto-commit generated sample
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '[skip ci] Auto-update sample'
+          file_pattern: 'canonical-samples/v10.0/*.xml'
+          skip_dirty_check: true
+          skip_fetch: true
+          branch: ${{ github.head_ref }}
