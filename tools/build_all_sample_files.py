@@ -30,11 +30,14 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     )
 
 
-    # Write to file - changing this impacts where the script is run from CLI
-    name = output_file_name
-    with open("canonical-samples/v10.0/" + name, "wb") as f:
+    # Write to file - ensure directory exists
+    output_dir = base_dir / "canonical-samples" / "v10.0"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / output_file_name
+    
+    with open(output_path, "wb") as f:
         f.write(etree.tostring(built_xml, pretty_print=True, xml_declaration=True, encoding='UTF-8'))
-    print("Sample XML generated as ../samples/v10.0/" + name)
+    print(f"Sample XML generated as {output_path}")
 
 def main():
     """Build sample files driven by a YAML configuration."""
