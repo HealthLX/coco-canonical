@@ -26,6 +26,7 @@ from xsd_parser import (
     find_used_core_types,
     generate_core_types_section,
     generate_header,
+    generate_hlx_tbl_format,
     generate_toc,
     generate_disclaimer,
     generate_overview,
@@ -88,6 +89,9 @@ def generate_markdown(xsd_path, release_tag=None):
         output = ""
         
         try:
+            # Table Format Template
+            output += generate_hlx_tbl_format()
+
             # Header with logo, title, version, and date
             output += generate_header(root, schema_info)
             
@@ -97,6 +101,8 @@ def generate_markdown(xsd_path, release_tag=None):
             # Disclaimer
             output += generate_disclaimer()
             
+            # Overview
+            output += generate_overview(schema_info)
             # Overview
             output += generate_overview(schema_info)
             
@@ -112,7 +118,7 @@ def generate_markdown(xsd_path, release_tag=None):
             # Simple types
             simple_types = parse_simple_types(root)
             if simple_types:
-                output += "## Simple Types\n\n"
+                output += "<h2 style=\"color:#E60073\"> Simple Types</h2>\n\n"
                 output += to_md_table(["Name", "Base Type", "Description", "Pattern"], simple_types) + "\n\n"
             
             # Core Model Types (if imported and used)
@@ -122,7 +128,7 @@ def generate_markdown(xsd_path, release_tag=None):
             # Complex types - generate individual tables for each
             complex_types = parse_complex_types(root)
             if complex_types:
-                output += "## Complex Types\n\n"
+                output += "<h2 style=\"color:#E60073\"> Complex Types</h2>\n\n"
                 for name, elements in complex_types.items():
                     output += generate_complex_type_table(name, elements)
             

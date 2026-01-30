@@ -1,0 +1,3882 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" version="4.1.1">
+  <!--Data Type Declaration-->
+  <!--Regular Expression for string: Comment pattern if you want to allow empty strings-->
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string">
+      <!-- <xs:pattern value="[ \r\n\t\S]+"/> -->
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for NPI-->
+  <xs:simpleType name="NPI">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Network_ID-->
+  <xs:simpleType name="network_id">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9\-\.]{1,64}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for resource_id-->
+  <xs:simpleType name="resource_id">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9\-\.]{1,64}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Positive Integer-->
+  <xs:simpleType name="positiveInt">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\+?[1-9][0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for unsignedInt Integer-->
+  <xs:simpleType name="unsignedInt">
+    <xs:restriction base="xs:unsignedInt">
+      <xs:pattern value="0|([1-9][0-9]*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Integer-->
+  <xs:simpleType name="integer">
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="[0]|[-+]?[1-9][0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Time-->
+  <xs:simpleType name="time">
+    <xs:restriction base="xs:time">
+      <xs:pattern value="([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,9})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for DateTime-->
+  <xs:simpleType name="dateTime">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Date-->
+  <xs:simpleType name="date">
+    <xs:restriction base="xs:date">
+      <xs:pattern value="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Decimal-->
+  <xs:simpleType name="decimal">
+    <xs:restriction base="xs:decimal">
+      <xs:pattern value="-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Regular Expression for Boolean-->
+  <xs:simpleType name="boolean">
+    <xs:restriction base="xs:boolean">
+      <xs:pattern value="true|false"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Data Types-->
+  <xs:simpleType name="organization_role">
+    <xs:restriction base="string">
+      <xs:enumeration value="provider"/>
+      <xs:enumeration value="agency"/>
+      <xs:enumeration value="research"/>
+      <xs:enumeration value="payer"/>
+      <xs:enumeration value="diagnostics"/>
+      <xs:enumeration value="supplier"/>
+      <xs:enumeration value="HIE/HIO"/>
+      <xs:enumeration value="behavioral"/>
+      <xs:enumeration value="bt"/>
+      <xs:enumeration value="dme"/>
+      <xs:enumeration value="group"/>
+      <xs:enumeration value="home"/>
+      <xs:enumeration value="hospital"/>
+      <xs:enumeration value="laboratory"/>
+      <xs:enumeration value="other"/>
+      <xs:enumeration value="outpatient"/>
+      <xs:enumeration value="pharmacy"/>
+      <xs:enumeration value="transport"/>
+      <xs:enumeration value="urgent"/>
+      <xs:enumeration value="hospice"/>
+      <xs:enumeration value="nurseCustodial"/>
+      <xs:enumeration value="residential"/>
+      <xs:enumeration value="respite"/>
+      <xs:enumeration value="retail"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="role">
+    <xs:restriction base="string">
+      <xs:enumeration value="ap"/>
+      <xs:enumeration value="apn"/>
+      <xs:enumeration value="at"/>
+      <xs:enumeration value="au"/>
+      <xs:enumeration value="bh"/>
+      <xs:enumeration value="ba"/>
+      <xs:enumeration value="bt"/>
+      <xs:enumeration value="cnw"/>
+      <xs:enumeration value="crnp"/>
+      <xs:enumeration value="ch"/>
+      <xs:enumeration value="cs"/>
+      <xs:enumeration value="co"/>
+      <xs:enumeration value="dp"/>
+      <xs:enumeration value="de"/>
+      <xs:enumeration value="drr"/>
+      <xs:enumeration value="dn"/>
+      <xs:enumeration value="om"/>
+      <xs:enumeration value="em"/>
+      <xs:enumeration value="ho"/>
+      <xs:enumeration value="lpn"/>
+      <xs:enumeration value="mt"/>
+      <xs:enumeration value="ma"/>
+      <xs:enumeration value="nh"/>
+      <xs:enumeration value="na"/>
+      <xs:enumeration value="nu"/>
+      <xs:enumeration value="ot"/>
+      <xs:enumeration value="op"/>
+      <xs:enumeration value="oo"/>
+      <xs:enumeration value="os"/>
+      <xs:enumeration value="rx"/>
+      <xs:enumeration value="pt"/>
+      <xs:enumeration value="ph"/>
+      <xs:enumeration value="pa"/>
+      <xs:enumeration value="po"/>
+      <xs:enumeration value="py"/>
+      <xs:enumeration value="rn"/>
+      <xs:enumeration value="rt"/>
+      <xs:enumeration value="sw"/>
+      <xs:enumeration value="sp"/>
+      <xs:enumeration value="sh"/>
+      <xs:enumeration value="te"/>
+      <xs:enumeration value="doctor"/>
+      <xs:enumeration value="nurse"/>
+      <xs:enumeration value="pharmacist"/>
+      <xs:enumeration value="researcher"/>
+      <xs:enumeration value="teacher"/>
+      <xs:enumeration value="ict"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="type_of_organization">
+    <xs:restriction base="string">
+      <xs:enumeration value="fac"/>
+      <xs:enumeration value="prvgrp"/>
+      <xs:enumeration value="Payer"/>
+      <xs:enumeration value="atyprv"/>
+      <xs:enumeration value="bus"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="networks">
+    <xs:sequence>
+      <xs:element name="network" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="network_id" type="network_id" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Unique Identifier of this Network
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!--name of the network-->
+            <xs:element name="name" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Name of this Network </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="period">
+    <xs:sequence>
+      <xs:element name="start" type="dateTime" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="end" type="dateTime" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="new_patients">
+    <xs:sequence>
+      <xs:element name="accepting_patients" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> New Patients indicates whether new patients are being
+						accepted in general, or from a specific network.If no new patients are
+						accepted, no characteristics are allowed </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="no"/>
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="existing"/>
+            <xs:enumeration value="existingplusfamily"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="from_network" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="network_id" type="network_id" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Unique Identifier of this Network
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <!--name of the network-->
+            <xs:element name="name" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Name of this Network </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="characteristics" type="string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation> Open text for additional information </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="not_available">
+    <xs:sequence>
+      <xs:element name="description" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Description of why the dates are not available
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--	Service not available from this date-->
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Start/End dates when service is not available
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="available_time">
+    <xs:sequence>
+      <xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Available All Day </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="days_of_week" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation> Days of the week available </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="mon"/>
+            <xs:enumeration value="tue"/>
+            <xs:enumeration value="wed"/>
+            <xs:enumeration value="thu"/>
+            <xs:enumeration value="fri"/>
+            <xs:enumeration value="sat"/>
+            <xs:enumeration value="sun"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="available_start_time" type="time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Opening time of day (ignored if all_day = true)
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="available_end_time" type="time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Closing time of day (ignored if all_day = true)
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="human_name">
+    <xs:sequence>
+      <xs:element name="use" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> use this element to describe the name. More information can
+						be found here: http://hl7.org/fhir/R4/valueset-name-use.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="usual"/>
+            <xs:enumeration value="official"/>
+            <xs:enumeration value="temp"/>
+            <xs:enumeration value="nickname"/>
+            <xs:enumeration value="anonymous"/>
+            <xs:enumeration value="old"/>
+            <xs:enumeration value="maiden"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="text" type="string"/>
+      <xs:element name="family" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> family name (often called 'Surname') </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="given" type="string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation> Given names (not always 'first'). Includes middle names
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="prefix" type="string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="suffix" type="string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="period" type="period">
+        <xs:annotation>
+          <xs:documentation> Time period when name was/is in use. If the name is still in
+						use, do not supply an End date </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="organization_branch">
+    <xs:sequence>
+      <xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Time period when id is/was valid for use </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="type" minOccurs="0" maxOccurs="1" type="type_of_organization">
+        <xs:annotation>
+          <xs:documentation> Select the type of orginzation this is. A full list can be
+						found here:
+						https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrgTypeVS.html
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom_minimum"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="purpose" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation> The purpose of this contact within is
+												within the organization. A full list can be found
+												here:
+												https://www.hl7.org/fhir/valueset-contactentity-type.html
+											</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="string">
+                        <xs:enumeration value="BILL"/>
+                        <xs:enumeration value="ADMIN"/>
+                        <xs:enumeration value="HR"/>
+                        <xs:enumeration value="PAYOR"/>
+                        <xs:enumeration value="PATINF"/>
+                        <xs:enumeration value="PRESS"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="name" type="human_name" minOccurs="0" maxOccurs="1"/>
+                  <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom_minimum"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="address" minOccurs="0" maxOccurs="1" type="address"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="telecom_minimum">
+    <xs:sequence>
+      <xs:element name="system" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> use this element to descripbe the contact point.
+						https://www.hl7.org/fhir/valueset-contact-point-system.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="phone"/>
+            <xs:enumeration value="fax"/>
+            <xs:enumeration value="email"/>
+            <xs:enumeration value="pager"/>
+            <xs:enumeration value="url"/>
+            <xs:enumeration value="sms"/>
+            <xs:enumeration value="other"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="value" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The actual value of the contact point </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="use" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The use of the contact point.
+						https://www.hl7.org/fhir/valueset-contact-point-use.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="home"/>
+            <xs:enumeration value="work"/>
+            <xs:enumeration value="temp"/>
+            <xs:enumeration value="old"/>
+            <xs:enumeration value="mobile"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="rank" type="positiveInt" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Specify preferred order of use (1 = highest)
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Time period when the contact point was in use
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="telecom">
+    <xs:sequence>
+      <xs:element name="id" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> use this element to reference the CLIA </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="system" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> use this element to descripbe the contact point.
+						https://www.hl7.org/fhir/valueset-contact-point-system.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="phone"/>
+            <xs:enumeration value="fax"/>
+            <xs:enumeration value="email"/>
+            <xs:enumeration value="pager"/>
+            <xs:enumeration value="url"/>
+            <xs:enumeration value="sms"/>
+            <xs:enumeration value="other"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--	The actual contact point details-->
+      <xs:element name="value" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The actual value of the contact point </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="use" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The use of the contact point.
+						https://www.hl7.org/fhir/valueset-contact-point-use.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="home"/>
+            <xs:enumeration value="work"/>
+            <xs:enumeration value="temp"/>
+            <xs:enumeration value="old"/>
+            <xs:enumeration value="mobile"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="rank" type="positiveInt" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Specify preferred order of use (1 = highest)
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Time period when the contact point was/is in use-->
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Time period when the contact point was/is in use
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contactpoint_available_times" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contactpoint_available_time" minOccurs="0" maxOccurs="unbounded" type="available_time"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="via_intermediaries" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="via_intermediary" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                  <xs:documentation> The use of the contact point.
+												https://www.hl7.org/fhir/valueset-contact-point-use.html
+												</xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                  <xs:restriction base="string">
+                                    <xs:enumeration value="phone"/>
+                                    <xs:enumeration value="fax"/>
+                                    <xs:enumeration value="email"/>
+                                    <xs:enumeration value="pager"/>
+                                    <xs:enumeration value="url"/>
+                                    <xs:enumeration value="sms"/>
+                                    <xs:enumeration value="other"/>
+                                  </xs:restriction>
+                                </xs:simpleType>
+                              </xs:element>
+                              <xs:element name="value" type="string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                  <xs:documentation> The actual value of the contact
+												point </xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="address">
+    <xs:sequence>
+      <xs:element name="id" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> use this element to reference the CLIA </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="use" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> purpose of this address. A full list can be found here:
+						https://www.hl7.org/fhir/valueset-address-use.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="home"/>
+            <xs:enumeration value="work"/>
+            <xs:enumeration value="temp"/>
+            <xs:enumeration value="old"/>
+            <xs:enumeration value="billing"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="type" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The address type. A full list can be found here:
+						https://www.hl7.org/fhir/valueset-address-type.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="postal"/>
+            <xs:enumeration value="physical"/>
+            <xs:enumeration value="both"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Text representation of the address-->
+      <xs:element name="text" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The full text representation of the address
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Street name, number, direction & P.O. Box etc.-->
+      <xs:element name="line" type="string" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="city" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="district" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> District name (aka County) </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Sub-unit of country (abbreviations ok)-CodeableConcept-USPS Two Letter Alphabetic Codes -->
+      <xs:element name="state" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="postal_code" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="country" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Time period when address was/is in use </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geo_locations" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="geo_location" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="latitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="longitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="languages">
+    <xs:sequence>
+      <xs:element name="language" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Language the practitioner can use in patient communication.
+						The full list can be found here:
+						http://hl7.org/fhir/R4/valueset-languages.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="string">
+                <xs:enumeration value="ar"/>
+                <xs:enumeration value="bn"/>
+                <xs:enumeration value="cs"/>
+                <xs:enumeration value="da"/>
+                <xs:enumeration value="de"/>
+                <xs:enumeration value="de-AT"/>
+                <xs:enumeration value="de-CH"/>
+                <xs:enumeration value="de-DE"/>
+                <xs:enumeration value="el"/>
+                <xs:enumeration value="en"/>
+                <xs:enumeration value="en-AU"/>
+                <xs:enumeration value="en-CA"/>
+                <xs:enumeration value="en-GB"/>
+                <xs:enumeration value="en-IN"/>
+                <xs:enumeration value="en-NZ"/>
+                <xs:enumeration value="en-SG"/>
+                <xs:enumeration value="en-US"/>
+                <xs:enumeration value="es"/>
+                <xs:enumeration value="es-AR"/>
+                <xs:enumeration value="es-ES"/>
+                <xs:enumeration value="es-UY"/>
+                <xs:enumeration value="fi"/>
+                <xs:enumeration value="fr"/>
+                <xs:enumeration value="fr-BE"/>
+                <xs:enumeration value="fr-CH"/>
+                <xs:enumeration value="fr-FR"/>
+                <xs:enumeration value="fy"/>
+                <xs:enumeration value="fy-NL"/>
+                <xs:enumeration value="hi"/>
+                <xs:enumeration value="hr"/>
+                <xs:enumeration value="it"/>
+                <xs:enumeration value="it-CH"/>
+                <xs:enumeration value="it-IT"/>
+                <xs:enumeration value="ja"/>
+                <xs:enumeration value="ko"/>
+                <xs:enumeration value="nl"/>
+                <xs:enumeration value="nl-BE"/>
+                <xs:enumeration value="nl-NL"/>
+                <xs:enumeration value="no"/>
+                <xs:enumeration value="no-NO"/>
+                <xs:enumeration value="pa"/>
+                <xs:enumeration value="pl"/>
+                <xs:enumeration value="pt"/>
+                <xs:enumeration value="pt-BR"/>
+                <xs:enumeration value="ru"/>
+                <xs:enumeration value="ru-RU"/>
+                <xs:enumeration value="sr"/>
+                <xs:enumeration value="sr-RS"/>
+                <xs:enumeration value="sv"/>
+                <xs:enumeration value="sv-SE"/>
+                <xs:enumeration value="te"/>
+                <xs:enumeration value="zh"/>
+                <xs:enumeration value="zh-CN"/>
+                <xs:enumeration value="zh-HK"/>
+                <xs:enumeration value="zh-SG"/>
+                <xs:enumeration value="zh-TW"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:union memberTypes="xs:string"/>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="proficiency" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The proficiency of the language. The full list can be found
+						here:
+						https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-LanguageProficiencyVS.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="string">
+                <xs:enumeration value="00"/>
+                <xs:enumeration value="10"/>
+                <xs:enumeration value="20"/>
+                <xs:enumeration value="30"/>
+                <xs:enumeration value="40"/>
+                <xs:enumeration value="50"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:union memberTypes="xs:string"/>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="locations">
+    <xs:sequence>
+      <xs:element name="location" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" minOccurs="1" maxOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="string">
+                  <xs:enumeration value="active"/>
+                  <xs:enumeration value="suspended"/>
+                  <xs:enumeration value="inactive"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="operational_status" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> The operational status of the location. A full
+									list can be found here:
+									https://www.hl7.org/fhir/v2/0116/index.html </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="string">
+                  <xs:enumeration value="C"/>
+                  <xs:enumeration value="H"/>
+                  <xs:enumeration value="I"/>
+                  <xs:enumeration value="K"/>
+                  <xs:enumeration value="O"/>
+                  <xs:enumeration value="U"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!--Name of the location as used by humans-->
+            <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+            <!--	A list of alternate names that the location is known as, or was known as, in the past-->
+            <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+            <!--Additional details about the location that could be displayed as further information to identify the location beyond its name-->
+            <xs:element name="description" type="string" minOccurs="0" maxOccurs="1"/>
+            <!-- Type of function performed - codeableconcept-(V3 value SetServiceDeliveryLocationRoleType) -->
+            <xs:element name="types" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="type" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation> A role of a place that further
+												classifies the setting (e.g., accident site, road
+												side, work site, community location) in which
+												services are delivered. A full list can be found
+												here:
+												https://terminology.hl7.org/1.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html
+											</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="string">
+                        <xs:enumeration value="_DedicatedServiceDeliveryLocationRoleType"/>
+                        <xs:enumeration value="_DedicatedClinicalLocationRoleType"/>
+                        <xs:enumeration value="DX"/>
+                        <xs:enumeration value="CVDX"/>
+                        <xs:enumeration value="CATH"/>
+                        <xs:enumeration value="ECHO"/>
+                        <xs:enumeration value="GIDX"/>
+                        <xs:enumeration value="ENDOS"/>
+                        <xs:enumeration value="RADDX"/>
+                        <xs:enumeration value="RADO"/>
+                        <xs:enumeration value="RNEU"/>
+                        <xs:enumeration value="HOSP"/>
+                        <xs:enumeration value="CHR"/>
+                        <xs:enumeration value="GACH"/>
+                        <xs:enumeration value="MHSP"/>
+                        <xs:enumeration value="PSYCHF"/>
+                        <xs:enumeration value="RH"/>
+                        <xs:enumeration value="RHAT"/>
+                        <xs:enumeration value="RHII"/>
+                        <xs:enumeration value="RHMAD"/>
+                        <xs:enumeration value="RHPI"/>
+                        <xs:enumeration value="RHPIH"/>
+                        <xs:enumeration value="RHPIMS"/>
+                        <xs:enumeration value="RHPIVS"/>
+                        <xs:enumeration value="RHYAD"/>
+                        <xs:enumeration value="HU"/>
+                        <xs:enumeration value="BMTU"/>
+                        <xs:enumeration value="CCU"/>
+                        <xs:enumeration value="CHEST"/>
+                        <xs:enumeration value="EPIL"/>
+                        <xs:enumeration value="ER"/>
+                        <xs:enumeration value="ETU"/>
+                        <xs:enumeration value="HD"/>
+                        <xs:enumeration value="HLAB"/>
+                        <xs:enumeration value="INLAB"/>
+                        <xs:enumeration value="OUTLAB"/>
+                        <xs:enumeration value="HRAD"/>
+                        <xs:enumeration value="HUSCS"/>
+                        <xs:enumeration value="ICU"/>
+                        <xs:enumeration value="PEDICU"/>
+                        <xs:enumeration value="PEDNICU"/>
+                        <xs:enumeration value="INPHARM"/>
+                        <xs:enumeration value="MBL"/>
+                        <xs:enumeration value="NCCS"/>
+                        <xs:enumeration value="NS"/>
+                        <xs:enumeration value="OUTPHARM"/>
+                        <xs:enumeration value="PEDU"/>
+                        <xs:enumeration value="PHU"/>
+                        <xs:enumeration value="RHU"/>
+                        <xs:enumeration value="SLEEP"/>
+                        <xs:enumeration value="NCCF"/>
+                        <xs:enumeration value="SNF"/>
+                        <xs:enumeration value="OF"/>
+                        <xs:enumeration value="ALL"/>
+                        <xs:enumeration value="AMPUT"/>
+                        <xs:enumeration value="BMTC"/>
+                        <xs:enumeration value="BREAST"/>
+                        <xs:enumeration value="CANC"/>
+                        <xs:enumeration value="CAPC"/>
+                        <xs:enumeration value="CARD"/>
+                        <xs:enumeration value="PEDCARD"/>
+                        <xs:enumeration value="COAG"/>
+                        <xs:enumeration value="CRS"/>
+                        <xs:enumeration value="DERM"/>
+                        <xs:enumeration value="ENDO"/>
+                        <xs:enumeration value="PEDE"/>
+                        <xs:enumeration value="ENT"/>
+                        <xs:enumeration value="FMC"/>
+                        <xs:enumeration value="GI"/>
+                        <xs:enumeration value="PEDGI"/>
+                        <xs:enumeration value="GIM"/>
+                        <xs:enumeration value="GYN"/>
+                        <xs:enumeration value="HEM"/>
+                        <xs:enumeration value="PEDHEM"/>
+                        <xs:enumeration value="HTN"/>
+                        <xs:enumeration value="IEC"/>
+                        <xs:enumeration value="INFD"/>
+                        <xs:enumeration value="PEDID"/>
+                        <xs:enumeration value="INV"/>
+                        <xs:enumeration value="LYMPH"/>
+                        <xs:enumeration value="MGEN"/>
+                        <xs:enumeration value="NEPH"/>
+                        <xs:enumeration value="PEDNEPH"/>
+                        <xs:enumeration value="NEUR"/>
+                        <xs:enumeration value="OB"/>
+                        <xs:enumeration value="OMS"/>
+                        <xs:enumeration value="ONCL"/>
+                        <xs:enumeration value="PEDHO"/>
+                        <xs:enumeration value="OPH"/>
+                        <xs:enumeration value="OPTC"/>
+                        <xs:enumeration value="ORTHO"/>
+                        <xs:enumeration value="HAND"/>
+                        <xs:enumeration value="PAINCL"/>
+                        <xs:enumeration value="PC"/>
+                        <xs:enumeration value="PEDC"/>
+                        <xs:enumeration value="PEDRHEUM"/>
+                        <xs:enumeration value="POD"/>
+                        <xs:enumeration value="PREV"/>
+                        <xs:enumeration value="PROCTO"/>
+                        <xs:enumeration value="PROFF"/>
+                        <xs:enumeration value="PROS"/>
+                        <xs:enumeration value="PSI"/>
+                        <xs:enumeration value="PSY"/>
+                        <xs:enumeration value="RHEUM"/>
+                        <xs:enumeration value="SPMED"/>
+                        <xs:enumeration value="SU"/>
+                        <xs:enumeration value="PLS"/>
+                        <xs:enumeration value="URO"/>
+                        <xs:enumeration value="TR"/>
+                        <xs:enumeration value="TRAVEL"/>
+                        <xs:enumeration value="WND"/>
+                        <xs:enumeration value="RTF"/>
+                        <xs:enumeration value="PRC"/>
+                        <xs:enumeration value="SURF"/>
+                        <xs:enumeration value="_DedicatedNonClinicalLocationRoleType"/>
+                        <xs:enumeration value="DADDR"/>
+                        <xs:enumeration value="MOBL"/>
+                        <xs:enumeration value="AMB"/>
+                        <xs:enumeration value="PHARM"/>
+                        <xs:enumeration value="_IncidentalServiceDeliveryLocationRoleType"/>
+                        <xs:enumeration value="ACC"/>
+                        <xs:enumeration value="COMM"/>
+                        <xs:enumeration value="CSC"/>
+                        <xs:enumeration value="PTRES"/>
+                        <xs:enumeration value="SCHOOL"/>
+                        <xs:enumeration value="UPC"/>
+                        <xs:enumeration value="WORK"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="physical_type" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> This example value set defines a set of codes
+									that can be used to indicate the physical form of the Location.
+									A full list can be found here:
+									http://hl7.org/fhir/R4/valueset-location-physical-type.html
+								</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:union>
+                  <xs:simpleType>
+                    <xs:restriction base="string">
+                      <xs:enumeration value="si"/>
+                      <xs:enumeration value="bu"/>
+                      <xs:enumeration value="wi"/>
+                      <xs:enumeration value="wa"/>
+                      <xs:enumeration value="lvl"/>
+                      <xs:enumeration value="co"/>
+                      <xs:enumeration value="ro"/>
+                      <xs:enumeration value="bd"/>
+                      <xs:enumeration value="ve"/>
+                      <xs:enumeration value="ho"/>
+                      <xs:enumeration value="ca"/>
+                      <xs:enumeration value="rd"/>
+                      <xs:enumeration value="area"/>
+                      <xs:enumeration value="jdn"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                  <xs:simpleType>
+                    <xs:union memberTypes="xs:string"/>
+                  </xs:simpleType>
+                </xs:union>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="position" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="longitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="latitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="altitude" type="decimal" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="part_of" type="location_part_of" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="hours_of_operations" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="hours_of_operation" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <!--The Location is open all day-->
+                        <xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
+                        <!--mon | tue | wed | thu | fri | sat | sun-->
+                        <xs:element name="days_of_week" minOccurs="0" maxOccurs="unbounded">
+                          <xs:simpleType>
+                            <xs:restriction base="string">
+                              <xs:enumeration value="mon"/>
+                              <xs:enumeration value="tue"/>
+                              <xs:enumeration value="wed"/>
+                              <xs:enumeration value="thu"/>
+                              <xs:enumeration value="fri"/>
+                              <xs:enumeration value="sat"/>
+                              <xs:enumeration value="sun"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="opening_time" type="time" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="closing_time" type="time" minOccurs="0" maxOccurs="1"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!--	Description of availability exceptions-->
+            <xs:element name="availability_exceptions" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Description of availability exceptions
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="accessibility" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation> Accessibility options. A full list can be found
+									here:
+									https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-AccessibilityVS.html
+								</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="string">
+                  <xs:enumeration value="cultcomp"/>
+                  <xs:enumeration value="handiaccess"/>
+                  <xs:enumeration value="adacomp"/>
+                  <xs:enumeration value="pubtrans"/>
+                  <xs:enumeration value="anssrvc"/>
+                  <xs:enumeration value="vision"/>
+                  <xs:enumeration value="cognitive"/>
+                  <xs:enumeration value="mobility"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="new_patients_list" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="new_patients" minOccurs="0" maxOccurs="unbounded" type="new_patients"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!--only one occurrence of address-->
+            <xs:element name="address" minOccurs="0" maxOccurs="1" type="address"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="location_part_of">
+    <xs:sequence>
+      <xs:element name="status" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="active"/>
+            <xs:enumeration value="suspended"/>
+            <xs:enumeration value="inactive"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operational_status" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> The operational status of the location. A full list can be
+						found here: https://www.hl7.org/fhir/v2/0116/index.html </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="K"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="U"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Name of the location as used by humans-->
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+      <!--	A list of alternate names that the location is known as, or was known as, in the past-->
+      <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+      <!--Additional details about the location that could be displayed as further information to identify the location beyond its name-->
+      <xs:element name="description" type="string" minOccurs="0" maxOccurs="1"/>
+      <!-- Type of function performed - codeableconcept-(V3 value SetServiceDeliveryLocationRoleType) -->
+      <xs:element name="types" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="type" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation> A role of a place that further classifies the
+									setting (e.g., accident site, road side, work site, community
+									location) in which services are delivered. A full list can be
+									found here:
+									https://terminology.hl7.org/1.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html
+								</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="string">
+                  <xs:enumeration value="_DedicatedServiceDeliveryLocationRoleType"/>
+                  <xs:enumeration value="_DedicatedClinicalLocationRoleType"/>
+                  <xs:enumeration value="DX"/>
+                  <xs:enumeration value="CVDX"/>
+                  <xs:enumeration value="CATH"/>
+                  <xs:enumeration value="ECHO"/>
+                  <xs:enumeration value="GIDX"/>
+                  <xs:enumeration value="ENDOS"/>
+                  <xs:enumeration value="RADDX"/>
+                  <xs:enumeration value="RADO"/>
+                  <xs:enumeration value="RNEU"/>
+                  <xs:enumeration value="HOSP"/>
+                  <xs:enumeration value="CHR"/>
+                  <xs:enumeration value="GACH"/>
+                  <xs:enumeration value="MHSP"/>
+                  <xs:enumeration value="PSYCHF"/>
+                  <xs:enumeration value="RH"/>
+                  <xs:enumeration value="RHAT"/>
+                  <xs:enumeration value="RHII"/>
+                  <xs:enumeration value="RHMAD"/>
+                  <xs:enumeration value="RHPI"/>
+                  <xs:enumeration value="RHPIH"/>
+                  <xs:enumeration value="RHPIMS"/>
+                  <xs:enumeration value="RHPIVS"/>
+                  <xs:enumeration value="RHYAD"/>
+                  <xs:enumeration value="HU"/>
+                  <xs:enumeration value="BMTU"/>
+                  <xs:enumeration value="CCU"/>
+                  <xs:enumeration value="CHEST"/>
+                  <xs:enumeration value="EPIL"/>
+                  <xs:enumeration value="ER"/>
+                  <xs:enumeration value="ETU"/>
+                  <xs:enumeration value="HD"/>
+                  <xs:enumeration value="HLAB"/>
+                  <xs:enumeration value="INLAB"/>
+                  <xs:enumeration value="OUTLAB"/>
+                  <xs:enumeration value="HRAD"/>
+                  <xs:enumeration value="HUSCS"/>
+                  <xs:enumeration value="ICU"/>
+                  <xs:enumeration value="PEDICU"/>
+                  <xs:enumeration value="PEDNICU"/>
+                  <xs:enumeration value="INPHARM"/>
+                  <xs:enumeration value="MBL"/>
+                  <xs:enumeration value="NCCS"/>
+                  <xs:enumeration value="NS"/>
+                  <xs:enumeration value="OUTPHARM"/>
+                  <xs:enumeration value="PEDU"/>
+                  <xs:enumeration value="PHU"/>
+                  <xs:enumeration value="RHU"/>
+                  <xs:enumeration value="SLEEP"/>
+                  <xs:enumeration value="NCCF"/>
+                  <xs:enumeration value="SNF"/>
+                  <xs:enumeration value="OF"/>
+                  <xs:enumeration value="ALL"/>
+                  <xs:enumeration value="AMPUT"/>
+                  <xs:enumeration value="BMTC"/>
+                  <xs:enumeration value="BREAST"/>
+                  <xs:enumeration value="CANC"/>
+                  <xs:enumeration value="CAPC"/>
+                  <xs:enumeration value="CARD"/>
+                  <xs:enumeration value="PEDCARD"/>
+                  <xs:enumeration value="COAG"/>
+                  <xs:enumeration value="CRS"/>
+                  <xs:enumeration value="DERM"/>
+                  <xs:enumeration value="ENDO"/>
+                  <xs:enumeration value="PEDE"/>
+                  <xs:enumeration value="ENT"/>
+                  <xs:enumeration value="FMC"/>
+                  <xs:enumeration value="GI"/>
+                  <xs:enumeration value="PEDGI"/>
+                  <xs:enumeration value="GIM"/>
+                  <xs:enumeration value="GYN"/>
+                  <xs:enumeration value="HEM"/>
+                  <xs:enumeration value="PEDHEM"/>
+                  <xs:enumeration value="HTN"/>
+                  <xs:enumeration value="IEC"/>
+                  <xs:enumeration value="INFD"/>
+                  <xs:enumeration value="PEDID"/>
+                  <xs:enumeration value="INV"/>
+                  <xs:enumeration value="LYMPH"/>
+                  <xs:enumeration value="MGEN"/>
+                  <xs:enumeration value="NEPH"/>
+                  <xs:enumeration value="PEDNEPH"/>
+                  <xs:enumeration value="NEUR"/>
+                  <xs:enumeration value="OB"/>
+                  <xs:enumeration value="OMS"/>
+                  <xs:enumeration value="ONCL"/>
+                  <xs:enumeration value="PEDHO"/>
+                  <xs:enumeration value="OPH"/>
+                  <xs:enumeration value="OPTC"/>
+                  <xs:enumeration value="ORTHO"/>
+                  <xs:enumeration value="HAND"/>
+                  <xs:enumeration value="PAINCL"/>
+                  <xs:enumeration value="PC"/>
+                  <xs:enumeration value="PEDC"/>
+                  <xs:enumeration value="PEDRHEUM"/>
+                  <xs:enumeration value="POD"/>
+                  <xs:enumeration value="PREV"/>
+                  <xs:enumeration value="PROCTO"/>
+                  <xs:enumeration value="PROFF"/>
+                  <xs:enumeration value="PROS"/>
+                  <xs:enumeration value="PSI"/>
+                  <xs:enumeration value="PSY"/>
+                  <xs:enumeration value="RHEUM"/>
+                  <xs:enumeration value="SPMED"/>
+                  <xs:enumeration value="SU"/>
+                  <xs:enumeration value="PLS"/>
+                  <xs:enumeration value="URO"/>
+                  <xs:enumeration value="TR"/>
+                  <xs:enumeration value="TRAVEL"/>
+                  <xs:enumeration value="WND"/>
+                  <xs:enumeration value="RTF"/>
+                  <xs:enumeration value="PRC"/>
+                  <xs:enumeration value="SURF"/>
+                  <xs:enumeration value="_DedicatedNonClinicalLocationRoleType"/>
+                  <xs:enumeration value="DADDR"/>
+                  <xs:enumeration value="MOBL"/>
+                  <xs:enumeration value="AMB"/>
+                  <xs:enumeration value="PHARM"/>
+                  <xs:enumeration value="_IncidentalServiceDeliveryLocationRoleType"/>
+                  <xs:enumeration value="ACC"/>
+                  <xs:enumeration value="COMM"/>
+                  <xs:enumeration value="CSC"/>
+                  <xs:enumeration value="PTRES"/>
+                  <xs:enumeration value="SCHOOL"/>
+                  <xs:enumeration value="UPC"/>
+                  <xs:enumeration value="WORK"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="physical_type" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> This example value set defines a set of codes that can be
+						used to indicate the physical form of the Location. A full list can be found
+						here: http://hl7.org/fhir/R4/valueset-location-physical-type.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="string">
+                <xs:enumeration value="si"/>
+                <xs:enumeration value="bu"/>
+                <xs:enumeration value="wi"/>
+                <xs:enumeration value="wa"/>
+                <xs:enumeration value="lvl"/>
+                <xs:enumeration value="co"/>
+                <xs:enumeration value="ro"/>
+                <xs:enumeration value="bd"/>
+                <xs:enumeration value="ve"/>
+                <xs:enumeration value="ho"/>
+                <xs:enumeration value="ca"/>
+                <xs:enumeration value="rd"/>
+                <xs:enumeration value="area"/>
+                <xs:enumeration value="jdn"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:union memberTypes="xs:string"/>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="position" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="longitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="latitude" type="decimal" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="altitude" type="decimal" minOccurs="0" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hours_of_operations" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="hours_of_operation" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <!--The Location is open all day-->
+                  <xs:element name="all_day" type="boolean" minOccurs="0" maxOccurs="1"/>
+                  <!--mon | tue | wed | thu | fri | sat | sun-->
+                  <xs:element name="days_of_week" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                      <xs:restriction base="string">
+                        <xs:enumeration value="mon"/>
+                        <xs:enumeration value="tue"/>
+                        <xs:enumeration value="wed"/>
+                        <xs:enumeration value="thu"/>
+                        <xs:enumeration value="fri"/>
+                        <xs:enumeration value="sat"/>
+                        <xs:enumeration value="sun"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="opening_time" type="time" minOccurs="0" maxOccurs="1"/>
+                  <xs:element name="closing_time" type="time" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--	Description of availability exceptions-->
+      <xs:element name="availability_exceptions" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Description of availability exceptions </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accessibility" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation> Accessibility options. A full list can be found here:
+						https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-AccessibilityVS.html
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="cultcomp"/>
+            <xs:enumeration value="handiaccess"/>
+            <xs:enumeration value="adacomp"/>
+            <xs:enumeration value="pubtrans"/>
+            <xs:enumeration value="anssrvc"/>
+            <xs:enumeration value="vision"/>
+            <xs:enumeration value="cognitive"/>
+            <xs:enumeration value="mobility"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="new_patients_list" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="new_patients" minOccurs="0" maxOccurs="unbounded" type="new_patients"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="practitioner_specialties">
+		<xs:sequence>
+			<xs:element name="specialty"
+			            minOccurs="0"
+			            maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation> Individual and Group Specialties from National Uniform Claim
+						Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be
+						found here:
+						https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-IndividualAndGroupSpecialtiesVS.html
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="string">
+						<xs:enumeration value="101200000X"/>
+						<xs:enumeration value="101Y00000X"/>
+						<xs:enumeration value="101YA0400X"/>
+						<xs:enumeration value="101YM0800X"/>
+						<xs:enumeration value="101YP1600X"/>
+						<xs:enumeration value="101YP2500X"/>
+						<xs:enumeration value="101YS0200X"/>
+						<xs:enumeration value="102L00000X"/>
+						<xs:enumeration value="102X00000X"/>
+						<xs:enumeration value="103G00000X"/>
+						<xs:enumeration value="103K00000X"/>
+						<xs:enumeration value="103T00000X"/>
+						<xs:enumeration value="103TA0400X"/>
+						<xs:enumeration value="103TA0700X"/>
+						<xs:enumeration value="103TB0200X"/>
+						<xs:enumeration value="103TC0700X"/>
+						<xs:enumeration value="103TC1900X"/>
+						<xs:enumeration value="103TC2200X"/>
+						<xs:enumeration value="103TE1100X"/>
+						<xs:enumeration value="103TF0000X"/>
+						<xs:enumeration value="103TF0200X"/>
+						<xs:enumeration value="103TH0004X"/>
+						<xs:enumeration value="103TH0100X"/>
+						<xs:enumeration value="103TM1800X"/>
+						<xs:enumeration value="103TP0016X"/>
+						<xs:enumeration value="103TP0814X"/>
+						<xs:enumeration value="103TP2701X"/>
+						<xs:enumeration value="103TR0400X"/>
+						<xs:enumeration value="103TS0200X"/>
+						<xs:enumeration value="104100000X"/>
+						<xs:enumeration value="1041C0700X"/>
+						<xs:enumeration value="1041S0200X"/>
+						<xs:enumeration value="106E00000X"/>
+						<xs:enumeration value="106H00000X"/>
+						<xs:enumeration value="106S00000X"/>
+						<xs:enumeration value="111N00000X"/>
+						<xs:enumeration value="111NI0013X"/>
+						<xs:enumeration value="111NI0900X"/>
+						<xs:enumeration value="111NN0400X"/>
+						<xs:enumeration value="111NN1001X"/>
+						<xs:enumeration value="111NP0017X"/>
+						<xs:enumeration value="111NR0200X"/>
+						<xs:enumeration value="111NR0400X"/>
+						<xs:enumeration value="111NS0005X"/>
+						<xs:enumeration value="111NT0100X"/>
+						<xs:enumeration value="111NX0100X"/>
+						<xs:enumeration value="111NX0800X"/>
+						<xs:enumeration value="122300000X"/>
+						<xs:enumeration value="1223D0001X"/>
+						<xs:enumeration value="1223D0004X"/>
+						<xs:enumeration value="1223E0200X"/>
+						<xs:enumeration value="1223G0001X"/>
+						<xs:enumeration value="1223P0106X"/>
+						<xs:enumeration value="1223P0221X"/>
+						<xs:enumeration value="1223P0300X"/>
+						<xs:enumeration value="1223P0700X"/>
+						<xs:enumeration value="1223S0112X"/>
+						<xs:enumeration value="1223X0008X"/>
+						<xs:enumeration value="1223X0400X"/>
+						<xs:enumeration value="122400000X"/>
+						<xs:enumeration value="124Q00000X"/>
+						<xs:enumeration value="125J00000X"/>
+						<xs:enumeration value="125K00000X"/>
+						<xs:enumeration value="125Q00000X"/>
+						<xs:enumeration value="126800000X"/>
+						<xs:enumeration value="126900000X"/>
+						<xs:enumeration value="132700000X"/>
+						<xs:enumeration value="133N00000X"/>
+						<xs:enumeration value="133NN1002X"/>
+						<xs:enumeration value="133V00000X"/>
+						<xs:enumeration value="133VN1004X"/>
+						<xs:enumeration value="133VN1005X"/>
+						<xs:enumeration value="133VN1006X"/>
+						<xs:enumeration value="136A00000X"/>
+						<xs:enumeration value="146D00000X"/>
+						<xs:enumeration value="146L00000X"/>
+						<xs:enumeration value="146M00000X"/>
+						<xs:enumeration value="146N00000X"/>
+						<xs:enumeration value="152W00000X"/>
+						<xs:enumeration value="152WC0802X"/>
+						<xs:enumeration value="152WL0500X"/>
+						<xs:enumeration value="152WP0200X"/>
+						<xs:enumeration value="152WS0006X"/>
+						<xs:enumeration value="152WV0400X"/>
+						<xs:enumeration value="152WX0102X"/>
+						<xs:enumeration value="156F00000X"/>
+						<xs:enumeration value="156FC0800X"/>
+						<xs:enumeration value="156FC0801X"/>
+						<xs:enumeration value="156FX1100X"/>
+						<xs:enumeration value="156FX1101X"/>
+						<xs:enumeration value="156FX1201X"/>
+						<xs:enumeration value="156FX1202X"/>
+						<xs:enumeration value="156FX1700X"/>
+						<xs:enumeration value="156FX1800X"/>
+						<xs:enumeration value="156FX1900X"/>
+						<xs:enumeration value="163W00000X"/>
+						<xs:enumeration value="163WA0400X"/>
+						<xs:enumeration value="163WA2000X"/>
+						<xs:enumeration value="163WC0200X"/>
+						<xs:enumeration value="163WC0400X"/>
+						<xs:enumeration value="163WC1400X"/>
+						<xs:enumeration value="163WC1500X"/>
+						<xs:enumeration value="163WC1600X"/>
+						<xs:enumeration value="163WC2100X"/>
+						<xs:enumeration value="163WC3500X"/>
+						<xs:enumeration value="163WD0400X"/>
+						<xs:enumeration value="163WD1100X"/>
+						<xs:enumeration value="163WE0003X"/>
+						<xs:enumeration value="163WE0900X"/>
+						<xs:enumeration value="163WF0300X"/>
+						<xs:enumeration value="163WG0000X"/>
+						<xs:enumeration value="163WG0100X"/>
+						<xs:enumeration value="163WG0600X"/>
+						<xs:enumeration value="163WH0200X"/>
+						<xs:enumeration value="163WH0500X"/>
+						<xs:enumeration value="163WH1000X"/>
+						<xs:enumeration value="163WI0500X"/>
+						<xs:enumeration value="163WI0600X"/>
+						<xs:enumeration value="163WL0100X"/>
+						<xs:enumeration value="163WM0102X"/>
+						<xs:enumeration value="163WM0705X"/>
+						<xs:enumeration value="163WM1400X"/>
+						<xs:enumeration value="163WN0002X"/>
+						<xs:enumeration value="163WN0003X"/>
+						<xs:enumeration value="163WN0300X"/>
+						<xs:enumeration value="163WN0800X"/>
+						<xs:enumeration value="163WN1003X"/>
+						<xs:enumeration value="163WP0000X"/>
+						<xs:enumeration value="163WP0200X"/>
+						<xs:enumeration value="163WP0218X"/>
+						<xs:enumeration value="163WP0807X"/>
+						<xs:enumeration value="163WP0808X"/>
+						<xs:enumeration value="163WP0809X"/>
+						<xs:enumeration value="163WP1700X"/>
+						<xs:enumeration value="163WP2201X"/>
+						<xs:enumeration value="163WR0006X"/>
+						<xs:enumeration value="163WR0400X"/>
+						<xs:enumeration value="163WR1000X"/>
+						<xs:enumeration value="163WS0121X"/>
+						<xs:enumeration value="163WS0200X"/>
+						<xs:enumeration value="163WU0100X"/>
+						<xs:enumeration value="163WW0000X"/>
+						<xs:enumeration value="163WW0101X"/>
+						<xs:enumeration value="163WX0002X"/>
+						<xs:enumeration value="163WX0003X"/>
+						<xs:enumeration value="163WX0106X"/>
+						<xs:enumeration value="163WX0200X"/>
+						<xs:enumeration value="163WX0601X"/>
+						<xs:enumeration value="163WX0800X"/>
+						<xs:enumeration value="163WX1100X"/>
+						<xs:enumeration value="163WX1500X"/>
+						<xs:enumeration value="164W00000X"/>
+						<xs:enumeration value="164X00000X"/>
+						<xs:enumeration value="167G00000X"/>
+						<xs:enumeration value="170100000X"/>
+						<xs:enumeration value="170300000X"/>
+						<xs:enumeration value="171000000X"/>
+						<xs:enumeration value="1710I1002X"/>
+						<xs:enumeration value="1710I1003X"/>
+						<xs:enumeration value="171100000X"/>
+						<xs:enumeration value="171400000X"/>
+						<xs:enumeration value="171M00000X"/>
+						<xs:enumeration value="171R00000X"/>
+						<xs:enumeration value="171W00000X"/>
+						<xs:enumeration value="171WH0202X"/>
+						<xs:enumeration value="171WV0202X"/>
+						<xs:enumeration value="172A00000X"/>
+						<xs:enumeration value="172M00000X"/>
+						<xs:enumeration value="172P00000X"/>
+						<xs:enumeration value="172V00000X"/>
+						<xs:enumeration value="173000000X"/>
+						<xs:enumeration value="173C00000X"/>
+						<xs:enumeration value="173F00000X"/>
+						<xs:enumeration value="174400000X"/>
+						<xs:enumeration value="1744G0900X"/>
+						<xs:enumeration value="1744P3200X"/>
+						<xs:enumeration value="1744R1102X"/>
+						<xs:enumeration value="1744R1103X"/>
+						<xs:enumeration value="174H00000X"/>
+						<xs:enumeration value="174M00000X"/>
+						<xs:enumeration value="174MM1900X"/>
+						<xs:enumeration value="174N00000X"/>
+						<xs:enumeration value="174V00000X"/>
+						<xs:enumeration value="175F00000X"/>
+						<xs:enumeration value="175L00000X"/>
+						<xs:enumeration value="175M00000X"/>
+						<xs:enumeration value="175T00000X"/>
+						<xs:enumeration value="176B00000X"/>
+						<xs:enumeration value="176P00000X"/>
+						<xs:enumeration value="183500000X"/>
+						<xs:enumeration value="1835C0205X"/>
+						<xs:enumeration value="1835G0303X"/>
+						<xs:enumeration value="1835N0905X"/>
+						<xs:enumeration value="1835N1003X"/>
+						<xs:enumeration value="1835P0018X"/>
+						<xs:enumeration value="1835P0200X"/>
+						<xs:enumeration value="1835P1200X"/>
+						<xs:enumeration value="1835P1300X"/>
+						<xs:enumeration value="1835P2201X"/>
+						<xs:enumeration value="1835X0200X"/>
+						<xs:enumeration value="183700000X"/>
+						<xs:enumeration value="193200000X"/>
+						<xs:enumeration value="202C00000X"/>
+						<xs:enumeration value="202K00000X"/>
+						<xs:enumeration value="204C00000X"/>
+						<xs:enumeration value="204D00000X"/>
+						<xs:enumeration value="204E00000X"/>
+						<xs:enumeration value="204F00000X"/>
+						<xs:enumeration value="204R00000X"/>
+						<xs:enumeration value="207K00000X"/>
+						<xs:enumeration value="207KA0200X"/>
+						<xs:enumeration value="207KI0005X"/>
+						<xs:enumeration value="207L00000X"/>
+						<xs:enumeration value="207LA0401X"/>
+						<xs:enumeration value="207LC0200X"/>
+						<xs:enumeration value="207LH0002X"/>
+						<xs:enumeration value="207LP2900X"/>
+						<xs:enumeration value="207LP3000X"/>
+						<xs:enumeration value="207N00000X"/>
+						<xs:enumeration value="207ND0101X"/>
+						<xs:enumeration value="207ND0900X"/>
+						<xs:enumeration value="207NI0002X"/>
+						<xs:enumeration value="207NP0225X"/>
+						<xs:enumeration value="207NS0135X"/>
+						<xs:enumeration value="207P00000X"/>
+						<xs:enumeration value="207PE0004X"/>
+						<xs:enumeration value="207PE0005X"/>
+						<xs:enumeration value="207PH0002X"/>
+						<xs:enumeration value="207PP0204X"/>
+						<xs:enumeration value="207PS0010X"/>
+						<xs:enumeration value="207PT0002X"/>
+						<xs:enumeration value="207Q00000X"/>
+						<xs:enumeration value="207QA0000X"/>
+						<xs:enumeration value="207QA0401X"/>
+						<xs:enumeration value="207QA0505X"/>
+						<xs:enumeration value="207QB0002X"/>
+						<xs:enumeration value="207QG0300X"/>
+						<xs:enumeration value="207QH0002X"/>
+						<xs:enumeration value="207QS0010X"/>
+						<xs:enumeration value="207QS1201X"/>
+						<xs:enumeration value="207R00000X"/>
+						<xs:enumeration value="207RA0000X"/>
+						<xs:enumeration value="207RA0001X"/>
+						<xs:enumeration value="207RA0201X"/>
+						<xs:enumeration value="207RA0401X"/>
+						<xs:enumeration value="207RB0002X"/>
+						<xs:enumeration value="207RC0000X"/>
+						<xs:enumeration value="207RC0001X"/>
+						<xs:enumeration value="207RC0200X"/>
+						<xs:enumeration value="207RE0101X"/>
+						<xs:enumeration value="207RG0100X"/>
+						<xs:enumeration value="207RG0300X"/>
+						<xs:enumeration value="207RH0000X"/>
+						<xs:enumeration value="207RH0002X"/>
+						<xs:enumeration value="207RH0003X"/>
+						<xs:enumeration value="207RH0005X"/>
+						<xs:enumeration value="207RI0001X"/>
+						<xs:enumeration value="207RI0008X"/>
+						<xs:enumeration value="207RI0011X"/>
+						<xs:enumeration value="207RI0200X"/>
+						<xs:enumeration value="207RM1200X"/>
+						<xs:enumeration value="207RN0300X"/>
+						<xs:enumeration value="207RP1001X"/>
+						<xs:enumeration value="207RR0500X"/>
+						<xs:enumeration value="207RS0010X"/>
+						<xs:enumeration value="207RS0012X"/>
+						<xs:enumeration value="207RT0003X"/>
+						<xs:enumeration value="207RX0202X"/>
+						<xs:enumeration value="207SC0300X"/>
+						<xs:enumeration value="207SG0201X"/>
+						<xs:enumeration value="207SG0202X"/>
+						<xs:enumeration value="207SG0203X"/>
+						<xs:enumeration value="207SG0205X"/>
+						<xs:enumeration value="207SM0001X"/>
+						<xs:enumeration value="207T00000X"/>
+						<xs:enumeration value="207U00000X"/>
+						<xs:enumeration value="207UN0901X"/>
+						<xs:enumeration value="207UN0902X"/>
+						<xs:enumeration value="207UN0903X"/>
+						<xs:enumeration value="207V00000X"/>
+						<xs:enumeration value="207VB0002X"/>
+						<xs:enumeration value="207VC0200X"/>
+						<xs:enumeration value="207VE0102X"/>
+						<xs:enumeration value="207VF0040X"/>
+						<xs:enumeration value="207VG0400X"/>
+						<xs:enumeration value="207VH0002X"/>
+						<xs:enumeration value="207VM0101X"/>
+						<xs:enumeration value="207VX0000X"/>
+						<xs:enumeration value="207VX0201X"/>
+						<xs:enumeration value="207W00000X"/>
+						<xs:enumeration value="207WX0200X"/>
+						<xs:enumeration value="207X00000X"/>
+						<xs:enumeration value="207XP3100X"/>
+						<xs:enumeration value="207XS0106X"/>
+						<xs:enumeration value="207XS0114X"/>
+						<xs:enumeration value="207XS0117X"/>
+						<xs:enumeration value="207XX0004X"/>
+						<xs:enumeration value="207XX0005X"/>
+						<xs:enumeration value="207XX0801X"/>
+						<xs:enumeration value="207Y00000X"/>
+						<xs:enumeration value="207YP0228X"/>
+						<xs:enumeration value="207YS0012X"/>
+						<xs:enumeration value="207YS0123X"/>
+						<xs:enumeration value="207YX0007X"/>
+						<xs:enumeration value="207YX0602X"/>
+						<xs:enumeration value="207YX0901X"/>
+						<xs:enumeration value="207YX0905X"/>
+						<xs:enumeration value="207ZB0001X"/>
+						<xs:enumeration value="207ZC0006X"/>
+						<xs:enumeration value="207ZC0008X"/>
+						<xs:enumeration value="207ZC0500X"/>
+						<xs:enumeration value="207ZD0900X"/>
+						<xs:enumeration value="207ZF0201X"/>
+						<xs:enumeration value="207ZH0000X"/>
+						<xs:enumeration value="207ZI0100X"/>
+						<xs:enumeration value="207ZM0300X"/>
+						<xs:enumeration value="207ZN0500X"/>
+						<xs:enumeration value="207ZP0007X"/>
+						<xs:enumeration value="207ZP0101X"/>
+						<xs:enumeration value="207ZP0102X"/>
+						<xs:enumeration value="207ZP0104X"/>
+						<xs:enumeration value="207ZP0105X"/>
+						<xs:enumeration value="207ZP0213X"/>
+						<xs:enumeration value="208000000X"/>
+						<xs:enumeration value="2080A0000X"/>
+						<xs:enumeration value="2080B0002X"/>
+						<xs:enumeration value="2080C0008X"/>
+						<xs:enumeration value="2080H0002X"/>
+						<xs:enumeration value="2080I0007X"/>
+						<xs:enumeration value="2080N0001X"/>
+						<xs:enumeration value="2080P0006X"/>
+						<xs:enumeration value="2080P0008X"/>
+						<xs:enumeration value="2080P0201X"/>
+						<xs:enumeration value="2080P0202X"/>
+						<xs:enumeration value="2080P0203X"/>
+						<xs:enumeration value="2080P0204X"/>
+						<xs:enumeration value="2080P0205X"/>
+						<xs:enumeration value="2080P0206X"/>
+						<xs:enumeration value="2080P0207X"/>
+						<xs:enumeration value="2080P0208X"/>
+						<xs:enumeration value="2080P0210X"/>
+						<xs:enumeration value="2080P0214X"/>
+						<xs:enumeration value="2080P0216X"/>
+						<xs:enumeration value="2080S0010X"/>
+						<xs:enumeration value="2080S0012X"/>
+						<xs:enumeration value="2080T0002X"/>
+						<xs:enumeration value="2080T0004X"/>
+						<xs:enumeration value="208100000X"/>
+						<xs:enumeration value="2081H0002X"/>
+						<xs:enumeration value="2081N0008X"/>
+						<xs:enumeration value="2081P0004X"/>
+						<xs:enumeration value="2081P0010X"/>
+						<xs:enumeration value="2081P0301X"/>
+						<xs:enumeration value="2081P2900X"/>
+						<xs:enumeration value="2081S0010X"/>
+						<xs:enumeration value="208200000X"/>
+						<xs:enumeration value="2082S0099X"/>
+						<xs:enumeration value="2082S0105X"/>
+						<xs:enumeration value="2083A0100X"/>
+						<xs:enumeration value="2083B0002X"/>
+						<xs:enumeration value="2083C0008X"/>
+						<xs:enumeration value="2083P0011X"/>
+						<xs:enumeration value="2083P0500X"/>
+						<xs:enumeration value="2083P0901X"/>
+						<xs:enumeration value="2083S0010X"/>
+						<xs:enumeration value="2083T0002X"/>
+						<xs:enumeration value="2083X0100X"/>
+						<xs:enumeration value="2084A0401X"/>
+						<xs:enumeration value="2084A2900X"/>
+						<xs:enumeration value="2084B0002X"/>
+						<xs:enumeration value="2084B0040X"/>
+						<xs:enumeration value="2084D0003X"/>
+						<xs:enumeration value="2084F0202X"/>
+						<xs:enumeration value="2084H0002X"/>
+						<xs:enumeration value="2084N0008X"/>
+						<xs:enumeration value="2084N0400X"/>
+						<xs:enumeration value="2084N0402X"/>
+						<xs:enumeration value="2084N0600X"/>
+						<xs:enumeration value="2084P0005X"/>
+						<xs:enumeration value="2084P0015X"/>
+						<xs:enumeration value="2084P0301X"/>
+						<xs:enumeration value="2084P0800X"/>
+						<xs:enumeration value="2084P0802X"/>
+						<xs:enumeration value="2084P0804X"/>
+						<xs:enumeration value="2084P0805X"/>
+						<xs:enumeration value="2084P2900X"/>
+						<xs:enumeration value="2084S0010X"/>
+						<xs:enumeration value="2084S0012X"/>
+						<xs:enumeration value="2084V0102X"/>
+						<xs:enumeration value="2085B0100X"/>
+						<xs:enumeration value="2085D0003X"/>
+						<xs:enumeration value="2085H0002X"/>
+						<xs:enumeration value="2085N0700X"/>
+						<xs:enumeration value="2085N0904X"/>
+						<xs:enumeration value="2085P0229X"/>
+						<xs:enumeration value="2085R0001X"/>
+						<xs:enumeration value="2085R0202X"/>
+						<xs:enumeration value="2085R0203X"/>
+						<xs:enumeration value="2085R0204X"/>
+						<xs:enumeration value="2085R0205X"/>
+						<xs:enumeration value="2085U0001X"/>
+						<xs:enumeration value="208600000X"/>
+						<xs:enumeration value="2086H0002X"/>
+						<xs:enumeration value="2086S0102X"/>
+						<xs:enumeration value="2086S0105X"/>
+						<xs:enumeration value="2086S0120X"/>
+						<xs:enumeration value="2086S0122X"/>
+						<xs:enumeration value="2086S0127X"/>
+						<xs:enumeration value="2086S0129X"/>
+						<xs:enumeration value="2086X0206X"/>
+						<xs:enumeration value="208800000X"/>
+						<xs:enumeration value="2088F0040X"/>
+						<xs:enumeration value="2088P0231X"/>
+						<xs:enumeration value="208C00000X"/>
+						<xs:enumeration value="208D00000X"/>
+						<xs:enumeration value="208G00000X"/>
+						<xs:enumeration value="208M00000X"/>
+						<xs:enumeration value="208U00000X"/>
+						<xs:enumeration value="208VP0000X"/>
+						<xs:enumeration value="208VP0014X"/>
+						<xs:enumeration value="209800000X"/>
+						<xs:enumeration value="211D00000X"/>
+						<xs:enumeration value="213E00000X"/>
+						<xs:enumeration value="213EP0504X"/>
+						<xs:enumeration value="213EP1101X"/>
+						<xs:enumeration value="213ER0200X"/>
+						<xs:enumeration value="213ES0000X"/>
+						<xs:enumeration value="213ES0103X"/>
+						<xs:enumeration value="213ES0131X"/>
+						<xs:enumeration value="221700000X"/>
+						<xs:enumeration value="222Q00000X"/>
+						<xs:enumeration value="222Z00000X"/>
+						<xs:enumeration value="224900000X"/>
+						<xs:enumeration value="224L00000X"/>
+						<xs:enumeration value="224P00000X"/>
+						<xs:enumeration value="224Y00000X"/>
+						<xs:enumeration value="224Z00000X"/>
+						<xs:enumeration value="224ZE0001X"/>
+						<xs:enumeration value="224ZF0002X"/>
+						<xs:enumeration value="224ZL0004X"/>
+						<xs:enumeration value="224ZR0403X"/>
+						<xs:enumeration value="225000000X"/>
+						<xs:enumeration value="225100000X"/>
+						<xs:enumeration value="2251C2600X"/>
+						<xs:enumeration value="2251E1200X"/>
+						<xs:enumeration value="2251E1300X"/>
+						<xs:enumeration value="2251G0304X"/>
+						<xs:enumeration value="2251H1200X"/>
+						<xs:enumeration value="2251H1300X"/>
+						<xs:enumeration value="2251N0400X"/>
+						<xs:enumeration value="2251P0200X"/>
+						<xs:enumeration value="2251S0007X"/>
+						<xs:enumeration value="2251X0800X"/>
+						<xs:enumeration value="225200000X"/>
+						<xs:enumeration value="225400000X"/>
+						<xs:enumeration value="225500000X"/>
+						<xs:enumeration value="2255A2300X"/>
+						<xs:enumeration value="2255R0406X"/>
+						<xs:enumeration value="225600000X"/>
+						<xs:enumeration value="225700000X"/>
+						<xs:enumeration value="225800000X"/>
+						<xs:enumeration value="225A00000X"/>
+						<xs:enumeration value="225B00000X"/>
+						<xs:enumeration value="225C00000X"/>
+						<xs:enumeration value="225CA2400X"/>
+						<xs:enumeration value="225CA2500X"/>
+						<xs:enumeration value="225CX0006X"/>
+						<xs:enumeration value="225X00000X"/>
+						<xs:enumeration value="225XE0001X"/>
+						<xs:enumeration value="225XE1200X"/>
+						<xs:enumeration value="225XF0002X"/>
+						<xs:enumeration value="225XG0600X"/>
+						<xs:enumeration value="225XH1200X"/>
+						<xs:enumeration value="225XH1300X"/>
+						<xs:enumeration value="225XL0004X"/>
+						<xs:enumeration value="225XM0800X"/>
+						<xs:enumeration value="225XN1300X"/>
+						<xs:enumeration value="225XP0019X"/>
+						<xs:enumeration value="225XP0200X"/>
+						<xs:enumeration value="225XR0403X"/>
+						<xs:enumeration value="226000000X"/>
+						<xs:enumeration value="226300000X"/>
+						<xs:enumeration value="227800000X"/>
+						<xs:enumeration value="2278C0205X"/>
+						<xs:enumeration value="2278E0002X"/>
+						<xs:enumeration value="2278E1000X"/>
+						<xs:enumeration value="2278G0305X"/>
+						<xs:enumeration value="2278G1100X"/>
+						<xs:enumeration value="2278H0200X"/>
+						<xs:enumeration value="2278P1004X"/>
+						<xs:enumeration value="2278P1005X"/>
+						<xs:enumeration value="2278P1006X"/>
+						<xs:enumeration value="2278P3800X"/>
+						<xs:enumeration value="2278P3900X"/>
+						<xs:enumeration value="2278P4000X"/>
+						<xs:enumeration value="2278S1500X"/>
+						<xs:enumeration value="227900000X"/>
+						<xs:enumeration value="2279C0205X"/>
+						<xs:enumeration value="2279E0002X"/>
+						<xs:enumeration value="2279E1000X"/>
+						<xs:enumeration value="2279G0305X"/>
+						<xs:enumeration value="2279G1100X"/>
+						<xs:enumeration value="2279H0200X"/>
+						<xs:enumeration value="2279P1004X"/>
+						<xs:enumeration value="2279P1005X"/>
+						<xs:enumeration value="2279P1006X"/>
+						<xs:enumeration value="2279P3800X"/>
+						<xs:enumeration value="2279P3900X"/>
+						<xs:enumeration value="2279P4000X"/>
+						<xs:enumeration value="2279S1500X"/>
+						<xs:enumeration value="229N00000X"/>
+						<xs:enumeration value="231H00000X"/>
+						<xs:enumeration value="231HA2400X"/>
+						<xs:enumeration value="231HA2500X"/>
+						<xs:enumeration value="235500000X"/>
+						<xs:enumeration value="2355A2700X"/>
+						<xs:enumeration value="2355S0801X"/>
+						<xs:enumeration value="235Z00000X"/>
+						<xs:enumeration value="237600000X"/>
+						<xs:enumeration value="237700000X"/>
+						<xs:enumeration value="242T00000X"/>
+						<xs:enumeration value="243U00000X"/>
+						<xs:enumeration value="246Q00000X"/>
+						<xs:enumeration value="246QB0000X"/>
+						<xs:enumeration value="246QC1000X"/>
+						<xs:enumeration value="246QC2700X"/>
+						<xs:enumeration value="246QH0000X"/>
+						<xs:enumeration value="246QH0401X"/>
+						<xs:enumeration value="246QH0600X"/>
+						<xs:enumeration value="246QI0000X"/>
+						<xs:enumeration value="246QL0900X"/>
+						<xs:enumeration value="246QL0901X"/>
+						<xs:enumeration value="246QM0706X"/>
+						<xs:enumeration value="246QM0900X"/>
+						<xs:enumeration value="246R00000X"/>
+						<xs:enumeration value="246RH0600X"/>
+						<xs:enumeration value="246RM2200X"/>
+						<xs:enumeration value="246RP1900X"/>
+						<xs:enumeration value="246W00000X"/>
+						<xs:enumeration value="246X00000X"/>
+						<xs:enumeration value="246XC2901X"/>
+						<xs:enumeration value="246XC2903X"/>
+						<xs:enumeration value="246XS1301X"/>
+						<xs:enumeration value="246Y00000X"/>
+						<xs:enumeration value="246YC3301X"/>
+						<xs:enumeration value="246YC3302X"/>
+						<xs:enumeration value="246YR1600X"/>
+						<xs:enumeration value="246Z00000X"/>
+						<xs:enumeration value="246ZA2600X"/>
+						<xs:enumeration value="246ZB0301X"/>
+						<xs:enumeration value="246ZB0302X"/>
+						<xs:enumeration value="246ZB0500X"/>
+						<xs:enumeration value="246ZB0600X"/>
+						<xs:enumeration value="246ZC0007X"/>
+						<xs:enumeration value="246ZE0500X"/>
+						<xs:enumeration value="246ZE0600X"/>
+						<xs:enumeration value="246ZG0701X"/>
+						<xs:enumeration value="246ZG1000X"/>
+						<xs:enumeration value="246ZI1000X"/>
+						<xs:enumeration value="246ZN0300X"/>
+						<xs:enumeration value="246ZS0410X"/>
+						<xs:enumeration value="246ZX2200X"/>
+						<xs:enumeration value="247000000X"/>
+						<xs:enumeration value="2470A2800X"/>
+						<xs:enumeration value="247100000X"/>
+						<xs:enumeration value="2471B0102X"/>
+						<xs:enumeration value="2471C1101X"/>
+						<xs:enumeration value="2471C1106X"/>
+						<xs:enumeration value="2471C3401X"/>
+						<xs:enumeration value="2471C3402X"/>
+						<xs:enumeration value="2471M1202X"/>
+						<xs:enumeration value="2471M2300X"/>
+						<xs:enumeration value="2471N0900X"/>
+						<xs:enumeration value="2471Q0001X"/>
+						<xs:enumeration value="2471R0002X"/>
+						<xs:enumeration value="2471S1302X"/>
+						<xs:enumeration value="2471V0105X"/>
+						<xs:enumeration value="2471V0106X"/>
+						<xs:enumeration value="247200000X"/>
+						<xs:enumeration value="2472B0301X"/>
+						<xs:enumeration value="2472D0500X"/>
+						<xs:enumeration value="2472E0500X"/>
+						<xs:enumeration value="2472R0900X"/>
+						<xs:enumeration value="2472V0600X"/>
+						<xs:enumeration value="247ZC0005X"/>
+						<xs:enumeration value="363A00000X"/>
+						<xs:enumeration value="363AM0700X"/>
+						<xs:enumeration value="363AS0400X"/>
+						<xs:enumeration value="363L00000X"/>
+						<xs:enumeration value="363LA2100X"/>
+						<xs:enumeration value="363LA2200X"/>
+						<xs:enumeration value="363LC0200X"/>
+						<xs:enumeration value="363LC1500X"/>
+						<xs:enumeration value="363LF0000X"/>
+						<xs:enumeration value="363LG0600X"/>
+						<xs:enumeration value="363LN0000X"/>
+						<xs:enumeration value="363LN0005X"/>
+						<xs:enumeration value="363LP0200X"/>
+						<xs:enumeration value="363LP0222X"/>
+						<xs:enumeration value="363LP0808X"/>
+						<xs:enumeration value="363LP1700X"/>
+						<xs:enumeration value="363LP2300X"/>
+						<xs:enumeration value="363LS0200X"/>
+						<xs:enumeration value="363LW0102X"/>
+						<xs:enumeration value="363LX0001X"/>
+						<xs:enumeration value="363LX0106X"/>
+						<xs:enumeration value="364S00000X"/>
+						<xs:enumeration value="364SA2100X"/>
+						<xs:enumeration value="364SA2200X"/>
+						<xs:enumeration value="364SC0200X"/>
+						<xs:enumeration value="364SC1501X"/>
+						<xs:enumeration value="364SC2300X"/>
+						<xs:enumeration value="364SE0003X"/>
+						<xs:enumeration value="364SE1400X"/>
+						<xs:enumeration value="364SF0001X"/>
+						<xs:enumeration value="364SG0600X"/>
+						<xs:enumeration value="364SH0200X"/>
+						<xs:enumeration value="364SH1100X"/>
+						<xs:enumeration value="364SI0800X"/>
+						<xs:enumeration value="364SL0600X"/>
+						<xs:enumeration value="364SM0705X"/>
+						<xs:enumeration value="364SN0000X"/>
+						<xs:enumeration value="364SN0800X"/>
+						<xs:enumeration value="364SP0200X"/>
+						<xs:enumeration value="364SP0807X"/>
+						<xs:enumeration value="364SP0808X"/>
+						<xs:enumeration value="364SP0809X"/>
+						<xs:enumeration value="364SP0810X"/>
+						<xs:enumeration value="364SP0811X"/>
+						<xs:enumeration value="364SP0812X"/>
+						<xs:enumeration value="364SP0813X"/>
+						<xs:enumeration value="364SP1700X"/>
+						<xs:enumeration value="364SP2800X"/>
+						<xs:enumeration value="364SR0400X"/>
+						<xs:enumeration value="364SS0200X"/>
+						<xs:enumeration value="364ST0500X"/>
+						<xs:enumeration value="364SW0102X"/>
+						<xs:enumeration value="364SX0106X"/>
+						<xs:enumeration value="364SX0200X"/>
+						<xs:enumeration value="364SX0204X"/>
+						<xs:enumeration value="367500000X"/>
+						<xs:enumeration value="367A00000X"/>
+						<xs:enumeration value="367H00000X"/>
+						<xs:enumeration value="372500000X"/>
+						<xs:enumeration value="372600000X"/>
+						<xs:enumeration value="373H00000X"/>
+						<xs:enumeration value="374700000X"/>
+						<xs:enumeration value="3747A0650X"/>
+						<xs:enumeration value="3747P1801X"/>
+						<xs:enumeration value="374J00000X"/>
+						<xs:enumeration value="374K00000X"/>
+						<xs:enumeration value="374T00000X"/>
+						<xs:enumeration value="374U00000X"/>
+						<xs:enumeration value="376G00000X"/>
+						<xs:enumeration value="376J00000X"/>
+						<xs:enumeration value="376K00000X"/>
+						<xs:enumeration value="405300000X"/>
+						<xs:enumeration value="1223X2210X"/>
+						<xs:enumeration value="133VN1101X"/>
+						<xs:enumeration value="133VN1201X"/>
+						<xs:enumeration value="133VN1301X"/>
+						<xs:enumeration value="133VN1401X"/>
+						<xs:enumeration value="133VN1501X"/>
+						<xs:enumeration value="207RA0002X"/>
+						<xs:enumeration value="207WX0009X"/>
+						<xs:enumeration value="207WX0107X"/>
+						<xs:enumeration value="207WX0108X"/>
+						<xs:enumeration value="207WX0109X"/>
+						<xs:enumeration value="207WX0110X"/>
+						<xs:enumeration value="207WX0120X"/>
+						<xs:enumeration value="2083A0300X"/>
+						<xs:enumeration value="193400000X"/>
+						<xs:enumeration value="251G00000X"/>
+						<xs:enumeration value="261Q00000X"/>
+						<xs:enumeration value="261QA1903X"/>
+						<xs:enumeration value="261QF0400X"/>
+						<xs:enumeration value="261QM1300X"/>
+						<xs:enumeration value="261QP2300X"/>
+						<xs:enumeration value="261QR1300X"/>
+						<xs:enumeration value="273R00000X"/>
+						<xs:enumeration value="273Y00000X"/>
+						<xs:enumeration value="282E00000X"/>
+						<xs:enumeration value="282N00000X"/>
+						<xs:enumeration value="314000000X"/>
+						<xs:enumeration value="332B00000X"/>
+						<xs:enumeration value="341600000X"/>
+						<xs:enumeration value="291U00000X"/>
+						<xs:enumeration value="261QM0801X"/>
+						<xs:enumeration value="390200000X"/>
+						<xs:enumeration value="261QR0200X"/>
+						<xs:enumeration value="103GC0700X"/>
+						<xs:enumeration value="103TE1000X"/>
+						<xs:enumeration value="103TM1700X"/>
+						<xs:enumeration value="103TP2700X"/>
+						<xs:enumeration value="103TW0100X"/>
+						<xs:enumeration value="1835C0206X"/>
+						<xs:enumeration value="1835C0207X"/>
+						<xs:enumeration value="1835E0208X"/>
+						<xs:enumeration value="1835G0000X"/>
+						<xs:enumeration value="1835I0206X"/>
+						<xs:enumeration value="1835S0206X"/>
+						<xs:enumeration value="202D00000X"/>
+						<xs:enumeration value="207LP4000X"/>
+						<xs:enumeration value="207QP0002X"/>
+						<xs:enumeration value="207RP1002X"/>
+						<xs:enumeration value="207SG0207X"/>
+						<xs:enumeration value="207VC0300X"/>
+						<xs:enumeration value="2080P1004X"/>
+						<xs:enumeration value="2084E0001X"/>
+						<xs:enumeration value="2086P0122X"/>
+						<xs:enumeration value="213EG0000X"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="provider_organization_specialties">
+		<xs:sequence>
+			<xs:element name="specialty"
+			            minOccurs="0"
+			            maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation> Specialties value set based on National Uniform Claim
+						Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be
+						found here:
+						https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-SpecialtiesVS.html
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="string">
+						<xs:enumeration value="101200000X"/>
+						<xs:enumeration value="101Y00000X"/>
+						<xs:enumeration value="101YA0400X"/>
+						<xs:enumeration value="101YM0800X"/>
+						<xs:enumeration value="101YP1600X"/>
+						<xs:enumeration value="101YP2500X"/>
+						<xs:enumeration value="101YS0200X"/>
+						<xs:enumeration value="102L00000X"/>
+						<xs:enumeration value="102X00000X"/>
+						<xs:enumeration value="103G00000X"/>
+						<xs:enumeration value="103K00000X"/>
+						<xs:enumeration value="103T00000X"/>
+						<xs:enumeration value="103TA0400X"/>
+						<xs:enumeration value="103TA0700X"/>
+						<xs:enumeration value="103TB0200X"/>
+						<xs:enumeration value="103TC0700X"/>
+						<xs:enumeration value="103TC1900X"/>
+						<xs:enumeration value="103TC2200X"/>
+						<xs:enumeration value="103TE1100X"/>
+						<xs:enumeration value="103TF0000X"/>
+						<xs:enumeration value="103TF0200X"/>
+						<xs:enumeration value="103TH0004X"/>
+						<xs:enumeration value="103TH0100X"/>
+						<xs:enumeration value="103TM1800X"/>
+						<xs:enumeration value="103TP0016X"/>
+						<xs:enumeration value="103TP0814X"/>
+						<xs:enumeration value="103TP2701X"/>
+						<xs:enumeration value="103TR0400X"/>
+						<xs:enumeration value="103TS0200X"/>
+						<xs:enumeration value="104100000X"/>
+						<xs:enumeration value="1041C0700X"/>
+						<xs:enumeration value="1041S0200X"/>
+						<xs:enumeration value="106E00000X"/>
+						<xs:enumeration value="106H00000X"/>
+						<xs:enumeration value="106S00000X"/>
+						<xs:enumeration value="111N00000X"/>
+						<xs:enumeration value="111NI0013X"/>
+						<xs:enumeration value="111NI0900X"/>
+						<xs:enumeration value="111NN0400X"/>
+						<xs:enumeration value="111NN1001X"/>
+						<xs:enumeration value="111NP0017X"/>
+						<xs:enumeration value="111NR0200X"/>
+						<xs:enumeration value="111NR0400X"/>
+						<xs:enumeration value="111NS0005X"/>
+						<xs:enumeration value="111NT0100X"/>
+						<xs:enumeration value="111NX0100X"/>
+						<xs:enumeration value="111NX0800X"/>
+						<xs:enumeration value="122300000X"/>
+						<xs:enumeration value="1223D0001X"/>
+						<xs:enumeration value="1223D0004X"/>
+						<xs:enumeration value="1223E0200X"/>
+						<xs:enumeration value="1223G0001X"/>
+						<xs:enumeration value="1223P0106X"/>
+						<xs:enumeration value="1223P0221X"/>
+						<xs:enumeration value="1223P0300X"/>
+						<xs:enumeration value="1223P0700X"/>
+						<xs:enumeration value="1223S0112X"/>
+						<xs:enumeration value="1223X0008X"/>
+						<xs:enumeration value="1223X0400X"/>
+						<xs:enumeration value="1223X2210X"/>
+						<xs:enumeration value="122400000X"/>
+						<xs:enumeration value="124Q00000X"/>
+						<xs:enumeration value="125J00000X"/>
+						<xs:enumeration value="125K00000X"/>
+						<xs:enumeration value="125Q00000X"/>
+						<xs:enumeration value="126800000X"/>
+						<xs:enumeration value="126900000X"/>
+						<xs:enumeration value="132700000X"/>
+						<xs:enumeration value="133N00000X"/>
+						<xs:enumeration value="133NN1002X"/>
+						<xs:enumeration value="133V00000X"/>
+						<xs:enumeration value="133VN1004X"/>
+						<xs:enumeration value="133VN1005X"/>
+						<xs:enumeration value="133VN1006X"/>
+						<xs:enumeration value="133VN1101X"/>
+						<xs:enumeration value="133VN1201X"/>
+						<xs:enumeration value="133VN1301X"/>
+						<xs:enumeration value="133VN1401X"/>
+						<xs:enumeration value="133VN1501X"/>
+						<xs:enumeration value="136A00000X"/>
+						<xs:enumeration value="146D00000X"/>
+						<xs:enumeration value="146L00000X"/>
+						<xs:enumeration value="146M00000X"/>
+						<xs:enumeration value="146N00000X"/>
+						<xs:enumeration value="152W00000X"/>
+						<xs:enumeration value="152WC0802X"/>
+						<xs:enumeration value="152WL0500X"/>
+						<xs:enumeration value="152WP0200X"/>
+						<xs:enumeration value="152WS0006X"/>
+						<xs:enumeration value="152WV0400X"/>
+						<xs:enumeration value="152WX0102X"/>
+						<xs:enumeration value="156F00000X"/>
+						<xs:enumeration value="156FC0800X"/>
+						<xs:enumeration value="156FC0801X"/>
+						<xs:enumeration value="156FX1100X"/>
+						<xs:enumeration value="156FX1101X"/>
+						<xs:enumeration value="156FX1201X"/>
+						<xs:enumeration value="156FX1202X"/>
+						<xs:enumeration value="156FX1700X"/>
+						<xs:enumeration value="156FX1800X"/>
+						<xs:enumeration value="156FX1900X"/>
+						<xs:enumeration value="163W00000X"/>
+						<xs:enumeration value="163WA0400X"/>
+						<xs:enumeration value="163WA2000X"/>
+						<xs:enumeration value="163WC0200X"/>
+						<xs:enumeration value="163WC0400X"/>
+						<xs:enumeration value="163WC1400X"/>
+						<xs:enumeration value="163WC1500X"/>
+						<xs:enumeration value="163WC1600X"/>
+						<xs:enumeration value="163WC2100X"/>
+						<xs:enumeration value="163WC3500X"/>
+						<xs:enumeration value="163WD0400X"/>
+						<xs:enumeration value="163WD1100X"/>
+						<xs:enumeration value="163WE0003X"/>
+						<xs:enumeration value="163WE0900X"/>
+						<xs:enumeration value="163WF0300X"/>
+						<xs:enumeration value="163WG0000X"/>
+						<xs:enumeration value="163WG0100X"/>
+						<xs:enumeration value="163WG0600X"/>
+						<xs:enumeration value="163WH0200X"/>
+						<xs:enumeration value="163WH0500X"/>
+						<xs:enumeration value="163WH1000X"/>
+						<xs:enumeration value="163WI0500X"/>
+						<xs:enumeration value="163WI0600X"/>
+						<xs:enumeration value="163WL0100X"/>
+						<xs:enumeration value="163WM0102X"/>
+						<xs:enumeration value="163WM0705X"/>
+						<xs:enumeration value="163WM1400X"/>
+						<xs:enumeration value="163WN0002X"/>
+						<xs:enumeration value="163WN0003X"/>
+						<xs:enumeration value="163WN0300X"/>
+						<xs:enumeration value="163WN0800X"/>
+						<xs:enumeration value="163WN1003X"/>
+						<xs:enumeration value="163WP0000X"/>
+						<xs:enumeration value="163WP0200X"/>
+						<xs:enumeration value="163WP0218X"/>
+						<xs:enumeration value="163WP0807X"/>
+						<xs:enumeration value="163WP0808X"/>
+						<xs:enumeration value="163WP0809X"/>
+						<xs:enumeration value="163WP1700X"/>
+						<xs:enumeration value="163WP2201X"/>
+						<xs:enumeration value="163WR0006X"/>
+						<xs:enumeration value="163WR0400X"/>
+						<xs:enumeration value="163WR1000X"/>
+						<xs:enumeration value="163WS0121X"/>
+						<xs:enumeration value="163WS0200X"/>
+						<xs:enumeration value="163WU0100X"/>
+						<xs:enumeration value="163WW0000X"/>
+						<xs:enumeration value="163WW0101X"/>
+						<xs:enumeration value="163WX0002X"/>
+						<xs:enumeration value="163WX0003X"/>
+						<xs:enumeration value="163WX0106X"/>
+						<xs:enumeration value="163WX0200X"/>
+						<xs:enumeration value="163WX0601X"/>
+						<xs:enumeration value="163WX0800X"/>
+						<xs:enumeration value="163WX1100X"/>
+						<xs:enumeration value="163WX1500X"/>
+						<xs:enumeration value="164W00000X"/>
+						<xs:enumeration value="164X00000X"/>
+						<xs:enumeration value="167G00000X"/>
+						<xs:enumeration value="170100000X"/>
+						<xs:enumeration value="170300000X"/>
+						<xs:enumeration value="171000000X"/>
+						<xs:enumeration value="1710I1002X"/>
+						<xs:enumeration value="1710I1003X"/>
+						<xs:enumeration value="171100000X"/>
+						<xs:enumeration value="171400000X"/>
+						<xs:enumeration value="171M00000X"/>
+						<xs:enumeration value="171R00000X"/>
+						<xs:enumeration value="171W00000X"/>
+						<xs:enumeration value="171WH0202X"/>
+						<xs:enumeration value="171WV0202X"/>
+						<xs:enumeration value="172A00000X"/>
+						<xs:enumeration value="172M00000X"/>
+						<xs:enumeration value="172P00000X"/>
+						<xs:enumeration value="172V00000X"/>
+						<xs:enumeration value="173000000X"/>
+						<xs:enumeration value="173C00000X"/>
+						<xs:enumeration value="173F00000X"/>
+						<xs:enumeration value="174400000X"/>
+						<xs:enumeration value="1744G0900X"/>
+						<xs:enumeration value="1744P3200X"/>
+						<xs:enumeration value="1744R1102X"/>
+						<xs:enumeration value="1744R1103X"/>
+						<xs:enumeration value="174H00000X"/>
+						<xs:enumeration value="174M00000X"/>
+						<xs:enumeration value="174MM1900X"/>
+						<xs:enumeration value="174N00000X"/>
+						<xs:enumeration value="174V00000X"/>
+						<xs:enumeration value="175F00000X"/>
+						<xs:enumeration value="175L00000X"/>
+						<xs:enumeration value="175M00000X"/>
+						<xs:enumeration value="175T00000X"/>
+						<xs:enumeration value="176B00000X"/>
+						<xs:enumeration value="176P00000X"/>
+						<xs:enumeration value="183500000X"/>
+						<xs:enumeration value="1835C0205X"/>
+						<xs:enumeration value="1835G0303X"/>
+						<xs:enumeration value="1835N0905X"/>
+						<xs:enumeration value="1835N1003X"/>
+						<xs:enumeration value="1835P0018X"/>
+						<xs:enumeration value="1835P0200X"/>
+						<xs:enumeration value="1835P1200X"/>
+						<xs:enumeration value="1835P1300X"/>
+						<xs:enumeration value="1835P2201X"/>
+						<xs:enumeration value="1835X0200X"/>
+						<xs:enumeration value="183700000X"/>
+						<xs:enumeration value="193200000X"/>
+						<xs:enumeration value="202C00000X"/>
+						<xs:enumeration value="202K00000X"/>
+						<xs:enumeration value="204C00000X"/>
+						<xs:enumeration value="204D00000X"/>
+						<xs:enumeration value="204E00000X"/>
+						<xs:enumeration value="204F00000X"/>
+						<xs:enumeration value="204R00000X"/>
+						<xs:enumeration value="207K00000X"/>
+						<xs:enumeration value="207KA0200X"/>
+						<xs:enumeration value="207KI0005X"/>
+						<xs:enumeration value="207L00000X"/>
+						<xs:enumeration value="207LA0401X"/>
+						<xs:enumeration value="207LC0200X"/>
+						<xs:enumeration value="207LH0002X"/>
+						<xs:enumeration value="207LP2900X"/>
+						<xs:enumeration value="207LP3000X"/>
+						<xs:enumeration value="207N00000X"/>
+						<xs:enumeration value="207ND0101X"/>
+						<xs:enumeration value="207ND0900X"/>
+						<xs:enumeration value="207NI0002X"/>
+						<xs:enumeration value="207NP0225X"/>
+						<xs:enumeration value="207NS0135X"/>
+						<xs:enumeration value="207P00000X"/>
+						<xs:enumeration value="207PE0004X"/>
+						<xs:enumeration value="207PE0005X"/>
+						<xs:enumeration value="207PH0002X"/>
+						<xs:enumeration value="207PP0204X"/>
+						<xs:enumeration value="207PS0010X"/>
+						<xs:enumeration value="207PT0002X"/>
+						<xs:enumeration value="207Q00000X"/>
+						<xs:enumeration value="207QA0000X"/>
+						<xs:enumeration value="207QA0401X"/>
+						<xs:enumeration value="207QA0505X"/>
+						<xs:enumeration value="207QB0002X"/>
+						<xs:enumeration value="207QG0300X"/>
+						<xs:enumeration value="207QH0002X"/>
+						<xs:enumeration value="207QS0010X"/>
+						<xs:enumeration value="207QS1201X"/>
+						<xs:enumeration value="207R00000X"/>
+						<xs:enumeration value="207RA0000X"/>
+						<xs:enumeration value="207RA0001X"/>
+						<xs:enumeration value="207RA0002X"/>
+						<xs:enumeration value="207RA0201X"/>
+						<xs:enumeration value="207RA0401X"/>
+						<xs:enumeration value="207RB0002X"/>
+						<xs:enumeration value="207RC0000X"/>
+						<xs:enumeration value="207RC0001X"/>
+						<xs:enumeration value="207RC0200X"/>
+						<xs:enumeration value="207RE0101X"/>
+						<xs:enumeration value="207RG0100X"/>
+						<xs:enumeration value="207RG0300X"/>
+						<xs:enumeration value="207RH0000X"/>
+						<xs:enumeration value="207RH0002X"/>
+						<xs:enumeration value="207RH0003X"/>
+						<xs:enumeration value="207RH0005X"/>
+						<xs:enumeration value="207RI0001X"/>
+						<xs:enumeration value="207RI0008X"/>
+						<xs:enumeration value="207RI0011X"/>
+						<xs:enumeration value="207RI0200X"/>
+						<xs:enumeration value="207RM1200X"/>
+						<xs:enumeration value="207RN0300X"/>
+						<xs:enumeration value="207RP1001X"/>
+						<xs:enumeration value="207RR0500X"/>
+						<xs:enumeration value="207RS0010X"/>
+						<xs:enumeration value="207RS0012X"/>
+						<xs:enumeration value="207RT0003X"/>
+						<xs:enumeration value="207RX0202X"/>
+						<xs:enumeration value="207SC0300X"/>
+						<xs:enumeration value="207SG0201X"/>
+						<xs:enumeration value="207SG0202X"/>
+						<xs:enumeration value="207SG0203X"/>
+						<xs:enumeration value="207SG0205X"/>
+						<xs:enumeration value="207SM0001X"/>
+						<xs:enumeration value="207T00000X"/>
+						<xs:enumeration value="207U00000X"/>
+						<xs:enumeration value="207UN0901X"/>
+						<xs:enumeration value="207UN0902X"/>
+						<xs:enumeration value="207UN0903X"/>
+						<xs:enumeration value="207V00000X"/>
+						<xs:enumeration value="207VB0002X"/>
+						<xs:enumeration value="207VC0200X"/>
+						<xs:enumeration value="207VE0102X"/>
+						<xs:enumeration value="207VF0040X"/>
+						<xs:enumeration value="207VG0400X"/>
+						<xs:enumeration value="207VH0002X"/>
+						<xs:enumeration value="207VM0101X"/>
+						<xs:enumeration value="207VX0000X"/>
+						<xs:enumeration value="207VX0000X"/>
+						<xs:enumeration value="207W00000X"/>
+						<xs:enumeration value="207WX0009X"/>
+						<xs:enumeration value="207WX0107X"/>
+						<xs:enumeration value="207WX0108X"/>
+						<xs:enumeration value="207WX0109X"/>
+						<xs:enumeration value="207WX0110X"/>
+						<xs:enumeration value="207WX0120X"/>
+						<xs:enumeration value="207WX0200X"/>
+						<xs:enumeration value="207X00000X"/>
+						<xs:enumeration value="207XP3100X"/>
+						<xs:enumeration value="207XS0106X"/>
+						<xs:enumeration value="207XS0114X"/>
+						<xs:enumeration value="207XS0117X"/>
+						<xs:enumeration value="207XX0004X"/>
+						<xs:enumeration value="207XX0005X"/>
+						<xs:enumeration value="207XX0801X"/>
+						<xs:enumeration value="207Y00000X"/>
+						<xs:enumeration value="207YP0228X"/>
+						<xs:enumeration value="207YS0012X"/>
+						<xs:enumeration value="207YS0123X"/>
+						<xs:enumeration value="207YX0007X"/>
+						<xs:enumeration value="207YX0602X"/>
+						<xs:enumeration value="207YX0901X"/>
+						<xs:enumeration value="207YX0905X"/>
+						<xs:enumeration value="207ZB0001X"/>
+						<xs:enumeration value="207ZC0006X"/>
+						<xs:enumeration value="207ZC0008X"/>
+						<xs:enumeration value="207ZC0500X"/>
+						<xs:enumeration value="207ZD0900X"/>
+						<xs:enumeration value="207ZF0201X"/>
+						<xs:enumeration value="207ZH0000X"/>
+						<xs:enumeration value="207ZI0100X"/>
+						<xs:enumeration value="207ZM0300X"/>
+						<xs:enumeration value="207ZN0500X"/>
+						<xs:enumeration value="207ZP0007X"/>
+						<xs:enumeration value="207ZP0101X"/>
+						<xs:enumeration value="207ZP0102X"/>
+						<xs:enumeration value="207ZP0104X"/>
+						<xs:enumeration value="207ZP0105X"/>
+						<xs:enumeration value="207ZP0213X"/>
+						<xs:enumeration value="208000000X"/>
+						<xs:enumeration value="2080A0000X"/>
+						<xs:enumeration value="2080B0002X"/>
+						<xs:enumeration value="2080C0008X"/>
+						<xs:enumeration value="2080H0002X"/>
+						<xs:enumeration value="2080I0007X"/>
+						<xs:enumeration value="2080N0001X"/>
+						<xs:enumeration value="2080P0006X"/>
+						<xs:enumeration value="2080P0008X"/>
+						<xs:enumeration value="2080P0201X"/>
+						<xs:enumeration value="2080P0202X"/>
+						<xs:enumeration value="2080P0203X"/>
+						<xs:enumeration value="2080P0204X"/>
+						<xs:enumeration value="2080P0205X"/>
+						<xs:enumeration value="2080P0206X"/>
+						<xs:enumeration value="2080P0207X"/>
+						<xs:enumeration value="2080P0208X"/>
+						<xs:enumeration value="2080P0210X"/>
+						<xs:enumeration value="2080P0214X"/>
+						<xs:enumeration value="2080P0216X"/>
+						<xs:enumeration value="2080S0010X"/>
+						<xs:enumeration value="2080S0012X"/>
+						<xs:enumeration value="2080T0002X"/>
+						<xs:enumeration value="2080T0004X"/>
+						<xs:enumeration value="208100000X"/>
+						<xs:enumeration value="2081H0002X"/>
+						<xs:enumeration value="2081N0008X"/>
+						<xs:enumeration value="2081P0004X"/>
+						<xs:enumeration value="2081P0010X"/>
+						<xs:enumeration value="2081P0301X"/>
+						<xs:enumeration value="2081P2900X"/>
+						<xs:enumeration value="2081S0010X"/>
+						<xs:enumeration value="208200000X"/>
+						<xs:enumeration value="2082S0099X"/>
+						<xs:enumeration value="2082S0105X"/>
+						<xs:enumeration value="2083A0100X"/>
+						<xs:enumeration value="2083A0300X"/>
+						<xs:enumeration value="2083B0002X"/>
+						<xs:enumeration value="2083C0008X"/>
+						<xs:enumeration value="2083P0011X"/>
+						<xs:enumeration value="2083P0500X"/>
+						<xs:enumeration value="2083P0901X"/>
+						<xs:enumeration value="2083S0010X"/>
+						<xs:enumeration value="2083T0002X"/>
+						<xs:enumeration value="2083X0100X"/>
+						<xs:enumeration value="2084A0401X"/>
+						<xs:enumeration value="2084A2900X"/>
+						<xs:enumeration value="2084B0002X"/>
+						<xs:enumeration value="2084B0040X"/>
+						<xs:enumeration value="2084D0003X"/>
+						<xs:enumeration value="2084F0202X"/>
+						<xs:enumeration value="2084H0002X"/>
+						<xs:enumeration value="2084N0008X"/>
+						<xs:enumeration value="2084N0400X"/>
+						<xs:enumeration value="2084N0402X"/>
+						<xs:enumeration value="2084N0600X"/>
+						<xs:enumeration value="2084P0005X"/>
+						<xs:enumeration value="2084P0015X"/>
+						<xs:enumeration value="2084P0301X"/>
+						<xs:enumeration value="2084P0800X"/>
+						<xs:enumeration value="2084P0802X"/>
+						<xs:enumeration value="2084P0804X"/>
+						<xs:enumeration value="2084P0805X"/>
+						<xs:enumeration value="2084P2900X"/>
+						<xs:enumeration value="2084S0010X"/>
+						<xs:enumeration value="2084S0012X"/>
+						<xs:enumeration value="2084V0102X"/>
+						<xs:enumeration value="2085B0100X"/>
+						<xs:enumeration value="2085D0003X"/>
+						<xs:enumeration value="2085H0002X"/>
+						<xs:enumeration value="2085N0700X"/>
+						<xs:enumeration value="2085N0904X"/>
+						<xs:enumeration value="2085P0229X"/>
+						<xs:enumeration value="2085R0001X"/>
+						<xs:enumeration value="2085R0202X"/>
+						<xs:enumeration value="2085R0203X"/>
+						<xs:enumeration value="2085R0204X"/>
+						<xs:enumeration value="2085R0205X"/>
+						<xs:enumeration value="2085U0001X"/>
+						<xs:enumeration value="208600000X"/>
+						<xs:enumeration value="2086H0002X"/>
+						<xs:enumeration value="2086S0102X"/>
+						<xs:enumeration value="2086S0105X"/>
+						<xs:enumeration value="2086S0120X"/>
+						<xs:enumeration value="2086S0122X"/>
+						<xs:enumeration value="2086S0127X"/>
+						<xs:enumeration value="2086S0129X"/>
+						<xs:enumeration value="2086X0206X"/>
+						<xs:enumeration value="208800000X"/>
+						<xs:enumeration value="2088F0040X"/>
+						<xs:enumeration value="2088P0231X"/>
+						<xs:enumeration value="208C00000X"/>
+						<xs:enumeration value="208D00000X"/>
+						<xs:enumeration value="208G00000X"/>
+						<xs:enumeration value="208M00000X"/>
+						<xs:enumeration value="208U00000X"/>
+						<xs:enumeration value="208VP0000X"/>
+						<xs:enumeration value="208VP0014X"/>
+						<xs:enumeration value="209800000X"/>
+						<xs:enumeration value="211D00000X"/>
+						<xs:enumeration value="213E00000X"/>
+						<xs:enumeration value="213EP0504X"/>
+						<xs:enumeration value="213EP1101X"/>
+						<xs:enumeration value="213ER0200X"/>
+						<xs:enumeration value="213ES0000X"/>
+						<xs:enumeration value="213ES0103X"/>
+						<xs:enumeration value="213ES0131X"/>
+						<xs:enumeration value="221700000X"/>
+						<xs:enumeration value="222Q00000X"/>
+						<xs:enumeration value="222Z00000X"/>
+						<xs:enumeration value="224900000X"/>
+						<xs:enumeration value="224L00000X"/>
+						<xs:enumeration value="224P00000X"/>
+						<xs:enumeration value="224Y00000X"/>
+						<xs:enumeration value="224Z00000X"/>
+						<xs:enumeration value="224ZE0001X"/>
+						<xs:enumeration value="224ZF0002X"/>
+						<xs:enumeration value="224ZL0004X"/>
+						<xs:enumeration value="224ZR0403X"/>
+						<xs:enumeration value="225000000X"/>
+						<xs:enumeration value="225100000X"/>
+						<xs:enumeration value="2251C2600X"/>
+						<xs:enumeration value="2251E1200X"/>
+						<xs:enumeration value="2251E1300X"/>
+						<xs:enumeration value="2251G0304X"/>
+						<xs:enumeration value="2251H1200X"/>
+						<xs:enumeration value="2251H1300X"/>
+						<xs:enumeration value="2251N0400X"/>
+						<xs:enumeration value="2251P0200X"/>
+						<xs:enumeration value="2251S0007X"/>
+						<xs:enumeration value="2251X0800X"/>
+						<xs:enumeration value="225200000X"/>
+						<xs:enumeration value="225400000X"/>
+						<xs:enumeration value="225500000X"/>
+						<xs:enumeration value="2255A2300X"/>
+						<xs:enumeration value="2255R0406X"/>
+						<xs:enumeration value="225600000X"/>
+						<xs:enumeration value="225700000X"/>
+						<xs:enumeration value="225800000X"/>
+						<xs:enumeration value="225A00000X"/>
+						<xs:enumeration value="225B00000X"/>
+						<xs:enumeration value="225C00000X"/>
+						<xs:enumeration value="225CA2400X"/>
+						<xs:enumeration value="225CA2500X"/>
+						<xs:enumeration value="225CX0006X"/>
+						<xs:enumeration value="225X00000X"/>
+						<xs:enumeration value="225XE0001X"/>
+						<xs:enumeration value="225XE1200X"/>
+						<xs:enumeration value="225XF0002X"/>
+						<xs:enumeration value="225XG0600X"/>
+						<xs:enumeration value="225XH1200X"/>
+						<xs:enumeration value="225XH1300X"/>
+						<xs:enumeration value="225XL0004X"/>
+						<xs:enumeration value="225XM0800X"/>
+						<xs:enumeration value="225XN1300X"/>
+						<xs:enumeration value="225XP0019X"/>
+						<xs:enumeration value="225XP0200X"/>
+						<xs:enumeration value="225XR0403X"/>
+						<xs:enumeration value="226000000X"/>
+						<xs:enumeration value="226300000X"/>
+						<xs:enumeration value="227800000X"/>
+						<xs:enumeration value="2278C0205X"/>
+						<xs:enumeration value="2278E0002X"/>
+						<xs:enumeration value="2278E1000X"/>
+						<xs:enumeration value="2278G0305X"/>
+						<xs:enumeration value="2278G1100X"/>
+						<xs:enumeration value="2278H0200X"/>
+						<xs:enumeration value="2278P1004X"/>
+						<xs:enumeration value="2278P1005X"/>
+						<xs:enumeration value="2278P1006X"/>
+						<xs:enumeration value="2278P3800X"/>
+						<xs:enumeration value="2278P3900X"/>
+						<xs:enumeration value="2278P4000X"/>
+						<xs:enumeration value="2278S1500X"/>
+						<xs:enumeration value="227900000X"/>
+						<xs:enumeration value="2279C0205X"/>
+						<xs:enumeration value="2279E0002X"/>
+						<xs:enumeration value="2279E1000X"/>
+						<xs:enumeration value="2279G0305X"/>
+						<xs:enumeration value="2279G1100X"/>
+						<xs:enumeration value="2279H0200X"/>
+						<xs:enumeration value="2279P1004X"/>
+						<xs:enumeration value="2279P1005X"/>
+						<xs:enumeration value="2279P1006X"/>
+						<xs:enumeration value="2279P3800X"/>
+						<xs:enumeration value="2279P3900X"/>
+						<xs:enumeration value="2279P4000X"/>
+						<xs:enumeration value="2279S1500X"/>
+						<xs:enumeration value="229N00000X"/>
+						<xs:enumeration value="231H00000X"/>
+						<xs:enumeration value="231HA2400X"/>
+						<xs:enumeration value="231HA2500X"/>
+						<xs:enumeration value="235500000X"/>
+						<xs:enumeration value="2355A2700X"/>
+						<xs:enumeration value="2355S0801X"/>
+						<xs:enumeration value="235Z00000X"/>
+						<xs:enumeration value="237600000X"/>
+						<xs:enumeration value="237700000X"/>
+						<xs:enumeration value="242T00000X"/>
+						<xs:enumeration value="243U00000X"/>
+						<xs:enumeration value="246Q00000X"/>
+						<xs:enumeration value="246QB0000X"/>
+						<xs:enumeration value="246QC1000X"/>
+						<xs:enumeration value="246QC2700X"/>
+						<xs:enumeration value="246QH0000X"/>
+						<xs:enumeration value="246QH0401X"/>
+						<xs:enumeration value="246QH0600X"/>
+						<xs:enumeration value="246QI0000X"/>
+						<xs:enumeration value="246QL0900X"/>
+						<xs:enumeration value="246QL0901X"/>
+						<xs:enumeration value="246QM0706X"/>
+						<xs:enumeration value="246QM0900X"/>
+						<xs:enumeration value="246R00000X"/>
+						<xs:enumeration value="246RH0600X"/>
+						<xs:enumeration value="246RM2200X"/>
+						<xs:enumeration value="246RP1900X"/>
+						<xs:enumeration value="246W00000X"/>
+						<xs:enumeration value="246X00000X"/>
+						<xs:enumeration value="246XC2901X"/>
+						<xs:enumeration value="246XC2903X"/>
+						<xs:enumeration value="246XS1301X"/>
+						<xs:enumeration value="246Y00000X"/>
+						<xs:enumeration value="246YC3301X"/>
+						<xs:enumeration value="246YC3302X"/>
+						<xs:enumeration value="246YR1600X"/>
+						<xs:enumeration value="246Z00000X"/>
+						<xs:enumeration value="246ZA2600X"/>
+						<xs:enumeration value="246ZB0301X"/>
+						<xs:enumeration value="246ZB0302X"/>
+						<xs:enumeration value="246ZB0500X"/>
+						<xs:enumeration value="246ZB0600X"/>
+						<xs:enumeration value="246ZC0007X"/>
+						<xs:enumeration value="246ZE0500X"/>
+						<xs:enumeration value="246ZE0600X"/>
+						<xs:enumeration value="246ZG0701X"/>
+						<xs:enumeration value="246ZG1000X"/>
+						<xs:enumeration value="246ZI1000X"/>
+						<xs:enumeration value="246ZN0300X"/>
+						<xs:enumeration value="246ZS0410X"/>
+						<xs:enumeration value="246ZX2200X"/>
+						<xs:enumeration value="247000000X"/>
+						<xs:enumeration value="2470A2800X"/>
+						<xs:enumeration value="247100000X"/>
+						<xs:enumeration value="2471B0102X"/>
+						<xs:enumeration value="2471C1101X"/>
+						<xs:enumeration value="2471C1106X"/>
+						<xs:enumeration value="2471C3401X"/>
+						<xs:enumeration value="2471C3402X"/>
+						<xs:enumeration value="2471M1202X"/>
+						<xs:enumeration value="2471M2300X"/>
+						<xs:enumeration value="2471N0900X"/>
+						<xs:enumeration value="2471Q0001X"/>
+						<xs:enumeration value="2471R0002X"/>
+						<xs:enumeration value="2471S1302X"/>
+						<xs:enumeration value="2471V0105X"/>
+						<xs:enumeration value="2471V0106X"/>
+						<xs:enumeration value="247200000X"/>
+						<xs:enumeration value="2472B0301X"/>
+						<xs:enumeration value="2472D0500X"/>
+						<xs:enumeration value="2472E0500X"/>
+						<xs:enumeration value="2472R0900X"/>
+						<xs:enumeration value="2472V0600X"/>
+						<xs:enumeration value="247ZC0005X"/>
+						<xs:enumeration value="342000000X"/>
+						<xs:enumeration value="363A00000X"/>
+						<xs:enumeration value="363AM0700X"/>
+						<xs:enumeration value="363AS0400X"/>
+						<xs:enumeration value="363L00000X"/>
+						<xs:enumeration value="363LA2100X"/>
+						<xs:enumeration value="363LA2200X"/>
+						<xs:enumeration value="363LC0200X"/>
+						<xs:enumeration value="363LC1500X"/>
+						<xs:enumeration value="363LF0000X"/>
+						<xs:enumeration value="363LG0600X"/>
+						<xs:enumeration value="363LN0000X"/>
+						<xs:enumeration value="363LN0005X"/>
+						<xs:enumeration value="363LP0200X"/>
+						<xs:enumeration value="363LP0222X"/>
+						<xs:enumeration value="363LP0808X"/>
+						<xs:enumeration value="363LP1700X"/>
+						<xs:enumeration value="363LP2300X"/>
+						<xs:enumeration value="363LS0200X"/>
+						<xs:enumeration value="363LW0102X"/>
+						<xs:enumeration value="363LX0001X"/>
+						<xs:enumeration value="363LX0106X"/>
+						<xs:enumeration value="364S00000X"/>
+						<xs:enumeration value="364SA2100X"/>
+						<xs:enumeration value="364SA2200X"/>
+						<xs:enumeration value="364SC0200X"/>
+						<xs:enumeration value="364SC1501X"/>
+						<xs:enumeration value="364SC2300X"/>
+						<xs:enumeration value="364SE0003X"/>
+						<xs:enumeration value="364SE1400X"/>
+						<xs:enumeration value="364SF0001X"/>
+						<xs:enumeration value="364SG0600X"/>
+						<xs:enumeration value="364SH0200X"/>
+						<xs:enumeration value="364SH1100X"/>
+						<xs:enumeration value="364SI0800X"/>
+						<xs:enumeration value="364SL0600X"/>
+						<xs:enumeration value="364SM0705X"/>
+						<xs:enumeration value="364SN0000X"/>
+						<xs:enumeration value="364SN0800X"/>
+						<xs:enumeration value="364SP0200X"/>
+						<xs:enumeration value="364SP0807X"/>
+						<xs:enumeration value="364SP0808X"/>
+						<xs:enumeration value="364SP0809X"/>
+						<xs:enumeration value="364SP0810X"/>
+						<xs:enumeration value="364SP0811X"/>
+						<xs:enumeration value="364SP0812X"/>
+						<xs:enumeration value="364SP0813X"/>
+						<xs:enumeration value="364SP1700X"/>
+						<xs:enumeration value="364SP2800X"/>
+						<xs:enumeration value="364SR0400X"/>
+						<xs:enumeration value="364SS0200X"/>
+						<xs:enumeration value="364ST0500X"/>
+						<xs:enumeration value="364SW0102X"/>
+						<xs:enumeration value="364SX0106X"/>
+						<xs:enumeration value="364SX0200X"/>
+						<xs:enumeration value="364SX0204X"/>
+						<xs:enumeration value="367500000X"/>
+						<xs:enumeration value="367A00000X"/>
+						<xs:enumeration value="367H00000X"/>
+						<xs:enumeration value="372500000X"/>
+						<xs:enumeration value="372600000X"/>
+						<xs:enumeration value="373H00000X"/>
+						<xs:enumeration value="374700000X"/>
+						<xs:enumeration value="3747A0650X"/>
+						<xs:enumeration value="3747P1801X"/>
+						<xs:enumeration value="374J00000X"/>
+						<xs:enumeration value="374K00000X"/>
+						<xs:enumeration value="374T00000X"/>
+						<xs:enumeration value="374U00000X"/>
+						<xs:enumeration value="376G00000X"/>
+						<xs:enumeration value="376J00000X"/>
+						<xs:enumeration value="376K00000X"/>
+						<xs:enumeration value="405300000X"/>
+						<xs:enumeration value="251300000X"/>
+						<xs:enumeration value="251B00000X"/>
+						<xs:enumeration value="251C00000X"/>
+						<xs:enumeration value="251E00000X"/>
+						<xs:enumeration value="251F00000X"/>
+						<xs:enumeration value="251G00000X"/>
+						<xs:enumeration value="251J00000X"/>
+						<xs:enumeration value="251K00000X"/>
+						<xs:enumeration value="251S00000X"/>
+						<xs:enumeration value="251T00000X"/>
+						<xs:enumeration value="251V00000X"/>
+						<xs:enumeration value="251X00000X"/>
+						<xs:enumeration value="252Y00000X"/>
+						<xs:enumeration value="253J00000X"/>
+						<xs:enumeration value="253Z00000X"/>
+						<xs:enumeration value="261Q00000X"/>
+						<xs:enumeration value="261QA0005X"/>
+						<xs:enumeration value="261QA0006X"/>
+						<xs:enumeration value="261QA0600X"/>
+						<xs:enumeration value="261QA0900X"/>
+						<xs:enumeration value="261QA1903X"/>
+						<xs:enumeration value="261QA3000X"/>
+						<xs:enumeration value="261QB0400X"/>
+						<xs:enumeration value="261QC0050X"/>
+						<xs:enumeration value="261QC1500X"/>
+						<xs:enumeration value="261QC1800X"/>
+						<xs:enumeration value="261QD0000X"/>
+						<xs:enumeration value="261QD1600X"/>
+						<xs:enumeration value="261QE0002X"/>
+						<xs:enumeration value="261QE0700X"/>
+						<xs:enumeration value="261QE0800X"/>
+						<xs:enumeration value="261QF0050X"/>
+						<xs:enumeration value="261QF0400X"/>
+						<xs:enumeration value="261QG0250X"/>
+						<xs:enumeration value="261QH0100X"/>
+						<xs:enumeration value="261QH0700X"/>
+						<xs:enumeration value="261QI0500X"/>
+						<xs:enumeration value="261QL0400X"/>
+						<xs:enumeration value="261QM0801X"/>
+						<xs:enumeration value="261QM0850X"/>
+						<xs:enumeration value="261QM0855X"/>
+						<xs:enumeration value="261QM1000X"/>
+						<xs:enumeration value="261QM1100X"/>
+						<xs:enumeration value="261QM1101X"/>
+						<xs:enumeration value="261QM1102X"/>
+						<xs:enumeration value="261QM1103X"/>
+						<xs:enumeration value="261QM1200X"/>
+						<xs:enumeration value="261QM1300X"/>
+						<xs:enumeration value="261QM2500X"/>
+						<xs:enumeration value="261QM2800X"/>
+						<xs:enumeration value="261QM3000X"/>
+						<xs:enumeration value="261QP0904X"/>
+						<xs:enumeration value="261QP0905X"/>
+						<xs:enumeration value="261QP1100X"/>
+						<xs:enumeration value="261QP2000X"/>
+						<xs:enumeration value="261QP2300X"/>
+						<xs:enumeration value="261QP2400X"/>
+						<xs:enumeration value="261QP3300X"/>
+						<xs:enumeration value="261QR0200X"/>
+						<xs:enumeration value="261QR0206X"/>
+						<xs:enumeration value="261QR0207X"/>
+						<xs:enumeration value="261QR0208X"/>
+						<xs:enumeration value="261QR0400X"/>
+						<xs:enumeration value="261QR0401X"/>
+						<xs:enumeration value="261QR0404X"/>
+						<xs:enumeration value="261QR0405X"/>
+						<xs:enumeration value="261QR0800X"/>
+						<xs:enumeration value="261QR1100X"/>
+						<xs:enumeration value="261QR1300X"/>
+						<xs:enumeration value="261QS0112X"/>
+						<xs:enumeration value="261QS0132X"/>
+						<xs:enumeration value="261QS1000X"/>
+						<xs:enumeration value="261QS1200X"/>
+						<xs:enumeration value="261QU0200X"/>
+						<xs:enumeration value="261QV0200X"/>
+						<xs:enumeration value="261QX0100X"/>
+						<xs:enumeration value="261QX0200X"/>
+						<xs:enumeration value="261QX0203X"/>
+						<xs:enumeration value="273100000X"/>
+						<xs:enumeration value="273R00000X"/>
+						<xs:enumeration value="273Y00000X"/>
+						<xs:enumeration value="275N00000X"/>
+						<xs:enumeration value="276400000X"/>
+						<xs:enumeration value="281P00000X"/>
+						<xs:enumeration value="281PC2000X"/>
+						<xs:enumeration value="282E00000X"/>
+						<xs:enumeration value="282J00000X"/>
+						<xs:enumeration value="282N00000X"/>
+						<xs:enumeration value="282NC0060X"/>
+						<xs:enumeration value="282NC2000X"/>
+						<xs:enumeration value="282NR1301X"/>
+						<xs:enumeration value="282NW0100X"/>
+						<xs:enumeration value="283Q00000X"/>
+						<xs:enumeration value="283X00000X"/>
+						<xs:enumeration value="283XC2000X"/>
+						<xs:enumeration value="284300000X"/>
+						<xs:enumeration value="286500000X"/>
+						<xs:enumeration value="2865M2000X"/>
+						<xs:enumeration value="2865X1600X"/>
+						<xs:enumeration value="291900000X"/>
+						<xs:enumeration value="291U00000X"/>
+						<xs:enumeration value="292200000X"/>
+						<xs:enumeration value="293D00000X"/>
+						<xs:enumeration value="302F00000X"/>
+						<xs:enumeration value="302R00000X"/>
+						<xs:enumeration value="305R00000X"/>
+						<xs:enumeration value="305S00000X"/>
+						<xs:enumeration value="310400000X"/>
+						<xs:enumeration value="3104A0625X"/>
+						<xs:enumeration value="3104A0630X"/>
+						<xs:enumeration value="310500000X"/>
+						<xs:enumeration value="311500000X"/>
+						<xs:enumeration value="311Z00000X"/>
+						<xs:enumeration value="311ZA0620X"/>
+						<xs:enumeration value="313M00000X"/>
+						<xs:enumeration value="314000000X"/>
+						<xs:enumeration value="3140N1450X"/>
+						<xs:enumeration value="315D00000X"/>
+						<xs:enumeration value="315P00000X"/>
+						<xs:enumeration value="174200000X"/>
+						<xs:enumeration value="177F00000X"/>
+						<xs:enumeration value="320600000X"/>
+						<xs:enumeration value="320700000X"/>
+						<xs:enumeration value="320800000X"/>
+						<xs:enumeration value="320900000X"/>
+						<xs:enumeration value="322D00000X"/>
+						<xs:enumeration value="323P00000X"/>
+						<xs:enumeration value="324500000X"/>
+						<xs:enumeration value="3245S0500X"/>
+						<xs:enumeration value="385H00000X"/>
+						<xs:enumeration value="385HR2050X"/>
+						<xs:enumeration value="385HR2055X"/>
+						<xs:enumeration value="385HR2060X"/>
+						<xs:enumeration value="385HR2065X"/>
+						<xs:enumeration value="331L00000X"/>
+						<xs:enumeration value="332000000X"/>
+						<xs:enumeration value="332100000X"/>
+						<xs:enumeration value="332800000X"/>
+						<xs:enumeration value="332900000X"/>
+						<xs:enumeration value="332B00000X"/>
+						<xs:enumeration value="332BC3200X"/>
+						<xs:enumeration value="332BD1200X"/>
+						<xs:enumeration value="332BN1400X"/>
+						<xs:enumeration value="332BP3500X"/>
+						<xs:enumeration value="332BX2000X"/>
+						<xs:enumeration value="332G00000X"/>
+						<xs:enumeration value="332H00000X"/>
+						<xs:enumeration value="332S00000X"/>
+						<xs:enumeration value="332U00000X"/>
+						<xs:enumeration value="333300000X"/>
+						<xs:enumeration value="333600000X"/>
+						<xs:enumeration value="3336C0002X"/>
+						<xs:enumeration value="3336C0003X"/>
+						<xs:enumeration value="3336C0004X"/>
+						<xs:enumeration value="3336H0001X"/>
+						<xs:enumeration value="3336I0012X"/>
+						<xs:enumeration value="3336L0003X"/>
+						<xs:enumeration value="3336M0002X"/>
+						<xs:enumeration value="3336M0003X"/>
+						<xs:enumeration value="3336N0007X"/>
+						<xs:enumeration value="3336S0011X"/>
+						<xs:enumeration value="335E00000X"/>
+						<xs:enumeration value="335G00000X"/>
+						<xs:enumeration value="335U00000X"/>
+						<xs:enumeration value="335V00000X"/>
+						<xs:enumeration value="341600000X"/>
+						<xs:enumeration value="3416A0800X"/>
+						<xs:enumeration value="3416L0300X"/>
+						<xs:enumeration value="3416S0300X"/>
+						<xs:enumeration value="341800000X"/>
+						<xs:enumeration value="3418M1110X"/>
+						<xs:enumeration value="3418M1120X"/>
+						<xs:enumeration value="3418M1130X"/>
+						<xs:enumeration value="343800000X"/>
+						<xs:enumeration value="343900000X"/>
+						<xs:enumeration value="344600000X"/>
+						<xs:enumeration value="344800000X"/>
+						<xs:enumeration value="347B00000X"/>
+						<xs:enumeration value="347C00000X"/>
+						<xs:enumeration value="347D00000X"/>
+						<xs:enumeration value="347E00000X"/>
+						<xs:enumeration value="193400000X"/>
+						<xs:enumeration value="390200000X"/>
+						<xs:enumeration value="2865C1500X"/>
+						<xs:enumeration value="287300000X"/>
+						<xs:enumeration value="317400000X"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="healthcare_services">
+    <xs:sequence>
+      <!--The details of a healthcare service available at a location-->
+      <xs:element name="healthcare_service" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <!--identifier for a healthcare_service-->
+                  <xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!--Whether this healthcare_service record is in active use-->
+            <xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1"/>
+            <!--Broad category of service being performed or delivered-->
+            <xs:element name="category" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Valueset for descripting the broad category of
+									service being performed or delivered by a health care service. A
+									full list can be found here:
+									https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-HealthcareServiceCategoryVS.html
+								</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="string">
+                  <xs:enumeration value="Behavioral"/>
+                  <xs:enumeration value="Dental"/>
+                  <xs:enumeration value="DME"/>
+                  <xs:enumeration value="Emergency"/>
+                  <xs:enumeration value="Group"/>
+                  <xs:enumeration value="Home"/>
+                  <xs:enumeration value="Hospital"/>
+                  <xs:enumeration value="Laboratory"/>
+                  <xs:enumeration value="Other"/>
+                  <xs:enumeration value="Outpatient"/>
+                  <xs:enumeration value="Provider"/>
+                  <xs:enumeration value="Pharmacy"/>
+                  <xs:enumeration value="Transport"/>
+                  <xs:enumeration value="Urgent"/>
+                  <xs:enumeration value="Vision"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="types" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="type" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation> Valueset for HealthCareService type.
+												A full list can be found here:
+												https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-HealthcareServiceTypeVS.html
+											</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="string">
+                        <xs:enumeration value="1"/>
+                        <xs:enumeration value="3"/>
+                        <xs:enumeration value="8"/>
+                        <xs:enumeration value="9"/>
+                        <xs:enumeration value="10"/>
+                        <xs:enumeration value="11"/>
+                        <xs:enumeration value="21"/>
+                        <xs:enumeration value="26"/>
+                        <xs:enumeration value="31"/>
+                        <xs:enumeration value="33"/>
+                        <xs:enumeration value="34"/>
+                        <xs:enumeration value="36"/>
+                        <xs:enumeration value="42"/>
+                        <xs:enumeration value="51"/>
+                        <xs:enumeration value="55"/>
+                        <xs:enumeration value="67"/>
+                        <xs:enumeration value="68"/>
+                        <xs:enumeration value="69"/>
+                        <xs:enumeration value="70"/>
+                        <xs:enumeration value="71"/>
+                        <xs:enumeration value="72"/>
+                        <xs:enumeration value="75"/>
+                        <xs:enumeration value="76"/>
+                        <xs:enumeration value="78"/>
+                        <xs:enumeration value="79"/>
+                        <xs:enumeration value="80"/>
+                        <xs:enumeration value="81"/>
+                        <xs:enumeration value="82"/>
+                        <xs:enumeration value="96"/>
+                        <xs:enumeration value="97"/>
+                        <xs:enumeration value="99"/>
+                        <xs:enumeration value="102"/>
+                        <xs:enumeration value="103"/>
+                        <xs:enumeration value="105"/>
+                        <xs:enumeration value="106"/>
+                        <xs:enumeration value="107"/>
+                        <xs:enumeration value="108"/>
+                        <xs:enumeration value="111"/>
+                        <xs:enumeration value="118"/>
+                        <xs:enumeration value="119"/>
+                        <xs:enumeration value="126"/>
+                        <xs:enumeration value="127"/>
+                        <xs:enumeration value="128"/>
+                        <xs:enumeration value="130"/>
+                        <xs:enumeration value="134"/>
+                        <xs:enumeration value="146"/>
+                        <xs:enumeration value="147"/>
+                        <xs:enumeration value="224"/>
+                        <xs:enumeration value="230"/>
+                        <xs:enumeration value="233"/>
+                        <xs:enumeration value="238"/>
+                        <xs:enumeration value="245"/>
+                        <xs:enumeration value="275"/>
+                        <xs:enumeration value="284"/>
+                        <xs:enumeration value="296"/>
+                        <xs:enumeration value="301"/>
+                        <xs:enumeration value="308"/>
+                        <xs:enumeration value="309"/>
+                        <xs:enumeration value="310"/>
+                        <xs:enumeration value="316"/>
+                        <xs:enumeration value="317"/>
+                        <xs:enumeration value="323"/>
+                        <xs:enumeration value="328"/>
+                        <xs:enumeration value="331"/>
+                        <xs:enumeration value="344"/>
+                        <xs:enumeration value="345"/>
+                        <xs:enumeration value="352"/>
+                        <xs:enumeration value="366"/>
+                        <xs:enumeration value="400"/>
+                        <xs:enumeration value="409"/>
+                        <xs:enumeration value="411"/>
+                        <xs:enumeration value="427"/>
+                        <xs:enumeration value="429"/>
+                        <xs:enumeration value="440"/>
+                        <xs:enumeration value="446"/>
+                        <xs:enumeration value="459"/>
+                        <xs:enumeration value="468"/>
+                        <xs:enumeration value="470"/>
+                        <xs:enumeration value="488"/>
+                        <xs:enumeration value="494"/>
+                        <xs:enumeration value="495"/>
+                        <xs:enumeration value="501"/>
+                        <xs:enumeration value="513"/>
+                        <xs:enumeration value="530"/>
+                        <xs:enumeration value="531"/>
+                        <xs:enumeration value="532"/>
+                        <xs:enumeration value="534"/>
+                        <xs:enumeration value="535"/>
+                        <xs:enumeration value="537"/>
+                        <xs:enumeration value="539"/>
+                        <xs:enumeration value="546"/>
+                        <xs:enumeration value="548"/>
+                        <xs:enumeration value="552"/>
+                        <xs:enumeration value="554"/>
+                        <xs:enumeration value="559"/>
+                        <xs:enumeration value="560"/>
+                        <xs:enumeration value="565"/>
+                        <xs:enumeration value="569"/>
+                        <xs:enumeration value="570"/>
+                        <xs:enumeration value="571"/>
+                        <xs:enumeration value="614"/>
+                        <xs:enumeration value="628"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="specialties" minOccurs="0" maxOccurs="1" type="provider_organization_specialties"/>
+            <xs:element name="name" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Description of service as presented to a consumer
+									while searching </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="comment" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Additional description and/or any specific issues
+									not covered elsewhere </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="extra_details" type="string" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation> Extra details about the service that can't be
+									placed in the other fields </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="delivery_methods" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="delivery_method" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="type" minOccurs="1" maxOccurs="1">
+                          <xs:annotation>
+                            <xs:documentation> Physical or Virtual Service
+												Delivery </xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:restriction base="string">
+                              <xs:enumeration value="virtual"/>
+                              <xs:enumeration value="physical"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="virtual_modalities" minOccurs="0" maxOccurs="unbounded">
+                          <xs:annotation>
+                            <xs:documentation> Modalities of Virtual
+												Delivery-Choose from code valueset. More
+												information can be found here:
+												https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-VirtualModalitiesVS.html
+												</xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:restriction base="string">
+                              <xs:enumeration value="phone"/>
+                              <xs:enumeration value="video"/>
+                              <xs:enumeration value="tdd"/>
+                              <xs:enumeration value="sms"/>
+                              <xs:enumeration value="app"/>
+                              <xs:enumeration value="web"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="new_patients_list" minOccurs="0" maxOccurs="1">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="new_patients" minOccurs="0" maxOccurs="unbounded" type="new_patients"/>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="eligibilities" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="eligibility" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="code" type="coding" minOccurs="0" maxOccurs="1">
+                          <xs:annotation>
+                            <xs:documentation> Coded value for the eligibility
+												</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="comment" type="string" minOccurs="0" maxOccurs="1">
+                          <xs:annotation>
+                            <xs:documentation> Describes the eligibility
+												conditions for the service </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="programs" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="program" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="code" minOccurs="0" maxOccurs="1">
+                          <xs:annotation>
+                            <xs:documentation> This value set defines an
+												example set of codes that could be can be used to
+												classify groupings of service-types/specialties. A
+												full list can be found here:
+												http://hl7.org/fhir/R4/valueset-program.html
+												</xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:union>
+                              <xs:simpleType>
+                                <xs:restriction base="string">
+                                  <xs:enumeration value="1"/>
+                                  <xs:enumeration value="2"/>
+                                  <xs:enumeration value="3"/>
+                                  <xs:enumeration value="4"/>
+                                  <xs:enumeration value="5"/>
+                                  <xs:enumeration value="6"/>
+                                  <xs:enumeration value="7"/>
+                                  <xs:enumeration value="8"/>
+                                  <xs:enumeration value="9"/>
+                                  <xs:enumeration value="10"/>
+                                  <xs:enumeration value="11"/>
+                                  <xs:enumeration value="12"/>
+                                  <xs:enumeration value="13"/>
+                                  <xs:enumeration value="14"/>
+                                  <xs:enumeration value="15"/>
+                                  <xs:enumeration value="16"/>
+                                  <xs:enumeration value="17"/>
+                                  <xs:enumeration value="18"/>
+                                  <xs:enumeration value="19"/>
+                                  <xs:enumeration value="20"/>
+                                  <xs:enumeration value="21"/>
+                                  <xs:enumeration value="22"/>
+                                  <xs:enumeration value="23"/>
+                                  <xs:enumeration value="24"/>
+                                  <xs:enumeration value="25"/>
+                                  <xs:enumeration value="26"/>
+                                  <xs:enumeration value="27"/>
+                                  <xs:enumeration value="28"/>
+                                  <xs:enumeration value="29"/>
+                                  <xs:enumeration value="30"/>
+                                  <xs:enumeration value="31"/>
+                                  <xs:enumeration value="32"/>
+                                  <xs:enumeration value="33"/>
+                                  <xs:enumeration value="34"/>
+                                  <xs:enumeration value="35"/>
+                                  <xs:enumeration value="36"/>
+                                  <xs:enumeration value="37"/>
+                                  <xs:enumeration value="38"/>
+                                  <xs:enumeration value="39"/>
+                                  <xs:enumeration value="40"/>
+                                  <xs:enumeration value="41"/>
+                                  <xs:enumeration value="42"/>
+                                  <xs:enumeration value="43"/>
+                                  <xs:enumeration value="44"/>
+                                  <xs:enumeration value="45"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                              <xs:simpleType>
+                                <xs:union memberTypes="xs:string"/>
+                              </xs:simpleType>
+                            </xs:union>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="display" type="string" minOccurs="1" maxOccurs="1"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="characteristics" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="characteristic" type="coding" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="communications" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="communication" type="coding" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="referral_methods" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="referral_method" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="code" minOccurs="0" maxOccurs="1">
+                          <xs:annotation>
+                            <xs:documentation> The methods of referral can be
+												used when referring to a specific
+												HealthCareService resource. A full list can be
+												found here:
+												http://hl7.org/fhir/R4/valueset-service-referral-method.html
+												</xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:union>
+                              <xs:simpleType>
+                                <xs:restriction base="string">
+                                  <xs:enumeration value="fax"/>
+                                  <xs:enumeration value="phone"/>
+                                  <xs:enumeration value="elec"/>
+                                  <xs:enumeration value="semail"/>
+                                  <xs:enumeration value="mail"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                              <xs:simpleType>
+                                <xs:union memberTypes="xs:string"/>
+                              </xs:simpleType>
+                            </xs:union>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="display" type="string" minOccurs="1" maxOccurs="1"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="appointment_required" type="boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="available_times" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="available_time" minOccurs="0" maxOccurs="unbounded" type="available_time"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="not_availables" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="not_available" minOccurs="0" maxOccurs="unbounded" type="not_available"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="availability_exceptions" type="string" minOccurs="0" maxOccurs="1"/>
+            <!--Location(s) where service may be provided-->
+            <xs:element name="locations" minOccurs="0" maxOccurs="1" type="locations"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="organization">
+    <xs:sequence>
+      <xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="clia" type="clia" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Clinical Laboratory Improvement Amendments (CLIA) Number for
+						laboratories </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Whether the organization's record is still in active use
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="types" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="type" minOccurs="1" maxOccurs="unbounded" type="type_of_organization">
+              <xs:annotation>
+                <xs:documentation> Organization type, a full list can be found here:
+									https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrgTypeVS.html
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+      <!--A list of alternate names that the organization is known as, or was known as in the past-->
+      <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+      <!--Organization Description-->
+      <xs:element name="org_description" type="string" minOccurs="0" maxOccurs="1"/>
+      <!--The organization of which this organization forms a part-->
+      <xs:element name="part_of" minOccurs="0" maxOccurs="1" type="organization_part_of"/>
+      <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="organization_part_of">
+    <xs:sequence>
+      <xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="clia" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Clinical Laboratory Improvement Amendments (CLIA) Number for
+						laboratories </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Whether the organization's record is still in active use
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="types" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="type" minOccurs="1" maxOccurs="unbounded" type="type_of_organization">
+              <xs:annotation>
+                <xs:documentation> Organization type, a full list can be found here:
+									https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrgTypeVS.html
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+      <!--A list of alternate names that the organization is known as, or was known as in the past-->
+      <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded"/>
+      <!--Organization Description-->
+      <xs:element name="org_description" type="string" minOccurs="0" maxOccurs="1"/>
+      <!--The organization of which this organization forms a part-->
+      <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="identifier">
+    <xs:sequence>
+      <xs:element name="value" type="string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="type" type="string" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coding">
+    <xs:sequence>
+      <xs:element name="system" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="code" type="string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="codeable_concept">
+    <xs:sequence>
+      <xs:element name="coding" type="coding" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="text" type="string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="qualification">
+    <xs:sequence>
+      <!--An identifier for this qualification for the practitioner-->
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="identifier" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation> Provides an identifier for the qualification
+								</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="code" type="coding" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Indicates the type of qualification </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+        <xs:annotation>
+          <xs:documentation> Indicates a period of time during which the current status
+						applies </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Organization that regulates and issues the qualification-->
+      <xs:element name="issuer" minOccurs="0" maxOccurs="1" type="organization_branch">
+        <xs:annotation>
+          <xs:documentation> This organization that regulates and issues the qualification
+					</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Status of qualification-->
+      <xs:element name="status" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Describes the current status of the qualification (i.e.
+						active, inactive, issued in error, revoked, pending, unknown)
+					</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="string">
+            <xs:enumeration value="active"/>
+            <xs:enumeration value="inactive"/>
+            <xs:enumeration value="issued-in-error"/>
+            <xs:enumeration value="revoked"/>
+            <xs:enumeration value="pending"/>
+            <xs:enumeration value="unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="where_valid" type="string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation> Indicates where the qualification is valid. users may select
+						any number of specific locations, classes of locations, or combination
+						thereof </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="clia">
+    <xs:sequence>
+      <xs:element name="id" type="string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="value" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Clinical Laboratory Improvement Amendments (CLIA) Number for
+						laboratories </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/> -->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="providers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="schema_version">
+          <xs:annotation>
+            <xs:documentation> This element defines what version of the roster schema
+							you will be validating against (e.g. 1.0) </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:pattern value="([1-9]{1,2})\.([0-9]{1,2})"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element maxOccurs="1" minOccurs="1" name="sender_id" type="string">
+          <xs:annotation>
+            <xs:documentation> This element is used to the unique identifier assigned to
+							your organization </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element maxOccurs="1" minOccurs="1" name="date_time_reported">
+          <xs:annotation>
+            <xs:documentation> This element is used to the identify the date time this
+							information was reported (e.g. 2001-10-26T21:32:52+02:00)
+						</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:dateTime">
+              <xs:pattern value="([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="provider" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="practitioner" minOccurs="1" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>Practitioner is a person who is directly
+											or indirectly involved in the provisioning of
+											healthcare</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="unique_identifier" type="string" minOccurs="0" maxOccurs="1"/>
+                      <xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1"/>
+                      <xs:element name="is_active" type="boolean" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                          <xs:documentation> Whether this practitioner's record is in active use </xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <xs:element name="names" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="name" minOccurs="1" maxOccurs="unbounded" type="human_name"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="gender" minOccurs="0" maxOccurs="1">
+                        <xs:simpleType>
+                          <xs:restriction base="string">
+                            <xs:enumeration value="male"/>
+                            <xs:enumeration value="female"/>
+                            <xs:enumeration value="other"/>
+                            <xs:enumeration value="unknown"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <!--The date on which the practitioner was born-->
+                      <xs:element name="birth_date" type="date" minOccurs="0" maxOccurs="1"/>
+                      <!--Certification, licenses, or training pertaining to the provision of care-->
+                      <xs:element name="qualifications" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="qualification" minOccurs="0" maxOccurs="unbounded" type="qualification"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="communications" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="communication" minOccurs="0" maxOccurs="unbounded" type="languages"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period"/>
+                      <xs:element name="affiliated_organization" minOccurs="0" maxOccurs="1" type="organization"/>
+                      <xs:element name="codes" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="code" type="codeable_concept" minOccurs="0" maxOccurs="unbounded">
+                              <xs:annotation>
+                                <xs:documentation>This element is used to indicate
+																	the role of a Practitioner. The full list can be
+																	found here:
+																	https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-PractitionerRoleVS.html</xs:documentation>
+                              </xs:annotation>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="specialties" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="specialty" type="codeable_concept" minOccurs="1" maxOccurs="unbounded"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="available_times" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="available_time" minOccurs="0" maxOccurs="unbounded" type="available_time"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="not_availables" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="not_available" minOccurs="0" maxOccurs="unbounded" type="not_available"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="availability_exceptions" type="string" minOccurs="0" maxOccurs="1"/>
+                      <!--New Patients indicates whether new patients are being accepted in general, or from a specific network.If no new patients are accepted, no characteristics are allowed-->
+                      <xs:element name="new_patients_list" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="new_patients" minOccurs="0" maxOccurs="unbounded" type="new_patients"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="networks" minOccurs="0" maxOccurs="1" type="networks"/>
+                      <xs:element name="locations" minOccurs="0" maxOccurs="1" type="locations"/>
+                      <xs:element name="healthcare_services" minOccurs="0" maxOccurs="1" type="healthcare_services"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="providing_organization" minOccurs="1" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>This element is used when the Provider
+											Type is an organizatiaon</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="unique_identifier" type="string" minOccurs="0" maxOccurs="1"/>
+                      <!--National Provider identifier (NPI)-->
+                      <xs:element name="npi" type="NPI" minOccurs="0" maxOccurs="1"/>
+                      <!--Clinical Laboratory Improvement Amendments (CLIA) Number for laboratories-->
+                      <xs:element name="clias" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="clia" type="clia" minOccurs="1" maxOccurs="unbounded"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <!--Whether the organization's record is still in active use-->
+                      <xs:element name="is_active" type="boolean" minOccurs="1" maxOccurs="1"/>
+                      <!--Kind of organization- Choose from code valueSet-->
+                      <xs:element name="types" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="type_of_organization">
+                              <xs:annotation>
+                                <xs:documentation> Organization type, a full list
+												can be found here:
+												https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrgTypeVS.html
+												</xs:documentation>
+                              </xs:annotation>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <!--Name used for the organization-->
+                      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+                      <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                          <xs:documentation> A list of alternate names that
+												the organization is known as, or was known as in
+												the past </xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <!--Organization Description-->
+                      <xs:element name="org_description" type="string" minOccurs="0" maxOccurs="1"/>
+                      <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="codes" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="code" type="codeable_concept" minOccurs="1" maxOccurs="unbounded">
+                              <xs:annotation>
+                                <xs:documentation> Value Set for Organization
+																Affiliation Roles. The full list can be found
+																here:
+																https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrganizationAffiliationRoleVS.html
+																</xs:documentation>
+                              </xs:annotation>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="specialties" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="specialty" type="codeable_concept" minOccurs="1" maxOccurs="unbounded"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <!--qualification-->
+                      <xs:element name="qualifications" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="qualification" minOccurs="0" maxOccurs="unbounded" type="qualification"/>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <!--A name associated with the contact-->
+                                  <xs:element name="name" type="human_name" minOccurs="0" maxOccurs="1"/>
+                                  <xs:element name="purpose" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                      <xs:documentation> The purpose of this contact
+												within is within the organization. A full list can
+												be found here:
+												https://www.hl7.org/fhir/valueset-contactentity-type.html
+												</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                      <xs:restriction base="string">
+                                        <xs:enumeration value="BILL"/>
+                                        <xs:enumeration value="ADMIN"/>
+                                        <xs:enumeration value="HR"/>
+                                        <xs:enumeration value="PAYOR"/>
+                                        <xs:enumeration value="PATINF"/>
+                                        <xs:enumeration value="PRESS"/>
+                                      </xs:restriction>
+                                    </xs:simpleType>
+                                  </xs:element>
+                                  <!--contact details (telephone, email, etc.) for a contact-->
+                                  <xs:element name="telecoms" minOccurs="0" maxOccurs="1">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="address" minOccurs="0" maxOccurs="unbounded" type="address"/>
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="period" minOccurs="0" maxOccurs="1" type="period">
+                        <xs:annotation>
+                          <xs:documentation> The period during which the
+												participatingOrganization is affiliated with the
+												primary organization </xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <!--The organization of which this organization forms a part or participatingOrganization is affiliated with-->
+                      <xs:element name="affiliated_organization" minOccurs="0" maxOccurs="1" type="organization"/>
+                      <xs:element name="part_of" minOccurs="0" maxOccurs="1" type="organization"/>
+                      <xs:element name="networks" minOccurs="0" maxOccurs="1" type="networks"/>
+                      <xs:element name="locations" minOccurs="0" maxOccurs="1" type="locations"/>
+                      <xs:element name="healthcare_services" minOccurs="0" maxOccurs="1" type="healthcare_services"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

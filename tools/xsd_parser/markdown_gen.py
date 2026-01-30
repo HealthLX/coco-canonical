@@ -26,6 +26,38 @@ def escape_markdown_table_cell(text):
     text = text.replace("\n", " ")
     return text
 
+def generate_hlx_tbl_format():
+    """Generate HLX style for markdown tables."""
+    output = """
+<style>
+    .heatMap {
+        text-align: Left;
+    }
+    .heatMap thead {
+      position: sticky}
+    .heatMap th {
+        background: #3FA5DC;
+        word-wrap: break-word;
+        text-align: center;
+        border: 0px solid lightgrey;
+        color: white
+    }
+    .heatMap td {
+        
+        border: 1.5px solid lightgrey
+    }
+    .heatMap tr:nth-child(even) {background: lightgrey;}
+    .heatMap td:first-child {
+            font-weight: bold
+        }
+    /* .heatMap tr:nth-child(1) { background: red; }
+    
+    /* .heatMap tr:nth-child(2) { background: orange; } 
+    .heatMap tr:nth-child(3) { background: gray; text: red} */
+
+</style>\n\n"""
+    return output
+
 
 def to_md_table(headers, rows):
     """Generate markdown table with proper escaping."""
@@ -47,8 +79,8 @@ def to_md_table(headers, rows):
         
         escaped_row = [escape_markdown_table_cell(cell) for cell in row]
         out += "| " + " | ".join(escaped_row) + " |\n"
-    
-    return out
+        html_out = "<div class = \"heatMap\">\n\n" + out + "\n\n</div>\n\n"
+    return html_out
 
 
 def generate_header(root, schema_info: SchemaInfo):
@@ -98,7 +130,7 @@ def generate_toc(schema_info: SchemaInfo, has_core_types=False):
 
 def generate_disclaimer():
     """Generate disclaimer section with standard legal text."""
-    output = "## Disclaimer\n\n"
+    output = "<h2 style=\"color:#E60073\">Disclaimer</h2>\n\n"
     output += "This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.\n\n"
     
     return output
@@ -106,7 +138,7 @@ def generate_disclaimer():
 
 def generate_overview(schema_info: SchemaInfo):
     """Generate overview section explaining the guide's purpose and XML format matching PDF style."""
-    output = "## Overview\n\n"
+    output = "<h2 style=\"color:#E60073\">Overview</h2>\n\n"
     output += f"This implementation guide provides field mappings and requirements for HealthLX {schema_info.display_name} data submissions in XML format based on FHIR R4 standards. "
     output += "XML format enables structured data exchange with built-in validation against the provided XSD schema.\n\n"
     
@@ -115,7 +147,7 @@ def generate_overview(schema_info: SchemaInfo):
 
 def generate_encoding(schema_info: SchemaInfo):
     """Generate encoding section for UTF-8 requirement."""
-    output = "## Encoding\n\n"
+    output = "<h2 style=\"color:#E60073\">Encoding</h2>\n\n"
     output += "Payers need to send their files with utf-8 encoding as shown below:\n\n"
     output += "```xml\n"
     output += "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -126,7 +158,7 @@ def generate_encoding(schema_info: SchemaInfo):
 
 def generate_interoperability():
     """Generate interoperability section with FHIR reference."""
-    output = "## Interoperability\n\n"
+    output = "<h2 style=\"color:#E60073\">Interoperability</h2>\n\n"
     output += "This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. "
     output += "For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/\n\n"
     
@@ -146,28 +178,30 @@ def generate_change_log(schema_info: SchemaInfo, release_tag=None):
     
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
-    
-    output = "## Change Log\n\n"
+
+    output = "<h2 style=\"color:#E60073\">Change Log</h2>\n\n"
+    output += "<div class = \"heatMap\">\n\n"
     output += "| Version | Date |\n"
     output += "|---------|------|\n"
     output += f"| {version} | {date_str} |\n\n"
+    output += "</div>\n\n"
     
     return output
 
 
 def generate_practical_guidance(schema_info: SchemaInfo):
     """Generate practical guidance section for submission frequency, adds/updates/deletes, member identification."""
-    output = "## Practical Guidance\n\n"
-    output += "### Submission Frequency\n\n"
+    output = "<h2 style=\"color:#E60073\">Practical Guidance</h2>\n\n"
+    output += "<h3 style=\"color:#E60073\">Submission Frequency</h3>\n\n"
     output += f"{schema_info.display_name} files should be submitted according to the schedule agreed upon with HealthLX. "
     output += "Typical submission frequencies include daily, weekly, or monthly updates.\n\n"
-    
-    output += "### Adds, Updates, and Deletes\n\n"
+
+    output += "<h3 style=\"color:#E60073\">Adds, Updates, and Deletes</h3>\n\n"
     output += "- **Adds**: Include new member records with all required fields populated\n"
     output += "- **Updates**: Submit complete member records with updated information\n"
     output += "- **Deletes**: Follow the agreed-upon process for member terminations or removals\n\n"
-    
-    output += "### Member Identification\n\n"
+
+    output += "<h3 style=\"color:#E60073\">Member Identification</h3>\n\n"
     output += "Each member must be uniquely identified using the appropriate identifier fields. "
     output += "Ensure consistency in member identifiers across all submissions to maintain data integrity.\n\n"
     
@@ -227,7 +261,7 @@ def get_section_title(parent_name: str) -> str:
 
 def generate_element_table(title, elements, schema_info: SchemaInfo):
     """Generate element table with 6 columns: Name, Parent, Cardinality, Description, Examples, Data Type."""
-    output = f"## {title}\n\n"
+    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"
@@ -280,7 +314,7 @@ def get_top_level_section(element_name: str, parent_name: str, current_section: 
 
 def generate_element_table_with_sections(title, elements, schema_info: SchemaInfo):
     """Generate element table with section headers grouping elements by clinical purpose."""
-    output = f"## {title}\n\n"
+    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"
@@ -320,7 +354,7 @@ def generate_element_table_with_sections(title, elements, schema_info: SchemaInf
     
     for section_title, section_elements_list in all_sections:
         # Add section header
-        output += f"### {section_title}\n\n"
+        output += f"<h3 style=\"color:#E60073\">{section_title}</h3>\n\n"
         # Add table for this section
         output += to_md_table(headers, section_elements_list)
         output += "\n\n"
@@ -331,13 +365,13 @@ def generate_element_table_with_sections(title, elements, schema_info: SchemaInf
 def generate_data_type_definitions(root, schema_info: SchemaInfo):
     """Generate Data Type Definition section for complex types (Period, Identifier, etc.)."""
     from .complex_types import parse_complex_types
-    output = "## Data Type Definition\n\n"
+    output = "<h2 style=\"color:#E60073\">Data Type Definition</h2>\n\n"
     output += f"This section defines the structure of reusable complex data types used throughout the {schema_info.display_name.lower()} schema.\n\n"
     
     complex_types = parse_complex_types(root)
     
     for name, elements in complex_types.items():
-        output += f"### {name}\n\n"
+        output += f"<h3 style=\"color:#E60073\">{name}</h3>\n\n"
         headers = ["Field Name", "Type", "MinOccurs", "MaxOccurs", "Description"]
         output += to_md_table(headers, elements)
         output += "\n\n"
