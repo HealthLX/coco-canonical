@@ -1,6 +1,3 @@
-
-
-
 ![HLX Logo](../assets/hlx_logo.png)
 
 # Clinical Implementation Guide

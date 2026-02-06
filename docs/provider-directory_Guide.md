@@ -1,32 +1,3 @@
-
-<style>
-    .heatMap {
-        text-align: Left;
-    }
-    .heatMap thead {
-      position: sticky}
-    .heatMap th {
-        background: #3FA5DC;
-        word-wrap: break-word;
-        text-align: center;
-        border: 0px solid lightgrey;
-        color: white
-    }
-    .heatMap td {
-        
-        border: 1.5px solid lightgrey
-    }
-    .heatMap tr:nth-child(even) {background: lightgrey;}
-    .heatMap td:first-child {
-            font-weight: bold
-        }
-    /* .heatMap tr:nth-child(1) { background: red; }
-    
-    /* .heatMap tr:nth-child(2) { background: orange; } 
-    .heatMap tr:nth-child(3) { background: gray; text: red} */
-
-</style>
-
 ![HLX Logo](../assets/hlx_logo.png)
 
 # Provider-Directory Implementation Guide
