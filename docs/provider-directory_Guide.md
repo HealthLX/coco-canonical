@@ -1,3 +1,32 @@
+
+<style>
+    .heatMap {
+        text-align: Left;
+    }
+    .heatMap thead {
+      position: sticky}
+    .heatMap th {
+        background: #3FA5DC;
+        word-wrap: break-word;
+        text-align: center;
+        border: 0px solid lightgrey;
+        color: white
+    }
+    .heatMap td {
+        
+        border: 1.5px solid lightgrey
+    }
+    .heatMap tr:nth-child(even) {background: lightgrey;}
+    .heatMap td:first-child {
+            font-weight: bold
+        }
+    /* .heatMap tr:nth-child(1) { background: red; }
+    
+    /* .heatMap tr:nth-child(2) { background: orange; } 
+    .heatMap tr:nth-child(3) { background: gray; text: red} */
+
+</style>
+
 ![HLX Logo](../assets/hlx_logo.png)
 
 # Provider-Directory Implementation Guide
@@ -6,7 +35,7 @@
 
 **Version 10.0**
 
-**January 2, 2026**
+**February 6, 2026**
 
 **Table of Contents**
 
@@ -20,15 +49,19 @@
 8. [All Elements of Provider-Directory XSD](#all-elements-of-provider-directory-xsd)
 9. [Practical Guidance](#practical-guidance)
 
-## Disclaimer
+<h2 style="color:#E60073">Disclaimer</h2>
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-## Overview
+<h2 style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Provider-Directory data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-## Encoding
+<h2 style="color:#E60073">Overview</h2>
+
+This implementation guide provides field mappings and requirements for HealthLX Provider-Directory data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
+
+<h2 style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -36,17 +69,23 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-## Interoperability
+<h2 style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-## Change Log
+<h2 style="color:#E60073">Change Log</h2>
+
+<div class = "heatMap">
 
 | Version | Date |
 |---------|------|
-| 10.0 | January 2, 2026 |
+| 10.0 | February 6, 2026 |
 
-## Simple Types
+</div>
+
+<h2 style="color:#E60073"> Simple Types</h2>
+
+<div class = "heatMap">
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -66,9 +105,15 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | type_of_organization | string | – |  |
 
 
-## Complex Types
+</div>
 
-### networks
+
+
+<h2 style="color:#E60073"> Complex Types</h2>
+
+<h3 style="color:#E60073">networks</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -77,7 +122,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | name | string | 0 | 1 | Name of this Network |
 
 
-### period
+</div>
+
+
+
+<h3 style="color:#E60073">period</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -85,7 +136,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | end | dateTime | 0 | 1 | – |
 
 
-### new_patients
+</div>
+
+
+
+<h3 style="color:#E60073">new_patients</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -96,7 +153,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | characteristics | string | 0 | unbounded | Open text for additional information |
 
 
-### not_available
+</div>
+
+
+
+<h3 style="color:#E60073">not_available</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -104,7 +167,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | period | period | 0 | 1 | Start/End dates when service is not available |
 
 
-### available_time
+</div>
+
+
+
+<h3 style="color:#E60073">available_time</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -114,7 +183,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | available_end_time | time | 0 | 1 | Closing time of day (ignored if all_day = true) |
 
 
-### human_name
+</div>
+
+
+
+<h3 style="color:#E60073">human_name</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -127,7 +202,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | period | period | 0 | 1 | Time period when name was/is in use. If the name is still in use, do not supply an End date |
 
 
-### organization_branch
+</div>
+
+
+
+<h3 style="color:#E60073">organization_branch</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -150,7 +231,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | address | address | 0 | 1 | – |
 
 
-### telecom_minimum
+</div>
+
+
+
+<h3 style="color:#E60073">telecom_minimum</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -161,7 +248,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | period | period | 0 | 1 | Time period when the contact point was in use |
 
 
-### telecom
+</div>
+
+
+
+<h3 style="color:#E60073">telecom</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -182,7 +275,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | value | string | 1 | 1 | The actual value of the contact point |
 
 
-### address
+</div>
+
+
+
+<h3 style="color:#E60073">address</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -203,7 +302,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | longitude | decimal | 1 | 1 | – |
 
 
-### languages
+</div>
+
+
+
+<h3 style="color:#E60073">languages</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -211,7 +316,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | proficiency | – | 0 | 1 | The proficiency of the language. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-LanguageProficiencyVS.html |
 
 
-### locations
+</div>
+
+
+
+<h3 style="color:#E60073">locations</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -246,7 +357,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | address | address | 0 | 1 | – |
 
 
-### location_part_of
+</div>
+
+
+
+<h3 style="color:#E60073">location_part_of</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -276,21 +393,39 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | new_patients | new_patients | 0 | unbounded | – |
 
 
-### practitioner_specialties
+</div>
+
+
+
+<h3 style="color:#E60073">practitioner_specialties</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | specialty | – | 0 | unbounded | Individual and Group Specialties from National Uniform Claim Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-IndividualAndGroupSpecialtiesVS.html |
 
 
-### provider_organization_specialties
+</div>
+
+
+
+<h3 style="color:#E60073">provider_organization_specialties</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | specialty | – | 0 | unbounded | Specialties value set based on National Uniform Claim Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-SpecialtiesVS.html |
 
 
-### healthcare_services
+</div>
+
+
+
+<h3 style="color:#E60073">healthcare_services</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -336,7 +471,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | locations | locations | 0 | 1 | – |
 
 
-### organization
+</div>
+
+
+
+<h3 style="color:#E60073">organization</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -355,7 +496,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | address | address | 0 | unbounded | – |
 
 
-### organization_part_of
+</div>
+
+
+
+<h3 style="color:#E60073">organization_part_of</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -373,7 +520,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | address | address | 0 | unbounded | – |
 
 
-### identifier
+</div>
+
+
+
+<h3 style="color:#E60073">identifier</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -381,7 +534,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | type | string | 1 | 1 | – |
 
 
-### coding
+</div>
+
+
+
+<h3 style="color:#E60073">coding</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -390,7 +549,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | display | string | 0 | 1 | – |
 
 
-### codeable_concept
+</div>
+
+
+
+<h3 style="color:#E60073">codeable_concept</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -398,7 +563,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | text | string | 0 | 1 | – |
 
 
-### qualification
+</div>
+
+
+
+<h3 style="color:#E60073">qualification</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -411,7 +582,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | where_valid | string | 0 | unbounded | Indicates where the qualification is valid. users may select any number of specific locations, classes of locations, or combination thereof |
 
 
-### clia
+</div>
+
+
+
+<h3 style="color:#E60073">clia</h3>
+
+<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -419,7 +596,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | value | string | 1 | 1 | Clinical Laboratory Improvement Amendments (CLIA) Number for laboratories |
 
 
-## Required Elements of Provider-Directory XSD
+</div>
+
+
+
+<h2 style="color:#E60073">Required Elements of Provider-Directory XSD</h2>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -441,9 +624,15 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | specialty | specialties | 1..unbounded | – | – | codeable_concept |
 
 
-## All Elements of Provider-Directory XSD
+</div>
 
-### Root Elements
+
+
+<h2 style="color:#E60073">All Elements of Provider-Directory XSD</h2>
+
+<h3 style="color:#E60073">Root Elements</h3>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -456,7 +645,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | practitioner | provider | 1..unbounded | Practitioner is a person who is directly or indirectly involved in the provisioning of healthcare | – | – |
 
 
-### Practitioners
+</div>
+
+
+
+<h3 style="color:#E60073">Practitioners</h3>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -491,14 +686,26 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | networks | practitioner | 0..1 | – | – | networks |
 
 
-### Locations
+</div>
+
+
+
+<h3 style="color:#E60073">Locations</h3>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | locations | practitioner | 0..1 | – | – | locations |
 
 
-### Practitioners
+</div>
+
+
+
+<h3 style="color:#E60073">Practitioners</h3>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -537,7 +744,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | networks | providing_organization | 0..1 | – | – | networks |
 
 
-### Locations
+</div>
+
+
+
+<h3 style="color:#E60073">Locations</h3>
+
+<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -545,19 +758,23 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | healthcare_services | providing_organization | 0..1 | – | – | healthcare_services |
 
 
-## Practical Guidance
+</div>
 
-### Submission Frequency
+
+
+<h2 style="color:#E60073">Practical Guidance</h2>
+
+<h3 style="color:#E60073">Submission Frequency</h3>
 
 Provider-Directory files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
-### Adds, Updates, and Deletes
+<h3 style="color:#E60073">Adds, Updates, and Deletes</h3>
 
 - **Adds**: Include new member records with all required fields populated
 - **Updates**: Submit complete member records with updated information
 - **Deletes**: Follow the agreed-upon process for member terminations or removals
 
-### Member Identification
+<h3 style="color:#E60073">Member Identification</h3>
 
 Each member must be uniquely identified using the appropriate identifier fields. Ensure consistency in member identifiers across all submissions to maintain data integrity.
 

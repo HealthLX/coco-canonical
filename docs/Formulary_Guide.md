@@ -29,13 +29,13 @@
 
 ![HLX Logo](../assets/hlx_logo.png)
 
-# Formulary_V6.1 Implementation Guide
+# Formulary Implementation Guide
 
-**HLX0123 HLX Formulary_V6.1 IG (XSD_V6.1)**
+**HLX0123 HLX Formulary IG (XSD_V10.0)**
 
-**Version 6.1**
+**Version 10.0**
 
-**January 27, 2026**
+**February 6, 2026**
 
 **Table of Contents**
 
@@ -45,8 +45,8 @@
 4. [Change Log](#change-log)
 5. [Simple Types](#simple-types)
 6. [Complex Types](#complex-types)
-7. [Required Elements of Formulary_V6.1 XSD](#required-elements-of-formulary_v6.1-xsd)
-8. [All Elements of Formulary_V6.1 XSD](#all-elements-of-formulary_v6.1-xsd)
+7. [Required Elements of Formulary XSD](#required-elements-of-formulary-xsd)
+8. [All Elements of Formulary XSD](#all-elements-of-formulary-xsd)
 9. [Practical Guidance](#practical-guidance)
 
 <h2 style="color:#E60073">Disclaimer</h2>
@@ -55,11 +55,11 @@ This document is provided by HealthLX for informational purposes only. Informati
 
 <h2 style="color:#E60073">Overview</h2>
 
-This implementation guide provides field mappings and requirements for HealthLX Formulary_V6.1 data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
+This implementation guide provides field mappings and requirements for HealthLX Formulary data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
 <h2 style="color:#E60073">Overview</h2>
 
-This implementation guide provides field mappings and requirements for HealthLX Formulary_V6.1 data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
+This implementation guide provides field mappings and requirements for HealthLX Formulary data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
 <h2 style="color:#E60073">Encoding</h2>
 
@@ -79,7 +79,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 | Version | Date |
 |---------|------|
-| 6.1 | January 27, 2026 |
+| 10.0 | February 6, 2026 |
 
 </div>
 
@@ -239,7 +239,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 
 
-<h2 style="color:#E60073">Required Elements of Formulary_V6.1 XSD</h2>
+<h2 style="color:#E60073">Required Elements of Formulary XSD</h2>
 
 <div class = "heatMap">
 
@@ -273,7 +273,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 
 
-<h2 style="color:#E60073">All Elements of Formulary_V6.1 XSD</h2>
+<h2 style="color:#E60073">All Elements of Formulary XSD</h2>
 
 <h3 style="color:#E60073">Root Elements</h3>
 
@@ -323,7 +323,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 <h3 style="color:#E60073">Submission Frequency</h3>
 
-Formulary_V6.1 files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
+Formulary files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
 <h3 style="color:#E60073">Adds, Updates, and Deletes</h3>
 
