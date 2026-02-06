@@ -1,0 +1,23 @@
+.heatMap {
+    text-align: Left;
+}
+.heatMap thead {
+    position: sticky;
+    top: 0; /* Often needed for sticky to work */
+}
+.heatMap th {
+    background: #3FA5DC;
+    word-wrap: break-word;
+    text-align: center;
+    border: 0px solid lightgrey;
+    color: white;
+}
+.heatMap td {
+    border: 1.5px solid lightgrey;
+}
+.heatMap tr:nth-child(even) {
+    background: lightgrey;
+}
+.heatMap td:first-child {
+    font-weight: bold;
+}
