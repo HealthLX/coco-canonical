@@ -1,177 +1,89 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <eob_list xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v10.0/EOB.xsd">
   <schema_version>10.0</schema_version>
-  <sender_id>real</sender_id>
-  <date_time_reported>2026-02-11T22:41:57Z</date_time_reported>
+  <sender_id>sea</sender_id>
+  <date_time_reported>2026-02-11T22:43:18Z</date_time_reported>
   <eob>
     <eob_identifier>
-      <value>speak</value>
+      <value>difference</value>
       <type>uc</type>
     </eob_identifier>
     <status>cancelled</status>
-    <type>vision</type>
-    <sub_type>Outpatient-Institutional</sub_type>
+    <type>Institutional</type>
+    <sub_type>Inpatient-Institutional</sub_type>
     <use>claim</use>
     <billable_period>
-      <start>2014-02-13T18:31:48Z</start>
-      <end>2016-10-09T15:33:00Z</end>
+      <start>2019-10-03T04:14:33Z</start>
+      <end>2017-05-06T12:32:47Z</end>
     </billable_period>
-    <created>2017-02-25T04:25:08Z</created>
-    <outcome>complete</outcome>
-    <disposition>probably</disposition>
-    <pre_auth_ref>then</pre_auth_ref>
+    <created>2018-01-07T03:56:24Z</created>
+    <outcome>partial</outcome>
+    <disposition>food</disposition>
+    <pre_auth_ref>against</pre_auth_ref>
     <pre_auth_ref_periods>
       <pre_auth_ref_period>
-        <start>2017-10-16T20:27:33Z</start>
-        <end>2010-07-05T10:58:08Z</end>
+        <start>2013-10-27T17:19:10Z</start>
+        <end>2018-07-25T11:12:04Z</end>
       </pre_auth_ref_period>
     </pre_auth_ref_periods>
     <claim>
       <identifier>
-        <value>where</value>
-        <type>news</type>
-        <system>participant</system>
+        <value>nice</value>
+        <type>one</type>
+        <system>story</system>
       </identifier>
-      <created>2016-11-16T09:15:07Z</created>
+      <created>2015-07-08T18:12:08Z</created>
     </claim>
     <patient>
-      <med_rec_num>less</med_rec_num>
-      <pat_acct_num>right</pat_acct_num>
-      <unique_member_id>explain</unique_member_id>
-      <person>
-        <member_id>grow</member_id>
-        <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-        <subscriber_id>free</subscriber_id>
-        <unique_person_id>heavy</unique_person_id>
-        <unique_person_id_assigner>management</unique_person_id_assigner>
-        <unique_person_id_assigner_type>baby</unique_person_id_assigner_type>
-        <names>
-          <name>
-            <use>old</use>
-            <text>American Indian or Alaska Native</text>
-            <family>Gonzalez</family>
-            <given>Alyssa</given>
-            <prefix>Mr.</prefix>
-            <suffix>MD</suffix>
-            <period>
-              <start>2015-03-09T13:37:18Z</start>
-              <end>2013-12-28T12:58:35Z</end>
-            </period>
-          </name>
-        </names>
-        <gender>male</gender>
-        <birth_date>2019-04-24</birth_date>
-        <marital_status>I</marital_status>
-        <deceased>
-          <is_deceased>true</is_deceased>
-          <deceased_date_time>2010-11-30T04:52:53Z</deceased_date_time>
-        </deceased>
-        <telecoms>
-          <telecom>
-            <system>other</system>
-            <value>conference</value>
-            <use>temp</use>
-            <rank>5</rank>
-            <period>
-              <start>2018-03-14T03:14:46Z</start>
-              <end>2018-06-21T21:56:31Z</end>
-            </period>
-          </telecom>
-        </telecoms>
-        <addresses>
-          <address>
-            <use>home</use>
-            <type>physical</type>
-            <text>American Indian or Alaska Native</text>
-            <line>9465 Julie Drive Apt. 935</line>
-            <city>North Anthonyside</city>
-            <district>hold</district>
-            <state>CA</state>
-            <postal_code>10719</postal_code>
-            <country>RW</country>
-            <period>
-              <start>2018-11-12T03:43:41Z</start>
-              <end>2014-12-22T19:50:51Z</end>
-            </period>
-          </address>
-        </addresses>
-        <communications>
-          <communication>
-            <language>
-              <language_code>el</language_code>
-              <system>urn:ietf:bcp:47</system>
-              <display>Greek</display>
-            </language>
-            <is_preferred>false</is_preferred>
-          </communication>
-        </communications>
-        <us_core_race>
-          <omb_category_code>
-            <code>2028-9</code>
-            <system>urn:oid:2.16.840.1.113883.6.238</system>
-          </omb_category_code>
-          <omb_category_code>
-            <code>UNK</code>
-            <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
-          </omb_category_code>
-          <detailed_code>1891-1</detailed_code>
-          <text>Black or African American</text>
-        </us_core_race>
-        <us_core_ethnicity>
-          <omb_category_code>2186-5</omb_category_code>
-          <detailed_code>2174-1</detailed_code>
-          <text>asked but unknown</text>
-        </us_core_ethnicity>
-        <us_core_birth_sex>UNK</us_core_birth_sex>
-      </person>
+      <reference>half</reference>
     </patient>
     <insurer>
-      <reference>morning</reference>
+      <reference>reflect</reference>
     </insurer>
     <provider>
       <practitioner>
-        <npi>2172523567</npi>
-        <tax>teacher</tax>
+        <npi>9596932532</npi>
+        <tax>key</tax>
         <names>
           <name>
-            <use>official</use>
+            <use>temp</use>
             <text>American Indian or Alaska Native</text>
-            <family>Martin</family>
-            <given>Lynn</given>
-            <prefix>Ind.</prefix>
-            <suffix>DDS</suffix>
+            <family>Newton</family>
+            <given>Elizabeth</given>
+            <prefix>Mx.</prefix>
+            <suffix>Jr.</suffix>
             <period>
-              <start>2018-10-17T12:11:28Z</start>
-              <end>2015-03-26T20:09:02Z</end>
+              <start>2012-01-29T08:33:25Z</start>
+              <end>2015-09-02T03:17:50Z</end>
             </period>
           </name>
         </names>
         <telecoms>
           <telecom>
-            <system>sms</system>
-            <value>themselves</value>
+            <system>other</system>
+            <value>happen</value>
             <use>home</use>
-            <rank>2</rank>
+            <rank>5</rank>
             <period>
-              <start>2015-07-18T09:59:07Z</start>
-              <end>2015-04-05T18:09:59Z</end>
+              <start>2019-11-10T19:07:24Z</start>
+              <end>2015-07-20T19:14:54Z</end>
             </period>
           </telecom>
         </telecoms>
         <addresses>
           <address>
             <use>work</use>
-            <type>postal</type>
+            <type>both</type>
             <text>American Indian or Alaska Native</text>
-            <line>410 Michael Radial Apt. 119</line>
-            <city>Johnville</city>
-            <district>police</district>
-            <state>DC</state>
-            <postal_code>58058</postal_code>
-            <country>CD</country>
+            <line>1695 Pruitt Points Apt. 559</line>
+            <city>West Patrickchester</city>
+            <district>entire</district>
+            <state>OR</state>
+            <postal_code>92519</postal_code>
+            <country>AD</country>
             <period>
-              <start>2020-01-22T12:06:16Z</start>
-              <end>2017-12-31T04:26:35Z</end>
+              <start>2019-01-04T03:44:15Z</start>
+              <end>2018-01-14T08:12:44Z</end>
             </period>
           </address>
         </addresses>
@@ -179,387 +91,184 @@
     </provider>
     <facility>
       <identifier>
-        <value>catch</value>
-        <type>lawyer</type>
-        <system>black</system>
+        <value>health</value>
+        <type>leave</type>
+        <system>blue</system>
       </identifier>
-      <name>William Haynes</name>
-      <alias>help</alias>
-      <description>explain</description>
-      <type>ONCL</type>
+      <name>Courtney Stevens</name>
+      <alias>easy</alias>
+      <description>participant</description>
+      <type>CVDX</type>
       <telecoms>
         <telecom>
-          <system>email</system>
-          <value>create</value>
-          <use>mobile</use>
+          <system>sms</system>
+          <value>act</value>
+          <use>old</use>
           <rank>5</rank>
           <period>
-            <start>2015-06-27T16:05:23Z</start>
-            <end>2014-11-25T15:58:09Z</end>
+            <start>2015-04-19T10:49:30Z</start>
+            <end>2013-07-13T06:00:19Z</end>
           </period>
         </telecom>
       </telecoms>
       <address>
-        <use>temp</use>
+        <use>home</use>
         <type>physical</type>
         <text>American Indian or Alaska Native</text>
-        <line>72542 Reilly Parkways Suite 115</line>
-        <city>Nuneztown</city>
-        <district>more</district>
-        <state>ND</state>
-        <postal_code>91747</postal_code>
-        <country>CH</country>
+        <line>19905 Navarro Spurs Suite 513</line>
+        <city>Port Ashley</city>
+        <district>lay</district>
+        <state>WA</state>
+        <postal_code>81540</postal_code>
+        <country>HT</country>
         <period>
-          <start>2015-12-24T23:28:15Z</start>
-          <end>2012-01-01T16:46:07Z</end>
+          <start>2011-03-15T04:30:07Z</start>
+          <end>2011-02-14T08:04:14Z</end>
         </period>
       </address>
     </facility>
     <relateds>
       <related>
         <relationship>
-          <code>prior</code>
+          <code>replacedby</code>
           <system>http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship</system>
         </relationship>
         <reference>
-          <value>five</value>
-          <type>dream</type>
-          <system>past</system>
+          <value>leg</value>
+          <type>thank</type>
+          <system>toward</system>
         </reference>
         <claim>
           <identifier>
-            <value>quite</value>
-            <type>admit</type>
-            <system>own</system>
+            <value>expect</value>
+            <type>choice</type>
+            <system>determine</system>
           </identifier>
-          <created>2019-12-18T03:25:20Z</created>
+          <created>2014-08-09T12:06:45Z</created>
         </claim>
       </related>
     </relateds>
     <payee>
       <type>
         <code>other</code>
-        <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayeeType</system>
+        <system>http://terminology.hl7.org/CodeSystem/payeetype</system>
       </type>
       <party>
         <patient>
-          <member_id>late</member_id>
+          <member_id>prepare</member_id>
           <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-          <subscriber_id>win</subscriber_id>
-          <unique_person_id>none</unique_person_id>
-          <unique_person_id_assigner>audience</unique_person_id_assigner>
-          <unique_person_id_assigner_type>set</unique_person_id_assigner_type>
+          <subscriber_id>system</subscriber_id>
+          <unique_person_id>little</unique_person_id>
+          <unique_person_id_assigner>beyond</unique_person_id_assigner>
+          <unique_person_id_assigner_type>production</unique_person_id_assigner_type>
           <names>
             <name>
-              <use>maiden</use>
+              <use>old</use>
               <text>American Indian or Alaska Native</text>
-              <family>Lewis</family>
-              <given>Amy</given>
-              <prefix>Ind.</prefix>
-              <suffix>MD</suffix>
+              <family>Chen</family>
+              <given>Laura</given>
+              <prefix>Mrs.</prefix>
+              <suffix>Jr.</suffix>
               <period>
-                <start>2012-05-25T20:23:21Z</start>
-                <end>2017-04-17T20:02:14Z</end>
+                <start>2014-07-21T02:17:02Z</start>
+                <end>2019-09-27T16:23:49Z</end>
               </period>
             </name>
           </names>
           <gender>female</gender>
-          <birth_date>1992-05-12</birth_date>
-          <marital_status>U</marital_status>
+          <birth_date>1984-06-06</birth_date>
+          <marital_status>T</marital_status>
           <deceased>
             <is_deceased>true</is_deceased>
-            <deceased_date_time>2016-03-19T09:40:28Z</deceased_date_time>
+            <deceased_date_time>2014-02-12T18:05:48Z</deceased_date_time>
           </deceased>
           <telecoms>
             <telecom>
-              <system>phone</system>
-              <value>series</value>
-              <use>mobile</use>
+              <system>sms</system>
+              <value>feeling</value>
+              <use>work</use>
               <rank>3</rank>
               <period>
-                <start>2018-02-16T11:17:17Z</start>
-                <end>2016-01-22T04:54:04Z</end>
+                <start>2020-07-24T23:59:37Z</start>
+                <end>2020-08-01T15:30:59Z</end>
               </period>
             </telecom>
           </telecoms>
           <addresses>
             <address>
               <use>old</use>
-              <type>postal</type>
+              <type>both</type>
               <text>American Indian or Alaska Native</text>
-              <line>82585 Ford Mountain</line>
-              <city>Stonechester</city>
-              <district>prepare</district>
-              <state>MA</state>
-              <postal_code>19370</postal_code>
-              <country>ML</country>
+              <line>18772 Rebekah Walk Apt. 753</line>
+              <city>Davidmouth</city>
+              <district>speak</district>
+              <state>AL</state>
+              <postal_code>91885</postal_code>
+              <country>PT</country>
               <period>
-                <start>2017-06-12T02:41:30Z</start>
-                <end>2017-09-12T01:52:31Z</end>
+                <start>2011-09-29T07:59:53Z</start>
+                <end>2015-03-24T19:07:24Z</end>
               </period>
             </address>
           </addresses>
           <communications>
             <communication>
               <language>
-                <language_code>hi</language_code>
+                <language_code>zh-CN</language_code>
                 <system>urn:ietf:bcp:47</system>
-                <display>Hindi</display>
+                <display>Chinese (Region=China)</display>
               </language>
               <is_preferred>false</is_preferred>
             </communication>
           </communications>
           <us_core_race>
             <omb_category_code>
-              <code>2106-3</code>
-              <system>urn:oid:2.16.840.1.113883.6.238</system>
+              <code>UNK</code>
+              <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
             </omb_category_code>
-            <detailed_code>1874-7</detailed_code>
-            <text>Black or African American</text>
+            <detailed_code>1805-1</detailed_code>
+            <text>asked but unknown</text>
           </us_core_race>
           <us_core_ethnicity>
             <omb_category_code>2135-2</omb_category_code>
-            <detailed_code>2163-4</detailed_code>
+            <detailed_code>2166-7</detailed_code>
             <text>Hispanic or Latino</text>
           </us_core_ethnicity>
-          <us_core_birth_sex>F</us_core_birth_sex>
+          <us_core_birth_sex>M</us_core_birth_sex>
         </patient>
       </party>
     </payee>
     <care_teams>
       <care_team>
-        <sequence>4</sequence>
+        <sequence>1</sequence>
         <is_responsible>false</is_responsible>
         <provider>
           <practitioner>
-            <npi>9066519003</npi>
-            <tax>value</tax>
+            <npi>1190941631</npi>
+            <tax>some</tax>
             <names>
               <name>
-                <use>usual</use>
+                <use>maiden</use>
                 <text>American Indian or Alaska Native</text>
-                <family>Green</family>
-                <given>Alicia</given>
-                <prefix>Mr.</prefix>
-                <suffix>PhD</suffix>
+                <family>Franco</family>
+                <given>Brandon</given>
+                <prefix>Dr.</prefix>
+                <suffix>MD</suffix>
                 <period>
-                  <start>2011-12-09T23:04:41Z</start>
-                  <end>2011-02-10T04:45:09Z</end>
+                  <start>2020-09-12T21:50:41Z</start>
+                  <end>2016-03-13T21:34:25Z</end>
                 </period>
               </name>
             </names>
             <telecoms>
               <telecom>
-                <system>email</system>
-                <value>country</value>
-                <use>temp</use>
+                <system>pager</system>
+                <value>pretty</value>
+                <use>home</use>
                 <rank>2</rank>
                 <period>
-                  <start>2011-07-04T13:49:59Z</start>
-                  <end>2010-11-11T06:22:30Z</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <use>old</use>
-                <type>postal</type>
-                <text>American Indian or Alaska Native</text>
-                <line>6248 Johnson Spurs</line>
-                <city>Nicholasmouth</city>
-                <district>quality</district>
-                <state>PR</state>
-                <postal_code>28514</postal_code>
-                <country>PW</country>
-                <period>
-                  <start>2016-06-29T09:01:17Z</start>
-                  <end>2010-01-20T20:28:10Z</end>
-                </period>
-              </address>
-            </addresses>
-          </practitioner>
-        </provider>
-        <role>
-          <code>supervisor</code>
-          <system>http://terminology.hl7.org/CodeSystem/claimcareteamrole</system>
-        </role>
-        <qualification>
-          <code>summer</code>
-          <system>http://nucc.org/provider-taxonomy</system>
-        </qualification>
-      </care_team>
-    </care_teams>
-    <diagnoses>
-      <diagnosis>
-        <sequence>3</sequence>
-        <diagnosis_code>
-          <coding>
-            <code>wrong</code>
-            <system>http://hl7.org/fhir/sid/icd-10</system>
-            <version>current</version>
-            <display>English</display>
-          </coding>
-        </diagnosis_code>
-        <type>
-          <code>radiology</code>
-          <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimDiagnosisType</system>
-        </type>
-        <on_admission>
-          <code>science</code>
-          <system>http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission</system>
-        </on_admission>
-        <package_code>wide</package_code>
-      </diagnosis>
-    </diagnoses>
-    <procedures>
-      <procedure>
-        <sequence>2</sequence>
-        <procedure_code>
-          <coding>
-            <code>subject</code>
-            <system>http://snomed.info/sct</system>
-            <version>interest</version>
-            <display>English</display>
-          </coding>
-        </procedure_code>
-        <type>so</type>
-        <date>1996-08-20</date>
-      </procedure>
-    </procedures>
-    <precedence>2</precedence>
-    <insurances>
-      <insurance>
-        <is_focal>false</is_focal>
-        <pre_auth_ref>though</pre_auth_ref>
-        <coverage>
-          <identifier>
-            <value>half</value>
-            <type>form</type>
-            <system>truth</system>
-          </identifier>
-          <payor>
-            <reference>low</reference>
-          </payor>
-          <type>dog</type>
-          <relationship>injured</relationship>
-          <period>
-            <start>2015-10-14T05:31:29Z</start>
-            <end>2012-06-07T17:06:34Z</end>
-          </period>
-          <subscriber>
-            <member_id>close</member_id>
-            <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-            <subscriber_id>almost</subscriber_id>
-            <unique_person_id>especially</unique_person_id>
-            <unique_person_id_assigner>center</unique_person_id_assigner>
-            <unique_person_id_assigner_type>goal</unique_person_id_assigner_type>
-            <names>
-              <name>
-                <use>old</use>
-                <text>American Indian or Alaska Native</text>
-                <family>Johnson</family>
-                <given>Victoria</given>
-                <prefix>Mx.</prefix>
-                <suffix>Jr.</suffix>
-                <period>
-                  <start>2015-06-29T21:31:22Z</start>
-                  <end>2017-02-08T04:35:35Z</end>
-                </period>
-              </name>
-            </names>
-            <gender>unknown</gender>
-            <birth_date>1992-12-15</birth_date>
-            <marital_status>D</marital_status>
-            <deceased>
-              <is_deceased>false</is_deceased>
-              <deceased_date_time>2020-03-11T19:41:13Z</deceased_date_time>
-            </deceased>
-            <telecoms>
-              <telecom>
-                <system>url</system>
-                <value>movie</value>
-                <use>mobile</use>
-                <rank>3</rank>
-                <period>
-                  <start>2013-09-25T15:12:56Z</start>
-                  <end>2016-10-23T15:32:06Z</end>
-                </period>
-              </telecom>
-            </telecoms>
-            <addresses>
-              <address>
-                <use>old</use>
-                <type>both</type>
-                <text>American Indian or Alaska Native</text>
-                <line>1896 Davenport Street Suite 784</line>
-                <city>Kingburgh</city>
-                <district>level</district>
-                <state>NM</state>
-                <postal_code>94398</postal_code>
-                <country>KE</country>
-                <period>
-                  <start>2018-12-24T17:49:41Z</start>
-                  <end>2019-06-22T18:59:28Z</end>
-                </period>
-              </address>
-            </addresses>
-            <communications>
-              <communication>
-                <language_code>en-AU</language_code>
-                <is_preferred>true</is_preferred>
-                <display>English (Region=Australia)</display>
-              </communication>
-            </communications>
-            <us_core_race>
-              <omb_category_code>2028-9</omb_category_code>
-              <omb_category_code>2028-9</omb_category_code>
-              <detailed_code>1023-1</detailed_code>
-              <text>Asian</text>
-            </us_core_race>
-            <us_core_ethnicity>
-              <omb_category_code>2135-2</omb_category_code>
-              <detailed_code>2138-6</detailed_code>
-              <text>unknown</text>
-            </us_core_ethnicity>
-            <us_core_birth_sex>M</us_core_birth_sex>
-          </subscriber>
-          <beneficiary>
-            <member_id>long</member_id>
-            <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-            <subscriber_id>design</subscriber_id>
-            <unique_person_id>realize</unique_person_id>
-            <unique_person_id_assigner>oil</unique_person_id_assigner>
-            <unique_person_id_assigner_type>service</unique_person_id_assigner_type>
-            <names>
-              <name>
-                <use>anonymous</use>
-                <text>American Indian or Alaska Native</text>
-                <family>Nguyen</family>
-                <given>Donna</given>
-                <prefix>Misc.</prefix>
-                <suffix>DDS</suffix>
-                <period>
-                  <start>2012-09-06T22:05:02Z</start>
-                  <end>2019-07-25T22:02:06Z</end>
-                </period>
-              </name>
-            </names>
-            <gender>male</gender>
-            <birth_date>1996-10-07</birth_date>
-            <marital_status>A</marital_status>
-            <deceased>
-              <is_deceased>false</is_deceased>
-              <deceased_date_time>2011-12-11T04:45:30Z</deceased_date_time>
-            </deceased>
-            <telecoms>
-              <telecom>
-                <system>other</system>
-                <value>Congress</value>
-                <use>temp</use>
-                <rank>2</rank>
-                <period>
-                  <start>2019-02-03T03:24:26Z</start>
-                  <end>2013-08-22T19:32:25Z</end>
+                  <start>2018-01-07T19:00:09Z</start>
+                  <end>2012-08-22T01:13:21Z</end>
                 </period>
               </telecom>
             </telecoms>
@@ -568,196 +277,434 @@
                 <use>home</use>
                 <type>postal</type>
                 <text>American Indian or Alaska Native</text>
-                <line>175 Dalton Groves</line>
-                <city>New Jonathan</city>
-                <district>news</district>
-                <state>PA</state>
-                <postal_code>07550</postal_code>
-                <country>TL</country>
+                <line>596 John Village Suite 897</line>
+                <city>Danielchester</city>
+                <district>pass</district>
+                <state>AK</state>
+                <postal_code>29253</postal_code>
+                <country>KZ</country>
                 <period>
-                  <start>2014-06-05T15:11:58Z</start>
-                  <end>2012-12-06T20:59:25Z</end>
+                  <start>2011-08-20T13:36:04Z</start>
+                  <end>2012-02-17T14:06:02Z</end>
+                </period>
+              </address>
+            </addresses>
+          </practitioner>
+        </provider>
+        <role>
+          <code>purchasedservice</code>
+          <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimCareTeamRole</system>
+        </role>
+        <qualification>
+          <code>red</code>
+          <system>http://terminology.hl7.org/CodeSystem/ex-providerqualification</system>
+        </qualification>
+      </care_team>
+    </care_teams>
+    <diagnoses>
+      <diagnosis>
+        <sequence>3</sequence>
+        <diagnosis_code>
+          <coding>
+            <code>even</code>
+            <system>http://hl7.org/fhir/sid/icd-10-cm</system>
+            <version>citizen</version>
+            <display>English</display>
+          </coding>
+        </diagnosis_code>
+        <type>
+          <code>secondary</code>
+          <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimDiagnosisType</system>
+        </type>
+        <on_admission>
+          <code>whole</code>
+          <system>https://www.nubc.org/CodeSystem/PresentOnAdmissionIndicator</system>
+        </on_admission>
+        <package_code>area</package_code>
+      </diagnosis>
+    </diagnoses>
+    <procedures>
+      <procedure>
+        <sequence>2</sequence>
+        <procedure_code>
+          <coding>
+            <code>four</code>
+            <system>urn:oid:2.16.840.1.113883.6.285</system>
+            <version>available</version>
+            <display>English</display>
+          </coding>
+        </procedure_code>
+        <type>American</type>
+        <date>2010-03-19</date>
+      </procedure>
+    </procedures>
+    <precedence>5</precedence>
+    <insurances>
+      <insurance>
+        <is_focal>false</is_focal>
+        <pre_auth_ref>carry</pre_auth_ref>
+        <coverage>
+          <identifier>
+            <value>political</value>
+            <type>computer</type>
+            <system>economy</system>
+          </identifier>
+          <payor>
+            <reference>street</reference>
+          </payor>
+          <type>account</type>
+          <relationship>common</relationship>
+          <period>
+            <start>2014-06-19T12:51:45Z</start>
+            <end>2013-07-23T04:51:50Z</end>
+          </period>
+          <subscriber>
+            <member_id>red</member_id>
+            <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
+            <subscriber_id>many</subscriber_id>
+            <unique_person_id>simply</unique_person_id>
+            <unique_person_id_assigner>set</unique_person_id_assigner>
+            <unique_person_id_assigner_type>standard</unique_person_id_assigner_type>
+            <names>
+              <name>
+                <use>temp</use>
+                <text>American Indian or Alaska Native</text>
+                <family>Cobb</family>
+                <given>Kimberly</given>
+                <prefix>Mrs.</prefix>
+                <suffix>II</suffix>
+                <period>
+                  <start>2011-10-10T02:27:18Z</start>
+                  <end>2012-11-17T08:23:19Z</end>
+                </period>
+              </name>
+            </names>
+            <gender>female</gender>
+            <birth_date>1997-07-07</birth_date>
+            <marital_status>UNK</marital_status>
+            <deceased>
+              <is_deceased>false</is_deceased>
+              <deceased_date_time>2019-03-05T17:33:37Z</deceased_date_time>
+            </deceased>
+            <telecoms>
+              <telecom>
+                <system>phone</system>
+                <value>teacher</value>
+                <use>old</use>
+                <rank>1</rank>
+                <period>
+                  <start>2016-08-12T02:00:30Z</start>
+                  <end>2015-09-23T17:31:05Z</end>
+                </period>
+              </telecom>
+            </telecoms>
+            <addresses>
+              <address>
+                <use>home</use>
+                <type>postal</type>
+                <text>American Indian or Alaska Native</text>
+                <line>299 Lisa Street Apt. 037</line>
+                <city>South Joseshire</city>
+                <district>project</district>
+                <state>MI</state>
+                <postal_code>04807</postal_code>
+                <country>IL</country>
+                <period>
+                  <start>2018-08-28T12:22:37Z</start>
+                  <end>2019-03-11T04:25:03Z</end>
+                </period>
+              </address>
+            </addresses>
+            <communications>
+              <communication>
+                <language_code>it</language_code>
+                <is_preferred>false</is_preferred>
+                <display>Italian</display>
+              </communication>
+            </communications>
+            <us_core_race>
+              <omb_category_code>2106-3</omb_category_code>
+              <detailed_code>1167-6</detailed_code>
+              <text>asked but unknown</text>
+            </us_core_race>
+            <us_core_ethnicity>
+              <omb_category_code>2135-2</omb_category_code>
+              <detailed_code>2174-1</detailed_code>
+              <text>Hispanic or Latino</text>
+            </us_core_ethnicity>
+            <us_core_birth_sex>M</us_core_birth_sex>
+          </subscriber>
+          <beneficiary>
+            <member_id>she</member_id>
+            <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
+            <subscriber_id>manager</subscriber_id>
+            <unique_person_id>hit</unique_person_id>
+            <unique_person_id_assigner>student</unique_person_id_assigner>
+            <unique_person_id_assigner_type>create</unique_person_id_assigner_type>
+            <names>
+              <name>
+                <use>usual</use>
+                <text>American Indian or Alaska Native</text>
+                <family>Bolton</family>
+                <given>Jessica</given>
+                <prefix>Mrs.</prefix>
+                <suffix>II</suffix>
+                <period>
+                  <start>2019-10-31T22:25:26Z</start>
+                  <end>2017-08-15T14:18:04Z</end>
+                </period>
+              </name>
+            </names>
+            <gender>other</gender>
+            <birth_date>1975-04-21</birth_date>
+            <marital_status>A</marital_status>
+            <deceased>
+              <is_deceased>false</is_deceased>
+              <deceased_date_time>2018-06-14T05:03:08Z</deceased_date_time>
+            </deceased>
+            <telecoms>
+              <telecom>
+                <system>phone</system>
+                <value>truth</value>
+                <use>mobile</use>
+                <rank>3</rank>
+                <period>
+                  <start>2015-02-01T15:19:41Z</start>
+                  <end>2018-04-13T05:19:38Z</end>
+                </period>
+              </telecom>
+            </telecoms>
+            <addresses>
+              <address>
+                <use>work</use>
+                <type>physical</type>
+                <text>American Indian or Alaska Native</text>
+                <line>33304 Schmitt Prairie</line>
+                <city>Cainburgh</city>
+                <district>note</district>
+                <state>GA</state>
+                <postal_code>25448</postal_code>
+                <country>PE</country>
+                <period>
+                  <start>2020-02-04T01:14:26Z</start>
+                  <end>2012-12-10T02:49:08Z</end>
                 </period>
               </address>
             </addresses>
             <communications>
               <communication>
                 <language>
-                  <language_code>pl</language_code>
+                  <language_code>nl-BE</language_code>
                   <system>urn:ietf:bcp:47</system>
-                  <display>Polish</display>
+                  <display>Dutch (Region=Belgium)</display>
                 </language>
                 <is_preferred>false</is_preferred>
               </communication>
             </communications>
             <us_core_race>
               <omb_category_code>
-                <code>2106-3</code>
+                <code>ASKU</code>
                 <system>http://terminology.hl7.org/CodeSystem/v3-NullFlavor</system>
               </omb_category_code>
-              <omb_category_code>
-                <code>1002-5</code>
-                <system>urn:oid:2.16.840.1.113883.6.238</system>
-              </omb_category_code>
-              <detailed_code>2030-5</detailed_code>
-              <text>Asian</text>
+              <detailed_code>1169-2</detailed_code>
+              <text>Black or African American</text>
             </us_core_race>
             <us_core_ethnicity>
-              <omb_category_code>2135-2</omb_category_code>
-              <detailed_code>2176-6</detailed_code>
-              <text>asked but unknown</text>
+              <omb_category_code>2186-5</omb_category_code>
+              <detailed_code>2173-3</detailed_code>
+              <text>unknown</text>
             </us_core_ethnicity>
-            <us_core_birth_sex>UNK</us_core_birth_sex>
+            <us_core_birth_sex>F</us_core_birth_sex>
           </beneficiary>
-          <subscriber_id>many</subscriber_id>
-          <status>draft</status>
+          <subscriber_id>attack</subscriber_id>
+          <status>cancelled</status>
           <classes>
             <class>
               <plan>
-                <value>side</value>
-                <name>Christian Morrison</name>
+                <value>local</value>
+                <name>Michael Kidd</name>
                 <type>
                   <code>plan</code>
                   <system>http://terminology.hl7.org/CodeSystem/coverage-class</system>
                 </type>
               </plan>
               <group>
-                <value>live</value>
-                <name>Kevin Dyer</name>
+                <value>also</value>
+                <name>Andrew Montgomery</name>
                 <type>
                   <code>group</code>
                   <system>http://terminology.hl7.org/CodeSystem/coverage-class</system>
                 </type>
               </group>
               <coverage_class>
-                <value>data</value>
-                <name>James Moore MD</name>
+                <value>draw</value>
+                <name>Joseph Mitchell</name>
                 <type>
-                  <code>plan</code>
+                  <code>group</code>
                   <system>http://terminology.hl7.org/CodeSystem/coverage-class</system>
                 </type>
               </coverage_class>
             </class>
           </classes>
-          <order>3</order>
+          <order>2</order>
         </coverage>
       </insurance>
     </insurances>
     <items>
       <item>
-        <sequence>3</sequence>
-        <care_team_sequence>3</care_team_sequence>
-        <diagnosis_sequence>4</diagnosis_sequence>
+        <sequence>4</sequence>
+        <care_team_sequence>1</care_team_sequence>
+        <diagnosis_sequence>1</diagnosis_sequence>
         <procedure_sequence>4</procedure_sequence>
-        <information_sequence>3</information_sequence>
+        <information_sequence>1</information_sequence>
         <revenue>
-          <code>officer</code>
-          <system>detail</system>
+          <code>provide</code>
+          <system>spend</system>
         </revenue>
-        <category>table</category>
+        <category>south</category>
         <product_or_service>
-          <code>reality</code>
-          <system>http://hl7.org/fhir/sid/ndc</system>
+          <code>room</code>
+          <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBCompoundLiteral</system>
           <display>English</display>
           <text>American Indian or Alaska Native</text>
         </product_or_service>
         <modifier>
-          <code>indicate</code>
-          <system>http://hl7.org/fhir/sid/ndc</system>
+          <code>decide</code>
+          <system>http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets</system>
         </modifier>
-        <program_code>test</program_code>
+        <program_code>everyone</program_code>
         <serviced>
-          <serviced_date>2007-02-23</serviced_date>
+          <serviced_period>
+            <start>2016-08-05T05:36:35Z</start>
+            <end>2010-02-23T04:46:07Z</end>
+          </serviced_period>
         </serviced>
         <quantity>
-          <value>722.81</value>
-          <unit>security</unit>
-          <system>factor</system>
-          <code>history</code>
+          <value>385.27</value>
+          <unit>set</unit>
+          <system>response</system>
+          <code>thank</code>
         </quantity>
         <unit_price>
-          <value>95.1</value>
-          <currency>COU</currency>
+          <value>418.78</value>
+          <currency>PEN</currency>
         </unit_price>
-        <factor>522.72</factor>
+        <factor>200.95</factor>
         <net>
-          <value>753.42</value>
-          <currency>MMK</currency>
+          <value>23.0</value>
+          <currency>VEF</currency>
         </net>
-        <note_number>5</note_number>
+        <note_number>4</note_number>
         <location>
-          <location_codeable_concept>break</location_codeable_concept>
+          <location_reference>
+            <identifier>
+              <value>medical</value>
+              <type>bar</type>
+              <system>street</system>
+            </identifier>
+            <name>Steven Rowe</name>
+            <alias>wait</alias>
+            <description>food</description>
+            <type>SU</type>
+            <telecoms>
+              <telecom>
+                <system>url</system>
+                <value>worker</value>
+                <use>home</use>
+                <rank>3</rank>
+                <period>
+                  <start>2011-08-07T03:07:31Z</start>
+                  <end>2016-12-18T23:12:08Z</end>
+                </period>
+              </telecom>
+            </telecoms>
+            <address>
+              <use>work</use>
+              <type>postal</type>
+              <text>American Indian or Alaska Native</text>
+              <line>05385 Christopher Keys</line>
+              <city>Christophermouth</city>
+              <district>keep</district>
+              <state>HI</state>
+              <postal_code>57357</postal_code>
+              <country>KE</country>
+              <period>
+                <start>2011-02-22T00:19:45Z</start>
+                <end>2013-03-19T14:03:37Z</end>
+              </period>
+            </address>
+          </location_reference>
         </location>
         <adjudications>
           <adjudication>
             <adjudication_amount_type>
               <category>
-                <code>paidtopatient</code>
+                <code>benefit</code>
                 <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication</system>
               </category>
-              <reason>cup</reason>
+              <reason>skin</reason>
               <amount>
-                <value>844.24</value>
-                <currency>KWD</currency>
+                <value>323.76</value>
+                <currency>CLP</currency>
               </amount>
-              <value>26.24</value>
+              <value>887.89</value>
             </adjudication_amount_type>
             <denial_reason>
               <code>denialreason</code>
               <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator</system>
               <reason>
-                <code>role</code>
-                <system>https://x12.org/codes/remittance-advice-remark-codes</system>
+                <code>office</code>
+                <system>https://x12.org/codes/claim-adjustment-reason-codes</system>
               </reason>
               <amount>
-                <value>238.56</value>
-                <currency>AFN</currency>
+                <value>300.65</value>
+                <currency>AED</currency>
               </amount>
-              <value>229.91</value>
+              <value>970.17</value>
             </denial_reason>
             <allowed_units>
               <category>
                 <code>allowedunits</code>
                 <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator</system>
               </category>
-              <reason>describe</reason>
+              <reason>explain</reason>
               <amount>
-                <value>898.21</value>
-                <currency>AWG</currency>
+                <value>300.23</value>
+                <currency>XAU</currency>
               </amount>
-              <value>387.76</value>
+              <value>236.53</value>
             </allowed_units>
             <in_out_network>
-              <category>other</category>
-              <reason>ability</reason>
+              <category>innetwork</category>
+              <reason>help</reason>
               <amount>
-                <value>338.72</value>
-                <currency>CHE</currency>
+                <value>117.78</value>
+                <currency>GYD</currency>
               </amount>
-              <value>779.37</value>
+              <value>138.4</value>
             </in_out_network>
             <adjudication_generic>
               <category>
-                <code>allowedunits</code>
+                <code>inoutnetwork</code>
                 <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication</system>
               </category>
-              <reason>world</reason>
+              <reason>new</reason>
               <amount>
-                <value>818.1</value>
-                <currency>VEF</currency>
+                <value>336.93</value>
+                <currency>ERN</currency>
               </amount>
-              <value>162.79</value>
+              <value>745.98</value>
             </adjudication_generic>
           </adjudication>
         </adjudications>
         <details>
           <detail>
-            <product_or_service>trip</product_or_service>
+            <product_or_service>full</product_or_service>
             <quantity>
-              <value>348.09</value>
-              <unit>then</unit>
-              <system>beat</system>
-              <code>them</code>
+              <value>680.54</value>
+              <unit>game</unit>
+              <system>under</system>
+              <code>want</code>
             </quantity>
           </detail>
         </details>
@@ -767,39 +714,39 @@
       <adjudication>
         <adjudication_amount_type>
           <category>
-            <code>paidtoprovider</code>
+            <code>paidtopatient</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication</system>
           </category>
-          <reason>city</reason>
+          <reason>body</reason>
           <amount>
-            <value>700.72</value>
-            <currency>MAD</currency>
+            <value>770.97</value>
+            <currency>UZS</currency>
           </amount>
-          <value>858.39</value>
+          <value>421.1</value>
         </adjudication_amount_type>
         <denial_reason>
           <category>
             <code>denialreason</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator</system>
           </category>
-          <reason>maybe</reason>
+          <reason>contain</reason>
           <amount>
-            <value>969.25</value>
-            <currency>PEN</currency>
+            <value>602.38</value>
+            <currency>STN</currency>
           </amount>
-          <value>241.55</value>
+          <value>852.0</value>
         </denial_reason>
         <adjudication_generic>
           <category>
             <code>allowedunits</code>
-            <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication</system>
+            <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator</system>
           </category>
-          <reason>close</reason>
+          <reason>out</reason>
           <amount>
-            <value>620.76</value>
-            <currency>BZD</currency>
+            <value>38.49</value>
+            <currency>CVE</currency>
           </amount>
-          <value>268.18</value>
+          <value>305.59</value>
         </adjudication_generic>
       </adjudication>
     </adjudications>
@@ -807,76 +754,79 @@
       <total>
         <adjudication_amount_type>
           <category>
-            <code>deductible</code>
-            <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication</system>
+            <code>discount</code>
+            <system>http://terminology.hl7.org/CodeSystem/adjudication</system>
           </category>
           <amount>
-            <value>312.38</value>
-            <currency>CAD</currency>
+            <value>392.89</value>
+            <currency>AOA</currency>
           </amount>
         </adjudication_amount_type>
         <in_out_network>
           <category>
-            <code>innetwork</code>
+            <code>other</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus</system>
           </category>
           <amount>
-            <value>272.53</value>
-            <currency>TTD</currency>
+            <value>304.47</value>
+            <currency>NPR</currency>
           </amount>
         </in_out_network>
       </total>
     </totals>
     <payment>
-      <type>paid</type>
+      <type>partiallypaid</type>
       <adjustment>
-        <value>819.94</value>
-        <currency>BSD</currency>
+        <value>96.22</value>
+        <currency>MZN</currency>
       </adjustment>
-      <adjustment_reason>foot</adjustment_reason>
-      <date>1989-02-13</date>
+      <adjustment_reason>own</adjustment_reason>
+      <date>1973-01-03</date>
       <amount>
-        <value>621.67</value>
-        <currency>BOV</currency>
+        <value>991.11</value>
+        <currency>LYD</currency>
       </amount>
       <identifier>
-        <value>perform</value>
-        <type>according</type>
-        <system>star</system>
+        <value>full</value>
+        <type>firm</type>
+        <system>whole</system>
       </identifier>
     </payment>
     <process_notes>
       <process_note>
-        <number>3</number>
+        <number>1</number>
         <type>display</type>
         <text>American Indian or Alaska Native</text>
-        <language>es-AR</language>
+        <language>ru-RU</language>
       </process_note>
     </process_notes>
     <benefit_period>
-      <start>2020-08-07T20:47:54Z</start>
-      <end>2013-06-23T23:31:12Z</end>
+      <start>2013-08-06T07:37:51Z</start>
+      <end>2020-06-16T10:00:02Z</end>
     </benefit_period>
     <benefit_balances>
       <benefit_balance>
-        <category>evening</category>
-        <is_excluded>true</is_excluded>
-        <name>Sara Sanchez</name>
-        <description>drive</description>
-        <network>father</network>
-        <unit>fast</unit>
-        <term>simply</term>
+        <category>service</category>
+        <is_excluded>false</is_excluded>
+        <name>Michelle Barrett</name>
+        <description>find</description>
+        <network>these</network>
+        <unit>politics</unit>
+        <term>home</term>
         <financials>
           <financial>
-            <type>pick</type>
+            <type>magazine</type>
             <allowed>
               <allowed_money>
-                <value>314.47</value>
-                <currency>MNT</currency>
+                <value>996.66</value>
+                <currency>BND</currency>
               </allowed_money>
             </allowed>
             <used>
-              <used_unsigned_int>0</used_unsigned_int>
+              <used_money>
+                <value>614.2</value>
+                <currency>KYD</currency>
+              </used_money>
             </used>
           </financial>
         </financials>
@@ -891,185 +841,197 @@
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>contracted</code>
+            <code>noncontracted</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus</system>
           </code>
           <timing>
-            <timing_date>1994-07-06</timing_date>
+            <timing_period>
+              <start>2019-05-29T09:37:15Z</start>
+              <end>2020-03-02T08:27:07Z</end>
+            </timing_period>
           </timing>
           <value>
-            <value_quantity>
-              <value>985.92</value>
-              <comparator>buy</comparator>
-              <unit>what</unit>
-              <system>investment</system>
-              <code>on</code>
-            </value_quantity>
+            <value_string>fall</value_string>
           </value>
-          <reason>management</reason>
+          <reason>artist</reason>
         </billing_network_contracting_status>
         <admission_period>
-          <sequence>4</sequence>
+          <sequence>5</sequence>
           <category>
             <code>admissionperiod</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
-          <code>end</code>
+          <code>suddenly</code>
           <timing>
             <timingPeriod>
-              <start>2017-10-25T16:58:04Z</start>
-              <end>2020-09-26T12:55:38Z</end>
+              <start>2014-05-29T21:33:00Z</start>
+              <end>2014-10-21T12:40:48Z</end>
             </timingPeriod>
           </timing>
           <value>
-            <value_boolean>false</value_boolean>
+            <value_quantity>
+              <value>727.17</value>
+              <comparator>race</comparator>
+              <unit>of</unit>
+              <system>dog</system>
+              <code>type</code>
+            </value_quantity>
           </value>
-          <reason>technology</reason>
+          <reason>little</reason>
         </admission_period>
         <clm_recvd_date>
-          <sequence>1</sequence>
+          <sequence>5</sequence>
           <category>
             <code>clmrecvddate</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
-          <code>pretty</code>
-          <timing>2021-04-04</timing>
+          <code>alone</code>
+          <timing>2010-01-15</timing>
           <value>
-            <value_reference>
-              <reference>offer</reference>
-              <type>strong</type>
-              <identifier>
-                <value>top</value>
-                <type>news</type>
-                <system>mission</system>
-              </identifier>
-              <display>English</display>
-            </value_reference>
+            <value_quantity>
+              <value>900.89</value>
+              <comparator>hospital</comparator>
+              <unit>small</unit>
+              <system>weight</system>
+              <code>run</code>
+            </value_quantity>
           </value>
-          <reason>answer</reason>
+          <reason>base</reason>
         </clm_recvd_date>
         <type_of_bill>
-          <sequence>4</sequence>
+          <sequence>3</sequence>
           <category>
             <code>typeofbill</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>health</code>
+            <code>pull</code>
             <system>https://www.nubc.org/CodeSystem/TypeOfBill</system>
           </code>
           <timing>
-            <timing_period>
-              <start>2017-06-05T05:53:42Z</start>
-              <end>2017-09-02T19:23:00Z</end>
-            </timing_period>
+            <timing_date>2020-05-12</timing_date>
           </timing>
           <value>
-            <value_string>mind</value_string>
+            <value_reference>
+              <reference>inside</reference>
+              <type>every</type>
+              <identifier>
+                <value>box</value>
+                <type>fly</type>
+                <system>father</system>
+              </identifier>
+              <display>English</display>
+            </value_reference>
           </value>
-          <reason>leave</reason>
+          <reason>baby</reason>
         </type_of_bill>
         <point_of_origin>
-          <sequence>4</sequence>
+          <sequence>1</sequence>
           <category>
             <code>pointoforigin</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>scene</code>
+            <code>morning</code>
             <system>https://www.nubc.org/CodeSystem/PointOfOrigin</system>
           </code>
           <timing>
-            <timing_date>1986-09-29</timing_date>
+            <timing_date>2011-02-21</timing_date>
           </timing>
           <value>
-            <value_boolean>true</value_boolean>
+            <value_quantity>
+              <value>672.22</value>
+              <comparator>identify</comparator>
+              <unit>wish</unit>
+              <system>college</system>
+              <code>last</code>
+            </value_quantity>
           </value>
-          <reason>win</reason>
+          <reason>however</reason>
         </point_of_origin>
         <adm_type>
-          <sequence>3</sequence>
+          <sequence>2</sequence>
           <category>
             <code>admtype</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>indicate</code>
+            <code>focus</code>
             <system>https://www.nubc.org/CodeSystem/PriorityTypeOfAdmitOrVisit</system>
           </code>
           <timing>
-            <timing_period>
-              <start>2017-12-19T23:05:36Z</start>
-              <end>2010-02-25T04:00:47Z</end>
-            </timing_period>
+            <timing_date>2021-04-19</timing_date>
           </timing>
           <value>
             <value_reference>
-              <reference>choice</reference>
-              <type>walk</type>
+              <reference>name</reference>
+              <type>culture</type>
               <identifier>
-                <value>cell</value>
-                <type>nature</type>
-                <system>five</system>
+                <value>just</value>
+                <type>film</type>
+                <system>lawyer</system>
               </identifier>
               <display>English</display>
             </value_reference>
           </value>
-          <reason>south</reason>
+          <reason>line</reason>
         </adm_type>
         <discharge_status>
-          <sequence>5</sequence>
+          <sequence>1</sequence>
           <category>
             <code>discharge-status</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>up</code>
+            <code>enough</code>
             <system>https://www.nubc.org/CodeSystem/PatDischargeStatus</system>
           </code>
           <timing>
             <timing_period>
-              <start>2010-12-02T02:08:44Z</start>
-              <end>2010-11-23T21:33:54Z</end>
+              <start>2011-09-24T09:03:56Z</start>
+              <end>2013-03-06T01:59:26Z</end>
             </timing_period>
           </timing>
           <value>
-            <value_string>just</value_string>
+            <value_quantity>
+              <value>357.36</value>
+              <comparator>leave</comparator>
+              <unit>whom</unit>
+              <system>without</system>
+              <code>contain</code>
+            </value_quantity>
           </value>
-          <reason>yard</reason>
+          <reason>local</reason>
         </discharge_status>
         <drg>
-          <sequence>1</sequence>
+          <sequence>2</sequence>
           <category>
             <code>drg</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>hour</code>
+            <code>always</code>
             <system>https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/AcuteInpatientPPS/MS-DRG-Classifications-and-Software</system>
           </code>
           <timing>
-            <timing_period>
-              <start>2014-11-13T21:43:04Z</start>
-              <end>2018-05-22T20:42:47Z</end>
-            </timing_period>
+            <timing_date>2014-05-19</timing_date>
           </timing>
           <value>
             <value_reference>
-              <reference>ever</reference>
-              <type>card</type>
+              <reference>beyond</reference>
+              <type>certain</type>
               <identifier>
-                <value>then</value>
-                <type>live</type>
-                <system>soldier</system>
+                <value>authority</value>
+                <type>pay</type>
+                <system>the</system>
               </identifier>
               <display>English</display>
             </value_reference>
           </value>
-          <reason>level</reason>
+          <reason>office</reason>
         </drg>
         <performing_network_contracting_status>
-          <sequence>2</sequence>
+          <sequence>1</sequence>
           <category>
             <code>performingnetworkcontractingstatus</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
@@ -1079,77 +1041,77 @@
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus</system>
           </code>
           <timing>
-            <timing_date>2018-12-26</timing_date>
+            <timing_date>1978-05-20</timing_date>
           </timing>
           <value>
-            <value_boolean>false</value_boolean>
+            <value_string>paper</value_string>
           </value>
-          <reason>us</reason>
+          <reason>usually</reason>
         </performing_network_contracting_status>
         <service_facility>
-          <sequence>3</sequence>
+          <sequence>2</sequence>
           <category>
             <code>servicefacility</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
-          <code>cold</code>
+          <code>research</code>
           <timing>
-            <timing_date>1988-01-28</timing_date>
+            <timing_date>1994-01-06</timing_date>
           </timing>
           <value>
             <value_reference>
-              <npi>2739165053</npi>
-              <clia>base</clia>
+              <npi>6986320799</npi>
+              <clia>author</clia>
               <tax>
-                <value>describe</value>
-                <type>tax</type>
-                <system>bag</system>
+                <value>sense</value>
+                <type>actually</type>
+                <system>onto</system>
               </tax>
               <naic_code>
-                <value>ahead</value>
-                <type>around</type>
-                <system>doctor</system>
+                <value>whom</value>
+                <type>discover</type>
+                <system>current</system>
               </naic_code>
               <payer_id>
-                <value>feel</value>
-                <type>crime</type>
-                <system>since</system>
+                <value>time</value>
+                <type>hear</type>
+                <system>it</system>
               </payer_id>
               <is_active>false</is_active>
-              <name>Chris Thompson</name>
-              <alias>ability</alias>
+              <name>Kimberly Boyd</name>
+              <alias>far</alias>
               <telecoms>
                 <telecom>
-                  <system>fax</system>
-                  <value>pattern</value>
-                  <use>home</use>
-                  <rank>4</rank>
+                  <system>phone</system>
+                  <value>perform</value>
+                  <use>temp</use>
+                  <rank>1</rank>
                   <period>
-                    <start>2014-07-12T20:43:23Z</start>
-                    <end>2020-12-26T00:05:17Z</end>
+                    <start>2016-02-22T16:20:56Z</start>
+                    <end>2013-06-12T00:06:52Z</end>
                   </period>
                 </telecom>
               </telecoms>
               <addresses>
                 <address>
-                  <use>billing</use>
-                  <type>both</type>
+                  <use>work</use>
+                  <type>postal</type>
                   <text>American Indian or Alaska Native</text>
-                  <line>0284 Miller Trail Suite 821</line>
-                  <city>Donaldmouth</city>
-                  <district>natural</district>
-                  <state>MN</state>
-                  <postal_code>38237</postal_code>
-                  <country>LR</country>
+                  <line>258 Luis Mall</line>
+                  <city>Molinamouth</city>
+                  <district>idea</district>
+                  <state>AL</state>
+                  <postal_code>18163</postal_code>
+                  <country>KW</country>
                   <period>
-                    <start>2016-11-10T05:26:00Z</start>
-                    <end>2020-09-23T02:08:54Z</end>
+                    <start>2011-03-13T06:15:10Z</start>
+                    <end>2010-02-21T00:29:07Z</end>
                   </period>
                 </address>
               </addresses>
             </value_reference>
           </value>
-          <reason>lay</reason>
+          <reason>away</reason>
         </service_facility>
         <brand_generic_code>
           <sequence>1</sequence>
@@ -1158,40 +1120,40 @@
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>man</code>
+            <code>ok</code>
             <system>http://terminology.hl7.org/CodeSystem/NCPDP/BrandGenericIndicator</system>
           </code>
           <timing>
-            <timing_date>2024-07-23</timing_date>
+            <timing_date>1990-05-12</timing_date>
           </timing>
           <value>
             <value_quantity>
-              <value>260.66</value>
-              <comparator>director</comparator>
-              <unit>prevent</unit>
-              <system>none</system>
-              <code>also</code>
+              <value>297.91</value>
+              <comparator>general</comparator>
+              <unit>project</unit>
+              <system>however</system>
+              <code>many</code>
             </value_quantity>
           </value>
-          <reason>buy</reason>
+          <reason>leader</reason>
         </brand_generic_code>
         <rx_origin_code>
-          <sequence>4</sequence>
+          <sequence>2</sequence>
           <category>
             <code>rxorigincode</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>hundred</code>
+            <code>floor</code>
             <system>http://terminology.hl7.org/CodeSystem/NCPDP/PrescriptionOriginCode</system>
           </code>
           <timing>
-            <timing_date>2006-10-13</timing_date>
+            <timing_date>1986-01-25</timing_date>
           </timing>
           <value>
-            <value_string>phone</value_string>
+            <value_string>career</value_string>
           </value>
-          <reason>large</reason>
+          <reason>represent</reason>
         </rx_origin_code>
         <compound_code>
           <sequence>4</sequence>
@@ -1200,41 +1162,41 @@
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>window</code>
+            <code>miss</code>
             <system>http://terminology.hl7.org/CodeSystem/NCPDP/CompoundCode</system>
           </code>
           <timing>
             <timing_period>
-              <start>2016-06-06T14:54:54Z</start>
-              <end>2016-04-12T21:54:35Z</end>
+              <start>2018-07-08T10:06:46Z</start>
+              <end>2014-11-30T21:53:06Z</end>
             </timing_period>
           </timing>
           <value>
-            <value_string>agency</value_string>
+            <value_string>teacher</value_string>
           </value>
-          <reason>hotel</reason>
+          <reason>money</reason>
         </compound_code>
         <days_supply>
-          <sequence>4</sequence>
+          <sequence>5</sequence>
           <category>
             <code>dayssupply</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
-          <code>reality</code>
+          <code>success</code>
           <timing>
             <timing_period>
-              <start>2012-12-27T15:56:25Z</start>
-              <end>2010-12-13T23:31:23Z</end>
+              <start>2016-12-23T06:10:26Z</start>
+              <end>2013-01-01T21:09:05Z</end>
             </timing_period>
           </timing>
           <value>
-            <value>356.43</value>
-            <comparator>society</comparator>
-            <unit>to</unit>
-            <system>leader</system>
-            <code>white</code>
+            <value>537.29</value>
+            <comparator>financial</comparator>
+            <unit>carry</unit>
+            <system>war</system>
+            <code>firm</code>
           </value>
-          <reason>owner</reason>
+          <reason>whose</reason>
         </days_supply>
         <dawcode>
           <sequence>1</sequence>
@@ -1243,41 +1205,47 @@
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
           <code>
-            <code>look</code>
+            <code>thing</code>
             <system>http://terminology.hl7.org/CodeSystem/NCPDP/DispensedAsWrittenOrProductSelectionCode</system>
           </code>
           <timing>
-            <timing_period>
-              <start>2016-03-27T01:11:45Z</start>
-              <end>2013-02-13T12:37:23Z</end>
-            </timing_period>
+            <timing_date>2012-09-21</timing_date>
           </timing>
           <value>
-            <value_boolean>false</value_boolean>
+            <value_quantity>
+              <value>425.49</value>
+              <comparator>evening</comparator>
+              <unit>street</unit>
+              <system>sister</system>
+              <code>need</code>
+            </value_quantity>
           </value>
-          <reason>those</reason>
+          <reason>indeed</reason>
         </dawcode>
         <refill_num>
-          <sequence>1</sequence>
+          <sequence>3</sequence>
           <category>
             <code>refillnum</code>
             <system>http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType</system>
           </category>
-          <code>democratic</code>
+          <code>manage</code>
           <timing>
-            <timing_date>1994-07-02</timing_date>
+            <timing_period>
+              <start>2017-04-28T15:01:38Z</start>
+              <end>2016-03-13T18:39:56Z</end>
+            </timing_period>
           </timing>
           <value>
-            <value>443.66</value>
-            <comparator>minute</comparator>
-            <unit>action</unit>
-            <system>station</system>
-            <code>race</code>
+            <value>57.98</value>
+            <comparator>he</comparator>
+            <unit>stand</unit>
+            <system>production</system>
+            <code>cover</code>
           </value>
-          <reason>institution</reason>
+          <reason>plan</reason>
         </refill_num>
       </supporting_info>
     </supporting_infos>
-    <record_type>A</record_type>
+    <record_type>D</record_type>
   </eob>
 </eob_list>
