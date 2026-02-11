@@ -1,5 +1,9 @@
-# Sample file builder configuration
-# Each entry describes a sample XML file to generate from a canonical XSD
+# Sample file builder configuration (single source of truth)
+# - Builds: each entry describes a sample XML file to generate from a canonical XSD.
+# - Pipeline: schema paths and transforms are derived from this file (see tools/get_changed_pipeline_targets.py).
+#   To add a new schema: add a build entry below. To add a transform: set transform_file and fhir_profile for that build.
+
+core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
 
 builds:
   # Provider Directory - practitioner
