@@ -110,7 +110,21 @@ jobs:
             python tools/run_pipeline.py --target "$target"
           done
 
+      - name: Check for sample file changes
+        id: check_changes
+        run: |
+          # Check if there are any changes (staged or unstaged) to sample files
+          if git status --porcelain canonical-samples/v10.0/*.xml 2>/dev/null | grep -q .; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in sample files:"
+            git status --short canonical-samples/v10.0/*.xml
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to sample files detected - skipping commit"
+          fi
+
       - name: Auto-commit generated sample
+        if: steps.check_changes.outputs.has_changes == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[skip ci] Auto-update sample'
