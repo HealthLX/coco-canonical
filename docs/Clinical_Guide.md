@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Clinical Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # Clinical Implementation Guide
 

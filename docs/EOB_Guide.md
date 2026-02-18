@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "EOB Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # EOB Implementation Guide
 

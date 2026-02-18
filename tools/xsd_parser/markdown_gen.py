@@ -26,6 +26,12 @@ def escape_markdown_table_cell(text):
     text = text.replace("\n", " ")
     return text
 
+def generate_front_matter(schema_info: SchemaInfo):
+    """Generate Jekyll front matter so GitHub Pages applies the default layout."""
+    title = f"{schema_info.display_name} Implementation Guide"
+    return f"---\nlayout: default\ntitle: \"{title}\"\n---\n\n"
+
+
 def generate_hlx_tbl_format():
     """Generate HLX style for markdown tables."""
     return ""
@@ -63,7 +69,7 @@ def generate_header(root, schema_info: SchemaInfo):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
     
-    output = "![HLX Logo](../assets/hlx_logo.png)\n\n"
+    output = "![HLX Logo](assets/hlx_logo.png)\n\n"
     output += f"# {schema_info.display_name} Implementation Guide\n\n"
     output += f"**HLX0123 HLX {schema_info.display_name} IG (XSD_V{version})**\n\n"
     output += f"**Version {version}**\n\n"

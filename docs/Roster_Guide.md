@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Roster Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # Roster Implementation Guide
 

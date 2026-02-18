@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Provider Directory Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # Provider-Directory Implementation Guide
 

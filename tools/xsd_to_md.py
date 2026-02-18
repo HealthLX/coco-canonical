@@ -25,6 +25,7 @@ from xsd_parser import (
     parse_core_model_types,
     find_used_core_types,
     generate_core_types_section,
+    generate_front_matter,
     generate_header,
     generate_hlx_tbl_format,
     generate_toc,
@@ -89,6 +90,9 @@ def generate_markdown(xsd_path, release_tag=None):
         output = ""
         
         try:
+            # Jekyll front matter — must be the very first bytes of the file
+            output += generate_front_matter(schema_info)
+
             # Table Format Template
             output += generate_hlx_tbl_format()
 

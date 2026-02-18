@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Core-Model Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # Core-Model Implementation Guide
 

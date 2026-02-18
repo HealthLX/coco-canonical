@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Formulary Implementation Guide"
+---
+
+![HLX Logo](assets/hlx_logo.png)
 
 # Formulary Implementation Guide
 
