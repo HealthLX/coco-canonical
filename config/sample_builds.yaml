@@ -1,41 +1,57 @@
-# Sample file builder configuration
-# Each entry describes a sample XML file to generate from a canonical XSD
+# Sample file builder configuration (single source of truth)
+# - Builds: each entry describes a sample XML file to generate from a canonical XSD.
+# - Pipeline: schema paths and transforms are derived from this file (see tools/get_changed_pipeline_targets.py).
+#   To add a new schema: add a build entry below. To add a transform: set transform_file and fhir_profile for that build.
+
+core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
 
 builds:
   # Provider Directory - practitioner
   - canonical_name: providerdirectory
     root_element_name: providers
-    schema_file_name: provider-directory.xsd
+    schema_file_name: Provider-Directory.xsd
     output_file_name: provider-directory-practitioner-sample.xml
     provider_directory_child: practitioner
+    transform_file: null
+    fhir_profile: null
 
   # Provider Directory - providing_organization
   - canonical_name: providerdirectory
     root_element_name: providers
-    schema_file_name: provider-directory.xsd
+    schema_file_name: Provider-Directory.xsd
     output_file_name: provider-directory-organization-sample.xml
     provider_directory_child: providing_organization
+    transform_file: null
+    fhir_profile: null
 
   # Roster
   - canonical_name: roster
     root_element_name: roster
-    schema_file_name: roster.xsd
+    schema_file_name: Roster.xsd
     output_file_name: roster-sample.xml
+    transform_file: transforms/v10.0/roster-patient.xsl
+    fhir_profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
 
   # Formulary
   - canonical_name: formulary
     root_element_name: coverage_plans
-    schema_file_name: formulary.xsd
+    schema_file_name: Formulary.xsd
     output_file_name: formulary-sample.xml
+    transform_file: null
+    fhir_profile: null
 
   # Explanation of Benefits (EOB)
   - canonical_name: eob
     root_element_name: eob_list
-    schema_file_name: eob.xsd
+    schema_file_name: EOB.xsd
     output_file_name: eob-sample.xml
+    transform_file: null
+    fhir_profile: null
 
   # Clinical
   - canonical_name: clinical
     root_element_name: clinicals
-    schema_file_name: clinical.xsd
+    schema_file_name: Clinical.xsd
     output_file_name: clinical-sample.xml
+    transform_file: null
+    fhir_profile: null

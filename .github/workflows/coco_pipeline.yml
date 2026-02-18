@@ -1,0 +1,134 @@
+name: CoCo Pipeline
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      contents: read
+    outputs:
+      run: ${{ steps.filter.outputs.pipeline }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # When a PR changes any schema or sample_builds.yaml, run-pipeline runs (detect-changes sets run=true)
+      - name: Check for pipeline-relevant changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filters: |
+            pipeline:
+              - 'schemas/v10.0/**'
+              - 'config/sample_builds.yaml'
+
+      - name: Report whether run-pipeline will run
+        run: |
+          echo "Changed files matched pipeline paths: ${{ steps.filter.outputs.pipeline }}"
+          echo "run-pipeline job will run: ${{ steps.filter.outputs.pipeline == 'true' }}"
+
+  run-pipeline:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set base ref for change detection
+        id: base_ref
+        run: |
+          if [ -n "${{ github.event.pull_request.base.sha }}" ]; then
+            echo "ref=${{ github.event.pull_request.base.sha }}" >> $GITHUB_OUTPUT
+          else
+            git fetch origin main 2>/dev/null || git fetch origin master 2>/dev/null || true
+            echo "ref=origin/main" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Determine changed targets and whether Docker is needed from config (no hardcoded schema names)
+      - name: Determine changed targets
+        id: changed
+        run: |
+          eval $(python tools/get_changed_pipeline_targets.py --base "${{ steps.base_ref.outputs.ref }}")
+          echo "targets=$TARGETS" >> $GITHUB_OUTPUT
+          echo "needs_docker=$NEEDS_DOCKER" >> $GITHUB_OUTPUT
+          echo "Targets to run: $TARGETS"
+          echo "Needs Docker: $NEEDS_DOCKER"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Start Docker Compose services
+        if: steps.changed.outputs.needs_docker == 'true'
+        run: |
+          docker compose up -d
+          echo "Waiting for validator service to be ready..."
+          timeout 60 bash -c 'until curl -f http://localhost:4567/health; do sleep 2; done' || true
+
+      - name: Load FHIR package
+        if: steps.changed.outputs.needs_docker == 'true'
+        run: |
+          if [ -f "assets/fhir-packages/package.tgz" ]; then
+            curl -X POST \
+              -H 'Content-Type: application/gzip' \
+              -H 'Content-Encoding: gzip' \
+              --data-binary '@assets/fhir-packages/package.tgz' \
+              'http://localhost:4567/igs' || echo "Warning: Failed to load FHIR package"
+          else
+            echo "Warning: FHIR package not found"
+          fi
+
+      - name: Run pipeline for changed targets
+        run: |
+          for target in ${{ steps.changed.outputs.targets }}; do
+            [ -z "$target" ] && continue
+            echo "Running pipeline for target: $target"
+            python tools/run_pipeline.py --target "$target"
+          done
+
+      - name: Check for sample file changes
+        id: check_changes
+        run: |
+          # Check if there are any changes (staged or unstaged) to sample files
+          if git status --porcelain canonical-samples/v10.0/*.xml 2>/dev/null | grep -q .; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in sample files:"
+            git status --short canonical-samples/v10.0/*.xml
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to sample files detected - skipping commit"
+          fi
+
+      - name: Auto-commit generated sample
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '[skip ci] Auto-update sample'
+          file_pattern: 'canonical-samples/v10.0/*.xml'
+          skip_dirty_check: true
+          skip_fetch: true
+          branch: ${{ github.head_ref || github.ref_name }}

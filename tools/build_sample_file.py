@@ -153,11 +153,6 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
             if context_dict is not None:
                 context_dict['ethnicity_code'] = eth_code
             return eth_code
-    
-    # Handle omb_category_code specifically (used in ethnicity contexts)
-    if tag_name == f"{COCO_NS}omb_category_code":
-        # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
-        return random.choice(valid_ethnicity_codes)
 
     # 1.Handle enum values (AFTER race/ethnicity check to prevent ASKU for ethnicity)
     if getattr(xsd_element.type, "is_simple", lambda: False)():  # can i remove this check?
@@ -216,11 +211,6 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
                             return random.choice(enum_list)
                 except (AttributeError, TypeError):
                     pass
-    
-    # Handle omb_category_code specifically (used in ethnicity contexts)
-    if tag_name == f"{COCO_NS}omb_category_code":
-        # Ethnicity codes must NEVER be UNK/ASKU - only valid codes (2135-2, 2186-5)
-        return random.choice(valid_ethnicity_codes)
 
     # FIX: Handle display names based on context - ensure they match the code
     if tag_name == f"{COCO_NS}display":
