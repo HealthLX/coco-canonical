@@ -159,6 +159,19 @@ To run unit tests locally:
 - Then, run all the test scripts in the tests folder using this script:
   - `pytest tests/unit`
 
+#### End-to-End Pipeline Tests
+
+The coco-pipeline runs on pull request creation and uses a detect-changes script to determine which canonical models are affected. When schemas or `config/sample_builds.yaml` change, the pipeline runs for each affected target. It supports multiple schema changes in a single PR: each changed schema (or the shared Core-Model) is processed independently.
+
+For each target, the pipeline:
+
+1. Builds sample XML from the schema
+2. Validates the generated XML against the XSD schema
+3. Applies an XSLT transform to FHIR only if that schema has a transform configured (e.g. roster → Patient); targets without a transform skip this step
+4. Validates the FHIR output against the configured FHIR profile when a transform was applied
+
+So transforms and FHIR validation run only for schemas that have them configured; other targets are built and XSD-validated only.
+
 #### Integration Tests
 
 Integration tests are not included in the open source version of this project.
