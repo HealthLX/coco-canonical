@@ -38,15 +38,23 @@ def generate_hlx_tbl_format():
 
 
 def to_md_table(headers, rows):
-    """Generate markdown table with proper escaping."""
+    """Generate markdown table with proper escaping.
+
+    Uses a kramdown IAL ({: .heatMap}) instead of a wrapping <div> so that
+    GitHub Pages / kramdown actually processes the pipe-table syntax rather
+    than treating it as raw HTML content.
+    """
     if not headers:
         return ""
-    
+
     # Escape headers
     escaped_headers = [escape_markdown_table_cell(h) for h in headers]
     out = "| " + " | ".join(escaped_headers) + " |\n"
     out += "| " + " | ".join(['---'] * len(headers)) + " |\n"
-    
+
+    if not rows:
+        return out + "{: .heatMap}\n\n"
+
     # Escape and format rows
     for row in rows:
         # Ensure row has same number of columns as headers
@@ -54,11 +62,12 @@ def to_md_table(headers, rows):
             row.append("–")
         if len(row) > len(headers):
             row = row[:len(headers)]
-        
+
         escaped_row = [escape_markdown_table_cell(cell) for cell in row]
         out += "| " + " | ".join(escaped_row) + " |\n"
-        html_out = "<div class = \"heatMap\">\n\n" + out + "\n\n</div>\n\n"
-    return html_out
+
+    # IAL must be on the line immediately following the last table row (no blank line)
+    return out + "{: .heatMap}\n\n"
 
 
 def generate_header(root, schema_info: SchemaInfo):
@@ -69,7 +78,7 @@ def generate_header(root, schema_info: SchemaInfo):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
     
-    output = "![HLX Logo](assets/hlx_logo.png)\n\n"
+    output = "![HLX Logo](assets/css/hlx_logo.png)\n\n"
     output += f"# {schema_info.display_name} Implementation Guide\n\n"
     output += f"**HLX0123 HLX {schema_info.display_name} IG (XSD_V{version})**\n\n"
     output += f"**Version {version}**\n\n"
@@ -158,11 +167,10 @@ def generate_change_log(schema_info: SchemaInfo, release_tag=None):
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
 
     output = "<h2 style=\"color:#E60073\">Change Log</h2>\n\n"
-    output += "<div class = \"heatMap\">\n\n"
     output += "| Version | Date |\n"
     output += "|---------|------|\n"
-    output += f"| {version} | {date_str} |\n\n"
-    output += "</div>\n\n"
+    output += f"| {version} | {date_str} |\n"
+    output += "{: .heatMap}\n\n"
     
     return output
 

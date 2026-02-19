@@ -34,7 +34,7 @@ body {
 }
 
 .site-nav {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
@@ -45,12 +45,23 @@ body {
 }
 
 .nav-home {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.05rem;
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
   letter-spacing: 0.02em;
   white-space: nowrap;
+}
+
+.nav-logo {
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
+  flex-shrink: 0;
+  border-radius: 4px;
 }
 
 .nav-home:hover {
@@ -83,7 +94,7 @@ body {
    Main content
    ============================================================ */
 .page-content {
-  max-width: 1100px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
@@ -97,25 +108,37 @@ body {
    ============================================================ */
 .home-hero {
   text-align: center;
-  padding: 2.5rem 1rem 2rem;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 2rem;
+  padding: 3rem 1.5rem 2.5rem;
+  background: #f2f4f6;
+  margin: -2.5rem -1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.site-logo {
-  max-height: 64px;
-  margin-bottom: 1.25rem;
+.home-hero .hero-logo {
+  height: 350px !important;
+  width: auto !important;
+  margin: 0 auto 1.5rem !important;
+  display: block;
 }
 
 .home-hero h1 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   color: #0d1b2a;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .tagline {
-  color: #555;
-  font-size: 1.05rem;
+  color: #4b5563;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .guide-list {
@@ -140,20 +163,32 @@ body {
 .guide-list li {
   background: #f8f9fa;
   border: 1px solid #e0e0e0;
-  border-left: 4px solid #3FA5DC;
+  border-left: 4px solid #E60073;
   border-radius: 6px;
   padding: 1rem 1.25rem;
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .guide-list li:hover {
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #E60073;
+}
+
+.card-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .guide-list li a {
   display: block;
   font-weight: 600;
-  font-size: 0.975rem;
+  font-size: 1.05rem;
   color: #0d1b2a;
   text-decoration: none;
   margin-bottom: 0.35rem;
@@ -166,15 +201,14 @@ body {
 .guide-desc {
   display: block;
   font-size: 0.82rem;
-  color: #666;
+  color: #4b5563;
   line-height: 1.45;
 }
 
 .about {
-  padding: 1.5rem;
+  padding: 2rem;
   background: #f0f7ff;
   border-radius: 8px;
-  border: 1px solid #cce0f5;
 }
 
 .about h2 {
@@ -279,22 +313,28 @@ body {
   border-collapse: collapse;
   width: 100%;
   margin: 1rem 0 1.5rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  table-layout: fixed;
+  background: #ffffff;
 }
 
 .page-content th {
   background: #3FA5DC;
   color: #ffffff;
   text-align: center;
-  padding: 0.6rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   font-weight: 600;
   word-wrap: break-word;
+  word-break: break-word;
 }
 
 .page-content td {
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.5rem;
   border: 1.5px solid lightgrey;
   vertical-align: top;
+  background: #ffffff;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .page-content tr:nth-child(even) td {
@@ -306,6 +346,8 @@ body {
    ============================================================ */
 .heatMap {
   text-align: left;
+  background: #ffffff;
+  table-layout: fixed;
 }
 
 .heatMap thead {
@@ -316,17 +358,23 @@ body {
 .heatMap th {
   background: #3FA5DC;
   word-wrap: break-word;
+  word-break: break-word;
   text-align: center;
   border: 0px solid lightgrey;
   color: white;
+  padding: 0.5rem 0.5rem;
 }
 
 .heatMap td {
   border: 1.5px solid lightgrey;
+  background: #ffffff;
+  word-wrap: break-word;
+  word-break: break-word;
+  padding: 0.4rem 0.5rem;
 }
 
-.heatMap tr:nth-child(even) {
-  background: lightgrey;
+.heatMap tr:nth-child(even) td {
+  background: #f0f0f0;
 }
 
 .heatMap td:first-child {

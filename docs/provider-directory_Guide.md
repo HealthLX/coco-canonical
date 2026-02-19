@@ -3,7 +3,7 @@ layout: default
 title: "Provider Directory Implementation Guide"
 ---
 
-![HLX Logo](assets/hlx_logo.png)
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Provider-Directory Implementation Guide
 

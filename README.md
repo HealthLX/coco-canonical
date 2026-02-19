@@ -3,6 +3,9 @@
 #### Unit Test Status
 ![Pytest](https://github.com/teschglobal/hlx-saas/actions/workflows/unit_tests.yml/badge.svg)
 
+## Dynamic Canonical Schema Documentation
+**Live docs:** https://healthlx.github.io/coco-canonical/
+
 # Table of Contents
 - [1. Project Overview](#1overview)
   - [Guiding Prinicples](#guiding-prinicples)

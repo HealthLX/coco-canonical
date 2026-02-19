@@ -10,7 +10,10 @@
 <body>
   <header class="site-header">
     <nav class="site-nav">
-      <a class="nav-home" href="{{ "/" | relative_url }}">CoCo Docs</a>
+      <a class="nav-home" href="{{ "/" | relative_url }}">
+        <img src="{{ "/assets/css/coco.png" | relative_url }}" alt="CoCo" class="nav-logo" />
+        CoCo Docs
+      </a>
       <ul class="nav-links">
         <li><a href="{{ "Core-model_Guide.html" | relative_url }}">Core-Model</a></li>
         <li><a href="{{ "EOB_Guide.html" | relative_url }}">EOB</a></li>

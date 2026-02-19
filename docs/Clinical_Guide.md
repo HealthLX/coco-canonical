@@ -3,7 +3,7 @@ layout: default
 title: "Clinical Implementation Guide"
 ---
 
-![HLX Logo](assets/hlx_logo.png)
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Clinical Implementation Guide
 

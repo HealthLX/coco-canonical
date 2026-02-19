@@ -3,7 +3,7 @@ layout: default
 title: "Core-Model Implementation Guide"
 ---
 
-![HLX Logo](assets/hlx_logo.png)
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Core-Model Implementation Guide
 
