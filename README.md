@@ -208,6 +208,7 @@ All dependency management, project metadata, and tooling configuration are handl
 |---------|---------------|---------|
 | Install runtime dependencies | `pip install .` | `pip install .` |
 | Install with dev/test extras | `pip install .[dev]` | `pip install .[dev]` |
+| Install with API extras | `pip install .[api]` | `pip install .[api]` |
 | Run tests | `pytest` | `pytest` |
 
 Notes:
@@ -244,6 +245,25 @@ YAML keys per build entry:
 - `output_file_name` (string)
 - `provider_directory_child` (string, optional)
 
+### HTTP API (for web app / other repo)
+
+A small FastAPI app exposes config, sample building, XSLT transform, and artifact listing/download over HTTP so another repo’s web app can list canonicals, generate samples, run transforms, and pull schemas/transforms/samples.
+
+**Run the API** (from project root, after `pip install .[api]`):
+
+| Purpose | Command |
+|---------|--------|
+| Start API server | `uvicorn api.main:app --reload` |
+| Start on a specific host/port | `uvicorn api.main:app --host 0.0.0.0 --port 8000` |
+
+- Docs (Swagger): **http://localhost:8000/docs**
+- Discovery: `GET /builds`, `GET /canonicals`, `GET /config`
+- Generate samples: `POST /samples/generate` (body: `{"target": "roster"}` or `{"all": true}`), `POST /samples/generate/{target}`, `POST /samples/generate/{target}/content`
+- Transform (canonical → FHIR): `POST /transform` (body: `{"target": "roster"}` or `{"canonical_file": "...", "xslt_file": "..."}`), `POST /transform/{target}`, `POST /transform/{target}/content`
+- List/download: `GET /samples`, `GET /samples/canonical`, `GET /samples/fhir`, `GET /schemas`, `GET /transforms`; download via `GET /samples/canonical/{filename}`, `GET /samples/fhir/{filename}`, `GET /schemas/{filename}`, `GET /transforms/{filename}`
+- Regenerate and serve: `GET /samples/canonical/{filename}/regenerate`
+
+Config path can be overridden with env `COCO_CONFIG_PATH`.
 
 ### Refresh python virtual environment
 
