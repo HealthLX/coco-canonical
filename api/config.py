@@ -14,6 +14,26 @@ _CONFIG_PATH_ENV = "COCO_CONFIG_PATH"
 DEFAULT_CONFIG_PATH = PROJECT_ROOT / "config" / "sample_builds.yaml"
 
 
+def get_canonical_samples_dir() -> Path:
+    """Return the directory where canonical sample XML files are written/read.
+    Override with env var COCO_CANONICAL_SAMPLES_DIR to redirect output (e.g. into coco-flow/data/).
+    """
+    env = os.environ.get("COCO_CANONICAL_SAMPLES_DIR")
+    p = Path(env) if env else PROJECT_ROOT / "canonical-samples" / "v10.0"
+    p.mkdir(parents=True, exist_ok=True)
+    return p
+
+
+def get_fhir_samples_dir() -> Path:
+    """Return the directory where FHIR sample XML files are written/read.
+    Override with env var COCO_FHIR_SAMPLES_DIR to redirect output (e.g. into coco-flow/data/).
+    """
+    env = os.environ.get("COCO_FHIR_SAMPLES_DIR")
+    p = Path(env) if env else PROJECT_ROOT / "fhir-samples" / "v10.0"
+    p.mkdir(parents=True, exist_ok=True)
+    return p
+
+
 def get_config_path() -> Path:
     raw = os.environ.get(_CONFIG_PATH_ENV)
     if raw:

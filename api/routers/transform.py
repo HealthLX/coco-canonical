@@ -5,14 +5,11 @@ from pathlib import Path
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import PlainTextResponse
 
-from api.config import PROJECT_ROOT, get_builds
+from api.config import PROJECT_ROOT, get_builds, get_canonical_samples_dir, get_fhir_samples_dir
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-CANONICAL_SAMPLES_DIR = PROJECT_ROOT / "canonical-samples" / "v10.0"
-FHIR_SAMPLES_DIR = PROJECT_ROOT / "fhir-samples" / "v10.0"
 
 
 def _fhir_output_name(xslt_path: str) -> str:
@@ -30,7 +27,7 @@ def _run_transform(canonical_path: Path, xslt_path: Path, output_path: Path, ret
     canonical_str = str(canonical_path)
     xslt_str = str(xslt_path)
     output_str = str(output_path)
-    FHIR_SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     if return_content:
         content = apply_xslt(base_dir, canonical_str, xslt_str, output_file=None)
         if output_path:
@@ -49,14 +46,14 @@ def post_transform_target_content(target: str):
     if not matching:
         raise HTTPException(status_code=400, detail=f"No transform configured for target: {target}")
     b = matching[0]
-    canonical_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+    canonical_path = get_canonical_samples_dir() / b["output_file_name"]
     if not canonical_path.is_file():
         raise HTTPException(status_code=404, detail=f"Canonical sample not found: {b['output_file_name']}. Generate it first.")
     xslt_path = PROJECT_ROOT / b["transform_file"]
     if not xslt_path.is_file():
         raise HTTPException(status_code=503, detail=f"XSLT file not found: {b['transform_file']}")
     out_name = _fhir_output_name(b["transform_file"])
-    output_path = FHIR_SAMPLES_DIR / out_name
+    output_path = get_fhir_samples_dir() / out_name
     try:
         content = _run_transform(canonical_path, xslt_path, output_path, return_content=True)
         return PlainTextResponse(content, media_type="application/xml")
@@ -77,14 +74,14 @@ def post_transform_target(
     if not matching:
         raise HTTPException(status_code=400, detail=f"No transform configured for target: {target}")
     b = matching[0]
-    canonical_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+    canonical_path = get_canonical_samples_dir() / b["output_file_name"]
     if not canonical_path.is_file():
         raise HTTPException(status_code=404, detail=f"Canonical sample not found: {b['output_file_name']}. Generate it first.")
     xslt_path = PROJECT_ROOT / b["transform_file"]
     if not xslt_path.is_file():
         raise HTTPException(status_code=503, detail=f"XSLT file not found: {b['transform_file']}")
     out_name = _fhir_output_name(b["transform_file"])
-    output_path = FHIR_SAMPLES_DIR / out_name
+    output_path = get_fhir_samples_dir() / out_name
     try:
         body_content = _run_transform(canonical_path, xslt_path, output_path, return_content=(content == 1))
         if content == 1 and body_content:
@@ -101,6 +98,8 @@ def post_transform(
     content: int = Query(0, description="If 1, return FHIR XML in response body"),
 ):
     """Run apply_xslt. Body: {\"target\": \"roster\"} or {\"canonical_file\": \"...\", \"xslt_file\": \"...\"}. Optional ?content=1 for FHIR in body."""
+    canonical_dir = get_canonical_samples_dir()
+    fhir_dir = get_fhir_samples_dir()
     if body.get("target"):
         target = str(body["target"]).strip().lower()
         builds = get_builds()
@@ -108,11 +107,11 @@ def post_transform(
         if not matching:
             raise HTTPException(status_code=400, detail=f"No transform configured for target: {target}")
         b = matching[0]
-        canonical_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+        canonical_path = canonical_dir / b["output_file_name"]
         xslt_path = PROJECT_ROOT / b["transform_file"]
         out_name = _fhir_output_name(b["transform_file"])
     elif body.get("canonical_file") and body.get("xslt_file"):
-        canonical_path = CANONICAL_SAMPLES_DIR / body["canonical_file"]
+        canonical_path = canonical_dir / body["canonical_file"]
         xslt_path = PROJECT_ROOT / "transforms" / "v10.0" / body["xslt_file"]
         out_name = _fhir_output_name(str(xslt_path))
     else:
@@ -122,7 +121,7 @@ def post_transform(
         raise HTTPException(status_code=404, detail=f"Canonical file not found: {canonical_path.name}")
     if not xslt_path.is_file():
         raise HTTPException(status_code=404, detail=f"XSLT file not found: {xslt_path.name}")
-    output_path = FHIR_SAMPLES_DIR / out_name
+    output_path = fhir_dir / out_name
     try:
         body_content = _run_transform(canonical_path, xslt_path, output_path, return_content=(content == 1))
         if content == 1 and body_content:

@@ -6,7 +6,7 @@ from tools.build_sample_file import build_element
 import yaml
 import argparse
 
-def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child=None):
+def build_sample_file(canonical_name, root_element_name, schema_file_name, output_file_name, provider_directory_child=None, output_dir=None):
     #Get path and load schema
     base_dir = Path(__file__).resolve().parent.parent
     schema_path = base_dir / "schemas" / "v10.0" / f"{schema_file_name}"
@@ -30,8 +30,10 @@ def build_sample_file(canonical_name, root_element_name, schema_file_name, outpu
     )
 
 
-    # Write to file - ensure directory exists
-    output_dir = base_dir / "canonical-samples" / "v10.0"
+    # Write to file - use provided output_dir or default to project canonical-samples
+    if output_dir is None:
+        output_dir = base_dir / "canonical-samples" / "v10.0"
+    output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / output_file_name
     

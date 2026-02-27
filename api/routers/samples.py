@@ -7,14 +7,11 @@ from pathlib import Path
 from fastapi import APIRouter, Form, HTTPException, Query, UploadFile, File
 from fastapi.responses import FileResponse, PlainTextResponse, Response
 
-from api.config import PROJECT_ROOT, get_builds
+from api.config import PROJECT_ROOT, get_builds, get_canonical_samples_dir, get_fhir_samples_dir
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-CANONICAL_SAMPLES_DIR = PROJECT_ROOT / "canonical-samples" / "v10.0"
-FHIR_SAMPLES_DIR = PROJECT_ROOT / "fhir-samples" / "v10.0"
 
 
 def _safe_filename(name: str) -> bool:
@@ -34,6 +31,7 @@ def _run_build_for_target(target: str) -> list[dict]:
     Always writes a fresh timestamped copy so previous artifacts are never overwritten."""
     from tools.build_all_sample_files import build_sample_file
 
+    canonical_dir = get_canonical_samples_dir()
     builds = get_builds()
     matching = [b for b in builds if b.get("canonical_name") == target]
     if not matching:
@@ -48,10 +46,11 @@ def _run_build_for_target(target: str) -> list[dict]:
                 schema_file_name=b["schema_file_name"],
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
+                output_dir=canonical_dir,
             )
-            src_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+            src_path = canonical_dir / b["output_file_name"]
             ts_name = _timestamped_name(b["output_file_name"])
-            ts_path = CANONICAL_SAMPLES_DIR / ts_name
+            ts_path = canonical_dir / ts_name
             shutil.copy2(src_path, ts_path)
             results.append({"file": ts_name, "path": str(ts_path), "success": True})
         except Exception as e:
@@ -64,6 +63,7 @@ def _run_build_all() -> list[dict]:
     """Run sample builder for all builds, saving a timestamped copy of each output."""
     from tools.build_all_sample_files import build_sample_file
 
+    canonical_dir = get_canonical_samples_dir()
     builds = get_builds()
     results = []
     for b in builds:
@@ -74,10 +74,11 @@ def _run_build_all() -> list[dict]:
                 schema_file_name=b["schema_file_name"],
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
+                output_dir=canonical_dir,
             )
-            src_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+            src_path = canonical_dir / b["output_file_name"]
             ts_name = _timestamped_name(b["output_file_name"])
-            ts_path = CANONICAL_SAMPLES_DIR / ts_name
+            ts_path = canonical_dir / ts_name
             shutil.copy2(src_path, ts_path)
             results.append({"file": ts_name, "path": str(ts_path), "success": True})
         except Exception as e:
@@ -206,21 +207,21 @@ def _list_dir_entries(dir_path: Path) -> list[dict]:
 @router.get("")
 def list_samples():
     """List all sample files (canonical + FHIR): names and paths (optional metadata)."""
-    canonical = _list_dir_entries(CANONICAL_SAMPLES_DIR)
-    fhir = _list_dir_entries(FHIR_SAMPLES_DIR)
+    canonical = _list_dir_entries(get_canonical_samples_dir())
+    fhir = _list_dir_entries(get_fhir_samples_dir())
     return {"canonical": canonical, "fhir": fhir}
 
 
 @router.get("/canonical")
 def list_canonical():
     """List canonical sample files with filename, size, and modified timestamp. Newest first."""
-    return _list_dir_entries(CANONICAL_SAMPLES_DIR)
+    return _list_dir_entries(get_canonical_samples_dir())
 
 
 @router.get("/fhir")
 def list_fhir():
     """List FHIR sample files with filename, size, and modified timestamp. Newest first."""
-    return _list_dir_entries(FHIR_SAMPLES_DIR)
+    return _list_dir_entries(get_fhir_samples_dir())
 
 
 @router.get("/canonical/{filename}/regenerate")
@@ -232,6 +233,7 @@ def get_canonical_regenerate(filename: str):
     match = next((b for b in builds if b.get("output_file_name") == filename), None)
     if not match:
         raise HTTPException(status_code=404, detail=f"No build with output_file_name: {filename}")
+    canonical_dir = get_canonical_samples_dir()
     try:
         from tools.build_all_sample_files import build_sample_file
         build_sample_file(
@@ -240,10 +242,11 @@ def get_canonical_regenerate(filename: str):
             schema_file_name=match["schema_file_name"],
             output_file_name=match["output_file_name"],
             provider_directory_child=match.get("provider_directory_child"),
+            output_dir=canonical_dir,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e
-    path = CANONICAL_SAMPLES_DIR / filename
+    path = canonical_dir / filename
     if not path.is_file():
         raise HTTPException(status_code=500, detail="Generated file not found")
     return FileResponse(path, media_type="application/xml", filename=filename)
@@ -254,7 +257,7 @@ def get_canonical_file(filename: str):
     """Serve one canonical sample XML file."""
     if not _safe_filename(filename):
         raise HTTPException(status_code=400, detail="Invalid filename")
-    path = CANONICAL_SAMPLES_DIR / filename
+    path = get_canonical_samples_dir() / filename
     if not path.is_file():
         raise HTTPException(status_code=404, detail=f"File not found: {filename}")
     return FileResponse(path, media_type="application/xml", filename=filename)
@@ -265,7 +268,7 @@ def get_fhir_file(filename: str):
     """Serve one FHIR sample XML file."""
     if not _safe_filename(filename):
         raise HTTPException(status_code=400, detail="Invalid filename")
-    path = FHIR_SAMPLES_DIR / filename
+    path = get_fhir_samples_dir() / filename
     if not path.is_file():
         raise HTTPException(status_code=404, detail=f"File not found: {filename}")
     return FileResponse(path, media_type="application/xml", filename=filename)
