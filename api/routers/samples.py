@@ -1,9 +1,11 @@
 """Sample building and listing: generate canonical samples, list/download canonical and FHIR samples."""
 import logging
+import shutil
+from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException, Query
-from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi import APIRouter, Form, HTTPException, Query, UploadFile, File
+from fastapi.responses import FileResponse, PlainTextResponse, Response
 
 from api.config import PROJECT_ROOT, get_builds
 
@@ -20,8 +22,16 @@ def _safe_filename(name: str) -> bool:
     return name and "/" not in name and "\\" not in name and ".." not in name
 
 
+def _timestamped_name(filename: str) -> str:
+    """Return a timestamped variant of a filename: roster-sample.xml → roster-sample-20240226-184719.xml"""
+    ts = datetime.now().strftime("%Y%m%d-%H%M%S")
+    p = Path(filename)
+    return f"{p.stem}-{ts}{p.suffix}"
+
+
 def _run_build_for_target(target: str) -> list[dict]:
-    """Run sample builder for one canonical target (may be multiple builds, e.g. providerdirectory)."""
+    """Run sample builder for one canonical target (may be multiple builds, e.g. providerdirectory).
+    Always writes a fresh timestamped copy so previous artifacts are never overwritten."""
     from tools.build_all_sample_files import build_sample_file
 
     builds = get_builds()
@@ -39,8 +49,11 @@ def _run_build_for_target(target: str) -> list[dict]:
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
             )
-            out_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
-            results.append({"file": b["output_file_name"], "path": str(out_path), "success": True})
+            src_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+            ts_name = _timestamped_name(b["output_file_name"])
+            ts_path = CANONICAL_SAMPLES_DIR / ts_name
+            shutil.copy2(src_path, ts_path)
+            results.append({"file": ts_name, "path": str(ts_path), "success": True})
         except Exception as e:
             logger.exception("Build failed for %s", b.get("output_file_name"))
             results.append({"file": b["output_file_name"], "success": False, "detail": str(e)})
@@ -48,7 +61,7 @@ def _run_build_for_target(target: str) -> list[dict]:
 
 
 def _run_build_all() -> list[dict]:
-    """Run sample builder for all builds."""
+    """Run sample builder for all builds, saving a timestamped copy of each output."""
     from tools.build_all_sample_files import build_sample_file
 
     builds = get_builds()
@@ -62,8 +75,11 @@ def _run_build_all() -> list[dict]:
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
             )
-            out_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
-            results.append({"file": b["output_file_name"], "path": str(out_path), "success": True})
+            src_path = CANONICAL_SAMPLES_DIR / b["output_file_name"]
+            ts_name = _timestamped_name(b["output_file_name"])
+            ts_path = CANONICAL_SAMPLES_DIR / ts_name
+            shutil.copy2(src_path, ts_path)
+            results.append({"file": ts_name, "path": str(ts_path), "success": True})
         except Exception as e:
             logger.exception("Build failed for %s", b.get("output_file_name"))
             results.append({"file": b["output_file_name"], "success": False, "detail": str(e)})
@@ -127,14 +143,63 @@ def post_generate_target(target: str):
         raise HTTPException(status_code=503, detail=str(e)) from e
 
 
+@router.post("/generate/custom")
+async def post_generate_custom(
+    file: UploadFile = File(...),
+    root_element: str = Form(...),
+):
+    """Generate a sample XML from a user-uploaded XSD file and return it as a download."""
+    import tempfile
+    import xmlschema
+    from lxml import etree
+    from tools.build_sample_file import build_element
+
+    if not (file.filename or "").lower().endswith(".xsd"):
+        raise HTTPException(status_code=400, detail="Only .xsd files are accepted")
+
+    content = await file.read()
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".xsd", delete=False) as tmp:
+            tmp.write(content)
+            tmp_path = Path(tmp.name)
+
+        schema = xmlschema.XMLSchema(str(tmp_path))
+        built_xml = build_element(root_element.strip(), schema, canonical_name="custom")
+        xml_bytes = etree.tostring(built_xml, pretty_print=True, xml_declaration=True, encoding="UTF-8")
+
+        stem = Path(file.filename or "custom").stem
+        out_name = f"{stem}-sample.xml"
+        return Response(
+            content=xml_bytes,
+            media_type="application/xml",
+            headers={"Content-Disposition": f'attachment; filename="{out_name}"'},
+        )
+    except KeyError as e:
+        raise HTTPException(status_code=400, detail=f"Root element not found in schema: {e}") from e
+    except Exception as e:
+        logger.exception("Custom XSD build failed")
+        raise HTTPException(status_code=500, detail=str(e)) from e
+    finally:
+        if tmp_path and tmp_path.exists():
+            tmp_path.unlink(missing_ok=True)
+
+
 def _list_dir_entries(dir_path: Path) -> list[dict]:
     if not dir_path.is_dir():
         return []
     entries = []
-    for p in sorted(dir_path.iterdir()):
+    for p in dir_path.iterdir():
         if p.is_file():
             stat = p.stat()
-            entries.append({"name": p.name, "path": str(p), "size": stat.st_size})
+            entries.append({
+                "filename": p.name,
+                "path": str(p),
+                "size": stat.st_size,
+                "modified": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
+            })
+    # Newest first
+    entries.sort(key=lambda e: e["modified"], reverse=True)
     return entries
 
 
@@ -148,18 +213,14 @@ def list_samples():
 
 @router.get("/canonical")
 def list_canonical():
-    """List canonical sample filenames only."""
-    if not CANONICAL_SAMPLES_DIR.is_dir():
-        return []
-    return sorted(p.name for p in CANONICAL_SAMPLES_DIR.iterdir() if p.is_file())
+    """List canonical sample files with filename, size, and modified timestamp. Newest first."""
+    return _list_dir_entries(CANONICAL_SAMPLES_DIR)
 
 
 @router.get("/fhir")
 def list_fhir():
-    """List FHIR sample filenames only."""
-    if not FHIR_SAMPLES_DIR.is_dir():
-        return []
-    return sorted(p.name for p in FHIR_SAMPLES_DIR.iterdir() if p.is_file())
+    """List FHIR sample files with filename, size, and modified timestamp. Newest first."""
+    return _list_dir_entries(FHIR_SAMPLES_DIR)
 
 
 @router.get("/canonical/{filename}/regenerate")
