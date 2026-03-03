@@ -1,8 +1,9 @@
 """Apply XSLT (canonical to FHIR): POST /transform, /transform/{target}, /transform/{target}/content."""
 import logging
+import tempfile
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, File, HTTPException, Query, UploadFile
 from fastapi.responses import PlainTextResponse
 
 from api.config import PROJECT_ROOT, get_builds, get_canonical_samples_dir, get_fhir_samples_dir
@@ -35,6 +36,32 @@ def _run_transform(canonical_path: Path, xslt_path: Path, output_path: Path, ret
         return content
     apply_xslt(base_dir, canonical_str, xslt_str, output_file=output_str)
     return None
+
+
+@router.post("/upload")
+async def post_transform_upload(
+    canonical_xml: UploadFile = File(..., description="Canonical XML file to transform"),
+    xslt_file: UploadFile = File(..., description="XSLT stylesheet to apply"),
+):
+    """Transform a user-uploaded canonical XML using a user-uploaded XSLT. Returns FHIR XML."""
+    canonical_content = await canonical_xml.read()
+    xslt_content = await xslt_file.read()
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        tmp_path = Path(tmp_dir)
+        c_path = tmp_path / (canonical_xml.filename or "canonical.xml")
+        x_path = tmp_path / (xslt_file.filename or "transform.xsl")
+        out_path = tmp_path / "fhir-output.xml"
+
+        c_path.write_bytes(canonical_content)
+        x_path.write_bytes(xslt_content)
+
+        try:
+            content = _run_transform(c_path, x_path, out_path, return_content=True)
+            return PlainTextResponse(content, media_type="application/xml")
+        except Exception as e:
+            logger.exception("Upload transform failed")
+            raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @router.post("/{target}/content")
