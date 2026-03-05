@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-
 def _fhir_output_name(xslt_path: str) -> str:
     """Derive FHIR output filename from XSLT path, e.g. roster-patient.xsl -> roster-patient-fhir.xml."""
     name = Path(xslt_path).name
@@ -62,8 +61,6 @@ async def post_transform_upload(
         except Exception as e:
             logger.exception("Upload transform failed")
             raise HTTPException(status_code=500, detail=str(e)) from e
-
-
 @router.post("/{target}/content")
 def post_transform_target_content(target: str):
     """Run transform for target, return FHIR XML directly in response body."""

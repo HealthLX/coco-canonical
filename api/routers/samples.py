@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-
 def _safe_filename(name: str) -> bool:
     """Ensure filename is a single segment with no path traversal."""
     return name and "/" not in name and "\\" not in name and ".." not in name
