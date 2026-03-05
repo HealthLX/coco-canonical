@@ -104,46 +104,6 @@ def post_generate(body: dict):
         raise HTTPException(status_code=503, detail=str(e)) from e
 
 
-@router.post("/generate/{target}/content")
-def post_generate_target_content(
-    target: str,
-    format: str = Query("xml", description="Response format: xml or json"),
-):
-    """Generate sample for target, then return the generated XML in the response body."""
-    target = target.strip().lower()
-    try:
-        results = _run_build_for_target(target)
-        if not results or not results[0].get("success"):
-            raise HTTPException(status_code=500, detail=results[0].get("detail", "Build failed") if results else "No builds")
-        # Return first generated file content (for multi-build targets we return first)
-        first = results[0]
-        path = Path(first["path"])
-        if not path.exists():
-            raise HTTPException(status_code=500, detail="Generated file not found")
-        if format == "json":
-            import base64
-            text = path.read_text(encoding="utf-8")
-            return {"file": first["file"], "content_base64": base64.b64encode(text.encode("utf-8")).decode("ascii"), "format": "xml"}
-        return PlainTextResponse(path.read_text(encoding="utf-8"), media_type="application/xml")
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e)) from e
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=503, detail=str(e)) from e
-
-
-@router.post("/generate/{target}")
-def post_generate_target(target: str):
-    """Generate sample for target (e.g. roster). Same as POST /generate with body {\"target\": \"roster\"}."""
-    target = target.strip().lower()
-    try:
-        results = _run_build_for_target(target)
-        return {"results": results, "success": all(r.get("success") for r in results)}
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e)) from e
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=503, detail=str(e)) from e
-
-
 @router.post("/generate/custom")
 async def post_generate_custom(
     file: UploadFile = File(...),
@@ -184,6 +144,46 @@ async def post_generate_custom(
     finally:
         if tmp_path and tmp_path.exists():
             tmp_path.unlink(missing_ok=True)
+
+
+@router.post("/generate/{target}/content")
+def post_generate_target_content(
+    target: str,
+    format: str = Query("xml", description="Response format: xml or json"),
+):
+    """Generate sample for target, then return the generated XML in the response body."""
+    target = target.strip().lower()
+    try:
+        results = _run_build_for_target(target)
+        if not results or not results[0].get("success"):
+            raise HTTPException(status_code=500, detail=results[0].get("detail", "Build failed") if results else "No builds")
+        # Return first generated file content (for multi-build targets we return first)
+        first = results[0]
+        path = Path(first["path"])
+        if not path.exists():
+            raise HTTPException(status_code=500, detail="Generated file not found")
+        if format == "json":
+            import base64
+            text = path.read_text(encoding="utf-8")
+            return {"file": first["file"], "content_base64": base64.b64encode(text.encode("utf-8")).decode("ascii"), "format": "xml"}
+        return PlainTextResponse(path.read_text(encoding="utf-8"), media_type="application/xml")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+
+
+@router.post("/generate/{target}")
+def post_generate_target(target: str):
+    """Generate sample for target (e.g. roster). Same as POST /generate with body {\"target\": \"roster\"}."""
+    target = target.strip().lower()
+    try:
+        results = _run_build_for_target(target)
+        return {"results": results, "success": all(r.get("success") for r in results)}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
 
 
 def _list_dir_entries(dir_path: Path) -> list[dict]:
