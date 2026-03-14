@@ -11,7 +11,7 @@ title: "Clinical Implementation Guide"
 
 **Version 10.0**
 
-**February 6, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -30,15 +30,11 @@ title: "Clinical Implementation Guide"
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-<h2 style="color:#E60073">Overview</h2>
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Clinical data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-<h2 style="color:#E60073">Overview</h2>
-
-This implementation guide provides field mappings and requirements for HealthLX Clinical data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
-
-<h2 style="color:#E60073">Encoding</h2>
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -46,23 +42,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<h2 style="color:#E60073">Interoperability</h2>
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-<h2 style="color:#E60073">Change Log</h2>
-
-<div class = "heatMap">
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | February 6, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-</div>
-
-<h2 style="color:#E60073"> Simple Types</h2>
-
-<div class = "heatMap">
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -78,9 +69,7 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | language | core:string | – |  |
 | currency | core:string | – |  |
 | reference | xs:string | – |  |
-
-
-</div>
+{: .heatMap}
 
 
 
@@ -88,25 +77,19 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 
 The following types are imported from the Core-model. See [Core-model Guide](Core-model_Guide.md) for complete documentation.
 
-<div class = "heatMap">
-
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
 | NPI | xs:string | – | [0-9]{10} |
 | positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
 | string | xs:string | – | [ \r\n\t\S]+ |
 | unsignedInt | xs:unsignedInt | – | 0\|([1-9][0-9]*) |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073"> Complex Types</h2>
+<h2 id="complex-types" style="color:#E60073"> Complex Types</h2>
 
 <h3 style="color:#E60073">human_name</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -117,15 +100,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | prefix | core:string | 0 | unbounded | – |
 | suffix | core:string | 0 | unbounded | – |
 | period | period | 0 | 1 | Time period when name was/is in use. If the name is still in use, do not supply an End date |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">address</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -139,15 +118,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | postal_code | core:string | 1 | 1 | The postal code or post code of the address. The postal code supports an unlimited amount of numbers and letters. |
 | country | xs:string | 0 | 1 | Country (e.g. can be ISO 3166 2 or 3 letter code) |
 | period | period | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">telecom</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -156,43 +131,31 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | use | – | 0 | 1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html |
 | rank | core:positiveInt | 0 | 1 | Specify preferred order of use (1 = highest) |
 | period | period | 0 | 1 | Time period when the contact point was/is in use |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">period</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | start | dateTime | 1 | 1 | – |
 | end | dateTime | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">range</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | low | simple_quantity | 0 | 1 | – |
 | high | simple_quantity | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">codeable_concept</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -202,15 +165,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | core:string | 0 | 1 | – |
 | display | core:string | 0 | 1 | – |
 | text | core:string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">result_value</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -234,15 +193,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | value_time | time | 0 | 1 | – |
 | value_date_time | dateTime | 0 | 1 | – |
 | value_period | period | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">result_value_vital_sign_profile</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -276,16 +231,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | value_time | time | 0 | 1 | – |
 | value_date_time | dateTime | 0 | 1 | – |
 | value_period | period | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_respiratory_rate</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -293,16 +244,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_heart_rate</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -310,16 +257,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_oxygen_saturation</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -327,16 +270,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_body_temperature</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -344,16 +283,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_body_height</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -361,16 +296,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_head_circumference</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -378,16 +309,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_body_weight</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -395,16 +322,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_body_mass_index</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -412,16 +335,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_bp_systolic</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -429,16 +348,12 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity_bp_diastolic</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 1 | 1 | – |
@@ -446,15 +361,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 1 | 1 | Unit representation (e.g. mcg) |
 | system | – | 1 | 1 | The URI of the system that defines the coded unit form |
 | code | – | 1 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">simple_quantity</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -462,15 +373,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 0 | 1 | Unit representation (e.g. mcg) |
 | system | core:string | 0 | 1 | The URI of the system that defines the coded unit form |
 | code | core:string | 0 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">quantity</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -479,15 +386,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 0 | 1 | Unit representation (e.g. mcg) |
 | system | core:string | 0 | 1 | The URI of the system that defines the coded unit form |
 | code | core:string | 0 | 1 | Coded form of the unit |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">onset</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -496,15 +399,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | onset_period | period | 0 | 1 | – |
 | onset_range | range | 0 | 1 | – |
 | onset_string | core:string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">abatement</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -513,30 +412,22 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | abatement_period | period | 0 | 1 | – |
 | abatement_range | range | 0 | 1 | – |
 | abatement_string | core:string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">age</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | decimal | 0 | 1 | – |
 | system | – | 0 | 1 | – |
 | code | – | 0 | 1 | These codes represents year, month, week, day, hour, and minute . ‘a’- year,'mo' - month,'wk' - week,'d' - day, 'h' - hour and 'min' - minute. |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">attachment</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -548,15 +439,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | hash | base64Binary | 0 | 1 | – |
 | title | core:string | 0 | 1 | – |
 | creation | dateTime | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">practitioner</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -568,15 +455,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">organization</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -589,15 +472,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">encounter</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -620,15 +499,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | discharge_disposition | core:string | 0 | 1 | – |
 | location | – | 1 | 1 | – |
 | location | location | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">location</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -639,29 +514,21 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | telecom | 0 | unbounded | – |
 | address | address | 0 | 1 | – |
 | managing_organization | organization | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">identifier</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | core:string | 1 | 1 | – |
 | type | core:string | 1 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">member_person</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -696,15 +563,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | detailed_code | – | 0 | unbounded | This element is for selecting 1 of the additional ethnicity codes from the CDC that can be found here: https://www.hl7.org/fhir/us/core/ValueSet-detailed-ethnicity.html |
 | text | core:string | 1 | 1 | Use this element for adding a text description if the ethnicity is not listed within the enumeration |
 | us_core_birth_sex | – | 0 | 1 | This element is used for selecting birth sex (M = Male, F = Female, UNK = Unknown) |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">vital_signs</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -746,15 +609,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | coding | – | 0 | 1 | – |
 | code | core:string | 0 | 1 | – |
 | system | core:string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">endpoint</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -776,15 +635,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | – | 0 | 1 | – |
 | address | core:string | 1 | 1 | The technical base address for connecting to this endpoint |
 | header | core:string | 0 | unbounded | Usage depends on the channel type |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">lab_observation_result</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -803,15 +658,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | applies_to | codeable_concept | 0 | 1 | – |
 | age | range | 0 | 1 | – |
 | text | core:string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Required Elements of Clinical XSD</h2>
-
-<div class = "heatMap">
+<h2 id="required-elements-of-clinical-xsd" style="color:#E60073">Required Elements of Clinical XSD</h2>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1144,17 +995,13 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | effective_date_time | effective | 1..1 | – | – | dateTime |
 | effective_period | effective | 1..1 | – | – | period |
 | – | performer | – | One of: reported_practitioner, reported_organization | – | choice |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">All Elements of Clinical XSD</h2>
+<h2 id="all-elements-of-clinical-xsd" style="color:#E60073">All Elements of Clinical XSD</h2>
 
 <h3 style="color:#E60073">Root Elements</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1162,43 +1009,31 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | schema_version | clinicals | 1..1 | This element defines what version of the clinical schema you will be validating against (e.g. 1.0) | – | xs:decimal |
 | sender_id | clinicals | 1..1 | This element is used to the unique identifier assigned to your organization | – | core:string |
 | date_time_reported | clinicals | 1..1 | This element is used to the identify the date time this information was reported (e.g. 2001-10-26T21:32:52+02:00) | – | xs:dateTime |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Clinical Data</h3>
 
-<div class = "heatMap">
-
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | clinical | clinicals | 1..unbounded | – | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Patient Information</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | patient | clinical | 1..1 | – | – | – |
 | – | patient | – | One of: reference | – | choice |
 | reference | patient | 1..1 | – | – | reference |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Laboratory Result Observations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1223,15 +1058,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | age | reference_range | 0..1 | – | – | range |
 | text | reference_range | 0..1 | – | – | core:string |
 | record_type | lab_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Allergy Intolerance</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1252,15 +1083,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | criticality | allergy_intolerance | 0..1 | Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance. | – | – |
 | recorded_date | allergy_intolerance | 0..1 | The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date. | – | dateTime |
 | record_type | allergy_intolerance | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Conditions</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1278,15 +1105,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | recorded_date | condition | 0..1 | Date of when condition was first recorded,The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date. | – | dateTime |
 | abatement | condition | 0..1 | The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate. | – | abatement |
 | record_type | condition | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Procedures</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1308,15 +1131,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | performed_date_time | performed | 0..1 | – | – | dateTime |
 | performed_period | performed | 0..1 | – | – | period |
 | record_type | procedure | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Medication Requests</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1345,45 +1164,33 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | authored_on | medication_request | 1..1 | – | – | dateTime |
 | requester | medication_request | 0..1 | – | – | – |
 | – | requester | – | One of: patient, practitioner, organization | – | choice |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Patient Information</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | patient | requester | 1..1 | – | – | member_person |
 | practitioner | requester | 1..1 | – | – | practitioner |
 | organization | requester | 1..1 | – | – | organization |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Medication Requests</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | dosage_instruction | medication_request | 0..unbounded | – | – | – |
 | text | dosage_instruction | 0..1 | – | – | core:string |
 | record_type | medication_request | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Care Teams</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1400,15 +1207,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | member_person | member | 1..1 | – | – | xs:string |
 | reference | member | 1..1 | – | – | reference |
 | record_type | care_team | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Vital Signs</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1456,15 +1259,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 0..1 | – | – | core:string |
 | system | coding | 0..1 | – | – | core:string |
 | record_type | observation_vital_sign | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Practitioners</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1473,15 +1272,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unique_identifier | practitioner | 1..1 | – | – | core:string |
 | practitioner_details | practitioner | 1..1 | – | – | practitioner |
 | record_type | practitioner | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Organizations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1490,15 +1285,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unique_identifier | organization | 1..1 | – | – | core:string |
 | organization_details | organization | 1..1 | – | – | organization |
 | record_type | organization | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Locations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1507,15 +1298,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unique_identifier | location | 1..1 | – | – | core:string |
 | location_details | location | 1..1 | – | – | location |
 | record_type | location | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Encounters</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1524,15 +1311,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unique_identifier | encounter | 1..1 | – | – | core:string |
 | encounter_details | encounter | 1..1 | – | – | encounter |
 | record_type | encounter | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Care Plans</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1550,15 +1333,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | coding | 1..1 | – | – | – |
 | system | coding | 1..1 | – | – | – |
 | record_type | care_plan | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Goals</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1572,15 +1351,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | target | goal | 0..unbounded | – | – | – |
 | due_date | target | 0..1 | – | – | date |
 | record_type | goal | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Immunizations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1600,15 +1375,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | occurrence_string | occurrence | 1..1 | – | – | core:string |
 | primary_source | immunization | 1..1 | – | – | xs:boolean |
 | record_type | immunization | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Pediatric BMI for Age Observations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1647,15 +1418,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_bmi_for_age_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Pediatric Head Occipital Frontal Circumference Observations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1694,15 +1461,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_head_occipital_frontal_circumference_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Pediatric Weight for Height Observations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1741,29 +1504,21 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | data_absent_reason | 0..1 | – | – | – |
 | system | data_absent_reason | 0..1 | – | – | core:string |
 | record_type | pediatric_weight_for_height_observation | 0..1 | This element describes the action for this profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Clinical Data</h3>
 
-<div class = "heatMap">
-
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | practitioners_roles | clinical | 0..1 | – | – | – |
 | practitioner_role | practitioners_roles | 1..unbounded | – | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Practitioner Roles</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1780,15 +1535,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | practitioner_role | 0..unbounded | – | – | telecom |
 | endpoints | practitioner_role | 0..unbounded | – | – | endpoint |
 | record_type | practitioner_role | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Smoking Status Observations</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1804,15 +1555,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | value_codeable_concept | 1..1 | – | – | – |
 | system | value_codeable_concept | 0..1 | – | – | – |
 | record_type | smoking_status_observation | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Provenances</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1830,15 +1577,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | type | 0..1 | – | – | – |
 | who | agent_provenance_general | 1..1 | – | – | – |
 | – | who | – | One of: patient, practitioner, organization | – | choice |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Patient Information</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1876,28 +1619,20 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | patient | on_behalf_of | 0..1 | – | – | member_person |
 | practitioner | on_behalf_of | 0..1 | – | – | practitioner |
 | organization | on_behalf_of | 0..1 | – | – | organization |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Provenances</h3>
 
-<div class = "heatMap">
-
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | record_type | provenance | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Clinical Data</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -1989,15 +1724,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | system | category | 0..1 | – | – | – |
 | author | document_reference | 0..unbounded | – | – | – |
 | – | author | – | One of: patient, practitioner, organization | – | choice |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Patient Information</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -2018,15 +1749,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | encounter | context | 0..1 | – | – | encounter |
 | period | context | 0..1 | – | – | period |
 | record_type | document_reference | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Clinical Data</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -2075,13 +1802,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | presented_form | diagnostic_report_note | 0..unbounded | – | – | attachment |
 | encounter | diagnostic_report_note | 0..1 | – | – | encounter |
 | record_type | diagnostic_report_note | 0..1 | This element describes the action for this Profile (A = Add, U = Update, D = Delete) | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Practical Guidance</h2>
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
 
 <h3 style="color:#E60073">Submission Frequency</h3>
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Provider Directory Implementation Guide"
+title: "Provider-Directory Implementation Guide"
 ---
 
 ![HLX Logo](assets/css/hlx_logo.png)
@@ -11,7 +11,7 @@ title: "Provider Directory Implementation Guide"
 
 **Version 10.0**
 
-**February 6, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -29,15 +29,11 @@ title: "Provider Directory Implementation Guide"
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-<h2 style="color:#E60073">Overview</h2>
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Provider-Directory data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-<h2 style="color:#E60073">Overview</h2>
-
-This implementation guide provides field mappings and requirements for HealthLX Provider-Directory data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
-
-<h2 style="color:#E60073">Encoding</h2>
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -45,23 +41,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<h2 style="color:#E60073">Interoperability</h2>
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-<h2 style="color:#E60073">Change Log</h2>
-
-<div class = "heatMap">
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | February 6, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-</div>
-
-<h2 style="color:#E60073"> Simple Types</h2>
-
-<div class = "heatMap">
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -79,46 +70,34 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | organization_role | string | – |  |
 | role | string | – |  |
 | type_of_organization | string | – |  |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073"> Complex Types</h2>
+<h2 id="complex-types" style="color:#E60073"> Complex Types</h2>
 
 <h3 style="color:#E60073">networks</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | network | – | 1 | unbounded | – |
 | network_id | network_id | 1 | 1 | Unique Identifier of this Network |
 | name | string | 0 | 1 | Name of this Network |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">period</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | start | dateTime | 0 | 1 | – |
 | end | dateTime | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">new_patients</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -127,29 +106,21 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | network_id | network_id | 1 | 1 | Unique Identifier of this Network |
 | name | string | 0 | 1 | Name of this Network |
 | characteristics | string | 0 | unbounded | Open text for additional information |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">not_available</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | description | string | 1 | 1 | Description of why the dates are not available |
 | period | period | 0 | 1 | Start/End dates when service is not available |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">available_time</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -157,15 +128,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | days_of_week | – | 0 | unbounded | Days of the week available |
 | available_start_time | time | 0 | 1 | Opening time of day (ignored if all_day = true) |
 | available_end_time | time | 0 | 1 | Closing time of day (ignored if all_day = true) |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">human_name</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -176,15 +143,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | prefix | string | 0 | unbounded | – |
 | suffix | string | 0 | unbounded | – |
 | period | period | 0 | 1 | Time period when name was/is in use. If the name is still in use, do not supply an End date |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">organization_branch</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -205,15 +168,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecoms | – | 0 | 1 | – |
 | telecom | telecom_minimum | 0 | unbounded | – |
 | address | address | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">telecom_minimum</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -222,15 +181,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | use | – | 0 | 1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html |
 | rank | positiveInt | 0 | 1 | Specify preferred order of use (1 = highest) |
 | period | period | 0 | 1 | Time period when the contact point was in use |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">telecom</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -249,15 +204,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecom | – | 0 | unbounded | – |
 | system | – | 1 | 1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html |
 | value | string | 1 | 1 | The actual value of the contact point |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">address</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -276,29 +227,21 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | geo_location | – | 0 | unbounded | – |
 | latitude | decimal | 1 | 1 | – |
 | longitude | decimal | 1 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">languages</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | language | – | 1 | 1 | Language the practitioner can use in patient communication. The full list can be found here: http://hl7.org/fhir/R4/valueset-languages.html |
 | proficiency | – | 0 | 1 | The proficiency of the language. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-LanguageProficiencyVS.html |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">locations</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -331,15 +274,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecoms | – | 0 | 1 | – |
 | telecom | telecom | 0 | unbounded | – |
 | address | address | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">location_part_of</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -367,41 +306,29 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | accessibility | – | 0 | unbounded | Accessibility options. A full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-AccessibilityVS.html |
 | new_patients_list | – | 0 | 1 | – |
 | new_patients | new_patients | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">practitioner_specialties</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | specialty | – | 0 | unbounded | Individual and Group Specialties from National Uniform Claim Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-IndividualAndGroupSpecialtiesVS.html |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">provider_organization_specialties</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | specialty | – | 0 | unbounded | Specialties value set based on National Uniform Claim Committee (NUCC) Health Care Provider Taxonomy code set. A full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-SpecialtiesVS.html |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">healthcare_services</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -445,15 +372,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | not_available | not_available | 0 | unbounded | – |
 | availability_exceptions | string | 0 | 1 | – |
 | locations | locations | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">organization</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -470,15 +393,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">organization_part_of</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -494,58 +413,42 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">identifier</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | string | 1 | 1 | – |
 | type | string | 1 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">coding</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | system | string | 0 | 1 | – |
 | code | string | 0 | 1 | – |
 | display | string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">codeable_concept</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | coding | coding | 0 | unbounded | – |
 | text | string | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">qualification</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -556,29 +459,21 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | issuer | organization_branch | 0 | 1 | This organization that regulates and issues the qualification |
 | status | – | 1 | 1 | Describes the current status of the qualification (i.e. active, inactive, issued in error, revoked, pending, unknown) |
 | where_valid | string | 0 | unbounded | Indicates where the qualification is valid. users may select any number of specific locations, classes of locations, or combination thereof |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">clia</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | id | string | 1 | 1 | – |
 | value | string | 1 | 1 | Clinical Laboratory Improvement Amendments (CLIA) Number for laboratories |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Required Elements of Provider-Directory XSD</h2>
-
-<div class = "heatMap">
+<h2 id="required-elements-of-provider-directory-xsd" style="color:#E60073">Required Elements of Provider-Directory XSD</h2>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -598,17 +493,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | name | providing_organization | 1..1 | – | – | string |
 | code | codes | 1..unbounded | Value Set for Organization Affiliation Roles. The full list can be found here: https://build.fhir.org/ig/HL7/davinci-pdex-plan-net/ValueSet-OrganizationAffiliationRoleVS.html | – | codeable_concept |
 | specialty | specialties | 1..unbounded | – | – | codeable_concept |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">All Elements of Provider-Directory XSD</h2>
+<h2 id="all-elements-of-provider-directory-xsd" style="color:#E60073">All Elements of Provider-Directory XSD</h2>
 
 <h3 style="color:#E60073">Root Elements</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -619,15 +510,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | provider | providers | 1..unbounded | – | – | – |
 | – | provider | – | One of: practitioner, providing_organization | – | choice |
 | practitioner | provider | 1..unbounded | Practitioner is a person who is directly or indirectly involved in the provisioning of healthcare | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Practitioners</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -660,28 +547,20 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | new_patients_list | practitioner | 0..1 | – | – | – |
 | new_patients | new_patients_list | 0..unbounded | – | – | new_patients |
 | networks | practitioner | 0..1 | – | – | networks |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Locations</h3>
 
-<div class = "heatMap">
-
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | locations | practitioner | 0..1 | – | – | locations |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Practitioners</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -718,27 +597,21 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | affiliated_organization | providing_organization | 0..1 | – | – | organization |
 | part_of | providing_organization | 0..1 | – | – | organization |
 | networks | providing_organization | 0..1 | – | – | networks |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">Locations</h3>
 
-<div class = "heatMap">
-
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
 | locations | providing_organization | 0..1 | – | – | locations |
 | healthcare_services | providing_organization | 0..1 | – | – | healthcare_services |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Practical Guidance</h2>
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
 
 <h3 style="color:#E60073">Submission Frequency</h3>
 

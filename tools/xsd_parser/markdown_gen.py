@@ -125,7 +125,7 @@ def generate_disclaimer():
 
 def generate_overview(schema_info: SchemaInfo):
     """Generate overview section explaining the guide's purpose and XML format matching PDF style."""
-    output = "<h2 style=\"color:#E60073\">Overview</h2>\n\n"
+    output = "<h2 id=\"overview\" style=\"color:#E60073\">Overview</h2>\n\n"
     output += f"This implementation guide provides field mappings and requirements for HealthLX {schema_info.display_name} data submissions in XML format based on FHIR R4 standards. "
     output += "XML format enables structured data exchange with built-in validation against the provided XSD schema.\n\n"
     
@@ -134,7 +134,7 @@ def generate_overview(schema_info: SchemaInfo):
 
 def generate_encoding(schema_info: SchemaInfo):
     """Generate encoding section for UTF-8 requirement."""
-    output = "<h2 style=\"color:#E60073\">Encoding</h2>\n\n"
+    output = "<h2 id=\"encoding\" style=\"color:#E60073\">Encoding</h2>\n\n"
     output += "Payers need to send their files with utf-8 encoding as shown below:\n\n"
     output += "```xml\n"
     output += "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -145,7 +145,7 @@ def generate_encoding(schema_info: SchemaInfo):
 
 def generate_interoperability():
     """Generate interoperability section with FHIR reference."""
-    output = "<h2 style=\"color:#E60073\">Interoperability</h2>\n\n"
+    output = "<h2 id=\"interoperability\" style=\"color:#E60073\">Interoperability</h2>\n\n"
     output += "This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. "
     output += "For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/\n\n"
     
@@ -166,7 +166,7 @@ def generate_change_log(schema_info: SchemaInfo, release_tag=None):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
 
-    output = "<h2 style=\"color:#E60073\">Change Log</h2>\n\n"
+    output = "<h2 id=\"change-log\" style=\"color:#E60073\">Change Log</h2>\n\n"
     output += "| Version | Date |\n"
     output += "|---------|------|\n"
     output += f"| {version} | {date_str} |\n"
@@ -177,7 +177,7 @@ def generate_change_log(schema_info: SchemaInfo, release_tag=None):
 
 def generate_practical_guidance(schema_info: SchemaInfo):
     """Generate practical guidance section for submission frequency, adds/updates/deletes, member identification."""
-    output = "<h2 style=\"color:#E60073\">Practical Guidance</h2>\n\n"
+    output = "<h2 id=\"practical-guidance\" style=\"color:#E60073\">Practical Guidance</h2>\n\n"
     output += "<h3 style=\"color:#E60073\">Submission Frequency</h3>\n\n"
     output += f"{schema_info.display_name} files should be submitted according to the schedule agreed upon with HealthLX. "
     output += "Typical submission frequencies include daily, weekly, or monthly updates.\n\n"
@@ -247,7 +247,9 @@ def get_section_title(parent_name: str) -> str:
 
 def generate_element_table(title, elements, schema_info: SchemaInfo):
     """Generate element table with 6 columns: Name, Parent, Cardinality, Description, Examples, Data Type."""
-    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
+    schema_anchor = schema_info.display_name.lower().replace(' ', '-')
+    section_id = f"required-elements-of-{schema_anchor}-xsd"
+    output = f"<h2 id=\"{section_id}\" style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"
@@ -300,7 +302,9 @@ def get_top_level_section(element_name: str, parent_name: str, current_section: 
 
 def generate_element_table_with_sections(title, elements, schema_info: SchemaInfo):
     """Generate element table with section headers grouping elements by clinical purpose."""
-    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
+    schema_anchor = schema_info.display_name.lower().replace(' ', '-')
+    section_id = f"all-elements-of-{schema_anchor}-xsd"
+    output = f"<h2 id=\"{section_id}\" style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"

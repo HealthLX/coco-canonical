@@ -107,8 +107,6 @@ def generate_markdown(xsd_path, release_tag=None):
             
             # Overview
             output += generate_overview(schema_info)
-            # Overview
-            output += generate_overview(schema_info)
             
             # Encoding
             output += generate_encoding(schema_info)
@@ -122,7 +120,7 @@ def generate_markdown(xsd_path, release_tag=None):
             # Simple types
             simple_types = parse_simple_types(root)
             if simple_types:
-                output += "<h2 style=\"color:#E60073\"> Simple Types</h2>\n\n"
+                output += "<h2 id=\"simple-types\" style=\"color:#E60073\"> Simple Types</h2>\n\n"
                 output += to_md_table(["Name", "Base Type", "Description", "Pattern"], simple_types) + "\n\n"
             
             # Core Model Types (if imported and used)
@@ -132,7 +130,7 @@ def generate_markdown(xsd_path, release_tag=None):
             # Complex types - generate individual tables for each
             complex_types = parse_complex_types(root)
             if complex_types:
-                output += "<h2 style=\"color:#E60073\"> Complex Types</h2>\n\n"
+                output += "<h2 id=\"complex-types\" style=\"color:#E60073\"> Complex Types</h2>\n\n"
                 for name, elements in complex_types.items():
                     output += generate_complex_type_table(name, elements)
             
