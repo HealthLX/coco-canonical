@@ -1,5 +1,11 @@
-<xsl:stylesheet version="2.0" xmlns="http://hl7.org/fhir"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="3.0"
+	xmlns="http://hl7.org/fhir"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:coco="http://cocodata.org"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xpath-default-namespace="http://cocodata.org"
+	exclude-result-prefixes="coco">
 	<xsl:preserve-space elements="*"/>
 	<xsl:output indent="yes" method="xml"/>
 	<xsl:variable name="POG_PROVIDER" select="provider"/>

@@ -13,6 +13,17 @@ builds:
     output_file_name: provider-directory-practitioner-sample.xml
     provider_directory_child: practitioner
     transform_file: null
+    transform_files:
+      - transform_file: transforms/v10.0/Provider_Practitioner.xsl
+        resource_type: Practitioner
+      - transform_file: transforms/v10.0/Provider_PractitionerRole.xsl
+        resource_type: PractitionerRole
+      - transform_file: transforms/v10.0/Provider_Location.xsl
+        resource_type: Location
+      - transform_file: transforms/v10.0/Provider_HealthcareService.xsl
+        resource_type: HealthcareService
+      - transform_file: transforms/v10.0/Provider_OrganizationAffiliation.xsl
+        resource_type: OrganizationAffiliation
     fhir_profile: null
 
   # Provider Directory - providing_organization
@@ -22,6 +33,15 @@ builds:
     output_file_name: provider-directory-organization-sample.xml
     provider_directory_child: providing_organization
     transform_file: null
+    transform_files:
+      - transform_file: transforms/v10.0/Provider_Organization.xsl
+        resource_type: Organization
+      - transform_file: transforms/v10.0/Provider_Location.xsl
+        resource_type: Location
+      - transform_file: transforms/v10.0/Provider_HealthcareService.xsl
+        resource_type: HealthcareService
+      - transform_file: transforms/v10.0/Provider_OrganizationAffiliation.xsl
+        resource_type: OrganizationAffiliation
     fhir_profile: null
 
   # Roster

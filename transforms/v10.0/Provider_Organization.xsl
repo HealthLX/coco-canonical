@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir"
-    exclude-result-prefixes="xs" version="2.0">
+<xsl:stylesheet version="3.0"
+    xmlns="http://hl7.org/fhir"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:coco="http://cocodata.org"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xpath-default-namespace="http://cocodata.org"
+    exclude-result-prefixes="coco">
     <xsl:variable name="POG_PROVIDER" select="provider"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
