@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  10.0
+  without
+  2026-03-25T21:36:26Z
+  <HealthcareServices xmlns="http://hl7.org/fhir"
+                    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <HealthcareService>
+      <id value="--1"/>
+      <meta>
+         <source value=""/>
+      </meta>
+      <contained>
+         <Location>
+            <id value="temppostalLocation_Derived1"/>
+            <description value="western"/>
+            <identifier>
+               <system value="https://data.healthlx.com/action"/>
+               <value value="very"/>
+            </identifier>
+            <address>
+               <use value="temp"/>
+               <line value="21259 Morales Ports Suite 753"/>
+               <city value="Lisabury"/>
+               <district value="no"/>
+               <state value="IN"/>
+               <postalCode value="56639"/>
+               <country>KW</country>
+            </address>
+            <mode value="instance"/>
+            <physicalType>
+               <coding>
+                  <code value="area"/>
+                  <display value="Area"/>
+               </coding>
+            </physicalType>
+         </Location>
+      </contained>
+      <identifier>
+         <type>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+               <code value="NPI"/>
+               <display value="National Provider Identifier"/>
+            </coding>
+         </type>
+         <system value="http://hl7.org/fhir/sid/us-npi"/>
+         <value value=""/>
+      </identifier>
+      <active value="true"/>
+      <providedBy>
+         <reference value="Organization/-"/>
+      </providedBy>
+      <category>
+         <coding>
+            <system/>
+            <code/>
+            <display/>
+         </coding>
+         <text/>
+      </category>
+      <type>
+         <coding>
+            <system/>
+            <code/>
+            <display/>
+         </coding>
+         <text/>
+      </type>
+      <specialty/>
+      <location>
+         <reference value="#temppostalLocation_Derived1"/>
+      </location>
+      <name value=""/>
+      <photo/>
+      <communication/>
+      <referralMethod/>
+      <availableTime>
+         <daysOfWeek value="tue"/>
+         <allDay value="false"/>
+         <availableStartTime value="16:49:01"/>
+         <availableEndTime value="00:47:48"/>
+      </availableTime>
+   </HealthcareService>
+</HealthcareServices>

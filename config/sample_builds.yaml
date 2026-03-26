@@ -6,7 +6,7 @@
 core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
 
 builds:
-  # Provider Directory - practitioner
+  # Provider Directory - practitioner (canonical XML from Provider-Directory.xsd; XSLTs below expect this sample as input)
   - canonical_name: providerdirectory
     root_element_name: providers
     schema_file_name: Provider-Directory.xsd
@@ -26,7 +26,7 @@ builds:
         resource_type: OrganizationAffiliation
     fhir_profile: null
 
-  # Provider Directory - providing_organization
+  # Provider Directory - providing_organization (same schema; organization-flavored sample XML)
   - canonical_name: providerdirectory
     root_element_name: providers
     schema_file_name: Provider-Directory.xsd
@@ -44,7 +44,7 @@ builds:
         resource_type: OrganizationAffiliation
     fhir_profile: null
 
-  # Roster
+  # Roster (canonical from Roster.xsd)
   - canonical_name: roster
     root_element_name: roster
     schema_file_name: Roster.xsd

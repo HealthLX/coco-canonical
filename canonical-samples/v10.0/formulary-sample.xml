@@ -1,191 +1,191 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v10.0/Formulary.xsd">
   <schema_version>10.0</schema_version>
-  <sender_id>section</sender_id>
-  <date_time_reported>2026-02-11T22:43:17Z</date_time_reported>
+  <sender_id>fall</sender_id>
+  <date_time_reported>2026-03-25T21:36:27Z</date_time_reported>
   <coverage_plan>
-    <plan_id>guess</plan_id>
-    <plan_id_type>together</plan_id_type>
-    <title>that</title>
-    <marketing_url>save</marketing_url>
-    <summary_url>low</summary_url>
-    <formulary_url>thing</formulary_url>
-    <email_plan_contact>shannon41@example.com</email_plan_contact>
-    <network>last</network>
-    <status>current</status>
+    <plan_id>then</plan_id>
+    <plan_id_type>relate</plan_id_type>
+    <title>drop</title>
+    <marketing_url>past</marketing_url>
+    <summary_url>certainly</summary_url>
+    <formulary_url>defense</formulary_url>
+    <email_plan_contact>cameronpratt@example.com</email_plan_contact>
+    <network>argue</network>
+    <status>entered-in-error</status>
     <mode>changes</mode>
-    <date>2015-09-17T18:02:26Z</date>
+    <date>2019-08-21T10:50:43Z</date>
     <drug_tiers>
       <drug_tier>
         <drug_tier_id>
-          <code>preferred-brand</code>
+          <code>zero-cost-share-preventive</code>
           <text>American Indian or Alaska Native</text>
         </drug_tier_id>
         <mail_order>true</mail_order>
         <cost_sharings>
           <cost_sharing>
-            <pharmacy_type>1-month-in-retail</pharmacy_type>
+            <pharmacy_type>3-month-out-retail</pharmacy_type>
             <copay_amount>
-              <value>192.42</value>
-              <currency>XPF</currency>
+              <value>639.69</value>
+              <currency>ZWL</currency>
             </copay_amount>
-            <copay_option>after-deductible</copay_option>
-            <coinsurance_rate>308.98</coinsurance_rate>
+            <copay_option>no-charge-after-deductible</copay_option>
+            <coinsurance_rate>994.41</coinsurance_rate>
             <coinsurance_option>after-deductible</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
             <rx_norm_code>
-              <code>want</code>
+              <code>perform</code>
               <display>English</display>
               <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
             </rx_norm_code>
-            <status>entered-in-error</status>
+            <status>active</status>
             <manufacturer>
-              <name>Philip Munoz</name>
-              <alias>he</alias>
-              <type>movie</type>
+              <name>Justin Smith MD</name>
+              <alias>half</alias>
+              <type>late</type>
             </manufacturer>
             <dose_form>
-              <code>collection</code>
-              <system>evidence</system>
+              <code>yet</code>
+              <system>each</system>
             </dose_form>
             <ingredients>
               <ingredient>
-                <is_active>false</is_active>
+                <is_active>true</is_active>
                 <strength>
                   <numerator>
-                    <value>417.08</value>
+                    <value>343.33</value>
                     <comparator>&lt;=</comparator>
-                    <unit>support</unit>
-                    <system>time</system>
-                    <code>about</code>
+                    <unit>success</unit>
+                    <system>century</system>
+                    <code>involve</code>
                   </numerator>
                   <denominator>
-                    <value>872.57</value>
+                    <value>270.99</value>
                     <comparator>&lt;=</comparator>
-                    <unit>career</unit>
-                    <system>claim</system>
-                    <code>social</code>
+                    <unit>change</unit>
+                    <system>including</system>
+                    <code>whatever</code>
                   </denominator>
                 </strength>
                 <substance>
-                  <category>body</category>
-                  <description>market</description>
+                  <category>material</category>
+                  <description>determine</description>
                   <code>
-                    <code>new</code>
-                    <system>voice</system>
+                    <code>item</code>
+                    <system>worry</system>
                   </code>
                 </substance>
               </ingredient>
             </ingredients>
             <monitoring_programs>
               <monitoring_program>
-                <name>Brittany Andersen</name>
-                <type>quite</type>
+                <name>Jason Wallace</name>
+                <type>beautiful</type>
               </monitoring_program>
             </monitoring_programs>
             <monographs>
               <monograph>
-                <type>skill</type>
+                <type>may</type>
               </monograph>
             </monographs>
             <cost_informations>
               <cost_information>
-                <type>base</type>
-                <source>join</source>
+                <type>matter</type>
+                <source>full</source>
                 <cost>
-                  <value>512.13</value>
-                  <currency>VUV</currency>
+                  <value>112.36</value>
+                  <currency>INR</currency>
                 </cost>
               </cost_information>
             </cost_informations>
-            <plan_id>responsibility</plan_id>
+            <plan_id>executive</plan_id>
             <prior_authorization>false</prior_authorization>
-            <step_therapy>true</step_therapy>
-            <quantity_limit>false</quantity_limit>
+            <step_therapy>false</step_therapy>
+            <quantity_limit>true</quantity_limit>
             <medicine_classifications>
               <medicine_classification>
-                <type>data</type>
-                <classification>fill</classification>
+                <type>senior</type>
+                <classification>education</classification>
               </medicine_classification>
             </medicine_classifications>
             <formulary_drugs_alternatives>
               <formulary_drugs_alternative>
                 <rx_norm_code>
-                  <code>system</code>
+                  <code>structure</code>
                   <display>English</display>
                   <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
                 </rx_norm_code>
                 <status>inactive</status>
                 <manufacturer>
-                  <name>Jennifer Chambers</name>
-                  <alias>staff</alias>
-                  <type>exactly</type>
+                  <name>Joel Richardson DDS</name>
+                  <alias>since</alias>
+                  <type>inside</type>
                 </manufacturer>
                 <dose_form>
-                  <code>most</code>
-                  <system>rule</system>
+                  <code>realize</code>
+                  <system>capital</system>
                 </dose_form>
                 <ingredients>
                   <ingredient>
-                    <is_active>false</is_active>
+                    <is_active>true</is_active>
                     <strength>
                       <numerator>
-                        <value>219.82</value>
+                        <value>696.18</value>
                         <comparator>&lt;=</comparator>
-                        <unit>deep</unit>
-                        <system>doctor</system>
-                        <code>fill</code>
+                        <unit>girl</unit>
+                        <system>suddenly</system>
+                        <code>religious</code>
                       </numerator>
                       <denominator>
-                        <value>475.82</value>
-                        <comparator>&lt;=</comparator>
-                        <unit>laugh</unit>
-                        <system>learn</system>
-                        <code>however</code>
+                        <value>509.64</value>
+                        <comparator>&lt;</comparator>
+                        <unit>describe</unit>
+                        <system>fund</system>
+                        <code>nearly</code>
                       </denominator>
                     </strength>
                     <substance>
-                      <category>material</category>
-                      <description>region</description>
+                      <category>drug</category>
+                      <description>specific</description>
                       <code>
-                        <code>fall</code>
-                        <system>stock</system>
+                        <code>impact</code>
+                        <system>true</system>
                       </code>
                     </substance>
                   </ingredient>
                 </ingredients>
                 <monitoring_programs>
                   <monitoring_program>
-                    <name>Christine Jones</name>
-                    <type>month</type>
+                    <name>Dennis Harrison</name>
+                    <type>cut</type>
                   </monitoring_program>
                 </monitoring_programs>
                 <monographs>
                   <monograph>
-                    <type>attorney</type>
+                    <type>bed</type>
                   </monograph>
                 </monographs>
                 <cost_informations>
                   <cost_information>
-                    <type>within</type>
-                    <source>although</source>
+                    <type>president</type>
+                    <source>garden</source>
                     <cost>
-                      <value>109.23</value>
-                      <currency>AUD</currency>
+                      <value>501.14</value>
+                      <currency>BBD</currency>
                     </cost>
                   </cost_information>
                 </cost_informations>
-                <plan_id>common</plan_id>
-                <prior_authorization>true</prior_authorization>
-                <step_therapy>true</step_therapy>
+                <plan_id>good</plan_id>
+                <prior_authorization>false</prior_authorization>
+                <step_therapy>false</step_therapy>
                 <quantity_limit>true</quantity_limit>
                 <medicine_classifications>
                   <medicine_classification>
-                    <type>try</type>
-                    <classification>party</classification>
+                    <type>contain</type>
+                    <classification>say</classification>
                   </medicine_classification>
                 </medicine_classifications>
               </formulary_drugs_alternative>

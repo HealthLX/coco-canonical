@@ -236,6 +236,11 @@ The sample file generation is now configuration-driven using YAML. Edit `config/
 |---------|----------------|---------|
 | Generate all samples from config | `python -m tools.build_all_sample_files` | `python -m tools.build_all_sample_files` |
 | Use a custom config path | `python -m tools.build_all_sample_files --config path/to/file.yaml` | `python -m tools.build_all_sample_files --config path\to\file.yaml` |
+| Run all XSLT transforms (YAML-driven) | `python -m tools.transform_schema` | `python -m tools.transform_schema` |
+| Run all transforms for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd` | same |
+| Run one transform for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd --only-xslt Provider_Location.xsl` | same |
+| Single transform (optional XSD check) | `python -m tools.transform_schema --canonical-xml path/to/canonical.xml --xslt transforms/v10.0/foo.xsl --schema schemas/v10.0/Model.xsd` | same |
+| Legacy module name (still works) | `python -m tools.transform_roster` | `python -m tools.transform_roster` |
 
 YAML keys per build entry:
 

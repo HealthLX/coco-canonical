@@ -13,16 +13,17 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-def _fhir_output_name(xslt_path: str) -> str:
-    """Derive FHIR output filename from XSLT path, e.g. roster-patient.xsl -> roster-patient-fhir.xml."""
-    name = Path(xslt_path).name
-    if name.endswith(".xsl"):
-        return name[:-4] + "-fhir.xml"
-    return name + "-fhir.xml"
+
+def _fhir_output_name(xslt_path: str, build: dict | None = None) -> str:
+    """Derive FHIR output filename; matches tools.transform_schema.fhir_output_name."""
+    from tools.transform_schema import fhir_output_name
+
+    variant = (build or {}).get("provider_directory_child")
+    return fhir_output_name(xslt_path, provider_variant=variant)
 
 
 def _run_transform(canonical_path: Path, xslt_path: Path, output_path: Path, return_content: bool = False):
-    from tools.transform_roster import apply_xslt
+    from tools.transform_schema import apply_xslt
 
     base_dir = str(PROJECT_ROOT)
     canonical_str = str(canonical_path)
@@ -118,7 +119,7 @@ def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0):
         xslt_path = PROJECT_ROOT / spec["transform_file"]
         if not xslt_path.is_file():
             raise HTTPException(status_code=503, detail=f"XSLT file not found: {spec['transform_file']}")
-        out_name = _fhir_output_name(spec["transform_file"])
+        out_name = _fhir_output_name(spec["transform_file"], build)
         output_path = fhir_dir / out_name
         body_content = _run_transform(canonical_path, xslt_path, output_path, return_content=(content == 1))
         if content == 1 and body_content:
@@ -131,7 +132,7 @@ def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0):
         xslt_path = PROJECT_ROOT / spec["transform_file"]
         if not xslt_path.is_file():
             raise HTTPException(status_code=503, detail=f"XSLT file not found: {spec['transform_file']}")
-        out_name = _fhir_output_name(spec["transform_file"])
+        out_name = _fhir_output_name(spec["transform_file"], build)
         output_path = fhir_dir / out_name
         xml_content = _run_transform(canonical_path, xslt_path, output_path, return_content=True)
         parts.append({"filename": out_name, "resource_type": spec["resource_type"], "content": xml_content})

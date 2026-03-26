@@ -26,7 +26,7 @@ if str(project_root) not in sys.path:
 # Import project modules
 from tools.build_all_sample_files import build_sample_file
 from tools.validate_xml import validate_xml
-from tools.transform_roster import apply_xslt
+from tools.transform_schema import apply_xslt, fhir_output_name, transform_specs_from_build
 
 
 VALIDATOR_URL = "http://localhost:4567/validate"
@@ -321,63 +321,63 @@ Examples:
         print(f"✗ Error during XSD validation: {e}", file=sys.stderr)
         sys.exit(1)
     
-    # Step C: Transform and validate FHIR (if transform exists)
-    transform_file = build_config.get("transform_file")
+    # Step C: Transform to FHIR (and validate when fhir_profile is set)
+    transform_specs = transform_specs_from_build(build_config)
     fhir_profile = build_config.get("fhir_profile")
-    
-    if transform_file and transform_file != "null" and fhir_profile and fhir_profile != "null":
-        print("\n[Step C] Transform and FHIR validation...")
-        
-        transform_path = project_root / transform_file
-        if not transform_path.exists():
-            print(f"✗ Transform file not found: {transform_path}", file=sys.stderr)
-            sys.exit(1)
-        
-        # Check and start Docker if needed
-        docker_started = False
-        if not check_docker_running():
-            print("Error: Docker is not running. Please start Docker and try again.", file=sys.stderr)
-            sys.exit(1)
-        
-        if not check_container_running():
-            if not start_docker_container():
-                print("Warning: Could not start Docker container. Continuing anyway...")
-            else:
-                docker_started = True
-                if not wait_for_validator():
+
+    if transform_specs:
+        print("\n[Step C] XSLT -> FHIR samples...")
+        fhir_dir = project_root / "fhir-samples" / "v10.0"
+        fhir_dir.mkdir(parents=True, exist_ok=True)
+
+        for tf in transform_specs:
+            transform_path = project_root / tf
+            if not transform_path.exists():
+                print(f"✗ Transform file not found: {transform_path}", file=sys.stderr)
+                sys.exit(1)
+            out_name = fhir_output_name(tf, provider_variant=build_config.get("provider_directory_child"))
+            fhir_out = fhir_dir / out_name
+            print(f"\n  Applying {tf} -> {out_name}")
+            try:
+                apply_xslt(
+                    str(project_root),
+                    str(xml_path),
+                    str(transform_path),
+                    str(fhir_out),
+                )
+                print("  ✓ Transformation successful")
+            except Exception as e:
+                print(f"  ✗ Transformation failed: {e}", file=sys.stderr)
+                sys.exit(1)
+
+        if fhir_profile and fhir_profile != "null" and len(transform_specs) == 1:
+            print("\n[Step C continued] FHIR validation (single transform + profile)...")
+            if not check_docker_running():
+                print("Error: Docker is not running. Please start Docker and try again.", file=sys.stderr)
+                sys.exit(1)
+
+            if not check_container_running():
+                if not start_docker_container():
+                    print("Warning: Could not start Docker container. Continuing anyway...")
+                elif not wait_for_validator():
                     print("Warning: Validator service did not become ready. Continuing anyway...")
-        
-        # Load FHIR package
-        load_fhir_package(project_root)
-        
-        # Run transform
-        print(f"\n  Applying XSLT transform: {transform_file}")
-        try:
-            fhir_xml = apply_xslt(
-                str(project_root),
-                str(xml_path),
-                str(transform_path),
-                output_file=None
+
+            load_fhir_package(project_root)
+            fhir_xml_path = fhir_dir / fhir_output_name(
+                transform_specs[0], provider_variant=build_config.get("provider_directory_child")
             )
-            print("  ✓ Transformation successful")
-        except Exception as e:
-            print(f"  ✗ Transformation failed: {e}", file=sys.stderr)
-            sys.exit(1)
-        
-        # Validate FHIR
-        print(f"\n  Validating FHIR against profile: {fhir_profile}")
-        has_errors, _ = validate_fhir(fhir_xml, fhir_profile)
-        
-        if has_errors:
-            print("  ⚠ FHIR validation found errors (see above)")
-            # Don't fail CI for FHIR validation errors - just warn
-            # Uncomment next line if you want to fail on FHIR errors:
-            # sys.exit(1)
-        else:
-            print("  ✓ FHIR validation passed (no errors)")
-        
+            fhir_xml = fhir_xml_path.read_text(encoding="utf-8")
+            print(f"\n  Validating FHIR against profile: {fhir_profile}")
+            has_errors, _ = validate_fhir(fhir_xml, fhir_profile)
+
+            if has_errors:
+                print("  ⚠ FHIR validation found errors (see above)")
+            else:
+                print("  ✓ FHIR validation passed (no errors)")
+        elif fhir_profile and fhir_profile != "null" and len(transform_specs) > 1:
+            print("\n  (Skipping automated FHIR validation: multiple transforms; no single profile.)")
     else:
-        print("\n[Step C] Skipping transform (no transform_file configured)")
+        print("\n[Step C] Skipping transform (no transform_file / transform_files configured)")
     
     print("\n" + "=" * 70)
     print("Pipeline completed successfully!")
