@@ -3,7 +3,6 @@
   <xs:import namespace="http://cocodata.org/core" schemaLocation="Core-Model.xsd"/>
   <!--Data Type Declaration-->
   <!--Regular Expression for string: Comment pattern if you want to allow empty strings test-->
-
   <xs:simpleType name="string">
     <xs:restriction base="xs:string">
       <!-- <xs:pattern value="[ \r\n\t\S]+"/> -->
