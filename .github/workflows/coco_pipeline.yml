@@ -123,7 +123,7 @@ jobs:
             echo "No changes to sample files detected - skipping commit"
           fi
 
-      - name: Auto-commit generated sample
+      - name: Rebase onto remote branch tip
         if: steps.check_changes.outputs.has_changes == 'true'
         # Avoid non-fast-forward push failures when the PR branch was updated since checkout.
         # This rebases our generated-file commit on top of the current remote branch tip.
@@ -131,8 +131,6 @@ jobs:
         #
         # Note: github.head_ref is set for pull_request events; github.ref_name for workflow_dispatch.
         # We fetch the branch explicitly and rebase onto it.
-      - name: Rebase onto remote branch tip
-        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           BRANCH="${{ github.head_ref || github.ref_name }}"
           echo "Rebasing onto origin/${BRANCH} ..."
