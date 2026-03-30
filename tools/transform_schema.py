@@ -182,8 +182,13 @@ def apply_xslt(base_dir, xml_file, xslt_file, output_file=None):
             dom = minidom.parseString(result)
             pretty_xml = dom.toprettyxml(indent="  ", encoding="utf-8").decode("utf-8")
             pretty_xml = "\n".join([line for line in pretty_xml.split("\n") if line.strip()])
-        except Exception:
-            pretty_xml = result
+        except Exception as e:
+            # Do not write invalid XML to disk; fail fast so we fix the transform/tools instead.
+            snippet = result[:400].replace("\r", "\\r").replace("\n", "\\n")
+            raise ValueError(
+                f"XSLT output is not well-formed XML for xslt={xslt_file} input={xml_file}. "
+                f"Parse error: {type(e).__name__}: {e}. Output starts with: {snippet!r}"
+            ) from e
 
         if output_file:
             with open(output_file, "w", encoding="utf-8") as f:

@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Organization xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <id value="-"/>
+  <id value="-can"/>
   <meta>
     <source value=""/>
   </meta>
-  <active value=""/>
-  <type/>
-  <name value=""/>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="4128531433"/>
+  </identifier>
+  <identifier>
+    <system value="https://data.healthlx.com/ID-"/>
+    <value value="-can"/>
+  </identifier>
+  <identifier>
+    <id value="e8cc59d9-439d-4544-bef7-15d782c251bd"/>
+    <system value="http://terminology.hl7.org/NamingSystem/CLIA"/>
+    <value value="chair"/>
+  </identifier>
+  <active value="false"/>
+  <type>
+    <coding>
+      <system value="http://hl7.org/fhir/us/davinci-pdex-plan-net/CodeSystem/OrgTypeCS"/>
+      <code value="fac"/>
+      <display value="Facility"/>
+    </coding>
+  </type>
+  <name value="Holly Francis"/>
+  <telecom>
+    <system value="pager"/>
+    <value value="recently"/>
+    <use value="work"/>
+    <rank value="5"/>
+    <period>
+      <start value="2011-12-15T04:31:19Z"/>
+      <end value="2014-06-30T01:10:27Z"/>
+    </period>
+  </telecom>
+  <address>
+    <use value="home"/>
+    <type value="both"/>
+    <text value="American Indian or Alaska Native"/>
+    <line value="567 Jimmy Glen"/>
+    <city value="East Mary"/>
+    <state value="MN"/>
+    <postalCode value="02470"/>
+    <country value="MC"/>
+    <district value="term"/>
+    <period>
+      <start value="2013-05-17T07:56:29Z"/>
+      <end value="2017-11-14T02:36:07Z"/>
+    </period>
+  </address>
+  <partOf>
+    <reference>
+      <type>Organization</type>
+      <identifier>
+        <type>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+            <code value="NPI"/>
+            <display value="National Provider Identifier"/>
+          </coding>
+        </type>
+        <system value="http://hl7.org/fhir/sid/us-npi"/>
+        <value value="2982696758"/>
+      </identifier>
+      <display value="Melissa Fox"/>
+    </reference>
+  </partOf>
+  <contact>
+    <purpose value="ADMIN"/>
+    <name>
+      <use value="usual"/>
+      <text value="American Indian or Alaska Native"/>
+      <family value="Miller"/>
+      <given value=""/>
+      <prefix value=""/>
+    </name>
+    <telecom>
+      <system value="sms"/>
+      <value value="tree"/>
+      <use value="temp"/>
+    </telecom>
+    <address>
+      <use value="work"/>
+      <use value="postal"/>
+      <text value="American Indian or Alaska Native"/>
+      <line value="19628 Buck Wall"/>
+      <city value="Port William"/>
+      <state value="PW"/>
+      <postalCode value="04455"/>
+      <country value="UZ"/>
+      <district value="table"/>
+      <period>
+        <start value="2019-04-26T03:52:34Z"/>
+        <end value="2018-12-03T06:55:44Z"/>
+      </period>
+    </address>
+  </contact>
 </Organization>

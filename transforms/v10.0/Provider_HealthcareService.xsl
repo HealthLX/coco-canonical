@@ -7,7 +7,13 @@
     xpath-default-namespace="http://cocodata.org"
     exclude-result-prefixes="coco">
 
-    <xsl:variable name="POG_PROVIDER" select="/provider"/>
+    <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="/providers/provider"/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
     <xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
     <xsl:output method="xml" indent="yes"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC">
@@ -40,13 +46,10 @@
 
 
         <xsl:choose>
-            <xsl:when test="//healthcare_services/healthcare_service">
+            <xsl:when test=".//healthcare_services/healthcare_service">
+                <!-- Single-resource output: emit only the first HealthcareService found. -->
+                <xsl:for-each select=".//healthcare_services/healthcare_service[1]">
 
-                <HealthcareServices>
-
-
-
-                    <xsl:for-each select="//healthcare_services/healthcare_service">
                         <HealthcareService xmlns="http://hl7.org/fhir">
                             <id>
                                 <xsl:choose>
@@ -353,9 +356,7 @@
                   <endpoint><!-\- 0..* Reference(Endpoint) Technical endpoints providing access to electronic services operated for the healthcare service -\-></endpoint>
            -->
                         </HealthcareService>
-                    </xsl:for-each>
-
-                </HealthcareServices>
+                </xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
                 <HealthLX_remove_not_applicable>

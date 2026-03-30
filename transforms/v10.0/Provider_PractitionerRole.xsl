@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0"
     xmlns="http://hl7.org/fhir"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -8,7 +7,13 @@
     xpath-default-namespace="http://cocodata.org"
     exclude-result-prefixes="coco">
 
-    <xsl:variable name="POG_PROVIDER" select="provider"/>
+    <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="/providers/provider"/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/practitioner"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS" select="$POG_PROVIDER/practitioner/addresses"/>
     <xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
@@ -17,10 +22,9 @@
     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER_DEMOGRAPHIC/unique_identifier"/>
 
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="*">
-
-
-        <PractitionerRoles xmlns="http://hl7.org/fhir">
+    <xsl:template match="provider">
+        <!-- Single-resource output: emit only the first PractitionerRole (first network). -->
+        <xsl:for-each select="$POG_PROVIDER_DEMOGRAPHIC/networks/network[1]">
             <xsl:variable name="CODE">
                 <xsl:choose>
                     <xsl:when test="$POG_UNIQUE_ID">
@@ -34,11 +38,8 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
-
-            <xsl:for-each select="$POG_PROVIDER_DEMOGRAPHIC/networks/network">
-                <xsl:variable name="POG_NETWORKID" select="./network_id"/>
-
-                <PractitionerRole xmlns="http://hl7.org/fhir">
+            <xsl:variable name="POG_NETWORKID" select="./network_id"/>
+            <PractitionerRole xmlns="http://hl7.org/fhir">
                     <xsl:call-template name="resource_id"/>
 
                     <meta>
@@ -370,10 +371,8 @@
                     <code><!-- 1..1 CodeableConcept Coded representation of the qualification -->
                     </code>
                     <endpoint><!-- 0..* Reference(Endpoint) Technical endpoints providing access to services operated for the organization --></endpoint>
-                </PractitionerRole>
-            </xsl:for-each>
-        </PractitionerRoles>
-
+            </PractitionerRole>
+        </xsl:for-each>
     </xsl:template>
 
     <xsl:template name="pog_meta_security_practitionerrole">

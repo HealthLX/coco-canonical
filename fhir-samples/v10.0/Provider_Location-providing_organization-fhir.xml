@@ -1,2 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Locations xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+<Location xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <code value="can"/>
+  <id value="-canhomeboth"/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="4128531433"/>
+  </identifier>
+  <identifier>
+    <system value="https://data.healthlx.com/ID-"/>
+    <value value="-can"/>
+  </identifier>
+  <status value="inactive"/>
+  <operationalStatus/>
+  <name value="Holly Francis"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HOSP"/>
+    </coding>
+  </type>
+  <alia/>
+  <description value=""/>
+  <mode/>
+  <type/>
+  <telecom>
+    <extension url="http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/contactpoint-availabletime">
+      <extension url="daysOfWeek">
+        <valueCode value="wed"/>
+      </extension>
+      <extension url="availableStartTime">
+        <valueTime value="01:53:47"/>
+      </extension>
+      <extension url="availableEndTime">
+        <valueTime value="20:38:52"/>
+      </extension>
+    </extension>
+    <use value="work"/>
+    <value value="recently"/>
+    <system value="pager"/>
+  </telecom>
+  <address>
+    <use value="home"/>
+    <line value="567 Jimmy Glen"/>
+    <city value="East Mary"/>
+    <district value="term"/>
+    <state value="MN"/>
+    <postalCode value="02470"/>
+    <country value="MC"/>
+  </address>
+  <managingOrganization>
+    <reference value="Organization/-can"/>
+  </managingOrganization>
+</Location>

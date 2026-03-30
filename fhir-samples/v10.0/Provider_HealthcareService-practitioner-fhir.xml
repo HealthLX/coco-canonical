@@ -1,83 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>
-  10.0
-  offer
-  2026-03-25T21:36:25Z
-  <HealthcareServices xmlns="http://hl7.org/fhir"
-                    xmlns:xhtml="http://www.w3.org/1999/xhtml"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <HealthcareService>
-      <id value="--1"/>
-      <meta>
-         <source value=""/>
-      </meta>
-      <contained>
-         <Location>
-            <id value="tempbothLocation_Derived1"/>
-            <description value="ground"/>
-            <identifier>
-               <system value="https://data.healthlx.com/relate"/>
-               <value value="artist"/>
-            </identifier>
-            <address>
-               <use value="temp"/>
-               <line value="3182 Rangel Island"/>
-               <city value="Phillipsmouth"/>
-               <district value="lot"/>
-               <state value="MH"/>
-               <postalCode value="33246"/>
-               <country>PA</country>
-            </address>
-            <mode value="instance"/>
-            <physicalType>
-               <coding>
-                  <code value="area"/>
-                  <display value="Area"/>
-               </coding>
-            </physicalType>
-         </Location>
-      </contained>
+<?xml version="1.0" encoding="utf-8"?>
+<HealthcareService xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="--1"/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <contained>
+    <Location>
+      <id value="oldbothLocation_Derived1"/>
+      <description value="night"/>
       <identifier>
-         <type>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
-               <code value="NPI"/>
-               <display value="National Provider Identifier"/>
-            </coding>
-         </type>
-         <system value="http://hl7.org/fhir/sid/us-npi"/>
-         <value value=""/>
+        <system value="https://data.healthlx.com/southern"/>
+        <value value="rock"/>
       </identifier>
-      <active value="true"/>
-      <providedBy>
-         <reference value="Organization/-"/>
-      </providedBy>
-      <category>
-         <coding>
-            <system/>
-            <code/>
-            <display/>
-         </coding>
-         <text/>
-      </category>
-      <type>
-         <coding>
-            <system/>
-            <code/>
-            <display/>
-         </coding>
-         <text/>
-      </type>
-      <specialty/>
-      <location>
-         <reference value="#tempbothLocation_Derived1"/>
-      </location>
-      <name value=""/>
-      <photo/>
-      <communication/>
-      <referralMethod/>
-      <availableTime>
-         <daysOfWeek value="sat"/>
-         <allDay value="true"/>
-      </availableTime>
-   </HealthcareService>
-</HealthcareServices>
+      <address>
+        <use value="old"/>
+        <line value="69432 Wagner Pass Suite 695"/>
+        <city value="Port Angelatown"/>
+        <district value="hair"/>
+        <state value="GU"/>
+        <postalCode value="84036"/>
+        <country>SD</country>
+      </address>
+      <mode value="instance"/>
+      <physicalType>
+        <coding>
+          <code value="area"/>
+          <display value="Area"/>
+        </coding>
+      </physicalType>
+    </Location>
+  </contained>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value=""/>
+  </identifier>
+  <active value="true"/>
+  <providedBy>
+    <reference value="Organization/-"/>
+  </providedBy>
+  <category>
+    <coding>
+      <system/>
+      <code/>
+      <display/>
+    </coding>
+    <text/>
+  </category>
+  <type>
+    <coding>
+      <system/>
+      <code/>
+      <display/>
+    </coding>
+    <text/>
+  </type>
+  <specialty/>
+  <location>
+    <reference value="#oldbothLocation_Derived1"/>
+  </location>
+  <name value=""/>
+  <photo/>
+  <communication/>
+  <referralMethod/>
+  <availableTime>
+    <daysOfWeek value="mon"/>
+    <allDay value="true"/>
+  </availableTime>
+</HealthcareService>

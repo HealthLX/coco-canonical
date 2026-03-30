@@ -7,9 +7,24 @@
     xpath-default-namespace="http://cocodata.org"
     exclude-result-prefixes="coco">
 
-    <xsl:variable name="POG_PROVIDER" select="provider"/>
-    <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC"
-        select="$POG_PROVIDER/providing_organization"/>
+    <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="/providers/provider"/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+    <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC">
+        <xsl:choose>
+            <xsl:when test="$POG_PROVIDER/providing_organization">
+                <xsl:sequence select="$POG_PROVIDER/providing_organization"/>
+            </xsl:when>
+            <xsl:when test="$POG_PROVIDER/practitioner/affiliated_organization">
+                <xsl:sequence select="$POG_PROVIDER/practitioner/affiliated_organization"/>
+            </xsl:when>
+            <xsl:otherwise/>
+        </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
         select="$POG_PROVIDER/providing_organization/addresses"/>
     <xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
@@ -19,7 +34,7 @@
     
 
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="*">
+    <xsl:template match="provider">
         <xsl:for-each select="$POG_PROVIDER_DEMOGRAPHIC">
             <xsl:variable name="POG_CLIA" select="./clia"/>
             <xsl:variable name="POG_NPI_SINGLE" select="./npi[1]"/>

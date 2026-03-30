@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patient xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-pay"/>
+  <meta>
+    <lastUpdated value="2026-03-30T12:11:30.8053329-05:00"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">Patient: American Indian or Alaska Native, DOB: 1984-03-14</xhtml:div>
+  </text>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2076-8"/>
+        <display value="Native Hawaiian or Other Pacific Islander"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Native Hawaiian or Other Pacific Islander"/>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2135-2"/>
+        <display value="Hispanic or Latino"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Hispanic or Latino"/>
+    </extension>
+  </extension>
+  <identifier>
+    <system value="http://terminology.cocodata.org/identifiers/member-id"/>
+    <value value="pay"/>
+  </identifier>
+  <active value="true"/>
+  <name>
+    <use value="official"/>
+    <text value="American Indian or Alaska Native"/>
+    <family value="Carter"/>
+    <given value="Casey"/>
+    <prefix value="Miss"/>
+    <suffix value="Jr."/>
+    <period>
+      <start value="2019-11-05T12:33:24Z"/>
+      <end value="2025-11-21T14:27:23Z"/>
+    </period>
+  </name>
+  <telecom>
+    <system value="pager"/>
+    <value value="fall"/>
+    <use value="temp"/>
+    <rank value="1"/>
+    <period>
+      <start value="2017-06-16T23:01:42Z"/>
+      <end value="2022-05-05T23:18:10Z"/>
+    </period>
+  </telecom>
+  <gender value="unknown"/>
+  <birthDate value="1984-03-14"/>
+  <deceasedDateTime value="2018-08-19T07:48:03Z"/>
+  <address>
+    <type value="physical"/>
+    <line value="485 Shelton Lakes"/>
+    <city value="North Mary"/>
+    <district value="just"/>
+    <state value="IA"/>
+    <postalCode value="55412"/>
+    <country value="KI"/>
+    <period>
+      <start value="2017-02-09T19:46:20Z"/>
+      <end value="2025-05-18T16:52:30Z"/>
+    </period>
+  </address>
+  <communication>
+    <language>
+      <coding>
+        <system value="urn:ietf:bcp:47"/>
+        <code value="it-CH"/>
+        <display value="Italian (Region=Switzerland)"/>
+      </coding>
+    </language>
+    <preferred value="false"/>
+  </communication>
+</Patient>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0"
     xmlns="http://hl7.org/fhir"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -7,7 +6,14 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xpath-default-namespace="http://cocodata.org"
     exclude-result-prefixes="coco">
-    <xsl:variable name="POG_PROVIDER" select="provider"/>
+
+    <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="/providers/provider"/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
         select="$POG_PROVIDER/providing_organization/addresses"/>
@@ -19,10 +25,10 @@
     <xsl:variable name="POG_TYPE" select="$POG_PROVIDER_LOCATIONS/type"/>
 
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="*">
+    <xsl:template match="provider">
 
-        <Locations xmlns="http://hl7.org/fhir">
-            
+        <!-- This stylesheet can produce multiple Location elements; emit exactly one root Location. -->
+        <xsl:variable name="locs" as="element()*">
             <xsl:choose>
                 <xsl:when test="$POG_PROVIDER/providing_organization">
 
@@ -30,8 +36,7 @@
                     <xsl:variable name="POG_NPI" select="distinct-values($POG_PROVIDER/providing_organization/npi)"/>
                     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
                     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER/providing_organization/unique_identifier"/>
-                    <xsl:for-each select="$POG_PROVIDER/providing_organization/addresses/address">
-                        <xsl:if test="./type != 'postal'">
+                    <xsl:for-each select="($POG_PROVIDER/providing_organization/addresses/address[type != 'postal'])[1]">
                             <Location xmlns="http://hl7.org/fhir">
 
                                 <!-- from Resource: id, meta, implicitRules, and language -->
@@ -328,7 +333,6 @@
                                     <!-- 1..1 Reference(Patient) The recipient of the products and services -->
                                 </managingOrganization>
                             </Location>
-                        </xsl:if>
                     </xsl:for-each>
                     <xsl:for-each select="$POG_PROVIDER/providing_organization/locations/location">
                         <xsl:variable name="PARTOF" select="./part_of"/>
@@ -1829,8 +1833,7 @@
                     <xsl:variable name="POG_NPI" select="$POG_PROVIDER/practitioner/npi"/>
                     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/practitioner"/>
                     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER/practitioner/unique_identifier"/>
-                    <xsl:for-each select="$POG_PROVIDER/practitioner/addresses/address">
-                        <xsl:if test="./type != 'postal'">
+                    <xsl:for-each select="($POG_PROVIDER/practitioner/addresses/address[type != 'postal'])[1]">
                             <Location xmlns="http://hl7.org/fhir">
                                 <xsl:variable name="CODE">
                                     <xsl:choose>
@@ -2123,10 +2126,9 @@
 
 
                             </Location>
-                        </xsl:if>
                     </xsl:for-each>
-                    <xsl:for-each select="$POG_PROVIDER/practitioner/locations/location/address">
-                        <xsl:if test="./type != 'postal'">
+                    <xsl:if test="not($POG_PROVIDER/practitioner/addresses/address[type != 'postal'])">
+                    <xsl:for-each select="($POG_PROVIDER/practitioner/locations/location/address[type != 'postal'])[1]">
                             <Location xmlns="http://hl7.org/fhir">
                                 <xsl:variable name="CODE">
                                     <xsl:choose>
@@ -2419,8 +2421,8 @@
 
 
                             </Location>
-                        </xsl:if>
                     </xsl:for-each>
+                    </xsl:if>
                     <xsl:for-each select="$POG_PROVIDER/practitioner/affiliated_organization/addresses/address">
                         <xsl:if test="./type != 'postal'">
                             <Location xmlns="http://hl7.org/fhir">
@@ -3608,7 +3610,16 @@
                     
                 </xsl:otherwise>
             </xsl:choose>
-        </Locations>
+        </xsl:variable>
+
+        <xsl:choose>
+            <xsl:when test="exists($locs[1])">
+                <xsl:sequence select="$locs[1]"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <Location xmlns="http://hl7.org/fhir"/>
+            </xsl:otherwise>
+        </xsl:choose>
 
 
     </xsl:template>

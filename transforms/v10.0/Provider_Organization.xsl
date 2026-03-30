@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0"
     xmlns="http://hl7.org/fhir"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -7,7 +6,13 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xpath-default-namespace="http://cocodata.org"
     exclude-result-prefixes="coco">
-    <xsl:variable name="POG_PROVIDER" select="provider"/>
+    <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="/providers/provider"/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
         select="$POG_PROVIDER/providing_organization/addresses"/>
@@ -17,7 +22,7 @@
     <xsl:variable name="POG_NPI" select="$POG_PROVIDER_DEMOGRAPHIC/npi"/>
     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER_DEMOGRAPHIC/unique_identifier"/>
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="*">
+    <xsl:template match="provider">
         <!-- Parent Organization -->
         <Organization xmlns="http://hl7.org/fhir">
             <xsl:call-template name="resource_id"/>

@@ -1,2 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PractitionerRoles xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+<PractitionerRole xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-majority-part"/>
+  <meta>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Network"/>
+    </meta>
+  </meta>
+  <extension url="http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/network-reference">
+    <valueReference>
+      <reference value="Organization/-majority"/>
+    </valueReference>
+  </extension>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="5035932721"/>
+  </identifier>
+  <identifier>
+    <system value="https://data.healthlx.com/ID-"/>
+    <value value="-part"/>
+  </identifier>
+  <active value="true"/>
+  <practitioner>
+    <reference value="Practitioner/-part"/>
+    <display value="American Indian or Alaska Native"/>
+  </practitioner>
+  <code>
+    <coding>
+      <system value="evening"/>
+      <code value="but"/>
+      <display value="English"/>
+    </coding>
+    <text>American Indian or Alaska Native</text>
+  </code>
+  <specialty>
+    <coding>
+      <system value="him"/>
+      <code value="indeed"/>
+      <display value="English"/>
+    </coding>
+    <text value="American Indian or Alaska Native"/>
+  </specialty>
+  <location>
+    <reference value="Location/-partbillingboth"/>
+    <display value="American Indian or Alaska Native"/>
+  </location>
+  <type>
+    <coding>
+      <system value="http://hl7.org/fhir/us/davinci-pdex-plan-net/CodeSystem/OrgTypeCS"/>
+      <code value="ntwk"/>
+      <display value="Network"/>
+    </coding>
+  </type>
+  <name>
+    <text value="Lisa Charles"/>
+  </name>
+  <alias/>
+  <telecom>
+    <system value="url"/>
+    <value value="often"/>
+    <use value="temp"/>
+    <rank value="5"/>
+    <period>
+      <start value="2011-07-10T02:15:50Z"/>
+      <end value="2011-09-03T08:46:59Z"/>
+    </period>
+  </telecom>
+  <partOf/>
+  <contact>
+    <name>
+      <family value="Cabrera"/>
+      <given value="Melissa"/>
+    </name>
+  </contact>
+  <code/>
+  <endpoint/>
+</PractitionerRole>
