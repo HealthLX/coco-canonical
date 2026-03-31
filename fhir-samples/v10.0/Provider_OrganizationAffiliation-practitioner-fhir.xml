@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OrganizationAffiliation xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-"/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <active value=""/>
+  <period/>
+  <organization>
+    <reference value="Organization/-"/>
+    <display value=""/>
+  </organization>
+  <participatingOrganization/>
+  <endpoint/>
+</OrganizationAffiliation>

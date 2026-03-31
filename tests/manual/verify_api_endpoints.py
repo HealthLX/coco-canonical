@@ -83,6 +83,18 @@ def run():
     r = client.post("/transform", json={"target": "roster"})
     ok("POST /transform {target: roster}", r) and print("  POST /transform body target=roster", r.status_code)
 
+    print("\n=== Provider Directory fan-out (single variant) ===")
+    r = client.post("/samples/generate", json={"target": "providerdirectory"})
+    ok("POST /samples/generate {target: providerdirectory}", r) and print(
+        "  POST /samples/generate providerdirectory", r.status_code, r.json().get("success")
+    )
+    r = client.post("/transform/providerdirectory/content", params={"provider_directory_child": "practitioner"})
+    ok("POST /transform/providerdirectory/content practitioner", r) and print(
+        "  POST /transform/providerdirectory/content practitioner",
+        r.status_code,
+        "multipart/xml" in (r.headers.get("content-type") or ""),
+    )
+
     print("\n=== Download FHIR sample ===")
     r = client.get("/samples/fhir/roster-patient-fhir.xml")
     ok("GET /samples/fhir/roster-patient-fhir.xml", r) and print("  GET /samples/fhir/roster-patient-fhir.xml", r.status_code, len(r.content), "bytes")
@@ -99,6 +111,10 @@ def run():
     ok("GET /samples/canonical/nonexistent", r, 404) and print("  GET canonical nonexistent 404", r.status_code)
     r = client.post("/transform/nonexistent")
     ok("POST /transform bad target", r, 400) and print("  POST /transform bad target", r.status_code)
+    r = client.post("/transform/providerdirectory")
+    ok("POST /transform providerdirectory ambiguous", r, 400) and print(
+        "  POST /transform providerdirectory ambiguous", r.status_code
+    )
     r = client.get("/schemas/nonexistent.xsd")
     ok("GET /schemas/nonexistent", r, 404) and print("  GET /schemas/nonexistent 404", r.status_code)
 

@@ -2,7 +2,7 @@ import requests
 import os
 import json
 from pathlib import Path
-from tools.transform_roster import apply_xslt
+from tools.transform_schema import apply_xslt
 
 # The URL of your local sidecar service
 VALIDATOR_URL = "http://localhost:4567/validate"
