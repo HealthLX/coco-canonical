@@ -51,10 +51,26 @@ def _run_build_for_target(target: str) -> list[dict]:
             ts_name = _timestamped_name(b["output_file_name"])
             ts_path = canonical_dir / ts_name
             shutil.copy2(src_path, ts_path)
-            results.append({"file": ts_name, "path": str(ts_path), "success": True})
+            results.append(
+                {
+                    "file": ts_name,
+                    "path": str(ts_path),
+                    "success": True,
+                    "provider_directory_child": b.get("provider_directory_child"),
+                    "output_file_name": b["output_file_name"],
+                }
+            )
         except Exception as e:
             logger.exception("Build failed for %s", b.get("output_file_name"))
-            results.append({"file": b["output_file_name"], "success": False, "detail": str(e)})
+            results.append(
+                {
+                    "file": b["output_file_name"],
+                    "success": False,
+                    "detail": str(e),
+                    "provider_directory_child": b.get("provider_directory_child"),
+                    "output_file_name": b["output_file_name"],
+                }
+            )
     return results
 
 
@@ -149,15 +165,43 @@ async def post_generate_custom(
 def post_generate_target_content(
     target: str,
     format: str = Query("xml", description="Response format: xml or json"),
+    provider_directory_child: str | None = Query(
+        None,
+        description="For providerdirectory, select practitioner or providing_organization when multiple builds exist",
+    ),
 ):
     """Generate sample for target, then return the generated XML in the response body."""
     target = target.strip().lower()
     try:
         results = _run_build_for_target(target)
-        if not results or not results[0].get("success"):
-            raise HTTPException(status_code=500, detail=results[0].get("detail", "Build failed") if results else "No builds")
-        # Return first generated file content (for multi-build targets we return first)
-        first = results[0]
+        success_rows = [r for r in results if r.get("success")]
+        if not success_rows:
+            raise HTTPException(
+                status_code=500,
+                detail=results[0].get("detail", "Build failed") if results else "No builds",
+            )
+
+        wants_child = (provider_directory_child or "").strip().lower()
+        has_variants = any(r.get("provider_directory_child") for r in success_rows)
+        first: dict
+        if wants_child and has_variants:
+            matched = [
+                r
+                for r in success_rows
+                if (r.get("provider_directory_child") or "").strip().lower() == wants_child
+            ]
+            if not matched:
+                raise HTTPException(
+                    status_code=400,
+                    detail=(
+                        f"No build matched provider_directory_child={provider_directory_child!r}. "
+                        "Use practitioner or providing_organization."
+                    ),
+                )
+            first = matched[0]
+        else:
+            first = success_rows[0]
+
         path = Path(first["path"])
         if not path.exists():
             raise HTTPException(status_code=500, detail="Generated file not found")
