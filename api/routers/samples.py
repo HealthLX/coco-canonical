@@ -167,7 +167,7 @@ def post_generate_target_content(
     format: str = Query("xml", description="Response format: xml or json"),
     provider_directory_child: str | None = Query(
         None,
-        description="For providerdirectory, select practitioner or providing_organization when multiple builds exist",
+        description="Optional. Use when multiple providerdirectory builds exist in config; otherwise omit.",
     ),
 ):
     """Generate sample for target, then return the generated XML in the response body."""

@@ -9,11 +9,12 @@
 
     <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
     <xsl:template match="/">
-        <xsl:apply-templates select="/providers/provider"/>
+        <!-- Single-document FHIR output: first provider row only (stylesheet uses $POG_PROVIDER as one context). -->
+        <xsl:apply-templates select="/providers/provider[1]"/>
     </xsl:template>
     <xsl:template match="text()"/>
 
-    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider[1]"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
         select="$POG_PROVIDER/providing_organization/addresses"/>

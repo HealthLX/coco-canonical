@@ -170,7 +170,9 @@ async def post_transform_upload(
 @router.post("/{target}/content")
 def post_transform_target_content(
     target: str,
-    provider_directory_child: str | None = Query(None, description="Provider Directory variant selector"),
+    provider_directory_child: str | None = Query(
+        None, description="Optional. Use when multiple providerdirectory builds exist in config."
+    ),
 ):
     """Run transform for target, return FHIR XML directly in response body."""
     target = target.strip().lower()
@@ -191,7 +193,9 @@ def post_transform_target_content(
 def post_transform_target(
     target: str,
     content: int = Query(0, description="If 1, return FHIR XML in response body"),
-    provider_directory_child: str | None = Query(None, description="Provider Directory variant selector"),
+    provider_directory_child: str | None = Query(
+        None, description="Optional. Use when multiple providerdirectory builds exist in config."
+    ),
 ):
     """Run transform for target. Uses build config for canonical sample and XSLT. Optional ?content=1 for XML in body."""
     target = target.strip().lower()

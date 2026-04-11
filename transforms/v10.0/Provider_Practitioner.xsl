@@ -10,18 +10,18 @@
 	<xsl:output indent="yes" method="xml"/>
 	<!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
 	<xsl:template match="/">
-		<xsl:apply-templates select="/providers/provider"/>
+		<xsl:apply-templates select="/providers/provider[practitioner]"/>
 	</xsl:template>
 	<xsl:template match="text()"/>
 
-	<xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+	<xsl:variable name="POG_PROVIDER" select="/providers/provider[practitioner][1]"/>
 	<xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
 	<xsl:variable name="POG_CLIA" select="$POG_PROVIDER/practitioner/clia"/>
 	<xsl:variable name="POG_NPI" select="$POG_PROVIDER/practitioner/npi"/>
 	<xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER/practitioner/unique_identifier"/>
 
 	<!-- Main resource template structure -->
-	<xsl:template match="provider">
+	<xsl:template match="provider[practitioner]">
 		<!-- https://www.hl7.org/fhir/practitioner.html -->
 		<Practitioner>
 			<xsl:call-template name="resource_id"/>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HealthcareService xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <id value="-4128531433-1"/>
+  <id value="--1"/>
   <meta>
     <source value=""/>
   </meta>
   <contained>
     <Location>
-      <id value="tempphysicalLocation_Derived1"/>
-      <description value="available"/>
+      <id value="billingphysicalLocation_Derived1"/>
+      <description value="however"/>
       <identifier>
-        <system value="https://data.healthlx.com/reason"/>
-        <value value="share"/>
+        <system value="https://data.healthlx.com/window"/>
+        <value value="somebody"/>
       </identifier>
       <address>
-        <use value="temp"/>
-        <line value="260 Kristin Mission Apt. 605"/>
-        <city value="North Samueltown"/>
-        <district value="than"/>
-        <state value="WV"/>
-        <postalCode value="27056"/>
-        <country>KG</country>
+        <use value="billing"/>
+        <line value="803 Phillips Manor Suite 049"/>
+        <city value="Port Scott"/>
+        <district value="free"/>
+        <state value="PW"/>
+        <postalCode value="11017"/>
+        <country>FR</country>
       </address>
       <mode value="instance"/>
       <physicalType>
@@ -39,11 +39,11 @@
       </coding>
     </type>
     <system value="http://hl7.org/fhir/sid/us-npi"/>
-    <value value="4128531433"/>
+    <value value=""/>
   </identifier>
   <active value="true"/>
   <providedBy>
-    <reference value="Organization/-4128531433"/>
+    <reference value="Organization/-"/>
   </providedBy>
   <category>
     <coding>
@@ -63,16 +63,16 @@
   </type>
   <specialty/>
   <location>
-    <reference value="#tempphysicalLocation_Derived1"/>
+    <reference value="#billingphysicalLocation_Derived1"/>
   </location>
   <name value=""/>
   <photo/>
   <communication/>
   <referralMethod/>
   <availableTime>
-    <daysOfWeek value="fri"/>
+    <daysOfWeek value="wed"/>
     <allDay value="false"/>
-    <availableStartTime value="06:31:49"/>
-    <availableEndTime value="08:21:41"/>
+    <availableStartTime value="05:58:49"/>
+    <availableEndTime value="21:44:14"/>
   </availableTime>
 </HealthcareService>

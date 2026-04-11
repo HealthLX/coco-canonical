@@ -6,34 +6,17 @@
 core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
 
 builds:
-  # Provider Directory - practitioner (canonical XML from Provider-Directory.xsd; XSLTs below expect this sample as input)
+  # Provider Directory — single canonical file (practitioner and providing_organization rows, like customer submissions)
   - canonical_name: providerdirectory
     root_element_name: providers
     schema_file_name: Provider-Directory.xsd
-    output_file_name: provider-directory-practitioner-sample.xml
-    provider_directory_child: practitioner
+    output_file_name: provider-directory-sample.xml
     transform_file: null
     transform_files:
       - transform_file: transforms/v10.0/Provider_Practitioner.xsl
         resource_type: Practitioner
       - transform_file: transforms/v10.0/Provider_PractitionerRole.xsl
         resource_type: PractitionerRole
-      - transform_file: transforms/v10.0/Provider_Location.xsl
-        resource_type: Location
-      - transform_file: transforms/v10.0/Provider_HealthcareService.xsl
-        resource_type: HealthcareService
-      - transform_file: transforms/v10.0/Provider_OrganizationAffiliation.xsl
-        resource_type: OrganizationAffiliation
-    fhir_profile: null
-
-  # Provider Directory - providing_organization (same schema; organization-flavored sample XML)
-  - canonical_name: providerdirectory
-    root_element_name: providers
-    schema_file_name: Provider-Directory.xsd
-    output_file_name: provider-directory-organization-sample.xml
-    provider_directory_child: providing_organization
-    transform_file: null
-    transform_files:
       - transform_file: transforms/v10.0/Provider_Organization.xsl
         resource_type: Organization
       - transform_file: transforms/v10.0/Provider_Location.xsl

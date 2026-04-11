@@ -8,11 +8,11 @@
     exclude-result-prefixes="coco">
     <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
     <xsl:template match="/">
-        <xsl:apply-templates select="/providers/provider"/>
+        <xsl:apply-templates select="/providers/provider[providing_organization]"/>
     </xsl:template>
     <xsl:template match="text()"/>
 
-    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider[providing_organization][1]"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/providing_organization"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS"
         select="$POG_PROVIDER/providing_organization/addresses"/>
@@ -22,7 +22,7 @@
     <xsl:variable name="POG_NPI" select="$POG_PROVIDER_DEMOGRAPHIC/npi"/>
     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER_DEMOGRAPHIC/unique_identifier"/>
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="provider">
+    <xsl:template match="provider[providing_organization]">
         <!-- Parent Organization -->
         <Organization xmlns="http://hl7.org/fhir">
             <xsl:call-template name="resource_id"/>

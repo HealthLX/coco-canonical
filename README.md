@@ -37,7 +37,7 @@ CMS interoperability regulations (including CMS-9115-F and CMS-0057-F) define *w
 CoCo does not attempt to:
 - Certify the correctness of utilization management decisions
 - Replace payer-specific adjudication logic
-- Guarantee deterministic outcomes from legacy UM systems
+- Guarantee deterministic outcomes from older UM systems
 
 CMS-0057-F prior authorization responses depend on decision logic embedded in payer systems that may be opaque, non-deterministic, or human-influenced. CoCo focuses on **process conformance and interface integrity**, not adjudication correctness.
 
@@ -240,7 +240,7 @@ The sample file generation is now configuration-driven using YAML. Edit `config/
 | Run all transforms for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd` | same |
 | Run one transform for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd --only-xslt Provider_Location.xsl` | same |
 | Single transform (optional XSD check) | `python -m tools.transform_schema --canonical-xml path/to/canonical.xml --xslt transforms/v10.0/foo.xsl --schema schemas/v10.0/Model.xsd` | same |
-| Legacy module name (still works) | `python -m tools.transform_roster` | `python -m tools.transform_roster` |
+| Alternate entry point  | `python -m tools.transform_roster` | `python -m tools.transform_roster` |
 
 YAML keys per build entry:
 
@@ -248,7 +248,7 @@ YAML keys per build entry:
 - `root_element_name` (string)
 - `schema_file_name` (string)
 - `output_file_name` (string)
-- `provider_directory_child` (string, optional)
+- `provider_directory_child` (string, optional) — only if you add multiple `providerdirectory` builds in YAML; the default is a single build and one file, `provider-directory-sample.xml`
 
 ### HTTP API (for web app / other repo)
 

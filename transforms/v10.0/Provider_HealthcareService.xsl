@@ -9,11 +9,11 @@
 
     <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
     <xsl:template match="/">
-        <xsl:apply-templates select="/providers/provider"/>
+        <xsl:apply-templates select="/providers/provider[1]"/>
     </xsl:template>
     <xsl:template match="text()"/>
 
-    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider[1]"/>
     <xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
     <xsl:output method="xml" indent="yes"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC">

@@ -462,6 +462,23 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
     return fake.word()
 
 
+def _effective_provider_directory_child(base_child, sibling_index):
+    """
+    Pick practitioner vs providing_organization for the nth top-level <provider> under <providers>.
+    Ensures at least one of each when sibling_index reaches 1 (primary type from YAML on 0, opposite on 1).
+    """
+    normalized = None if base_child in (None, "None") else base_child
+    branches = ("practitioner", "providing_organization")
+    if normalized is None:
+        return branches[sibling_index % 2]
+    other = "providing_organization" if normalized == "practitioner" else "practitioner"
+    if sibling_index == 0:
+        return normalized
+    if sibling_index == 1:
+        return other
+    return branches[sibling_index % 2]
+
+
 def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None", parent_xml_elem=None, context_dict=None):
     """
     recursively builds xml elements and returns as an xml document; 
@@ -554,9 +571,34 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
                     max_items = min(particle.max_occurs, 3)
                     count = random.randint(count, max_items)
 
+                child_local = (
+                    particle.name.split("}")[-1] if "}" in particle.name else particle.name
+                )
+                is_providerdirectory_provider = (
+                    canonical_name == "providerdirectory" and child_local == "provider"
+                )
+                if is_providerdirectory_provider:
+                    # At least two <provider> rows so we can include both practitioner and organization
+                    count = max(count, 2)
+
                 for _ in range(count):
+                    per_child_choice = choice_override
+                    if is_providerdirectory_provider:
+                        idx = ctx_dict.setdefault("_provider_sibling_index", 0)
+                        per_child_choice = _effective_provider_directory_child(
+                            choice_override, idx
+                        )
+                        ctx_dict["_provider_sibling_index"] = idx + 1
+
                     child_elem = build_element(
-                        particle.name, schema, xsd_element=particle, depth=depth_level, child_choice=choice_override, parent_xml_elem=parent_xml_elem, context_dict=ctx_dict
+                        particle.name,
+                        schema,
+                        xsd_element=particle,
+                        depth=depth_level,
+                        child_choice=per_child_choice,
+                        canonical_name=canonical_name,
+                        parent_xml_elem=parent_xml_elem,
+                        context_dict=ctx_dict,
                     )
                     if child_elem is not None:
                         parent_xml_elem.append(child_elem)

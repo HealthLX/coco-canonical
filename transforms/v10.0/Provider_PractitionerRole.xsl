@@ -9,11 +9,11 @@
 
     <!-- Explicit entrypoint + suppress built-in text-node copying (prevents stray text before root). -->
     <xsl:template match="/">
-        <xsl:apply-templates select="/providers/provider"/>
+        <xsl:apply-templates select="/providers/provider[practitioner]"/>
     </xsl:template>
     <xsl:template match="text()"/>
 
-    <xsl:variable name="POG_PROVIDER" select="/providers/provider"/>
+    <xsl:variable name="POG_PROVIDER" select="/providers/provider[practitioner][1]"/>
     <xsl:variable name="POG_PROVIDER_DEMOGRAPHIC" select="$POG_PROVIDER/practitioner"/>
     <xsl:variable name="POG_PROVIDER_LOCATIONS" select="$POG_PROVIDER/practitioner/addresses"/>
     <xsl:variable name="POG_CUSTOMER_PREFIX" select="$POG_PROVIDER/customername"/>
@@ -22,7 +22,7 @@
     <xsl:variable name="POG_UNIQUE_ID" select="$POG_PROVIDER_DEMOGRAPHIC/unique_identifier"/>
 
     <xsl:output method="xml" indent="yes"/>
-    <xsl:template match="provider">
+    <xsl:template match="provider[practitioner]">
         <!-- Single-resource output: emit only the first PractitionerRole (first network). -->
         <xsl:for-each select="$POG_PROVIDER_DEMOGRAPHIC/networks/network[1]">
             <xsl:variable name="CODE">
