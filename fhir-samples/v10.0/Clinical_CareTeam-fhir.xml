@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CareTeams>
+  <CareTeam xmlns="http://hl7.org/fhir">
+    <id value="-attention"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam"/>
+    </meta>
+    <contained>
+      <Organization xmlns="">
+        <id value="Carlos Bishop-participantOrganizationDerived1"/>
+        <active value="false"/>
+        <name value="Carlos Bishop"/>
+      </Organization>
+    </contained>
+    <status value="suspended"/>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <participant>
+      <role>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <version value="http://snomed.info/sct/731000124108"/>
+          <code value="true"/>
+        </coding>
+      </role>
+      <member>
+        <reference value="#Carlos Bishop-participantOrganizationDerived1"/>
+        <display value="Carlos Bishop"/>
+      </member>
+    </participant>
+  </CareTeam>
+</CareTeams>

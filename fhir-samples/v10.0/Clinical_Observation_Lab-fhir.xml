@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Observations>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-system"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"/>
+    </meta>
+    <status value="corrected"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="laboratory"/>
+        <display value="Laboratory"/>
+      </coding>
+      <text value="Laboratory"/>
+    </category>
+    <code>
+      <coding>
+        <system value="last"/>
+        <version value="Mr"/>
+        <code value="tree"/>
+        <display value="English"/>
+      </coding>
+      <text value="American Indian or Alaska Native"/>
+    </code>
+    <subject>
+      <reference value="Patient/remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2014-11-19T07:07:20Z"/>
+    <interpretation>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+        <code value="pressure"/>
+      </coding>
+      <text value="pressure"/>
+    </interpretation>
+  </Observation>
+</Observations>

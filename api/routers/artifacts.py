@@ -37,18 +37,28 @@ def get_schema_file(filename: str):
 
 @router.get("/transforms")
 def list_transforms():
-    """List every XSLT filename in transforms/v10.0/."""
+    """List every XSLT under transforms/v10.0/, recursively.
+
+    Transforms are organized into schema subfolders (Clinical/, EOB/, Formulary/,
+    Provider-Directory/, Roster/, Core-Model/), so paths are returned relative to
+    transforms/v10.0/ using forward slashes (e.g. "Clinical/Clinical_Patient.xsl").
+    """
     if not TRANSFORMS_DIR.is_dir():
         return []
-    return sorted(p.name for p in TRANSFORMS_DIR.iterdir() if p.is_file())
+    return sorted(
+        p.relative_to(TRANSFORMS_DIR).as_posix()
+        for p in TRANSFORMS_DIR.rglob("*")
+        if p.is_file()
+    )
 
 
-@router.get("/transforms/{filename}")
+@router.get("/transforms/{filename:path}")
 def get_transform_file(filename: str):
-    """Serve one v10.0 XSLT file (e.g. roster-patient.xsl)."""
-    if not _safe_filename(filename):
+    """Serve one v10.0 XSLT file by its relative path (e.g. Clinical/Clinical_Patient.xsl)."""
+    if not filename or ".." in filename or filename.startswith(("/", "\\")):
         raise HTTPException(status_code=400, detail="Invalid filename")
-    path = TRANSFORMS_DIR / filename
-    if not path.is_file():
+    path = (TRANSFORMS_DIR / filename).resolve()
+    # Guard against path traversal: resolved path must stay within TRANSFORMS_DIR.
+    if TRANSFORMS_DIR.resolve() not in path.parents or not path.is_file():
         raise HTTPException(status_code=404, detail=f"Transform not found: {filename}")
-    return FileResponse(path, media_type="application/xml", filename=filename)
+    return FileResponse(path, media_type="application/xml", filename=path.name)

@@ -1,7 +1,19 @@
 # Sample file builder configuration (single source of truth)
 # - Builds: each entry describes a sample XML file to generate from a canonical XSD.
 # - Pipeline: schema paths and transforms are derived from this file (see tools/get_changed_pipeline_targets.py).
-#   To add a new schema: add a build entry below. To add a transform: set transform_file and fhir_profile for that build.
+#   To add a new schema: add a build entry below.
+#
+# Configuring transforms for a build (all optional, combinable; deduped by path):
+#   transform_dir:   folder under the repo; runs every *.xsl in it (sorted). Folder-driven default —
+#                    drop a new .xsl into the schema folder and it runs, no config edit needed.
+#   transform_file:  a single XSLT path.
+#   transform_files: an explicit list of {transform_file, resource_type}; use it to pin a
+#                    resource_type (overrides the filename-stem default, even for a transform_dir
+#                    match) or to include a transform from outside the folder.
+#   exclude:         glob patterns to skip during transform_dir discovery (e.g. ["*_old.xsl"]).
+#                    "*_flat.xsl" (flattening/preprocessing helpers) is always skipped.
+# Set fhir_profile to enable FHIR validation (and Docker) for that target in the CI pipeline.
+# Unadapted transforms that error are skipped (logged), not fatal, so a folder run still completes.
 
 core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
 
@@ -13,17 +25,17 @@ builds:
     output_file_name: provider-directory-sample.xml
     transform_file: null
     transform_files:
-      - transform_file: transforms/v10.0/Provider_Practitioner.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Practitioner.xsl
         resource_type: Practitioner
-      - transform_file: transforms/v10.0/Provider_PractitionerRole.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_PractitionerRole.xsl
         resource_type: PractitionerRole
-      - transform_file: transforms/v10.0/Provider_Organization.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Organization.xsl
         resource_type: Organization
-      - transform_file: transforms/v10.0/Provider_Location.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Location.xsl
         resource_type: Location
-      - transform_file: transforms/v10.0/Provider_HealthcareService.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_HealthcareService.xsl
         resource_type: HealthcareService
-      - transform_file: transforms/v10.0/Provider_OrganizationAffiliation.xsl
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_OrganizationAffiliation.xsl
         resource_type: OrganizationAffiliation
     fhir_profile: null
 
@@ -32,29 +44,29 @@ builds:
     root_element_name: roster
     schema_file_name: Roster.xsd
     output_file_name: roster-sample.xml
-    transform_file: transforms/v10.0/roster-patient.xsl
+    transform_file: transforms/v10.0/Roster/roster-patient.xsl
     fhir_profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
 
-  # Formulary
+  # Formulary — folder-driven: every transforms/v10.0/Formulary/*.xsl runs against the sample
   - canonical_name: formulary
     root_element_name: coverage_plans
     schema_file_name: Formulary.xsd
     output_file_name: formulary-sample.xml
-    transform_file: null
+    transform_dir: transforms/v10.0/Formulary
     fhir_profile: null
 
-  # Explanation of Benefits (EOB)
+  # Explanation of Benefits (EOB) — folder-driven
   - canonical_name: eob
     root_element_name: eob_list
     schema_file_name: EOB.xsd
     output_file_name: eob-sample.xml
-    transform_file: null
+    transform_dir: transforms/v10.0/EOB
     fhir_profile: null
 
-  # Clinical
+  # Clinical — folder-driven
   - canonical_name: clinical
     root_element_name: clinicals
     schema_file_name: Clinical.xsd
     output_file_name: clinical-sample.xml
-    transform_file: null
+    transform_dir: transforms/v10.0/Clinical
     fhir_profile: null

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Location xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <id value="-Mrshomephysical"/>
+  <id value="-smileworkboth"/>
   <meta>
     <source value=""/>
   </meta>
@@ -13,13 +13,13 @@
       </coding>
     </type>
     <system value="http://hl7.org/fhir/sid/us-npi"/>
-    <value value="1285582448"/>
+    <value value="9568412208"/>
   </identifier>
   <identifier>
     <system value="https://data.healthlx.com/ID-"/>
-    <value value="-Mrs"/>
+    <value value="-smile"/>
   </identifier>
-  <status value="active"/>
+  <status value="inactive"/>
   <operationalStatus/>
   <name value=""/>
   <type>
@@ -38,26 +38,26 @@
         <valueCode value="tue"/>
       </extension>
       <extension url="availableStartTime">
-        <valueTime value="04:22:31"/>
+        <valueTime value="20:37:54"/>
       </extension>
       <extension url="availableEndTime">
-        <valueTime value="23:45:23"/>
+        <valueTime value="20:29:08"/>
       </extension>
     </extension>
-    <use value="mobile"/>
-    <value value="west"/>
-    <system value="url"/>
+    <use value="home"/>
+    <value value="president"/>
+    <system value="other"/>
   </telecom>
   <address>
-    <use value="home"/>
-    <line value="1205 Anthony Camp"/>
-    <city value="Camachochester"/>
-    <district value="analysis"/>
-    <state value="ND"/>
-    <postalCode value="71901"/>
-    <country value="PK"/>
+    <use value="work"/>
+    <line value="818 Crystal Isle Apt. 681"/>
+    <city value="Allenport"/>
+    <district value="determine"/>
+    <state value="FM"/>
+    <postalCode value="55651"/>
+    <country value="MG"/>
   </address>
   <managingOrganization>
-    <reference value="Organization/-Mrs"/>
+    <reference value="Organization/-smile"/>
   </managingOrganization>
 </Location>

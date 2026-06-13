@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Procedures>
+  <Procedure xmlns="http://hl7.org/fhir">
+    <id value="-fact"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"/>
+    </meta>
+    <basedOn>
+      <reference/>
+    </basedOn>
+    <status value="stopped"/>
+    <code>
+      <coding>
+        <system value="http://www.cms.gov/Medicare/Coding/ICD10"/>
+        <code value="create"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <performedDateTime value="2011-01-11T21:49:47Z"/>
+  </Procedure>
+</Procedures>

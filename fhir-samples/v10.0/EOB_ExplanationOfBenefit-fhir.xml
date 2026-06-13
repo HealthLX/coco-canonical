@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExplanationOfBenefit xmlns="http://hl7.org/fhir">
+  <id value="-us"/>
+  <meta>
+    <source value=""/>
+    <profile value="http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-ExplanationOfBenefit"/>
+  </meta>
+  <contained>
+    <Coverage>
+      <id value="CoverageDerived1"/>
+      <identifier/>
+      <status value="active"/>
+      <type/>
+      <subscriberId value=""/>
+      <beneficiary>
+        <reference value="Patient/-"/>
+      </beneficiary>
+      <relationship>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+          <code value=""/>
+          <display value=""/>
+        </coding>
+      </relationship>
+      <period>
+        <start value=""/>
+      </period>
+      <payor>
+        <reference value="#PayorOrganizationDerived1"/>
+      </payor>
+    </Coverage>
+    <Organization>
+      <id value="ProviderOrganizationDerived1"/>
+      <active value="true"/>
+      <name value="Christopher Wells"/>
+    </Organization>
+    <Organization>
+      <id value="InsurerOrganizationDerived1"/>
+      <active value="true"/>
+      <name value=""/>
+    </Organization>
+    <Organization>
+      <id value="PayeeOrganizationDerived1"/>
+      <active value="true"/>
+      <name value="Daisy Smith"/>
+    </Organization>
+    <Practitioner>
+      <id value="2-Care-teamPractitionerDerived1"/>
+      <active value="true"/>
+      <name>
+        <use value="official"/>
+        <family value=""/>
+      </name>
+    </Practitioner>
+    <Location>
+      <id value="workphysical-facilitylocationDerived1"/>
+      <address>
+        <type value="physical"/>
+        <line value="94361 Monica Spur Apt. 433"/>
+        <city value="Port Brittanyville"/>
+        <district value="tend"/>
+        <state value="IL"/>
+        <postalCode value="22216"/>
+        <country value="USA"/>
+        <period>
+          <start value="2012-02-15T02:04:08Z"/>
+          <end value="2020-03-07T10:14:56Z"/>
+        </period>
+      </address>
+    </Location>
+  </contained>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="UCID"/>
+      </coding>
+    </type>
+    <value value="us"/>
+  </identifier>
+  <status value="cancelled"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+      <code value="oral"/>
+    </coding>
+  </type>
+  <subType>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"/>
+      <code value="Outpatient-Institutional"/>
+    </coding>
+  </subType>
+  <use value="preauthorization"/>
+  <patient>
+    <reference value="during/-"/>
+  </patient>
+  <billablePeriod>
+    <start value="2013-11-16T13:38:16Z"/>
+    <end value="2014-05-01T22:52:51Z"/>
+  </billablePeriod>
+  <created value="2010-04-18T12:30:51.000Z"/>
+  <insurer>
+    <reference value="hundred/-"/>
+  </insurer>
+  <provider>
+    <reference value="#ProviderOrganizationDerived1"/>
+  </provider>
+  <priority>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/processpriority"/>
+      <code value="normal"/>
+    </coding>
+  </priority>
+  <relateds/>
+  <payee>
+    <type>
+      <coding>
+        <system value=""/>
+        <code value=""/>
+      </coding>
+    </type>
+    <party>
+      <reference value="#PayeeOrganizationDerived1"/>
+    </party>
+  </payee>
+  <facility>
+    <reference value="#workphysical-facilitylocationDerived1"/>
+    <display value="Mr. Andre Berry MD"/>
+  </facility>
+  <claim>
+    <reference value="Claim/-high"/>
+  </claim>
+  <outcome value="queued"/>
+  <careTeam>
+    <sequence value="2"/>
+    <provider>
+      <reference value="#2-Care-teamPractitionerDerived1"/>
+    </provider>
+    <responsible value="false"/>
+    <role>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBClaimCareTeamRole"/>
+        <code value="prescribing"/>
+      </coding>
+    </role>
+  </careTeam>
+  <supportingInfo>
+    <sequence value="5"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="billingnetworkcontractingstatus"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="noncontracted"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2014-01-22T11:33:23Z&#10;              2010-01-25T16:36:38Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="5"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="admissionperiod"/>
+      </coding>
+    </category>
+    <timingPeriod>
+      <start value="2013-12-14T21:42:09Z"/>
+      <end value="2017-05-22T07:00:34Z"/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="2"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="clmrecvddate"/>
+      </coding>
+    </category>
+    <timingPeriod>
+      <start value="2003-12-28"/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="1"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="typeofbill"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="prevent"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            2025-07-03&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="3"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="pointoforigin"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="quickly"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            1973-05-30&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="2"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="admtype"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="seem"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2013-01-28T03:57:07Z&#10;              2011-10-09T12:48:27Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="1"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="discharge-status"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="what"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2018-04-24T15:14:31Z&#10;              2011-05-04T21:42:03Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="3"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="drg"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="civil"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2016-11-13T02:44:26Z&#10;              2011-01-07T20:44:17Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="2"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="performingnetworkcontractingstatus"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="contracted"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            2008-01-31&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="3"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="servicefacility"/>
+      </coding>
+    </category>
+    <timingPeriod>
+      <start value="&#10;            2013-05-26&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="5"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="brandgenericcode"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="party"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2015-12-20T20:34:44Z&#10;              2014-03-06T19:13:06Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="3"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="rxorigincode"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="Mr"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            1992-01-22&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="5"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="compoundcode"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="place"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            1995-11-24&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="5"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="dayssupply"/>
+      </coding>
+    </category>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2015-01-14T21:42:54Z&#10;              2010-08-28T12:40:49Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="4"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="dawcode"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="water"/>
+      </coding>
+    </code>
+    <timingPeriod>
+      <start value="&#10;            2025-08-15&#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <supportingInfo>
+    <sequence value="2"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType"/>
+        <code value="refillnum"/>
+      </coding>
+    </category>
+    <timingPeriod>
+      <start value="&#10;            &#10;              2019-10-19T21:14:01Z&#10;              2019-09-20T14:08:32Z&#10;            &#10;          "/>
+    </timingPeriod>
+    <value/>
+    <reason/>
+  </supportingInfo>
+  <diagnosis>
+    <sequence value="2"/>
+    <diagnosisCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/ValueSet/icd-10"/>
+        <code value="grow"/>
+      </coding>
+    </diagnosisCodeableConcept>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+        <code value="secondary"/>
+      </coding>
+    </type>
+    <onAdmission>
+      <coding>
+        <system value="https://www.nubc.org/CodeSystem/PresentOnAdmissionIndicator"/>
+        <code value="support"/>
+      </coding>
+    </onAdmission>
+  </diagnosis>
+  <procedure>
+    <sequence value="2"/>
+    <type>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.285"/>
+        <code value="book"/>
+      </coding>
+    </type>
+    <date value="1979-07-25"/>
+    <procedureCodeableConcept>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.285"/>
+        <code value="where"/>
+      </coding>
+      <text value="English"/>
+    </procedureCodeableConcept>
+    <udi/>
+  </procedure>
+  <insurance>
+    <focal value="false"/>
+    <coverage>
+      <reference value="debate/-"/>
+    </coverage>
+  </insurance>
+  <item>
+    <sequence value="5"/>
+    <careTeamSequence value="1"/>
+    <diagnosisSequence value="4"/>
+    <procedureSequence value="1"/>
+    <informationSequence value="5"/>
+    <revenue>
+      <coding>
+        <system value="design"/>
+        <code value="score"/>
+      </coding>
+    </revenue>
+    <productOrService>
+      <coding>
+        <system value="http://www.ama-assn.org/go/cpt"/>
+        <code value="hand"/>
+        <display value="English"/>
+      </coding>
+      <text value="American Indian or Alaska Native"/>
+    </productOrService>
+    <modifier>
+      <coding>
+        <system value="http://www.ama-assn.org/go/cpt"/>
+        <code value="explain"/>
+      </coding>
+    </modifier>
+    <servicedDate value=""/>
+    <quantity>
+      <value value="122.8"/>
+    </quantity>
+    <net>
+      <value value="635.62"/>
+      <currency value="IRR"/>
+    </net>
+    <adjudication>
+      <category>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+          <code value="benefit"/>
+        </coding>
+      </category>
+      <reason>
+        <coding>
+          <code value="his"/>
+        </coding>
+      </reason>
+      <amount>
+        <value value="989.04"/>
+        <currency value="XBB"/>
+      </amount>
+    </adjudication>
+  </item>
+  <total>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication"/>
+        <code value="paidbypatient"/>
+      </coding>
+    </category>
+    <amount>
+      <value value="493.47"/>
+      <currency value="TND"/>
+    </amount>
+  </total>
+  <total>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBPayerAdjudicationStatus"/>
+        <code value="other"/>
+      </coding>
+    </category>
+    <amount>
+      <value value="814.17"/>
+      <currency value="NGN"/>
+    </amount>
+  </total>
+  <payment>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/us/carin-bb/ValueSet/C4BBPayerClaimPaymentStatusCode"/>
+        <code value="paid"/>
+      </coding>
+      <text value="paid"/>
+    </type>
+    <adjustment/>
+    <adjustmentReason/>
+    <date value="2018-12-16"/>
+    <amount>
+      <value value=""/>
+      <currency value=""/>
+    </amount>
+    <identifier/>
+  </payment>
+</ExplanationOfBenefit>
