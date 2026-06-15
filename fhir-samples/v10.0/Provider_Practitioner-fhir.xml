@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Practitioner xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <id value="-Mrs"/>
+  <id value="-smile"/>
   <meta>
     <source value=""/>
   </meta>
@@ -13,45 +13,45 @@
       </coding>
     </type>
     <system value="http://hl7.org/fhir/sid/us-npi"/>
-    <value value="1285582448"/>
+    <value value="9568412208"/>
   </identifier>
   <identifier>
     <system value="https://data.healthlx.com/ID-"/>
-    <value value="-Mrs"/>
+    <value value="-smile"/>
   </identifier>
-  <active value="true"/>
+  <active value="false"/>
   <name>
-    <use value="nickname"/>
+    <use value="old"/>
     <text value="American Indian or Alaska Native"/>
-    <family value="Baker"/>
-    <given value="Travis"/>
-    <prefix value="Mr."/>
+    <family value="Medina"/>
+    <given value="Monica"/>
+    <prefix value="Mx."/>
     <suffix value="MD"/>
   </name>
   <telecom>
-    <system value="url"/>
-    <value value="west"/>
-    <use value="mobile"/>
-    <rank value="2"/>
+    <system value="other"/>
+    <value value="president"/>
+    <use value="home"/>
+    <rank value="4"/>
     <period>
-      <start value="2017-05-30T23:39:59Z"/>
-      <end value="2019-09-26T12:08:03Z"/>
+      <start value="2010-11-12T11:11:05Z"/>
+      <end value="2018-12-27T19:57:09Z"/>
     </period>
   </telecom>
   <gender value="other"/>
   <address>
-    <use value="home"/>
-    <type value="physical"/>
+    <use value="work"/>
+    <type value="both"/>
     <text value="American Indian or Alaska Native"/>
-    <line value="1205 Anthony Camp"/>
-    <city value="Camachochester"/>
-    <district value="analysis"/>
-    <state value="ND"/>
-    <postalCode value="71901"/>
-    <country value="PK"/>
+    <line value="818 Crystal Isle Apt. 681"/>
+    <city value="Allenport"/>
+    <district value="determine"/>
+    <state value="FM"/>
+    <postalCode value="55651"/>
+    <country value="MG"/>
     <period>
-      <start value="2013-05-24T12:58:01Z"/>
-      <end value="2016-09-08T02:49:58Z"/>
+      <start value="2010-05-22T10:16:00Z"/>
+      <end value="2019-09-07T11:16:52Z"/>
     </period>
   </address>
 </Practitioner>

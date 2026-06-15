@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocumentReferences xmlns="http://hl7.org/fhir">
+  <DocumentReference>
+    <id value="-whole"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference"/>
+    </meta>
+    <status value="entered-in-error"/>
+    <type>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="live"/>
+      </coding>
+    </type>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category"/>
+        <code value="other"/>
+      </coding>
+    </category>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <date value="2018-12-10T17:35:59Z"/>
+    <author>
+      <reference type="practitioner" value="-2737276101"/>
+    </author>
+    <custodian>
+      <reference type="organization" value="-"/>
+    </custodian>
+    <content>
+      <attachment>
+        <contentType value="seek"/>
+        <data value="dGVzdA=="/>
+        <url value="http://www.white.com/"/>
+      </attachment>
+      <format>
+        <system value="http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"/>
+        <code value="key"/>
+      </format>
+    </content>
+  </DocumentReference>
+</DocumentReferences>

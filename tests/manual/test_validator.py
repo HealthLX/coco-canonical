@@ -19,7 +19,7 @@ def test_patient_validation():
     project_root = Path(__file__).parent.parent.parent
     base_dir = str(project_root)
     roster_xml = os.path.join(base_dir, "canonical-samples/v10.0/roster-sample.xml")
-    xslt_file = os.path.join(base_dir, "transforms/v10.0/roster-patient.xsl")
+    xslt_file = os.path.join(base_dir, "transforms/v10.0/Roster/roster-patient.xsl")
     
     print("=" * 60)
     print("FHIR Validator Test - Roster to Patient Transform")

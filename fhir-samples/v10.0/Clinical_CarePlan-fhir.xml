@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CarePlans xmlns="http://hl7.org/fhir">
+  <CarePlan>
+    <id value="-lead"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan"/>
+    </meta>
+    <text>
+      <status value="generated"/>
+      <div value="call"/>
+    </text>
+    <status value="entered-in-error"/>
+    <intent value="option"/>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/us/core/CodeSystem/careplan-category"/>
+        <code value="assess-plan"/>
+      </coding>
+    </category>
+    <subject>
+      <reference value="Patient/-guy"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+  </CarePlan>
+</CarePlans>

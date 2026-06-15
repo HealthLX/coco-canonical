@@ -8,8 +8,14 @@ explicit ``--canonical-xml``, ``--xslt``, and optional ``--schema`` (XSD pre-che
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import sys
 from pathlib import Path
+
+# Folder-driven runs skip these by default: "flat" transforms are preprocessing/flattening
+# helpers (not canonical->FHIR resource transforms) and shouldn't be auto-run. Override or
+# extend per build with an "exclude" list of glob patterns in sample_builds.yaml.
+DEFAULT_TRANSFORM_EXCLUDES = ["*_flat.xsl"]
 
 import yaml
 from saxonche import PySaxonProcessor
@@ -28,17 +34,90 @@ def fhir_output_name(xslt_path: str, provider_variant: str | None = None) -> str
     return f"{stem}{mid}-fhir.xml"
 
 
-def transform_specs_from_build(build: dict) -> list[str]:
-    """Collect XSLT paths from a sample_builds.yaml build entry (transform_file + transform_files)."""
-    paths: list[str] = []
-    tf = build.get("transform_file")
-    if tf and str(tf).lower() != "null":
-        paths.append(str(tf))
+def collect_transform_specs(build: dict, base_dir: str | Path | None = None) -> list[dict]:
+    """Resolve a build's transforms into ordered ``{transform_file, resource_type}`` specs.
+
+    Three optional, combinable config keys (deduped, first occurrence wins ordering):
+      - ``transform_dir``: a folder relative to the repo root; every ``*.xsl`` in it
+        (sorted by filename) is run. This is the folder-driven default.
+      - ``transform_file``: a single XSLT path.
+      - ``transform_files``: an explicit list of ``{transform_file, resource_type}`` (or bare
+        path strings). Useful to add a transform outside the folder, or to pin ``resource_type``.
+
+    ``resource_type`` defaults to the XSLT filename stem. ``transform_dir`` needs ``base_dir`` to
+    glob; without it (or if the folder is absent) the directory contributes nothing.
+    """
+    # Explicit entries first, so a transform_files resource_type overrides the folder-derived stem.
+    explicit: list[str] = []
+    overrides: dict[str, str] = {}
     for item in build.get("transform_files") or []:
-        t = item.get("transform_file")
-        if t:
-            paths.append(str(t))
-    return paths
+        if isinstance(item, dict):
+            path, rt = item.get("transform_file"), item.get("resource_type")
+        else:
+            path, rt = item, None
+        if path:
+            norm = str(path).replace("\\", "/")
+            explicit.append(norm)
+            if rt:
+                overrides[norm] = rt
+
+    specs: list[dict] = []
+    seen: set[str] = set()
+
+    def add(path):
+        if not path:
+            return
+        norm = str(path).replace("\\", "/")
+        if not norm or norm.lower() == "null" or norm in seen:
+            return
+        seen.add(norm)
+        specs.append({"transform_file": norm, "resource_type": overrides.get(norm) or Path(norm).stem})
+
+    tdir = build.get("transform_dir")
+    if tdir and str(tdir).lower() != "null" and base_dir is not None:
+        base = Path(base_dir).resolve()
+        folder = base / str(tdir)
+        if folder.is_dir():
+            excludes = DEFAULT_TRANSFORM_EXCLUDES + list(build.get("exclude") or [])
+            for xsl in sorted(folder.glob("*.xsl"), key=lambda p: p.name.lower()):
+                if any(fnmatch.fnmatch(xsl.name.lower(), pat.lower()) for pat in excludes):
+                    continue
+                add(xsl.relative_to(base).as_posix())
+
+    add(build.get("transform_file"))
+    for norm in explicit:
+        add(norm)
+
+    return specs
+
+
+def transform_specs_from_build(build: dict, base_dir: str | Path | None = None) -> list[str]:
+    """Collect XSLT paths from a build entry (transform_dir + transform_file + transform_files)."""
+    return [s["transform_file"] for s in collect_transform_specs(build, base_dir)]
+
+
+def _apply_one_spec(base_dir, canonical_path, xslt_rel, fhir_dir, build) -> bool:
+    """Apply one XSLT, writing FHIR output. Returns False (without raising) on any failure so a
+    folder-driven run keeps going past transforms that aren't adapted to the canonical yet."""
+    xslt_path = Path(base_dir) / xslt_rel
+    if not xslt_path.is_file():
+        print(f"  XSLT not found: {xslt_rel}")
+        return False
+    dest = fhir_dir / fhir_output_name(xslt_rel, provider_variant=build.get("provider_directory_child"))
+    print(f"  Applying {xslt_rel} -> {dest.name}")
+    try:
+        apply_xslt(str(base_dir), str(canonical_path), str(xslt_path), str(dest))
+        return True
+    except Exception as e:
+        print(f"  SKIPPED {xslt_rel}: {type(e).__name__}: {str(e).splitlines()[0][:140]}")
+        return False
+
+
+def _print_transform_summary(failures: list[str]) -> None:
+    if failures:
+        print(f"Completed with {len(failures)} transform(s) skipped (not adapted to the canonical):")
+        for f in failures:
+            print(f"  - {f}")
 
 
 def run_all_transforms_from_config(
@@ -64,8 +143,9 @@ def run_all_transforms_from_config(
     fhir_dir.mkdir(parents=True, exist_ok=True)
     canonical_dir = base_dir / "canonical-samples" / "v10.0"
 
+    failures: list[str] = []
     for build in builds:
-        specs = transform_specs_from_build(build)
+        specs = transform_specs_from_build(build, base_dir)
         if not specs:
             continue
 
@@ -83,16 +163,12 @@ def run_all_transforms_from_config(
             f"Canonical: {canonical_path.name} (schema: {schema_name}) -> {len(specs)} transform(s)"
         )
         for xslt_rel in specs:
-            xslt_path = base_dir / xslt_rel
-            if not xslt_path.is_file():
-                print(f"  XSLT not found: {xslt_rel}")
-                continue
-            dest = fhir_dir / fhir_output_name(
-                xslt_rel, provider_variant=build.get("provider_directory_child")
-            )
-            print(f"  Applying {xslt_rel} -> {dest.name}")
-            apply_xslt(str(base_dir), str(canonical_path), str(xslt_path), str(dest))
+            ok = _apply_one_spec(base_dir, canonical_path, xslt_rel, fhir_dir, build)
+            if not ok:
+                failures.append(xslt_rel)
         print()
+
+    _print_transform_summary(failures)
 
 
 def run_transforms_for_schema(
@@ -126,8 +202,9 @@ def run_transforms_for_schema(
     fhir_dir = base_dir / "fhir-samples" / "v10.0"
     fhir_dir.mkdir(parents=True, exist_ok=True)
 
+    failures: list[str] = []
     for build in matching:
-        all_specs = transform_specs_from_build(build)
+        all_specs = transform_specs_from_build(build, base_dir)
         if only_xslt:
             wanted = Path(only_xslt).name.lower()
             specs = [s for s in all_specs if Path(s).name.lower() == wanted]
@@ -149,16 +226,12 @@ def run_transforms_for_schema(
             f"Canonical: {canonical_path.name} (schema: {build.get('schema_file_name')}) -> {len(specs)} transform(s)"
         )
         for xslt_rel in specs:
-            xslt_path = base_dir / xslt_rel
-            if not xslt_path.is_file():
-                print(f"  XSLT not found: {xslt_rel}")
-                continue
-            dest = fhir_dir / fhir_output_name(
-                xslt_rel, provider_variant=build.get("provider_directory_child")
-            )
-            print(f"  Applying {xslt_rel} -> {dest.name}")
-            apply_xslt(str(base_dir), str(canonical_path), str(xslt_path), str(dest))
+            ok = _apply_one_spec(base_dir, canonical_path, xslt_rel, fhir_dir, build)
+            if not ok:
+                failures.append(xslt_rel)
         print()
+
+    _print_transform_summary(failures)
 
 
 def apply_xslt(base_dir, xml_file, xslt_file, output_file=None):

@@ -59,14 +59,30 @@ def get_path_to_target_and_core(cfg):
     return path_to_target, core_path, model_targets
 
 
+def _build_has_transform(b):
+    """True if a build configures any transform (transform_dir, transform_file, or transform_files)."""
+    tf = b.get("transform_file")
+    if tf and str(tf) != "null":
+        return True
+    if b.get("transform_files"):
+        return True
+    td = b.get("transform_dir")
+    if td and str(td) != "null":
+        return True
+    return False
+
+
 def get_targets_with_transform(cfg):
-    """Set of canonical_name (lowercase) that have transform_file and fhir_profile set."""
+    """Set of canonical_name (lowercase) that configure a transform and a fhir_profile.
+
+    Recognizes all transform shapes (transform_dir / transform_file / transform_files); the
+    fhir_profile gate is what makes the pipeline run Saxon + FHIR validation in Docker.
+    """
     builds = cfg.get("builds", [])
     out = set()
     for b in builds:
-        tf = b.get("transform_file")
         fp = b.get("fhir_profile")
-        if tf and str(tf) != "null" and fp and str(fp) != "null":
+        if _build_has_transform(b) and fp and str(fp) != "null":
             out.add(b.get("canonical_name", "").lower())
     return out
 

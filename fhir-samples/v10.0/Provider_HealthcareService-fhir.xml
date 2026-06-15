@@ -6,20 +6,20 @@
   </meta>
   <contained>
     <Location>
-      <id value="billingphysicalLocation_Derived1"/>
-      <description value="however"/>
+      <id value="tempbothLocation_Derived1"/>
+      <description value="hold"/>
       <identifier>
-        <system value="https://data.healthlx.com/window"/>
-        <value value="somebody"/>
+        <system value="https://data.healthlx.com/rich"/>
+        <value value="believe"/>
       </identifier>
       <address>
-        <use value="billing"/>
-        <line value="803 Phillips Manor Suite 049"/>
-        <city value="Port Scott"/>
-        <district value="free"/>
-        <state value="PW"/>
-        <postalCode value="11017"/>
-        <country>FR</country>
+        <use value="temp"/>
+        <line value="439 Jose Ports"/>
+        <city value="West Natalie"/>
+        <district value="behavior"/>
+        <state value="PA"/>
+        <postalCode value="84293"/>
+        <country>GM</country>
       </address>
       <mode value="instance"/>
       <physicalType>
@@ -63,16 +63,14 @@
   </type>
   <specialty/>
   <location>
-    <reference value="#billingphysicalLocation_Derived1"/>
+    <reference value="#tempbothLocation_Derived1"/>
   </location>
   <name value=""/>
   <photo/>
   <communication/>
   <referralMethod/>
   <availableTime>
-    <daysOfWeek value="wed"/>
-    <allDay value="false"/>
-    <availableStartTime value="05:58:49"/>
-    <availableEndTime value="21:44:14"/>
+    <daysOfWeek value="tue"/>
+    <allDay value="true"/>
   </availableTime>
 </HealthcareService>

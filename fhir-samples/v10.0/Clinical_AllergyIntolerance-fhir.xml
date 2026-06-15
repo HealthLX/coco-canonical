@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AllergyIntolerances>
+  <AllergyIntolerance xmlns="http://hl7.org/fhir">
+    <id value="-industry"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance"/>
+    </meta>
+    <clinicalStatus>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"/>
+        <code value="inactive"/>
+      </coding>
+    </clinicalStatus>
+    <verificationStatus>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"/>
+        <code value="entered-in-error"/>
+      </coding>
+    </verificationStatus>
+    <category value="medication"/>
+    <criticality value="unable-to-assess"/>
+    <text value="false"/>
+    <code>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <version value="http://snomed.info/sct/731000124108"/>
+        <code value="consumer"/>
+      </coding>
+      <display/>
+    </code>
+    <patient>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </patient>
+    <reaction>
+      <manifestation>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <version value="http://snomed.info/sct/731000124108"/>
+          <code value="3219008"/>
+          <display value="Disease type AND/OR category unknown"/>
+        </coding>
+        <text value="None"/>
+      </manifestation>
+      <severity value=""/>
+    </reaction>
+  </AllergyIntolerance>
+</AllergyIntolerances>

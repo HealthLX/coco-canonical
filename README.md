@@ -248,7 +248,40 @@ YAML keys per build entry:
 - `root_element_name` (string)
 - `schema_file_name` (string)
 - `output_file_name` (string)
+- `transform_dir` (string, optional) — folder-driven: runs every `*.xsl` in that folder (e.g. `transforms/v10.0/Clinical`)
+- `transform_file` / `transform_files` (optional) — a single XSLT, or an explicit list of `{transform_file, resource_type}`; combinable with `transform_dir`
+- `exclude` (list, optional) — glob patterns to skip in `transform_dir` discovery; `*_flat.xsl` is always skipped
 - `provider_directory_child` (string, optional) — only if you add multiple `providerdirectory` builds in YAML; the default is a single build and one file, `provider-directory-sample.xml`
+
+### Transforms directory layout
+
+XSLT transforms live under `transforms/v10.0/`, organized into one subfolder per schema:
+
+```
+transforms/v10.0/
+├── Clinical/            # Clinical_*.xsl
+├── Core-Model/          # Insurance_*.xsl
+├── EOB/                 # EOB_*.xsl
+├── Formulary/           # Formulary_*.xsl
+├── Provider-Directory/  # Provider_*.xsl (+ roster lives under Roster/)
+└── Roster/              # Roster_*.xsl and roster-patient.xsl
+```
+
+Most builds are **folder-driven**: the build's `transform_dir` points at a schema folder and every
+`*.xsl` in it runs (in filename order) against that build's canonical sample. To add a transform,
+just drop the `.xsl` into the matching schema folder — no config edit needed. Use `transform_file` /
+`transform_files` (paths relative to the repo root, e.g.
+`transforms/v10.0/Provider-Directory/Provider_Location.xsl`) when you need a single transform, an
+explicit order, or a pinned `resource_type`. A transform that errors against the canonical is
+logged and skipped (the run still completes); `*_flat.xsl` helpers are never auto-run.
+
+Run them with the same `python -m tools.transform_schema` commands above:
+`tools.transform_schema` (all builds), `--schema-name Clinical.xsd` (one schema's whole folder), or
+`--schema-name Clinical.xsd --only-xslt Clinical_Patient.xsl` (a single transform in that folder).
+
+Note: a canonical XML sample uses the `http://cocodata.org` namespace, so a transform must be
+namespace-aware (declare `xpath-default-namespace="http://cocodata.org"`) to match the input —
+see the `Provider-Directory/` transforms for working examples.
 
 ### HTTP API (for web app / other repo)
 
@@ -266,6 +299,7 @@ A small FastAPI app exposes config, sample building, XSLT transform, and artifac
 - Generate samples: `POST /samples/generate` (body: `{"target": "roster"}` or `{"all": true}`), `POST /samples/generate/{target}`, `POST /samples/generate/{target}/content`
 - Transform (canonical → FHIR): `POST /transform` (body: `{"target": "roster"}` or `{"canonical_file": "...", "xslt_file": "..."}`), `POST /transform/{target}`, `POST /transform/{target}/content`
 - List/download: `GET /samples`, `GET /samples/canonical`, `GET /samples/fhir`, `GET /schemas`, `GET /transforms`; download via `GET /samples/canonical/{filename}`, `GET /samples/fhir/{filename}`, `GET /schemas/{filename}`, `GET /transforms/{filename}`
+  - `GET /transforms` lists XSLT paths relative to `transforms/v10.0/`, including the schema subfolder (e.g. `Clinical/Clinical_Patient.xsl`); `GET /transforms/{filename}` accepts that relative subpath (e.g. `GET /transforms/Clinical/Clinical_Patient.xsl`).
 - Regenerate and serve: `GET /samples/canonical/{filename}/regenerate`
 
 Config path can be overridden with env `COCO_CONFIG_PATH`.

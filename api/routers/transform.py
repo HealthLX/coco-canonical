@@ -40,26 +40,14 @@ def _run_transform(canonical_path: Path, xslt_path: Path, output_path: Path, ret
 
 
 def _get_transform_specs(build: dict) -> list[dict]:
-    transform_specs = []
-    transform_file = build.get("transform_file")
-    if transform_file:
-        transform_specs.append(
-            {
-                "transform_file": transform_file,
-                "resource_type": Path(str(transform_file)).stem,
-            }
-        )
-    for item in build.get("transform_files", []) or []:
-        tf = item.get("transform_file")
-        if not tf:
-            continue
-        transform_specs.append(
-            {
-                "transform_file": tf,
-                "resource_type": item.get("resource_type", Path(str(tf)).stem),
-            }
-        )
-    return transform_specs
+    """Resolve a build's transforms (transform_dir + transform_file + transform_files).
+
+    Delegates to tools.transform_schema so the HTTP API and CLI stay in lockstep, including
+    folder-driven (``transform_dir``) configs resolved relative to the repo root.
+    """
+    from tools.transform_schema import collect_transform_specs
+
+    return collect_transform_specs(build, PROJECT_ROOT)
 
 
 def _select_build(target: str, provider_directory_child: str | None = None, canonical_file: str | None = None) -> dict:
