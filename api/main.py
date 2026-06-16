@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routers import artifacts, config as config_router, samples, transform
+from api.routers import artifacts, config as config_router, samples, transform, validate
 
 app = FastAPI(
     title="CoCo Canonical API",
@@ -22,6 +22,7 @@ app.include_router(config_router.router, tags=["config"])
 app.include_router(samples.router, prefix="/samples", tags=["samples"])
 app.include_router(transform.router, prefix="/transform", tags=["transform"])
 app.include_router(artifacts.router, tags=["artifacts"])
+app.include_router(validate.router, prefix="/validate", tags=["validate"])
 
 
 @app.get("/")
