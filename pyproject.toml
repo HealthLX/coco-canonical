@@ -60,3 +60,4 @@ exclude = ["tests*", "schemas*", "transforms*", "canonical-samples*", "fhir-samp
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]
 addopts = "-ra"
+pythonpath = ["."]
