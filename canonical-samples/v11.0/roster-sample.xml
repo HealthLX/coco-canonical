@@ -1,31 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <roster xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v11.0/Roster.xsd">
   <schema_version>11.0</schema_version>
-  <sender_id>great</sender_id>
-  <date_time_reported>2026-07-26T19:45:34Z</date_time_reported>
+  <sender_id>go</sender_id>
+  <date_time_reported>2026-07-26T20:20:42Z</date_time_reported>
   <member>
     <us_core_race>
-      <code>2054-5</code>
-      <detailed_code>1935-6</detailed_code>
-      <text>Black or African American</text>
+      <code>2106-3</code>
+      <code>2106-3</code>
+      <code>1002-5</code>
+      <detailed_code>1535-4</detailed_code>
+      <text>White</text>
     </us_core_race>
     <us_core_ethnicity>
       <code>2135-2</code>
-      <detailed_code>2178-2</detailed_code>
+      <detailed_code>2148-5</detailed_code>
       <text>Hispanic or Latino</text>
     </us_core_ethnicity>
     <us_core_birth_sex>F</us_core_birth_sex>
-    <is_subscriber>true</is_subscriber>
-    <relationship>common</relationship>
-    <birth_date>1992-09-11</birth_date>
-    <deceased_date_time>2018-08-02T08:26:56Z</deceased_date_time>
+    <is_subscriber>false</is_subscriber>
+    <relationship>parent</relationship>
+    <birth_date>1985-09-24</birth_date>
+    <deceased_date_time>2015-05-27T15:31:08Z</deceased_date_time>
     <gender>unknown</gender>
     <tribal_affiliations>
       <tribal_affiliation>
         <codeable_concept>
           <coding>
-            <system>play</system>
-            <code>minute</code>
+            <system>small</system>
+            <code>west</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -37,8 +39,8 @@
       <sexual_orientation>
         <codeable_concept>
           <coding>
-            <system>nor</system>
-            <code>operation</code>
+            <system>people</system>
+            <code>expect</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -50,8 +52,8 @@
       <gender_identity>
         <codeable_concept>
           <coding>
-            <system>many</system>
-            <code>fund</code>
+            <system>near</system>
+            <code>girl</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -64,52 +66,52 @@
         <active>true</active>
         <names>
           <name>
-            <use>court</use>
+            <use>between</use>
             <text>American Indian or Alaska Native</text>
-            <family>King</family>
-            <given>Erin</given>
-            <prefix>Miss</prefix>
+            <family>Robertson</family>
+            <given>Benjamin</given>
+            <prefix>Mx.</prefix>
             <period>
-              <start>2020-09-14T00:06:35Z</start>
-              <end>2018-03-08T03:15:27Z</end>
+              <start>2020-06-06T11:28:38Z</start>
+              <end>2017-11-29T17:55:03Z</end>
             </period>
           </name>
         </names>
         <telecoms>
           <telecom>
-            <system>fact</system>
-            <value>item</value>
-            <use>fire</use>
-            <rank>1</rank>
+            <system>this</system>
+            <value>their</value>
+            <use>modern</use>
+            <rank>3</rank>
             <period>
-              <start>2018-10-15</start>
+              <start>2020-09-26</start>
             </period>
           </telecom>
         </telecoms>
-        <gender>large</gender>
-        <birth_date>2006-02-26</birth_date>
+        <gender>policy</gender>
+        <birth_date>2024-11-14</birth_date>
         <addresses>
           <address>
-            <use>attack</use>
-            <type>expert</type>
+            <use>series</use>
+            <type>interview</type>
             <text>American Indian or Alaska Native</text>
-            <line>61429 Watson Square Suite 861</line>
-            <city>New Ryanfurt</city>
-            <district>under</district>
-            <state>DC</state>
-            <postal_code>28481</postal_code>
-            <country>ZA</country>
+            <line>92421 Gonzales Walk Suite 406</line>
+            <city>Lake Sandraville</city>
+            <district>compare</district>
+            <state>AR</state>
+            <postal_code>67481</postal_code>
+            <country>SY</country>
             <period>
-              <start>2017-09-12</start>
+              <start>2017-05-30</start>
             </period>
           </address>
         </addresses>
-        <communication_language>do</communication_language>
+        <communication_language>produce</communication_language>
         <relationship>
           <codeable_concept>
             <coding>
-              <system>explain</system>
-              <code>system</code>
+              <system>case</system>
+              <code>goal</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -121,13 +123,13 @@
       <occupation_item>
         <status>registered</status>
         <effectivePeriod>
-          <start>2020-07-20</start>
-          <end>2024-08-18</end>
+          <start>2017-12-10</start>
+          <end>2025-11-15</end>
         </effectivePeriod>
         <codeable_concept>
           <coding>
-            <system>walk</system>
-            <code>change</code>
+            <system>force</system>
+            <code>skin</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -135,8 +137,8 @@
         <industry>
           <codeable_concept>
             <coding>
-              <system>million</system>
-              <code>hospital</code>
+              <system>institution</system>
+              <code>focus</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -145,125 +147,125 @@
       </occupation_item>
     </occupations>
     <unique_person_ids>
-      <unique_person_id>where</unique_person_id>
-      <unique_person_id_assigner>share</unique_person_id_assigner>
-      <unique_person_id_assigner_type>key</unique_person_id_assigner_type>
+      <unique_person_id>sure</unique_person_id>
+      <unique_person_id_assigner>coach</unique_person_id_assigner>
+      <unique_person_id_assigner_type>there</unique_person_id_assigner_type>
     </unique_person_ids>
     <member_identity>
-      <member_last_4_ssn>3420</member_last_4_ssn>
-      <secret_display_name>prevent</secret_display_name>
-      <secret_value>environment</secret_value>
-      <secret_length>1</secret_length>
+      <member_last_4_ssn>8883</member_last_4_ssn>
+      <secret_display_name>traditional</secret_display_name>
+      <secret_value>move</secret_value>
+      <secret_length>3</secret_length>
     </member_identity>
-    <member_id>know</member_id>
+    <member_id>eat</member_id>
     <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-    <subscriber_id>one</subscriber_id>
+    <subscriber_id>under</subscriber_id>
     <names>
       <name>
-        <use>nickname</use>
+        <use>maiden</use>
         <text>American Indian or Alaska Native</text>
-        <family>Johnson</family>
-        <given>Timothy</given>
+        <family>Montoya</family>
+        <given>Kimberly</given>
         <prefix>Mr.</prefix>
-        <suffix>Jr.</suffix>
+        <suffix>MD</suffix>
         <period>
-          <start>2012-07-20T11:53:43Z</start>
-          <end>2016-04-05T22:51:31Z</end>
+          <start>2016-11-27T08:57:44Z</start>
+          <end>2013-06-08T03:58:22Z</end>
         </period>
       </name>
     </names>
     <telecoms>
       <telecom>
-        <system>sms</system>
-        <value>one</value>
-        <use>work</use>
-        <rank>4</rank>
+        <system>email</system>
+        <value>save</value>
+        <use>home</use>
+        <rank>1</rank>
         <period>
-          <start>2019-01-08T12:31:22Z</start>
-          <end>2010-05-23T02:38:16Z</end>
+          <start>2014-06-02T01:55:06Z</start>
+          <end>2016-07-05T01:17:36Z</end>
         </period>
       </telecom>
     </telecoms>
     <addresses>
       <address>
-        <use>home</use>
+        <use>billing</use>
         <type>postal</type>
         <text>American Indian or Alaska Native</text>
-        <line>2115 Vang Union</line>
-        <city>Fieldsfort</city>
-        <district>sister</district>
-        <state>TN</state>
-        <postal_code>77410</postal_code>
-        <country>KI</country>
+        <line>9795 Brianna Manors</line>
+        <city>Matthewston</city>
+        <district>with</district>
+        <state>NH</state>
+        <postal_code>60289</postal_code>
+        <country>AZ</country>
         <period>
-          <start>2015-05-07T00:13:10Z</start>
-          <end>2013-03-21T21:40:24Z</end>
+          <start>2011-07-01T04:59:51Z</start>
+          <end>2020-05-02T08:36:55Z</end>
         </period>
       </address>
     </addresses>
     <health_coverage>
-      <group_number>account</group_number>
-      <policy_number>during</policy_number>
-      <plan_id>whose</plan_id>
-      <plan_name>about</plan_name>
-      <coverage_status>can</coverage_status>
+      <group_number>actually</group_number>
+      <policy_number>time</policy_number>
+      <plan_id>him</plan_id>
+      <plan_name>around</plan_name>
+      <coverage_status>necessary</coverage_status>
       <coverage_type>
         <codeable_concept>
           <coding>
-            <system>build</system>
-            <code>town</code>
+            <system>along</system>
+            <code>everybody</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
         </codeable_concept>
       </coverage_type>
       <coverage_period>
-        <start>2013-08-06T19:17:44Z</start>
-        <end>2014-10-28T14:03:30Z</end>
+        <start>2018-03-21T01:05:45Z</start>
+        <end>2016-02-06T23:28:14Z</end>
       </coverage_period>
-      <network_id>bring</network_id>
+      <network_id>long</network_id>
       <payor>
         <tax>
-          <value>strategy</value>
-          <type>hospital</type>
+          <value>green</value>
+          <type>wrong</type>
         </tax>
         <naic_code>
-          <value>cultural</value>
-          <type>response</type>
+          <value>difficult</value>
+          <type>the</type>
         </naic_code>
         <payer_id>
-          <value>open</value>
-          <type>mention</type>
+          <value>cover</value>
+          <type>world</type>
         </payer_id>
         <is_active>false</is_active>
-        <name>Monica Torres</name>
-        <alias>himself</alias>
+        <name>Megan Spencer</name>
+        <alias>enough</alias>
         <telecoms>
           <telecom>
-            <system>url</system>
-            <value>through</value>
-            <use>home</use>
-            <rank>3</rank>
+            <system>email</system>
+            <value>spend</value>
+            <use>mobile</use>
+            <rank>2</rank>
             <period>
-              <start>2017-11-21T11:12:11Z</start>
-              <end>2019-03-27T12:38:19Z</end>
+              <start>2012-01-12T09:09:20Z</start>
+              <end>2017-06-27T05:58:50Z</end>
             </period>
           </telecom>
         </telecoms>
         <addresses>
           <address>
-            <use>old</use>
-            <type>postal</type>
+            <use>temp</use>
+            <type>physical</type>
             <text>American Indian or Alaska Native</text>
-            <line>336 Sonya Stravenue</line>
-            <city>Lauraborough</city>
-            <district>effort</district>
-            <state>WI</state>
-            <postal_code>90703</postal_code>
-            <country>TO</country>
+            <line>7503 David Row</line>
+            <city>Louisview</city>
+            <district>source</district>
+            <state>UT</state>
+            <postal_code>93148</postal_code>
+            <country>CU</country>
             <period>
-              <start>2018-04-23T06:38:35Z</start>
-              <end>2017-05-13T17:39:04Z</end>
+              <start>2018-09-20T04:06:17Z</start>
+              <end>2011-12-13T11:26:37Z</end>
             </period>
           </address>
         </addresses>
@@ -271,28 +273,28 @@
     </health_coverage>
     <communications>
       <communication>
-        <language_code>yao</language_code>
-        <display>English (Region=Canada)</display>
+        <language_code>oto</language_code>
+        <display>Aragonese</display>
         <is_preferred>false</is_preferred>
       </communication>
     </communications>
-    <smoking_status>428041000124106</smoking_status>
-    <smoking_effective_date_time>2017-12-11T18:19:04Z</smoking_effective_date_time>
+    <smoking_status>449868002</smoking_status>
+    <smoking_effective_date_time>2014-10-18T11:37:12Z</smoking_effective_date_time>
     <record_type>D</record_type>
-    <unique_record_identifier>oil</unique_record_identifier>
+    <unique_record_identifier>lose</unique_record_identifier>
     <delegates>
       <delegate>
-        <family>Anderson</family>
-        <given>Todd</given>
+        <family>Williams</family>
+        <given>Anna</given>
         <telecoms>
           <telecom>
-            <system>phone</system>
-            <value>without</value>
+            <system>mobile</system>
+            <value>particularly</value>
           </telecom>
         </telecoms>
-        <email_address>stephanie85@example.com</email_address>
-        <start>2010-11-02T11:19:05Z</start>
-        <end>2011-02-25T06:02:04Z</end>
+        <email_address>rodriguezderek@example.net</email_address>
+        <start>2014-07-21T03:29:37Z</start>
+        <end>2014-11-10T11:39:47Z</end>
         <is_member>false</is_member>
       </delegate>
     </delegates>

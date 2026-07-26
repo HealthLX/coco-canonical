@@ -1,201 +1,201 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v11.0/Formulary.xsd">
   <schema_version>11.0</schema_version>
-  <sender_id>give</sender_id>
-  <date_time_reported>2026-07-26T19:45:39Z</date_time_reported>
+  <sender_id>traditional</sender_id>
+  <date_time_reported>2026-07-26T20:20:40Z</date_time_reported>
   <coverage_plan>
-    <plan_id>bring</plan_id>
-    <plan_id_type>strategy</plan_id_type>
-    <title>prevent</title>
-    <marketing_url>run</marketing_url>
-    <summary_url>owner</summary_url>
-    <formulary_url>clearly</formulary_url>
-    <email_plan_contact>lpetty@example.com</email_plan_contact>
-    <network>hair</network>
+    <plan_id>discussion</plan_id>
+    <plan_id_type>toward</plan_id_type>
+    <title>next</title>
+    <marketing_url>mind</marketing_url>
+    <summary_url>play</summary_url>
+    <formulary_url>here</formulary_url>
+    <email_plan_contact>meganwagner@example.net</email_plan_contact>
+    <network>form</network>
     <status>entered-in-error</status>
-    <mode>changes</mode>
-    <date>2013-04-20T04:10:21Z</date>
+    <mode>working</mode>
+    <date>2018-03-05T16:48:38Z</date>
     <drug_tiers>
       <drug_tier>
         <drug_tier_id>
-          <code>preferred-brand</code>
+          <code>non-preferred-generic</code>
           <text>American Indian or Alaska Native</text>
         </drug_tier_id>
         <mail_order>false</mail_order>
         <cost_sharings>
           <cost_sharing>
-            <pharmacy_type>1-month-out-retail</pharmacy_type>
+            <pharmacy_type>3-month-in-mail</pharmacy_type>
             <copay_amount>
-              <value>202.21</value>
-              <currency>JMD</currency>
+              <value>396.33</value>
+              <currency>ALL</currency>
             </copay_amount>
-            <copay_option>no-charge-after-deductible</copay_option>
-            <coinsurance_rate>474.65</coinsurance_rate>
-            <coinsurance_option>after-deductible</coinsurance_option>
+            <copay_option>no-charge</copay_option>
+            <coinsurance_rate>212.28</coinsurance_rate>
+            <coinsurance_option>no-charge-after-deductible</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
-            <id>d5805754-8f7d-4bf5-af48-7dbad1c91746</id>
+            <id>518435c1-7e92-4ea3-a592-c38993c224e1</id>
             <rx_norm_code>
-              <code>such</code>
+              <code>whether</code>
               <display>English</display>
-              <system>during</system>
+              <system>huge</system>
               <text>American Indian or Alaska Native</text>
             </rx_norm_code>
-            <status>inactive</status>
+            <status>entered-in-error</status>
             <manufacturer>
-              <name>Jill Bernard</name>
-              <alias>town</alias>
-              <type>sign</type>
+              <name>Steven Hardy</name>
+              <alias>drop</alias>
+              <type>sure</type>
             </manufacturer>
             <dose_form>
-              <code>its</code>
-              <system>simple</system>
+              <code>within</code>
+              <system>once</system>
               <display>English</display>
               <text>American Indian or Alaska Native</text>
             </dose_form>
             <ingredients>
               <ingredient>
-                <is_active>true</is_active>
+                <is_active>false</is_active>
                 <strength>
                   <numerator>
-                    <value>889.92</value>
-                    <comparator>&lt;=</comparator>
-                    <unit>surface</unit>
-                    <system>point</system>
-                    <code>woman</code>
+                    <value>930.42</value>
+                    <comparator>&gt;=</comparator>
+                    <unit>performance</unit>
+                    <system>keep</system>
+                    <code>condition</code>
                   </numerator>
                   <denominator>
-                    <value>633.94</value>
-                    <comparator>&lt;=</comparator>
-                    <unit>ahead</unit>
-                    <system>national</system>
-                    <code>garden</code>
+                    <value>365.88</value>
+                    <comparator>&lt;</comparator>
+                    <unit>yes</unit>
+                    <system>listen</system>
+                    <code>concern</code>
                   </denominator>
                 </strength>
                 <substance>
-                  <category>biological</category>
-                  <description>reveal</description>
+                  <category>drug</category>
+                  <description>I</description>
                   <code>
-                    <code>job</code>
-                    <system>president</system>
+                    <code>game</code>
+                    <system>foot</system>
                   </code>
                 </substance>
               </ingredient>
             </ingredients>
             <intended_route>
-              <code>responsibility</code>
-              <system>management</system>
+              <code>throughout</code>
+              <system>next</system>
               <display>English</display>
               <text>American Indian or Alaska Native</text>
             </intended_route>
             <monitoring_programs>
               <monitoring_program>
-                <name>Brian Smith</name>
-                <type>million</type>
+                <name>Ricky Pham</name>
+                <type>interview</type>
               </monitoring_program>
             </monitoring_programs>
             <monographs>
               <monograph>
-                <type>time</type>
+                <type>western</type>
               </monograph>
             </monographs>
             <cost_informations>
               <cost_information>
-                <type>attorney</type>
-                <source>feeling</source>
+                <type>south</type>
+                <source>its</source>
                 <cost>
-                  <value>128.07</value>
-                  <currency>RSD</currency>
+                  <value>172.81</value>
+                  <currency>LAK</currency>
                 </cost>
               </cost_information>
             </cost_informations>
-            <plan_id>source</plan_id>
-            <prior_authorization>true</prior_authorization>
+            <plan_id>draw</plan_id>
+            <prior_authorization>false</prior_authorization>
             <step_therapy>true</step_therapy>
-            <quantity_limit>true</quantity_limit>
+            <quantity_limit>false</quantity_limit>
             <medicine_classifications>
               <medicine_classification>
-                <type>feel</type>
-                <classification>four</classification>
+                <type>poor</type>
+                <classification>phone</classification>
               </medicine_classification>
             </medicine_classifications>
             <formulary_drugs_alternatives>
               <formulary_drugs_alternative>
                 <rx_norm_code>
-                  <code>position</code>
+                  <code>interesting</code>
                   <display>English</display>
                   <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
                 </rx_norm_code>
-                <status>entered-in-error</status>
+                <status>active</status>
                 <manufacturer>
-                  <name>Bridget Escobar</name>
-                  <alias>reflect</alias>
-                  <type>organization</type>
+                  <name>Stephanie Ramos</name>
+                  <alias>purpose</alias>
+                  <type>could</type>
                 </manufacturer>
                 <dose_form>
-                  <code>image</code>
-                  <system>source</system>
+                  <code>throw</code>
+                  <system>increase</system>
                 </dose_form>
                 <ingredients>
                   <ingredient>
                     <is_active>false</is_active>
                     <strength>
                       <numerator>
-                        <value>382.64</value>
+                        <value>184.69</value>
                         <comparator>&lt;=</comparator>
-                        <unit>floor</unit>
-                        <system>win</system>
-                        <code>always</code>
+                        <unit>group</unit>
+                        <system>through</system>
+                        <code>fish</code>
                       </numerator>
                       <denominator>
-                        <value>548.2</value>
-                        <comparator>&lt;</comparator>
-                        <unit>will</unit>
-                        <system>movie</system>
-                        <code>minute</code>
+                        <value>397.27</value>
+                        <comparator>&gt;</comparator>
+                        <unit>notice</unit>
+                        <system>hospital</system>
+                        <code>relate</code>
                       </denominator>
                     </strength>
                     <substance>
-                      <category>food</category>
-                      <description>happy</description>
+                      <category>drug</category>
+                      <description>they</description>
                       <code>
-                        <code>very</code>
-                        <system>pay</system>
+                        <code>air</code>
+                        <system>Mr</system>
                       </code>
                     </substance>
                   </ingredient>
                 </ingredients>
                 <monitoring_programs>
                   <monitoring_program>
-                    <name>Samantha Wallace</name>
-                    <type>person</type>
+                    <name>Luis Johnson</name>
+                    <type>physical</type>
                   </monitoring_program>
                 </monitoring_programs>
                 <monographs>
                   <monograph>
-                    <type>whole</type>
+                    <type>majority</type>
                   </monograph>
                 </monographs>
                 <cost_informations>
                   <cost_information>
-                    <type>determine</type>
-                    <source>not</source>
+                    <type>conference</type>
+                    <source>scene</source>
                     <cost>
-                      <value>757.88</value>
-                      <currency>TTD</currency>
+                      <value>12.63</value>
+                      <currency>DZD</currency>
                     </cost>
                   </cost_information>
                 </cost_informations>
-                <plan_id>wife</plan_id>
+                <plan_id>others</plan_id>
                 <prior_authorization>true</prior_authorization>
-                <step_therapy>false</step_therapy>
-                <quantity_limit>true</quantity_limit>
+                <step_therapy>true</step_therapy>
+                <quantity_limit>false</quantity_limit>
                 <medicine_classifications>
                   <medicine_classification>
-                    <type>learn</type>
-                    <classification>third</classification>
+                    <type>kitchen</type>
+                    <classification>raise</classification>
                   </medicine_classification>
                 </medicine_classifications>
               </formulary_drugs_alternative>
