@@ -41,20 +41,17 @@
   <!--Regular Expression for DateTime-->
   <xs:simpleType name="dateTime">
     <xs:restriction base="xs:string">
-      <xs:pattern
-        value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))?"
-      />
+      <xs:pattern value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))?"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="base64Binary">
     <xs:restriction base="xs:base64Binary">
-      <!--<xs:pattern value="(\s*([0-9a-zA-Z\+\.]){4}\s*)+"/>--> </xs:restriction>
+      <!--<xs:pattern value="(\s*([0-9a-zA-Z\+\.]){4}\s*)+"/>-->
+    </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="instant">
     <xs:restriction base="xs:dateTime">
-      <xs:pattern
-        value="([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"
-      />
+      <xs:pattern value="([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="code">
@@ -584,29 +581,19 @@
   </xs:complexType>
   <xs:complexType name="result_value_vital_sign_profile">
     <xs:choice>
-      <xs:element name="value_quantity_respiratory_rate" type="quantity_respiratory_rate"
-        minOccurs="0" maxOccurs="1"/>
-      <xs:element name="value_quantity_heart_rate" type="quantity_heart_rate" minOccurs="0"
-        maxOccurs="1"/>
-      <xs:element name="value_quantity_oxygen_saturation" type="quantity_oxygen_saturation"
-        minOccurs="0" maxOccurs="1"/>
-      <xs:element name="value_quantity_body_temperature" type="quantity_body_temperature"
-        minOccurs="0" maxOccurs="1"/>
-      <xs:element name="value_quantity_body_height" type="quantity_body_height" minOccurs="0"
-        maxOccurs="1"/>
-      <xs:element name="value_quantity_head_circumference" type="quantity_head_circumference"
-        minOccurs="0" maxOccurs="1"/>
-      <xs:element name="value_quantity_body_weight" type="quantity_body_weight" minOccurs="0"
-        maxOccurs="1"/>
-      <xs:element name="value_quantity_body_mass_index" type="quantity_body_mass_index"
-        minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_respiratory_rate" type="quantity_respiratory_rate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_heart_rate" type="quantity_heart_rate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_oxygen_saturation" type="quantity_oxygen_saturation" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_body_temperature" type="quantity_body_temperature" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_body_height" type="quantity_body_height" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_head_circumference" type="quantity_head_circumference" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_body_weight" type="quantity_body_weight" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="value_quantity_body_mass_index" type="quantity_body_mass_index" minOccurs="0" maxOccurs="1"/>
       <xs:element name="value_quantity_bp_systolic_diastolic" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="value_quantity_bp_systolic" type="quantity_bp_systolic" minOccurs="0"
-              maxOccurs="1"/>
-            <xs:element name="value_quantity_bp_diastolic" type="quantity_bp_diastolic"
-              minOccurs="0" maxOccurs="1"/>
+            <xs:element name="value_quantity_bp_systolic" type="quantity_bp_systolic" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="value_quantity_bp_diastolic" type="quantity_bp_diastolic" minOccurs="0" maxOccurs="1"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -673,8 +660,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -718,8 +705,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -763,8 +750,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -808,8 +795,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -854,8 +841,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -900,8 +887,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -946,8 +933,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -993,8 +980,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -1038,8 +1025,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -1083,8 +1070,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -1149,8 +1136,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -2737,8 +2724,7 @@
                   <xs:element name="system" minOccurs="1" maxOccurs="1">
                     <xs:simpleType>
                       <xs:restriction base="string">
-                        <xs:enumeration
-                          value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+                        <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
@@ -2773,8 +2759,7 @@
             <xs:element name="display" minOccurs="0" maxOccurs="1">
               <xs:simpleType>
                 <xs:restriction base="string">
-                  <xs:enumeration
-                    value="Vital signs,weight,height,head circumference,oxygen saturation and BMI panel"/>
+                  <xs:enumeration value="Vital signs,weight,height,head circumference,oxygen saturation and BMI panel"/>
                   <xs:enumeration value="Respiratory rate"/>
                   <xs:enumeration value="Heart rate"/>
                   <xs:enumeration value="Oxygen saturation in Arterial blood"/>
@@ -2985,8 +2970,7 @@
             <xs:element name="system" minOccurs="0" maxOccurs="1">
               <xs:simpleType>
                 <xs:restriction base="string">
-                  <xs:enumeration
-                    value="http://terminology.hl7.org/CodeSystem/endpoint-connection-type"/>
+                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/endpoint-connection-type"/>
                 </xs:restriction>
               </xs:simpleType>
             </xs:element>
@@ -3027,8 +3011,7 @@
             <xs:element name="system" minOccurs="0" maxOccurs="1">
               <xs:simpleType>
                 <xs:restriction base="string">
-                  <xs:enumeration
-                    value="http://terminology.hl7.org/CodeSystem/endpoint-payload-type"/>
+                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/endpoint-payload-type"/>
                   <xs:enumeration value="urn:oid:1.3.6.1.4.1.19376.1.2.3"/>
                 </xs:restriction>
               </xs:simpleType>
@@ -3194,14 +3177,12 @@
       <xs:enumeration value="urn:oid:2.16.840.1.113883.6.285"/>
     </xs:restriction>
   </xs:simpleType>
-
   <xs:complexType name="extensionType">
     <xs:sequence>
       <xs:element name="url" type="xs:anyURI"/>
       <xs:element name="valueCode" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:group name="encounterContent">
     <xs:sequence>
       <xs:element name="identifier" type="string" minOccurs="0" maxOccurs="unbounded">
@@ -3265,10 +3246,8 @@
                         <xs:element name="system" minOccurs="0" maxOccurs="1">
                           <xs:simpleType>
                             <xs:restriction base="string">
-                              <xs:enumeration
-                                value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
-                              <xs:enumeration
-                                value="http://terminology.hl7.org/CodeSystem/participant-type"/>
+                              <xs:enumeration value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+                              <xs:enumeration value="http://terminology.hl7.org/CodeSystem/participant-type"/>
                             </xs:restriction>
                           </xs:simpleType>
                         </xs:element>
@@ -3313,8 +3292,7 @@
       <xs:element name="hospitalization" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="discharge_disposition" minOccurs="0" maxOccurs="1"
-              type="codeable_concept"/>
+            <xs:element name="discharge_disposition" minOccurs="0" maxOccurs="1" type="codeable_concept"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -3339,7 +3317,6 @@
         </xs:complexType>
       </xs:element>
     </xs:sequence>
-
   </xs:group>
   <xs:group name="procedureCodeChoiceGroup">
     <xs:choice>
@@ -3349,7 +3326,6 @@
         <xs:element name="version" type="xs:string" minOccurs="0"/>
         <xs:element name="display" type="xs:string" minOccurs="0"/>
       </xs:sequence>
-
       <xs:sequence>
         <xs:element name="extension" type="extensionType" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
@@ -4579,9 +4555,7 @@
           </xs:annotation>
           <xs:simpleType>
             <xs:restriction base="xs:dateTime">
-              <xs:pattern
-                value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,9})?(Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))"
-              />
+              <xs:pattern value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,9})?(Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>
@@ -4602,8 +4576,7 @@
                     <xs:element name="lab_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" maxOccurs="1" minOccurs="1">
                             <xs:annotation>
                               <xs:documentation> Status of the observation </xs:documentation>
@@ -4623,8 +4596,7 @@
                           </xs:element>
                           <!--hardcoded value-->
                           <!--<xs:element name="category" minOccurs="1" maxOccurs="unbounded" type="string"/>-->
-                          <xs:element name="observation_code" type="codeable_concept" minOccurs="1"
-                            maxOccurs="1">
+                          <xs:element name="observation_code" type="codeable_concept" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> Laboratory Test Name [LOINC COdes]
                               </xs:documentation>
@@ -4635,22 +4607,19 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="0" maxOccurs="1"
-                                    type="dateTime">
+                                  <xs:element name="effective_date_time" minOccurs="0" maxOccurs="1" type="dateTime">
                                     <xs:annotation>
                                       <xs:documentation> Clinically relevant time/time-period for
                                         observation </xs:documentation>
                                     </xs:annotation>
                                   </xs:element>
-                                  <xs:element name="effective_period" minOccurs="0" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_period" minOccurs="0" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
                           <xs:choice>
-                            <xs:element name="observation_value" minOccurs="0" maxOccurs="1"
-                              type="result_value">
+                            <xs:element name="observation_value" minOccurs="0" maxOccurs="1" type="result_value">
                               <xs:annotation>
                                 <xs:documentation> Result of the observation </xs:documentation>
                               </xs:annotation>
@@ -4682,8 +4651,7 @@
                               </xs:simpleType>
                             </xs:element>
                           </xs:choice>
-                          <xs:element name="interpretation" minOccurs="0" maxOccurs="unbounded"
-                            type="string">
+                          <xs:element name="interpretation" minOccurs="0" maxOccurs="unbounded" type="string">
                             <xs:annotation>
                               <xs:documentation> A categorical assessment of an observation value.
                                 For example, high, low, normal. </xs:documentation>
@@ -4699,10 +4667,8 @@
                             </xs:annotation>
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="low" minOccurs="0" maxOccurs="1"
-                                  type="simple_quantity"/>
-                                <xs:element name="high" minOccurs="0" maxOccurs="1"
-                                  type="simple_quantity"/>
+                                <xs:element name="low" minOccurs="0" maxOccurs="1" type="simple_quantity"/>
+                                <xs:element name="high" minOccurs="0" maxOccurs="1" type="simple_quantity"/>
                                 <xs:element name="type" minOccurs="0" maxOccurs="1">
                                   <xs:simpleType>
                                     <xs:restriction base="string">
@@ -4721,8 +4687,7 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="applies_to" minOccurs="0" maxOccurs="1"
-                                  type="codeable_concept"/>
+                                <xs:element name="applies_to" minOccurs="0" maxOccurs="1" type="codeable_concept"/>
                                 <xs:element name="age" minOccurs="0" maxOccurs="1" type="range"/>
                                 <xs:element name="text" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
@@ -4753,8 +4718,7 @@
                     <xs:element name="allergy_intolerance" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="clinical_status" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> The clinical status of the allergy or intolerance.
@@ -4827,11 +4791,8 @@
                                   <xs:simpleType>
                                     <xs:restriction base="string">
                                       <xs:enumeration value="http://snomed.info/sct"/>
-                                      <xs:enumeration
-                                        value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
-                                      <xs:enumeration
-                                        value="http://terminology.hl7.org/CodeSystem/data-absent-reason"
-                                      />
+                                      <xs:enumeration value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+                                      <xs:enumeration value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
@@ -4853,8 +4814,7 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="manifestation" minOccurs="1"
-                                        maxOccurs="unbounded" type="string">
+                                      <xs:element name="manifestation" minOccurs="1" maxOccurs="unbounded" type="string">
                                         <xs:annotation>
                                           <xs:documentation> Clinical symptoms and/or signs that are
                                             observed or associated with the adverse reaction event.
@@ -4887,8 +4847,7 @@
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
-                          <xs:element name="recorded_date" type="dateTime" minOccurs="0"
-                            maxOccurs="1">
+                          <xs:element name="recorded_date" type="dateTime" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> The recordedDate represents when this particular
                                 AllergyIntolerance record was created in the system, which is often
@@ -4917,8 +4876,7 @@
               <xs:element name="conditions" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="condition" minOccurs="1" maxOccurs="unbounded"
-                      type="condition"/>
+                    <xs:element name="condition" minOccurs="1" maxOccurs="unbounded" type="condition"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -4928,8 +4886,7 @@
                     <xs:element name="procedure" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="procedure_code" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> - Procedure codes from SNOMED CT, CPT, HCPCS II,
@@ -4938,26 +4895,21 @@
                                 urn:oid:2.16.840.1.113883.6.285 for HCPCS Level II codes.
                               </xs:documentation>
                             </xs:annotation>
-
                             <xs:complexType>
                               <xs:choice>
-
                                 <!-- code/system OR extension first, then optional text -->
                                 <xs:sequence>
                                   <xs:group ref="procedureCodeChoiceGroup"/>
                                   <xs:element name="text" type="xs:string" minOccurs="0"/>
                                 </xs:sequence>
-
                                 <!-- text first, then code/system OR extension -->
                                 <xs:sequence>
                                   <xs:element name="text" type="xs:string"/>
                                   <xs:group ref="procedureCodeChoiceGroup"/>
                                 </xs:sequence>
-
                               </xs:choice>
                             </xs:complexType>
                           </xs:element>
-
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> A code specifying the state of the procedure.
@@ -4989,10 +4941,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="performed_date_time" minOccurs="0" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="performed_period" minOccurs="0" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="performed_date_time" minOccurs="0" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="performed_period" minOccurs="0" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -5022,8 +4972,7 @@
                     <xs:element name="medication_request" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> Status of the request </xs:documentation>
@@ -5041,7 +4990,6 @@
                               </xs:restriction>
                             </xs:simpleType>
                           </xs:element>
-
                           <xs:element name="intent" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> Intent of the request </xs:documentation>
@@ -5067,18 +5015,14 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="reported_boolean" type="boolean" minOccurs="0"
-                                    maxOccurs="1"/>
+                                  <xs:element name="reported_boolean" type="boolean" minOccurs="0" maxOccurs="1"/>
                                   <xs:element name="reported_reference" minOccurs="0" maxOccurs="1">
                                     <xs:complexType>
                                       <xs:sequence>
                                         <xs:choice>
-                                          <xs:element name="reported_patient" minOccurs="0"
-                                            maxOccurs="1" type="member_person"/>
-                                          <xs:element name="reported_practitioner" minOccurs="0"
-                                            maxOccurs="1" type="practitioner"/>
-                                          <xs:element name="reported_organization" minOccurs="0"
-                                            maxOccurs="1" type="organization"/>
+                                          <xs:element name="reported_patient" minOccurs="0" maxOccurs="1" type="member_person"/>
+                                          <xs:element name="reported_practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                          <xs:element name="reported_organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                         </xs:choice>
                                       </xs:sequence>
                                     </xs:complexType>
@@ -5101,23 +5045,18 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:all>
-                                      <xs:element name="code" type="string" minOccurs="1"
-                                        maxOccurs="1"/>
+                                      <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
                                       <xs:element name="system" minOccurs="1" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
-                                            <xs:enumeration
-                                              value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+                                            <xs:enumeration value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
                                             <xs:enumeration value="http://hl7.org/fhir/sid/ndc"/>
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="version" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
-                                      <xs:element name="display" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
-                                      <xs:element name="text" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
+                                      <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+                                      <xs:element name="text" type="string" minOccurs="0" maxOccurs="1"/>
                                     </xs:all>
                                   </xs:complexType>
                                 </xs:element>
@@ -5136,8 +5075,7 @@
                                 <xs:element name="form" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="code" type="string" minOccurs="1"
-                                        maxOccurs="1"/>
+                                      <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
                                       <xs:element name="system" minOccurs="1" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
@@ -5155,10 +5093,8 @@
                             <xs:complexType>
                               <xs:choice>
                                 <xs:sequence>
-                                  <xs:element name="reference" type="reference"
-                                    maxOccurs="unbounded" minOccurs="0"/>
+                                  <xs:element name="reference" type="reference" maxOccurs="unbounded" minOccurs="0"/>
                                 </xs:sequence>
-
                                 <xs:group ref="encounterContent"/>
                               </xs:choice>
                             </xs:complexType>
@@ -5168,33 +5104,25 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="patient" minOccurs="1" maxOccurs="1"
-                                    type="member_person"/>
-                                  <xs:element name="practitioner" minOccurs="1" maxOccurs="1"
-                                    type="practitioner"/>
-                                  <xs:element name="organization" minOccurs="1" maxOccurs="1"
-                                    type="organization"/>
+                                  <xs:element name="patient" minOccurs="1" maxOccurs="1" type="member_person"/>
+                                  <xs:element name="practitioner" minOccurs="1" maxOccurs="1" type="practitioner"/>
+                                  <xs:element name="organization" minOccurs="1" maxOccurs="1" type="organization"/>
                                   <xs:element name="reference" type="reference"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="reason_code" minOccurs="0" maxOccurs="unbounded"
-                            type="codeable_concept"/>
+                          <xs:element name="reason_code" minOccurs="0" maxOccurs="unbounded" type="codeable_concept"/>
                           <xs:element name="dosage_instruction" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="sequence" minOccurs="0" maxOccurs="1"
-                                  type="integer"/>
+                                <xs:element name="sequence" minOccurs="0" maxOccurs="1" type="integer"/>
                                 <xs:element name="text" minOccurs="0" maxOccurs="1" type="string"/>
-                                <xs:element name="dose_quantity" minOccurs="0" maxOccurs="1"
-                                  type="decimal"/>
-                                <xs:element name="dose_unit" minOccurs="0" maxOccurs="1"
-                                  type="string"/>
+                                <xs:element name="dose_quantity" minOccurs="0" maxOccurs="1" type="decimal"/>
+                                <xs:element name="dose_unit" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-
                           <xs:element name="fill" minOccurs="0" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
@@ -5216,16 +5144,13 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="type" minOccurs="0" maxOccurs="1"
-                                  type="codeable_concept"/>
-                                <xs:element name="quantity" type="quantity" minOccurs="0"
-                                  maxOccurs="1">
+                                <xs:element name="type" minOccurs="0" maxOccurs="1" type="codeable_concept"/>
+                                <xs:element name="quantity" type="quantity" minOccurs="0" maxOccurs="1">
                                   <xs:annotation>
                                     <xs:documentation> Total amount Dispensed </xs:documentation>
                                   </xs:annotation>
                                 </xs:element>
-                                <xs:element name="fill_handed_over" type="dateTime" minOccurs="0"
-                                  maxOccurs="1"/>
+                                <xs:element name="fill_handed_over" type="dateTime" minOccurs="0" maxOccurs="1"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -5255,8 +5180,7 @@
                     <xs:element name="care_team" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="0" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -5282,13 +5206,11 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="code" type="string" minOccurs="1"
-                                        maxOccurs="1"/>
+                                      <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
                                       <xs:element name="system" minOccurs="0" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
-                                            <xs:enumeration
-                                              value="http://nucc.org/provider-taxonomy"/>
+                                            <xs:enumeration value="http://nucc.org/provider-taxonomy"/>
                                             <xs:enumeration value="http://snomed.info/sct"/>
                                           </xs:restriction>
                                         </xs:simpleType>
@@ -5338,8 +5260,7 @@
                     <xs:element name="observation_vital_sign" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -5370,9 +5291,7 @@
                                       <xs:element name="system" minOccurs="1" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
-                                            <xs:enumeration
-                                              value="http://terminology.hl7.org/CodeSystem/observation-category"
-                                            />
+                                            <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
@@ -5407,8 +5326,7 @@
                                 <xs:element name="display" minOccurs="0" maxOccurs="1">
                                   <xs:simpleType>
                                     <xs:restriction base="string">
-                                      <xs:enumeration
-                                        value="Vital signs,weight,height,head circumference,oxygen saturation and BMI panel"/>
+                                      <xs:enumeration value="Vital signs,weight,height,head circumference,oxygen saturation and BMI panel"/>
                                       <xs:enumeration value="Respiratory rate"/>
                                       <xs:enumeration value="Heart rate"/>
                                       <xs:enumeration value="Oxygen saturation in Arterial blood"/>
@@ -5417,8 +5335,7 @@
                                       <xs:enumeration value="Head Occipital-frontal circumference"/>
                                       <xs:enumeration value="Body weight"/>
                                       <xs:enumeration value="Body mass index (BMI) [Ratio]"/>
-                                      <xs:enumeration
-                                        value="Blood pressure panel with all children optional"/>
+                                      <xs:enumeration value="Blood pressure panel with all children optional"/>
                                       <xs:enumeration value="Systolic blood pressure"/>
                                       <xs:enumeration value="Diastolic blood pressure"/>
                                       <xs:enumeration value="Mean blood pressure"/>
@@ -5441,17 +5358,14 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
                           <xs:choice>
-                            <xs:element name="value" minOccurs="0" maxOccurs="1"
-                              type="result_value_vital_sign_profile">
+                            <xs:element name="value" minOccurs="0" maxOccurs="1" type="result_value_vital_sign_profile">
                               <xs:annotation>
                                 <xs:documentation> Vital Signs value are recorded using the Quantity
                                   data type </xs:documentation>
@@ -5461,14 +5375,12 @@
                               <xs:complexType>
                                 <xs:sequence>
                                   <xs:element name="code" minOccurs="0" maxOccurs="1" type="string"/>
-                                  <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                    type="string"/>
+                                  <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                 </xs:sequence>
                               </xs:complexType>
                             </xs:element>
                           </xs:choice>
-                          <xs:element name="has_member" minOccurs="0" maxOccurs="unbounded"
-                            type="vital_signs"/>
+                          <xs:element name="has_member" minOccurs="0" maxOccurs="unbounded" type="vital_signs"/>
                           <!--Only for systolic and diastolic blood pressure.-->
                           <xs:element name="component" minOccurs="0" maxOccurs="unbounded">
                             <xs:annotation>
@@ -5483,25 +5395,22 @@
                                       <xs:element name="code" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding_sbp_code" minOccurs="1"
-                                              maxOccurs="1">
+                                            <xs:element name="coding_sbp_code" minOccurs="1" maxOccurs="1">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="8480-6"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="8480-6"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="http://loinc.org"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://loinc.org"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -5509,10 +5418,8 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                      <xs:element name="value" minOccurs="0" maxOccurs="1"
-                                        type="quantity_bp_systolic"/>
-                                      <xs:element name="data_absent_reason" minOccurs="0"
-                                        maxOccurs="1">
+                                      <xs:element name="value" minOccurs="0" maxOccurs="1" type="quantity_bp_systolic"/>
+                                      <xs:element name="data_absent_reason" minOccurs="0" maxOccurs="1">
                                         <xs:annotation>
                                           <xs:documentation> Why the component result is missing
                                           </xs:documentation>
@@ -5522,10 +5429,8 @@
                                             <xs:element name="coding" minOccurs="0" maxOccurs="1">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="0"
-                                                  maxOccurs="1" type="string"/>
-                                                  <xs:element name="system" minOccurs="0"
-                                                  maxOccurs="1" type="string"/>
+                                                  <xs:element name="code" minOccurs="0" maxOccurs="1" type="string"/>
+                                                  <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                                 </xs:sequence>
                                               </xs:complexType>
                                             </xs:element>
@@ -5535,32 +5440,28 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="component_diastolic_bp" minOccurs="1"
-                                  maxOccurs="1">
+                                <xs:element name="component_diastolic_bp" minOccurs="1" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="code" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding_dbp_code" minOccurs="1"
-                                              maxOccurs="1">
+                                            <xs:element name="coding_dbp_code" minOccurs="1" maxOccurs="1">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="8462-4"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="8462-4"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="http://loinc.org"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://loinc.org"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -5568,19 +5469,15 @@
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                      <xs:element name="value" minOccurs="0" maxOccurs="1"
-                                        type="quantity_bp_diastolic"/>
-                                      <xs:element name="data_absent_reason" minOccurs="0"
-                                        maxOccurs="1">
+                                      <xs:element name="value" minOccurs="0" maxOccurs="1" type="quantity_bp_diastolic"/>
+                                      <xs:element name="data_absent_reason" minOccurs="0" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:element name="coding" minOccurs="0" maxOccurs="1">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="0"
-                                                  maxOccurs="1" type="string"/>
-                                                  <xs:element name="system" minOccurs="0"
-                                                  maxOccurs="1" type="string"/>
+                                                  <xs:element name="code" minOccurs="0" maxOccurs="1" type="string"/>
+                                                  <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                                 </xs:sequence>
                                               </xs:complexType>
                                             </xs:element>
@@ -5619,10 +5516,8 @@
                     <xs:element name="practitioner" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="practitioner_details" minOccurs="1" maxOccurs="1"
-                            type="practitioner"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                          <xs:element name="practitioner_details" minOccurs="1" maxOccurs="1" type="practitioner"/>
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
                               <xs:documentation> This element describes the action for this Profile
@@ -5648,10 +5543,8 @@
                     <xs:element name="organization" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="organization_details" minOccurs="1" maxOccurs="1"
-                            type="organization"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                          <xs:element name="organization_details" minOccurs="1" maxOccurs="1" type="organization"/>
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
                               <xs:documentation> This element describes the action for this Profile
@@ -5677,10 +5570,8 @@
                     <xs:element name="location" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="location_details" minOccurs="1" maxOccurs="1"
-                            type="location"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                          <xs:element name="location_details" minOccurs="1" maxOccurs="1" type="location"/>
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
                               <xs:documentation> This element describes the action for this Profile
@@ -5706,10 +5597,8 @@
                     <xs:element name="encounter" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="encounter_details" minOccurs="1" maxOccurs="1"
-                            type="encounter"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                          <xs:element name="encounter_details" minOccurs="1" maxOccurs="1" type="encounter"/>
                           <!--<xs:element name="subject" minOccurs="1" maxOccurs="1" type="member_person"/>-->
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
@@ -5736,8 +5625,7 @@
                     <xs:element name="care_plan" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="text" minOccurs="1" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
@@ -5814,9 +5702,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://hl7.org/fhir/us/core/CodeSystem/careplan-category"
-                                                  />
+                                                  <xs:enumeration value="http://hl7.org/fhir/us/core/CodeSystem/careplan-category"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -5855,8 +5741,7 @@
                     <xs:element name="goal" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="care_plan_id" minOccurs="0" maxOccurs="1" type="string"/>
                           <xs:element name="lifecycle_status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
@@ -5899,18 +5784,15 @@
                           <xs:element name="target" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="due_date" type="date" minOccurs="0" maxOccurs="1"
-                                />
+                                <xs:element name="due_date" type="date" minOccurs="0" maxOccurs="1"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
                           <xs:element name="addresses" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="reference_id" type="string" minOccurs="0"
-                                  maxOccurs="1"/>
-                                <xs:element name="reference_type" type="string" minOccurs="0"
-                                  maxOccurs="1"/>
+                                <xs:element name="reference_id" type="string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="reference_type" type="string" minOccurs="0" maxOccurs="1"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -5939,8 +5821,7 @@
                     <xs:element name="immunization" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -5960,12 +5841,8 @@
                                       <xs:simpleType>
                                         <xs:restriction base="string">
                                           <xs:enumeration value="http://snomed.info/sct"/>
-                                          <xs:enumeration
-                                            value="http://terminology.hl7.org/CodeSystem/v3-ActReason"
-                                          />
-                                          <xs:enumeration
-                                            value="http://terminology.hl7.org/CodeSystem/data-absent-reason"
-                                          />
+                                          <xs:enumeration value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+                                          <xs:enumeration value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
                                         </xs:restriction>
                                       </xs:simpleType>
                                       <xs:simpleType>
@@ -5985,9 +5862,7 @@
                                   <xs:simpleType>
                                     <xs:restriction base="string">
                                       <xs:enumeration value="http://hl7.org/fhir/sid/cvx"/>
-                                      <xs:enumeration
-                                        value="http://terminology.hl7.org/CodeSystem/data-absent-reason"
-                                      />
+                                      <xs:enumeration value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
@@ -6001,16 +5876,13 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="occurrence_date_time" type="dateTime"
-                                    minOccurs="1" maxOccurs="1"/>
-                                  <xs:element name="occurrence_string" type="string" minOccurs="1"
-                                    maxOccurs="1"/>
+                                  <xs:element name="occurrence_date_time" type="dateTime" minOccurs="1" maxOccurs="1"/>
+                                  <xs:element name="occurrence_string" type="string" minOccurs="1" maxOccurs="1"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="primary_source" type="boolean" minOccurs="0"
-                            maxOccurs="1"/>
+                          <xs:element name="primary_source" type="boolean" minOccurs="0" maxOccurs="1"/>
                           <!--<xs:element name="subject" minOccurs="1" maxOccurs="1" type="member_person"/>-->
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
@@ -6034,12 +5906,10 @@
               <xs:element name="pediatric_bmi_for_age_observations" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="pediatric_bmi_for_age_observation" minOccurs="1"
-                      maxOccurs="unbounded">
+                    <xs:element name="pediatric_bmi_for_age_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -6073,9 +5943,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/observation-category"
-                                                  />
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -6112,10 +5980,8 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="version" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
-                                      <xs:element name="display" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
+                                      <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6127,10 +5993,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -6147,8 +6011,7 @@
                                 <xs:element name="unit" type="string" minOccurs="1" maxOccurs="1"/>
                                 <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/>
                                 <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
-                                <xs:element name="comparator" type="code" minOccurs="0"
-                                  maxOccurs="1"/>
+                                <xs:element name="comparator" type="code" minOccurs="0" maxOccurs="1"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -6176,8 +6039,7 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"
-                                />
+                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -6217,8 +6079,7 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="value" minOccurs="0" maxOccurs="1"
-                                  type="result_value"/>
+                                <xs:element name="value" minOccurs="0" maxOccurs="1" type="result_value"/>
                                 <xs:element name="data_absent_reason" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
@@ -6243,8 +6104,7 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
+                                      <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6270,16 +6130,13 @@
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="pediatric_head_occipital_frontal_circumference_observations"
-                minOccurs="0" maxOccurs="1">
+              <xs:element name="pediatric_head_occipital_frontal_circumference_observations" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="pediatric_head_occipital_frontal_circumference_observation"
-                      minOccurs="1" maxOccurs="unbounded">
+                    <xs:element name="pediatric_head_occipital_frontal_circumference_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -6313,9 +6170,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/observation-category"
-                                                  />
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -6352,10 +6207,8 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="version" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
-                                      <xs:element name="display" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
+                                      <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6367,10 +6220,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -6387,8 +6238,7 @@
                                 <xs:element name="unit" type="string" minOccurs="1" maxOccurs="1"/>
                                 <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/>
                                 <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
-                                <xs:element name="comparator" type="code" minOccurs="0"
-                                  maxOccurs="1"/>
+                                <xs:element name="comparator" type="code" minOccurs="0" maxOccurs="1"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -6416,8 +6266,7 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"
-                                />
+                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -6456,8 +6305,7 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="value" minOccurs="0" maxOccurs="1"
-                                  type="result_value"/>
+                                <xs:element name="value" minOccurs="0" maxOccurs="1" type="result_value"/>
                                 <xs:element name="data_absent_reason" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
@@ -6482,8 +6330,7 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
+                                      <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6510,16 +6357,13 @@
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="pediatric_weight_for_height_observations" minOccurs="0"
-                maxOccurs="1">
+              <xs:element name="pediatric_weight_for_height_observations" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="pediatric_weight_for_height_observation" minOccurs="1"
-                      maxOccurs="unbounded">
+                    <xs:element name="pediatric_weight_for_height_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -6553,9 +6397,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/observation-category"
-                                                  />
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -6592,10 +6434,8 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="version" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
-                                      <xs:element name="display" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
+                                      <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6607,10 +6447,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -6637,8 +6475,8 @@
                                     <xs:restriction base="xs:string">
                                       <xs:enumeration value="&lt;"/>
                                       <xs:enumeration value="&lt;="/>
-                                      <xs:enumeration value=">="/>
-                                      <xs:enumeration value=">"/>
+                                      <xs:enumeration value="&gt;="/>
+                                      <xs:enumeration value="&gt;"/>
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
@@ -6669,8 +6507,7 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"
-                                />
+                                <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -6710,8 +6547,7 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="value" minOccurs="0" maxOccurs="1"
-                                  type="result_value"/>
+                                <xs:element name="value" minOccurs="0" maxOccurs="1" type="result_value"/>
                                 <xs:element name="data_absent_reason" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
@@ -6736,8 +6572,7 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
+                                      <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
@@ -6770,12 +6605,9 @@
                     <xs:element name="practitioner_role" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="practitioner" minOccurs="1" maxOccurs="1"
-                            type="practitioner"/>
-                          <xs:element name="organization" minOccurs="1" maxOccurs="1"
-                            type="organization"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                          <xs:element name="practitioner" minOccurs="1" maxOccurs="1" type="practitioner"/>
+                          <xs:element name="organization" minOccurs="1" maxOccurs="1" type="organization"/>
                           <xs:element name="code" minOccurs="0" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
@@ -6810,12 +6642,9 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="location" minOccurs="0" maxOccurs="unbounded"
-                            type="location"/>
-                          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded"
-                            type="telecom"/>
-                          <xs:element name="endpoints" minOccurs="0" maxOccurs="unbounded"
-                            type="endpoint"/>
+                          <xs:element name="location" minOccurs="0" maxOccurs="unbounded" type="location"/>
+                          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="telecom"/>
+                          <xs:element name="endpoints" minOccurs="0" maxOccurs="unbounded" type="endpoint"/>
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
                               <xs:documentation> This element describes the action for this Profile
@@ -6841,8 +6670,7 @@
                     <xs:element name="pregnancy_observations" minOccurs="0" maxOccurs="1">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="pregnancy_observation" minOccurs="1"
-                            maxOccurs="unbounded">
+                          <xs:element name="pregnancy_observation" minOccurs="1" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:choice>
                                 <xs:element name="status">
@@ -6853,10 +6681,8 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="unique_identifier" minOccurs="1"
-                                        maxOccurs="1" type="id"/>
-                                      <xs:element name="observation_status" minOccurs="1"
-                                        maxOccurs="1">
+                                      <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="id"/>
+                                      <xs:element name="observation_status" minOccurs="1" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
                                             <xs:enumeration value="registered"/>
@@ -6891,10 +6717,8 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="effective_date_time" minOccurs="1"
-                                                maxOccurs="1" type="dateTime"/>
-                                              <xs:element name="effective_period" minOccurs="1"
-                                                maxOccurs="1" type="period"/>
+                                              <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                              <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -6924,10 +6748,8 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="unique_identifier" minOccurs="1"
-                                        maxOccurs="1" type="id"/>
-                                      <xs:element name="observation_status" minOccurs="1"
-                                        maxOccurs="1">
+                                      <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="id"/>
+                                      <xs:element name="observation_status" minOccurs="1" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
                                             <xs:enumeration value="registered"/>
@@ -6966,12 +6788,9 @@
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
-                                            <xs:element name="version" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="display" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="text" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
+                                            <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="text" type="string" minOccurs="0" maxOccurs="1"/>
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
@@ -6979,10 +6798,8 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="effective_date_time" minOccurs="1"
-                                                maxOccurs="1" type="dateTime"/>
-                                              <xs:element name="effective_period" minOccurs="1"
-                                                maxOccurs="1" type="period"/>
+                                              <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                              <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -7013,8 +6830,7 @@
                     <xs:element name="health_status_observations" minOccurs="0">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="health_status_observation" minOccurs="1"
-                            maxOccurs="unbounded">
+                          <xs:element name="health_status_observation" minOccurs="1" maxOccurs="unbounded">
                             <xs:annotation>
                               <xs:documentation> For SDOH,Disability, Functional, and
                                 Mental/Cognitive Profile:
@@ -7023,8 +6839,7 @@
                             </xs:annotation>
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                                  type="id"/>
+                                <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="id"/>
                                 <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
                                   <xs:annotation>
                                     <xs:documentation> Text summary of the resource, for human
@@ -7065,21 +6880,17 @@
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
-                                      <xs:element name="display" type="string" minOccurs="0"
-                                        maxOccurs="1"/>
+                                      <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="code" minOccurs="1" maxOccurs="1"
-                                  type="codeable_concept"/>
+                                <xs:element name="code" minOccurs="1" maxOccurs="1" type="codeable_concept"/>
                                 <xs:element name="effective" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:choice>
-                                        <xs:element name="effective_date_time" minOccurs="1"
-                                          maxOccurs="1" type="dateTime"/>
-                                        <xs:element name="effective_period" minOccurs="1"
-                                          maxOccurs="1" type="period"/>
+                                        <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                        <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                       </xs:choice>
                                     </xs:sequence>
                                   </xs:complexType>
@@ -7092,42 +6903,32 @@
                                   </xs:annotation>
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="practitioner" minOccurs="0" maxOccurs="1"
-                                        type="practitioner"/>
-                                      <xs:element name="organization" minOccurs="0" maxOccurs="1"
-                                        type="organization"/>
+                                      <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                      <xs:element name="organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                       <xs:element name="careteam" minOccurs="0" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="id" minOccurs="0" maxOccurs="1"
-                                              type="string"/>
-                                            <xs:element name="name" minOccurs="0" maxOccurs="1"
-                                              type="string"/>
+                                            <xs:element name="id" minOccurs="0" maxOccurs="1" type="string"/>
+                                            <xs:element name="name" minOccurs="0" maxOccurs="1" type="string"/>
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                      <xs:element name="person" minOccurs="0" maxOccurs="1"
-                                        type="related_person"/>
+                                      <xs:element name="person" minOccurs="0" maxOccurs="1" type="related_person"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element name="value" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="value_quantity" minOccurs="0" maxOccurs="1"
-                                        type="decimal"/>
+                                      <xs:element name="value_quantity" minOccurs="0" maxOccurs="1" type="decimal"/>
                                       <!-- codeable concept -->
-                                      <xs:element name="value_code" minOccurs="0" maxOccurs="1"
-                                        type="codeable_concept"/>
-                                      <xs:element name="value_string" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
-                                      <xs:element name="value_boolean" minOccurs="0" maxOccurs="1"
-                                        type="boolean"/>
+                                      <xs:element name="value_code" minOccurs="0" maxOccurs="1" type="codeable_concept"/>
+                                      <xs:element name="value_string" minOccurs="0" maxOccurs="1" type="string"/>
+                                      <xs:element name="value_boolean" minOccurs="0" maxOccurs="1" type="boolean"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="derivedFrom" minOccurs="0" maxOccurs="unbounded"
-                                  type="string"/>
+                                <xs:element name="derivedFrom" minOccurs="0" maxOccurs="unbounded" type="string"/>
                                 <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                                   <xs:annotation>
                                     <xs:documentation> This element describes the action for this
@@ -7144,23 +6945,19 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
               <xs:element name="smoking_status_observations" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="smoking_status_observation" minOccurs="1"
-                      maxOccurs="unbounded">
+                    <xs:element name="smoking_status_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -7256,8 +7053,7 @@
                     <xs:element name="provenance" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="target" minOccurs="1" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
@@ -7279,8 +7075,7 @@
                                       <xs:enumeration value="medication_request"/>
                                       <xs:enumeration value="patient"/>
                                       <xs:enumeration value="pediatric_bmi_for_age_observation"/>
-                                      <xs:enumeration
-                                        value="pediatric_weight_for_height_observation"/>
+                                      <xs:enumeration value="pediatric_weight_for_height_observation"/>
                                       <xs:enumeration value="procedure"/>
                                       <xs:enumeration value="pulse_oximetry_observation"/>
                                       <xs:enumeration value="smoking_status_observation"/>
@@ -7288,8 +7083,7 @@
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
-                                <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                                  type="string"/>
+                                <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -7297,8 +7091,7 @@
                           <xs:element name="agent" minOccurs="1" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="agent_provenance_general" minOccurs="0"
-                                  maxOccurs="unbounded">
+                                <xs:element name="agent_provenance_general" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="type" minOccurs="0" maxOccurs="1">
@@ -7324,11 +7117,8 @@
                                             <xs:element name="system" minOccurs="0" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type"/>
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
-                                                  />
+                                                  <xs:enumeration value="http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type"/>
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -7339,49 +7129,39 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="patient" minOccurs="1" maxOccurs="1"
-                                                type="member_person"/>
-                                              <xs:element name="practitioner" minOccurs="1"
-                                                maxOccurs="1" type="practitioner"/>
-                                              <xs:element name="organization" minOccurs="1"
-                                                maxOccurs="1" type="organization"/>
+                                              <xs:element name="patient" minOccurs="1" maxOccurs="1" type="member_person"/>
+                                              <xs:element name="practitioner" minOccurs="1" maxOccurs="1" type="practitioner"/>
+                                              <xs:element name="organization" minOccurs="1" maxOccurs="1" type="organization"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
                                       </xs:element>
-                                      <xs:element name="on_behalf_of" minOccurs="0" maxOccurs="1"
-                                        type="organization"/>
+                                      <xs:element name="on_behalf_of" minOccurs="0" maxOccurs="1" type="organization"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="agent_provenance_author" minOccurs="0"
-                                  maxOccurs="unbounded">
+                                <xs:element name="agent_provenance_author" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="type" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding" minOccurs="1"
-                                              maxOccurs="unbounded">
+                                            <xs:element name="coding" minOccurs="1" maxOccurs="unbounded">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="author"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="author"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"
-                                                  />
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -7393,12 +7173,9 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="patient" minOccurs="1" maxOccurs="1"
-                                                type="member_person"/>
-                                              <xs:element name="practitioner" minOccurs="1"
-                                                maxOccurs="1" type="practitioner"/>
-                                              <xs:element name="organization" minOccurs="1"
-                                                maxOccurs="1" type="organization"/>
+                                              <xs:element name="patient" minOccurs="1" maxOccurs="1" type="member_person"/>
+                                              <xs:element name="practitioner" minOccurs="1" maxOccurs="1" type="practitioner"/>
+                                              <xs:element name="organization" minOccurs="1" maxOccurs="1" type="organization"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -7407,12 +7184,9 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="patient" minOccurs="0" maxOccurs="1"
-                                                type="member_person"/>
-                                              <xs:element name="practitioner" minOccurs="0"
-                                                maxOccurs="1" type="practitioner"/>
-                                              <xs:element name="organization" minOccurs="0"
-                                                maxOccurs="1" type="organization"/>
+                                              <xs:element name="patient" minOccurs="0" maxOccurs="1" type="member_person"/>
+                                              <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                              <xs:element name="organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -7420,34 +7194,28 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="agent_provenance_transmitter" minOccurs="0"
-                                  maxOccurs="1">
+                                <xs:element name="agent_provenance_transmitter" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="type" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding" minOccurs="1"
-                                              maxOccurs="unbounded">
+                                            <xs:element name="coding" minOccurs="1" maxOccurs="unbounded">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="transmitter"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="transmitter"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type"
-                                                  />
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -7459,12 +7227,9 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="patient" minOccurs="1" maxOccurs="1"
-                                                type="member_person"/>
-                                              <xs:element name="practitioner" minOccurs="1"
-                                                maxOccurs="1" type="practitioner"/>
-                                              <xs:element name="organization" minOccurs="1"
-                                                maxOccurs="1" type="organization"/>
+                                              <xs:element name="patient" minOccurs="1" maxOccurs="1" type="member_person"/>
+                                              <xs:element name="practitioner" minOccurs="1" maxOccurs="1" type="practitioner"/>
+                                              <xs:element name="organization" minOccurs="1" maxOccurs="1" type="organization"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -7473,12 +7238,9 @@
                                         <xs:complexType>
                                           <xs:sequence>
                                             <xs:choice>
-                                              <xs:element name="patient" minOccurs="0" maxOccurs="1"
-                                                type="member_person"/>
-                                              <xs:element name="practitioner" minOccurs="0"
-                                                maxOccurs="1" type="practitioner"/>
-                                              <xs:element name="organization" minOccurs="0"
-                                                maxOccurs="1" type="organization"/>
+                                              <xs:element name="patient" minOccurs="0" maxOccurs="1" type="member_person"/>
+                                              <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                              <xs:element name="organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                             </xs:choice>
                                           </xs:sequence>
                                         </xs:complexType>
@@ -7511,12 +7273,10 @@
               <xs:element name="pulse_oximetry_observations" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="pulse_oximetry_observation" minOccurs="1"
-                      maxOccurs="unbounded">
+                    <xs:element name="pulse_oximetry_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -7550,9 +7310,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/observation-category"
-                                                  />
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -7575,8 +7333,7 @@
                                 <xs:element name="coding" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="coding_oxygen_sat_code" minOccurs="0"
-                                        maxOccurs="1">
+                                      <xs:element name="coding_oxygen_sat_code" minOccurs="0" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:all>
                                             <xs:element name="code" minOccurs="1" maxOccurs="1">
@@ -7593,12 +7350,9 @@
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
-                                            <xs:element name="version" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="display" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="userSelected" type="boolean"
-                                              minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="userSelected" type="boolean" minOccurs="0" maxOccurs="1"/>
                                           </xs:all>
                                         </xs:complexType>
                                       </xs:element>
@@ -7619,12 +7373,9 @@
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
-                                            <xs:element name="version" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="display" type="string" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="userSelected" type="boolean"
-                                              minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="version" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="display" type="string" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="userSelected" type="boolean" minOccurs="0" maxOccurs="1"/>
                                           </xs:all>
                                         </xs:complexType>
                                       </xs:element>
@@ -7639,10 +7390,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -7656,14 +7405,11 @@
                               </xs:annotation>
                               <xs:complexType>
                                 <xs:sequence>
-                                  <xs:element name="value" type="decimal" minOccurs="1"
-                                    maxOccurs="1"/>
+                                  <xs:element name="value" type="decimal" minOccurs="1" maxOccurs="1"/>
                                   <xs:element name="unit" type="string" minOccurs="1" maxOccurs="1"/>
-                                  <xs:element name="system" type="string" minOccurs="1"
-                                    maxOccurs="1"/>
+                                  <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/>
                                   <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
-                                  <xs:element name="comparator" type="code" minOccurs="0"
-                                    maxOccurs="1"/>
+                                  <xs:element name="comparator" type="code" minOccurs="0" maxOccurs="1"/>
                                 </xs:sequence>
                               </xs:complexType>
                             </xs:element>
@@ -7691,8 +7437,7 @@
                                       </xs:restriction>
                                     </xs:simpleType>
                                   </xs:element>
-                                  <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                    type="string"/>
+                                  <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                 </xs:sequence>
                               </xs:complexType>
                             </xs:element>
@@ -7710,25 +7455,22 @@
                                       <xs:element name="code" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding" minOccurs="1"
-                                              maxOccurs="unbounded">
+                                            <xs:element name="coding" minOccurs="1" maxOccurs="unbounded">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="3151-8"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="3151-8"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="http://loinc.org"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://loinc.org"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -7744,16 +7486,11 @@
                                           </xs:annotation>
                                           <xs:complexType>
                                             <xs:sequence>
-                                              <xs:element name="value" type="decimal" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="unit" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="system" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="code" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="comparator" type="code"
-                                                minOccurs="0" maxOccurs="1"/>
+                                              <xs:element name="value" type="decimal" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="unit" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="comparator" type="code" minOccurs="0" maxOccurs="1"/>
                                             </xs:sequence>
                                           </xs:complexType>
                                         </xs:element>
@@ -7763,26 +7500,25 @@
                                               <xs:element name="code" minOccurs="0" maxOccurs="1">
                                                 <xs:simpleType>
                                                   <xs:restriction base="string">
-                                                  <xs:enumeration value="unknown"/>
-                                                  <xs:enumeration value="asked-unknown"/>
-                                                  <xs:enumeration value="temp-unknown"/>
-                                                  <xs:enumeration value="not-asked"/>
-                                                  <xs:enumeration value="asked-declined"/>
-                                                  <xs:enumeration value="masked"/>
-                                                  <xs:enumeration value="not-applicable"/>
-                                                  <xs:enumeration value="unsupported"/>
-                                                  <xs:enumeration value="as-text"/>
-                                                  <xs:enumeration value="error"/>
-                                                  <xs:enumeration value="not-a-number"/>
-                                                  <xs:enumeration value="negative-infinity"/>
-                                                  <xs:enumeration value="positive-infinity"/>
-                                                  <xs:enumeration value="not-performed"/>
-                                                  <xs:enumeration value="not-permitted"/>
+                                                    <xs:enumeration value="unknown"/>
+                                                    <xs:enumeration value="asked-unknown"/>
+                                                    <xs:enumeration value="temp-unknown"/>
+                                                    <xs:enumeration value="not-asked"/>
+                                                    <xs:enumeration value="asked-declined"/>
+                                                    <xs:enumeration value="masked"/>
+                                                    <xs:enumeration value="not-applicable"/>
+                                                    <xs:enumeration value="unsupported"/>
+                                                    <xs:enumeration value="as-text"/>
+                                                    <xs:enumeration value="error"/>
+                                                    <xs:enumeration value="not-a-number"/>
+                                                    <xs:enumeration value="negative-infinity"/>
+                                                    <xs:enumeration value="positive-infinity"/>
+                                                    <xs:enumeration value="not-performed"/>
+                                                    <xs:enumeration value="not-permitted"/>
                                                   </xs:restriction>
                                                 </xs:simpleType>
                                               </xs:element>
-                                              <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                                type="string"/>
+                                              <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                             </xs:sequence>
                                           </xs:complexType>
                                         </xs:element>
@@ -7790,32 +7526,28 @@
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element name="component_concentration" minOccurs="0"
-                                  maxOccurs="1">
+                                <xs:element name="component_concentration" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="code" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="coding" minOccurs="1"
-                                              maxOccurs="unbounded">
+                                            <xs:element name="coding" minOccurs="1" maxOccurs="unbounded">
                                               <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="code" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="3150-0"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="code" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="3150-0"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
-                                                  <xs:element name="system" minOccurs="1"
-                                                  maxOccurs="1">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="string">
-                                                  <xs:enumeration value="http://loinc.org"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
+                                                  <xs:element name="system" minOccurs="1" maxOccurs="1">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="string">
+                                                        <xs:enumeration value="http://loinc.org"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
                                                   </xs:element>
                                                 </xs:sequence>
                                               </xs:complexType>
@@ -7831,16 +7563,11 @@
                                           </xs:annotation>
                                           <xs:complexType>
                                             <xs:sequence>
-                                              <xs:element name="value" type="decimal" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="unit" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="system" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="code" type="string" minOccurs="1"
-                                                maxOccurs="1"/>
-                                              <xs:element name="comparator" type="code"
-                                                minOccurs="0" maxOccurs="1"/>
+                                              <xs:element name="value" type="decimal" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="unit" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="system" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="code" type="string" minOccurs="1" maxOccurs="1"/>
+                                              <xs:element name="comparator" type="code" minOccurs="0" maxOccurs="1"/>
                                             </xs:sequence>
                                           </xs:complexType>
                                         </xs:element>
@@ -7850,26 +7577,25 @@
                                               <xs:element name="code" minOccurs="0" maxOccurs="1">
                                                 <xs:simpleType>
                                                   <xs:restriction base="string">
-                                                  <xs:enumeration value="unknown"/>
-                                                  <xs:enumeration value="asked-unknown"/>
-                                                  <xs:enumeration value="temp-unknown"/>
-                                                  <xs:enumeration value="not-asked"/>
-                                                  <xs:enumeration value="asked-declined"/>
-                                                  <xs:enumeration value="masked"/>
-                                                  <xs:enumeration value="not-applicable"/>
-                                                  <xs:enumeration value="unsupported"/>
-                                                  <xs:enumeration value="as-text"/>
-                                                  <xs:enumeration value="error"/>
-                                                  <xs:enumeration value="not-a-number"/>
-                                                  <xs:enumeration value="negative-infinity"/>
-                                                  <xs:enumeration value="positive-infinity"/>
-                                                  <xs:enumeration value="not-performed"/>
-                                                  <xs:enumeration value="not-permitted"/>
+                                                    <xs:enumeration value="unknown"/>
+                                                    <xs:enumeration value="asked-unknown"/>
+                                                    <xs:enumeration value="temp-unknown"/>
+                                                    <xs:enumeration value="not-asked"/>
+                                                    <xs:enumeration value="asked-declined"/>
+                                                    <xs:enumeration value="masked"/>
+                                                    <xs:enumeration value="not-applicable"/>
+                                                    <xs:enumeration value="unsupported"/>
+                                                    <xs:enumeration value="as-text"/>
+                                                    <xs:enumeration value="error"/>
+                                                    <xs:enumeration value="not-a-number"/>
+                                                    <xs:enumeration value="negative-infinity"/>
+                                                    <xs:enumeration value="positive-infinity"/>
+                                                    <xs:enumeration value="not-performed"/>
+                                                    <xs:enumeration value="not-permitted"/>
                                                   </xs:restriction>
                                                 </xs:simpleType>
                                               </xs:element>
-                                              <xs:element name="system" minOccurs="0" maxOccurs="1"
-                                                type="string"/>
+                                              <xs:element name="system" minOccurs="0" maxOccurs="1" type="string"/>
                                             </xs:sequence>
                                           </xs:complexType>
                                         </xs:element>
@@ -7906,26 +7632,19 @@
                     <xs:element name="implantable_device" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="udi_carrier" minOccurs="1" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="device_identifier" minOccurs="1" maxOccurs="1"
-                                  type="string"/>
-                                <xs:element name="carrier_aidc" minOccurs="0" maxOccurs="1"
-                                  type="base64Binary"/>
-                                <xs:element name="carrier_hrf" minOccurs="0" maxOccurs="1"
-                                  type="string"/>
+                                <xs:element name="device_identifier" minOccurs="1" maxOccurs="1" type="string"/>
+                                <xs:element name="carrier_aidc" minOccurs="0" maxOccurs="1" type="base64Binary"/>
+                                <xs:element name="carrier_hrf" minOccurs="0" maxOccurs="1" type="string"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="distinct_identifier" minOccurs="0" maxOccurs="1"
-                            type="string"/>
-                          <xs:element name="manufacture_date" minOccurs="0" maxOccurs="1"
-                            type="dateTime"/>
-                          <xs:element name="expiration_date" minOccurs="0" maxOccurs="1"
-                            type="dateTime"/>
+                          <xs:element name="distinct_identifier" minOccurs="0" maxOccurs="1" type="string"/>
+                          <xs:element name="manufacture_date" minOccurs="0" maxOccurs="1" type="dateTime"/>
+                          <xs:element name="expiration_date" minOccurs="0" maxOccurs="1" type="dateTime"/>
                           <xs:element name="lot_number" minOccurs="0" maxOccurs="1" type="string"/>
                           <xs:element name="serial_number" minOccurs="0" maxOccurs="1" type="string"/>
                           <xs:element name="type" minOccurs="1" maxOccurs="1">
@@ -7968,8 +7687,7 @@
                     <xs:element name="document_reference" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                               <xs:documentation> Status of the request </xs:documentation>
@@ -7989,8 +7707,7 @@
                                 <xs:element name="system" minOccurs="1" maxOccurs="1">
                                   <xs:simpleType>
                                     <xs:restriction base="string">
-                                      <xs:enumeration
-                                        value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor"/>
+                                      <xs:enumeration value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor"/>
                                       <xs:enumeration value="http://loinc.org"/>
                                     </xs:restriction>
                                   </xs:simpleType>
@@ -8008,9 +7725,7 @@
                                 <xs:element name="system" minOccurs="0" maxOccurs="1">
                                   <xs:simpleType>
                                     <xs:restriction base="string">
-                                      <xs:enumeration
-                                        value="http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category"
-                                      />
+                                      <xs:enumeration value="http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category"/>
                                     </xs:restriction>
                                   </xs:simpleType>
                                 </xs:element>
@@ -8024,18 +7739,14 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="patient" minOccurs="0" maxOccurs="1"
-                                    type="member_person"/>
-                                  <xs:element name="practitioner" minOccurs="0" maxOccurs="1"
-                                    type="practitioner"/>
-                                  <xs:element name="organization" minOccurs="0" maxOccurs="1"
-                                    type="organization"/>
+                                  <xs:element name="patient" minOccurs="0" maxOccurs="1" type="member_person"/>
+                                  <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                  <xs:element name="organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="custodian" minOccurs="0" maxOccurs="1"
-                            type="organization"/>
+                          <xs:element name="custodian" minOccurs="0" maxOccurs="1" type="organization"/>
                           <xs:element name="date" minOccurs="0" maxOccurs="1" type="instant"/>
                           <xs:element name="content" minOccurs="1" maxOccurs="unbounded">
                             <xs:complexType>
@@ -8043,26 +7754,20 @@
                                 <xs:element name="attachment" minOccurs="1" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="content_type" minOccurs="1" maxOccurs="1"
-                                        type="code"/>
-                                      <xs:element name="data" minOccurs="0" maxOccurs="1"
-                                        type="base64Binary"/>
-                                      <xs:element name="url" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
+                                      <xs:element name="content_type" minOccurs="1" maxOccurs="1" type="code"/>
+                                      <xs:element name="data" minOccurs="0" maxOccurs="1" type="base64Binary"/>
+                                      <xs:element name="url" minOccurs="0" maxOccurs="1" type="string"/>
                                     </xs:sequence>
                                   </xs:complexType>
                                 </xs:element>
                                 <xs:element name="format" minOccurs="0" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
-                                      <xs:element name="code" minOccurs="0" maxOccurs="1"
-                                        type="string"/>
+                                      <xs:element name="code" minOccurs="0" maxOccurs="1" type="string"/>
                                       <xs:element name="system" minOccurs="0" maxOccurs="1">
                                         <xs:simpleType>
                                           <xs:restriction base="string">
-                                            <xs:enumeration
-                                              value="http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
-                                            />
+                                            <xs:enumeration value="http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"/>
                                           </xs:restriction>
                                         </xs:simpleType>
                                       </xs:element>
@@ -8075,10 +7780,8 @@
                           <xs:element name="context" minOccurs="0" maxOccurs="1">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="encounter" minOccurs="0" maxOccurs="1"
-                                  type="encounter"/>
-                                <xs:element name="period" minOccurs="0" maxOccurs="1" type="period"
-                                />
+                                <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="encounter"/>
+                                <xs:element name="period" minOccurs="0" maxOccurs="1" type="period"/>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
@@ -8108,8 +7811,7 @@
                     <xs:element name="diagnostic_report_lab" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -8129,8 +7831,7 @@
                           <xs:element name="category" minOccurs="1" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element name="category_laboratory_slice" minOccurs="1"
-                                  maxOccurs="1">
+                                <xs:element name="category_laboratory_slice" minOccurs="1" maxOccurs="1">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element name="coding" minOccurs="1" maxOccurs="unbounded">
@@ -8146,9 +7847,7 @@
                                             <xs:element name="system" minOccurs="1" maxOccurs="1">
                                               <xs:simpleType>
                                                 <xs:restriction base="string">
-                                                  <xs:enumeration
-                                                  value="http://terminology.hl7.org/CodeSystem/v2-0074"
-                                                  />
+                                                  <xs:enumeration value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
                                                 </xs:restriction>
                                               </xs:simpleType>
                                             </xs:element>
@@ -8184,10 +7883,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -8196,16 +7893,13 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="reported_practitioner" minOccurs="0"
-                                    maxOccurs="1" type="practitioner"/>
-                                  <xs:element name="reported_organization" minOccurs="0"
-                                    maxOccurs="1" type="organization"/>
+                                  <xs:element name="reported_practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                  <xs:element name="reported_organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="result" minOccurs="0" maxOccurs="unbounded"
-                            type="lab_observation_result"/>
+                          <xs:element name="result" minOccurs="0" maxOccurs="unbounded" type="lab_observation_result"/>
                           <xs:element name="laboratory" minOccurs="0" maxOccurs="0">
                             <xs:complexType>
                               <xs:sequence>
@@ -8247,8 +7941,7 @@
                     <xs:element name="diagnostic_report_note" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
                               <xs:restriction base="string">
@@ -8310,10 +8003,8 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1"
-                                    type="dateTime"/>
-                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1"
-                                    type="period"/>
+                                  <xs:element name="effective_date_time" minOccurs="1" maxOccurs="1" type="dateTime"/>
+                                  <xs:element name="effective_period" minOccurs="1" maxOccurs="1" type="period"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
@@ -8322,16 +8013,13 @@
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:choice>
-                                  <xs:element name="reported_practitioner" minOccurs="0"
-                                    maxOccurs="1" type="practitioner"/>
-                                  <xs:element name="reported_organization" minOccurs="0"
-                                    maxOccurs="1" type="organization"/>
+                                  <xs:element name="reported_practitioner" minOccurs="0" maxOccurs="1" type="practitioner"/>
+                                  <xs:element name="reported_organization" minOccurs="0" maxOccurs="1" type="organization"/>
                                 </xs:choice>
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="presented_form" minOccurs="0" maxOccurs="unbounded"
-                            type="attachment"/>
+                          <xs:element name="presented_form" minOccurs="0" maxOccurs="unbounded" type="attachment"/>
                           <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="encounter"/>
                           <xs:element maxOccurs="1" minOccurs="0" name="record_type">
                             <xs:annotation>
@@ -8358,8 +8046,7 @@
                     <xs:element name="task" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="care_plan_id" minOccurs="0" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="1" maxOccurs="1">
                             <xs:simpleType>
@@ -8406,8 +8093,7 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="pertains_to_goal" type="string" minOccurs="0"
-                            maxOccurs="1"/>
+                          <xs:element name="pertains_to_goal" type="string" minOccurs="0" maxOccurs="1"/>
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
@@ -8420,8 +8106,7 @@
                     <xs:element name="care_plan_observation" minOccurs="1" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1"
-                            type="string"/>
+                          <xs:element name="unique_identifier" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="care_plan_id" minOccurs="1" maxOccurs="1" type="string"/>
                           <xs:element name="status" minOccurs="0" maxOccurs="1" type="string"/>
                           <xs:element name="category" minOccurs="0" maxOccurs="1">
@@ -8447,8 +8132,7 @@
                             </xs:complexType>
                           </xs:element>
                           <xs:element name="value_string" type="string" minOccurs="0" maxOccurs="1"/>
-                          <xs:element name="pertains_to_goal" type="string" minOccurs="0"
-                            maxOccurs="1"/>
+                          <xs:element name="pertains_to_goal" type="string" minOccurs="0" maxOccurs="1"/>
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>

@@ -27,9 +27,7 @@
   <!--Regular Expression for DateTime-->
   <xs:simpleType name="dateTime">
     <xs:restriction base="xs:string">
-      <xs:pattern
-        value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))?"
-      />
+      <xs:pattern value="([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z|(\+|-)((0[0-9]|1[0-3]):(00|15|30|45)|14:00))?))?"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="currency">
@@ -231,8 +229,8 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="&lt;"/>
             <xs:enumeration value="&lt;="/>
-            <xs:enumeration value=">="/>
-            <xs:enumeration value=">"/>
+            <xs:enumeration value="&gt;="/>
+            <xs:enumeration value="&gt;"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -759,10 +757,8 @@
                           </xs:annotation>
                           <xs:complexType>
                             <xs:sequence>
-                              <xs:element name="numerator" type="quantity" minOccurs="0"
-                                maxOccurs="1"/>
-                              <xs:element name="denominator" type="quantity" minOccurs="0"
-                                maxOccurs="1"/>
+                              <xs:element name="numerator" type="quantity" minOccurs="0" maxOccurs="1"/>
+                              <xs:element name="denominator" type="quantity" minOccurs="0" maxOccurs="1"/>
                             </xs:sequence>
                           </xs:complexType>
                         </xs:element>
@@ -787,8 +783,7 @@
                                   </xs:restriction>
                                 </xs:simpleType>
                               </xs:element>
-                              <xs:element name="description" type="string" minOccurs="1"
-                                maxOccurs="1"/>
+                              <xs:element name="description" type="string" minOccurs="1" maxOccurs="1"/>
                               <xs:element name="code" minOccurs="1" maxOccurs="1">
                                 <xs:complexType>
                                   <xs:sequence>
@@ -2920,8 +2915,7 @@
                           <xs:complexType>
                             <xs:sequence>
                               <xs:element name="value" type="decimal" minOccurs="0" maxOccurs="1"/>
-                              <xs:element name="currency" minOccurs="0" maxOccurs="1"
-                                type="currency">
+                              <xs:element name="currency" minOccurs="0" maxOccurs="1" type="currency">
                                 <xs:annotation>
                                   <xs:documentation>
 															Currency codes which can be found here:  http://hl7.org/fhir/R4/valueset-currencies.html
@@ -2969,16 +2963,14 @@
                       <xs:sequence>
                         <xs:element name="type" type="string" minOccurs="1" maxOccurs="1"/>
                         <!--	Specific category assigned to the medication-->
-                        <xs:element name="classification" type="string" minOccurs="0"
-                          maxOccurs="unbounded"/>
+                        <xs:element name="classification" type="string" minOccurs="0" maxOccurs="unbounded"/>
                       </xs:sequence>
                     </xs:complexType>
                   </xs:element>
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="formulary_drugs_alternatives" minOccurs="0" maxOccurs="1"
-              type="formulary_drugs_alternatives"/>
+            <xs:element name="formulary_drugs_alternatives" minOccurs="0" maxOccurs="1" type="formulary_drugs_alternatives"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -3478,10 +3470,8 @@
                           </xs:annotation>
                           <xs:complexType>
                             <xs:sequence>
-                              <xs:element name="numerator" type="quantity" minOccurs="0"
-                                maxOccurs="1"/>
-                              <xs:element name="denominator" type="quantity" minOccurs="0"
-                                maxOccurs="1"/>
+                              <xs:element name="numerator" type="quantity" minOccurs="0" maxOccurs="1"/>
+                              <xs:element name="denominator" type="quantity" minOccurs="0" maxOccurs="1"/>
                             </xs:sequence>
                           </xs:complexType>
                         </xs:element>
@@ -3506,8 +3496,7 @@
                                   </xs:restriction>
                                 </xs:simpleType>
                               </xs:element>
-                              <xs:element name="description" type="string" minOccurs="1"
-                                maxOccurs="1"/>
+                              <xs:element name="description" type="string" minOccurs="1" maxOccurs="1"/>
                               <xs:element name="code" minOccurs="1" maxOccurs="1">
                                 <xs:complexType>
                                   <xs:sequence>
@@ -5629,8 +5618,7 @@
                           <xs:complexType>
                             <xs:sequence>
                               <xs:element name="value" type="decimal" minOccurs="0" maxOccurs="1"/>
-                              <xs:element name="currency" minOccurs="0" maxOccurs="1"
-                                type="currency">
+                              <xs:element name="currency" minOccurs="0" maxOccurs="1" type="currency">
                                 <xs:annotation>
                                   <xs:documentation>
 															Currency codes which can be found here:  http://hl7.org/fhir/R4/valueset-currencies.html
@@ -5677,8 +5665,7 @@
                       <xs:sequence>
                         <xs:element name="type" type="string" minOccurs="1" maxOccurs="1"/>
                         <!--	Specific category assigned to the medication-->
-                        <xs:element name="classification" type="string" minOccurs="0"
-                          maxOccurs="unbounded"/>
+                        <xs:element name="classification" type="string" minOccurs="0" maxOccurs="unbounded"/>
                       </xs:sequence>
                     </xs:complexType>
                   </xs:element>
@@ -5725,9 +5712,7 @@
           </xs:annotation>
           <xs:simpleType>
             <xs:restriction base="xs:dateTime">
-              <xs:pattern
-                value="([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"
-              />
+              <xs:pattern value="([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:element>
@@ -5879,10 +5864,8 @@
                                       <xs:element name="copay_amount" minOccurs="1" maxOccurs="1">
                                         <xs:complexType>
                                           <xs:sequence>
-                                            <xs:element name="value" type="decimal" minOccurs="0"
-                                              maxOccurs="1"/>
-                                            <xs:element name="currency" minOccurs="0" maxOccurs="1"
-                                              type="currency">
+                                            <xs:element name="value" type="decimal" minOccurs="0" maxOccurs="1"/>
+                                            <xs:element name="currency" minOccurs="0" maxOccurs="1" type="currency">
                                               <xs:annotation>
                                                 <xs:documentation>
 																									Currency codes which can be found here:  http://hl7.org/fhir/R4/valueset-currencies.html
@@ -5909,11 +5892,9 @@
                                         </xs:simpleType>
                                       </xs:element>
                                       <!--coinsurance rate-->
-                                      <xs:element name="coinsurance_rate" type="decimal"
-                                        minOccurs="1" maxOccurs="1"/>
+                                      <xs:element name="coinsurance_rate" type="decimal" minOccurs="1" maxOccurs="1"/>
                                       <!--Qualifier for coinsurance rate-->
-                                      <xs:element name="coinsurance_option" minOccurs="1"
-                                        maxOccurs="1">
+                                      <xs:element name="coinsurance_option" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
                                           <xs:documentation>
 																CoInsurance options which can be found here:  http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html
@@ -5933,8 +5914,7 @@
                               </xs:sequence>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element name="formulary_drugs" minOccurs="1" maxOccurs="1"
-                            type="formulary_drugs"/>
+                          <xs:element name="formulary_drugs" minOccurs="1" maxOccurs="1" type="formulary_drugs"/>
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
