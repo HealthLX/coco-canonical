@@ -14,8 +14,16 @@
 #                    "*_flat.xsl" (flattening/preprocessing helpers) is always skipped.
 # Set fhir_profile to enable FHIR validation (and Docker) for that target in the CI pipeline.
 # Unadapted transforms that error are skipped (logged), not fatal, so a folder run still completes.
+#
+# version: the schemas/ subfolder a build reads from (default v10.0 when omitted). The same
+#   canonical_name may appear once per version; the pipeline addresses a build as
+#   "canonical_name@version" (e.g. roster@v11.0), and samples are written to
+#   canonical-samples/<version>/.
 
-core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
+# When one of these changes, the pipeline runs every target of that same version.
+core_schema_paths:
+  - schemas/v10.0/Core-Model.xsd
+  - schemas/v11.0/Core-Model.xsd
 
 builds:
   # Provider Directory — single canonical file (practitioner and providing_organization rows, like customer submissions)
@@ -69,4 +77,45 @@ builds:
     schema_file_name: Clinical.xsd
     output_file_name: clinical-sample.xml
     transform_dir: transforms/v10.0/Clinical
+    fhir_profile: null
+
+  # ---------------------------------------------------------------------------
+  # v11.0 — re-pulled from hlx-saas (USCDI v3 era). No transforms yet, so the
+  # pipeline runs build + XSD validation only for these targets.
+  # ---------------------------------------------------------------------------
+
+  - canonical_name: roster
+    version: v11.0
+    root_element_name: roster
+    schema_file_name: Roster.xsd
+    output_file_name: roster-sample.xml
+    fhir_profile: null
+
+  # Provider Directory — single canonical file (practitioner and providing_organization rows)
+  - canonical_name: providerdirectory
+    version: v11.0
+    root_element_name: providers
+    schema_file_name: Provider-Directory.xsd
+    output_file_name: provider-directory-sample.xml
+    fhir_profile: null
+
+  - canonical_name: formulary
+    version: v11.0
+    root_element_name: coverage_plans
+    schema_file_name: Formulary.xsd
+    output_file_name: formulary-sample.xml
+    fhir_profile: null
+
+  - canonical_name: eob
+    version: v11.0
+    root_element_name: eob_list
+    schema_file_name: EOB.xsd
+    output_file_name: eob-sample.xml
+    fhir_profile: null
+
+  - canonical_name: clinical
+    version: v11.0
+    root_element_name: clinicals
+    schema_file_name: Clinical.xsd
+    output_file_name: clinical-sample.xml
     fhir_profile: null

@@ -16,6 +16,9 @@ COCO_NS = "{http://cocodata.org}"
 XML_NS = "{http://www.w3.org/2001/XMLSchema}"
 XSI_NS = "{http://www.w3.org/2001/XMLSchema-instance}"
 
+DEFAULT_SCHEMA_VERSION = "10.0"
+DEFAULT_VERSION_DIR = "v10.0"
+
 ROSTER_SCHEMA = "roster.xsd"
 PROVIDERDIRECTORY_SCHEMA = "provider_directory.xsd"
 EOB_SCHEMA = "eob.xsd"
@@ -99,10 +102,28 @@ def _generate_period_end(tag_name, xsd_element):
         return str(end_date)
 
 
+def _builtin_temporal_type(xsd_element):
+    """
+    Return 'date', 'dateTime' or 'time' when the element resolves to that XSD built-in,
+    otherwise None. Uses the root type so local restrictions (e.g. <simpleType name="date">
+    restricting xs:date) are recognized too.
+    """
+    try:
+        root_name = xsd_element.type.root_type.name or ""
+    except AttributeError:
+        return None
+    if not root_name.startswith(XML_NS):
+        return None
+    primitive = root_name[len(XML_NS):]
+    return primitive if primitive in ("date", "dateTime", "time") else None
+
+
 def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dict=None):
     # handle static or pre-determined values (i.e., things that are not random, like schema version)
     if tag_name == f"{COCO_NS}schema_version":
-        return "10.0"
+        # Seeded from the schema's own version attribute at depth 0 (see build_element),
+        # so a sample always reports the version of the schema it was built from.
+        return (context_dict or {}).get("schema_version", DEFAULT_SCHEMA_VERSION)
 
     if tag_name == f"{COCO_NS}date_time_reported":
         # change: match XSD instant
@@ -459,6 +480,19 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
     if tag_name in tag_map:
         return tag_map[tag_name]()
 
+    # 5. Type-driven fallback for temporal elements.
+    # The tag_map above matches by *element name*, so any date/time-typed element whose name
+    # isn't listed there (e.g. 'start_date') would otherwise fall through to fake.word() and
+    # emit a non-parseable value. Resolve the root (built-in) type instead, which also covers
+    # the schemas' local restriction types named 'date'/'dateTime'.
+    temporal = _builtin_temporal_type(xsd_element)
+    if temporal == "date":
+        return str(fake.date())
+    if temporal == "dateTime":
+        return iso_datetime_z()
+    if temporal == "time":
+        return str(fake.time())
+
     return fake.word()
 
 
@@ -479,9 +513,9 @@ def _effective_provider_directory_child(base_child, sibling_index):
     return branches[sibling_index % 2]
 
 
-def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None", parent_xml_elem=None, context_dict=None):
+def build_element(root_element_name, schema, xsd_element=None, depth=0, canonical_name="None", child_choice="None", parent_xml_elem=None, context_dict=None, version_dir=DEFAULT_VERSION_DIR):
     """
-    recursively builds xml elements and returns as an xml document; 
+    recursively builds xml elements and returns as an xml document;
     handles building for practitioner or providingOrganization for provider-directory
 
     Args:
@@ -491,6 +525,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
         depth (int): recursion depth
         canonical_name (str): name of canonical (e.g., 'roster', 'providers')
         child_choice (str): for xs:choice elements, specify which child to build (e.g., 'practitioner')
+        version_dir (str): schemas/ subfolder the schema lives in (e.g., 'v10.0'), used for xsi:schemaLocation
 
     Returns:
         XmlElement: containing the full XML document
@@ -518,7 +553,14 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
         )
         # Set xsi:schemaLocation using Clark notation
         xml_elem.set(
-            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/v10.0/{schema.name}")  # TODO: handle version dynamically
+            f"{XSI_NS}schemaLocation", f"{COCO_NS_BARE} ../../schemas/{version_dir}/{schema.name}")
+
+        # Seed the schema's own version so <schema_version> reports the version it was built
+        # from, no matter which schemas/<version_dir>/ folder this schema came from.
+        if context_dict is None:
+            context_dict = {}
+        context_dict.setdefault(
+            "schema_version", schema.root.get("version") or DEFAULT_SCHEMA_VERSION)
 
     # change: Handle content generation based on type
 
@@ -553,6 +595,12 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
 
             if isinstance(particle, XsdElement):
                 # This is an <xs:element ...>
+
+                # maxOccurs="0" declares an element that must not appear (upstream marks
+                # removed fields this way). Note max_occurs of None means unbounded, so only
+                # an explicit 0 is skipped.
+                if particle.max_occurs == 0:
+                    return
 
                 # --- Normal element processing ---
                 count = 0

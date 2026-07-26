@@ -3,12 +3,12 @@
 Determine which pipeline targets to run based on config and git diff.
 
 Single source of truth: config/sample_builds.yaml.
-- Schema paths are derived from builds (schemas/v10.0/{schema_file_name}).
+- Schema paths are derived from builds (schemas/{version}/{schema_file_name}).
 - Targets with a transform are those with non-null transform_file and fhir_profile.
-- core_schema_path in config: when that file changes, run all targets.
+- core_schema_paths in config: when one changes, run every target of that same version.
 
 Outputs (for eval in shell or GITHUB_OUTPUT):
-  TARGETS="roster eob ..."   (space-separated, run_pipeline.py --target names)
+  TARGETS="roster@v10.0 eob@v11.0 ..."   (space-separated, run_pipeline.py --target values)
   NEEDS_DOCKER=true|false
 """
 
@@ -32,31 +32,58 @@ def load_sample_builds():
         return yaml.safe_load(f) or {}
 
 
+# Schemas/ subfolder a build reads from when its config entry omits "version".
+# Mirrors tools.build_sample_file.DEFAULT_VERSION_DIR; kept local so this module stays a
+# lightweight CI helper (yaml only) rather than pulling in the sample-builder dependencies.
+DEFAULT_VERSION_DIR = "v10.0"
+
+
+def build_version(b):
+    """Schema version folder for a build entry."""
+    return b.get("version") or DEFAULT_VERSION_DIR
+
+
+def build_token(b):
+    """Unique pipeline token for a build, e.g. 'roster@v11.0' (matches run_pipeline --target)."""
+    return f"{b.get('canonical_name', '').lower()}@{build_version(b)}"
+
+
 def get_path_to_target_and_core(cfg):
     """
-    From builds, build path -> canonical_name (lowercase).
-    Returns (path_to_target dict, core_schema_path str or None, model_targets list).
+    From builds, map schema path -> pipeline token, and core schema path -> version.
+
+    Returns (path_to_target dict, core_paths dict of path -> version, targets_by_version dict).
     """
     builds = cfg.get("builds", [])
     if not builds:
-        return {}, None, []
+        return {}, {}, {}
 
     path_to_target = {}
+    targets_by_version = {}
     for b in builds:
         schema_file = b.get("schema_file_name")
         if not schema_file:
             continue
-        path = f"schemas/v10.0/{schema_file}"
-        path_to_target[path] = b.get("canonical_name", "").lower()
+        version = build_version(b)
+        path = f"schemas/{version}/{schema_file}"
+        path_to_target[path] = build_token(b)
+        targets_by_version.setdefault(version, set()).add(build_token(b))
 
-    core_path = cfg.get("core_schema_path")
-    if isinstance(core_path, str) and core_path.strip():
-        core_path = core_path.strip()
-    else:
-        core_path = None
+    # core_schema_paths (list) is the current form; core_schema_path (scalar) still accepted.
+    raw_core = cfg.get("core_schema_paths") or cfg.get("core_schema_path") or []
+    if isinstance(raw_core, str):
+        raw_core = [raw_core]
 
-    model_targets = sorted(set(path_to_target.values()))
-    return path_to_target, core_path, model_targets
+    core_paths = {}
+    for p in raw_core:
+        if not isinstance(p, str) or not p.strip():
+            continue
+        p = p.strip().replace("\\", "/")
+        # schemas/<version>/Core-Model.xsd -> <version>
+        parts = p.split("/")
+        core_paths[p] = parts[1] if len(parts) > 2 else DEFAULT_VERSION_DIR
+
+    return path_to_target, core_paths, targets_by_version
 
 
 def _build_has_transform(b):
@@ -73,7 +100,7 @@ def _build_has_transform(b):
 
 
 def get_targets_with_transform(cfg):
-    """Set of canonical_name (lowercase) that configure a transform and a fhir_profile.
+    """Set of pipeline tokens that configure a transform and a fhir_profile.
 
     Recognizes all transform shapes (transform_dir / transform_file / transform_files); the
     fhir_profile gate is what makes the pipeline run Saxon + FHIR validation in Docker.
@@ -83,7 +110,7 @@ def get_targets_with_transform(cfg):
     for b in builds:
         fp = b.get("fhir_profile")
         if _build_has_transform(b) and fp and str(fp) != "null":
-            out.add(b.get("canonical_name", "").lower())
+            out.add(build_token(b))
     return out
 
 
@@ -117,17 +144,17 @@ def main():
         print("NEEDS_DOCKER=false")
         sys.exit(0)
 
-    path_to_target, core_path, model_targets = get_path_to_target_and_core(cfg)
+    path_to_target, core_paths, targets_by_version = get_path_to_target_and_core(cfg)
     targets_with_transform = get_targets_with_transform(cfg)
     changed = get_changed_files(args.base)
 
     targets_to_run: set[str] = set()
     for filepath in changed:
         if filepath in path_to_target:
-            t = path_to_target[filepath]
-            targets_to_run.add(t)
-        if core_path and filepath == core_path:
-            targets_to_run.update(model_targets)
+            targets_to_run.add(path_to_target[filepath])
+        # A shared Core-Model change reruns every target of that same schema version.
+        if filepath in core_paths:
+            targets_to_run.update(targets_by_version.get(core_paths[filepath], set()))
 
     run_names = sorted(targets_to_run)
     needs_docker = any(t in targets_with_transform for t in targets_to_run)

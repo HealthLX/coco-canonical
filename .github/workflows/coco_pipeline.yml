@@ -26,7 +26,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           filters: |
             pipeline:
-              - 'schemas/v10.0/**'
+              - 'schemas/**'
+              - '!schemas/fhir-schemas/**'
               - 'config/sample_builds.yaml'
 
       - name: Report whether run-pipeline will run
@@ -104,6 +105,7 @@ jobs:
 
       - name: Run pipeline for changed targets
         run: |
+          # Targets are "canonical_name@version" tokens (e.g. roster@v11.0)
           for target in ${{ steps.changed.outputs.targets }}; do
             [ -z "$target" ] && continue
             echo "Running pipeline for target: $target"
@@ -114,10 +116,10 @@ jobs:
         id: check_changes
         run: |
           # Check if there are any changes (staged or unstaged) to sample files
-          if git status --porcelain canonical-samples/v10.0/*.xml 2>/dev/null | grep -q .; then
+          if git status --porcelain canonical-samples/*/*.xml 2>/dev/null | grep -q .; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "Changes detected in sample files:"
-            git status --short canonical-samples/v10.0/*.xml
+            git status --short canonical-samples/*/*.xml
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes to sample files detected - skipping commit"
@@ -143,7 +145,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[skip ci] Auto-update sample'
-          file_pattern: 'canonical-samples/v10.0/*.xml'
+          file_pattern: 'canonical-samples/*/*.xml'
           skip_dirty_check: true
           skip_fetch: false
           branch: ${{ github.head_ref || github.ref_name }}

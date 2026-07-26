@@ -21,6 +21,11 @@ import yaml
 from saxonche import PySaxonProcessor
 from xml.dom import minidom
 
+# Schemas/ subfolder a build reads from when its config entry omits "version".
+# Mirrors tools.build_sample_file.DEFAULT_VERSION_DIR; kept local so this module stays
+# runnable as a plain script (python tools/transform_schema.py) without the package on sys.path.
+DEFAULT_VERSION_DIR = "v10.0"
+
 
 def fhir_output_name(xslt_path: str, provider_variant: str | None = None) -> str:
     """
@@ -139,9 +144,6 @@ def run_all_transforms_from_config(
         cfg = yaml.safe_load(f) or {}
 
     builds = cfg.get("builds", [])
-    fhir_dir = base_dir / "fhir-samples" / "v10.0"
-    fhir_dir.mkdir(parents=True, exist_ok=True)
-    canonical_dir = base_dir / "canonical-samples" / "v10.0"
 
     failures: list[str] = []
     for build in builds:
@@ -149,9 +151,13 @@ def run_all_transforms_from_config(
         if not specs:
             continue
 
+        version = build.get("version") or DEFAULT_VERSION_DIR
+        fhir_dir = base_dir / "fhir-samples" / version
+        fhir_dir.mkdir(parents=True, exist_ok=True)
+
         out_name = build.get("output_file_name")
         schema_name = build.get("schema_file_name")
-        canonical_path = canonical_dir / out_name
+        canonical_path = base_dir / "canonical-samples" / version / out_name
         if not canonical_path.is_file():
             print(
                 f"Skip transforms for {out_name}: canonical sample missing "
@@ -198,12 +204,13 @@ def run_transforms_for_schema(
         print(f"No builds found for schema: {schema_name}")
         return
 
-    canonical_dir = base_dir / "canonical-samples" / "v10.0"
-    fhir_dir = base_dir / "fhir-samples" / "v10.0"
-    fhir_dir.mkdir(parents=True, exist_ok=True)
-
     failures: list[str] = []
     for build in matching:
+        version = build.get("version") or DEFAULT_VERSION_DIR
+        canonical_dir = base_dir / "canonical-samples" / version
+        fhir_dir = base_dir / "fhir-samples" / version
+        fhir_dir.mkdir(parents=True, exist_ok=True)
+
         all_specs = transform_specs_from_build(build, base_dir)
         if only_xslt:
             wanted = Path(only_xslt).name.lower()
@@ -350,8 +357,16 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help=(
             "Output XML path for single transform. "
-            "Default: fhir-samples/v10.0/<xslt-stem>-fhir.xml (use --provider-variant to disambiguate)"
+            f"Default: fhir-samples/{DEFAULT_VERSION_DIR}/<xslt-stem>-fhir.xml "
+            "(use --version to target another schema version, --provider-variant to disambiguate)"
         ),
+    )
+    parser.add_argument(
+        "--version",
+        type=str,
+        default=DEFAULT_VERSION_DIR,
+        metavar="VER",
+        help=f"Schema version folder for the default output path (default: {DEFAULT_VERSION_DIR})",
     )
     parser.add_argument(
         "--provider-variant",
@@ -402,7 +417,7 @@ def main(argv: list[str] | None = None) -> int:
 
         out_path = args.output
         if out_path is None:
-            fhir_dir = repo_root / "fhir-samples" / "v10.0"
+            fhir_dir = repo_root / "fhir-samples" / args.version
             fhir_dir.mkdir(parents=True, exist_ok=True)
             out_path = fhir_dir / fhir_output_name(str(xs), provider_variant=args.provider_variant)
         else:
