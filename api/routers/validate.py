@@ -5,7 +5,8 @@ from pathlib import Path
 
 from fastapi import APIRouter, File, HTTPException, Request, UploadFile
 
-from api.routers.artifacts import SCHEMAS_DIR, _safe_filename
+from api.config import get_schema_version, get_schemas_dir
+from api.routers.artifacts import _safe_filename
 
 logger = logging.getLogger(__name__)
 
@@ -65,12 +66,15 @@ async def validate_upload(
 
 @router.post("/{schema_name}")
 async def validate_against_schema(schema_name: str, request: Request):
-    """Validate raw canonical XML (request body) against schemas/v10.0/{schema_name}."""
+    """Validate raw canonical XML (request body) against schemas/<version>/{schema_name}."""
     if not _safe_filename(schema_name):
         raise HTTPException(status_code=400, detail="Invalid schema name")
-    xsd_path = SCHEMAS_DIR / schema_name
+    xsd_path = get_schemas_dir() / schema_name
     if not xsd_path.is_file():
-        raise HTTPException(status_code=404, detail=f"Schema not found: {schema_name}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"Schema not found in {get_schema_version()}: {schema_name}",
+        )
 
     xml_bytes = await request.body()
     if not xml_bytes.strip():

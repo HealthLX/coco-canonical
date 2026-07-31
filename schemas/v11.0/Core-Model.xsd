@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:core="http://cocodata.org/core" targetNamespace="http://cocodata.org/core" elementFormDefault="qualified" attributeFormDefault="unqualified" version="11.0">
+  <!-- Shared simple types -->
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[ \r\n\t\S]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NPI">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positiveInt">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\+?[1-9][0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="unsignedInt">
+    <xs:restriction base="xs:unsignedInt">
+      <xs:pattern value="0|([1-9][0-9]*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

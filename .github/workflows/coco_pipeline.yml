@@ -26,7 +26,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           filters: |
             pipeline:
-              - 'schemas/v10.0/**'
+              - 'schemas/**'
+              - '!schemas/fhir-schemas/**'
               - 'config/sample_builds.yaml'
 
       - name: Report whether run-pipeline will run
@@ -104,6 +105,7 @@ jobs:
 
       - name: Run pipeline for changed targets
         run: |
+          # Targets are "canonical_name@version" tokens (e.g. roster@v11.0)
           for target in ${{ steps.changed.outputs.targets }}; do
             [ -z "$target" ] && continue
             echo "Running pipeline for target: $target"
@@ -114,10 +116,10 @@ jobs:
         id: check_changes
         run: |
           # Check if there are any changes (staged or unstaged) to sample files
-          if git status --porcelain canonical-samples/v10.0/*.xml 2>/dev/null | grep -q .; then
+          if git status --porcelain canonical-samples/*/*.xml 2>/dev/null | grep -q .; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "Changes detected in sample files:"
-            git status --short canonical-samples/v10.0/*.xml
+            git status --short canonical-samples/*/*.xml
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes to sample files detected - skipping commit"
@@ -125,9 +127,15 @@ jobs:
 
       - name: Rebase onto remote branch tip
         if: steps.check_changes.outputs.has_changes == 'true'
-        # Avoid non-fast-forward push failures when the PR branch was updated since checkout.
-        # This rebases our generated-file commit on top of the current remote branch tip.
+        # Avoid non-fast-forward push failures when the PR branch was updated since checkout
+        # (e.g. the pretty-print workflow pushing a formatting commit while this job runs).
         # (Still pushes only to the PR head branch, not main.)
+        #
+        # The regenerated samples are still UNCOMMITTED at this point -- the auto-commit step
+        # runs after this one -- and git refuses to rebase with a dirty working tree. So stash
+        # them across the rebase, then restore them over whatever the rebase produced: they are
+        # generated artifacts, so the freshly built ones always win. Without the stash this step
+        # fails with "cannot rebase: You have unstaged changes" every time it actually runs.
         #
         # Note: github.head_ref is set for pull_request events; github.ref_name for workflow_dispatch.
         # We fetch the branch explicitly and rebase onto it.
@@ -135,7 +143,10 @@ jobs:
           BRANCH="${{ github.head_ref || github.ref_name }}"
           echo "Rebasing onto origin/${BRANCH} ..."
           git fetch origin "${BRANCH}"
+          git stash push --include-untracked -- canonical-samples
           git rebase "origin/${BRANCH}"
+          git checkout stash@{0} -- canonical-samples
+          git stash drop
           echo "Rebase complete."
 
       - name: Auto-commit generated sample
@@ -143,7 +154,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[skip ci] Auto-update sample'
-          file_pattern: 'canonical-samples/v10.0/*.xml'
+          file_pattern: 'canonical-samples/*/*.xml'
           skip_dirty_check: true
           skip_fetch: false
           branch: ${{ github.head_ref || github.ref_name }}

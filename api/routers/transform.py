@@ -7,7 +7,13 @@ from pathlib import Path
 from fastapi import APIRouter, File, HTTPException, Query, UploadFile
 from fastapi.responses import PlainTextResponse, Response
 
-from api.config import PROJECT_ROOT, get_builds, get_canonical_samples_dir, get_fhir_samples_dir
+from api.config import (
+    PROJECT_ROOT,
+    get_builds,
+    get_canonical_samples_dir,
+    get_fhir_samples_dir,
+    get_transforms_dir,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -217,7 +223,7 @@ def post_transform(
         canonical_path = canonical_dir / b["output_file_name"]
     elif body.get("canonical_file") and body.get("xslt_file"):
         canonical_path = canonical_dir / body["canonical_file"]
-        xslt_path = PROJECT_ROOT / "transforms" / "v10.0" / body["xslt_file"]
+        xslt_path = get_transforms_dir() / body["xslt_file"]
         out_name = _fhir_output_name(str(xslt_path))
         b = None
     else:
