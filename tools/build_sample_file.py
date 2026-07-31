@@ -16,8 +16,11 @@ COCO_NS = "{http://cocodata.org}"
 XML_NS = "{http://www.w3.org/2001/XMLSchema}"
 XSI_NS = "{http://www.w3.org/2001/XMLSchema-instance}"
 
-DEFAULT_SCHEMA_VERSION = "10.0"
-DEFAULT_VERSION_DIR = "v10.0"
+# Current schema version. A build entry in config/sample_builds.yaml that omits "version"
+# resolves to DEFAULT_VERSION_DIR, so bumping these two constants (plus adding the new
+# schemas/<version>/ folder) is what promotes a new version to the default.
+DEFAULT_SCHEMA_VERSION = "11.0"
+DEFAULT_VERSION_DIR = "v11.0"
 
 ROSTER_SCHEMA = "roster.xsd"
 PROVIDERDIRECTORY_SCHEMA = "provider_directory.xsd"
@@ -525,7 +528,7 @@ def build_element(root_element_name, schema, xsd_element=None, depth=0, canonica
         depth (int): recursion depth
         canonical_name (str): name of canonical (e.g., 'roster', 'providers')
         child_choice (str): for xs:choice elements, specify which child to build (e.g., 'practitioner')
-        version_dir (str): schemas/ subfolder the schema lives in (e.g., 'v10.0'), used for xsi:schemaLocation
+        version_dir (str): schemas/ subfolder the schema lives in (e.g., 'v11.0'), used for xsi:schemaLocation
 
     Returns:
         XmlElement: containing the full XML document

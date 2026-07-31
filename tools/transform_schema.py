@@ -24,7 +24,7 @@ from xml.dom import minidom
 # Schemas/ subfolder a build reads from when its config entry omits "version".
 # Mirrors tools.build_sample_file.DEFAULT_VERSION_DIR; kept local so this module stays
 # runnable as a plain script (python tools/transform_schema.py) without the package on sys.path.
-DEFAULT_VERSION_DIR = "v10.0"
+DEFAULT_VERSION_DIR = "v11.0"
 
 
 def fhir_output_name(xslt_path: str, provider_variant: str | None = None) -> str:

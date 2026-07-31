@@ -35,7 +35,7 @@ def load_sample_builds():
 # Schemas/ subfolder a build reads from when its config entry omits "version".
 # Mirrors tools.build_sample_file.DEFAULT_VERSION_DIR; kept local so this module stays a
 # lightweight CI helper (yaml only) rather than pulling in the sample-builder dependencies.
-DEFAULT_VERSION_DIR = "v10.0"
+DEFAULT_VERSION_DIR = "v11.0"
 
 
 def build_version(b):

@@ -117,15 +117,15 @@ Documentation is automatically generated using python, with the output published
 Use `build_xsd_docs.py` to quickly generate markdown documentation for all XSD schemas in a specified `schemas/` subfolder:
 
 **Input Parameters:**
-- `subfolder` (required): Subfolder name within `schemas/` directory (e.g., `v10.0`)
+- `subfolder` (required): Subfolder name within `schemas/` directory (e.g., `v11.0`)
 - `--release-tag` or `-r` (optional): Release tag for versioning
 
 ```bash
-# Generate docs for schemas in schemas/v10.0/
-python tools/build_xsd_docs.py v10.0
+# Generate docs for schemas in schemas/v11.0/
+python tools/build_xsd_docs.py v11.0
 
 # With optional release tag
-python tools/build_xsd_docs.py v10.0 --release-tag v0.6
+python tools/build_xsd_docs.py v11.0 --release-tag v0.6
 ```
 
 The script processes all `.xsd` files in the specified directory and generates corresponding markdown files in `docs/`.
@@ -140,7 +140,42 @@ While the canonical schema files are used to generate the sample files, this doe
 | **Step**     | **Command**                  |
 |--------------|------------------------------|
 | Run the create script  | `python -m tools.build_all_sample_files`|
+| Build one schema version only | `python -m tools.build_all_sample_files --version v11.0`|
 * This must be run from the root directory
+
+Schemas are versioned by folder under `schemas/`. **`v11.0` is the current default** — a build
+entry in `config/sample_builds.yaml` that omits `version` resolves to it, and its samples are
+written to `canonical-samples/v11.0/`.
+
+`--version` takes any subfolder of `schemas/` and builds only the entries configured for it,
+which is the way to regenerate one line without churning the others (samples contain random
+data, so rebuilding everything rewrites every file):
+
+```bash
+python -m tools.build_all_sample_files --version v11.0   # current default
+python -m tools.build_all_sample_files --version v10.0   # previous line
+python -m tools.build_all_sample_files                   # every configured build
+```
+
+An unknown folder fails fast and lists what is available.
+
+To build **and validate** a single canonical, use the pipeline instead. Targets are addressed
+as `canonical_name@version`; a bare name is rejected when it exists in more than one version:
+
+```bash
+python tools/run_pipeline.py --target clinical@v11.0
+python tools/run_pipeline.py --target clinical --version v11.0   # equivalent
+```
+
+##### Promoting a new schema version to the default
+
+1. Add the schemas under `schemas/<new-version>/`.
+2. Add build entries to `config/sample_builds.yaml` without a `version` key, and pin the
+   previous line's entries with an explicit `version:`.
+3. Bump `DEFAULT_SCHEMA_VERSION` / `DEFAULT_VERSION_DIR` in `tools/build_sample_file.py`, and
+   the mirrored `DEFAULT_VERSION_DIR` in `tools/transform_schema.py` and
+   `tools/get_changed_pipeline_targets.py`.
+4. Add `schemas/<new-version>/Core-Model.xsd` to `core_schema_paths` in the config.
 
 ### Testing
 
@@ -236,7 +271,9 @@ The sample file generation is now configuration-driven using YAML. Edit `config/
 | Purpose | macOS / Linux | Windows |
 |---------|----------------|---------|
 | Generate all samples from config | `python -m tools.build_all_sample_files` | `python -m tools.build_all_sample_files` |
+| Generate one schema version only | `python -m tools.build_all_sample_files --version v11.0` | same |
 | Use a custom config path | `python -m tools.build_all_sample_files --config path/to/file.yaml` | `python -m tools.build_all_sample_files --config path\to\file.yaml` |
+| Build + validate one canonical | `python tools/run_pipeline.py --target clinical@v11.0` | same |
 | Run all XSLT transforms (YAML-driven) | `python -m tools.transform_schema` | `python -m tools.transform_schema` |
 | Run all transforms for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd` | same |
 | Run one transform for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd --only-xslt Provider_Location.xsl` | same |
@@ -246,6 +283,7 @@ The sample file generation is now configuration-driven using YAML. Edit `config/
 YAML keys per build entry:
 
 - `canonical_name` (string)
+- `version` (string, optional) — the `schemas/` subfolder this build reads from. Omit for the current default (`v11.0`); set explicitly to pin an older line (e.g. `v10.0`). The same `canonical_name` may appear once per version, and samples are written to `canonical-samples/<version>/`.
 - `root_element_name` (string)
 - `schema_file_name` (string)
 - `output_file_name` (string)
@@ -256,7 +294,10 @@ YAML keys per build entry:
 
 ### Transforms directory layout
 
-XSLT transforms live under `transforms/v10.0/`, organized into one subfolder per schema:
+XSLT transforms live under `transforms/<version>/`, organized into one subfolder per schema.
+They currently exist only for `v10.0` — **`v11.0` has no transforms yet**, so its pipeline runs
+build + XSD validation only, and the API's transform endpoints return nothing while `v11.0` is
+the configured version:
 
 ```
 transforms/v10.0/
@@ -288,6 +329,8 @@ see the `Provider-Directory/` transforms for working examples.
 
 A small FastAPI app exposes config, sample building, XSLT transform, and artifact listing/download over HTTP so another repo’s web app can list canonicals, generate samples, run transforms, and pull schemas/transforms/samples.
 
+The API serves one schema version at a time, following the sample builder's default (**`v11.0`**). Override per-deployment with the `COCO_SCHEMA_VERSION` env var (e.g. `COCO_SCHEMA_VERSION=v10.0`), which redirects `/schemas`, `/transforms`, and the canonical/FHIR sample directories together. `COCO_CANONICAL_SAMPLES_DIR` and `COCO_FHIR_SAMPLES_DIR` still override those two paths individually.
+
 **Run the API** (from project root, after `pip install .[api]`):
 
 | Purpose | Command |
@@ -300,7 +343,7 @@ A small FastAPI app exposes config, sample building, XSLT transform, and artifac
 - Generate samples: `POST /samples/generate` (body: `{"target": "roster"}` or `{"all": true}`), `POST /samples/generate/{target}`, `POST /samples/generate/{target}/content`
 - Transform (canonical → FHIR): `POST /transform` (body: `{"target": "roster"}` or `{"canonical_file": "...", "xslt_file": "..."}`), `POST /transform/{target}`, `POST /transform/{target}/content`
 - List/download: `GET /samples`, `GET /samples/canonical`, `GET /samples/fhir`, `GET /schemas`, `GET /transforms`; download via `GET /samples/canonical/{filename}`, `GET /samples/fhir/{filename}`, `GET /schemas/{filename}`, `GET /transforms/{filename}`
-  - `GET /transforms` lists XSLT paths relative to `transforms/v10.0/`, including the schema subfolder (e.g. `Clinical/Clinical_Patient.xsl`); `GET /transforms/{filename}` accepts that relative subpath (e.g. `GET /transforms/Clinical/Clinical_Patient.xsl`).
+  - `GET /transforms` lists XSLT paths relative to `transforms/<version>/`, including the schema subfolder (e.g. `Clinical/Clinical_Patient.xsl`); `GET /transforms/{filename}` accepts that relative subpath (e.g. `GET /transforms/Clinical/Clinical_Patient.xsl`). Returns `[]` when the configured version has no transforms folder — which is the case for `v11.0` today.
 - Regenerate and serve: `GET /samples/canonical/{filename}/regenerate`
 
 Config path can be overridden with env `COCO_CONFIG_PATH`.

@@ -47,12 +47,31 @@ def main():
     here = Path(__file__).resolve()
     project_root = here.parents[1]
 
-    parser = argparse.ArgumentParser(description="Generate sample files from YAML config")
+    parser = argparse.ArgumentParser(
+        description="Generate sample files from YAML config",
+        epilog=(
+            "Examples:\n"
+            "  python -m tools.build_all_sample_files                    # every build in the config\n"
+            f"  python -m tools.build_all_sample_files --version {DEFAULT_VERSION_DIR}     # only the current default\n"
+            "  python -m tools.build_all_sample_files --version v10.0    # only the v10.0 line"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument(
         "--config",
         type=Path,
         default=project_root / "config" / "sample_builds.yaml",
         help="Path to YAML config listing sample builds",
+    )
+    parser.add_argument(
+        "--version",
+        metavar="FOLDER",
+        default=None,
+        help=(
+            "Build only the entries for this schemas/ subfolder (e.g. v11.0, v10.0). "
+            "Builds that omit 'version' in the config count as "
+            f"{DEFAULT_VERSION_DIR}. Default: build every entry."
+        ),
     )
     args = parser.parse_args()
 
@@ -66,7 +85,26 @@ def main():
     if not builds:
         raise ValueError("No 'builds' entries found in config YAML")
 
+    if args.version:
+        schemas_dir = project_root / "schemas" / args.version
+        if not schemas_dir.is_dir():
+            available = sorted(p.name for p in (project_root / "schemas").iterdir()
+                               if p.is_dir() and p.name != "fhir-schemas")
+            raise SystemExit(
+                f"No such schemas folder: schemas/{args.version}. "
+                f"Available: {', '.join(available)}"
+            )
+        selected = [b for b in builds
+                    if (b.get("version") or DEFAULT_VERSION_DIR) == args.version]
+        if not selected:
+            raise SystemExit(
+                f"No builds configured for version {args.version} in {args.config}"
+            )
+        builds = selected
+
     print(f"Using config: {args.config}")
+    if args.version:
+        print(f"Filtering to version: {args.version}")
     for idx, b in enumerate(builds, start=1):
         canonical_name = b.get("canonical_name")
         root_element_name = b.get("root_element_name")
