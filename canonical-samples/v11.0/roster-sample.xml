@@ -1,32 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <roster xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v11.0/Roster.xsd">
   <schema_version>11.0</schema_version>
-  <sender_id>cultural</sender_id>
-  <date_time_reported>2026-07-31T15:51:44Z</date_time_reported>
+  <sender_id>according</sender_id>
+  <date_time_reported>2026-07-31T15:55:08Z</date_time_reported>
   <member>
     <us_core_race>
-      <code>2054-5</code>
       <code>2076-8</code>
-      <detailed_code>1494-4</detailed_code>
-      <text>Black or African American</text>
+      <detailed_code>1054-6</detailed_code>
+      <text>Native Hawaiian or Other Pacific Islander</text>
     </us_core_race>
     <us_core_ethnicity>
       <code>2135-2</code>
-      <detailed_code>2133-7</detailed_code>
+      <detailed_code>2162-6</detailed_code>
       <text>Hispanic or Latino</text>
     </us_core_ethnicity>
-    <us_core_birth_sex>UNK</us_core_birth_sex>
-    <is_subscriber>true</is_subscriber>
+    <us_core_birth_sex>F</us_core_birth_sex>
+    <is_subscriber>false</is_subscriber>
     <relationship>child</relationship>
-    <birth_date>1990-08-08</birth_date>
-    <deceased_date_time>2018-04-09T20:05:18Z</deceased_date_time>
+    <birth_date>2004-07-20</birth_date>
+    <deceased_date_time>2012-10-13T16:20:44Z</deceased_date_time>
     <gender>male</gender>
     <tribal_affiliations>
       <tribal_affiliation>
         <codeable_concept>
           <coding>
-            <system>positive</system>
-            <code>when</code>
+            <system>range</system>
+            <code>not</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -38,8 +37,8 @@
       <sexual_orientation>
         <codeable_concept>
           <coding>
-            <system>hear</system>
-            <code>those</code>
+            <system>term</system>
+            <code>edge</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -51,8 +50,8 @@
       <gender_identity>
         <codeable_concept>
           <coding>
-            <system>over</system>
-            <code>type</code>
+            <system>thank</system>
+            <code>camera</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -62,55 +61,55 @@
     </gender_identities>
     <relatedPersons>
       <relatedPerson>
-        <active>true</active>
+        <active>false</active>
         <names>
           <name>
-            <use>result</use>
+            <use>our</use>
             <text>American Indian or Alaska Native</text>
-            <family>Butler</family>
-            <given>Daniel</given>
+            <family>Stafford</family>
+            <given>Scott</given>
             <prefix>Dr.</prefix>
             <period>
-              <start>2017-05-27T10:32:58Z</start>
-              <end>2012-01-15T03:09:16Z</end>
+              <start>2010-12-17T10:31:42Z</start>
+              <end>2013-04-11T11:47:13Z</end>
             </period>
           </name>
         </names>
         <telecoms>
           <telecom>
-            <system>read</system>
-            <value>memory</value>
-            <use>notice</use>
-            <rank>1</rank>
+            <system>than</system>
+            <value>from</value>
+            <use>age</use>
+            <rank>2</rank>
             <period>
-              <start>2017-05-09</start>
+              <start>2019-02-13</start>
             </period>
           </telecom>
         </telecoms>
-        <gender>pattern</gender>
-        <birth_date>2017-01-16</birth_date>
+        <gender>despite</gender>
+        <birth_date>2011-12-21</birth_date>
         <addresses>
           <address>
-            <use>act</use>
-            <type>entire</type>
+            <use>statement</use>
+            <type>significant</type>
             <text>American Indian or Alaska Native</text>
-            <line>5622 Mcpherson Street Apt. 228</line>
-            <city>Lake Martha</city>
-            <district>only</district>
-            <state>WV</state>
-            <postal_code>69658</postal_code>
-            <country>KZ</country>
+            <line>3483 Watson Field</line>
+            <city>Port Robert</city>
+            <district>nor</district>
+            <state>NH</state>
+            <postal_code>77763</postal_code>
+            <country>GT</country>
             <period>
-              <start>2019-06-18</start>
+              <start>2018-11-23</start>
             </period>
           </address>
         </addresses>
-        <communication_language>civil</communication_language>
+        <communication_language>almost</communication_language>
         <relationship>
           <codeable_concept>
             <coding>
-              <system>teach</system>
-              <code>station</code>
+              <system>nice</system>
+              <code>check</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -120,15 +119,15 @@
     </relatedPersons>
     <occupations>
       <occupation_item>
-        <status>registered</status>
+        <status>final</status>
         <effectivePeriod>
-          <start>2021-03-12</start>
-          <end>2023-03-20</end>
+          <start>2020-12-13</start>
+          <end>2025-10-30</end>
         </effectivePeriod>
         <codeable_concept>
           <coding>
-            <system>image</system>
-            <code>dark</code>
+            <system>night</system>
+            <code>religious</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
@@ -136,8 +135,8 @@
         <industry>
           <codeable_concept>
             <coding>
-              <system>agent</system>
-              <code>phone</code>
+              <system>boy</system>
+              <code>military</code>
               <display>English</display>
             </coding>
             <text>American Indian or Alaska Native</text>
@@ -146,125 +145,125 @@
       </occupation_item>
     </occupations>
     <unique_person_ids>
-      <unique_person_id>the</unique_person_id>
-      <unique_person_id_assigner>other</unique_person_id_assigner>
-      <unique_person_id_assigner_type>already</unique_person_id_assigner_type>
+      <unique_person_id>before</unique_person_id>
+      <unique_person_id_assigner>prevent</unique_person_id_assigner>
+      <unique_person_id_assigner_type>own</unique_person_id_assigner_type>
     </unique_person_ids>
     <member_identity>
-      <member_last_4_ssn>3232</member_last_4_ssn>
-      <secret_display_name>Democrat</secret_display_name>
-      <secret_value>save</secret_value>
+      <member_last_4_ssn>5439</member_last_4_ssn>
+      <secret_display_name>teach</secret_display_name>
+      <secret_value>something</secret_value>
       <secret_length>4</secret_length>
     </member_identity>
-    <member_id>author</member_id>
+    <member_id>add</member_id>
     <member_id_system>http://terminology.cocodata.org/identifiers/member-id</member_id_system>
-    <subscriber_id>brother</subscriber_id>
+    <subscriber_id>throughout</subscriber_id>
     <names>
       <name>
-        <use>temp</use>
+        <use>maiden</use>
         <text>American Indian or Alaska Native</text>
-        <family>Acosta</family>
-        <given>Mary</given>
+        <family>Stevens</family>
+        <given>Ronnie</given>
         <prefix>Mr.</prefix>
-        <suffix>DDS</suffix>
+        <suffix>II</suffix>
         <period>
-          <start>2017-01-18T04:36:58Z</start>
-          <end>2016-07-14T05:56:16Z</end>
+          <start>2012-06-12T06:22:30Z</start>
+          <end>2015-04-15T05:54:11Z</end>
         </period>
       </name>
     </names>
     <telecoms>
       <telecom>
-        <system>fax</system>
-        <value>mean</value>
-        <use>mobile</use>
-        <rank>1</rank>
+        <system>sms</system>
+        <value>between</value>
+        <use>work</use>
+        <rank>4</rank>
         <period>
-          <start>2017-09-17T13:42:27Z</start>
-          <end>2010-05-14T15:37:02Z</end>
+          <start>2011-07-07T08:57:05Z</start>
+          <end>2019-02-14T14:42:23Z</end>
         </period>
       </telecom>
     </telecoms>
     <addresses>
       <address>
-        <use>old</use>
-        <type>both</type>
+        <use>billing</use>
+        <type>physical</type>
         <text>American Indian or Alaska Native</text>
-        <line>31852 Hardy Motorway</line>
-        <city>South Julieburgh</city>
-        <district>color</district>
-        <state>NC</state>
-        <postal_code>17225</postal_code>
-        <country>BH</country>
+        <line>2887 Morales Station</line>
+        <city>East Erik</city>
+        <district>edge</district>
+        <state>KS</state>
+        <postal_code>55507</postal_code>
+        <country>ZA</country>
         <period>
-          <start>2020-06-12T12:27:55Z</start>
-          <end>2011-06-17T10:01:30Z</end>
+          <start>2015-10-08T07:15:08Z</start>
+          <end>2014-06-17T14:24:42Z</end>
         </period>
       </address>
     </addresses>
     <health_coverage>
-      <group_number>my</group_number>
-      <policy_number>community</policy_number>
-      <plan_id>rock</plan_id>
-      <plan_name>lot</plan_name>
-      <coverage_status>old</coverage_status>
+      <group_number>thousand</group_number>
+      <policy_number>hospital</policy_number>
+      <plan_id>raise</plan_id>
+      <plan_name>personal</plan_name>
+      <coverage_status>represent</coverage_status>
       <coverage_type>
         <codeable_concept>
           <coding>
-            <system>measure</system>
-            <code>room</code>
+            <system>month</system>
+            <code>street</code>
             <display>English</display>
           </coding>
           <text>American Indian or Alaska Native</text>
         </codeable_concept>
       </coverage_type>
       <coverage_period>
-        <start>2011-04-17T03:44:52Z</start>
-        <end>2010-08-19T05:46:05Z</end>
+        <start>2017-07-17T03:26:36Z</start>
+        <end>2014-08-09T09:22:38Z</end>
       </coverage_period>
-      <network_id>along</network_id>
+      <network_id>half</network_id>
       <payor>
         <tax>
-          <value>play</value>
-          <type>sound</type>
+          <value>hear</value>
+          <type>experience</type>
         </tax>
         <naic_code>
-          <value>help</value>
-          <type>look</type>
+          <value>agreement</value>
+          <type>great</type>
         </naic_code>
         <payer_id>
           <value>wonder</value>
-          <type>feeling</type>
+          <type>modern</type>
         </payer_id>
-        <is_active>true</is_active>
-        <name>David Larson</name>
-        <alias>skill</alias>
+        <is_active>false</is_active>
+        <name>Troy Lindsey</name>
+        <alias>smile</alias>
         <telecoms>
           <telecom>
-            <system>sms</system>
-            <value>area</value>
-            <use>mobile</use>
-            <rank>2</rank>
+            <system>email</system>
+            <value>there</value>
+            <use>home</use>
+            <rank>4</rank>
             <period>
-              <start>2011-08-16T17:51:27Z</start>
-              <end>2020-05-10T08:45:34Z</end>
+              <start>2012-10-10T02:49:39Z</start>
+              <end>2012-12-07T23:02:03Z</end>
             </period>
           </telecom>
         </telecoms>
         <addresses>
           <address>
-            <use>temp</use>
-            <type>physical</type>
+            <use>home</use>
+            <type>both</type>
             <text>American Indian or Alaska Native</text>
-            <line>298 Madeline Trafficway</line>
-            <city>Lopezport</city>
-            <district>fill</district>
-            <state>WY</state>
-            <postal_code>37917</postal_code>
-            <country>LV</country>
+            <line>272 Joseph Way</line>
+            <city>East Rodneychester</city>
+            <district>arrive</district>
+            <state>AZ</state>
+            <postal_code>28976</postal_code>
+            <country>PA</country>
             <period>
-              <start>2014-04-26T07:09:38Z</start>
-              <end>2017-02-03T02:16:54Z</end>
+              <start>2012-04-21T07:59:06Z</start>
+              <end>2019-07-12T01:48:47Z</end>
             </period>
           </address>
         </addresses>
@@ -272,28 +271,28 @@
     </health_coverage>
     <communications>
       <communication>
-        <language_code>ig</language_code>
-        <display>Igbo</display>
-        <is_preferred>true</is_preferred>
+        <language_code>hmn</language_code>
+        <display>Avestan</display>
+        <is_preferred>false</is_preferred>
       </communication>
     </communications>
-    <smoking_status>8517006</smoking_status>
-    <smoking_effective_date_time>2016-01-10T16:25:56Z</smoking_effective_date_time>
-    <record_type>A</record_type>
-    <unique_record_identifier>outside</unique_record_identifier>
+    <smoking_status>266927001</smoking_status>
+    <smoking_effective_date_time>2015-12-24T23:29:42Z</smoking_effective_date_time>
+    <record_type>D</record_type>
+    <unique_record_identifier>tonight</unique_record_identifier>
     <delegates>
       <delegate>
-        <family>Walker</family>
-        <given>Leah</given>
+        <family>Clark</family>
+        <given>Lisa</given>
         <telecoms>
           <telecom>
-            <system>mobile</system>
-            <value>red</value>
+            <system>phone</system>
+            <value>magazine</value>
           </telecom>
         </telecoms>
-        <email_address>powellmichael@example.com</email_address>
-        <start>2012-11-07T05:19:53Z</start>
-        <end>2016-09-16T18:56:13Z</end>
+        <email_address>gary85@example.net</email_address>
+        <start>2016-08-23T13:08:06Z</start>
+        <end>2011-07-20T00:14:48Z</end>
         <is_member>false</is_member>
       </delegate>
     </delegates>

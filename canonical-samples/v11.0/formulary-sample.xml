@@ -1,57 +1,57 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <coverage_plans xmlns="http://cocodata.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cocodata.org ../../schemas/v11.0/Formulary.xsd">
   <schema_version>11.0</schema_version>
-  <sender_id>maintain</sender_id>
-  <date_time_reported>2026-07-31T15:51:42Z</date_time_reported>
+  <sender_id>act</sender_id>
+  <date_time_reported>2026-07-31T15:55:12Z</date_time_reported>
   <coverage_plan>
-    <plan_id>none</plan_id>
-    <plan_id_type>per</plan_id_type>
-    <title>between</title>
-    <marketing_url>deal</marketing_url>
-    <summary_url>deep</summary_url>
-    <formulary_url>race</formulary_url>
-    <email_plan_contact>dustin45@example.com</email_plan_contact>
-    <network>present</network>
-    <status>current</status>
-    <mode>working</mode>
-    <date>2020-08-07T14:26:37Z</date>
+    <plan_id>policy</plan_id>
+    <plan_id_type>center</plan_id_type>
+    <title>quality</title>
+    <marketing_url>pressure</marketing_url>
+    <summary_url>tax</summary_url>
+    <formulary_url>recent</formulary_url>
+    <email_plan_contact>tmoyer@example.net</email_plan_contact>
+    <network>sing</network>
+    <status>entered-in-error</status>
+    <mode>snapshot</mode>
+    <date>2018-03-25T20:20:55Z</date>
     <drug_tiers>
       <drug_tier>
         <drug_tier_id>
-          <code>medical-service</code>
+          <code>preferred-generic</code>
           <text>American Indian or Alaska Native</text>
         </drug_tier_id>
-        <mail_order>false</mail_order>
+        <mail_order>true</mail_order>
         <cost_sharings>
           <cost_sharing>
-            <pharmacy_type>1-month-in-retail</pharmacy_type>
+            <pharmacy_type>1-month-out-retail</pharmacy_type>
             <copay_amount>
-              <value>823.34</value>
-              <currency>USD</currency>
+              <value>279.11</value>
+              <currency>MOP</currency>
             </copay_amount>
-            <copay_option>no-charge</copay_option>
-            <coinsurance_rate>641.19</coinsurance_rate>
-            <coinsurance_option>no-charge-after-deductible</coinsurance_option>
+            <copay_option>after-deductible</copay_option>
+            <coinsurance_rate>241.91</coinsurance_rate>
+            <coinsurance_option>no-charge</coinsurance_option>
           </cost_sharing>
         </cost_sharings>
         <formulary_drugs>
           <formulary_drug>
-            <id>859a2be5-d113-41ee-bcd5-05f6846191a3</id>
+            <id>80e9603f-52a8-4d79-b9c1-b63ce495847a</id>
             <rx_norm_code>
-              <code>experience</code>
+              <code>exactly</code>
               <display>English</display>
-              <system>box</system>
+              <system>operation</system>
               <text>American Indian or Alaska Native</text>
             </rx_norm_code>
             <status>inactive</status>
             <manufacturer>
-              <name>Tammy Harris</name>
-              <alias>blood</alias>
-              <type>strong</type>
+              <name>Nicole Rice</name>
+              <alias>discussion</alias>
+              <type>toward</type>
             </manufacturer>
             <dose_form>
-              <code>hospital</code>
-              <system>generation</system>
+              <code>matter</code>
+              <system>available</system>
               <display>English</display>
               <text>American Indian or Alaska Native</text>
             </dose_form>
@@ -60,142 +60,142 @@
                 <is_active>true</is_active>
                 <strength>
                   <numerator>
-                    <value>991.6</value>
+                    <value>603.2</value>
                     <comparator>&lt;=</comparator>
-                    <unit>why</unit>
-                    <system>national</system>
-                    <code>nice</code>
+                    <unit>parent</unit>
+                    <system>entire</system>
+                    <code>computer</code>
                   </numerator>
                   <denominator>
-                    <value>656.41</value>
+                    <value>64.97</value>
                     <comparator>&lt;=</comparator>
-                    <unit>effort</unit>
-                    <system>field</system>
-                    <code>concern</code>
+                    <unit>technology</unit>
+                    <system>industry</system>
+                    <code>green</code>
                   </denominator>
                 </strength>
                 <substance>
-                  <category>biological</category>
-                  <description>Mrs</description>
+                  <category>body</category>
+                  <description>listen</description>
                   <code>
-                    <code>return</code>
-                    <system>eight</system>
+                    <code>tonight</code>
+                    <system>suffer</system>
                   </code>
                 </substance>
               </ingredient>
             </ingredients>
             <intended_route>
-              <code>free</code>
-              <system>energy</system>
+              <code>foreign</code>
+              <system>all</system>
               <display>English</display>
               <text>American Indian or Alaska Native</text>
             </intended_route>
             <monitoring_programs>
               <monitoring_program>
-                <name>Richard Wiggins</name>
-                <type>like</type>
+                <name>Wendy Jackson</name>
+                <type>choose</type>
               </monitoring_program>
             </monitoring_programs>
             <monographs>
               <monograph>
-                <type>draw</type>
+                <type>nice</type>
               </monograph>
             </monographs>
             <cost_informations>
               <cost_information>
-                <type>table</type>
-                <source>practice</source>
+                <type>hospital</type>
+                <source>democratic</source>
                 <cost>
-                  <value>361.42</value>
-                  <currency>SZL</currency>
+                  <value>996.46</value>
+                  <currency>VEF</currency>
                 </cost>
               </cost_information>
             </cost_informations>
-            <plan_id>next</plan_id>
-            <prior_authorization>true</prior_authorization>
-            <step_therapy>true</step_therapy>
-            <quantity_limit>true</quantity_limit>
+            <plan_id>us</plan_id>
+            <prior_authorization>false</prior_authorization>
+            <step_therapy>false</step_therapy>
+            <quantity_limit>false</quantity_limit>
             <medicine_classifications>
               <medicine_classification>
-                <type>outside</type>
-                <classification>us</classification>
+                <type>yard</type>
+                <classification>thing</classification>
               </medicine_classification>
             </medicine_classifications>
             <formulary_drugs_alternatives>
               <formulary_drugs_alternative>
                 <rx_norm_code>
-                  <code>leader</code>
+                  <code>race</code>
                   <display>English</display>
                   <system>http://www.nlm.nih.gov/research/umls/rxnorm</system>
                 </rx_norm_code>
-                <status>active</status>
+                <status>inactive</status>
                 <manufacturer>
-                  <name>Alexandra Allen</name>
-                  <alias>line</alias>
-                  <type>describe</type>
+                  <name>Jeremy Hickman</name>
+                  <alias>exist</alias>
+                  <type>form</type>
                 </manufacturer>
                 <dose_form>
-                  <code>job</code>
-                  <system>Democrat</system>
+                  <code>government</code>
+                  <system>else</system>
                 </dose_form>
                 <ingredients>
                   <ingredient>
                     <is_active>true</is_active>
                     <strength>
                       <numerator>
-                        <value>651.39</value>
-                        <comparator>&gt;=</comparator>
-                        <unit>lawyer</unit>
-                        <system>couple</system>
-                        <code>force</code>
+                        <value>928.98</value>
+                        <comparator>&gt;</comparator>
+                        <unit>painting</unit>
+                        <system>pattern</system>
+                        <code>control</code>
                       </numerator>
                       <denominator>
-                        <value>102.87</value>
-                        <comparator>&lt;</comparator>
-                        <unit>meeting</unit>
-                        <system>use</system>
-                        <code>range</code>
+                        <value>75.95</value>
+                        <comparator>&gt;</comparator>
+                        <unit>who</unit>
+                        <system>off</system>
+                        <code>most</code>
                       </denominator>
                     </strength>
                     <substance>
-                      <category>drug</category>
-                      <description>public</description>
+                      <category>body</category>
+                      <description>send</description>
                       <code>
-                        <code>really</code>
-                        <system>middle</system>
+                        <code>character</code>
+                        <system>guess</system>
                       </code>
                     </substance>
                   </ingredient>
                 </ingredients>
                 <monitoring_programs>
                   <monitoring_program>
-                    <name>Joseph Hudson</name>
-                    <type>view</type>
+                    <name>Wayne Thornton</name>
+                    <type>around</type>
                   </monitoring_program>
                 </monitoring_programs>
                 <monographs>
                   <monograph>
-                    <type>good</type>
+                    <type>phone</type>
                   </monograph>
                 </monographs>
                 <cost_informations>
                   <cost_information>
-                    <type>physical</type>
-                    <source>Mr</source>
+                    <type>economic</type>
+                    <source>attack</source>
                     <cost>
-                      <value>94.15</value>
-                      <currency>ZWL</currency>
+                      <value>19.38</value>
+                      <currency>ANG</currency>
                     </cost>
                   </cost_information>
                 </cost_informations>
-                <plan_id>wrong</plan_id>
+                <plan_id>lay</plan_id>
                 <prior_authorization>false</prior_authorization>
                 <step_therapy>false</step_therapy>
-                <quantity_limit>true</quantity_limit>
+                <quantity_limit>false</quantity_limit>
                 <medicine_classifications>
                   <medicine_classification>
-                    <type>easy</type>
-                    <classification>that</classification>
+                    <type>child</type>
+                    <classification>stuff</classification>
                   </medicine_classification>
                 </medicine_classifications>
               </formulary_drugs_alternative>
