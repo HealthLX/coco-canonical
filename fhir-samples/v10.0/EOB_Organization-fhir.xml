@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="-voice"/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <identifier>
+    <value value="-voice"/>
+  </identifier>
+  <active value="false"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="prov"/>
+      <display value="Healthcare Provider"/>
+    </coding>
+  </type>
+  <name>
+    <text value="Christopher Wells"/>
+  </name>
+  <alias/>
+  <contact>
+    <telecom>
+      <use value="temp"/>
+      <value value="process"/>
+      <system value="phone"/>
+    </telecom>
+  </contact>
+  <contact>
+    <address>
+      <use value="home"/>
+      <line value="652 Barbara Extension Apt. 678"/>
+      <city value="Lake William"/>
+      <district value="threat"/>
+      <state value="MT"/>
+      <postalCode value=""/>
+      <country value="USA"/>
+    </address>
+  </contact>
+  <partOf/>
+  <code/>
+  <endpoint/>
+</Organization>

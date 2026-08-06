@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Locations>
+  <Location xmlns="http://hl7.org/fhir">
+    <id value="-upon"/>
+    <meta>
+      <source value=""/>
+    </meta>
+    <status value="inactive"/>
+    <name value="William Garcia"/>
+    <telecom>
+      <system value="url"/>
+      <value value="that"/>
+      <use value="temp"/>
+      <rank value="5"/>
+      <period>
+        <start value="2019-12-03T06:42:02Z"/>
+        <end value="2020-01-24T09:09:35Z"/>
+      </period>
+    </telecom>
+    <address>
+      <line value="86220 Alvarez Light"/>
+      <city value="South Karen"/>
+      <state value="OR"/>
+      <postalCode value="12605"/>
+      <country>SC</country>
+    </address>
+    <managingOrganization>
+      <reference value="Organization/#localAllen Young"/>
+      <display value="Allen Young"/>
+    </managingOrganization>
+  </Location>
+  <Location xmlns="http://hl7.org/fhir">
+    <id value="-into - way"/>
+    <meta>
+      <source value=""/>
+    </meta>
+    <identifier>
+      <system value="https://data.healthlx.com/_more"/>
+      <value value="way"/>
+    </identifier>
+    <status value="inactive"/>
+    <name value="Christopher Miller"/>
+    <telecom>
+      <system value="email"/>
+      <value value="loss"/>
+      <use value="old"/>
+      <rank value="2"/>
+      <period>
+        <start value="2019-10-24T07:48:53Z"/>
+        <end value="2011-02-25T05:58:54Z"/>
+      </period>
+    </telecom>
+    <address>
+      <line value="83469 Hodge Trace"/>
+      <city value="New William"/>
+      <state value="FM"/>
+      <postalCode value="49171"/>
+      <country>CL</country>
+    </address>
+    <managingOrganization>
+      <reference value="Organization/#localKristina Chan"/>
+      <display value="Kristina Chan"/>
+    </managingOrganization>
+  </Location>
+</Locations>

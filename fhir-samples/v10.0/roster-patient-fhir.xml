@@ -1,84 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <id value="-all"/>
+<Patient xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-reality"/>
   <meta>
-    <lastUpdated value="2026-01-16T12:09:49.4046537-06:00"/>
+    <lastUpdated value="2026-06-13T17:10:01.8773432-05:00"/>
   </meta>
+  <text>
+    <status value="generated"/>
+    <xhtml:div xmlns="http://www.w3.org/1999/xhtml">Patient: American Indian or Alaska Native, Male, DOB: 1984-03-29</xhtml:div>
+  </text>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value="1002-5"/>
-        <display value="American Indian or Alaska Native"/>
+        <code value="2028-9"/>
+        <display value="Asian"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="American Indian or Alaska Native"/>
+      <valueString value="Asian"/>
     </extension>
   </extension>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
     <extension url="ombCategory">
       <valueCoding>
         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-        <code value="2135-2"/>
-        <display value="Hispanic or Latino"/>
+        <code value="2186-5"/>
+        <display value="Not Hispanic or Latino"/>
       </valueCoding>
     </extension>
     <extension url="text">
-      <valueString value="Hispanic or Latino"/>
+      <valueString value="Not Hispanic or Latino"/>
     </extension>
   </extension>
   <identifier>
     <system value="http://terminology.cocodata.org/identifiers/member-id"/>
-    <value value="all"/>
+    <value value="reality"/>
   </identifier>
   <active value="true"/>
   <name>
-    <use value="official"/>
+    <use value="maiden"/>
     <text value="American Indian or Alaska Native"/>
-    <family value="Welch"/>
-    <given value="John"/>
-    <prefix value="Mr."/>
-    <suffix value="PhD"/>
+    <family value="Schaefer"/>
+    <given value="Angela"/>
+    <prefix value="Ind."/>
+    <suffix value="III"/>
     <period>
-      <start value="2019-11-02T08:10:26Z"/>
-      <end value="2023-08-08T12:56:51Z"/>
+      <start value="2017-02-19T23:46:42Z"/>
+      <end value="2024-08-01T08:56:52Z"/>
     </period>
   </name>
   <telecom>
-    <system value="pager"/>
-    <value value="institution"/>
-    <use value="home"/>
+    <system value="phone"/>
+    <value value="hit"/>
+    <use value="mobile"/>
     <rank value="1"/>
     <period>
-      <start value="2019-02-23T02:42:43Z"/>
-      <end value="2025-03-09T10:28:23Z"/>
+      <start value="2020-10-05T06:23:07Z"/>
+      <end value="2024-01-10T22:35:25Z"/>
     </period>
   </telecom>
-  <gender value="unknown"/>
-  <birthDate value="2011-09-15"/>
-  <deceasedDateTime value="2019-04-18T04:27:59Z"/>
+  <gender value="male"/>
+  <birthDate value="1984-03-29"/>
+  <deceasedDateTime value="2013-06-24T10:02:26Z"/>
   <address>
     <type value="both"/>
-    <line value="95821 Danielle Creek Apt. 373"/>
-    <city value="West Carrie"/>
-    <district value="time"/>
-    <state value="MP"/>
-    <postalCode value="17275"/>
-    <country value="TN"/>
+    <line value="471 Schmitt Courts"/>
+    <city value="East Robert"/>
+    <district value="prevent"/>
+    <state value="WV"/>
+    <postalCode value="62778"/>
+    <country value="BF"/>
     <period>
-      <start value="2017-12-05T10:01:49Z"/>
-      <end value="2023-10-27T23:00:44Z"/>
+      <start value="2019-03-20T05:58:13Z"/>
+      <end value="2023-11-20T14:03:13Z"/>
     </period>
   </address>
   <communication>
     <language>
       <coding>
         <system value="urn:ietf:bcp:47"/>
-        <code value="bm"/>
-        <display value="Bambara"/>
+        <code value="my"/>
+        <display value="Burmese"/>
       </coding>
     </language>
-    <preferred value="false"/>
+    <preferred value="true"/>
   </communication>
 </Patient>

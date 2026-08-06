@@ -47,15 +47,18 @@ jobs:
     - name: Generate Markdown from XSD
       run: |
         mkdir -p docs
+        # Docs are published for the latest versioned schema folder (schemas/v*/ sorted by version)
+        SCHEMA_VERSION=$(ls -d schemas/v*/ | sed 's#schemas/##; s#/##' | sort -V | tail -1)
+        echo "Latest schema version: $SCHEMA_VERSION"
         if [ -z "$SCHEMA_NAME" ]; then
           # Process all schemas
-          echo "Processing all schemas in schemas/v10.0/"
-          python tools/build_xsd_docs.py v10.0 --release-tag $RELEASE_TAG
+          echo "Processing all schemas in schemas/$SCHEMA_VERSION/"
+          python tools/build_xsd_docs.py "$SCHEMA_VERSION" --release-tag $RELEASE_TAG
         else
           # Process specific schema
           echo "Processing schema: $SCHEMA_NAME"
           python tools/xsd_to_md.py \
-            schemas/v10.0/${SCHEMA_NAME}.xsd \
+            schemas/$SCHEMA_VERSION/${SCHEMA_NAME}.xsd \
             docs/${SCHEMA_NAME}_Guide.md \
             $RELEASE_TAG
         fi

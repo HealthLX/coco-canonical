@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Observations>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-stage"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus"/>
+    </meta>
+    <status value="entered-in-error"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="social-history"/>
+        <display value="Social History"/>
+      </coding>
+      <text value="Social History"/>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="72166-2"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2018-01-09T04:18:20Z"/>
+    <issued value="2018-01-09T04:18:20Z"/>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="choice"/>
+      </coding>
+    </valueCodeableConcept>
+  </Observation>
+</Observations>

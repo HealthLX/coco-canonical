@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Provenances>
+  <Provenance xmlns="http://hl7.org/fhir">
+    <id value="-night"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance|6.1.0"/>
+    </meta>
+    <target>
+      <reference value="Device/-because"/>
+    </target>
+    <recorded value="2011-11-19T21:07:03Z"/>
+    <agent>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"/>
+          <code value="transmitter"/>
+        </coding>
+      </type>
+      <who>
+        <reference value="Patient/-film"/>
+      </who>
+      <onBehalfOf>
+        <reference value="Organization/-"/>
+      </onBehalfOf>
+    </agent>
+    <agent>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"/>
+          <code value="author"/>
+        </coding>
+      </type>
+      <who>
+        <reference value="Practitioner/-1743111707"/>
+      </who>
+      <onBehalfOf>
+        <reference value="Practitioner/-2442458649"/>
+      </onBehalfOf>
+    </agent>
+    <agent>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/provenance-participant-type"/>
+          <code value="author"/>
+        </coding>
+      </type>
+      <who>
+        <reference value="Practitioner/-4164268721"/>
+      </who>
+    </agent>
+  </Provenance>
+</Provenances>

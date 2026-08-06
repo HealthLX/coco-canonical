@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Core-Model Implementation Guide"
+---
+
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Core-Model Implementation Guide
 
@@ -6,7 +11,7 @@
 
 **Version 10.0**
 
-**January 2, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -20,15 +25,15 @@
 8. [All Elements of Core-Model XSD](#all-elements-of-core-model-xsd)
 9. [Practical Guidance](#practical-guidance)
 
-## Disclaimer
+<h2 style="color:#E60073">Disclaimer</h2>
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-## Overview
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Core-Model data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-## Encoding
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -36,17 +41,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-## Interoperability
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-## Change Log
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | January 2, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-## Simple Types
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -54,29 +60,31 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | NPI | xs:string | – | [0-9]{10} |
 | positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
 | unsignedInt | xs:unsignedInt | – | 0\|([1-9][0-9]*) |
+{: .heatMap}
 
 
-## Required Elements of Core-Model XSD
 
-No elements found.
-
-## All Elements of Core-Model XSD
+<h2 id="required-elements-of-core-model-xsd" style="color:#E60073">Required Elements of Core-Model XSD</h2>
 
 No elements found.
 
-## Practical Guidance
+<h2 id="all-elements-of-core-model-xsd" style="color:#E60073">All Elements of Core-Model XSD</h2>
 
-### Submission Frequency
+No elements found.
+
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
+
+<h3 style="color:#E60073">Submission Frequency</h3>
 
 Core-Model files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
-### Adds, Updates, and Deletes
+<h3 style="color:#E60073">Adds, Updates, and Deletes</h3>
 
 - **Adds**: Include new member records with all required fields populated
 - **Updates**: Submit complete member records with updated information
 - **Deletes**: Follow the agreed-upon process for member terminations or removals
 
-### Member Identification
+<h3 style="color:#E60073">Member Identification</h3>
 
 Each member must be uniquely identified using the appropriate identifier fields. Ensure consistency in member identifiers across all submissions to maintain data integrity.
 

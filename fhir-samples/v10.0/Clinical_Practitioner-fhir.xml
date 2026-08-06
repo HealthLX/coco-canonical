@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Practitioners xmlns="http://hl7.org/fhir">
+  <Practitioner>
+    <id value="-2067049345"/>
+    <identifier>
+      <use value="official"/>
+      <system value="urn:oid:2.16.840.1.113883.4.6"/>
+      <value value="-2067049345"/>
+    </identifier>
+    <name>
+      <use value="official"/>
+      <family value="Garner"/>
+      <given value="Alex"/>
+      <prefix value="Mr."/>
+      <suffix value="DDS"/>
+    </name>
+    <telecom>
+      <system value=""/>
+      <value value=""/>
+    </telecom>
+    <address>
+      <use value="temp"/>
+      <type value="physical"/>
+      <text value="American Indian or Alaska Native"/>
+      <line value="531 Michele Ways Apt. 204"/>
+      <city value="Lake Jonathanview"/>
+      <district value="popular"/>
+      <state value="ND"/>
+      <postalCode value="09661"/>
+      <country value="BO"/>
+      <period>
+        <start value="2017-03-01T12:41:41Z"/>
+        <end value="2018-04-17T02:01:58Z"/>
+      </period>
+    </address>
+  </Practitioner>
+  <Practitioner>
+    <id value="-1521796021"/>
+    <identifier>
+      <use value="official"/>
+      <system value="urn:oid:2.16.840.1.113883.4.6"/>
+      <value value="-1521796021"/>
+    </identifier>
+    <name>
+      <use value="official"/>
+      <family value="Bates"/>
+      <given value="Holly"/>
+      <prefix value="Miss"/>
+      <suffix value="Jr."/>
+    </name>
+    <telecom>
+      <system value=""/>
+      <value value=""/>
+    </telecom>
+    <address>
+      <use value="work"/>
+      <type value="postal"/>
+      <text value="American Indian or Alaska Native"/>
+      <line value="254 Christopher Grove Apt. 486"/>
+      <city value="Lake Alvin"/>
+      <district value="scientist"/>
+      <state value="MO"/>
+      <postalCode value="52189"/>
+      <country value="MC"/>
+      <period>
+        <start value="2010-05-24T18:08:49Z"/>
+        <end value="2013-08-18T19:52:37Z"/>
+      </period>
+    </address>
+  </Practitioner>
+  <Practitioner>
+    <id value="-2737276101"/>
+    <identifier>
+      <use value="official"/>
+      <system value="urn:oid:2.16.840.1.113883.4.6"/>
+      <value value="-2737276101"/>
+    </identifier>
+    <name>
+      <use value="official"/>
+      <family value="Stevens"/>
+      <given value="James"/>
+      <prefix value="Mx."/>
+      <suffix value="MD"/>
+    </name>
+    <telecom>
+      <system value=""/>
+      <value value=""/>
+    </telecom>
+    <address>
+      <use value="home"/>
+      <type value="both"/>
+      <text value="American Indian or Alaska Native"/>
+      <line value="7351 Sarah Forks"/>
+      <city value="Franciscohaven"/>
+      <district value="spend"/>
+      <state value="OK"/>
+      <postalCode value="57804"/>
+      <country value="AU"/>
+      <period>
+        <start value="2011-10-18T12:58:44Z"/>
+        <end value="2010-08-30T08:26:34Z"/>
+      </period>
+    </address>
+  </Practitioner>
+</Practitioners>

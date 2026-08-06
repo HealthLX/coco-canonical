@@ -2,6 +2,10 @@
 
 #### Unit Test Status
 ![Pytest](https://github.com/teschglobal/hlx-saas/actions/workflows/unit_tests.yml/badge.svg)
+## Web App to Run API's
+https://flow.cocodata.org/ 
+## Dynamic Canonical Schema Documentation
+**Live docs:** https://healthlx.github.io/coco-canonical/
 
 # Table of Contents
 - [1. Project Overview](#1overview)
@@ -34,7 +38,7 @@ CMS interoperability regulations (including CMS-9115-F and CMS-0057-F) define *w
 CoCo does not attempt to:
 - Certify the correctness of utilization management decisions
 - Replace payer-specific adjudication logic
-- Guarantee deterministic outcomes from legacy UM systems
+- Guarantee deterministic outcomes from older UM systems
 
 CMS-0057-F prior authorization responses depend on decision logic embedded in payer systems that may be opaque, non-deterministic, or human-influenced. CoCo focuses on **process conformance and interface integrity**, not adjudication correctness.
 
@@ -113,15 +117,15 @@ Documentation is automatically generated using python, with the output published
 Use `build_xsd_docs.py` to quickly generate markdown documentation for all XSD schemas in a specified `schemas/` subfolder:
 
 **Input Parameters:**
-- `subfolder` (required): Subfolder name within `schemas/` directory (e.g., `v10.0`)
+- `subfolder` (required): Subfolder name within `schemas/` directory (e.g., `v11.0`)
 - `--release-tag` or `-r` (optional): Release tag for versioning
 
 ```bash
-# Generate docs for schemas in schemas/v10.0/
-python tools/build_xsd_docs.py v10.0
+# Generate docs for schemas in schemas/v11.0/
+python tools/build_xsd_docs.py v11.0
 
 # With optional release tag
-python tools/build_xsd_docs.py v10.0 --release-tag v0.6
+python tools/build_xsd_docs.py v11.0 --release-tag v0.6
 ```
 
 The script processes all `.xsd` files in the specified directory and generates corresponding markdown files in `docs/`.
@@ -136,7 +140,42 @@ While the canonical schema files are used to generate the sample files, this doe
 | **Step**     | **Command**                  |
 |--------------|------------------------------|
 | Run the create script  | `python -m tools.build_all_sample_files`|
+| Build one schema version only | `python -m tools.build_all_sample_files --version v11.0`|
 * This must be run from the root directory
+
+Schemas are versioned by folder under `schemas/`. **`v11.0` is the current default** — a build
+entry in `config/sample_builds.yaml` that omits `version` resolves to it, and its samples are
+written to `canonical-samples/v11.0/`.
+
+`--version` takes any subfolder of `schemas/` and builds only the entries configured for it,
+which is the way to regenerate one line without churning the others (samples contain random
+data, so rebuilding everything rewrites every file):
+
+```bash
+python -m tools.build_all_sample_files --version v11.0   # current default
+python -m tools.build_all_sample_files --version v10.0   # previous line
+python -m tools.build_all_sample_files                   # every configured build
+```
+
+An unknown folder fails fast and lists what is available.
+
+To build **and validate** a single canonical, use the pipeline instead. Targets are addressed
+as `canonical_name@version`; a bare name is rejected when it exists in more than one version:
+
+```bash
+python tools/run_pipeline.py --target clinical@v11.0
+python tools/run_pipeline.py --target clinical --version v11.0   # equivalent
+```
+
+##### Promoting a new schema version to the default
+
+1. Add the schemas under `schemas/<new-version>/`.
+2. Add build entries to `config/sample_builds.yaml` without a `version` key, and pin the
+   previous line's entries with an explicit `version:`.
+3. Bump `DEFAULT_SCHEMA_VERSION` / `DEFAULT_VERSION_DIR` in `tools/build_sample_file.py`, and
+   the mirrored `DEFAULT_VERSION_DIR` in `tools/transform_schema.py` and
+   `tools/get_changed_pipeline_targets.py`.
+4. Add `schemas/<new-version>/Core-Model.xsd` to `core_schema_paths` in the config.
 
 ### Testing
 
@@ -158,6 +197,19 @@ To run unit tests locally:
 - First, ensure your environment for python is setup and running.
 - Then, run all the test scripts in the tests folder using this script:
   - `pytest tests/unit`
+
+#### End-to-End Pipeline Tests
+
+The coco-pipeline runs on pull request creation and uses a detect-changes script to determine which canonical models are affected. When schemas or `config/sample_builds.yaml` change, the pipeline runs for each affected target. It supports multiple schema changes in a single PR: each changed schema (or the shared Core-Model) is processed independently.
+
+For each target, the pipeline:
+
+1. Builds sample XML from the schema
+2. Validates the generated XML against the XSD schema
+3. Applies an XSLT transform to FHIR only if that schema has a transform configured (e.g. roster → Patient); targets without a transform skip this step
+4. Validates the FHIR output against the configured FHIR profile when a transform was applied
+
+So transforms and FHIR validation run only for schemas that have them configured; other targets are built and XSD-validated only.
 
 #### Integration Tests
 
@@ -192,6 +244,7 @@ All dependency management, project metadata, and tooling configuration are handl
 |---------|---------------|---------|
 | Install runtime dependencies | `pip install .` | `pip install .` |
 | Install with dev/test extras | `pip install .[dev]` | `pip install .[dev]` |
+| Install with API extras | `pip install .[api]` | `pip install .[api]` |
 | Run tests | `pytest` | `pytest` |
 
 Notes:
@@ -218,16 +271,82 @@ The sample file generation is now configuration-driven using YAML. Edit `config/
 | Purpose | macOS / Linux | Windows |
 |---------|----------------|---------|
 | Generate all samples from config | `python -m tools.build_all_sample_files` | `python -m tools.build_all_sample_files` |
+| Generate one schema version only | `python -m tools.build_all_sample_files --version v11.0` | same |
 | Use a custom config path | `python -m tools.build_all_sample_files --config path/to/file.yaml` | `python -m tools.build_all_sample_files --config path\to\file.yaml` |
+| Build + validate one canonical | `python tools/run_pipeline.py --target clinical@v11.0` | same |
+| Run all XSLT transforms (YAML-driven) | `python -m tools.transform_schema` | `python -m tools.transform_schema` |
+| Run all transforms for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd` | same |
+| Run one transform for one schema | `python -m tools.transform_schema --schema-name Provider-Directory.xsd --only-xslt Provider_Location.xsl` | same |
+| Single transform (optional XSD check) | `python -m tools.transform_schema --canonical-xml path/to/canonical.xml --xslt transforms/v10.0/foo.xsl --schema schemas/v10.0/Model.xsd` | same |
+| Alternate entry point  | `python -m tools.transform_roster` | `python -m tools.transform_roster` |
 
 YAML keys per build entry:
 
 - `canonical_name` (string)
+- `version` (string, optional) — the `schemas/` subfolder this build reads from. Omit for the current default (`v11.0`); set explicitly to pin an older line (e.g. `v10.0`). The same `canonical_name` may appear once per version, and samples are written to `canonical-samples/<version>/`.
 - `root_element_name` (string)
 - `schema_file_name` (string)
 - `output_file_name` (string)
-- `provider_directory_child` (string, optional)
+- `transform_dir` (string, optional) — folder-driven: runs every `*.xsl` in that folder (e.g. `transforms/v10.0/Clinical`)
+- `transform_file` / `transform_files` (optional) — a single XSLT, or an explicit list of `{transform_file, resource_type}`; combinable with `transform_dir`
+- `exclude` (list, optional) — glob patterns to skip in `transform_dir` discovery; `*_flat.xsl` is always skipped
+- `provider_directory_child` (string, optional) — only if you add multiple `providerdirectory` builds in YAML; the default is a single build and one file, `provider-directory-sample.xml`
 
+### Transforms directory layout
+
+XSLT transforms live under `transforms/<version>/`, organized into one subfolder per schema.
+They currently exist only for `v10.0` — **`v11.0` has no transforms yet**, so its pipeline runs
+build + XSD validation only, and the API's transform endpoints return nothing while `v11.0` is
+the configured version:
+
+```
+transforms/v10.0/
+├── Clinical/            # Clinical_*.xsl
+├── Core-Model/          # Insurance_*.xsl
+├── EOB/                 # EOB_*.xsl
+├── Formulary/           # Formulary_*.xsl
+├── Provider-Directory/  # Provider_*.xsl (+ roster lives under Roster/)
+└── Roster/              # Roster_*.xsl and roster-patient.xsl
+```
+
+Most builds are **folder-driven**: the build's `transform_dir` points at a schema folder and every
+`*.xsl` in it runs (in filename order) against that build's canonical sample. To add a transform,
+just drop the `.xsl` into the matching schema folder — no config edit needed. Use `transform_file` /
+`transform_files` (paths relative to the repo root, e.g.
+`transforms/v10.0/Provider-Directory/Provider_Location.xsl`) when you need a single transform, an
+explicit order, or a pinned `resource_type`. A transform that errors against the canonical is
+logged and skipped (the run still completes); `*_flat.xsl` helpers are never auto-run.
+
+Run them with the same `python -m tools.transform_schema` commands above:
+`tools.transform_schema` (all builds), `--schema-name Clinical.xsd` (one schema's whole folder), or
+`--schema-name Clinical.xsd --only-xslt Clinical_Patient.xsl` (a single transform in that folder).
+
+Note: a canonical XML sample uses the `http://cocodata.org` namespace, so a transform must be
+namespace-aware (declare `xpath-default-namespace="http://cocodata.org"`) to match the input —
+see the `Provider-Directory/` transforms for working examples.
+
+### HTTP API (for web app / other repo)
+
+A small FastAPI app exposes config, sample building, XSLT transform, and artifact listing/download over HTTP so another repo’s web app can list canonicals, generate samples, run transforms, and pull schemas/transforms/samples.
+
+The API serves one schema version at a time, following the sample builder's default (**`v11.0`**). Override per-deployment with the `COCO_SCHEMA_VERSION` env var (e.g. `COCO_SCHEMA_VERSION=v10.0`), which redirects `/schemas`, `/transforms`, and the canonical/FHIR sample directories together. `COCO_CANONICAL_SAMPLES_DIR` and `COCO_FHIR_SAMPLES_DIR` still override those two paths individually.
+
+**Run the API** (from project root, after `pip install .[api]`):
+
+| Purpose | Command |
+|---------|--------|
+| Start API server | `uvicorn api.main:app --reload` |
+| Start on a specific host/port | `uvicorn api.main:app --host 0.0.0.0 --port 8000` |
+
+- Docs (Swagger): **http://localhost:8000/docs**
+- Discovery: `GET /builds`, `GET /canonicals`, `GET /config`
+- Generate samples: `POST /samples/generate` (body: `{"target": "roster"}` or `{"all": true}`), `POST /samples/generate/{target}`, `POST /samples/generate/{target}/content`
+- Transform (canonical → FHIR): `POST /transform` (body: `{"target": "roster"}` or `{"canonical_file": "...", "xslt_file": "..."}`), `POST /transform/{target}`, `POST /transform/{target}/content`
+- List/download: `GET /samples`, `GET /samples/canonical`, `GET /samples/fhir`, `GET /schemas`, `GET /transforms`; download via `GET /samples/canonical/{filename}`, `GET /samples/fhir/{filename}`, `GET /schemas/{filename}`, `GET /transforms/{filename}`
+  - `GET /transforms` lists XSLT paths relative to `transforms/<version>/`, including the schema subfolder (e.g. `Clinical/Clinical_Patient.xsl`); `GET /transforms/{filename}` accepts that relative subpath (e.g. `GET /transforms/Clinical/Clinical_Patient.xsl`). Returns `[]` when the configured version has no transforms folder — which is the case for `v11.0` today.
+- Regenerate and serve: `GET /samples/canonical/{filename}/regenerate`
+
+Config path can be overridden with env `COCO_CONFIG_PATH`.
 
 ### Refresh python virtual environment
 
