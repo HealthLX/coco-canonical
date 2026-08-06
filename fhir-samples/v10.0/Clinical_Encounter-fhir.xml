@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Encounters>
+  <Encounter xmlns="http://hl7.org/fhir">
+    <id value="-girl"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
+    </meta>
+    <status value="onleave in-progress"/>
+    <class>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="probably wall"/>
+      <display value="probably wall"/>
+    </class>
+    <type>
+      <coding>
+        <system value="http://www.ama-assn.org/go/cpt"/>
+        <code value="morning"/>
+      </coding>
+    </type>
+    <type>
+      <coding>
+        <system value="http://www.ama-assn.org/go/cpt"/>
+        <code value="above"/>
+      </coding>
+    </type>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <participant>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/participant-type"/>
+          <code value="five"/>
+        </coding>
+      </type>
+      <period>
+        <start value="2013-10-28T02:02:52Z"/>
+        <end value="2010-04-12T17:58:14Z"/>
+      </period>
+      <individual/>
+    </participant>
+    <period>
+      <start value="2019-10-26T02:00:45Z"/>
+      <end value="2016-07-06T23:46:44Z"/>
+    </period>
+    <reasonCode>
+      <coding/>
+    </reasonCode>
+    <hospitalization>
+      <dischargeDisposition>
+        <coding>
+          <system value=""/>
+          <code value=""/>
+          <display value=""/>
+        </coding>
+      </dischargeDisposition>
+    </hospitalization>
+  </Encounter>
+  <Encounter xmlns="http://hl7.org/fhir">
+    <id value="-whole"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
+    </meta>
+    <status value="in-progress"/>
+    <class>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="wall"/>
+      <display value="wall"/>
+    </class>
+    <type>
+      <coding>
+        <system value="http://www.ama-assn.org/go/cpt"/>
+        <code value="above"/>
+      </coding>
+    </type>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <period>
+      <start value="2012-04-23T13:33:21Z"/>
+      <end value="2014-02-17T07:36:46Z"/>
+    </period>
+    <hospitalization>
+      <dischargeDisposition>
+        <coding>
+          <system value=""/>
+          <code value=""/>
+          <display value=""/>
+        </coding>
+      </dischargeDisposition>
+    </hospitalization>
+  </Encounter>
+</Encounters>

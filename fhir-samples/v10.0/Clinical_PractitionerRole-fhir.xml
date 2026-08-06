@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PractitionerRoles xmlns="http://hl7.org/fhir">
+  <PractitionerRole>
+    <id value="-into"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole"/>
+    </meta>
+    <practitioner>
+      <reference value="Practitioner/-1521796021"/>
+      <display value="American Indian or Alaska Native"/>
+    </practitioner>
+    <organization>
+      <reference value="Organization/-6121371259"/>
+      <display value="Lauren Davila"/>
+    </organization>
+    <code>
+      <coding>
+        <system value="http://nucc.org/provider-taxonomy"/>
+        <code value="fine"/>
+      </coding>
+    </code>
+    <specialty>
+      <coding>
+        <system value="http://nucc.org/provider-taxonomy"/>
+        <code value="challenge"/>
+      </coding>
+    </specialty>
+    <location>
+      <identifier>
+        <value value="way"/>
+      </identifier>
+    </location>
+    <telecom>
+      <system value="url"/>
+      <value value="news"/>
+      <use value="old"/>
+      <rank value="4"/>
+      <period>
+        <start value="2014-06-03T23:24:34Z"/>
+        <end value="2010-08-30T09:57:59Z"/>
+      </period>
+    </telecom>
+    <endpoint>
+      <identifier>
+        <value value="American"/>
+      </identifier>
+      <display value="Olivia Weber"/>
+    </endpoint>
+  </PractitionerRole>
+</PractitionerRoles>

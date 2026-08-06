@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Organization xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-training"/>
+  <meta>
+    <source value=""/>
+  </meta>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="2102113549"/>
+  </identifier>
+  <identifier>
+    <system value="https://data.healthlx.com/ID-"/>
+    <value value="-training"/>
+  </identifier>
+  <identifier>
+    <id value="4455ca14-9ce4-4c1b-898b-a7604bc0364d"/>
+    <system value="http://terminology.hl7.org/NamingSystem/CLIA"/>
+    <value value="town"/>
+  </identifier>
+  <active value="true"/>
+  <type>
+    <coding>
+      <system value="http://hl7.org/fhir/us/davinci-pdex-plan-net/CodeSystem/OrgTypeCS"/>
+      <code value="atyprv"/>
+      <display value="Atypical Provider"/>
+    </coding>
+  </type>
+  <name value="Darrell Wong"/>
+  <telecom>
+    <system value="other"/>
+    <value value="reach"/>
+    <use value="mobile"/>
+    <rank value="2"/>
+    <period>
+      <start value="2013-05-27T00:09:45Z"/>
+      <end value="2020-07-21T20:39:36Z"/>
+    </period>
+  </telecom>
+  <address>
+    <use value="billing"/>
+    <type value="physical"/>
+    <text value="American Indian or Alaska Native"/>
+    <line value="7812 Melissa Isle Apt. 401"/>
+    <city value="West Anthonyside"/>
+    <state value="MN"/>
+    <postalCode value="77013"/>
+    <country value="MH"/>
+    <district value="beat"/>
+    <period>
+      <start value="2018-07-23T10:23:22Z"/>
+      <end value="2013-10-15T16:06:40Z"/>
+    </period>
+  </address>
+  <partOf>
+    <reference>
+      <type>Organization</type>
+      <identifier>
+        <type>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+            <code value="NPI"/>
+            <display value="National Provider Identifier"/>
+          </coding>
+        </type>
+        <system value="http://hl7.org/fhir/sid/us-npi"/>
+        <value value="6657287156"/>
+      </identifier>
+      <display value="Dawn Smith"/>
+    </reference>
+  </partOf>
+  <contact>
+    <purpose value="PAYOR"/>
+    <name>
+      <use value="usual"/>
+      <text value="American Indian or Alaska Native"/>
+      <family value="Hughes"/>
+      <given value=""/>
+      <prefix value=""/>
+    </name>
+    <telecom>
+      <system value="fax"/>
+      <value value="institution"/>
+      <use value="mobile"/>
+    </telecom>
+    <address>
+      <use value="old"/>
+      <use value="both"/>
+      <text value="American Indian or Alaska Native"/>
+      <line value="448 Walker Bypass Apt. 080"/>
+      <city value="New Jacobfurt"/>
+      <state value="LA"/>
+      <postalCode value="94316"/>
+      <country value="GQ"/>
+      <district value="possible"/>
+      <period>
+        <start value="2017-11-30T13:09:12Z"/>
+        <end value="2016-10-16T07:28:47Z"/>
+      </period>
+    </address>
+  </contact>
+</Organization>

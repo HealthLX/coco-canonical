@@ -20,6 +20,7 @@ from .core_model import (
 )
 from .markdown_gen import (
     to_md_table,
+    generate_front_matter,
     generate_header,
     generate_hlx_tbl_format,
     generate_toc,
@@ -60,6 +61,7 @@ __all__ = [
     'generate_core_types_section',
     # Markdown Generation
     'to_md_table',
+    'generate_front_matter',
     'generate_hlx_tbl_format',
     'generate_header',
     'generate_toc',

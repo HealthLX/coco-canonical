@@ -25,8 +25,9 @@ if str(project_root) not in sys.path:
 
 # Import project modules
 from tools.build_all_sample_files import build_sample_file
+from tools.build_sample_file import DEFAULT_VERSION_DIR
 from tools.validate_xml import validate_xml
-from tools.transform_roster import apply_xslt
+from tools.transform_schema import apply_xslt, fhir_output_name, transform_specs_from_build
 
 
 VALIDATOR_URL = "http://localhost:4567/validate"
@@ -34,38 +35,62 @@ VALIDATOR_HEALTH_URL = "http://localhost:4567/health"
 IGS_URL = "http://localhost:4567/igs"
 
 
-def find_build_config(config_path, target_name):
+def build_token(build):
+    """Unique pipeline token for a build entry, e.g. 'roster@v11.0'."""
+    return f"{build.get('canonical_name', '')}@{build.get('version') or DEFAULT_VERSION_DIR}"
+
+
+def find_build_config(config_path, target_name, version=None):
     """
     Find build configuration for a target canonical name (case-insensitive).
-    
+
+    The same canonical_name can appear once per schema version, so a bare name is only
+    accepted when it resolves to exactly one build. Pass version (or use the
+    'name@version' target form) to disambiguate.
+
     Args:
         config_path: Path to sample_builds.yaml
-        target_name: Canonical name to find (case-insensitive)
-        
+        target_name: Canonical name to find (case-insensitive), optionally 'name@version'
+        version: Schema version folder (e.g. 'v11.0'); overridden by an '@' in target_name
+
     Returns:
         dict: Build configuration entry
-        
+
     Raises:
-        ValueError: If target not found or config invalid
+        ValueError: If target not found, ambiguous, or config invalid
     """
     with open(config_path, 'r', encoding='utf-8') as f:
         cfg = yaml.safe_load(f) or {}
-    
+
     builds = cfg.get("builds", [])
     if not builds:
         raise ValueError("No 'builds' entries found in config YAML")
-    
+
+    if "@" in target_name:
+        target_name, version = target_name.split("@", 1)
+
     # Case-insensitive search
     target_lower = target_name.lower()
-    for build in builds:
-        canonical_name = build.get("canonical_name", "").lower()
-        if canonical_name == target_lower:
-            return build
-    
-    available = [b.get("canonical_name") for b in builds]
+    matches = [
+        b for b in builds
+        if b.get("canonical_name", "").lower() == target_lower
+        and (version is None or (b.get("version") or DEFAULT_VERSION_DIR) == version)
+    ]
+
+    if len(matches) == 1:
+        return matches[0]
+
+    if not matches:
+        available = sorted(build_token(b) for b in builds)
+        raise ValueError(
+            f"Target '{target_name}' not found in config. "
+            f"Available targets: {', '.join(available)}"
+        )
+
+    ambiguous = sorted(build_token(b) for b in matches)
     raise ValueError(
-        f"Target '{target_name}' not found in config. "
-        f"Available targets: {', '.join(available)}"
+        f"Target '{target_name}' matches multiple builds. "
+        f"Re-run with --version, or use one of: {', '.join(ambiguous)}"
     )
 
 
@@ -244,7 +269,16 @@ Examples:
     parser.add_argument(
         "--target",
         required=True,
-        help="Canonical name of the target model (case-insensitive, e.g., 'roster', 'eob')"
+        help=(
+            "Canonical name of the target model (case-insensitive, e.g., 'roster', 'eob'). "
+            "Use 'name@version' (e.g., 'roster@v11.0') when the name exists in more than one "
+            "schema version."
+        )
+    )
+    parser.add_argument(
+        "--version",
+        default=None,
+        help="Schema version folder to build (e.g., 'v11.0'). Alternative to the 'name@version' form."
     )
     parser.add_argument(
         "--config",
@@ -252,7 +286,7 @@ Examples:
         default=None,
         help="Path to sample_builds.yaml (default: config/sample_builds.yaml)"
     )
-    
+
     args = parser.parse_args()
     
     # Determine project root and config path (project_root already set at module level)
@@ -264,22 +298,24 @@ Examples:
     
     # Find build configuration
     try:
-        build_config = find_build_config(config_path, args.target)
+        build_config = find_build_config(config_path, args.target, version=args.version)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
-    
+
+    version = build_config.get("version") or DEFAULT_VERSION_DIR
+
     print("=" * 70)
-    print(f"CoCo Pipeline: {build_config['canonical_name']}")
+    print(f"CoCo Pipeline: {build_config['canonical_name']} ({version})")
     print("=" * 70)
-    
+
     # Verify XSD file exists before building
-    xsd_path = project_root / "schemas" / "v10.0" / build_config["schema_file_name"]
+    xsd_path = project_root / "schemas" / version / build_config["schema_file_name"]
     if not xsd_path.exists():
         print(f"✗ Error: XSD schema file not found: {xsd_path}", file=sys.stderr)
-        print(f"   Resolved from: schemas/v10.0/{build_config['schema_file_name']}", file=sys.stderr)
+        print(f"   Resolved from: schemas/{version}/{build_config['schema_file_name']}", file=sys.stderr)
         sys.exit(1)
-    
+
     # Step A: Build sample file
     print("\n[Step A] Building sample XML...")
     try:
@@ -288,7 +324,8 @@ Examples:
             root_element_name=build_config["root_element_name"],
             schema_file_name=build_config["schema_file_name"],
             output_file_name=build_config["output_file_name"],
-            provider_directory_child=build_config.get("provider_directory_child")
+            provider_directory_child=build_config.get("provider_directory_child"),
+            version=version
         )
         print("✓ Sample XML generated successfully")
     except Exception as e:
@@ -297,7 +334,7 @@ Examples:
     
     # Step B: Validate XSD
     print("\n[Step B] Validating XML against XSD schema...")
-    xml_path = project_root / "canonical-samples" / "v10.0" / build_config["output_file_name"]
+    xml_path = project_root / "canonical-samples" / version / build_config["output_file_name"]
     
     if not xml_path.exists():
         print(f"✗ Error: Generated XML file not found: {xml_path}", file=sys.stderr)
@@ -321,63 +358,63 @@ Examples:
         print(f"✗ Error during XSD validation: {e}", file=sys.stderr)
         sys.exit(1)
     
-    # Step C: Transform and validate FHIR (if transform exists)
-    transform_file = build_config.get("transform_file")
+    # Step C: Transform to FHIR (and validate when fhir_profile is set)
+    transform_specs = transform_specs_from_build(build_config)
     fhir_profile = build_config.get("fhir_profile")
-    
-    if transform_file and transform_file != "null" and fhir_profile and fhir_profile != "null":
-        print("\n[Step C] Transform and FHIR validation...")
-        
-        transform_path = project_root / transform_file
-        if not transform_path.exists():
-            print(f"✗ Transform file not found: {transform_path}", file=sys.stderr)
-            sys.exit(1)
-        
-        # Check and start Docker if needed
-        docker_started = False
-        if not check_docker_running():
-            print("Error: Docker is not running. Please start Docker and try again.", file=sys.stderr)
-            sys.exit(1)
-        
-        if not check_container_running():
-            if not start_docker_container():
-                print("Warning: Could not start Docker container. Continuing anyway...")
-            else:
-                docker_started = True
-                if not wait_for_validator():
+
+    if transform_specs:
+        print("\n[Step C] XSLT -> FHIR samples...")
+        fhir_dir = project_root / "fhir-samples" / version
+        fhir_dir.mkdir(parents=True, exist_ok=True)
+
+        for tf in transform_specs:
+            transform_path = project_root / tf
+            if not transform_path.exists():
+                print(f"✗ Transform file not found: {transform_path}", file=sys.stderr)
+                sys.exit(1)
+            out_name = fhir_output_name(tf, provider_variant=build_config.get("provider_directory_child"))
+            fhir_out = fhir_dir / out_name
+            print(f"\n  Applying {tf} -> {out_name}")
+            try:
+                apply_xslt(
+                    str(project_root),
+                    str(xml_path),
+                    str(transform_path),
+                    str(fhir_out),
+                )
+                print("  ✓ Transformation successful")
+            except Exception as e:
+                print(f"  ✗ Transformation failed: {e}", file=sys.stderr)
+                sys.exit(1)
+
+        if fhir_profile and fhir_profile != "null" and len(transform_specs) == 1:
+            print("\n[Step C continued] FHIR validation (single transform + profile)...")
+            if not check_docker_running():
+                print("Error: Docker is not running. Please start Docker and try again.", file=sys.stderr)
+                sys.exit(1)
+
+            if not check_container_running():
+                if not start_docker_container():
+                    print("Warning: Could not start Docker container. Continuing anyway...")
+                elif not wait_for_validator():
                     print("Warning: Validator service did not become ready. Continuing anyway...")
-        
-        # Load FHIR package
-        load_fhir_package(project_root)
-        
-        # Run transform
-        print(f"\n  Applying XSLT transform: {transform_file}")
-        try:
-            fhir_xml = apply_xslt(
-                str(project_root),
-                str(xml_path),
-                str(transform_path),
-                output_file=None
+
+            load_fhir_package(project_root)
+            fhir_xml_path = fhir_dir / fhir_output_name(
+                transform_specs[0], provider_variant=build_config.get("provider_directory_child")
             )
-            print("  ✓ Transformation successful")
-        except Exception as e:
-            print(f"  ✗ Transformation failed: {e}", file=sys.stderr)
-            sys.exit(1)
-        
-        # Validate FHIR
-        print(f"\n  Validating FHIR against profile: {fhir_profile}")
-        has_errors, _ = validate_fhir(fhir_xml, fhir_profile)
-        
-        if has_errors:
-            print("  ⚠ FHIR validation found errors (see above)")
-            # Don't fail CI for FHIR validation errors - just warn
-            # Uncomment next line if you want to fail on FHIR errors:
-            # sys.exit(1)
-        else:
-            print("  ✓ FHIR validation passed (no errors)")
-        
+            fhir_xml = fhir_xml_path.read_text(encoding="utf-8")
+            print(f"\n  Validating FHIR against profile: {fhir_profile}")
+            has_errors, _ = validate_fhir(fhir_xml, fhir_profile)
+
+            if has_errors:
+                print("  ⚠ FHIR validation found errors (see above)")
+            else:
+                print("  ✓ FHIR validation passed (no errors)")
+        elif fhir_profile and fhir_profile != "null" and len(transform_specs) > 1:
+            print("\n  (Skipping automated FHIR validation: multiple transforms; no single profile.)")
     else:
-        print("\n[Step C] Skipping transform (no transform_file configured)")
+        print("\n[Step C] Skipping transform (no transform_file / transform_files configured)")
     
     print("\n" + "=" * 70)
     print("Pipeline completed successfully!")

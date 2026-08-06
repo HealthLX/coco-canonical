@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InsurancePlan xmlns="http://hl7.org/fhir">
+  <id value="-next"/>
+  <meta xmlns="">
+    <source value=""/>
+    <profile value="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem"/>
+  </meta>
+  <identifier>
+    <system value="https://data.healthlx.com/-FormularyPlanID"/>
+    <value value="-next"/>
+  </identifier>
+  <status value="active"/>
+  <type>
+    <system value="http://terminology.hl7.org/CodeSystem/insurance-plan-type"/>
+    <value value="Drug"/>
+  </type>
+  <name value="feeling"/>
+  <period/>
+  <ownedBy>
+    <reference value="Organization/-"/>
+  </ownedBy>
+  <coverageArea/>
+  <contact/>
+  <endpoint/>
+</InsurancePlan>

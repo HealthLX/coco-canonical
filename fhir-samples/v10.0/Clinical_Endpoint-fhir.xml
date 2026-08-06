@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Endpoints>
+  <Endpoint xmlns="http://hl7.org/fhir">
+    <id value="-intoAmericanihe-xca"/>
+    <identifier>
+      <type>
+        <coding>
+          <code value="country"/>
+        </coding>
+      </type>
+      <value value="American"/>
+    </identifier>
+    <status value="active"/>
+    <connectionType>
+      <system value="http://terminology.hl7.org/CodeSystem/endpoint-connection-type"/>
+      <code value="ihe-xca"/>
+    </connectionType>
+    <name value="Olivia Weber"/>
+    <managingOrganization>
+      <reference value="Organization/-8574935070"/>
+    </managingOrganization>
+    <contact>
+      <system value="email"/>
+      <value value="any"/>
+      <use value="home"/>
+      <rank value="1"/>
+      <period>
+        <start value="2013-05-15T09:51:00Z"/>
+        <end value="2016-05-13T06:43:43Z"/>
+      </period>
+    </contact>
+    <period>
+      <start value="2019-11-30T18:26:30Z"/>
+      <end value="2018-09-15T12:47:01Z"/>
+    </period>
+    <payloadType>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/endpoint-payload-type"/>
+        <code value="history"/>
+      </coding>
+    </payloadType>
+    <payloadMimeType>
+      <code value="listen"/>
+    </payloadMimeType>
+    <address value="so"/>
+    <header value="guess"/>
+  </Endpoint>
+</Endpoints>

@@ -2,7 +2,7 @@ import requests
 import os
 import json
 from pathlib import Path
-from tools.transform_roster import apply_xslt
+from tools.transform_schema import apply_xslt
 
 # The URL of your local sidecar service
 VALIDATOR_URL = "http://localhost:4567/validate"
@@ -19,7 +19,7 @@ def test_patient_validation():
     project_root = Path(__file__).parent.parent.parent
     base_dir = str(project_root)
     roster_xml = os.path.join(base_dir, "canonical-samples/v10.0/roster-sample.xml")
-    xslt_file = os.path.join(base_dir, "transforms/v10.0/roster-patient.xsl")
+    xslt_file = os.path.join(base_dir, "transforms/v10.0/Roster/roster-patient.xsl")
     
     print("=" * 60)
     print("FHIR Validator Test - Roster to Patient Transform")

@@ -26,21 +26,35 @@ def escape_markdown_table_cell(text):
     text = text.replace("\n", " ")
     return text
 
+def generate_front_matter(schema_info: SchemaInfo):
+    """Generate Jekyll front matter so GitHub Pages applies the default layout."""
+    title = f"{schema_info.display_name} Implementation Guide"
+    return f"---\nlayout: default\ntitle: \"{title}\"\n---\n\n"
+
+
 def generate_hlx_tbl_format():
     """Generate HLX style for markdown tables."""
     return ""
 
 
 def to_md_table(headers, rows):
-    """Generate markdown table with proper escaping."""
+    """Generate markdown table with proper escaping.
+
+    Uses a kramdown IAL ({: .heatMap}) instead of a wrapping <div> so that
+    GitHub Pages / kramdown actually processes the pipe-table syntax rather
+    than treating it as raw HTML content.
+    """
     if not headers:
         return ""
-    
+
     # Escape headers
     escaped_headers = [escape_markdown_table_cell(h) for h in headers]
     out = "| " + " | ".join(escaped_headers) + " |\n"
     out += "| " + " | ".join(['---'] * len(headers)) + " |\n"
-    
+
+    if not rows:
+        return out + "{: .heatMap}\n\n"
+
     # Escape and format rows
     for row in rows:
         # Ensure row has same number of columns as headers
@@ -48,11 +62,12 @@ def to_md_table(headers, rows):
             row.append("–")
         if len(row) > len(headers):
             row = row[:len(headers)]
-        
+
         escaped_row = [escape_markdown_table_cell(cell) for cell in row]
         out += "| " + " | ".join(escaped_row) + " |\n"
-        html_out = "<div class = \"heatMap\">\n\n" + out + "\n\n</div>\n\n"
-    return html_out
+
+    # IAL must be on the line immediately following the last table row (no blank line)
+    return out + "{: .heatMap}\n\n"
 
 
 def generate_header(root, schema_info: SchemaInfo):
@@ -63,7 +78,7 @@ def generate_header(root, schema_info: SchemaInfo):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
     
-    output = "![HLX Logo](../assets/hlx_logo.png)\n\n"
+    output = "![HLX Logo](assets/css/hlx_logo.png)\n\n"
     output += f"# {schema_info.display_name} Implementation Guide\n\n"
     output += f"**HLX0123 HLX {schema_info.display_name} IG (XSD_V{version})**\n\n"
     output += f"**Version {version}**\n\n"
@@ -110,7 +125,7 @@ def generate_disclaimer():
 
 def generate_overview(schema_info: SchemaInfo):
     """Generate overview section explaining the guide's purpose and XML format matching PDF style."""
-    output = "<h2 style=\"color:#E60073\">Overview</h2>\n\n"
+    output = "<h2 id=\"overview\" style=\"color:#E60073\">Overview</h2>\n\n"
     output += f"This implementation guide provides field mappings and requirements for HealthLX {schema_info.display_name} data submissions in XML format based on FHIR R4 standards. "
     output += "XML format enables structured data exchange with built-in validation against the provided XSD schema.\n\n"
     
@@ -119,7 +134,7 @@ def generate_overview(schema_info: SchemaInfo):
 
 def generate_encoding(schema_info: SchemaInfo):
     """Generate encoding section for UTF-8 requirement."""
-    output = "<h2 style=\"color:#E60073\">Encoding</h2>\n\n"
+    output = "<h2 id=\"encoding\" style=\"color:#E60073\">Encoding</h2>\n\n"
     output += "Payers need to send their files with utf-8 encoding as shown below:\n\n"
     output += "```xml\n"
     output += "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -130,7 +145,7 @@ def generate_encoding(schema_info: SchemaInfo):
 
 def generate_interoperability():
     """Generate interoperability section with FHIR reference."""
-    output = "<h2 style=\"color:#E60073\">Interoperability</h2>\n\n"
+    output = "<h2 id=\"interoperability\" style=\"color:#E60073\">Interoperability</h2>\n\n"
     output += "This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. "
     output += "For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/\n\n"
     
@@ -151,19 +166,18 @@ def generate_change_log(schema_info: SchemaInfo, release_tag=None):
     # Format date with proper month name and no leading zeros
     date_str = datetime.today().strftime('%B %d, %Y').replace(' 0', ' ')
 
-    output = "<h2 style=\"color:#E60073\">Change Log</h2>\n\n"
-    output += "<div class = \"heatMap\">\n\n"
+    output = "<h2 id=\"change-log\" style=\"color:#E60073\">Change Log</h2>\n\n"
     output += "| Version | Date |\n"
     output += "|---------|------|\n"
-    output += f"| {version} | {date_str} |\n\n"
-    output += "</div>\n\n"
+    output += f"| {version} | {date_str} |\n"
+    output += "{: .heatMap}\n\n"
     
     return output
 
 
 def generate_practical_guidance(schema_info: SchemaInfo):
     """Generate practical guidance section for submission frequency, adds/updates/deletes, member identification."""
-    output = "<h2 style=\"color:#E60073\">Practical Guidance</h2>\n\n"
+    output = "<h2 id=\"practical-guidance\" style=\"color:#E60073\">Practical Guidance</h2>\n\n"
     output += "<h3 style=\"color:#E60073\">Submission Frequency</h3>\n\n"
     output += f"{schema_info.display_name} files should be submitted according to the schedule agreed upon with HealthLX. "
     output += "Typical submission frequencies include daily, weekly, or monthly updates.\n\n"
@@ -233,7 +247,9 @@ def get_section_title(parent_name: str) -> str:
 
 def generate_element_table(title, elements, schema_info: SchemaInfo):
     """Generate element table with 6 columns: Name, Parent, Cardinality, Description, Examples, Data Type."""
-    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
+    schema_anchor = schema_info.display_name.lower().replace(' ', '-')
+    section_id = f"required-elements-of-{schema_anchor}-xsd"
+    output = f"<h2 id=\"{section_id}\" style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"
@@ -286,7 +302,9 @@ def get_top_level_section(element_name: str, parent_name: str, current_section: 
 
 def generate_element_table_with_sections(title, elements, schema_info: SchemaInfo):
     """Generate element table with section headers grouping elements by clinical purpose."""
-    output = f"<h2 style=\"color:#E60073\">{title}</h2>\n\n"
+    schema_anchor = schema_info.display_name.lower().replace(' ', '-')
+    section_id = f"all-elements-of-{schema_anchor}-xsd"
+    output = f"<h2 id=\"{section_id}\" style=\"color:#E60073\">{title}</h2>\n\n"
     
     if not elements:
         output += "No elements found.\n\n"

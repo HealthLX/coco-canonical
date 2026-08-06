@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiagnosticReports>
+  <DiagnosticReport xmlns="http://hl7.org/fhir">
+    <id value="-open"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-notes"/>
+    </meta>
+    <contained>
+      <Practitioner xmlns="">
+        <id value="Brown-performerPractitionerDerived1"/>
+        <name>
+          <use value="official"/>
+          <family value="Brown"/>
+          <given value="Kristi"/>
+          <prefix value="Mrs."/>
+          <suffix value="MD"/>
+        </name>
+      </Practitioner>
+    </contained>
+    <status value="entered-in-error"/>
+    <category>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="LALP7839-6B"/>
+        <display value="LALP7839-6B"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="modern"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2012-04-14T17:30:58Z"/>
+    <issued value="2015-06-14T08:36:34Z"/>
+    <performer>
+      <reference value="#Brown-performerPractitionerDerived1"/>
+      <display value="Brown"/>
+    </performer>
+    <presentedForm>
+      <contentType value="computer"/>
+      <data value="Y2hhbmdl"/>
+    </presentedForm>
+  </DiagnosticReport>
+</DiagnosticReports>

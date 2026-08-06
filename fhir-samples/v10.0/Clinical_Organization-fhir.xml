@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Organizations xmlns="http://hl7.org/fhir">
+  <Organization>
+    <id value="-method"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"/>
+    </meta>
+    <identifier>
+      <system value="http://hl7.org/fhir/sid/us-npi"/>
+      <value value="4151542711"/>
+    </identifier>
+    <identifier>
+      <system value="urn:oid:2.16.840.1.113883.4.7"/>
+      <value value="ago"/>
+    </identifier>
+    <active value="true"/>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+        <code value="prov"/>
+        <display value="Healthcare Provider"/>
+      </coding>
+    </type>
+    <name value="Charles Mays"/>
+    <telecom>
+      <system value="url"/>
+      <value value="usually"/>
+      <use value="temp"/>
+      <rank value="1"/>
+      <period>
+        <start value="2015-10-03T23:48:44Z"/>
+        <end value="2017-12-05T01:35:46Z"/>
+      </period>
+    </telecom>
+    <address>
+      <use value="billing"/>
+      <line value="20473 Brown Freeway"/>
+      <city value="Perezmouth"/>
+      <district value="past"/>
+      <state value="PR"/>
+      <postalCode value="53099"/>
+      <country value="USA"/>
+    </address>
+  </Organization>
+  <Organization>
+    <id value="-6121371259-here"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"/>
+    </meta>
+    <identifier>
+      <system value="http://hl7.org/fhir/sid/us-npi"/>
+      <value value="6121371259"/>
+    </identifier>
+    <identifier>
+      <system value="urn:oid:2.16.840.1.113883.4.7"/>
+      <value value="here"/>
+    </identifier>
+    <active value="true"/>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+        <code value="prov"/>
+        <display value="Healthcare Provider"/>
+      </coding>
+    </type>
+    <name value="Lauren Davila"/>
+    <telecom>
+      <system value="other"/>
+      <value value="per"/>
+      <use value="home"/>
+      <rank value="1"/>
+      <period>
+        <start value="2011-10-18T18:55:52Z"/>
+        <end value="2020-05-30T18:35:27Z"/>
+      </period>
+    </telecom>
+    <address>
+      <use value="home"/>
+      <line value="7666 Keith Cove Apt. 121"/>
+      <city value="New Jessica"/>
+      <district value="scene"/>
+      <state value="AZ"/>
+      <postalCode value="15695"/>
+      <country value="USA"/>
+    </address>
+  </Organization>
+</Organizations>

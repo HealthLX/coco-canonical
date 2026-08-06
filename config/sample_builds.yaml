@@ -1,57 +1,126 @@
 # Sample file builder configuration (single source of truth)
 # - Builds: each entry describes a sample XML file to generate from a canonical XSD.
 # - Pipeline: schema paths and transforms are derived from this file (see tools/get_changed_pipeline_targets.py).
-#   To add a new schema: add a build entry below. To add a transform: set transform_file and fhir_profile for that build.
+#   To add a new schema: add a build entry below.
+#
+# Configuring transforms for a build (all optional, combinable; deduped by path):
+#   transform_dir:   folder under the repo; runs every *.xsl in it (sorted). Folder-driven default —
+#                    drop a new .xsl into the schema folder and it runs, no config edit needed.
+#   transform_file:  a single XSLT path.
+#   transform_files: an explicit list of {transform_file, resource_type}; use it to pin a
+#                    resource_type (overrides the filename-stem default, even for a transform_dir
+#                    match) or to include a transform from outside the folder.
+#   exclude:         glob patterns to skip during transform_dir discovery (e.g. ["*_old.xsl"]).
+#                    "*_flat.xsl" (flattening/preprocessing helpers) is always skipped.
+# Set fhir_profile to enable FHIR validation (and Docker) for that target in the CI pipeline.
+# Unadapted transforms that error are skipped (logged), not fatal, so a folder run still completes.
+#
+# version: the schemas/ subfolder a build reads from. Omit it for the current default
+#   (v11.0 — see tools/build_sample_file.py DEFAULT_VERSION_DIR); set it explicitly to pin an
+#   older line. The same canonical_name may appear once per version; the pipeline addresses a
+#   build as "canonical_name@version" (e.g. roster@v10.0), and samples are written to
+#   canonical-samples/<version>/.
 
-core_schema_path: schemas/v10.0/Core-Model.xsd  # when this file changes, pipeline runs for all targets
+# When one of these changes, the pipeline runs every target of that same version.
+core_schema_paths:
+  - schemas/v11.0/Core-Model.xsd
+  - schemas/v10.0/Core-Model.xsd
 
 builds:
-  # Provider Directory - practitioner
-  - canonical_name: providerdirectory
-    root_element_name: providers
-    schema_file_name: Provider-Directory.xsd
-    output_file_name: provider-directory-practitioner-sample.xml
-    provider_directory_child: practitioner
-    transform_file: null
-    fhir_profile: null
+  # ---------------------------------------------------------------------------
+  # v11.0 — current default. Re-pulled from hlx-saas (USCDI v3).
+  # No transforms yet, so the pipeline runs build + XSD validation only.
+  # ---------------------------------------------------------------------------
 
-  # Provider Directory - providing_organization
-  - canonical_name: providerdirectory
-    root_element_name: providers
-    schema_file_name: Provider-Directory.xsd
-    output_file_name: provider-directory-organization-sample.xml
-    provider_directory_child: providing_organization
-    transform_file: null
-    fhir_profile: null
-
-  # Roster
   - canonical_name: roster
     root_element_name: roster
     schema_file_name: Roster.xsd
     output_file_name: roster-sample.xml
-    transform_file: transforms/v10.0/roster-patient.xsl
-    fhir_profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    fhir_profile: null
 
-  # Formulary
+  # Provider Directory — single canonical file (practitioner and providing_organization rows)
+  - canonical_name: providerdirectory
+    root_element_name: providers
+    schema_file_name: Provider-Directory.xsd
+    output_file_name: provider-directory-sample.xml
+    fhir_profile: null
+
   - canonical_name: formulary
     root_element_name: coverage_plans
     schema_file_name: Formulary.xsd
     output_file_name: formulary-sample.xml
-    transform_file: null
     fhir_profile: null
 
-  # Explanation of Benefits (EOB)
   - canonical_name: eob
     root_element_name: eob_list
     schema_file_name: EOB.xsd
     output_file_name: eob-sample.xml
-    transform_file: null
     fhir_profile: null
 
-  # Clinical
   - canonical_name: clinical
     root_element_name: clinicals
     schema_file_name: Clinical.xsd
     output_file_name: clinical-sample.xml
+    fhir_profile: null
+
+  # ---------------------------------------------------------------------------
+  # v10.0 — previous line, pinned explicitly. Carries the XSLT transforms.
+  # ---------------------------------------------------------------------------
+
+  # Provider Directory — single canonical file (practitioner and providing_organization rows, like customer submissions)
+  - canonical_name: providerdirectory
+    version: v10.0
+    root_element_name: providers
+    schema_file_name: Provider-Directory.xsd
+    output_file_name: provider-directory-sample.xml
     transform_file: null
+    transform_files:
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Practitioner.xsl
+        resource_type: Practitioner
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_PractitionerRole.xsl
+        resource_type: PractitionerRole
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Organization.xsl
+        resource_type: Organization
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_Location.xsl
+        resource_type: Location
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_HealthcareService.xsl
+        resource_type: HealthcareService
+      - transform_file: transforms/v10.0/Provider-Directory/Provider_OrganizationAffiliation.xsl
+        resource_type: OrganizationAffiliation
+    fhir_profile: null
+
+  # Roster (canonical from Roster.xsd)
+  - canonical_name: roster
+    version: v10.0
+    root_element_name: roster
+    schema_file_name: Roster.xsd
+    output_file_name: roster-sample.xml
+    transform_file: transforms/v10.0/Roster/roster-patient.xsl
+    fhir_profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+
+  # Formulary — folder-driven: every transforms/v10.0/Formulary/*.xsl runs against the sample
+  - canonical_name: formulary
+    version: v10.0
+    root_element_name: coverage_plans
+    schema_file_name: Formulary.xsd
+    output_file_name: formulary-sample.xml
+    transform_dir: transforms/v10.0/Formulary
+    fhir_profile: null
+
+  # Explanation of Benefits (EOB) — folder-driven
+  - canonical_name: eob
+    version: v10.0
+    root_element_name: eob_list
+    schema_file_name: EOB.xsd
+    output_file_name: eob-sample.xml
+    transform_dir: transforms/v10.0/EOB
+    fhir_profile: null
+
+  # Clinical — folder-driven
+  - canonical_name: clinical
+    version: v10.0
+    root_element_name: clinicals
+    schema_file_name: Clinical.xsd
+    output_file_name: clinical-sample.xml
+    transform_dir: transforms/v10.0/Clinical
     fhir_profile: null

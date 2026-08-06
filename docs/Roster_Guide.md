@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Roster Implementation Guide"
+---
+
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Roster Implementation Guide
 
@@ -6,7 +11,7 @@
 
 **Version 10.0**
 
-**February 6, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -24,15 +29,11 @@
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-<h2 style="color:#E60073">Overview</h2>
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Roster data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-<h2 style="color:#E60073">Overview</h2>
-
-This implementation guide provides field mappings and requirements for HealthLX Roster data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
-
-<h2 style="color:#E60073">Encoding</h2>
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -40,23 +41,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<h2 style="color:#E60073">Interoperability</h2>
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-<h2 style="color:#E60073">Change Log</h2>
-
-<div class = "heatMap">
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | February 6, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-</div>
-
-<h2 style="color:#E60073"> Simple Types</h2>
-
-<div class = "heatMap">
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -66,59 +62,43 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | integer | xs:integer | – | [0]\|[-+]?[1-9][0-9]* |
 | date | xs:date | – | ([12]\d{3}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])) |
 | dateTime | xs:string | – | ([12]\d{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])(T([01][0-9]\|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z\|(\+\|-)((0[0-9]\|1[0-3]):(00\|15\|30\|45)\|14:00))?))? |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073"> Complex Types</h2>
+<h2 id="complex-types" style="color:#E60073"> Complex Types</h2>
 
 <h3 style="color:#E60073">period</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | start | xs:dateTime | 0 | 1 | – |
 | end | xs:dateTime | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">period_date</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | start | xs:date | 0 | 1 | – |
 | end | xs:date | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">identifier</h3>
 
-<div class = "heatMap">
-
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | xs:string | 1 | 1 | – |
 | type | xs:string | 1 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">organization</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -132,15 +112,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">telecom</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -149,15 +125,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | use | – | 0 | 1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html |
 | rank | positiveInt | 0 | 1 | Specify preferred order of use (1 = highest) |
 | period | period | 0 | 1 | Time period when the contact point was/is in use |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">address</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -171,15 +143,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | postal_code | string | 0 | 1 | The postal code or post code of the address. The postal code supports an unlimited amount of numbers and letters. |
 | country | xs:string | 0 | 1 | Country (e.g. can be ISO 3166 2 or 3 letter code) |
 | period | period | 0 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
 <h3 style="color:#E60073">codeableConcept</h3>
-
-<div class = "heatMap">
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -188,15 +156,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | system | xs:anyURI | 1 | 1 | – |
 | display | xs:string | 1 | 1 | – |
 | text | xs:string | 1 | 1 | – |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Required Elements of Roster XSD</h2>
-
-<div class = "heatMap">
+<h2 id="required-elements-of-roster-xsd" style="color:#E60073">Required Elements of Roster XSD</h2>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -292,17 +256,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | value | telecom | 1..1 | – | – | string |
 | email_address | delegate | 1..1 | – | – | string |
 | is_member | delegate | 1..1 | Fixed to false | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">All Elements of Roster XSD</h2>
+<h2 id="all-elements-of-roster-xsd" style="color:#E60073">All Elements of Roster XSD</h2>
 
 <h3 style="color:#E60073">Root Elements</h3>
-
-<div class = "heatMap">
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -451,13 +411,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | start | delegate | 0..1 | – | – | dateTime |
 | end | delegate | 0..1 | – | – | dateTime |
 | is_member | delegate | 1..1 | Fixed to false | – | – |
-
-
-</div>
+{: .heatMap}
 
 
 
-<h2 style="color:#E60073">Practical Guidance</h2>
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
 
 <h3 style="color:#E60073">Submission Frequency</h3>
 

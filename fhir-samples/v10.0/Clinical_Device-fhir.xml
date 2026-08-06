@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Devices>
+  <Device xmlns="http://hl7.org/fhir">
+    <id value="-simply"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device|6.1.0"/>
+    </meta>
+    <udiCarrier>
+      <deviceIdentifier value="billion"/>
+      <carrierAIDC value="ZmV3"/>
+      <carrierHRF value="sound"/>
+    </udiCarrier>
+    <distinctIdentifier value="participant"/>
+    <manufactureDate value="2019-10-09T02:00:15Z"/>
+    <expirationDate value="2013-06-01T03:45:57Z"/>
+    <lotNumber value="mission"/>
+    <serialNumber value="source"/>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/ValueSet/device-kind"/>
+        <code value="case"/>
+        <display value=""/>
+      </coding>
+    </type>
+    <patient>
+      <reference value="Patient/-remain"/>
+    </patient>
+  </Device>
+</Devices>

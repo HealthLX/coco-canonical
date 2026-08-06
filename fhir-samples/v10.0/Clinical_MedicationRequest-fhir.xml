@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MedicationRequests>
+  <MedicationRequest xmlns="http://hl7.org/fhir">
+    <id value="-dinner"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"/>
+    </meta>
+    <contained/>
+    <identifier>
+      <value value="-dinner"/>
+    </identifier>
+    <status value="cancelled"/>
+    <statusReason/>
+    <intent value="order"/>
+    <medicationCodeableConcept>
+      <coding>
+        <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+        <code value="less"/>
+      </coding>
+    </medicationCodeableConcept>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <encounter>
+      <reference value="Encounter/enough"/>
+    </encounter>
+    <supportingInformation/>
+    <authoredOn value="2012-04-10T18:31:18Z"/>
+    <requester>
+      <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+        <valueCode value="unknown"/>
+      </extension>
+      <display value="Unknown requester"/>
+    </requester>
+    <performer/>
+    <performerType/>
+    <recorder/>
+    <reasonCode/>
+    <reasonReference/>
+    <instantiatesCanonical/>
+    <instantiatesUri/>
+    <basedOn/>
+    <groupIdentifier/>
+    <courseOfTherapyType/>
+    <insurance/>
+    <note/>
+    <dosageInstruction>
+      <text value="American Indian or Alaska Native"/>
+      <doseAndRate>
+        <doseQuantity>
+          <value value=""/>
+          <unit value=""/>
+        </doseQuantity>
+      </doseAndRate>
+    </dosageInstruction>
+    <dispenseRequest>
+      <initialFill>
+        <quantity/>
+        <duration/>
+      </initialFill>
+      <dispenseInterval/>
+      <validityPeriod/>
+      <numberOfRepeatsAllowed/>
+      <quantity/>
+      <expectedSupplyDuration/>
+      <performer/>
+    </dispenseRequest>
+    <substitution>
+      <allowed/>
+      <reason/>
+    </substitution>
+    <priorPrescription/>
+    <detectedIssue/>
+    <eventHistory/>
+  </MedicationRequest>
+</MedicationRequests>

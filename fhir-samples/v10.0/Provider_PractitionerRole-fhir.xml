@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PractitionerRole xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id value="-force-smile"/>
+  <meta>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/plannet-Network"/>
+    </meta>
+  </meta>
+  <extension url="http://hl7.org/fhir/us/davinci-pdex-plan-net/StructureDefinition/network-reference">
+    <valueReference>
+      <reference value="Organization/-force"/>
+    </valueReference>
+  </extension>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="NPI"/>
+        <display value="National Provider Identifier"/>
+      </coding>
+    </type>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="9568412208"/>
+  </identifier>
+  <identifier>
+    <system value="https://data.healthlx.com/ID-"/>
+    <value value="-smile"/>
+  </identifier>
+  <active value="false"/>
+  <practitioner>
+    <reference value="Practitioner/-smile"/>
+    <display value="American Indian or Alaska Native"/>
+  </practitioner>
+  <code>
+    <coding>
+      <system value="director"/>
+      <code value="father"/>
+      <display value="English"/>
+    </coding>
+    <text>American Indian or Alaska Native</text>
+  </code>
+  <specialty>
+    <coding>
+      <system value="unit"/>
+      <code value="series"/>
+      <display value="English"/>
+    </coding>
+    <text value="American Indian or Alaska Native"/>
+  </specialty>
+  <location>
+    <reference value="Location/-smileworkboth"/>
+    <display value="American Indian or Alaska Native"/>
+  </location>
+  <type>
+    <coding>
+      <system value="http://hl7.org/fhir/us/davinci-pdex-plan-net/CodeSystem/OrgTypeCS"/>
+      <code value="ntwk"/>
+      <display value="Network"/>
+    </coding>
+  </type>
+  <name>
+    <text value="Jeffery Collins DDS"/>
+  </name>
+  <alias/>
+  <telecom>
+    <system value="other"/>
+    <value value="president"/>
+    <use value="home"/>
+    <rank value="4"/>
+    <period>
+      <start value="2010-11-12T11:11:05Z"/>
+      <end value="2018-12-27T19:57:09Z"/>
+    </period>
+  </telecom>
+  <partOf/>
+  <contact>
+    <name>
+      <family value="Medina"/>
+      <given value="Monica"/>
+    </name>
+  </contact>
+  <code/>
+  <endpoint/>
+</PractitionerRole>

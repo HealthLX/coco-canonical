@@ -1,0 +1,14 @@
+title: CoCo Canonical Documentation
+description: >-
+  HealthLX CoCo — canonical data models for CMS compliance and FHIR interoperability.
+  Implementation guides for Core-Model, EOB, Clinical, Formulary, Provider Directory, and Roster.
+baseurl: "/coco-canonical"
+url: "https://healthlx.github.io"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  parse_block_html: true
+
+theme: null
