@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Observations>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-us"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-heart-rate"/>
+    </meta>
+    <status value="corrected"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="vital-signs"/>
+      </coding>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="85354-9"/>
+        <display value="Mean blood pressure"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2016-02-23T09:42:37Z"/>
+    <valueQuantity>
+      <value value="830.72"/>
+      <comparator value="&gt;"/>
+      <unit value="million"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="/min"/>
+    </valueQuantity>
+  </Observation>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-spend"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height"/>
+    </meta>
+    <status value="entered-in-error"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="vital-signs"/>
+        <display value="Vital Signs"/>
+      </coding>
+      <text value="Vital Signs"/>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="77606-2"/>
+        <display value="Weight-for-length Per age and sex"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2013-08-26T12:04:28Z"/>
+    <valueQuantity>
+      <value value="499.99"/>
+      <comparator value="someone"/>
+      <unit value="level"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="%"/>
+    </valueQuantity>
+  </Observation>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-election"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/head-occipital-frontal-circumference-percentile"/>
+    </meta>
+    <status value="entered-in-error"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="vital-signs"/>
+        <display value="Vital Signs"/>
+      </coding>
+      <text value="Vital Signs"/>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="8289-1"/>
+        <display value="Head Occipital-frontal circumference Percentile"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectiveDateTime value="2013-06-14T22:58:26Z"/>
+    <valueQuantity>
+      <value value="328.29"/>
+      <comparator value="sea"/>
+      <unit value="simple"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="%"/>
+    </valueQuantity>
+  </Observation>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-three"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age"/>
+    </meta>
+    <status value="amended"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="vital-signs"/>
+        <display value="Vital Signs"/>
+      </coding>
+      <text value="Vital Signs"/>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="59576-9"/>
+        <display value="Body mass index (BMI) [Percentile] Per age and sex"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectivePeriod>
+      <start value="2016-03-12T09:12:10Z"/>
+      <end value="2016-02-13T17:38:33Z"/>
+    </effectivePeriod>
+    <valueQuantity>
+      <value value="394.83"/>
+      <comparator value="ever"/>
+      <unit value="age"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="%"/>
+    </valueQuantity>
+  </Observation>
+  <Observation xmlns="http://hl7.org/fhir">
+    <id value="-tonight"/>
+    <meta>
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry"/>
+    </meta>
+    <status value="registered"/>
+    <category>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+        <code value="vital-signs"/>
+        <display value="Vital Signs"/>
+      </coding>
+      <text value="Vital Signs"/>
+    </category>
+    <code>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="2708-6"/>
+        <display value="Oxygen saturation in Arterial blood"/>
+      </coding>
+      <coding>
+        <system value="http://loinc.org"/>
+        <code value="59408-5"/>
+        <display value="Oxygen saturation in Arterial blood by Pulse oximetry"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="Patient/-remain"/>
+      <display value="American Indian or Alaska Native"/>
+    </subject>
+    <effectivePeriod>
+      <start value="2019-11-22T11:32:08Z"/>
+      <end value="2018-01-01T01:49:28Z"/>
+    </effectivePeriod>
+    <valueQuantity>
+      <value value="311.05"/>
+      <comparator value="old"/>
+      <unit value="%O2"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="%"/>
+    </valueQuantity>
+    <component>
+      <code>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="3151-8"/>
+        </coding>
+      </code>
+      <code>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="3150-0"/>
+        </coding>
+      </code>
+    </component>
+  </Observation>
+</Observations>

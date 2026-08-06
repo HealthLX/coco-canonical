@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "EOB Implementation Guide"
+---
+
+![HLX Logo](assets/css/hlx_logo.png)
 
 # EOB Implementation Guide
 
@@ -6,7 +11,7 @@
 
 **Version 10.0**
 
-**January 2, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -21,15 +26,15 @@
 9. [All Elements of EOB XSD](#all-elements-of-eob-xsd)
 10. [Practical Guidance](#practical-guidance)
 
-## Disclaimer
+<h2 style="color:#E60073">Disclaimer</h2>
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-## Overview
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX EOB data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-## Encoding
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -37,17 +42,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-## Interoperability
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-## Change Log
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | January 2, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-## Simple Types
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -61,6 +67,8 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | adjudication_category | core:string | – |  |
 | language | core:string | – |  |
 | reference | core:string | – |  |
+{: .heatMap}
+
 
 
 ## Core Model Types
@@ -72,44 +80,54 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | NPI | xs:string | – | [0-9]{10} |
 | positiveInt | xs:positiveInteger | – | \+?[1-9][0-9]* |
 | string | xs:string | – | [ \r\n\t\S]+ |
+{: .heatMap}
 
 
-## Complex Types
 
-### period
+<h2 id="complex-types" style="color:#E60073"> Complex Types</h2>
+
+<h3 style="color:#E60073">period</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | start | dateTime | 0 | 1 | – |
 | end | dateTime | 0 | 1 | – |
+{: .heatMap}
 
 
-### identifier
+
+<h3 style="color:#E60073">identifier</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | core:string | 1 | 1 | – |
 | type | core:string | 0 | 1 | – |
 | system | core:string | 0 | 1 | – |
+{: .heatMap}
 
 
-### eob_identifier
+
+<h3 style="color:#E60073">eob_identifier</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | value | core:string | 1 | 1 | – |
 | type | – | 1 | 1 | – |
+{: .heatMap}
 
 
-### timing
+
+<h3 style="color:#E60073">timing</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
 | timing_date | date | 0 | 1 | – |
 | timing_period | period | 0 | 1 | – |
+{: .heatMap}
 
 
-### quantity
+
+<h3 style="color:#E60073">quantity</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -118,9 +136,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | unit | core:string | 0 | 1 | – |
 | system | core:string | 0 | 1 | – |
 | code | core:string | 0 | 1 | – |
+{: .heatMap}
 
 
-### value
+
+<h3 style="color:#E60073">value</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -132,9 +152,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | type | core:string | 0 | 1 | – |
 | identifier | identifier | 0 | 1 | – |
 | display | core:string | 0 | 1 | – |
+{: .heatMap}
 
 
-### human_name
+
+<h3 style="color:#E60073">human_name</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -145,9 +167,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | prefix | core:string | 0 | unbounded | – |
 | suffix | core:string | 0 | unbounded | – |
 | period | period | 0 | 1 | Time period when name was/is in use. If the name is still in use, do not supply an End date |
+{: .heatMap}
 
 
-### address
+
+<h3 style="color:#E60073">address</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -161,9 +185,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | postal_code | core:string | 1 | 1 | The postal code or post code of the address. The postal code supports an unlimited amount of numbers and letters. |
 | country | xs:string | 0 | 1 | Country (e.g. can be ISO 3166 2 or 3 letter code) |
 | period | period | 0 | 1 | – |
+{: .heatMap}
 
 
-### telecom
+
+<h3 style="color:#E60073">telecom</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -172,9 +198,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | use | – | 0 | 1 | The use of the contact point. https://www.hl7.org/fhir/valueset-contact-point-use.html |
 | rank | core:positiveInt | 0 | 1 | Specify preferred order of use (1 = highest) |
 | period | period | 0 | 1 | Time period when the contact point was/is in use |
+{: .heatMap}
 
 
-### practitioner
+
+<h3 style="color:#E60073">practitioner</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -187,9 +215,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
+{: .heatMap}
 
 
-### organization
+
+<h3 style="color:#E60073">organization</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -205,9 +235,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | telecom | telecom | 0 | unbounded | – |
 | addresses | – | 0 | 1 | – |
 | address | address | 0 | unbounded | – |
+{: .heatMap}
 
 
-### member_person
+
+<h3 style="color:#E60073">member_person</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -247,9 +279,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | detailed_code | – | 0 | unbounded | This element is for selecting 1 of the additional ethnicity codes from the CDC that can be found here: https://www.hl7.org/fhir/us/core/ValueSet-detailed-ethnicity.html |
 | text | core:string | 1 | 1 | Use this element for adding a text description if the ethnicity is not listed within the enummeration |
 | us_core_birth_sex | – | 0 | 1 | This element is used for selecting birth sex (M = Male, F = Female, UNK = Unknown) |
+{: .heatMap}
 
 
-### subscriber_person
+
+<h3 style="color:#E60073">subscriber_person</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -285,9 +319,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | detailed_code | – | 0 | unbounded | This element is for selecting 1 of the additional ethnicity codes from the CDC that can be found here: https://www.hl7.org/fhir/us/core/ValueSet-detailed-ethnicity.html |
 | text | core:string | 1 | 1 | Use this element for adding a text description if the ethnicity is not listed within the enummeration |
 | us_core_birth_sex | – | 0 | 1 | This element is used for selecting birth sex (M = Male, F = Female, UNK = Unknown) |
+{: .heatMap}
 
 
-## Required Elements of EOB XSD
+
+<h2 id="required-elements-of-eob-xsd" style="color:#E60073">Required Elements of EOB XSD</h2>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -473,11 +509,13 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | category | 1..1 | – | – | – |
 | system | category | 1..1 | – | – | – |
 | record_type | eob | 1..1 | This element describes the action for this member (A = Add, U = Update, D = Delete) | – | – |
+{: .heatMap}
 
 
-## All Elements of EOB XSD
 
-### Root Elements
+<h2 id="all-elements-of-eob-xsd" style="color:#E60073">All Elements of EOB XSD</h2>
+
+<h3 style="color:#E60073">Root Elements</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -501,9 +539,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | claim | eob | 1..1 | – | – | – |
 | identifier | claim | 1..unbounded | Please include the following claim identifiers -The Payer Claim Control Number as it would be returned on the 835 2100 CLP07. This number must apply to the entire claim. Please use an identifier.type of DCN. - If available, the Claim Identifier for Transmission Intermediaries as sent to the payer on the 837 2300 Ref*D9. Please use an identifier.type of D9 | – | identifier |
 | created | claim | 0..1 | claim creation date | – | dateTime |
+{: .heatMap}
 
 
-### Patient Information
+
+<h3 style="color:#E60073">Patient Information</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -541,9 +581,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | practitioner | party | 1..1 | – | – | practitioner |
 | providing_organization | party | 1..1 | – | – | organization |
 | patient | party | 1..1 | – | – | member_person |
+{: .heatMap}
 
 
-### Care Teams
+
+<h3 style="color:#E60073">Care Teams</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -578,9 +620,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | code | on_admission | 0..1 | – | – | core:string |
 | system | on_admission | 0..1 | – | – | – |
 | package_code | diagnosis | 0..1 | – | – | core:string |
+{: .heatMap}
 
 
-### Procedures
+
+<h3 style="color:#E60073">Procedures</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -639,9 +683,11 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | currency | net | 0..1 | Currency codes which can be found here: http://hl7.org/fhir/R4/valueset-currencies.html | – | currency |
 | note_number | item | 0..unbounded | Applicable note numbers | – | core:positiveInt |
 | location | item | 0..1 | – | – | – |
+{: .heatMap}
 
 
-### Locations
+
+<h3 style="color:#E60073">Locations</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -970,21 +1016,23 @@ The following types are imported from the Core-model. See [Core-model Guide](Cor
 | value | refill_num | 0..1 | – | – | quantity |
 | reason | refill_num | 0..1 | – | – | core:string |
 | record_type | eob | 1..1 | This element describes the action for this member (A = Add, U = Update, D = Delete) | – | – |
+{: .heatMap}
 
 
-## Practical Guidance
 
-### Submission Frequency
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
+
+<h3 style="color:#E60073">Submission Frequency</h3>
 
 EOB files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
-### Adds, Updates, and Deletes
+<h3 style="color:#E60073">Adds, Updates, and Deletes</h3>
 
 - **Adds**: Include new member records with all required fields populated
 - **Updates**: Submit complete member records with updated information
 - **Deletes**: Follow the agreed-upon process for member terminations or removals
 
-### Member Identification
+<h3 style="color:#E60073">Member Identification</h3>
 
 Each member must be uniquely identified using the appropriate identifier fields. Ensure consistency in member identifiers across all submissions to maintain data integrity.
 

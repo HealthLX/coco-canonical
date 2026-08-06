@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+  <meta>
+    <source value=""/>
+    <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
+  </meta>
+  <id value="-remain"/>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="1487-8"/>
+        <display value="White"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="2106-3"/>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2158-4"/>
+        <display value="Hispanic or Latino"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="2186-5"/>
+    </extension>
+  </extension>
+  <identifier>
+    <use value="usual"/>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="MR"/>
+        <display value="Medical Record Number"/>
+      </coding>
+    </type>
+    <system value="remain"/>
+    <value value="remain"/>
+  </identifier>
+  <active value="true"/>
+  <name>
+    <family value="Obrien"/>
+    <given value="Natasha"/>
+  </name>
+  <telecom>
+    <system value="sms"/>
+    <value value="car"/>
+    <use value="work"/>
+    <rank value="1"/>
+    <period>
+      <start value="2020-11-06T02:59:26Z"/>
+      <end value="2017-10-18T03:26:12Z"/>
+    </period>
+  </telecom>
+  <gender value="male"/>
+  <birthDate value="2002-02-09"/>
+  <address>
+    <type>Phisical</type>
+    <line value="780 Baker Parkways Suite 914"/>
+    <city value="North Drewview"/>
+    <district value="raise"/>
+    <state value="SD"/>
+    <postalCode value="79049"/>
+    <country value="ET"/>
+    <period>
+      <start value="2014-12-28T06:23:04Z"/>
+      <end value="2016-09-17T07:44:12Z"/>
+    </period>
+  </address>
+</Patient>

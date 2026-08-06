@@ -1,0 +1,74 @@
+---
+layout: default
+title: CoCo Canonical Documentation
+---
+
+<section class="home-hero">
+  <img src="{{ "/assets/css/coco.png" | relative_url }}" alt="CoCo" class="hero-logo" />
+  <h1>CoCo Canonical Documentation</h1>
+  <p class="tagline">
+    HealthLX canonical data models for CMS compliance and FHIR interoperability.
+  </p>
+</section>
+
+<section class="guide-list">
+  <h2>Implementation Guides</h2>
+  <ul>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="4" rx="1"/><rect x="2" y="13" width="20" height="4" rx="1"/><rect x="2" y="3" width="20" height="2" rx="1"/><rect x="2" y="19" width="20" height="2" rx="1"/></svg>
+      </span>
+      <a href="{{ "Core-model_Guide.html" | relative_url }}">Core-Model Implementation Guide</a>
+      <span class="guide-desc">Core shared types and base elements used across all canonical models.</span>
+    </li>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </span>
+      <a href="{{ "EOB_Guide.html" | relative_url }}">EOB Implementation Guide</a>
+      <span class="guide-desc">Explanation of Benefits canonical model for CMS-9115 compliance.</span>
+    </li>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+      </span>
+      <a href="{{ "Clinical_Guide.html" | relative_url }}">Clinical Implementation Guide</a>
+      <span class="guide-desc">Clinical data canonical model for patient access and interoperability.</span>
+    </li>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7"/><circle cx="17" cy="17" r="4"/><path d="m15 17 1 1 2.5-2.5"/></svg>
+      </span>
+      <a href="{{ "Formulary_Guide.html" | relative_url }}">Formulary Implementation Guide</a>
+      <span class="guide-desc">Drug formulary canonical model aligned with CMS drug coverage requirements.</span>
+    </li>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+      <a href="{{ "provider-directory_Guide.html" | relative_url }}">Provider Directory Implementation Guide</a>
+      <span class="guide-desc">Provider directory canonical model for the Provider Directory API.</span>
+    </li>
+    <li>
+      <span class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <a href="{{ "Roster_Guide.html" | relative_url }}">Roster Implementation Guide</a>
+      <span class="guide-desc">Member roster canonical model for payer-to-payer data exchange.</span>
+    </li>
+  </ul>
+</section>
+
+<section class="about">
+  <h2>About CoCo</h2>
+  <p>
+    CoCo provides a <strong>canonical, open, and inspectable representation of CMS compliance intent</strong>
+    that can be consistently implemented across heterogeneous payer systems and downstream FHIR platforms.
+    All canonical artifacts are versioned and traceable to regulatory source material.
+  </p>
+  <p>
+    Steered by <a href="https://healthlx.com" target="_blank" rel="noopener">HealthLX</a> and the open-source community.
+    Contributions and pull requests are welcome — see the
+    <a href="https://github.com/HealthLX/coco-canonical" target="_blank" rel="noopener">GitHub repository</a>.
+  </p>
+</section>

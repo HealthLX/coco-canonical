@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MedicationKnowledge xmlns="http://hl7.org/fhir">
+  <id value="-represent--make"/>
+  <status value="active"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/MedicationKnowledge"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-DrugTierCS"/>
+        <code value=""/>
+        <display value=""/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-MailOrder-extension">
+    <valueBoolean value=""/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorization-extension">
+    <valueBoolean value="true"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimit-extension">
+    <valueBoolean value="true"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimit-extension">
+    <valueBoolean value="true"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PlanID-extension">
+    <valueString value="represent"/>
+  </extension>
+  <code>
+    <coding>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <code value="make"/>
+      <display value="English"/>
+    </coding>
+  </code>
+  <name value="English"/>
+  <definitional>
+    <doseForm>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="fact"/>
+      </coding>
+    </doseForm>
+  </definitional>
+</MedicationKnowledge>

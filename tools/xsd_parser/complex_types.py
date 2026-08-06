@@ -75,7 +75,7 @@ def parse_complex_types(root):
 def generate_complex_type_table(name, elements):
     """Generate a markdown table for a single complex type."""
     from .markdown_gen import to_md_table
-    output = f"### {name}\n\n"
+    output = f"<h3 style=\"color:#E60073\">{name}</h3>\n\n"
     output += to_md_table(["Field Name", "Type", "MinOccurs", "MaxOccurs", "Description"], elements)
     output += "\n\n"
     return output

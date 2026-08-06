@@ -1,4 +1,9 @@
-![HLX Logo](../assets/hlx_logo.png)
+---
+layout: default
+title: "Formulary Implementation Guide"
+---
+
+![HLX Logo](assets/css/hlx_logo.png)
 
 # Formulary Implementation Guide
 
@@ -6,7 +11,7 @@
 
 **Version 10.0**
 
-**January 2, 2026**
+**March 14, 2026**
 
 **Table of Contents**
 
@@ -20,15 +25,15 @@
 8. [All Elements of Formulary XSD](#all-elements-of-formulary-xsd)
 9. [Practical Guidance](#practical-guidance)
 
-## Disclaimer
+<h2 style="color:#E60073">Disclaimer</h2>
 
 This document is provided by HealthLX for informational purposes only. Information within this document is believed to be correct as of the noted date of publication. Although HealthLX makes every reasonable effort to present information in a timely and accurate manner, HealthLX does not warrant this information for accuracy, completeness or fitness for any purpose, express or implied. The information provided herein does not constitute the rendering of legal, financial or other professional advice or recommendations by HealthLX.
 
-## Overview
+<h2 id="overview" style="color:#E60073">Overview</h2>
 
 This implementation guide provides field mappings and requirements for HealthLX Formulary data submissions in XML format based on FHIR R4 standards. XML format enables structured data exchange with built-in validation against the provided XSD schema.
 
-## Encoding
+<h2 id="encoding" style="color:#E60073">Encoding</h2>
 
 Payers need to send their files with utf-8 encoding as shown below:
 
@@ -36,17 +41,18 @@ Payers need to send their files with utf-8 encoding as shown below:
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-## Interoperability
+<h2 id="interoperability" style="color:#E60073">Interoperability</h2>
 
 This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability Resources Release 4) standards. For more information about FHIR R4, visit: https://www.hl7.org/fhir/R4/
 
-## Change Log
+<h2 id="change-log" style="color:#E60073">Change Log</h2>
 
 | Version | Date |
 |---------|------|
-| 10.0 | January 2, 2026 |
+| 10.0 | March 14, 2026 |
+{: .heatMap}
 
-## Simple Types
+<h2 id="simple-types" style="color:#E60073"> Simple Types</h2>
 
 | Name | Base Type | Description | Pattern |
 | --- | --- | --- | --- |
@@ -56,11 +62,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | date | xs:date | – | ([12]\d{3}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])) |
 | dateTime | xs:string | – | ([12]\d{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])(T([01][0-9]\|2[0-3]):[0-5][0-9]:[0-5][0-9](\.\d{1,6})?((Z\|(\+\|-)((0[0-9]\|1[0-3]):(00\|15\|30\|45)\|14:00))?))? |
 | currency | string | – |  |
+{: .heatMap}
 
 
-## Complex Types
 
-### quantity
+<h2 id="complex-types" style="color:#E60073"> Complex Types</h2>
+
+<h3 style="color:#E60073">quantity</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -69,9 +77,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | unit | string | 0 | 1 | Unit representation (e.g. mcg) |
 | system | string | 0 | 1 | The URI of the system that defines the coded unit form |
 | code | string | 0 | 1 | Coded form of the unit |
+{: .heatMap}
 
 
-### formulary_drugs
+
+<h3 style="color:#E60073">formulary_drugs</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -123,9 +133,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | type | string | 1 | 1 | – |
 | classification | string | 0 | unbounded | – |
 | formulary_drugs_alternatives | formulary_drugs_alternatives | 0 | 1 | – |
+{: .heatMap}
 
 
-### formulary_drugs_alternatives
+
+<h3 style="color:#E60073">formulary_drugs_alternatives</h3>
 
 | Field Name | Type | MinOccurs | MaxOccurs | Description |
 | --- | --- | --- | --- | --- |
@@ -176,9 +188,11 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | medicine_classification | – | 0 | unbounded | The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification) |
 | type | string | 1 | 1 | – |
 | classification | string | 0 | unbounded | – |
+{: .heatMap}
 
 
-## Required Elements of Formulary XSD
+
+<h2 id="required-elements-of-formulary-xsd" style="color:#E60073">Required Elements of Formulary XSD</h2>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -204,11 +218,13 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
 | coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
+{: .heatMap}
 
 
-## All Elements of Formulary XSD
 
-### Root Elements
+<h2 id="all-elements-of-formulary-xsd" style="color:#E60073">All Elements of Formulary XSD</h2>
+
+<h3 style="color:#E60073">Root Elements</h3>
 
 | Name | Parent | Cardinality | Description | Examples | Data Type |
 | --- | --- | --- | --- | --- | --- |
@@ -244,21 +260,23 @@ This implementation guide is based on FHIR R4 (Fast Healthcare Interoperability 
 | coinsurance_rate | cost_sharing | 1..1 | – | – | decimal |
 | coinsurance_option | cost_sharing | 1..1 | CoInsurance options which can be found here: http://hl7.org/fhir/us/Davinci-drug-formulary/ValueSet-usdf-CoinsuranceOptionVS.html | – | – |
 | formulary_drugs | drug_tier | 1..1 | – | – | formulary_drugs |
+{: .heatMap}
 
 
-## Practical Guidance
 
-### Submission Frequency
+<h2 id="practical-guidance" style="color:#E60073">Practical Guidance</h2>
+
+<h3 style="color:#E60073">Submission Frequency</h3>
 
 Formulary files should be submitted according to the schedule agreed upon with HealthLX. Typical submission frequencies include daily, weekly, or monthly updates.
 
-### Adds, Updates, and Deletes
+<h3 style="color:#E60073">Adds, Updates, and Deletes</h3>
 
 - **Adds**: Include new member records with all required fields populated
 - **Updates**: Submit complete member records with updated information
 - **Deletes**: Follow the agreed-upon process for member terminations or removals
 
-### Member Identification
+<h3 style="color:#E60073">Member Identification</h3>
 
 Each member must be uniquely identified using the appropriate identifier fields. Ensure consistency in member identifiers across all submissions to maintain data integrity.
 

@@ -28,10 +28,9 @@ jobs:
 
     - name: Format XSD schema files
       run: |
-        SCHEMA_DIR="schemas/v10.0"
-        
-        # Format each XSD file in schemas/v10.0/
-        for xsd_file in "$SCHEMA_DIR"/*.xsd; do
+        # Format every versioned schema folder (schemas/v10.0, schemas/v11.0, ...).
+        # schemas/fhir-schemas/ is upstream HL7 content and is deliberately not touched.
+        for xsd_file in schemas/v*/*.xsd; do
           if [ -f "$xsd_file" ]; then
             echo "Formatting $xsd_file"
             # Use xmllint to format the file
@@ -52,9 +51,9 @@ jobs:
           BRANCH="${{ github.ref_name }}"
         fi
         
-        # Only add XSD files from schemas/v10.0/
-        git add schemas/v10.0/*.xsd
-        
+        # Only add XSD files from versioned schema folders
+        git add schemas/v*/*.xsd
+
         # Check if there are any changes
         if git diff --staged --quiet; then
           echo "No formatting changes detected"
@@ -62,8 +61,8 @@ jobs:
           # Verify we're only committing schema files
           STAGED_FILES=$(git diff --staged --name-only)
           for file in $STAGED_FILES; do
-            if [[ ! "$file" =~ ^schemas/v10\.0/.*\.xsd$ ]]; then
-              echo "ERROR: Attempted to commit file outside schemas/v10.0/ or not an XSD file: $file"
+            if [[ ! "$file" =~ ^schemas/v[0-9]+\.[0-9]+/[^/]*\.xsd$ ]]; then
+              echo "ERROR: Attempted to commit file outside schemas/v<version>/ or not an XSD file: $file"
               git reset
               exit 1
             fi

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Basics>
+  <Basic xmlns="http://hl7.org/fhir">
+    <id value="-FormularyItem-preferred-brand-next-make"/>
+    <meta xmlns="">
+      <source value=""/>
+      <profile value="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem"/>
+    </meta>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PlanID-extension">
+      <valueString value="-next"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension">
+      <valueReference>
+        <reference value="InsurancePlan/-next"/>
+      </valueReference>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension">
+      <valueCode value="active"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-DrugTierCS-TEMPORARY-TRIAL-USE"/>
+          <code value="preferred-brand"/>
+          <display value="Drug Tier preferred-brand"/>
+        </coding>
+      </valueCodeableConcept>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorization-extension">
+      <valueBoolean value="true"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimit-extension">
+      <valueBoolean value="true"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimit-extension">
+      <valueBoolean value="false"/>
+    </extension>
+    <code>
+      <coding>
+        <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-InsuranceItemTypeCS"/>
+        <code value="formulary-item"/>
+        <display value="Formulary Item"/>
+      </coding>
+    </code>
+    <subject>
+      <reference value="MedicationKnowledge/-next-preferred-brand-make"/>
+      <display value="English"/>
+    </subject>
+  </Basic>
+</Basics>

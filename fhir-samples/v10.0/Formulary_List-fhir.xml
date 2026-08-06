@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<List xmlns="http://hl7.org/fhir">
+  <id value="-next"/>
+  <meta>
+    <source value=""/>
+    <profile value="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-CoveragePlan"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierDefinition-extension">
+    <extension url="drugTierID">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-DrugTierCS"/>
+          <code value="preferred-brand"/>
+          <display value="Preferred Brand"/>
+        </coding>
+      </valueCodeableConcept>
+    </extension>
+    <extension url="mailOrder">
+      <valueBoolean value="true"/>
+    </extension>
+    <extension url="costSharing">
+      <extension url="pharmacyType">
+        <valueCodeableConcept>
+          <text value=""/>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="copayAmount">
+        <valueMoney>
+          <value value="585.6"/>
+        </valueMoney>
+      </extension>
+      <extension url="copayOption">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-CopayOptionCS"/>
+            <code value="no-charge"/>
+            <display value="No Charge"/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+      <extension url="coinsuranceRate">
+        <valueDecimal value="76.5"/>
+      </extension>
+      <extension url="coinsuranceOption">
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-CoinsuranceOptionCS"/>
+            <code value="after-deductible"/>
+            <display value="After Deductible"/>
+          </coding>
+        </valueCodeableConcept>
+      </extension>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-MarketingURL-extension">
+    <valueUrl value="media"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyURL-extension">
+    <valueUrl>
+      <valueUrl value="education"/>
+    </valueUrl>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-SummaryURL-extension">
+    <valueUrl value="east"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-EmailPlanContact-extension">
+    <valueUrl>matthew34@example.com</valueUrl>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-Network-extension">
+    <valueString value="wear"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PlanIDType-extension">
+    <valueString value="build"/>
+  </extension>
+  <identifier>
+    <system value="https://data.healthlx.com/-FormularyPlanID"/>
+    <value value="next"/>
+  </identifier>
+  <status value="entered-in-error"/>
+  <mode value="snapshot"/>
+  <title value="feeling"/>
+  <code>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DRUGPOL"/>
+      <display value="drug policy"/>
+    </coding>
+  </code>
+  <date value="2026-06-13"/>
+</List>

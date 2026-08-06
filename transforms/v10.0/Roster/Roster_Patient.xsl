@@ -1,14 +1,12 @@
-<xsl:stylesheet 
-	version="10.0" 
-	xmlns="http://hl7.org/fhir"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  	xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://hl7.org/fhir">
 	<xsl:preserve-space elements="*"/>
 	<xsl:output method="xml" indent="no"/>
+
 	<xsl:template match="*">
-		<Patient xsi:schemaLocation="http://hl7.org/fhir ../../schemas/fhir-schemas/R4/patient.xsd">
+		<Patient>
 			<xsl:call-template name="resource_meta"/>
+
 			<id>
 				<xsl:attribute name="value">
 					<!-- <xsl:value-of select="/member/member_id"/> -->
@@ -17,10 +15,15 @@
 					/>
 				</xsl:attribute>
 			</id>
+
 			<xsl:call-template name="resource_extensions"/>
+
 			<xsl:call-template name="resource_identifier"/>
+
 			<active value="true"/>
+
 			<xsl:call-template name="patient_name"/>
+
 			<xsl:call-template name="patient_telecom"/>
 
 			<gender>
@@ -41,19 +44,20 @@
 			</maritalStatus> -->
 
 			<xsl:call-template name="patient_contact"/>
+
 			<xsl:call-template name="patient_communication"/>
 		</Patient>
 	</xsl:template>
 
+
 	<!-- Subtemplates -->
 	<xsl:template name="resource_meta">
 		<meta>
-			<!-- not a valid FHIR element
 			<source>
 				<xsl:attribute name="value">
 					<xsl:value-of select="/member/parentfile"/>
 				</xsl:attribute>
-			</source> -->
+			</source>
 			<lastUpdated>
 				<xsl:attribute name="value">
 					<!--Get current date time-->
@@ -68,16 +72,38 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
 			<extension url="ombCategory">
 				<valueCoding>
-					<system value="urn:oid:2.16.840.1.113883.6.238"/>
+					<system>
+						<xsl:choose>
+							<xsl:when test="/member/us_core_race/code = 'UNK'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:when test="/member/us_core_race/code = 'ASKU'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">urn:oid:2.16.840.1.113883.6.238</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
+					</system>
 					<code>
 						<xsl:attribute name="value">
 							<xsl:value-of select="/member/us_core_race/code"/>
 						</xsl:attribute>
 					</code>
 					<display>
-						<xsl:attribute name="value">
-							<xsl:value-of select="/member/us_core_race/text"/>
-						</xsl:attribute>
+						<xsl:choose>
+							<xsl:when test="/member/us_core_race/code = 'UNK'">
+								<xsl:attribute name="value">unknown</xsl:attribute>
+							</xsl:when>
+							<xsl:when test="/member/us_core_race/code = 'ASKU'">
+								<xsl:attribute name="value">asked but unknown</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">
+									<xsl:value-of select="/member/us_core_race/text"/>
+								</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
 					</display>
 				</valueCoding>
 			</extension>
@@ -95,16 +121,38 @@
 		<extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
 			<extension url="ombCategory">
 				<valueCoding>
-					<system value="urn:oid:2.16.840.1.113883.6.238"/>
+					<system>
+						<xsl:choose>
+							<xsl:when test="/member/us_core_ethnicity/code = 'UNK'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:when test="/member/us_core_ethnicity/code = 'ASKU'">
+								<xsl:attribute name="value">http://terminology.hl7.org/CodeSystem/v3-NullFlavor</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">urn:oid:2.16.840.1.113883.6.238</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
+					</system>
 					<code>
 						<xsl:attribute name="value">
 							<xsl:value-of select="/member/us_core_ethnicity/code"/>
 						</xsl:attribute>
 					</code>
 					<display>
-						<xsl:attribute name="value">
-							<xsl:value-of select="/member/us_core_ethnicity/text"/>
-						</xsl:attribute>
+						<xsl:choose>
+							<xsl:when test="/member/us_core_ethnicity/code = 'UNK'">
+								<xsl:attribute name="value">unknown</xsl:attribute>
+							</xsl:when>
+							<xsl:when test="/member/us_core_ethnicity/code = 'ASKU'">
+								<xsl:attribute name="value">asked but unknown</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="value">
+									<xsl:value-of select="/member/us_core_ethnicity/text"/>
+								</xsl:attribute>
+							</xsl:otherwise>
+						</xsl:choose>
 					</display>
 				</valueCoding>
 			</extension>
@@ -344,11 +392,13 @@
 					</xsl:attribute>
 				</use> -->
 				<!-- 0..1 postal | physical | both -->
-				<type>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./type"/>
-					</xsl:attribute>
-				</type>
+				<xsl:if test="./type">
+					<type>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./type"/>
+						</xsl:attribute>
+					</type>
+				</xsl:if>
 				<!-- 0..1 Text representation of the address -->
 				<!-- 
 				<text>
@@ -358,38 +408,57 @@
 				</text>
 				 -->
 				<!-- 0..* Street name, number, direction & P.O. Box etc. -->
-				<line>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./line"/>
-					</xsl:attribute>
-				</line>
+				<xsl:for-each select="./line">
+					<line>
+						<xsl:attribute name="value">
+							<xsl:value-of select="."/>
+						</xsl:attribute>
+					</line>
+				</xsl:for-each>
 				<!-- 0..1 Name of city, town etc. -->
-				<city>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./city"/>
-					</xsl:attribute>
-				</city>
+				<xsl:if test="./city">
+					<city>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./city"/>
+						</xsl:attribute>
+					</city>
+				</xsl:if>
 				<!-- 0..1 District name (aka county) -->
-				<district>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./district"/>
-					</xsl:attribute>
-				</district>
+				<xsl:if test="./district">
+					<district>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./district"/>
+						</xsl:attribute>
+					</district>
+				</xsl:if>
 				<!-- 0..1 Sub-unit of country (abbreviations ok) -->
-				<state>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./state"/>
-					</xsl:attribute>
-				</state>
+				<xsl:if test="./state">
+					<state>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./state"/>
+						</xsl:attribute>
+					</state>
+				</xsl:if>
 				<!-- 0..1 Postal code for area -->
-				<postalCode>
-					<xsl:attribute name="value">
-						<xsl:value-of select="./postal_code"/>
-					</xsl:attribute>
-				</postalCode>
+				<xsl:if test="./postal_code">
+					<postalCode>
+						<xsl:attribute name="value">
+							<xsl:value-of select="./postal_code"/>
+						</xsl:attribute>
+					</postalCode>
+				</xsl:if>
 				<!-- 0..1 Country (e.g. can be ISO 3166 2 or 3 letter code) -->
 				<country>
-					<xsl:attribute name="value">USA</xsl:attribute>
+					<xsl:choose>
+						<xsl:when test="./country">
+							<xsl:attribute name="value">
+								<xsl:value-of select="./country"/>
+							</xsl:attribute>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:attribute name="value">USA</xsl:attribute>
+						</xsl:otherwise>
+					</xsl:choose>
 				</country>
 				<!-- 0..1 Period Time period when address was/is in use -->
 				<xsl:if test="period">
