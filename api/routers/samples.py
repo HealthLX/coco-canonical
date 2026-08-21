@@ -206,9 +206,8 @@ def post_generate_target_content(
         if not path.exists():
             raise HTTPException(status_code=500, detail="Generated file not found")
         if format == "json":
-            import base64
-            text = path.read_text(encoding="utf-8")
-            return {"file": first["file"], "content_base64": base64.b64encode(text.encode("utf-8")).decode("ascii"), "format": "xml"}
+            from tools.xml_to_json import xml_to_json_string
+            return Response(content=xml_to_json_string(path.read_text(encoding="utf-8")), media_type="application/json")
         return PlainTextResponse(path.read_text(encoding="utf-8"), media_type="application/xml")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
