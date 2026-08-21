@@ -163,7 +163,7 @@ LANGUAGE_DISPLAY_MAP = {
     "na": "Nauru",
     "nb": "Norwegian Bokmål",
     "nd": "North Ndebele",
-    "ne": "Nepali",
+    "ne": "Nepali (macrolanguage)",
     "ng": "Ndonga",
     "nl": "Dutch",
     "nn": "Norwegian Nynorsk",

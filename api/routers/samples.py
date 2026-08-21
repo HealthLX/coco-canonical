@@ -29,6 +29,7 @@ def _run_build_for_target(target: str) -> list[dict]:
     """Run sample builder for one canonical target (may be multiple builds, e.g. providerdirectory).
     Always writes a fresh timestamped copy so previous artifacts are never overwritten."""
     from tools.build_all_sample_files import build_sample_file
+    from tools.build_sample_file import DEFAULT_VERSION_DIR
 
     canonical_dir = get_canonical_samples_dir()
     builds = get_builds()
@@ -46,6 +47,7 @@ def _run_build_for_target(target: str) -> list[dict]:
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
                 output_dir=canonical_dir,
+                version=b.get("version") or DEFAULT_VERSION_DIR,
             )
             src_path = canonical_dir / b["output_file_name"]
             ts_name = _timestamped_name(b["output_file_name"])
@@ -77,6 +79,7 @@ def _run_build_for_target(target: str) -> list[dict]:
 def _run_build_all() -> list[dict]:
     """Run sample builder for all builds, saving a timestamped copy of each output."""
     from tools.build_all_sample_files import build_sample_file
+    from tools.build_sample_file import DEFAULT_VERSION_DIR
 
     canonical_dir = get_canonical_samples_dir()
     builds = get_builds()
@@ -90,6 +93,7 @@ def _run_build_all() -> list[dict]:
                 output_file_name=b["output_file_name"],
                 provider_directory_child=b.get("provider_directory_child"),
                 output_dir=canonical_dir,
+                version=b.get("version") or DEFAULT_VERSION_DIR,
             )
             src_path = canonical_dir / b["output_file_name"]
             ts_name = _timestamped_name(b["output_file_name"])
@@ -278,6 +282,7 @@ def get_canonical_regenerate(filename: str):
     canonical_dir = get_canonical_samples_dir()
     try:
         from tools.build_all_sample_files import build_sample_file
+        from tools.build_sample_file import DEFAULT_VERSION_DIR
         build_sample_file(
             canonical_name=match["canonical_name"],
             root_element_name=match["root_element_name"],
@@ -285,6 +290,7 @@ def get_canonical_regenerate(filename: str):
             output_file_name=match["output_file_name"],
             provider_directory_child=match.get("provider_directory_child"),
             output_dir=canonical_dir,
+            version=match.get("version") or DEFAULT_VERSION_DIR,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e

@@ -160,6 +160,16 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
     type_name = str(xsd_element.type.name).lower(
     ) if xsd_element.type and xsd_element.type.name else ""
 
+    # FIX: Handle language_code FIRST, before enum extraction - the schema enum can list far
+    # more codes (e.g. v11.0's 513 ISO 639 codes) than LANGUAGE_DISPLAY_MAP has correct display
+    # text for, so restrict generation to codes we can actually pair with a valid display.
+    if tag_name == f"{COCO_NS}language_code":
+        all_lang_codes = list(LANGUAGE_DISPLAY_MAP.keys())
+        lang_code = random.choice(all_lang_codes)
+        if context_dict is not None:
+            context_dict['language_code'] = lang_code
+        return lang_code
+
     # FIX: Handle Race/Ethnicity codes FIRST - before enum extraction
     # Valid OMB Race Category codes (from FHIR US Core) - separate NullFlavor from actual codes
     # Use helper functions from fhir_mappings module
@@ -384,15 +394,8 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
         # Default fallback
         return "American Indian or Alaska Native"
 
-    # FIX: Handle language_code to return valid language codes
-    if tag_name == f"{COCO_NS}language_code":
-        # Get all language codes including compound codes
-        all_lang_codes = list(LANGUAGE_DISPLAY_MAP.keys())
-        lang_code = random.choice(all_lang_codes)
-        # Store the code in context for display generation
-        if context_dict is not None:
-            context_dict['language_code'] = lang_code
-        return lang_code
+    # NOTE: language_code is handled earlier (before enum extraction) - see the
+    # tag_name == language_code check near the top of this function.
 
     # FIX: Period start/end must stay paired (start < end) regardless of the
     # element's underlying XSD type shape. Must run before the generic regex-pattern
