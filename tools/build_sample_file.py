@@ -64,14 +64,36 @@ def iso_datetime_z(days_offset=0):
     return final_dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _is_datetime_type(xsd_element):
+    """
+    Determine whether xsd_element resolves to a dateTime (vs. plain date) format.
+    Covers both the built-in/locally-restricted-from-builtin case (via
+    _builtin_temporal_type) and schemas' custom named 'dateTime' simpleType that
+    restricts xs:string with a datetime-shaped regex pattern instead of restricting
+    xs:dateTime directly (e.g. schemas/v11.0/Roster.xsd), which _builtin_temporal_type
+    can't see through since its root type is xs:string.
+    """
+    temporal = _builtin_temporal_type(xsd_element)
+    if temporal == "dateTime":
+        return True
+    if temporal == "date":
+        return False
+    pattern = get_pattern_from_type(xsd_element.type)
+    if pattern:
+        pattern_str = str(pattern)
+        if "T" in pattern_str and "-" in pattern_str and ":" in pattern_str:
+            return True
+    return False
+
+
 def _generate_period_start(tag_name, xsd_element):
     """
     Generate a start date for a period element.
     Uses a date range (5-10 years ago) that's guaranteed to be before end dates.
     """
     fake = Faker()
-    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
-    
+    is_datetime = _is_datetime_type(xsd_element)
+
     if is_datetime:
         # Generate a dateTime in the past (5-10 years ago)
         # This range is guaranteed to be before end dates (which are 0-4 years ago)
@@ -91,8 +113,8 @@ def _generate_period_end(tag_name, xsd_element):
     Start dates are 5-10 years ago, so end dates from 0-4 years ago are guaranteed to be after.
     """
     fake = Faker()
-    is_datetime = xsd_element.type.name == f"{XML_NS}dateTime"
-    
+    is_datetime = _is_datetime_type(xsd_element)
+
     if is_datetime:
         # Generate end date from 0-4 years ago to now
         # This is guaranteed to be after start dates (which are 5-10 years ago)
@@ -372,6 +394,16 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
             context_dict['language_code'] = lang_code
         return lang_code
 
+    # FIX: Period start/end must stay paired (start < end) regardless of the
+    # element's underlying XSD type shape. Must run before the generic regex-pattern
+    # branch below, since schemas can type these as a custom string-restricted
+    # 'dateTime' simpleType whose pattern would otherwise match there first and
+    # return two independent random_datetime() calls with no ordering guarantee.
+    if tag_name == f"{COCO_NS}start":
+        return _generate_period_start(tag_name, xsd_element)
+    if tag_name == f"{COCO_NS}end":
+        return _generate_period_end(tag_name, xsd_element)
+
     # 2.Handle regex patterns
     pattern = get_pattern_from_type(xsd_element.type)
     if pattern:
@@ -421,10 +453,8 @@ def generate_value(tag_name, xsd_element=None, parent_xml_elem=None, context_dic
         
         f"{COCO_NS}birth_date": lambda: str(fake.date()),
         f"{COCO_NS}period": lambda: str(fake.date()),
-        # FIX: Ensure Start is always before End
-        # Generate start dates in the past, and track them for end date generation
-        f"{COCO_NS}start": lambda: _generate_period_start(tag_name, xsd_element),
-        f"{COCO_NS}end": lambda: _generate_period_end(tag_name, xsd_element),
+        # NOTE: period start/end are handled earlier (before the regex-pattern
+        # branch) so they aren't listed here - see the tag_name == start/end check above.
         f"{COCO_NS}npi": lambda: str(fake.random_number(digits=10, fix_len=True)),  # NPI numbers are always 10 digits
         f"{COCO_NS}is_active": lambda: "true",
         f"{COCO_NS}city": lambda: fake.city(),
