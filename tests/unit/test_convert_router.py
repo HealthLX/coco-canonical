@@ -1,9 +1,15 @@
-"""Unit tests for POST /convert/xml-to-json."""
-from fastapi.testclient import TestClient
+"""Unit tests for POST /convert/xml-to-json.
 
-from api.main import app
+Skipped when the `api` extra isn't installed (e.g. the CI job that runs against
+requirements.txt, which only covers the base tools/ dependencies).
+"""
+import pytest
 
-client = TestClient(app)
+fastapi_testclient = pytest.importorskip("fastapi.testclient")
+
+from api.main import app  # noqa: E402
+
+client = fastapi_testclient.TestClient(app)
 
 
 def test_convert_valid_xml_returns_json():
