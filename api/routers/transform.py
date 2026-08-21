@@ -102,7 +102,7 @@ def _multipart_xml_response(parts: list[dict]) -> Response:
     return Response(content=body, media_type=f"multipart/xml; boundary={boundary}")
 
 
-def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0):
+def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0, format: str = "xml"):
     transform_specs = _get_transform_specs(build)
     if not transform_specs:
         raise HTTPException(status_code=400, detail="No transforms configured for selected build")
@@ -117,6 +117,9 @@ def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0):
         output_path = fhir_dir / out_name
         body_content = _run_transform(canonical_path, xslt_path, output_path, return_content=(content == 1))
         if content == 1 and body_content:
+            if format == "json":
+                from tools.xml_to_json import xml_to_json_string
+                return Response(content=xml_to_json_string(body_content), media_type="application/json")
             return PlainTextResponse(body_content, media_type="application/xml")
         return {"success": True, "output_file": out_name, "path": str(output_path)}
 
@@ -133,6 +136,17 @@ def _run_build_transforms(canonical_path: Path, build: dict, content: int = 0):
         output_files.append({"resource_type": spec["resource_type"], "output_file": out_name, "path": str(output_path)})
 
     if content == 1:
+        if format == "json":
+            import json
+            from tools.xml_to_json import xml_to_json
+
+            payload = {
+                "parts": [
+                    {"filename": p["filename"], "resource_type": p["resource_type"], "content": xml_to_json(p["content"])}
+                    for p in parts
+                ]
+            }
+            return Response(content=json.dumps(payload, indent=2), media_type="application/json")
         return _multipart_xml_response(parts)
     return {"success": True, "output_files": output_files}
 
@@ -164,6 +178,7 @@ async def post_transform_upload(
 @router.post("/{target}/content")
 def post_transform_target_content(
     target: str,
+    format: str = Query("xml", description="Response format when content is returned: xml or json"),
     provider_directory_child: str | None = Query(
         None, description="Optional. Use when multiple providerdirectory builds exist in config."
     ),
@@ -175,7 +190,7 @@ def post_transform_target_content(
     if not canonical_path.is_file():
         raise HTTPException(status_code=404, detail=f"Canonical sample not found: {b['output_file_name']}. Generate it first.")
     try:
-        return _run_build_transforms(canonical_path, b, content=1)
+        return _run_build_transforms(canonical_path, b, content=1, format=format)
     except HTTPException:
         raise
     except Exception as e:
@@ -187,6 +202,7 @@ def post_transform_target_content(
 def post_transform_target(
     target: str,
     content: int = Query(0, description="If 1, return FHIR XML in response body"),
+    format: str = Query("xml", description="Response format when content=1: xml or json"),
     provider_directory_child: str | None = Query(
         None, description="Optional. Use when multiple providerdirectory builds exist in config."
     ),
@@ -198,7 +214,7 @@ def post_transform_target(
     if not canonical_path.is_file():
         raise HTTPException(status_code=404, detail=f"Canonical sample not found: {b['output_file_name']}. Generate it first.")
     try:
-        return _run_build_transforms(canonical_path, b, content=content)
+        return _run_build_transforms(canonical_path, b, content=content, format=format)
     except HTTPException:
         raise
     except Exception as e:
